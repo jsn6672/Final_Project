@@ -35,6 +35,7 @@
 <link href="resources/lib/owlcarousel/assets/owl.carousel.min.css"
 	rel="stylesheet">
 
+
 <!-- Customized Bootstrap Stylesheet -->
 <link href="resources/css/bootstrap.min.css" rel="stylesheet">
 
@@ -44,7 +45,9 @@
 <link href="resources/css/point.css" rel="stylesheet">
 <!-- zenblog에서 퍼온 css -->
 <link href="resources/css/index_index.css" rel="stylesheet">
+<link href="resources/css/ask.css" rel="stylesheet">
 <link href="resources/css/index_index_variables.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -221,5 +224,6 @@
 	<script src="resources/js/point.js"></script>
 	<!-- Template Javascript -->
 	<script src="resources/js/main.js"></script>
+	<script src="resources/js/ask.js"></script>
 </body>
 </html>
