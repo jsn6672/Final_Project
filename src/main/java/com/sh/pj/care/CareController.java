@@ -15,12 +15,14 @@ public class CareController {
 	@RequestMapping(value = "/caresitter.go", method = RequestMethod.GET)
 	public String caresitter(HttpServletRequest req) {
 		req.setAttribute("contentPage", "care/caresitter.jsp");
+		req.setAttribute("background_color", "#FBE9E7");
 		return "home";
 	}
 	
 	@RequestMapping(value = "/caretaker.go", method = RequestMethod.GET)
 	public String caretaker(HttpServletRequest req) {
 		req.setAttribute("contentPage", "care/caretaker.jsp");
+		req.setAttribute("background_color", "#FBE9E7");
 		return "home";
 	}
 }

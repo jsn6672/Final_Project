@@ -15,12 +15,14 @@ public class MomController {
 	@RequestMapping(value = "/momsitter.go", method = RequestMethod.GET)
 	public String momsitter(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mom/momsitter.jsp");
+		req.setAttribute("background_color", "#FCE4EC");
 		return "home";
 	}
 	
 	@RequestMapping(value = "/momtaker.go", method = RequestMethod.GET)
 	public String momtaker(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mom/momtaker.jsp");
+		req.setAttribute("background_color", "#FCE4EC");
 		return "home";
 	}
 }
