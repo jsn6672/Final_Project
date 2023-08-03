@@ -63,8 +63,8 @@
 		<div class="container">
 			<nav
 				class="navbar navbar-expand-lg bg-white navbar-light py-2 py-lg-0">
-				<a href="go.home" class="navbar-brand"> <img
-					class="img-fluid" src="resources/img/logo2.png" alt="Logo">
+				<a href="go.home" class="navbar-brand"> <img class="img-fluid"
+					src="resources/img/logo2.png" alt="Logo">
 				</a>
 				<button type="button" class="navbar-toggler ms-auto me-0"
 					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -84,8 +84,8 @@
 							<a href="#" class="nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">맘시터</a>
 							<div class="dropdown-menu bg-light rounded-0 m-0">
-								<a href="momsitter.go" class="dropdown-item">맘시터모집</a> 
-								<a href="momtaker.go" class="dropdown-item">일자리모집</a>
+								<a href="momsitter.go" class="dropdown-item">맘시터모집</a> <a
+									href="momtaker.go" class="dropdown-item">일자리모집</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
@@ -100,9 +100,9 @@
 							<a href="#" class="nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">Q&A</a>
 							<div class="dropdown-menu bg-light rounded-0 m-0">
-								<a href="mainask.go" class="dropdown-item">공지사항</a> 
-								<a href="manyask.go" class="dropdown-item">자주묻는질문</a>
-								<a href="qanda.go" class="dropdown-item">문의사항</a>
+								<a href="mainask.go" class="dropdown-item">공지사항</a> <a
+									href="manyask.go" class="dropdown-item">자주묻는질문</a> <a
+									href="qanda.go" class="dropdown-item">문의사항</a>
 							</div>
 						</div>
 					</div>
@@ -112,16 +112,21 @@
 						</button>
 					</div>
 					<div>
-						<a href="contact.html" class="nav-item nav-link">로그인</a>
+						<jsp:include page="${loginPage }"></jsp:include>
 					</div>
+					<%-- --%>
+					<%-- 	<div>
+						<a href="contact" class="nav-item nav-link">로그인</a>
+					</div>
+					--%>
 				</div>
 			</nav>
 		</div>
 	</div>
 	<!-- Navbar End -->
-	
+
 	<jsp:include page="${contentPage }"></jsp:include>
-	
+
 	<!-- Footer Start -->
 	<div class="container-fluid bg-dark footer mt-5 py-5 wow fadeIn"
 		data-wow-delay="0.1s">
