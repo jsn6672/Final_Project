@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div style="display: flex;">
-		<button onclick="">마이페이지</button>
+		<a href="mypage" class="nav-item nav-link">마이페이지</a>
 
 		<a href="logout" class="nav-item nav-link">로그아웃</a>		
 	</div>

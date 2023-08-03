@@ -62,7 +62,7 @@
 	<div class="container-fluid bg-white sticky-top">
 		<div class="container">
 			<nav
-				class="navbar navbar-expand-lg bg-white navbar-light py-2 py-lg-0">
+				class="navbar navbar-expand-lg bg-white navbar-light py-2 py-lg-0" style="background-color: black">
 				<a href="go.home" class="navbar-brand"> <img class="img-fluid"
 					src="resources/img/logo2.png" alt="Logo">
 				</a>

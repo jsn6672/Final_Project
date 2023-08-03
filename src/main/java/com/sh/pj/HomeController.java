@@ -1,16 +1,10 @@
 package com.sh.pj;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -52,9 +46,7 @@ public class HomeController {
 	public String logindo(HttpServletRequest req, AccountDTO aDTO) {
 		
 		aDAO.login(req, aDTO);
-		System.out.println("첫번째 메소드");
 		aDAO.logincheck(req);
-		System.out.println("두번째 메소드");
 		if (req.getAttribute("loginfail") != null) {
 			req.setAttribute("contentPage", "loginPage.jsp");			
 		} else {
@@ -70,6 +62,15 @@ public class HomeController {
 		aDAO.logout(req);
 		aDAO.logincheck(req);
 			req.setAttribute("contentPage", "index.jsp");
+		
+		return "home";
+	}
+	
+	@RequestMapping(value = "regAccount.go", method = RequestMethod.GET)
+	public String regaccountgo(HttpServletRequest req, AccountDTO aDTO) {
+		
+		aDAO.logincheck(req);
+		req.setAttribute("contentPage", "regaccount.jsp");
 		
 		return "home";
 	}
