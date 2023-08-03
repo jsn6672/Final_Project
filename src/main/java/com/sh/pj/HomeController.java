@@ -8,15 +8,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.sh.pj.account.AccountDAO;
-import com.sh.pj.account.AccountDTO;
+import com.sh.pj.account.MembertDAO;
+import com.sh.pj.account.MemberDTO;
 
 
 @Controller
 public class HomeController {
 	
 	@Autowired
-	private AccountDAO aDAO;
+	private MembertDAO aDAO;
 	
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -43,7 +43,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
-	public String logindo(HttpServletRequest req, AccountDTO aDTO) {
+	public String logindo(HttpServletRequest req, MemberDTO aDTO) {
 		
 		aDAO.login(req, aDTO);
 		aDAO.logincheck(req);
@@ -57,7 +57,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
-	public String logout(HttpServletRequest req, AccountDTO aDTO) {
+	public String logout(HttpServletRequest req, MemberDTO aDTO) {
 		
 		aDAO.logout(req);
 		aDAO.logincheck(req);
@@ -67,7 +67,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "regAccount.go", method = RequestMethod.GET)
-	public String regaccountgo(HttpServletRequest req, AccountDTO aDTO) {
+	public String regaccountgo(HttpServletRequest req, MemberDTO aDTO) {
 		
 		aDAO.logincheck(req);
 		req.setAttribute("contentPage", "regaccount.jsp");

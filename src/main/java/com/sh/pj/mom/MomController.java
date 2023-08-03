@@ -8,19 +8,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.sh.pj.account.AccountDAO;
+import com.sh.pj.account.MembertDAO;
 
 @Controller
 public class MomController {
 
 	@Autowired
-	private AccountDAO aDAO;
+	private MembertDAO mDAO;
 	
 	
 	@RequestMapping(value = "/momsitter.go", method = RequestMethod.GET)
 	public String momsitter(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mom/momsitter.jsp");
-		aDAO.logincheck(req);	
+		mDAO.logincheck(req);	
 
 		req.setAttribute("background_color", "#FCE4EC");
 		return "home";
@@ -29,7 +29,7 @@ public class MomController {
 	@RequestMapping(value = "/momtaker.go", method = RequestMethod.GET)
 	public String momtaker(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mom/momtaker.jsp");
-		aDAO.logincheck(req);	
+		mDAO.logincheck(req);	
 
 		req.setAttribute("background_color", "#FCE4EC");
 		return "home";

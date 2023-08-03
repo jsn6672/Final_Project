@@ -2,7 +2,7 @@ package com.sh.pj.account;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class AccountDTO {
+public class MemberDTO {
 	private String user_id;
 	private String user_pw;
 	private String user_name;
