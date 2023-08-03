@@ -7,15 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AccountDAO {
+public class MembertDAO {
 	
 	@Autowired
 	private SqlSession ss;
 	
 	
-	public void login(HttpServletRequest req, AccountDTO aDTO) {
+	public void login(HttpServletRequest req, MemberDTO aDTO) {
 		
-		AccountDTO dbAccount = ss.getMapper(AccountMapper.class).getUserID(aDTO);
+		MemberDTO dbAccount = ss.getMapper(MemberMapper.class).getUserID(aDTO);
 		
 		System.out.println(dbAccount);
 		
@@ -33,7 +33,7 @@ public class AccountDAO {
 
 	public void logincheck(HttpServletRequest req) {
 		
-		AccountDTO a = (AccountDTO) req.getSession().getAttribute("userInfo");
+		MemberDTO a = (MemberDTO) req.getSession().getAttribute("userInfo");
 		
 		System.out.println(a);
 		
