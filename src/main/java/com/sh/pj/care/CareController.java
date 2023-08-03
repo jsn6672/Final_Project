@@ -21,6 +21,7 @@ public class CareController {
 		req.setAttribute("contentPage", "care/caresitter.jsp");
 		aDAO.logincheck(req);	
 
+		req.setAttribute("background_color", "#FBE9E7");
 		return "home";
 	}
 	
@@ -29,6 +30,7 @@ public class CareController {
 		req.setAttribute("contentPage", "care/caretaker.jsp");
 		aDAO.logincheck(req);	
 
+		req.setAttribute("background_color", "#FBE9E7");
 		return "home";
 	}
 }

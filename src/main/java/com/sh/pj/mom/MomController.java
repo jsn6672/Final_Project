@@ -22,6 +22,7 @@ public class MomController {
 		req.setAttribute("contentPage", "mom/momsitter.jsp");
 		aDAO.logincheck(req);	
 
+		req.setAttribute("background_color", "#FCE4EC");
 		return "home";
 	}
 	
@@ -30,6 +31,7 @@ public class MomController {
 		req.setAttribute("contentPage", "mom/momtaker.jsp");
 		aDAO.logincheck(req);	
 
+		req.setAttribute("background_color", "#FCE4EC");
 		return "home";
 	}
 }

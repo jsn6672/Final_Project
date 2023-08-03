@@ -35,6 +35,7 @@
 <link href="resources/lib/owlcarousel/assets/owl.carousel.min.css"
 	rel="stylesheet">
 
+
 <!-- Customized Bootstrap Stylesheet -->
 <link href="resources/css/bootstrap.min.css" rel="stylesheet">
 
@@ -44,7 +45,9 @@
 <link href="resources/css/point.css" rel="stylesheet">
 <!-- zenblog에서 퍼온 css -->
 <link href="resources/css/index_index.css" rel="stylesheet">
+<link href="resources/css/ask.css" rel="stylesheet">
 <link href="resources/css/index_index_variables.css" rel="stylesheet">
+<link href="resources/css/mypage/mypage.css" rel="stylesheet">
 </head>
 
 <body>
@@ -59,18 +62,18 @@
 
 
 	<!-- Navbar Start -->
-	<div class="container-fluid bg-white sticky-top">
-		<div class="container">
+	<div class="container-fluid bg-white sticky-top" style="background-color:${background_color}">
+		<div class="container" style="background-color:${background_color}">
 			<nav
-				class="navbar navbar-expand-lg bg-white navbar-light py-2 py-lg-0" style="background-color: black">
-				<a href="go.home" class="navbar-brand"> <img class="img-fluid"
-					src="resources/img/logo2.png" alt="Logo">
+				class="navbar navbar-expand-lg bg-white navbar-light py-2 py-lg-0" style="background-color:${background_color}">
+				<a href="go.home" class="navbar-brand"> <img
+					class="img-fluid" src="resources/img/logo2.png" alt="Logo">
 				</a>
 				<button type="button" class="navbar-toggler ms-auto me-0"
 					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse" id="navbarCollapse">
+				<div class="collapse navbar-collapse" id="navbarCollapse" style="background-color:${background_color}">
 					<div class="navbar-nav ms-auto">
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle"
@@ -114,11 +117,9 @@
 					<div>
 						<jsp:include page="${loginPage }"></jsp:include>
 					</div>
-					<%-- --%>
-					<%-- 	<div>
-						<a href="contact" class="nav-item nav-link">로그인</a>
+					<div>
+						<a href="mypage.go" class="nav-item nav-link">마이페이지</a>
 					</div>
-					--%>
 				</div>
 			</nav>
 		</div>
@@ -226,5 +227,6 @@
 	<script src="resources/js/point.js"></script>
 	<!-- Template Javascript -->
 	<script src="resources/js/main.js"></script>
+	<script src="resources/js/ask.js"></script>
 </body>
 </html>

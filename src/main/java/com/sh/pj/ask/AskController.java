@@ -16,6 +16,9 @@ public class AskController {
 	@Autowired
 	private AccountDAO aDAO;
 
+	@Autowired
+	private AskDAO aDAO;
+	
 	@RequestMapping(value = "/manyask.go", method = RequestMethod.GET)
 	public String manyask(HttpServletRequest req) {
 		req.setAttribute("contentPage", "ask/manyask.jsp");
@@ -38,5 +41,12 @@ public class AskController {
 		aDAO.logincheck(req);	
 
 		return "home";	
+	}
+	
+	@RequestMapping(value = "/manyask.do", method = RequestMethod.GET)
+	public String manyaskdo(Model model) {
+		System.out.println();
+		aDAO.getAllAsk(model);
+		return "home";
 	}
 }
