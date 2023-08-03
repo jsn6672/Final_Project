@@ -45,6 +45,7 @@
 <!-- zenblog에서 퍼온 css -->
 <link href="resources/css/index_index.css" rel="stylesheet">
 <link href="resources/css/index_index_variables.css" rel="stylesheet">
+<link href="resources/css/mypage/mypage.css" rel="stylesheet">
 </head>
 
 <body>
@@ -113,6 +114,9 @@
 					</div>
 					<div>
 						<a href="contact.html" class="nav-item nav-link">로그인</a>
+					</div>
+					<div>
+						<a href="mypage.go" class="nav-item nav-link">마이페이지</a>
 					</div>
 				</div>
 			</nav>
