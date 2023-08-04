@@ -17,14 +17,16 @@ public class AskController {
 	private AskDAO aDAO;
 	
 	@RequestMapping(value = "/manyask.go", method = RequestMethod.GET)
-	public String manyask(HttpServletRequest req) {
+	public String manyask(AskDTO aDTO, HttpServletRequest req) {
 		req.setAttribute("contentPage", "ask/manyask.jsp");
 		return "home";
 	}
 	
 	@RequestMapping(value = "/mainask.go", method = RequestMethod.GET)
-	public String mainaks(HttpServletRequest req) {
+	public String mainaks(AskDTO aDTO, Model model, HttpServletRequest req) {
+		aDAO.getAllAsk(model);
 		req.setAttribute("contentPage", "ask/mainask.jsp");
+		System.out.println(aDTO);
 		return "home";
 		
 	}	

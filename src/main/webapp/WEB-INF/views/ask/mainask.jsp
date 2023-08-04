@@ -29,6 +29,7 @@
 </head>
 
 <body>
+	<form action="manyask.do" method="get">
 	<div class="QnA-container">
 		<div class="QnA-content">
 			<div class="QnA-title-left">
@@ -55,14 +56,12 @@
 							<div class="QnA-header">공지사항</div>
 						</c:otherwise>
 					</c:choose>
-					<form action="QnASearchC">
 						<div>
 							<input class="QnA-search" type="text" name="keyword"
 								value="${keyword }" placeholder="검색어를 입력해주세요."> <input
 								type="hidden" name="p" value="1">
 							<button class="QnA-searchbutton" type="submit">검색</button>
 						</div>
-					</form>
 					<div>
 						<button class="QnA-searchbutton" onclick="QnAloginCheck('${sessionScope.account.user_id}')">작성</button>
 					</div>
@@ -89,25 +88,25 @@
 				<c:if test="${param.category == 1 || param.category == 2}">
 					<c:forEach items="${s}" var="s">
 						<div class="QnA-lists">
-							<div class="QnA-list1">${s.inquiry_tbl_category }</div>
+							<div class="QnA-list1">${s.inquiry_category }</div>
 							<c:if test="${s.inquiry_title ne '' }">
 								<div class="QnA-list2"
-									onclick="QnADetail('${s.inquiry_tbl_encoding}', '${sessionScope.account.user_id }', '${s.inquiry_user_id }', '${s.inquiry_no }')">
-									<span class="leftToRight">${s.inquiry_tbl_title }</span>
+									onclick="QnADetail('${s.inquiry_encoding}', '${sessionScope.account.user_id }', '${s.inquiry_user_id }', '${s.inquiry_no }')">
+									<span class="leftToRight">${s.inquiry_title }</span>
 								</div>
 							</c:if>
 							<c:if test="${s.inquiry_tbl_title eq '' }">
 								<div class="QnA-list2"></div>
 							</c:if>
-							<div class="QnA-list3">${s.inquiry_tbl_user_name }</div>
-							<div class="QnA-list4">${s.inquiry_tbl_question_day }</div>
-							<c:if test="${s.inquiry_tbl_category eq '문의하기' }">
-								<c:if test="${s.inquiry_tbl_answer eq '.' }">
-									<div class="QnA-list3">${s.inquiry_tbl_encoding }</div>
+							<div class="QnA-list3">${s.inquiry_user_name }</div>
+							<div class="QnA-list4">${s.inquiry_question_day }</div>
+							<c:if test="${s.inquiry_category eq '문의하기' }">
+								<c:if test="${s.inquiry_answer eq '.' }">
+									<div class="QnA-list3">${s.inquiry_encoding }</div>
 									<div class="QnA-list5">미답변</div>
 								</c:if>
 								<c:if test="${s.inquiry_tbl_answer ne '.' }">
-									<div class="QnA-list3">${s.inquiry_tbl_encoding }</div>
+									<div class="QnA-list3">${s.inquiry_encoding }</div>
 									<div class="QnA-list5">답변완료</div>
 								</c:if>
 							</c:if>
@@ -118,7 +117,7 @@
 				<div id="Accordion_wrap">
 				<c:forEach items="${s }" var="s">
 					<div class="que">
-						<span>${s.inquiry_tbl_title }</span>
+						<span>${s.inquiry_title }</span>
 						<!--
 						 <div class="arrow-wrap">
 							<span class="arrow-top">↑</span> <span class="arrow-bottom">↓</span>
@@ -126,7 +125,7 @@
 						-->
 					</div>
 					<div class="anw">
-						<span>${s.inquiry_tbl_answer }</span>
+						<span>${s.inquiry_answer }</span>
 					</div>
 				</c:forEach>
 				</div>
@@ -155,6 +154,7 @@
 			</div>
 		</div>
 	</div>
+	</form>
 </body>
 
 </html>
