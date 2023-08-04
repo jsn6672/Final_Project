@@ -2293,7 +2293,7 @@ textarea.form-control-lg {
 }
 
 .form-check-input:disabled ~.form-check-label, .form-check-input[disabled]
-	 ~.form-check-label {
+	~.form-check-label {
 	cursor: default;
 	opacity: .5
 }
@@ -2541,7 +2541,7 @@ textarea.form-control-lg {
 }
 
 .form-floating>.form-control-plaintext ~label, .form-floating>.form-control:focus
-	 ~label, .form-floating>.form-control:not(:placeholder-shown) ~label,
+	~label, .form-floating>.form-control:not(:placeholder-shown) ~label,
 	.form-floating>.form-select ~label {
 	opacity: .65;
 	transform: scale(.85) translateY(-.5rem) translateX(.15rem)
@@ -2669,7 +2669,7 @@ textarea.form-control-lg {
 }
 
 .is-valid ~.valid-feedback, .is-valid ~.valid-tooltip, .was-validated :valid
-	 ~.valid-feedback, .was-validated :valid ~.valid-tooltip {
+	~.valid-feedback, .was-validated :valid ~.valid-tooltip {
 	display: block
 }
 
@@ -2734,7 +2734,7 @@ textarea.form-control-lg {
 }
 
 .form-check-input.is-valid ~.form-check-label, .was-validated .form-check-input:valid
-	 ~.form-check-label {
+	~.form-check-label {
 	color: #198754
 }
 
@@ -2846,7 +2846,7 @@ textarea.form-control-lg {
 }
 
 .form-check-input.is-invalid ~.form-check-label, .was-validated .form-check-input:invalid
-	 ~.form-check-label {
+	~.form-check-label {
 	color: #dc3545
 }
 
@@ -4123,7 +4123,6 @@ textarea.form-control-lg {
 		display: flex !important;
 		flex-basis: auto
 	}
-
 	.navbar-expand-lg .navbar-toggler {
 		display: none
 	}
@@ -6417,29 +6416,14 @@ keyframes spinner-border {
 }
 
 50
-
-
 %
 {
 opacity
-
-
 :
-
-
-1
-;
-
-
+1;
 transform
-
-
 :
-
-
 none
-
-
 }
 }
 @
@@ -6448,29 +6432,14 @@ keyframes spinner-grow { 0%{
 }
 
 50
-
-
 %
 {
 opacity
-
-
 :
-
-
-1
-;
-
-
+1;
 transform
-
-
 :
-
-
 none
-
-
 }
 }
 .spinner-grow { -

@@ -55,6 +55,7 @@
 				<beans:value>classpath:momMapper.xml</beans:value>				
 				<beans:value>classpath:petMapper.xml</beans:value>
 				<beans:value>classpath:askMapper.xml</beans:value>			
+				<beans:value>classpath:memberMapper.xml</beans:value>			
 			</beans:list>
 		</beans:property>
 	</beans:bean>
@@ -64,5 +65,11 @@
 		<beans:constructor-arg name="sqlSessionFactory"
 			ref="sqlSessionFactory" />
 	</beans:bean>
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+      
+      <beans:property name="maxUploadSize" value="10485760" />
+      <beans:property name="defaultEncoding" value="utf-8" />
+   
+   </beans:bean>
 
 </beans:beans>

@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+/* 마이페이지 네비게이터 */
+.mpMainContainer {
+	display: flex;
+	
+}
+
+.mpContainer {
+	width: 20vw;
+	height: 100vh;
+	text-align: center;
+	
+	border: 1px solid black;
+}
+
+.mpSubContainer {
+	width: 20vw;
+	height: 30vh; 
+	border: 1px solid blue;
+}
+
+#mpName {
+	width: 20vw;
+	height: 10vh;
+	font-size: 30pt;
+
+	
+	border: 1px solid red;
+}
+
+.mpMenu {
+	height: 40vh;
+
+	
+	border: 1px solid orange;
+}
+
+#mpProfile {
+	
+	
+	border: 1px solid green;
+}
+
+#mpSitterReg {
+	
+	
+	border: 1px solid green;
+}
+
+#mpTicket {
+
+	border: 1px solid green;
+}
+
+#mpUsage {
+	
+	border: 1px solid green;
+}
+
+/* 마이페이지 프로필 수정 */
+.mpP {
+	width: 80vw;
+	height: 100vh;
+	background-color: orange;
+	background-color: orange;
+	background-color: orange;
+	background-color: orange;
+	background-color: orange;
+	background-color: orange;
+	background-color: orange;
+	background-color: orange;
+	background-color: orange;
+}
+
+

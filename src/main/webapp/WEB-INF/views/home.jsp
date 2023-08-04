@@ -47,7 +47,7 @@
 <link href="resources/css/index_index.css" rel="stylesheet">
 <link href="resources/css/ask.css" rel="stylesheet">
 <link href="resources/css/index_index_variables.css" rel="stylesheet">
-
+<link href="resources/css/mypage/mypage.css" rel="stylesheet">
 </head>
 
 <body>
@@ -87,8 +87,8 @@
 							<a href="#" class="nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">맘시터</a>
 							<div class="dropdown-menu bg-light rounded-0 m-0">
-								<a href="momsitter.go" class="dropdown-item">맘시터모집</a> 
-								<a href="momtaker.go" class="dropdown-item">일자리모집</a>
+								<a href="momsitter.go" class="dropdown-item">맘시터모집</a> <a
+									href="momtaker.go" class="dropdown-item">일자리모집</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
@@ -103,9 +103,9 @@
 							<a href="#" class="nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">Q&A</a>
 							<div class="dropdown-menu bg-light rounded-0 m-0">
-								<a href="mainask.go" class="dropdown-item">공지사항</a> 
-								<a href="manyask.go" class="dropdown-item">자주묻는질문</a>
-								<a href="qanda.go" class="dropdown-item">문의사항</a>
+								<a href="mainask.go" class="dropdown-item">공지사항</a> <a
+									href="manyask.go" class="dropdown-item">자주묻는질문</a> <a
+									href="qanda.go" class="dropdown-item">문의사항</a>
 							</div>
 						</div>
 					</div>
@@ -115,16 +115,19 @@
 						</button>
 					</div>
 					<div>
-						<a href="contact.html" class="nav-item nav-link">로그인</a>
+						<jsp:include page="${loginPage }"></jsp:include>
+					</div>
+					<div>
+						<a href="mypage.go" class="nav-item nav-link">마이페이지</a>
 					</div>
 				</div>
 			</nav>
 		</div>
 	</div>
 	<!-- Navbar End -->
-	
+
 	<jsp:include page="${contentPage }"></jsp:include>
-	
+
 	<!-- Footer Start -->
 	<div class="container-fluid bg-dark footer mt-5 py-5 wow fadeIn"
 		data-wow-delay="0.1s">
