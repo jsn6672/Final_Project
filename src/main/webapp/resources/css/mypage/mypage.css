@@ -138,6 +138,7 @@ mpPName {
 
 .mpPPWInput {
       width: 100%;
+      border: none;
     }
     
 .mpPPW {
@@ -151,10 +152,12 @@ mpPName {
 .mpPAddr {
 	width: 100%;
 	border: 1px solid black; 
+	border: none;
 }
 
 .mpPInput {
      width: 100%;
+     border: none;
     }
 
 #mpP-btn {
@@ -172,28 +175,74 @@ mpPName {
 	width: 80vw;
 	height: 100vh;
 	background-color: #FFEBE4;
-	margin: 0;
-    display: flex;
-    justify-content: center;
 }
 
 .mpS-sub {
 	display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 		
 }
 
-.mpS-icon {
+.mpS-part-need {
+	width: 50%;
+	height: 80%;
+	margin-top: 5%;
+	border-right: 0.5px solid black;
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+    justify-content: center; /* 가로 방향 가운데 정렬 */
+    align-items: center; /* 세로 방향 가운데 정렬 */
 }
 
-.mpSCenter-line {
-	width: 0.5px;
-    height: 80%;
-    background-color: #000;
-    margin: 0 auto;
-    margin-top: 5%;
-    position: absolute;
-        }
+.mpS-part-pic {
+	width: 100px;
+	height: 100px;
+}
+
+.mpS-part-inform {
+	margin-top: 5%;
+}
+
+.mpS-icon {
+	width: 100%;
+	border: 1px solid black;
+	margin-top: 5%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.mpS-icon-name{ 
+	display: flex;
+	flex-direction: column;
+}
+.mpS-icon-pic {
+	width: 100px;
+	height: 100px;
+}
+
+.mpS-icon-mom {
+	width: 30%;
+	border-right: 0.5px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.mpS-icon-pet {
+	width: 30%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.mpS-part-gonnabe {
+	width: 50%;
+	height: 80%;
+	margin-top: 5%;
+	display: flex;
+	flex-direction: column;
+    justify-content: center; /* 가로 방향 가운데 정렬 */
+    align-items: center; /* 세로 방향 가운데 정렬 */
+}
