@@ -35,6 +35,8 @@
 <link href="resources/lib/owlcarousel/assets/owl.carousel.min.css"
 	rel="stylesheet">
 
+<!-- js script -->
+<script type="text/javascript" src="resources/js/mypage/mypage.js"></script>
 
 <!-- Customized Bootstrap Stylesheet -->
 <link href="resources/css/bootstrap.min.css" rel="stylesheet">
@@ -48,6 +50,8 @@
 <link href="resources/css/ask.css" rel="stylesheet">
 <link href="resources/css/index_index_variables.css" rel="stylesheet">
 <link href="resources/css/mypage/mypage.css" rel="stylesheet">
+
+<link href="resources/css/detail/sitter.css" rel="stylesheet">
 </head>
 
 <body>
