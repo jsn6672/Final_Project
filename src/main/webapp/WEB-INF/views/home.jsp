@@ -35,6 +35,8 @@
 <link href="resources/lib/owlcarousel/assets/owl.carousel.min.css"
 	rel="stylesheet">
 
+<!-- js script -->
+<script type="text/javascript" src="resources/js/mypage/mypage.js"></script>
 
 <!-- Customized Bootstrap Stylesheet -->
 <link href="resources/css/bootstrap.min.css" rel="stylesheet">
