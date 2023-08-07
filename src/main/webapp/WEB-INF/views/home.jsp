@@ -50,6 +50,8 @@
 <link href="resources/css/ask.css" rel="stylesheet">
 <link href="resources/css/index_index_variables.css" rel="stylesheet">
 <link href="resources/css/mypage/mypage.css" rel="stylesheet">
+
+<link href="resources/css/detail/sitter.css" rel="stylesheet">
 </head>
 
 <body>

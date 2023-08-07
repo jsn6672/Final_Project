@@ -34,4 +34,14 @@ public class MomController {
 		req.setAttribute("background_color", "#FCE4EC");
 		return "home";
 	}
+	
+	@RequestMapping(value = "/momsitter.detail.go", method = RequestMethod.GET)
+	public String momsitterDetail(HttpServletRequest req) {
+		req.setAttribute("contentPage", "detail/sitter.jsp");
+		mDAO.logincheck(req);	
+	//	req.setAttribute("background_color", "#FCE4EC");
+		
+		
+		return "home";
+	}
 }
