@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+.containar-detail{
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+.content-detail{
+	width: 70%;
+}
+
+.container-side{
+	width: 30%;
+}
+
+.header-detail{
+	display: flex;
+}
+
+.header-img-detail{
+	width: 15%;
+	
+}
+
+.header-data-detail{
+	
+}
+
+.header-data1{
+	display: flex;
+}
+
+/* 활동 가능 시간 */
+.body-time{
+	
+}
+
+.body-time-title{
+	display: flex;
+}
+
+.body-time-body{
+	display: flex;
+}
+
+.body-time-day{
+	display: flex;
+}
+
+
