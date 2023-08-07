@@ -2,6 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sh.pj.ask.AskMapper">
 	<select id="getAllAsk" resultType="com.sh.pj.ask.AskDTO">
-		select*from inquiry_tbl
+		select * from inquiry_tbl
 	</select>
+
+	<insert id="insertask" parameterType="com.sh.pj.ask.AskDTO">
+		insert into inquiry_tbl
+		values (inquiry_tbl_no_seq.nextval, #{inquiry_id}, #{inquiry_title}, #{inquiry_body}, sysdate, #{inquiry_category},#{inquiry_encoding}, #{inquiry_type})
+	</insert>
+	
+	<select id="getaskno" resultType="com.sh.pj.ask.AskDTO">
+		SELECT * FROM inquiry_tbl WHERE inquiry_no = #{inquiry_no}
+	</select>
+	
+	<delete id="deleteask">
+	 DELETE FROM inquiry_tbl WHERE inquiry_no = #{inquiry_no}
+	</delete>
+	
 </mapper>
