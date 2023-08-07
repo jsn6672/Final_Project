@@ -11,8 +11,9 @@ public class AskDTO {
 	 private Date inquiry_question_day;
 	 private String inquiry_category;
 	 private String inquiry_encoding;
+	 private String inquiry_type;
 	 
-	 public AskDTO() {
+	public AskDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -72,8 +73,16 @@ public class AskDTO {
 		this.inquiry_encoding = inquiry_encoding;
 	}
 
+	public String getInquiry_type() {
+		return inquiry_type;
+	}
+
+	public void setInquiry_type(String inquiry_type) {
+		this.inquiry_type = inquiry_type;
+	}
+
 	public AskDTO(int inquiry_no, String inquiry_id, String inquiry_title, String inquiry_body,
-			Date inquiry_question_day, String inquiry_category, String inquiry_encoding) {
+			Date inquiry_question_day, String inquiry_category, String inquiry_encoding, String inquiry_type) {
 		super();
 		this.inquiry_no = inquiry_no;
 		this.inquiry_id = inquiry_id;
@@ -82,14 +91,17 @@ public class AskDTO {
 		this.inquiry_question_day = inquiry_question_day;
 		this.inquiry_category = inquiry_category;
 		this.inquiry_encoding = inquiry_encoding;
+		this.inquiry_type = inquiry_type;
 	}
 
 	@Override
 	public String toString() {
 		return "AskDTO [inquiry_no=" + inquiry_no + ", inquiry_id=" + inquiry_id + ", inquiry_title=" + inquiry_title
 				+ ", inquiry_body=" + inquiry_body + ", inquiry_question_day=" + inquiry_question_day
-				+ ", inquiry_category=" + inquiry_category + ", inquiry_encoding=" + inquiry_encoding + "]";
+				+ ", inquiry_category=" + inquiry_category + ", inquiry_encoding=" + inquiry_encoding
+				+ ", inquiry_type=" + inquiry_type + "]";
 	}
+	
 	 
 }
 
