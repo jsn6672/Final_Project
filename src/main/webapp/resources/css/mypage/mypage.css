@@ -2,6 +2,8 @@
 
 /* 마이페이지 네비게이터 */
 .mpMainContainer {
+	width: 100vw;
+	height: 100vh;
 	display: flex;
 	
 }
@@ -15,18 +17,17 @@
 }
 
 .mpSubContainer {
-	width: 20vw;
-	height: 30vh; 
+	width: 20vw; 
 	border: 1px solid blue;
 }
 
 #mpName {
 	width: 20vw;
-	height: 10vh;
-	font-size: 30pt;
-
-	
-	border: 1px solid red;
+	height: 15vh;
+	font-size: 20pt;
+	display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .mpMenu {
@@ -36,7 +37,15 @@
 	border: 1px solid orange;
 }
 
-#mpProfile {
+.mpMenu-part {
+	height: 10vh;
+	border: 1px solid purple;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+}
+
+/* #mpProfile {
 	
 	
 	border: 1px solid green;
@@ -56,21 +65,184 @@
 #mpUsage {
 	
 	border: 1px solid green;
-}
+} */
 
 /* 마이페이지 프로필 수정 */
 .mpP {
 	width: 80vw;
 	height: 100vh;
-	background-color: orange;
-	background-color: orange;
-	background-color: orange;
-	background-color: orange;
-	background-color: orange;
-	background-color: orange;
-	background-color: orange;
-	background-color: orange;
-	background-color: orange;
+	background-color: #FFEBE4;
+}
+
+mpPName {
+	margin-left: 5%;
+}
+
+.mpPProfile {
+	width: 80%;
+	height: 100%;
+	margin-top: 5%;
+	margin-left: 5%;
+	margin-right: 5%;	
+	border: 1px solid black; 
+}
+
+.mpPPicAndServ {
+	display: flex;
+}
+
+#mpPPicture {
+ width: 150px;
+ height: 200px;
+ background-color: white;	
+ border: 10px solid #D9D9D9;
+ border-radius: 15px;
+}
+
+.mpPService {
+	width: 500px;
+	margin: auto;
+	margin-left: 30px;
+	justify-content: space-between;
+	border: 1px solid red;
+}
+
+.mpPService-state {
+	display: flex;
+	justify-content: space-between;
+	
+	border: 1px solid black;
+}
+
+.mpPSitter {
+	width: 45%
+}
+
+.mpPSitter-part {
+	display: flex;	
+	background-color: white; 
+	border-radius: 5px;	
+}
+
+.mpPSitter-part-state {
+	width: 100px;
+	background-color: #E7B5AC;
+	border: none;
+	border-radius: 10%
+}
+
+.mpPPWUpdate {
+	display: flex;
+	border: 1px solid black;
+}
+
+.mpPPWInput {
+      width: 100%;
+      border: none;
+    }
+    
+.mpPPW {
+	width: 47%;
+}
+
+#mpPPWSpace {
+	width: 6%;
+}
+    
+.mpPAddr {
+	width: 100%;
+	border: 1px solid black; 
+	border: none;
+}
+
+.mpPInput {
+     width: 100%;
+     border: none;
+    }
+
+#mpP-btn {
+	background-color: #E7B5AC;
+	border: none;
+	border-radius: 10%;
 }
 
 
+
+
+/* 마이페이지 시터 등록 및 수정 페이지 */
+
+.mpS {
+	width: 80vw;
+	height: 100vh;
+	background-color: #FFEBE4;
+}
+
+.mpS-sub {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+		
+}
+
+.mpS-part-need {
+	width: 50%;
+	height: 80%;
+	margin-top: 5%;
+	border-right: 0.5px solid black;
+	display: flex;
+	flex-direction: column;
+    justify-content: center; /* 가로 방향 가운데 정렬 */
+    align-items: center; /* 세로 방향 가운데 정렬 */
+}
+
+.mpS-part-pic {
+	width: 100px;
+	height: 100px;
+}
+
+.mpS-part-inform {
+	margin-top: 5%;
+}
+
+.mpS-icon {
+	width: 100%;
+	border: 1px solid black;
+	margin-top: 5%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.mpS-icon-name{ 
+	display: flex;
+	flex-direction: column;
+}
+.mpS-icon-pic {
+	width: 100px;
+	height: 100px;
+}
+
+.mpS-icon-mom {
+	width: 30%;
+	border-right: 0.5px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.mpS-icon-pet {
+	width: 30%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.mpS-part-gonnabe {
+	width: 50%;
+	height: 80%;
+	margin-top: 5%;
+	display: flex;
+	flex-direction: column;
+    justify-content: center; /* 가로 방향 가운데 정렬 */
+    align-items: center; /* 세로 방향 가운데 정렬 */
+}
