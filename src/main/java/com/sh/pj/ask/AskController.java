@@ -1,6 +1,5 @@
 package com.sh.pj.ask;
 
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ import com.sh.pj.account.MembertDAO;
 
 @Controller
 public class AskController {
-	
+
 	@Autowired
 	private MembertDAO mDAO;
 
@@ -41,7 +40,7 @@ public class AskController {
 	@RequestMapping(value = "/manyask.go", method = RequestMethod.GET)
 	public String manyask(AskDTO aDTO, HttpServletRequest req) {
 		req.setAttribute("contentPage", "ask/manyask.jsp");
-		mDAO.logincheck(req);	
+		mDAO.logincheck(req);
 
 		return "home";
 	}
@@ -50,7 +49,6 @@ public class AskController {
 	public String detailgo(AskDTO aDTO, HttpServletRequest req,Model model) {
 		req.setAttribute("contentPage", "ask/detailpage.jsp");
 		mDAO.logincheck(req);
-		aDAO.getAskNo(model,aDTO);
 
 		return "home";
 	}
@@ -58,14 +56,15 @@ public class AskController {
 	@RequestMapping(value = "/qanda.go", method = RequestMethod.GET)
 	public String qanda(HttpServletRequest req) {
 		req.setAttribute("contentPage", "ask/qanda.jsp");
-		mDAO.logincheck(req);	
+		mDAO.logincheck(req);
 
-		return "home";	
+		return "home";
 	}
-	
+
 	@RequestMapping(value = "/manyask.do", method = RequestMethod.GET)
-	public String manyaskdo(Model model) {
+	public String manyaskdo(HttpServletRequest req, Model model) {
 		System.out.println();
+		mDAO.logincheck(req);
 		aDAO.getAllAsk(model);
 		return "home";
 	}
