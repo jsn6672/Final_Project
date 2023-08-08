@@ -9,13 +9,11 @@
 </head>
 <body>
 	<div class="containar-detail">
-		<div class="container-side"></div>
-		<div class="content-detail">
-			<div class="header-detail">
+		<div class="container-side"></div> 
 				<div class="header-img-detail">사진</div>
 				<div class="header-data-detail">
 					<div class="header-data1">
-						<div> <span style="font-size: 14pt;">대전공주님</span> </div>
+						<div> <span style="font-size: 14pt;">맘시터 대전공주님</span> </div>
 						<div> <span style="font-size: 10pt;">31살,여</span> </div>
 						<div> <span style="font-size: 10pt;">cctv촬영 동의함</span> </div>
 					</div>
