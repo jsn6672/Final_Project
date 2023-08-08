@@ -7,11 +7,10 @@
 }
 
 .content-detail{
-	width: 70%;
 }
 
 .container-side{
-	width: 30%;
+	width: 40%;
 }
 
 .header-detail{
@@ -19,33 +18,47 @@
 }
 
 .header-img-detail{
-	width: 15%;
+	width: 40%;
 	
 }
 
 .header-data-detail{
-	
+	width: 50%;
 }
 
 .header-data1{
 	display: flex;
 }
 
+.body-title-detail{
+	padding-top: 10px;
+	font-weight: 600;
+	font-size: 16pt;
+}
+
 /* 활동 가능 시간 */
 .body-time{
-	
 }
 
 .body-time-title{
 	display: flex;
+	justify-content: space-around;
 }
 
 .body-time-body{
 	display: flex;
+    justify-content: space-evenly;
 }
 
 .body-time-day{
 	display: flex;
+    justify-content: space-evenly;
+    padding-top: 10px;
 }
+
+.body-times{
+    width: -webkit-fill-available;
+}
+
 
 

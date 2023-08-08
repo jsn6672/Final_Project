@@ -66,10 +66,10 @@
 
 
 	<!-- Navbar Start -->
-	<div class="container-fluid bg-white sticky-top" style="background-color:${background_color}">
-		<div class="container" style="background-color:${background_color}">
+	<div class="container-fluid bg-white sticky-top">
+		<div class="container">
 			<nav
-				class="navbar navbar-expand-lg bg-white navbar-light py-2 py-lg-0" style="background-color:${background_color}">
+				class="navbar navbar-expand-lg bg-white navbar-light py-2 py-lg-0">
 				<a href="go.home" class="navbar-brand"> <img
 					class="img-fluid" src="resources/img/logo2.png" alt="Logo">
 				</a>
@@ -77,7 +77,7 @@
 					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse" id="navbarCollapse" style="background-color:${background_color}">
+				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<div class="navbar-nav ms-auto">
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle"
