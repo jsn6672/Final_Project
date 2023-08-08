@@ -16,6 +16,11 @@ public interface AskMapper {
 
 	public int deleteask(AskDTO aDTO);
 
+	public int upadteask(AskDTO aDTO);
+
+	public List<AskDTO> searchask(AskDTO aDTO);
+
+	public int getMsgCount(AskSelector search);
 
 
 }
