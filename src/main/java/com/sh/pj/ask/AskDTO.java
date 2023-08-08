@@ -13,6 +13,7 @@ public class AskDTO {
 	 private String inquiry_encoding;
 	 private String inquiry_type;
 	 
+	 
 	public AskDTO() {
 		// TODO Auto-generated constructor stub
 	}
