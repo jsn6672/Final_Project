@@ -16,28 +16,52 @@
 			<!-- 페이지 본문 컨테이너 -->
 			<div class="mpS-sub">
 				<div class="mpS-part-need">
-					<div><img class="mpS-part-pic" alt="" src="resources/img/mypage/mpHeart1.png"></div>
-					<div class="mpS-part-inform"><h5>"돌보미가 필요해요"</h5></div>
-					<div class="mpS-part-inform"><h6>필요한 시터를 선택해 주세요</h6></div>
+					<div class="mpS-part-pic"><img class="mpS-part-picture1" alt="" src="resources/img/mypage/mpHeart12.png"></div>
+					<div class="mpS-part-inform">"돌보미가 필요해요!"</div>
+					<div class="mpS-part-inform2">필요한 시터를 선택해 주세요!</div>
 					<div class="mpS-icon">
 						<div class="mpS-icon-name">
-							<div class="mpS-icon-mom"><img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpBaby.png">
+							<div class="mpS-icon-mom">
+								<img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpBaby.png">
+							</div>
 								<div>맘시터</div>
-							</div>
 						</div>
 						<div class="mpS-icon-name">
-							<div class="mpS-icon-mom"><img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpHospital.png">
+							<div class="mpS-icon-care">
+								<img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpHospital.png">
+							</div>
 								<div>케어시터</div>
-							</div>
 						</div>
-						<div class="mpS-icon-name">
-							<div class="mpS-icon-pet"><img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpPet.png">
+						<div class="mpS-icon-name2">
+							<div class="mpS-icon-pet"><a href="mypage.sitterRegPet.go"><img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpPet.png"></a></div>
 								<div>펫시터</div>
-							</div>
 						</div>
 					</div>
 				</div>
 				<div class="mpS-part-gonnabe">
+					<div class="mpS-part-pic"><img class="mpS-part-picture2" alt="" src="resources/img/mypage/mpHeart2.png"></div>
+					<div class="mpS-part-inform">"돌보미가 되고싶어요!"</div>
+					<div class="mpS-part-inform2">되고싶은 시터를 선택해 주세요!</div>
+					<div class="mpS-icon">
+						<div class="mpS-icon-name">
+							<div class="mpS-icon-mom">
+								<img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpBaby.png">
+							</div>
+								<div>맘시터</div>
+						</div>
+						<div class="mpS-icon-name">
+							<div class="mpS-icon-care">
+								<img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpHospital.png">
+							</div>
+								<div>케어시터</div>
+						</div>
+						<div class="mpS-icon-name2">
+							<div class="mpS-icon-pet"><img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpPet.png"></div>
+								<div>펫시터</div>
+						</div>
+					</div>
+				</div>
+<!-- 				<div class="mpS-part-gonnabe">
 					<div><img class="mpS-part-pic" alt="" src="resources/img/mypage/mpHeart2.png"></div>
 					<div class="mpS-part-inform"><h5>"돌보미가 필요해요"</h5></div>
 					<div class="mpS-part-inform"><h6>되고싶은 시터를 선택해 주세요</h6></div>
@@ -46,7 +70,7 @@
 						<div class="mpS-icon-mom"><img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpHospital.png">케어시터</div>
 						<div class="mpS-icon-pet"><img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpPet.png">펫시터</div>
 					</div>
-				</div>
+				</div> -->
 			</div>	
 		
 		</div>

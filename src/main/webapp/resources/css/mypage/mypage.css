@@ -5,20 +5,17 @@
 	width: 100vw;
 	height: 100vh;
 	display: flex;
-	
 }
 
 .mpContainer {
 	width: 20vw;
-	height: 100vh;
-	text-align: center;
-	
-	border: 1px solid black;
 }
 
 .mpSubContainer {
-	width: 20vw; 
-	border: 1px solid blue;
+	width: 20vw;
+	height: 100vh;
+	text-align: center;
+	background-color: white;
 }
 
 #mpName {
@@ -32,17 +29,17 @@
 
 .mpMenu {
 	height: 40vh;
-
-	
-	border: 1px solid orange;
 }
 
 .mpMenu-part {
 	height: 10vh;
-	border: 1px solid purple;
 	display: flex;
 	justify-content: center;
     align-items: center;
+}
+
+.clicked {
+	background-color: black;
 }
 
 /* #mpProfile {
@@ -67,6 +64,8 @@
 	border: 1px solid green;
 } */
 
+
+
 /* 마이페이지 프로필 수정 */
 .mpP {
 	width: 80vw;
@@ -74,7 +73,7 @@
 	background-color: #FFEBE4;
 }
 
-mpPName {
+.mpPName {
 	margin-left: 5%;
 }
 
@@ -168,7 +167,6 @@ mpPName {
 
 
 
-
 /* 마이페이지 시터 등록 및 수정 페이지 */
 
 .mpS {
@@ -187,8 +185,18 @@ mpPName {
 .mpS-part-need {
 	width: 50%;
 	height: 80%;
-	margin-top: 5%;
+	margin-top: 10%;
 	border-right: 0.5px solid black;
+	display: flex;
+	flex-direction: column;
+    justify-content: center; /* 가로 방향 가운데 정렬 */
+    align-items: center; /* 세로 방향 가운데 정렬 */
+}
+
+.mpS-part-gonnabe {
+	width: 50%;
+	height: 80%;
+	margin-top: 10%;
 	display: flex;
 	flex-direction: column;
     justify-content: center; /* 가로 방향 가운데 정렬 */
@@ -196,53 +204,131 @@ mpPName {
 }
 
 .mpS-part-pic {
+	width: 150px;
+	height: 150px;
+}
+
+.mpS-part-picture1 {
+	width: 135px;
+	height: 135px;
+}
+
+.mpS-part-picture2 {
+	width: 100px;
+	height: 100px;
+	margin-top: 15px;
+}
+
+.mpS-part-pic2 {
 	width: 100px;
 	height: 100px;
 }
 
 .mpS-part-inform {
+	font-size: 20px;
 	margin-top: 5%;
 }
 
+.mpS-part-inform2 {
+	font-size: 13px;
+	margin-top: 5%;	
+}
+
 .mpS-icon {
-	width: 100%;
-	border: 1px solid black;
-	margin-top: 5%;
+	width: 90%;
+	margin-top: 10%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.mpS-icon-name { 
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	border-right: 0.5px solid black;
+	justify-content: center;
+	align-items: center;
+}
+
+.mpS-icon-name2 { 
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* border-right: 0.5px solid black; */
+}
+.mpS-icon-pic {
+	width: 80px;
+	height: 80px;
+}
+
+.mpS-icon-mom {
+ /* border-right: 0.5px solid black; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.mpS-icon-name{ 
-	display: flex;
-	flex-direction: column;
-}
-.mpS-icon-pic {
-	width: 100px;
-	height: 100px;
-}
-
-.mpS-icon-mom {
-	width: 30%;
-	border-right: 0.5px solid black;
+.mpS-icon-care {
+ /* border-right: 0.5px solid black; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
 .mpS-icon-pet {
-	width: 30%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.mpS-part-gonnabe {
+/* .mpS-part-gonnabe {
 	width: 50%;
 	height: 80%;
 	margin-top: 5%;
 	display: flex;
 	flex-direction: column;
-    justify-content: center; /* 가로 방향 가운데 정렬 */
-    align-items: center; /* 세로 방향 가운데 정렬 */
+    justify-content: center; 가로 방향 가운데 정렬
+    align-items: center; 세로 방향 가운데 정렬
+} */
+
+
+/* 시터 등록 및 수정 페이지 - Pet */
+
+.mpS-pet {
+	width: 80vw;
+	height: 100vh;
+	background-color: #FFEBE4;
+}
+.mpS-pet-sub {
+	width: 80%;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+    justify-content: center; /* 가로 가운데 정렬 */
+    align-items: center; /* 세로 가운데 정렬 */
+	border: 1px solid red;
+}
+
+#mpS-logo {
+	width: 10vw;
+}
+
+.mpS-pet-inform {
+	margin-top: 5%;
+	margin-bottom: 3%;
+}
+
+.mpS-pet-act-bottom {
+	width: 100%;
+	display: flex;
+	justify-content:space-between;
+	
+	border: 1px solid black;
+}
+
+.mpS-pet-ac-detail {
+	width: 25%;
 }

@@ -49,6 +49,14 @@ public class MypageController {
 		req.setAttribute("mypageContentPage", "mypageSitterReg.jsp");
 		return "home";
 	}
+
+	@RequestMapping(value = "/mypage.sitterRegPet.go", method = RequestMethod.GET)
+	public String mypageSitterRegPet(HttpServletRequest req) {
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		mDAO.logincheck(req);
+		req.setAttribute("mypageContentPage", "mypageSitterRegPet.jsp");
+		return "home";
+	}
 	
 	@RequestMapping(value = "/mypage.ticket.go", method = RequestMethod.GET)
 	public String mypageTicket(HttpServletRequest req) {
