@@ -7,6 +7,7 @@ public class MemberDTO {
 	private String user_pw;
 	private String user_name;
 	private String user_gender;
+	private String user_phone;
 	private String user_email_authkey;
 	private String user_email_auth;
 	private String user_email;
@@ -23,10 +24,18 @@ public class MemberDTO {
 	@Override
 	public String toString() {
 		return "MemberDTO [user_id=" + user_id + ", user_pw=" + user_pw + ", user_name=" + user_name + ", user_gender="
-				+ user_gender + ", user_email_authkey=" + user_email_authkey + ", user_email_auth=" + user_email_auth
-				+ ", user_email=" + user_email + ", user_location=" + user_location + ", user_pic=" + user_pic
-				+ ", pic=" + pic + ", ms_id=" + ms_id + ", mt_id=" + mt_id + ", ps_id=" + ps_id + ", pt_id=" + pt_id
-				+ ", cs_id=" + cs_id + ", ct_id=" + ct_id + "]";
+				+ user_gender + ", user_phone=" + user_phone + ", user_email_authkey=" + user_email_authkey
+				+ ", user_email_auth=" + user_email_auth + ", user_email=" + user_email + ", user_location="
+				+ user_location + ", user_pic=" + user_pic + ", pic=" + pic + ", ms_id=" + ms_id + ", mt_id=" + mt_id
+				+ ", ps_id=" + ps_id + ", pt_id=" + pt_id + ", cs_id=" + cs_id + ", ct_id=" + ct_id + "]";
+	}
+
+	public String getUser_phone() {
+		return user_phone;
+	}
+
+	public void setUser_phone(String user_phone) {
+		this.user_phone = user_phone;
 	}
 
 	public String getUser_email_authkey() {

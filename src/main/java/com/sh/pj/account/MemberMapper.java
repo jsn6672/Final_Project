@@ -8,4 +8,8 @@ public interface MemberMapper {
 
 	int checkEmail(MemberDTO mDTO);
 
+	MemberDTO getUserEMail(MemberDTO mDTO);
+
+	int updateUserPW(MemberDTO mDTO);
+
 }

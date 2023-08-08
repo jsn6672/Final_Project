@@ -139,14 +139,32 @@ public class HomeController {
 		req.setAttribute("contentPage", "emailcheck.jsp");
 		return "home";
 	}
+	
 	@RequestMapping(value = "email_check", method = RequestMethod.GET)
 	public @ResponseBody int email_check(HttpServletRequest req, MemberDTO mDTO) {
-		
-		
-		
-		
+
 		return mDAO.emailcheck(req, mDTO);
 	}
+	
+	@RequestMapping(value = "pwchange.go", method = RequestMethod.GET)
+	public String pwchangego(HttpServletRequest req, MemberDTO mDTO) {
+		mDAO.logincheck(req);	
+		mDAO.pwchangego(req, mDTO);
+
+		req.setAttribute("contentPage", "pwchange.jsp");
+		return "home";
+	}
+	@RequestMapping(value = "pwchange.do", method = RequestMethod.POST)
+	public String pwchangedo(HttpServletRequest req, MemberDTO mDTO) {
+		mDAO.logincheck(req);	
+		mDAO.pwchangedo(req, mDTO);
+		
+		req.setAttribute("contentPage", "loginPage.jsp");
+		return "home";
+	}
+	
+	
+	
 	
 	
 
