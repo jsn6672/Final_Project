@@ -1,10 +1,27 @@
-function selectMenu(element) {
-            // 모든 mpMenu-part 요소에서 selected 클래스 제거
-	var allMenuParts = document.querySelectorAll('.mpMenu-part');
-	allMenuParts.forEach(menuPart => {
-		menuPart.classList.remove('selected');
-	});
+ var div2 = document.getElementsByClassName("mpMenu-part");
 
-	// 클릭한 요소에 selected 클래스 추가
-	element.classList.add('selected');
-}
+      function handleClick(event) {
+        console.log(event.target);
+        // console.log(this);
+        // 콘솔창을 보면 둘다 동일한 값이 나온다
+
+        console.log(event.target.classList);
+
+        if (event.target.classList[1] === "clicked") {
+          event.target.classList.remove("clicked");
+        } else {
+          for (var i = 0; i < div2.length; i++) {
+            div2[i].classList.remove("clicked");
+          }
+
+          event.target.classList.add("clicked");
+        }
+      }
+
+      function init() {
+        for (var i = 0; i < div2.length; i++) {
+          div2[i].addEventListener("click", handleClick);
+        }
+      }
+
+      init();
