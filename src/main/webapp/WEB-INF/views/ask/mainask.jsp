@@ -64,12 +64,14 @@
 							<div class="QnA-header">공지사항</div>
 						</c:otherwise>
 					</c:choose>
+					<form action="searchask">
 					<div>
 						<input class="QnA-search" type="text" name="keyword"
 							value="${keyword }" placeholder="검색어를 입력해주세요."> <input
 							type="hidden" name="p" value="1">
 						<button class="QnA-searchbutton" type="submit">검색</button>
 					</div>
+					</form>
 					<div>
 						<button class="QnA-searchbutton"
 							onclick="location.href='regask.go'">작성</button>
@@ -78,7 +80,7 @@
 				<div class="QnA-body-list">
 					<div class="QnA-list-titles">
 						<div class="QnA-list-title1">유형</div>
-						<div class="QnA-list-title2">제목</div>
+						<div class="QnA-list-title2" style="background-color:#E8F5E9">제목</div>
 						<div class="QnA-list-title3">아이디</div>
 						<div class="QnA-list-title4">날짜</div>
 						<div class="QnA-list-title3">공개여부</div>
@@ -115,23 +117,16 @@
 					</div> --%>
 				<div class="row mt-5">
 					<div class="col text-center">
-						<div class="block-27">
-							<ul>
-								<li><a href="QnAPageC?category=${param.category}&p=1">&lt;&lt;</a></li>
-								<c:if test="${curPageNo > 1}">
-									<li><a
-										href="QnAPageC?category=${param.category}&p=${curPageNo - 1}">&lt;</a></li>
-								</c:if>
-								<c:forEach begin="1" end="${pageCount }" var="i">
-									<li><a href="QnAPageC?category=${param.category}&p=${i }">${i }</a></li>
-								</c:forEach>
-								<c:if test="${curPageNo < pageCount}">
-									<li><a
-										href="QnAPageC?category=${param.category}&p=${curPageNo + 1}">&gt;</a></li>
-								</c:if>
-								<li><a
-									href="QnAPageC?category=${param.category}&p=${pageCount }">&gt;&gt;</a></li>
-							</ul>
+						<div class="text-start py-4"
+							style="display: flex; justify-content: center;">
+							<div class="custom-pagination">
+							<c:if test="">
+								<a href="page.change?p=${curPage - 1  }" class="prev">Prevous</a> 
+							</c:if>
+								<a href="#" class="active">1</a>
+								<a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a
+									href="#">5</a> <a href="#" class="next">Next</a>
+							</div>
 						</div>
 					</div>
 				</div>

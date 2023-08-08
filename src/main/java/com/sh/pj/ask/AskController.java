@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MembertDAO;
@@ -49,15 +50,15 @@ public class AskController {
 	public String detailgo(AskDTO aDTO, HttpServletRequest req,Model model) {
 		req.setAttribute("contentPage", "ask/detailpage.jsp");
 		mDAO.logincheck(req);
-
+		aDAO.getAskNo(model, aDTO);
 		return "home";
 	}
 	
 	@RequestMapping(value = "/qanda.go", method = RequestMethod.GET)
-	public String qanda(HttpServletRequest req) {
+	public String qanda(HttpServletRequest req, Model model,AskDTO aDTO) {
 		req.setAttribute("contentPage", "ask/qanda.jsp");
 		mDAO.logincheck(req);
-
+		aDAO.getAskNo(model,aDTO);
 		return "home";
 	}
 
@@ -76,8 +77,9 @@ public class AskController {
 		aDAO.insertask(aDTO,req);
 		return "redirect:mainask.go";
 	}
-	
-	
+
+
+
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String delete(AskDTO aDTO,HttpServletRequest req) {
 		mDAO.logincheck(req);
@@ -85,4 +87,35 @@ public class AskController {
 		return "redirect:mainask.go";
 	}
 	
+	@RequestMapping(value = "/update.go", method = RequestMethod.GET)
+	public String updatego(HttpServletRequest req, Model model,AskDTO aDTO) {
+		req.setAttribute("contentPage", "ask/update.jsp");
+		mDAO.logincheck(req);
+		aDAO.getAskNo(model,aDTO);
+		return "home";
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public String upadte(AskDTO aDTO,HttpServletRequest req) {
+		mDAO.logincheck(req);
+		aDAO.updateask(aDTO);
+		return "redirect:mainask.go";
+	}
+	
+	@RequestMapping(value = "/searchask", method = RequestMethod.GET)
+	public String searchask(HttpServletRequest req, Model model, AskDTO aDTO) {
+		mDAO.logincheck(req);
+		aDAO.searchask(model,aDTO);
+		req.setAttribute("contentPage", "ask/mainask.jsp");
+		return "home";
+	}
+	
+	@RequestMapping(value = "/page.change", method = RequestMethod.GET)
+    public String paging(HttpServletRequest req, @RequestParam int p) {
+
+        aDAO.getMsg(p, req);
+		mDAO.logincheck(req);
+        req.setAttribute("contentPage", "ask/mainask.jsp");
+        return "home";
+    }
 }

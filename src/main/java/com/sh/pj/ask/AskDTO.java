@@ -1,6 +1,8 @@
 package com.sh.pj.ask;
 
 import java.util.Date;
+import java.util.List;
+
 
 public class AskDTO {
 
@@ -12,6 +14,8 @@ public class AskDTO {
 	 private String inquiry_category;
 	 private String inquiry_encoding;
 	 private String inquiry_type;
+	 private String keyword;
+	 
 	 
 	public AskDTO() {
 		// TODO Auto-generated constructor stub
@@ -81,8 +85,25 @@ public class AskDTO {
 		this.inquiry_type = inquiry_type;
 	}
 
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	@Override
+	public String toString() {
+		return "AskDTO [inquiry_no=" + inquiry_no + ", inquiry_id=" + inquiry_id + ", inquiry_title=" + inquiry_title
+				+ ", inquiry_body=" + inquiry_body + ", inquiry_question_day=" + inquiry_question_day
+				+ ", inquiry_category=" + inquiry_category + ", inquiry_encoding=" + inquiry_encoding
+				+ ", inquiry_type=" + inquiry_type + ", keyword=" + keyword + "]";
+	}
+
 	public AskDTO(int inquiry_no, String inquiry_id, String inquiry_title, String inquiry_body,
-			Date inquiry_question_day, String inquiry_category, String inquiry_encoding, String inquiry_type) {
+			Date inquiry_question_day, String inquiry_category, String inquiry_encoding, String inquiry_type,
+			String keyword) {
 		super();
 		this.inquiry_no = inquiry_no;
 		this.inquiry_id = inquiry_id;
@@ -92,14 +113,7 @@ public class AskDTO {
 		this.inquiry_category = inquiry_category;
 		this.inquiry_encoding = inquiry_encoding;
 		this.inquiry_type = inquiry_type;
-	}
-
-	@Override
-	public String toString() {
-		return "AskDTO [inquiry_no=" + inquiry_no + ", inquiry_id=" + inquiry_id + ", inquiry_title=" + inquiry_title
-				+ ", inquiry_body=" + inquiry_body + ", inquiry_question_day=" + inquiry_question_day
-				+ ", inquiry_category=" + inquiry_category + ", inquiry_encoding=" + inquiry_encoding
-				+ ", inquiry_type=" + inquiry_type + "]";
+		this.keyword = keyword;
 	}
 	
 	 

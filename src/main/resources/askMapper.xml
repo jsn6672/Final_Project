@@ -7,15 +7,31 @@
 
 	<insert id="insertask" parameterType="com.sh.pj.ask.AskDTO">
 		insert into inquiry_tbl
-		values (inquiry_tbl_no_seq.nextval, #{inquiry_id}, #{inquiry_title}, #{inquiry_body}, sysdate, #{inquiry_category},#{inquiry_encoding}, #{inquiry_type})
+		values (inquiry_tbl_no_seq.nextval, #{inquiry_id}, #{inquiry_title},
+		#{inquiry_body}, sysdate, #{inquiry_category},#{inquiry_encoding},
+		#{inquiry_type})
 	</insert>
-	
+
 	<select id="getaskno" resultType="com.sh.pj.ask.AskDTO">
-		SELECT * FROM inquiry_tbl WHERE inquiry_no = #{inquiry_no}
+		SELECT * FROM inquiry_tbl WHERE
+		inquiry_no = #{inquiry_no}
 	</select>
-	
+
 	<delete id="deleteask">
-	 DELETE FROM inquiry_tbl WHERE inquiry_no = #{inquiry_no}
+		DELETE FROM inquiry_tbl WHERE inquiry_no = #{inquiry_no}
 	</delete>
-	
+
+	<update id="upadteask">
+		update inquiry_tbl set inquiry_type =
+		#{inquiry_type}, inquiry_question_day = sysdate,inquiry_title =
+		#{inquiry_title},inquiry_body = #{inquiry_body} where inquiry_no =
+		#{inquiry_no}
+	</update>
+
+	<select id="searchask" resultType="com.sh.pj.ask.AskDTO">
+		SELECT * FROM inquiry_tbl
+		WHERE inquiry_title LIKE '%' || #{keyword} || '%' OR inquiry_body LIKE '%'
+		|| #{keyword} || '%'
+	</select>
+
 </mapper>

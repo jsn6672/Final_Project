@@ -13,6 +13,7 @@
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    height: 700px;
 }
 
 .QnA-header{
@@ -113,6 +114,7 @@
 	flex-grow: 1;
     text-align: center;
     line-height: 20px;
+   	background-color: white;    
 }
 
 .QnA-list-title3{
