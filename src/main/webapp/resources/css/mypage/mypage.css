@@ -5,17 +5,17 @@
 	width: 100vw;
 	height: 100vh;
 	display: flex;
-	
 }
 
 .mpContainer {
 	width: 20vw;
-	height: 100vh;
-	text-align: center;
 }
 
 .mpSubContainer {
 	width: 20vw;
+	height: 100vh;
+	text-align: center;
+	background-color: white;
 }
 
 #mpName {
@@ -63,6 +63,8 @@
 	
 	border: 1px solid green;
 } */
+
+
 
 /* 마이페이지 프로필 수정 */
 .mpP {
@@ -291,3 +293,42 @@
     justify-content: center; 가로 방향 가운데 정렬
     align-items: center; 세로 방향 가운데 정렬
 } */
+
+
+/* 시터 등록 및 수정 페이지 - Pet */
+
+.mpS-pet {
+	width: 80vw;
+	height: 100vh;
+	background-color: #FFEBE4;
+}
+.mpS-pet-sub {
+	width: 80%;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+    justify-content: center; /* 가로 가운데 정렬 */
+    align-items: center; /* 세로 가운데 정렬 */
+	border: 1px solid red;
+}
+
+#mpS-logo {
+	width: 10vw;
+}
+
+.mpS-pet-inform {
+	margin-top: 5%;
+	margin-bottom: 3%;
+}
+
+.mpS-pet-act-bottom {
+	width: 100%;
+	display: flex;
+	justify-content:space-between;
+	
+	border: 1px solid black;
+}
+
+.mpS-pet-ac-detail {
+	width: 25%;
+}
