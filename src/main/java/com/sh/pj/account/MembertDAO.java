@@ -71,9 +71,11 @@ public class MembertDAO {
 			mDTO.getPic().transferTo(saveImg);
 			mDTO.setUser_pic(newName + extension);
 			
-//			이메일 인증 너무 힘들어서 일단 회원가입 기능 먼저 만들기 ^^7;
 			mDTO.setUser_email_auth("1");
-			mDTO.setUser_email_authkey("나중에 다시 만들 계획 일단은 회원가입 가능한지 먼저 확인");
+			
+			mDTO.setUser_phone(req.getParameter("phone_first") + "-" + req.getParameter("phone_second") + "-" + req.getParameter("phone_third"));
+			
+			System.out.println(mDTO);
 			
 			
 			if (ss.getMapper(MemberMapper.class).regAccount(mDTO) == 1) {
@@ -85,17 +87,32 @@ public class MembertDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			req.setAttribute("loginfail", "회원가입이 실패하였습니다<br>왤까요");
+
 		}
 
 	}
 
 	public int emailcheck(HttpServletRequest req, MemberDTO mDTO) {
-		
-		
-		
-		
-		
+	
 		return ss.getMapper(MemberMapper.class).checkEmail(mDTO);
 	}
+
+
+	public void pwchangego(HttpServletRequest req, MemberDTO mDTO) {
+		
+		req.setAttribute("info", ss.getMapper(MemberMapper.class).getUserEMail(mDTO));
+		
+	}
+
+	public void pwchangedo(HttpServletRequest req, MemberDTO mDTO) {
+		
+		if(ss.getMapper(MemberMapper.class).updateUserPW(mDTO) == 1) {
+			System.out.println("수정 완료");
+			req.setAttribute("loginfail", "비밀번호가 변경되었습니다<br>다시 로그인해주세요");
+		}
+	}
+
+	
 
 }
