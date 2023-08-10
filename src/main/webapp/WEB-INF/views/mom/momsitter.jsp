@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,25 +100,28 @@ https://templatemo.com/tm-580-woox-travel
 										style="display: flex; justify-content: center">
 										<input id="searchBar" placeholder="검색을 해주세요">
 									</h3>
-									<div class="d-md-flex post-entry-2 half">
-										<div class="mom-select-img">
-											<div>  </div>
-										</div>
-										<div>
-											<div class="post-meta">
-												<span class="date">Culture</span> <span class="mx-1">&bullet;</span>
-												<span>Jul 5th '22</span>
+									<c:forEach var="m" items="${momsiiters }">
+										<div class="d-md-flex post-entry-2 half">
+											<div class="mom-select-img">
+												<div>사진</div>
 											</div>
 											<div>
-												<a href="momsitter.detail.go">제목</a>
+												<div class="post-meta">
+													<span class="date">Culture</span> <span class="mx-1">&bullet;</span>
+													<span>Jul 5th '22</span>
+												</div>
+												<div>
+													<a href="momsitter.detail.go">${m.ms_id }</a>
+												</div>
+												<p>아이 정보 및 00전 작성</p>
+												<p>시급</p>
+												<p>원하는 요일 및 정기 단기 표시</p>
+												<br>
 											</div>
-											<p>아이 정보 및 00전 작성</p> 
-											<p>시급</p> 
-											<p>원하는 요일 및 정기 단기 표시</p> <br>
 										</div>
-									</div>
+									</c:forEach>
 
-									
+
 
 									<div class="text-start py-4"
 										style="display: flex; justify-content: center;">
