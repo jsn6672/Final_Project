@@ -1,4 +1,4 @@
- var div2 = document.getElementsByClassName("mpMenu-part");
+/* var div2 = document.getElementsByClassName("mpMenu-part");
 
       function handleClick(event) {
         console.log(event.target);
@@ -25,7 +25,7 @@
       }
 
       init();
-
-
 	
-}
+
+
+}*/

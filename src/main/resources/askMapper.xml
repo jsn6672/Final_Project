@@ -34,4 +34,21 @@
 		|| #{keyword} || '%'
 	</select>
 
+	<select id="getMsg" resultType="com.sh.pj.ask.AskDTO">
+		
+		SELECT * FROM (SELECT ROWNUM AS rn, it.* FROM inquiry_tbl it WHERE it.inquiry_title LIKE '%' || #{search} || '%' OR it.inquiry_body LIKE '%' || #{search} || '%'
+    ORDER BY it.inquiry_question_day DESC
+) WHERE rn &gt;= #{start} and rn &lt;= #{end}
+		
+	</select>
+
+
+
+
+	<select id="getMsgCount" resultType="int"
+	parameterType="com.sh.pj.ask.AskSelector">
+		select count(*) from inquiry_tbl where inquiry_body like '%'||#{search}||'%' or inquiry_title like '%'||#{search}||'%'
+	</select>
+
+
 </mapper>
