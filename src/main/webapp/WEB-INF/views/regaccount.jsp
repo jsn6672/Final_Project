@@ -9,6 +9,7 @@
 	integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
 	crossorigin="anonymous"></script>
 
+<script type="text/javascript" src="resources/js/member/validCheck.js"></script>
 
 <script type="text/javascript">
 	/**
@@ -42,32 +43,51 @@
 
 		var email_auth_cd = '';
 
-		$('#join').click(function() {
+		$('#join').click(
+				function() {
 
-			if ($('#id').val() == "") {
-				alert("아이디를 입력해주세요.");
-				return false;
-			}
+					if ($('#nickname').val() == "") {
+						alert("이름을 입력해주세요.");
+						return false;
+					}
 
-			if ($('#nickname').val() == "") {
-				alert("이름을 입력해주세요.");
-				return false;
-			}
+					if ($('#password').val() == "") {
+						alert("비밀번호를 입력해주세요.");
+						return false;
+					}
 
-			if ($('#password').val() == "") {
-				alert("비밀번호를 입력해주세요.");
-				return false;
-			}
+					if ($('#password').val() != $('#password_ck').val()) {
+						alert("비밀번호가 일치하지 않습니다.");
+						return false;
+					}
 
-			if ($('#password').val() != $('#password_ck').val()) {
-				alert("비밀번호가 일치하지 않습니다.");
-				return false;
-			}
+					if ($('#phone_first').val() == ""
+							|| $('#phone_second').val() == ""
+							|| $('#phone_third').val() == "") {
+						alert("전화번호를 입력해주세요.");
+						return false;
+					}
 
-			if ($('#email_auth_key').val() != email_auth_cd) {
-				alert("인증번호가 일치하지 않습니다.");
-				return false;
-			}
+					if ($('#email_auth_key').val() != email_auth_cd
+							|| $('#email_auth_key').val() == "") {
+						alert("인증번호가 일치하지 않습니다.");
+						return false;
+					}
+
+					if ($("#id_ck").css("color") === "rgb(255, 0, 0)") {
+						alert("아이디를 확인해주세요.");
+						return false;
+					}
+					
+					if ($("#user_pic").val() != "") {
+						var ext = $('#user_pic').val().split('.').pop()
+								.toLowerCase();
+						if ($.inArray(ext, [ 'gif', 'png', 'jpg', 'jpeg']) == -1) {
+							alert('등록 할수 없는 파일명입니다.');
+							$("#user_pic").val(""); // input file 파일명을 다시 지워준다.
+							return false;
+						}
+					}
 <%--
 			fn_join();
 			--%>
@@ -83,7 +103,6 @@
 					}
 
 					console.log(user_email);
-
 					$.ajax({
 						type : "POST",
 						url : "emailAuth",
@@ -100,30 +119,94 @@
 									+ "message:" + request.responseText + "\n"
 									+ "error:" + error);
 						}
-					});
-				});
+					}); //이메일인증 ajax
+				}); //인증버튼 클릭
 
-		$('#id').focusout(function() {
-			var id = $('#id').val();
+		$('#user_email')
+				.blur(
+						function() {
+							$("#email_ck").text("");
+							$("#email_ck").css("color", "blue");
+							var user_email2 = document.join_member.user_email;
+							var user_email = $('#user_email').val();
+							console.log(user_email);
+
+							console.log('이건 empty ' + isEmpty(user_email2));
+							console.log('이건 한글탐지 ' + containsHS(user_email2));
+
+							if (isEmpty(user_email2)) {
+								$("#email_ck").text("이메일은 필수로 입력해주셔야 합니다");
+								$("#email_ck").css("color", "red");
+								$('#user_email').focus();
+								return false;
+							}
+
+							$
+									.ajax({
+										type : "POST",
+										url : "emailCheck",
+										data : {
+											"user_email" : user_email
+										},
+										success : function(data) {
+											console.log(data);
+											if (data == "1") {
+												$("#email_ck").text(
+														"이 이메일은 있는 이메일입니다");
+												$("#email_ck").css("color",
+														"red");
+												document
+														.getElementById('email_auth_btn').disabled = true;
+											} else {
+												$("#email_ck").text(
+														"사용가능한 이메일입니다");
+												document
+														.getElementById('email_auth_btn').disabled = false;
+											}
+										},
+										error : function(data) {
+											console.log('여기는 이메일, 여기서 에러가 나네용')
+										}
+									}); //emailcheck ajax
+						}); //email blur
+
+		$('#id').blur(function() {
+			$("#id_ck").text("");
+			$("#id_ck").css("color", "blue");
+			var user_id2 = document.join_member.user_id;
+			var user_id = $('#id').val();
+			console.log(user_id);
+
+			console.log('이건 empty ' + isEmpty(user_id2));
+			console.log('이건 한글탐지 ' + containsHS(user_id2));
+
+			if (isEmpty(user_id2) || containsHS(user_id2)) {
+				$("#id_ck").text("아이디는 영어, 숫자로만 만들어야 합니다");
+				$("#id_ck").css("color", "red");
+				$('#id').focus();
+				return false;
+			}
 
 			$.ajax({
 				type : "POST",
-				url : "/idCheck",
+				url : "idCheck",
 				data : {
-					id : id
+					"user_id" : user_id
 				},
 				success : function(data) {
 					console.log(data);
-					if (data == "Y") {
-						$('#id_ck').removeClass("dpn");
+					if (data == "1") {
+						$("#id_ck").text("이 아이디는 있는 아이디입니다");
+						$("#id_ck").css("color", "red");
 					} else {
-						$('#id_ck').addClass("dpn");
+						$("#id_ck").text("사용가능한 아이디입니다");
 					}
 				},
 				error : function(data) {
+					console.log('여기서 에러가 나네용')
 				}
-			});
-		});
+			}); //idcheck ajax
+		}); //id blur
 
 	}); // 레디 펑션
 </script>
@@ -135,7 +218,7 @@ body {
 }
 
 .content {
-	height: 2000px;
+	height: 1700px;
 	text-align: center;
 }
 
@@ -179,8 +262,13 @@ body {
 	border: none;
 }
 
+.gender_input {
+	width: 1.25em;
+	height: 1.25em;
+}
+
 .phone_input {
-	width: 200px;
+	width: 220px;
 	height: 60px;
 	font-size: 15pt;
 	font-weight: 400;
@@ -216,7 +304,7 @@ body {
 		<div class="join_content">
 			<div class="join_wrap">
 				<form id="join_frm" method="post" enctype="multipart/form-data"
-					action="regAccount.do">
+					action="regAccount.do" name="join_member">
 					<div class="join_title" style="font-size: 35pt; font-weight: 400">회원가입</div>
 					<br>
 					<div class="join_box">
@@ -254,19 +342,25 @@ body {
 						<br>
 						<div>
 							<div class="join_column">성별</div>
-							<div>
-								<input name="user_gender" type="radio" checked="checked"
-									value="male"> 남 <input name="user_gender" type="radio"
-									value="female"> 여
+							<div style="display: flex; justify-content: space-evenly;">
+								<div>
+									<input name="user_gender" type="radio" checked="checked"
+										value="male" class="gender_input"> 남
+								</div>
+								<div>
+									<input name="user_gender" type="radio" value="female"
+										class="gender_input"> 여
+								</div>
 							</div>
 						</div>
 						<br>
 						<div>
 							<div class="join_column">전화번호</div>
 							<div>
-								<input name="phone_first" class="phone_input"> - <input
-									name="phone_second" class="phone_input"> - <input
-									name="phone_third" class="phone_input">
+								<input name="phone_first" class="phone_input" id="phone_first">
+								- <input name="phone_second" class="phone_input"
+									id="phone_second"> - <input name="phone_third"
+									class="phone_input" id="phone_third">
 							</div>
 						</div>
 						<br>
@@ -281,7 +375,7 @@ body {
 						<div>
 							<div class="join_column">프로필 사진</div>
 							<div>
-								<input type="file" name="pic">
+								<input type="file" name="pic" accept="image/*" id="user_pic">
 							</div>
 						</div>
 						<br>
@@ -290,13 +384,15 @@ body {
 							<div style="display: flex; justify-content: center;">
 								<div>
 									<input type="text" placeholder="이메일" name="user_email"
-										id="user_email" class="email_input"> <br> <br>
-									<input type="text" class="email_input" placeholder="인증번호 입력"
-										id="email_auth_key" name="user_email_authkey">
+										id="user_email" class="email_input"> <br> <span
+										id="email_ck"></span> <br> <input type="text"
+										class="email_input" placeholder="인증번호 입력" id="email_auth_key"
+										name="user_email_authkey">
 								</div>
 								<div class="blank-area"></div>
 								<div>
-									<button id="email_auth_btn" class="email_auth_btn" type="button"
+									<button id="email_auth_btn" class="email_auth_btn"
+										type="button" disabled="disabled"
 										style="width: 105px; height: 148px; border-radius: 15%; background-color: #E7B5AC; border: none;">
 										인증번호 <br> 받기
 									</button>

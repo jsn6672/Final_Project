@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sh.pj.account.MembertDAO;
+import com.sh.pj.ask.AskDAO;
 import com.sh.pj.account.MemberDTO;
 
 @Controller
@@ -27,10 +28,24 @@ public class HomeController {
 	@Autowired
 	private JavaMailSenderImpl mailSender;
 
+	@Autowired
+	private AskDAO aDAO;
+	
+	private boolean firstReq;
+	
+	public HomeController() {
+		firstReq = true;
+	}
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest req) {
 		mDAO.logincheck(req);
 
+		if (firstReq) {
+			aDAO.calcAllMsgCount();
+			firstReq=false;
+		}
+		
 		req.setAttribute("contentPage", "index.jsp");
 		return "home";
 	}
@@ -161,6 +176,17 @@ public class HomeController {
 		
 		req.setAttribute("contentPage", "loginPage.jsp");
 		return "home";
+	}
+
+	@RequestMapping(value = "idCheck", method = RequestMethod.POST)
+	public @ResponseBody int idcheck(HttpServletRequest req, MemberDTO mDTO) {
+		
+		return mDAO.idcheck(req, mDTO);
+	}
+	@RequestMapping(value = "emailCheck", method = RequestMethod.POST)
+	public @ResponseBody int emailcheck(HttpServletRequest req, MemberDTO mDTO) {
+		
+		return mDAO.emailusercheck(req, mDTO);
 	}
 	
 	
