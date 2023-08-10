@@ -50,7 +50,7 @@
     justify-content: space-evenly;
 }
 
-.body-time-day{
+.body-time-days{
 	display: flex;
     justify-content: space-evenly;
     padding-top: 10px;
@@ -60,5 +60,10 @@
     width: -webkit-fill-available;
 }
 
-
+.body-time-day{
+	width: 50%;
+	 display: flex;
+  justify-content:center;
+  align-items:center;
+}
 

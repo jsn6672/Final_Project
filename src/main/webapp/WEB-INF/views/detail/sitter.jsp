@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,13 +9,21 @@
 </head>
 <body>
 	<div class="containar-detail">
-		<div class="container-side"></div> 
+		<div class="container-side"></div>
+		<div class="content-detail">
+			<div class="header-detail">
 				<div class="header-img-detail">사진</div>
 				<div class="header-data-detail">
 					<div class="header-data1">
-						<div> <span style="font-size: 14pt;">맘시터 대전공주님</span> </div>
-						<div> <span style="font-size: 10pt;">31살,여</span> </div>
-						<div> <span style="font-size: 10pt;">cctv촬영 동의함</span> </div>
+						<div>
+							<span style="font-size: 14pt;">맘시터 대전공주님</span>
+						</div>
+						<div>
+							<span style="font-size: 10pt;">31살,여</span>
+						</div>
+						<div>
+							<span style="font-size: 10pt;">cctv촬영 동의함</span>
+						</div>
 					</div>
 					<div class="header-data1">
 						<div>희망 시급:</div>
@@ -41,7 +49,9 @@
 				</div>
 				<div>
 					<div class="body-title-detail">관련 경험</div>
-					<div> <textarea rows="8" cols="100%"></textarea> </div>
+					<div>
+						<textarea rows="8" cols="100%"></textarea>
+					</div>
 				</div>
 				<div>
 					<div class="body-title-detail">선호하는 돌봄 유형</div>
@@ -56,35 +66,35 @@
 						</div>
 						<div class="body-time-body">
 							<div class="body-times">
-								<div class="body-time-day">
-									<div>월요일</div>
-									<div>시간</div>
+								<div class="body-time-days">
+									<div class="body-time-day">월요일</div>
+									<div class="body-time-day">09:00 ~ 12:00</div>
 								</div>
-								<div class="body-time-day">
-									<div>화요일</div>
-									<div>시간</div>
+								<div class="body-time-days">
+									<div class="body-time-day">화요일</div>
+									<div class="body-time-day">시간</div>
 								</div>
-								<div class="body-time-day">
-									<div>수요일</div>
-									<div>시간</div>
+								<div class="body-time-days">
+									<div class="body-time-day">수요일</div>
+									<div class="body-time-day">시간</div>
 								</div>
-								<div class="body-time-day">
-									<div>목요일</div>
-									<div>시간</div>
+								<div class="body-time-days">
+									<div class="body-time-day">목요일</div>
+									<div class="body-time-day">시간</div>
 								</div>
-								<div class="body-time-day">
-									<div>금요일</div>
-									<div>시간</div>
+								<div class="body-time-days">
+									<div class="body-time-day">금요일</div>
+									<div class="body-time-day">시간</div>
 								</div>
 							</div>
 							<div class="body-times">
-								<div class="body-time-day">
-									<div>토요일</div>
-									<div>시간</div>
+								<div class="body-time-days">
+									<div class="body-time-day">토요일</div>
+									<div class="body-time-day">시간</div>
 								</div>
-								<div class="body-time-day">
-									<div>일요일</div>
-									<div>시간</div>
+								<div class="body-time-days">
+									<div class="body-time-day">일요일</div>
+									<div class="body-time-day">시간</div>
 								</div>
 							</div>
 						</div>
