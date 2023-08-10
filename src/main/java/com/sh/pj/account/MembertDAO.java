@@ -60,30 +60,34 @@ public class MembertDAO {
 			String imgOrgName = mDTO.getPic().getOriginalFilename();
 			long imgSize = mDTO.getPic().getSize();
 
-			String extension = imgOrgName.substring(imgOrgName.lastIndexOf("."), imgOrgName.length());
+			if (imgSize == 0) {
+				mDTO.setUser_pic("anonymousicon.png");
+			} else {
+				String extension = imgOrgName.substring(imgOrgName.lastIndexOf("."), imgOrgName.length());
 
-			String newName = UUID.randomUUID().toString().split("-")[0];
+				String newName = UUID.randomUUID().toString().split("-")[0];
 
-			String path = sc.getRealPath("resources/img");
+				String path = sc.getRealPath("resources/img");
 
-			File saveImg = new File(path + "//" + newName + extension);
+				File saveImg = new File(path + "//" + newName + extension);
 
-			mDTO.getPic().transferTo(saveImg);
-			mDTO.setUser_pic(newName + extension);
-			
+				mDTO.getPic().transferTo(saveImg);
+				mDTO.setUser_pic(newName + extension);
+			}
+
 			mDTO.setUser_email_auth("1");
-			
-			mDTO.setUser_phone(req.getParameter("phone_first") + "-" + req.getParameter("phone_second") + "-" + req.getParameter("phone_third"));
-			
+
+			mDTO.setUser_phone(req.getParameter("phone_first") + "-" + req.getParameter("phone_second") + "-"
+					+ req.getParameter("phone_third"));
+
 			System.out.println(mDTO);
-			
-			
+
 			if (ss.getMapper(MemberMapper.class).regAccount(mDTO) == 1) {
-				
+
 				System.out.println("등록 완료");
 				req.setAttribute("loginfail", "회원가입이 완료되었습니다<br>다시 로그인해주세요");
 			}
-			
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -94,24 +98,32 @@ public class MembertDAO {
 	}
 
 	public int emailcheck(HttpServletRequest req, MemberDTO mDTO) {
-	
+
 		return ss.getMapper(MemberMapper.class).checkEmail(mDTO);
 	}
 
-
 	public void pwchangego(HttpServletRequest req, MemberDTO mDTO) {
-		
+
 		req.setAttribute("info", ss.getMapper(MemberMapper.class).getUserEMail(mDTO));
-		
+
 	}
 
 	public void pwchangedo(HttpServletRequest req, MemberDTO mDTO) {
-		
-		if(ss.getMapper(MemberMapper.class).updateUserPW(mDTO) == 1) {
+
+		if (ss.getMapper(MemberMapper.class).updateUserPW(mDTO) == 1) {
 			System.out.println("수정 완료");
 			req.setAttribute("loginfail", "비밀번호가 변경되었습니다<br>다시 로그인해주세요");
 		}
 	}
 
+	public int idcheck(HttpServletRequest req, MemberDTO mDTO) {
+		
+		return ss.getMapper(MemberMapper.class).checkid(mDTO);
+	}
+
+	public int emailusercheck(HttpServletRequest req, MemberDTO mDTO) {
+		
+		return ss.getMapper(MemberMapper.class).checkuserEMail(mDTO);
+	}
 
 }
