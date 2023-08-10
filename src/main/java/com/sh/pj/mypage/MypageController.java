@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MembertDAO;
 
 @Controller
@@ -35,8 +36,11 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "/mypage.profile.do", method = RequestMethod.GET)
-	public String mypageProfileUpdate(HttpServletRequest req) {
-		req.setAttribute("contentPage", "mypage/mypage.jsp");
+	public String mypageProfileUpdate(MemberDTO m, HttpServletRequest req) {
+		/*
+		 * req.setAttribute("contentPage", "mypage/mypage.jsp"); mDAO.logincheck(req);
+		 */
+		MypageDAO.update(m, req);
 		mDAO.logincheck(req);
 		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
 		return "redirect:mypage.profile.go";
@@ -55,6 +59,14 @@ public class MypageController {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		mDAO.logincheck(req);
 		req.setAttribute("mypageContentPage", "mypageSitterRegPet.jsp");
+		return "home";
+	}
+	
+	@RequestMapping(value = "/mypage.sitterRegPetCare.go", method = RequestMethod.GET)
+	public String mypageSitterRegPetCare(HttpServletRequest req) {
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		mDAO.logincheck(req);
+		req.setAttribute("mypageContentPage", "mypageSitterRegPetCare.jsp");
 		return "home";
 	}
 	
