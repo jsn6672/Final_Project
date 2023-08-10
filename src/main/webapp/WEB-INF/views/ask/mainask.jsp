@@ -66,8 +66,8 @@
 					</c:choose>
 					<form action="page.change">
 						<div>
-							<input class="QnA-search" type="text" name="search"
-								value="${param.search}" placeholder="검색어를 입력해주세요."> <input
+							<input class="QnA-search" type="text" name="a_search"
+								value="${param.a_search}" placeholder="검색어를 입력해주세요."> <input
 								type="hidden" name="p" value="1">
 							<button class="QnA-searchbutton" type="submit">검색</button>
 						</div>
@@ -121,21 +121,21 @@
 							style="display: flex; justify-content: center;">
 							<div class="custom-pagination">
 								<c:if test="${curPage != 1 }">
-									<a href="page.change?p=${curPage - 1}" class="prev">Previous</a>
+									<a href="page.change?p=${curPage - 1}&a_search=${asksearch.a_search}" class="prev">Previous</a>
 								</c:if>
 								<c:forEach begin="${startPage}" end="${endPage}"
 									varStatus="loop">
 									<c:choose>
 										<c:when test="${curPage == loop.index}">
-											<a href="page.change?p=${loop.index}" class="active">${loop.index}</a>
+											<a href="page.change?p=${loop.index}&a_search=${asksearch.a_search}" class="active">${loop.index}</a>
 										</c:when>
 										<c:otherwise>
-											<a href="page.change?p=${loop.index}">${loop.index}</a>
+											<a href="page.change?p=${loop.index}&a_search=${asksearch.a_search}">${loop.index}</a>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 								<c:if test="${curPage != pageCount }">
-									<a href="page.change?p=${curPage + 1}" class="prev">Next</a>
+									<a href="page.change?p=${curPage + 1}&a_search=${asksearch.a_search}" class="prev">Next</a>
 								</c:if>
 							</div>
 						</div>

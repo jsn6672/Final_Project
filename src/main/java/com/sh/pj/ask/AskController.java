@@ -26,6 +26,7 @@ public class AskController {
 	@RequestMapping(value = "/mainask.go", method = RequestMethod.GET)
 	public String mainask(AskDTO aDTO, Model model, HttpServletRequest req) {
 //		aDAO.getAllAsk(model);
+		req.getSession().removeAttribute("asksearch");
 	    aDAO.getMsg(1, req);
 		req.setAttribute("contentPage", "ask/mainask.jsp");
 		mDAO.logincheck(req);
@@ -114,21 +115,23 @@ public class AskController {
 	}
 	
 	@RequestMapping(value = "/page.change", method = RequestMethod.GET)
-    public String paging(HttpServletRequest req, @RequestParam int p,
-    @RequestParam(required = false) String search, Model model) {
-        aDAO.getMsg(p, req);
-		mDAO.logincheck(req);
+    public String paging(HttpServletRequest req, @RequestParam int p, Model model, AskSelector as) {
 //		aDAO.getAllAsk(model);
 	    // 검색어가 입력되었다면, 검색어를 AskSelector 객체에 설정하고 세션에 저장합니다.
-	    if (search != null && !search.isEmpty()) {
+		System.out.println(as.getA_search());
+		String askSearch = as.getA_search();
+	    if (askSearch != null && !askSearch.isEmpty()) {
 	        AskSelector searchSelector = new AskSelector();
-	        searchSelector.setSearch(search);
-	        req.getSession().setAttribute("search", searchSelector);
+	        searchSelector.setA_search(askSearch);
+	        req.getSession().setAttribute("asksearch", searchSelector);
 	    } else {
 	        // 검색어가 입력되지 않았다면 세션에서 검색어 정보를 제거합니다.
-	        req.getSession().removeAttribute("search");
+	        req.getSession().removeAttribute("asksearch");
+	        System.out.println("여기오면 세션값 죽음 ㄹㅇ");
 	    }
-	    req.getSession().setAttribute("search", search);
+//	    req.getSession().setAttribute("asksearch", askSearch);
+	    aDAO.getMsg(p, req);
+	    mDAO.logincheck(req);
         req.setAttribute("contentPage", "ask/mainask.jsp");
         return "home";
     }
