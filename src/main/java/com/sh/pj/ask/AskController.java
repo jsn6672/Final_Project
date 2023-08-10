@@ -21,9 +21,12 @@ public class AskController {
 	@Autowired
 	private AskDAO aDAO;
 	
+
+	
 	@RequestMapping(value = "/mainask.go", method = RequestMethod.GET)
 	public String mainask(AskDTO aDTO, Model model, HttpServletRequest req) {
-		aDAO.getAllAsk(model);
+//		aDAO.getAllAsk(model);
+	    aDAO.getMsg(1, req);
 		req.setAttribute("contentPage", "ask/mainask.jsp");
 		mDAO.logincheck(req);
 		return "home";
@@ -111,11 +114,24 @@ public class AskController {
 	}
 	
 	@RequestMapping(value = "/page.change", method = RequestMethod.GET)
-    public String paging(HttpServletRequest req, @RequestParam int p) {
-
+    public String paging(HttpServletRequest req, @RequestParam int p,
+    @RequestParam(required = false) String search, Model model) {
         aDAO.getMsg(p, req);
 		mDAO.logincheck(req);
+//		aDAO.getAllAsk(model);
+	    // 검색어가 입력되었다면, 검색어를 AskSelector 객체에 설정하고 세션에 저장합니다.
+	    if (search != null && !search.isEmpty()) {
+	        AskSelector searchSelector = new AskSelector();
+	        searchSelector.setSearch(search);
+	        req.getSession().setAttribute("search", searchSelector);
+	    } else {
+	        // 검색어가 입력되지 않았다면 세션에서 검색어 정보를 제거합니다.
+	        req.getSession().removeAttribute("search");
+	    }
+	    req.getSession().setAttribute("search", search);
         req.setAttribute("contentPage", "ask/mainask.jsp");
         return "home";
     }
+	
+
 }
