@@ -12,4 +12,8 @@ public interface MemberMapper {
 
 	int updateUserPW(MemberDTO mDTO);
 
+	int checkid(MemberDTO mDTO);
+
+	int checkuserEMail(MemberDTO mDTO);
+
 }

@@ -162,6 +162,17 @@ public class HomeController {
 		req.setAttribute("contentPage", "loginPage.jsp");
 		return "home";
 	}
+
+	@RequestMapping(value = "idCheck", method = RequestMethod.POST)
+	public @ResponseBody int idcheck(HttpServletRequest req, MemberDTO mDTO) {
+		
+		return mDAO.idcheck(req, mDTO);
+	}
+	@RequestMapping(value = "emailCheck", method = RequestMethod.POST)
+	public @ResponseBody int emailcheck(HttpServletRequest req, MemberDTO mDTO) {
+		
+		return mDAO.emailusercheck(req, mDTO);
+	}
 	
 	
 	
