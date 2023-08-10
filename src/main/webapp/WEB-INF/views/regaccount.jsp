@@ -43,38 +43,51 @@
 
 		var email_auth_cd = '';
 
-		$('#join').click(function() {
+		$('#join').click(
+				function() {
 
-			if ($('#nickname').val() == "") {
-				alert("이름을 입력해주세요.");
-				return false;
-			}
+					if ($('#nickname').val() == "") {
+						alert("이름을 입력해주세요.");
+						return false;
+					}
 
-			if ($('#password').val() == "") {
-				alert("비밀번호를 입력해주세요.");
-				return false;
-			}
+					if ($('#password').val() == "") {
+						alert("비밀번호를 입력해주세요.");
+						return false;
+					}
 
-			if ($('#password').val() != $('#password_ck').val()) {
-				alert("비밀번호가 일치하지 않습니다.");
-				return false;
-			}
-			
-			if ($('#phone_first').val() == "" || $('#phone_second').val() == "" || $('#phone_third').val() == "" ) {
-				alert("전화번호를 입력해주세요.");
-				return false;
-			}
+					if ($('#password').val() != $('#password_ck').val()) {
+						alert("비밀번호가 일치하지 않습니다.");
+						return false;
+					}
 
-			if ($('#email_auth_key').val() != email_auth_cd || $('#email_auth_key').val() == "") {
-				alert("인증번호가 일치하지 않습니다.");
-				return false;
-			}
-			
-			if ($("#id_ck").css("color") === "rgb(255, 0, 0)") {
-				alert("아이디를 확인해주세요.");
-				return false;
-			}
-			
+					if ($('#phone_first').val() == ""
+							|| $('#phone_second').val() == ""
+							|| $('#phone_third').val() == "") {
+						alert("전화번호를 입력해주세요.");
+						return false;
+					}
+
+					if ($('#email_auth_key').val() != email_auth_cd
+							|| $('#email_auth_key').val() == "") {
+						alert("인증번호가 일치하지 않습니다.");
+						return false;
+					}
+
+					if ($("#id_ck").css("color") === "rgb(255, 0, 0)") {
+						alert("아이디를 확인해주세요.");
+						return false;
+					}
+					
+					if ($("#user_pic").val() != "") {
+						var ext = $('#user_pic').val().split('.').pop()
+								.toLowerCase();
+						if ($.inArray(ext, [ 'gif', 'png', 'jpg', 'jpeg']) == -1) {
+							alert('등록 할수 없는 파일명입니다.');
+							$("#user_pic").val(""); // input file 파일명을 다시 지워준다.
+							return false;
+						}
+					}
 <%--
 			fn_join();
 			--%>
@@ -108,55 +121,54 @@
 						}
 					}); //이메일인증 ajax
 				}); //인증버튼 클릭
-		
-		
-		$('#user_email').blur(function() {
-			$("#email_ck").text("");
-			$("#email_ck").css("color", "blue");
-			var user_email2 = document.join_member.user_email;
-			var user_email = $('#user_email').val();
-			console.log(user_email);
 
-			console.log('이건 empty ' + isEmpty(user_email2));
-			console.log('이건 한글탐지 ' + containsHS(user_email2));
-			
-			
-			if (isEmpty(user_email2)) {
-				$("#email_ck").text("이메일은 필수로 입력해주셔야 합니다");
-				$("#email_ck").css("color", "red");
-				$('#user_email').focus();
-				return false;
-			}
+		$('#user_email')
+				.blur(
+						function() {
+							$("#email_ck").text("");
+							$("#email_ck").css("color", "blue");
+							var user_email2 = document.join_member.user_email;
+							var user_email = $('#user_email').val();
+							console.log(user_email);
 
-			$.ajax({
-				type : "POST",
-				url : "emailCheck",
-				data : {
-					"user_email" : user_email
-				},
-				success : function(data) {
-					console.log(data);
-					if (data == "1") {
-						$("#email_ck").text("이 이메일은 있는 이메일입니다");
-						$("#email_ck").css("color", "red");
-						document.getElementById('email_auth_btn').disabled = true;
-					} else {
-						$("#email_ck").text("사용가능한 이메일입니다");
-						document.getElementById('email_auth_btn').disabled = false;
-					}
-				},
-				error : function(data) {
-					console.log('여기는 이메일, 여기서 에러가 나네용')
-				}
-			}); //emailcheck ajax
-		}); //email blur
-		
-		
-		
-		
-		
-		
-		
+							console.log('이건 empty ' + isEmpty(user_email2));
+							console.log('이건 한글탐지 ' + containsHS(user_email2));
+
+							if (isEmpty(user_email2)) {
+								$("#email_ck").text("이메일은 필수로 입력해주셔야 합니다");
+								$("#email_ck").css("color", "red");
+								$('#user_email').focus();
+								return false;
+							}
+
+							$
+									.ajax({
+										type : "POST",
+										url : "emailCheck",
+										data : {
+											"user_email" : user_email
+										},
+										success : function(data) {
+											console.log(data);
+											if (data == "1") {
+												$("#email_ck").text(
+														"이 이메일은 있는 이메일입니다");
+												$("#email_ck").css("color",
+														"red");
+												document
+														.getElementById('email_auth_btn').disabled = true;
+											} else {
+												$("#email_ck").text(
+														"사용가능한 이메일입니다");
+												document
+														.getElementById('email_auth_btn').disabled = false;
+											}
+										},
+										error : function(data) {
+											console.log('여기는 이메일, 여기서 에러가 나네용')
+										}
+									}); //emailcheck ajax
+						}); //email blur
 
 		$('#id').blur(function() {
 			$("#id_ck").text("");
@@ -167,8 +179,7 @@
 
 			console.log('이건 empty ' + isEmpty(user_id2));
 			console.log('이건 한글탐지 ' + containsHS(user_id2));
-			
-			
+
 			if (isEmpty(user_id2) || containsHS(user_id2)) {
 				$("#id_ck").text("아이디는 영어, 숫자로만 만들어야 합니다");
 				$("#id_ck").css("color", "red");
@@ -346,9 +357,10 @@ body {
 						<div>
 							<div class="join_column">전화번호</div>
 							<div>
-								<input name="phone_first" class="phone_input" id="phone_first"> - <input
-									name="phone_second" class="phone_input" id="phone_second"> - <input
-									name="phone_third" class="phone_input" id="phone_third">
+								<input name="phone_first" class="phone_input" id="phone_first">
+								- <input name="phone_second" class="phone_input"
+									id="phone_second"> - <input name="phone_third"
+									class="phone_input" id="phone_third">
 							</div>
 						</div>
 						<br>
@@ -363,7 +375,7 @@ body {
 						<div>
 							<div class="join_column">프로필 사진</div>
 							<div>
-								<input type="file" name="pic" accept="image/*">
+								<input type="file" name="pic" accept="image/*" id="user_pic">
 							</div>
 						</div>
 						<br>
@@ -372,10 +384,10 @@ body {
 							<div style="display: flex; justify-content: center;">
 								<div>
 									<input type="text" placeholder="이메일" name="user_email"
-										id="user_email" class="email_input"> <br>
-										<span id="email_ck"></span> <br>
-									<input type="text" class="email_input" placeholder="인증번호 입력"
-										id="email_auth_key" name="user_email_authkey">
+										id="user_email" class="email_input"> <br> <span
+										id="email_ck"></span> <br> <input type="text"
+										class="email_input" placeholder="인증번호 입력" id="email_auth_key"
+										name="user_email_authkey">
 								</div>
 								<div class="blank-area"></div>
 								<div>
