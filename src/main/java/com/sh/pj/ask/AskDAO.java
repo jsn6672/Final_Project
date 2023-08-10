@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+
 import com.sh.pj.account.MemberDTO;
 
 
@@ -23,6 +24,20 @@ public class AskDAO {
 	private SiteOption so;	//한페이지에 몇개씩 보여줄지.
 	
 	private int allMsgCount; //전체개수
+	
+	
+
+	public int getAllMsgCount() {
+		return allMsgCount;
+	}
+
+
+
+	public void setAllMsgCount(int allMsgCount) {
+		this.allMsgCount = allMsgCount;
+	}
+
+
 
 	public void getAllAsk(Model model) {
 		
@@ -65,30 +80,46 @@ public class AskDAO {
 		
 	}
 
-	public void getMsg(int pageNo, HttpServletRequest req) {
-        int count = so.getSnsCountPerPage();
-        int start = (pageNo - 1) * count + 1;
-        int end = start + (count - 1);
-
-        AskSelector search = (AskSelector) req.getSession().getAttribute("search"); //SNSSelector bean
-        int msgCount = 0;
-
-        if (search == null) {
-            search = new AskSelector("", new BigDecimal(start), new BigDecimal(end));
-            msgCount = allMsgCount;
-        } else {
-            search.setStart(new BigDecimal(start));
-            search.setEnd(new BigDecimal(end));
-            msgCount = ss.getMapper(AskMapper.class).getMsgCount(search);
-        }
-
-
-        int pageCount = (int) Math.ceil(msgCount / (double) count);
-        System.out.println(pageCount);
-        req.setAttribute("pageCount", pageCount);
-
-        req.setAttribute("curPage", pageNo);
-
+	public void calcAllMsgCount() {
+        AskSelector sSel = new AskSelector("", null, null);
+        allMsgCount = ss.getMapper(AskMapper.class).getMsgCount(sSel);
     }
+	public void getMsg(int pageNo, HttpServletRequest req) {
+	    int count = so.getSnsCountPerPage();
+	    int start = (pageNo - 1) * count + 1;
+	    int end = start + (count - 1);
+	    
+	    System.out.println("count 확인" + count);
+
+	    AskSelector askSearch = (AskSelector) req.getSession().getAttribute("asksearch");
+	    int msgCount = 1;
+	    
+	    System.out.println("search확인1 : " + askSearch);
+	    
+	    if (askSearch != null) {  
+	    	askSearch.setA_start(new BigDecimal(start));
+	    	askSearch.setA_end(new BigDecimal(end));
+	        msgCount = ss.getMapper(AskMapper.class).getMsgCount(askSearch);
+	    } else {
+	        // 검색 조건이 없는 경우에 전체 데이터 수를 가져오도록 변경
+	    	askSearch = new AskSelector("", new BigDecimal(start), new BigDecimal(end));  // 이전에 구현한 메서드로 전체 데이터 수를 계산
+	        msgCount = allMsgCount;
+	    }
+	    
+	    System.out.println("오류뜨기 바로 전 :" + askSearch);
+	    
+	    List<AskDTO> resultList = ss.getMapper(AskMapper.class).getMsg(askSearch); 
+	    req.setAttribute("s", resultList);
+
+	    int pageCount = (int) Math.ceil(msgCount / (double) count);
+	    req.setAttribute("pageCount", pageCount);
+	    req.setAttribute("curPage", pageNo);
+
+	    int numPagesToShow = 5;
+	    int startPage = Math.max(1, pageNo - numPagesToShow / 2);
+	    int endPage = Math.min(pageCount, startPage + numPagesToShow - 1);
+	    req.setAttribute("startPage", startPage);
+	    req.setAttribute("endPage", endPage);
+	}
 
 }

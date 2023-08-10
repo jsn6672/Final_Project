@@ -64,23 +64,23 @@
 							<div class="QnA-header">공지사항</div>
 						</c:otherwise>
 					</c:choose>
-					<form action="searchask">
-					<div>
-						<input class="QnA-search" type="text" name="keyword"
-							value="${keyword }" placeholder="검색어를 입력해주세요."> <input
-							type="hidden" name="p" value="1">
-						<button class="QnA-searchbutton" type="submit">검색</button>
-					</div>
+					<form action="page.change">
+						<div>
+							<input class="QnA-search" type="text" name="a_search"
+								value="${param.a_search}" placeholder="검색어를 입력해주세요."> <input
+								type="hidden" name="p" value="1">
+							<button class="QnA-searchbutton" type="submit">검색</button>
+						</div>
 					</form>
 					<div>
-						<button class="QnA-searchbutton"
+						<button id="writeButton" class="QnA-searchbutton"
 							onclick="location.href='regask.go'">작성</button>
 					</div>
 				</div>
 				<div class="QnA-body-list">
 					<div class="QnA-list-titles">
 						<div class="QnA-list-title1">유형</div>
-						<div class="QnA-list-title2" style="background-color:#E8F5E9">제목</div>
+						<div class="QnA-list-title2" style="background-color: #E8F5E9">제목</div>
 						<div class="QnA-list-title3">아이디</div>
 						<div class="QnA-list-title4">날짜</div>
 						<div class="QnA-list-title3">공개여부</div>
@@ -120,15 +120,27 @@
 						<div class="text-start py-4"
 							style="display: flex; justify-content: center;">
 							<div class="custom-pagination">
-							<c:if test="">
-								<a href="page.change?p=${curPage - 1  }" class="prev">Prevous</a> 
-							</c:if>
-								<a href="#" class="active">1</a>
-								<a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a
-									href="#">5</a> <a href="#" class="next">Next</a>
+								<c:if test="${curPage != 1 }">
+									<a href="page.change?p=${curPage - 1}&a_search=${asksearch.a_search}" class="prev">Previous</a>
+								</c:if>
+								<c:forEach begin="${startPage}" end="${endPage}"
+									varStatus="loop">
+									<c:choose>
+										<c:when test="${curPage == loop.index}">
+											<a href="page.change?p=${loop.index}&a_search=${asksearch.a_search}" class="active">${loop.index}</a>
+										</c:when>
+										<c:otherwise>
+											<a href="page.change?p=${loop.index}&a_search=${asksearch.a_search}">${loop.index}</a>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<c:if test="${curPage != pageCount }">
+									<a href="page.change?p=${curPage + 1}&a_search=${asksearch.a_search}" class="prev">Next</a>
+								</c:if>
 							</div>
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
@@ -144,6 +156,22 @@
 	// 마우스 아웃 시 색깔 원래대로
 	function changeColorOnMouseOut(elementId) {
 		document.getElementById(elementId).classList.remove("highlight");
+	}
+
+	// 페이지가 로드될 때 실행되는 함수
+	window.onload = function() {
+		// 현재 로그인한 사용자의 id를 얻어온다 (여기에서는 임의로 "admin"이라고 가정)
+		var currentUserId = "admin"; // 실제 사용자 id 값을 얻어와야 합니다
+
+		// 작성 버튼을 가져온다
+		var writeButton = document.getElementById("writeButton");
+
+		// 조건에 따라 버튼을 활성화/비활성화 한다
+		if (currentUserId === "admin") {
+			writeButton.disabled = false; // 버튼 활성화
+		} else {
+			writeButton.disabled = true; // 버튼 비활성화
+		}
 	}
 </script>
 </html>

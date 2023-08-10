@@ -26,4 +26,12 @@
 		update jsn_user_tbl set user_pw = #{user_pw} where user_id = #{user_id}
 	</update>
 	
+	<select id="checkid" resultType="int">
+		select count(*) from jsn_user_tbl where user_id = #{user_id}
+	</select>
+	
+	<select id="checkuserEMail" resultType="int">
+		select count(*) from jsn_user_tbl where user_email = #{user_email}
+	</select>
+	
 </mapper>
