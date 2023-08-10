@@ -1,9 +1,16 @@
 @charset "UTF-8";
 
+/* body {
+	 overflow-y: scroll;
+}
+ */
+ 
+ 
+ 
 /* 마이페이지 네비게이터 */
 .mpMainContainer {
 	width: 100vw;
-	height: 100vh;
+	height: 100%;
 	display: flex;
 }
 
@@ -66,15 +73,43 @@
 
 
 
+/* 마이페이지 홈화면 */
+.mpPAddr-detail {
+	font-size: 18pt;
+	display: flex;
+	flex-direction: column;
+    justify-content: center; /* 가로 방향 가운데 정렬 */
+    align-items: center; /* 세로 방향 가운데 정렬 */
+}
+
+.mpPAddr-detail-answer {
+	height: 100%;
+	margin-top:1%;
+	background: white;
+	border-radius: 5pt;
+	font-size: 15pt;
+	display: flex;
+	flex-direction: column;
+    justify-content: ; /* 가로 방향 가운데 정렬 */
+    align-items: center; /* 세로 방향 가운데 정렬 */
+}
+
+
+
 /* 마이페이지 프로필 수정 */
 .mpP {
 	width: 80vw;
-	height: 100vh;
+	height: 100%;
 	background-color: #FFEBE4;
 }
 
 .mpPName {
 	margin-left: 5%;
+}
+
+.mpPWelcome {
+	margin-left: 5%;
+	font-size: 20pt;
 }
 
 .mpPProfile {
@@ -90,12 +125,17 @@
 	display: flex;
 }
 
-#mpPPicture {
+.mpPPicture {
  width: 150px;
  height: 200px;
  background-color: white;	
  border: 10px solid #D9D9D9;
  border-radius: 15px;
+}
+
+#mpPPicture {
+	width: 150px;
+	height: 200px;
 }
 
 .mpPService {
@@ -130,9 +170,13 @@
 	border-radius: 10%
 }
 
+.mpP-info {
+	margin-top: 5%;
+	border: 1px solid red;
+}
+
 .mpPPWUpdate {
 	display: flex;
-	border: 1px solid black;
 }
 
 .mpPPWInput {
@@ -147,10 +191,10 @@
 #mpPPWSpace {
 	width: 6%;
 }
-    
+
 .mpPAddr {
 	width: 100%;
-	border: 1px solid black; 
+	border: 1px solid green; 
 	border: none;
 }
 
@@ -299,7 +343,7 @@
 
 .mpS-pet {
 	width: 80vw;
-	height: 100vh;
+	height: 100%;
 	background-color: #FFEBE4;
 }
 .mpS-pet-sub {
@@ -322,13 +366,13 @@
 }
 
 .mpS-pet-act-bottom {
-	width: 100%;
+	width: 50vw;
 	display: flex;
 	justify-content:space-between;
-	
+	                                                               
 	border: 1px solid black;
 }
 
-.mpS-pet-ac-detail {
-	width: 25%;
+.mpS-pet-act-detail {
+	width: 20%;
 }

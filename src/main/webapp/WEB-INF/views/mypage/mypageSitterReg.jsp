@@ -56,7 +56,7 @@
 								<div>케어시터</div>
 						</div>
 						<div class="mpS-icon-name2">
-							<div class="mpS-icon-pet"><img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpPet.png"></div>
+							<div class="mpS-icon-pet"><a href="mypage.sitterRegPetCare.go"><img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpPet.png"></a></div>
 								<div>펫시터</div>
 						</div>
 					</div>
