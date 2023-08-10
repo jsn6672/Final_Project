@@ -116,6 +116,7 @@ public class MembertDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	public int idcheck(HttpServletRequest req, MemberDTO mDTO) {
 		
 		return ss.getMapper(MemberMapper.class).checkid(mDTO);
@@ -125,5 +126,7 @@ public class MembertDAO {
 		
 		return ss.getMapper(MemberMapper.class).checkuserEMail(mDTO);
 	}
+=======
+>>>>>>> ce94307d19781ab77cb08de91276258d2c68e496
 
 }
