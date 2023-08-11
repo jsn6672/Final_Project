@@ -19,6 +19,10 @@ public class MypageController {
 	@Autowired
 	private MembertDAO mDAO;
 	
+	@Autowired
+	private MypageDAO mpDAO;
+	
+	
 	@RequestMapping(value = "/mypage.go", method = RequestMethod.GET)
 	public String petsitter(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
@@ -32,6 +36,18 @@ public class MypageController {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		mDAO.logincheck(req);
 		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
+		return "home";
+	}
+	
+	@RequestMapping(value = "/mypage.pw.do", method = RequestMethod.GET)
+	public String mypagePWUpdate(MemberDTO m, HttpServletRequest req) {
+		/*
+		 * req.setAttribute("contentPage", "mypage/mypage.jsp"); mDAO.logincheck(req);
+		 */
+		mpDAO.pwupdate(m, req);
+		/* mDAO.pwchangedo(req, m); */
+		mDAO.logincheck(req);
+		req.setAttribute("contentPage", "loginPage.jsp");
 		return "home";
 	}
 	
