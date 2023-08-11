@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,75 +29,103 @@
 </head>
 
 <body>
-		<div class="QnA-container">
-			<div class="QnA-content">
-				<div class="QnA-title-left">
-					<div class="QnA-header">고객 게시판</div>
-					<div class="QnA-left-lists">
-						<div class="QnA-left-list" id="notice1"
-							onclick="location.href='mainask.go'">공지사항</div>
-						<div class="QnA-left-list" id="notice2"
-							onclick="location.href='manyask.go'">문의하기</div>
-						<div class="QnA-left-list" id="notice3"
-							onclick="location.href='qanda'">자주 묻는 질문</div>
-					</div>
+	<div class="QnA-container">
+		<div class="QnA-content">
+			<div class="QnA-title-left">
+				<div class="QnA-header">고객 게시판</div>
+				<div class="QnA-left-lists">
+					<div class="QnA-left-list highlightable" id="notice1"
+						onmouseover="changeColorOnMouseOver('notice1')"
+						onmouseout="changeColorOnMouseOut('notice1')"
+						onclick="location.href='mainask.go?category=1'">공지사항</div>
+
+					<div class="QnA-left-list highlightable" id="notice3"
+						onmouseover="changeColorOnMouseOver('notice3')"
+						onmouseout="changeColorOnMouseOut('notice3')"
+						onclick="location.href='qanda.go?category=3'">문의하기</div>
+
+					<div class="QnA-left-list highlightable" id="notice2"
+						onmouseover="changeColorOnMouseOver('notice2')"
+						onmouseout="changeColorOnMouseOut('notice2')"
+						onclick="location.href='manyask.go?category=2'">자주묻는질문</div>
+
 				</div>
-				<div class="QnA-body">
-					<div class="QnA-body-title">
-						<c:choose>
-							<c:when test="${param.category == 2}">
-								<div class="QnA-header">문의하기</div>
-							</c:when>
-							<c:when test="${param.category == 3 }">
-								<div class="QnA-header">자주 묻는 질문</div>
-							</c:when>
-							<c:otherwise>
-								<div class="QnA-header">공지사항</div>
-							</c:otherwise>
-						</c:choose>
+			</div>
+			<div class="QnA-body">
+				<div class="QnA-body-title">
+					<c:choose>
+						<c:when test="${param.category eq '3'}">
+							<div class="QnA-header">문의하기</div>
+						</c:when>
+						<c:when test="${param.category eq '2'}">
+							<div class="QnA-header">자주 묻는 질문</div>
+						</c:when>
+						<c:otherwise>
+							<div class="QnA-header">공지사항</div>
+						</c:otherwise>
+					</c:choose>
+					<form action="page.change">
 						<div>
-							<input class="QnA-search" type="text" name="keyword"
-								value="${keyword }" placeholder="검색어를 입력해주세요."> <input
+							<input class="QnA-search" type="text" name="a_search"
+								value="${param.a_search}" placeholder="검색어를 입력해주세요."> <input
 								type="hidden" name="p" value="1">
 							<button class="QnA-searchbutton" type="submit">검색</button>
 						</div>
-						<div>
-							<button class="QnA-searchbutton"
-								onclick="location.href='regask.go'">작성</button>
-						</div>
+					</form>
+					<div>
+						<c:choose>
+							<c:when
+								test="${param.category eq '2' ||sessionScope.userInfo.user_id eq 'admin'}">
+								<button id="writeButton" class="QnA-searchbutton"
+									onclick="location.href='regask.go'">작성</button>
+							</c:when>
+							<c:otherwise>
+								<button id="writeButton" class="QnA-searchbutton"
+									style="display: none;">작성</button>
+							</c:otherwise>
+						</c:choose>
 					</div>
+				</div>
 
-
-					<div class="QnA-body-list">
-						<div class="QnA-list-titles">
-							<div class="QnA-list-title1">카테고리</div>
-							<div class="QnA-list-title2">제목</div>
-							<div class="QnA-list-title3">아이디</div>
-							<div class="QnA-list-title4">날짜</div>
-							<div class="QnA-list-title3">공개여부</div>
-							<div class="QnA-list-title5">상태</div>
-						</div>
+				<div class="QnA-body-list">
+					<div class="QnA-list-titles">
+						<div class="QnA-list-title1">유형</div>
+						<div class="QnA-list-title2" style="background-color: #E8F5E9">제목</div>
+						<div class="QnA-list-title3">아이디</div>
+						<div class="QnA-list-title4">날짜</div>
+						<div class="QnA-list-title3">공개여부</div>
+						<div class="QnA-list-title5">답변여부</div>
 					</div>
-					
-					
-
-			<div class="QnA-body-list-FAQ"></div>
-					<c:forEach items="${s}" var="s">
+				</div>
+				<div class="QnA-body-list-FAQ"></div>
+				<c:forEach items="${s}" var="s">
+					<c:if test="${s.inquiry_category eq '2'}">
 						<div class="QnA-lists">
-							<div class="QnA-list1">${s.inquiry_category }</div>
+						<c:if test="${s.inquiry_category eq '2'}">
+							<div class="QnA-list1">자주묻는질문</div>
+							</c:if>
 							<div class="QnA-list2"
-								onclick="QnADetail('${s.inquiry_encoding}', '${sessionScope.account.user_id }', '${s.inquiry_id }', '${s.inquiry_no }')">
+								onclick="location.href='detail.go?inquiry_no=${s.inquiry_no}'">
 								<span class="leftToRight">${s.inquiry_title }</span>
 							</div>
 							<div class="QnA-list2"></div>
 							<div class="QnA-list3">${s.inquiry_id}</div>
-							<div class="QnA-list4">${s.inquiry_question_day }</div>
+							<div class="QnA-list4">
+								<fmt:formatDate value="${s.inquiry_question_day }" />
+							</div>
 							<div class="QnA-list3">${s.inquiry_encoding }</div>
-							<div class="QnA-list5">미답변</div>
-<!-- 							<div class="QnA-list5">답변완료</div> -->
+							<c:choose>
+								<c:when test="${s.inquiry_encoding eq '미답변'}">
+									<div class="QnA-list5">미답변</div>
+								</c:when>
+								<c:when test="${s.inquiry_encoding eq '답변완료'}">
+									<div class="QnA-list5">답변완료</div>
+								</c:when>
+							</c:choose>
 						</div>
-					</c:forEach>
-<%-- 					<div id="Accordion_wrap">
+					</c:if>
+				</c:forEach>
+				<%-- 					<div id="Accordion_wrap">
 						<c:forEach items="${s }" var="s">
 							<div class="que">
 								<span>${s.inquiry_title }</span>
@@ -107,31 +135,70 @@
 							</div>
 						</c:forEach>
 					</div> --%>
-					<div class="row mt-5">
-						<div class="col text-center">
-							<div class="block-27">
-								<ul>
-									<li><a href="QnAPageC?category=${param.category}&p=1">&lt;&lt;</a></li>
-									<c:if test="${curPageNo > 1}">
-										<li><a
-											href="QnAPageC?category=${param.category}&p=${curPageNo - 1}">&lt;</a></li>
-									</c:if>
-									<c:forEach begin="1" end="${pageCount }" var="i">
-										<li><a href="QnAPageC?category=${param.category}&p=${i }">${i }</a></li>
-									</c:forEach>
-									<c:if test="${curPageNo < pageCount}">
-										<li><a
-											href="QnAPageC?category=${param.category}&p=${curPageNo + 1}">&gt;</a></li>
-									</c:if>
-									<li><a
-										href="QnAPageC?category=${param.category}&p=${pageCount }">&gt;&gt;</a></li>
-								</ul>
+				<div class="row mt-5">
+					<div class="col text-center">
+						<div class="text-start py-4"
+							style="display: flex; justify-content: center;">
+							<div class="custom-pagination">
+								<c:if test="${curPage != 1 }">
+									<a
+										href="page.change?p=${curPage - 1}&a_search=${asksearch.a_search}"
+										class="prev">Previous</a>
+								</c:if>
+								<c:forEach begin="${startPage}" end="${endPage}"
+									varStatus="loop">
+									<c:choose>
+										<c:when test="${curPage == loop.index}">
+											<a
+												href="page.change?p=${loop.index}&a_search=${asksearch.a_search}"
+												class="active">${loop.index}</a>
+										</c:when>
+										<c:otherwise>
+											<a
+												href="page.change?p=${loop.index}&a_search=${asksearch.a_search}">${loop.index}</a>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<c:if test="${curPage != pageCount }">
+									<a
+										href="page.change?p=${curPage + 1}&a_search=${asksearch.a_search}"
+										class="prev">Next</a>
+								</c:if>
 							</div>
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
-</body>
+	</div>
 
+</body>
+<script>
+	// 마우스 오버 시 색깔 변경
+	function changeColorOnMouseOver(elementId) {
+		document.getElementById(elementId).classList.add("highlight");
+	}
+
+	// 마우스 아웃 시 색깔 원래대로
+	function changeColorOnMouseOut(elementId) {
+		document.getElementById(elementId).classList.remove("highlight");
+	}
+
+	// 페이지가 로드될 때 실행되는 함수
+	window.onload = function() {
+		// 현재 로그인한 사용자의 id를 얻어온다 (여기에서는 임의로 "admin"이라고 가정)
+		var currentUserId = "admin"; // 실제 사용자 id 값을 얻어와야 합니다
+
+		// 작성 버튼을 가져온다
+		var writeButton = document.getElementById("writeButton");
+
+		// 조건에 따라 버튼을 활성화/비활성화 한다
+		if (currentUserId === "admin") {
+			writeButton.disabled = false; // 버튼 활성화
+		} else {
+			writeButton.disabled = true; // 버튼 비활성화
+		}
+	}
+</script>
 </html>

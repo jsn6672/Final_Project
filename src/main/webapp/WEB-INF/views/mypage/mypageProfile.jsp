@@ -20,7 +20,11 @@
 				<!-- 사진 및 사용 중인 서비스 -->
 				<div class="mpPPicAndServ">
 					<div class="mpPPicture">
-						<img id="mpPPicture" alt="" src="resources/img/${sessionScope.userInfo.user_pic  } ">
+						<img id="mpPPicture" alt=""
+							src="resources/img/${sessionScope.userInfo.user_pic  } ">
+						<div id="mpPPicInput">
+							<input name="mpPPicInput" type="file">
+						</div>
 					</div>
 					<div class="mpPService">
 						<div class="mpPService-state">
@@ -62,7 +66,7 @@
 				</div>
 				<!-- 정보 -->
 				<div class="mpP-info">
-					<div class="mpPPWUpdate">
+					<!-- <div class="mpPPWUpdate">
 						<div class="mpPPW">
 							비밀번호 <br> <input class="mpPPWInput"
 								placeholder="변경하실 비밀번호를 입력해 주세요">
@@ -72,15 +76,46 @@
 							비밀번호 확인 <br> <input class="mpPPWInput"
 								placeholder="다시 한 번 입력해 주세요.">
 						</div>
+					</div> -->
+					
+					
+					
+					<button id="openModalBtn">비밀번호 수정</button>
+
+					<div id="myModal" class="modal">
+						<div class="modal-content">
+							<span class="close">&times;</span>
+							<p>
+								<form action="mypage.pw.do">
+								<div class="mpPPWUpdate">
+								<div class="mpPPWFail">${wrongMessage }</div>
+									<input name="user_id" type="hidden" value=${sessionScope.userInfo.user_id }>
+									<div class="mpPPW">
+										비밀번호 <br> <input name="user_pw" class="mpPPWInput"
+										placeholder="변경하실 비밀번호를 입력해 주세요">
+								</div>
+								<div id="mpPPWSpace"></div>
+									<div class="mpPPW">
+										비밀번호 확인 <br> <input name="mpPPWInputCheck" class="mpPPWInputCheck"
+										placeholder="다시 한 번 입력해 주세요.">
+									</div>
+								</div>
+								<button id="mpP-btn">수정하기</button>
+								</form>
+							</p>
+						</div>
 					</div>
+
+
+
 					<form action="mypage.profile.do">
 						<div class="mpPAddr">
 							주소 <br> <input class="mpPInput" placeholder="변경 전 주소"
-							value=${sessionScope.userInfo.user_location }>
+								value=${sessionScope.userInfo.user_location }>
 						</div>
 						<div class="mpPAddr">
 							연락처 <br> <input class="mpPInput" placeholder="변경 전 전화번호"
-							value=${sessionScope.userInfo.user_phone }>
+								value=${sessionScope.userInfo.user_phone }>
 						</div>
 						<br>
 						<div>
@@ -88,10 +123,9 @@
 						</div>
 					</form>
 					<!-- 프로필 부분 컨테이너 끝 -->
+				</div>
 			</div>
+			<!-- 프로필 수정의 전체 컨테이너 끝 -->
 		</div>
-	<!-- 프로필 수정의 전체 컨테이너 끝 -->
-	</div>
-
 </body>
 </html>
