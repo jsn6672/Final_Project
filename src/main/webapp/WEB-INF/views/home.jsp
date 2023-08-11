@@ -107,9 +107,9 @@
 							<a href="#" class="nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">Q&A</a>
 							<div class="dropdown-menu bg-light rounded-0 m-0">
-								<a href="mainask.go" class="dropdown-item">공지사항</a> <a
-									href="manyask.go" class="dropdown-item">자주묻는질문</a> <a
-									href="qanda.go" class="dropdown-item">문의사항</a>
+								<a href="mainask.go?category=1" class="dropdown-item">공지사항</a> <a
+									href="manyask.go?category=2" class="dropdown-item">자주묻는질문</a> <a
+									href="qanda.go?category=3" class="dropdown-item">문의하기</a>
 							</div>
 						</div>
 					</div>
