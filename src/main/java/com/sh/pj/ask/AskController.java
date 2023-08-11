@@ -44,10 +44,12 @@ public class AskController {
 	
 	@RequestMapping(value = "/manyask.go", method = RequestMethod.GET)
 	public String manyask(AskDTO aDTO, HttpServletRequest req) {
+		req.getSession().removeAttribute("asksearch");
+	    aDAO.getMsg(1, req);
 		req.setAttribute("contentPage", "ask/manyask.jsp");
 		mDAO.logincheck(req);
-
 		return "home";
+
 	}
 	
 	@RequestMapping(value = "/detail.go", method = RequestMethod.GET)
@@ -60,20 +62,21 @@ public class AskController {
 	
 	@RequestMapping(value = "/qanda.go", method = RequestMethod.GET)
 	public String qanda(HttpServletRequest req, Model model,AskDTO aDTO) {
+		req.getSession().removeAttribute("asksearch");
+	    aDAO.getMsg(1, req);
 		req.setAttribute("contentPage", "ask/qanda.jsp");
 		mDAO.logincheck(req);
-		aDAO.getAskNo(model,aDTO);
 		return "home";
 	}
 
 	@RequestMapping(value = "/manyask.do", method = RequestMethod.GET)
 	public String manyaskdo(HttpServletRequest req, Model model) {
-		System.out.println();
 		mDAO.logincheck(req);
 		aDAO.getAllAsk(model);
 		return "home";
 	}
 	
+
 	@RequestMapping(value = "/QnAInsert.do", method = RequestMethod.GET)
 	public String QnAInsertdo(AskDTO aDTO,HttpServletRequest req) {
 		MemberDTO m = (MemberDTO) req.getSession().getAttribute("userInfo");

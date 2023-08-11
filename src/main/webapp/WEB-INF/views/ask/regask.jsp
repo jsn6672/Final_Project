@@ -31,9 +31,9 @@
 					<div class="QnA-list-titles">
 							<div class="QnA-list-title1">카테고리</div>
 							<select name="inquiry_category" style="width:100%; border: none;">
-									<option value="공지사항">공지사항</option>
-									<option value="문의하기">문의하기</option>																	
-									<option value="자주묻는질문">자주 묻는 질문</option>							
+									<option value="1">공지사항</option>
+									<option value="3">문의하기</option>																	
+									<option value="2">자주 묻는 질문</option>							
 							</select> 
 						</div>	
 					<div class="QnA-body-list">

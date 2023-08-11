@@ -34,20 +34,20 @@
 			<div class="QnA-title-left">
 				<div class="QnA-header">고객 게시판</div>
 				<div class="QnA-left-lists">
-					<div class="QnA-left-list" id="notice1"
+					<div class="QnA-left-list highlightable" id="notice1"
 						onmouseover="changeColorOnMouseOver('notice1')"
 						onmouseout="changeColorOnMouseOut('notice1')"
-						onclick="location.href='mainask.go'">공지사항</div>
+						onclick="location.href='mainask.go?category=1'">공지사항</div>
 
-					<div class="QnA-left-list" id="notice2"
-						onmouseover="changeColorOnMouseOver('notice2')"
-						onmouseout="changeColorOnMouseOut('notice2')"
-						onclick="location.href='manyask.go'">문의하기</div>
-
-					<div class="QnA-left-list" id="notice3"
+					<div class="QnA-left-list highlightable" id="notice3"
 						onmouseover="changeColorOnMouseOver('notice3')"
 						onmouseout="changeColorOnMouseOut('notice3')"
-						onclick="location.href='qanda'">자주 묻는 질문</div>
+						onclick="location.href='qanda.go?category=3'">문의하기</div>
+
+					<div class="QnA-left-list highlightable" id="notice2"
+						onmouseover="changeColorOnMouseOver('notice2')"
+						onmouseout="changeColorOnMouseOut('notice2')"
+						onclick="location.href='manyask.go?category=2'">자주묻는질문</div>
 
 				</div>
 			</div>
@@ -73,8 +73,17 @@
 						</div>
 					</form>
 					<div>
-						<button id="writeButton" class="QnA-searchbutton"
-							onclick="location.href='regask.go'">작성</button>
+						<c:choose>
+							<c:when
+								test="${param.category eq '2'||sessionScope.userInfo.user_id eq 'admin'}">
+								<button id="writeButton" class="QnA-searchbutton"
+									onclick="location.href='regask.go'">작성</button>
+							</c:when>
+							<c:otherwise>
+								<button id="writeButton" class="QnA-searchbutton"
+									style="display: none;">작성</button>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 				<div class="QnA-body-list">
@@ -84,27 +93,37 @@
 						<div class="QnA-list-title3">아이디</div>
 						<div class="QnA-list-title4">날짜</div>
 						<div class="QnA-list-title3">공개여부</div>
-						<div class="QnA-list-title5">상태</div>
 					</div>
 				</div>
 				<div class="QnA-body-list-FAQ"></div>
 				<c:forEach items="${s}" var="s">
-					<div class="QnA-lists">
-						<div class="QnA-list1">${s.inquiry_category }</div>
-						<div class="QnA-list2"
-							onclick="location.href='detail.go?inquiry_no=${s.inquiry_no}'">
-							<span class="leftToRight">${s.inquiry_title }</span>
+					<c:if test="${s.inquiry_category eq '1'}">
+						<div class="QnA-lists">
+						<c:if test="${s.inquiry_category eq '1'}">
+							<div class="QnA-list1">공지사항</div>
+							</c:if>
+							<div class="QnA-list2"
+								onclick="location.href='detail.go?inquiry_no=${s.inquiry_no}'">
+								<span class="leftToRight">${s.inquiry_title }</span>
+							</div>
+							<div class="QnA-list2"></div>
+							<div class="QnA-list3">${s.inquiry_id}</div>
+							<div class="QnA-list4">
+								<fmt:formatDate value="${s.inquiry_question_day }" />
+							</div>
+							<div class="QnA-list3">${s.inquiry_encoding }</div>
+							<c:choose>
+								<c:when test="${s.inquiry_encoding eq '미답변'}">
+									<div class="QnA-list5">미답변</div>
+								</c:when>
+								<c:when test="${s.inquiry_encoding eq '답변완료'}">
+									<div class="QnA-list5">답변완료</div>
+								</c:when>
+							</c:choose>
 						</div>
-						<div class="QnA-list2"></div>
-						<div class="QnA-list3">${s.inquiry_id}</div>
-						<div class="QnA-list4">
-							<fmt:formatDate value="${s.inquiry_question_day }" />
-						</div>
-						<div class="QnA-list3">${s.inquiry_encoding }</div>
-						<div class="QnA-list5">미답변</div>
-						<!-- 							<div class="QnA-list5">답변완료</div> -->
-					</div>
+					</c:if>
 				</c:forEach>
+
 				<%-- 					<div id="Accordion_wrap">
 						<c:forEach items="${s }" var="s">
 							<div class="que">
@@ -121,21 +140,28 @@
 							style="display: flex; justify-content: center;">
 							<div class="custom-pagination">
 								<c:if test="${curPage != 1 }">
-									<a href="page.change?p=${curPage - 1}&a_search=${asksearch.a_search}" class="prev">Previous</a>
+									<a
+										href="page.change?p=${curPage - 1}&a_search=${asksearch.a_search}"
+										class="prev">Previous</a>
 								</c:if>
 								<c:forEach begin="${startPage}" end="${endPage}"
 									varStatus="loop">
 									<c:choose>
 										<c:when test="${curPage == loop.index}">
-											<a href="page.change?p=${loop.index}&a_search=${asksearch.a_search}" class="active">${loop.index}</a>
+											<a
+												href="page.change?p=${loop.index}&a_search=${asksearch.a_search}"
+												class="active">${loop.index}</a>
 										</c:when>
 										<c:otherwise>
-											<a href="page.change?p=${loop.index}&a_search=${asksearch.a_search}">${loop.index}</a>
+											<a
+												href="page.change?p=${loop.index}&a_search=${asksearch.a_search}">${loop.index}</a>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 								<c:if test="${curPage != pageCount }">
-									<a href="page.change?p=${curPage + 1}&a_search=${asksearch.a_search}" class="prev">Next</a>
+									<a
+										href="page.change?p=${curPage + 1}&a_search=${asksearch.a_search}"
+										class="prev">Next</a>
 								</c:if>
 							</div>
 						</div>
