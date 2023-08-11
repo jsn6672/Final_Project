@@ -10,7 +10,8 @@
 	crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="resources/js/member/validCheck.js"></script>
-
+<script
+	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 	/**
 	 *  회원가입 관련 처리
@@ -39,55 +40,85 @@
 		});
 	}
 	--%>
+	function connectAddrSearchEvent() {
+		$("#addrSearchBtn").click(function() {
+			new daum.Postcode({
+				oncomplete : function(data) {
+					$("#jm_addr3Input").val(data.zonecode);
+					$("#jm_addr1Input").val(data.roadAddress);
+				}
+			}).open();
+		});
+	}
+
 	$(function() {
+
+		connectAddrSearchEvent();
+		$("#openeye").show();
+		$("#closeeye").hide();
+
+		$("#openeye").click(function() {
+			$("#openeye").hide();
+			$("#closeeye").show();
+			$('#password').attr("type", "text");
+			$('#password_ck').attr("type", "text");
+		})
+		$("#closeeye").click(function() {
+			$("#openeye").show();
+			$("#closeeye").hide();
+			$('#password').attr("type", "password");
+			$('#password_ck').attr("type", "password");
+		})
 
 		var email_auth_cd = '';
 
-		$('#join').click(
-				function() {
+		$('#join')
+				.click(
+						function() {
 
-					if ($('#nickname').val() == "") {
-						alert("이름을 입력해주세요.");
-						return false;
-					}
+							if ($('#nickname').val() == "") {
+								alert("이름을 입력해주세요.");
+								return false;
+							}
 
-					if ($('#password').val() == "") {
-						alert("비밀번호를 입력해주세요.");
-						return false;
-					}
+							if ($('#password').val() == "") {
+								alert("비밀번호를 입력해주세요.");
+								return false;
+							}
 
-					if ($('#password').val() != $('#password_ck').val()) {
-						alert("비밀번호가 일치하지 않습니다.");
-						return false;
-					}
+							if ($('#password').val() != $('#password_ck').val()) {
+								alert("비밀번호가 일치하지 않습니다.");
+								return false;
+							}
 
-					if ($('#phone_first').val() == ""
-							|| $('#phone_second').val() == ""
-							|| $('#phone_third').val() == "") {
-						alert("전화번호를 입력해주세요.");
-						return false;
-					}
+							if ($('#phone_first').val() == ""
+									|| $('#phone_second').val() == ""
+									|| $('#phone_third').val() == "") {
+								alert("전화번호를 입력해주세요.");
+								return false;
+							}
 
-					if ($('#email_auth_key').val() != email_auth_cd
-							|| $('#email_auth_key').val() == "") {
-						alert("인증번호가 일치하지 않습니다.");
-						return false;
-					}
+							if ($('#email_auth_key').val() != email_auth_cd
+									|| $('#email_auth_key').val() == "") {
+								alert("인증번호가 일치하지 않습니다.");
+								return false;
+							}
 
-					if ($("#id_ck").css("color") === "rgb(255, 0, 0)") {
-						alert("아이디를 확인해주세요.");
-						return false;
-					}
-					
-					if ($("#user_pic").val() != "") {
-						var ext = $('#user_pic').val().split('.').pop()
-								.toLowerCase();
-						if ($.inArray(ext, [ 'gif', 'png', 'jpg', 'jpeg']) == -1) {
-							alert('등록 할수 없는 파일명입니다.');
-							$("#user_pic").val(""); // input file 파일명을 다시 지워준다.
-							return false;
-						}
-					}
+							if ($("#id_ck").css("color") === "rgb(255, 0, 0)") {
+								alert("아이디를 확인해주세요.");
+								return false;
+							}
+
+							if ($("#user_pic").val() != "") {
+								var ext = $('#user_pic').val().split('.').pop()
+										.toLowerCase();
+								if ($.inArray(ext, [ 'gif', 'png', 'jpg',
+										'jpeg' ]) == -1) {
+									alert('등록 할수 없는 파일명입니다.');
+									$("#user_pic").val(""); // input file 파일명을 다시 지워준다.
+									return false;
+								}
+							}
 <%--
 			fn_join();
 			--%>
@@ -218,7 +249,7 @@ body {
 }
 
 .content {
-	height: 1700px;
+	height: 2000px;
 	text-align: center;
 }
 
@@ -260,6 +291,30 @@ body {
 	color: black;
 	border-radius: 5%;
 	border: none;
+}
+
+#passworddiv {
+	position: relative;
+}
+
+#openeyediv {
+	position: absolute;
+	right: 20px;
+	top: 0;
+}
+
+#openeye {
+	width: 60px;
+}
+
+#closeeye {
+	width: 60px;
+}
+
+#closeeyediv {
+	position: absolute;
+	right: 20px;
+	top: 0;
 }
 
 .gender_input {
@@ -326,9 +381,15 @@ body {
 						<br>
 						<div>
 							<div class="join_column">비밀번호</div>
-							<div>
+							<div id="passworddiv">
 								<input type="password" placeholder="비밀번호" name="user_pw"
 									class="normal_input" id="password">
+								<div id="openeyediv">
+									<img src="resources/img/openeye.png" id="openeye">
+								</div>
+								<div id="closeeyediv">
+									<img src="resources/img/closeeye.png" id="closeeye">
+								</div>
 							</div>
 						</div>
 						<br>
@@ -367,8 +428,16 @@ body {
 						<div>
 							<div class="join_column">주소</div>
 							<div>
-								<input name="user_location" placeholder="주소"
-									class="normal_input">
+								<input id="jm_addr3Input" readonly="readonly" name="m_addr3"
+									class="normal_input" maxlength="5" autocomplete="off"
+									style="width: 620px;" placeholder="우편번호"> <span
+									id="addrSearchBtn">[검색]</span><br> <br> <input
+									id="jm_addr1Input" readonly="readonly" name="m_addr1"
+									maxlength="30" autocomplete="off" placeholder="주소"
+									class="normal_input"><br> <br> <input
+									name="m_addr2" maxlength="30" autocomplete="off"
+									class="normal_input" placeholder="상세주소">
+
 							</div>
 						</div>
 						<br>
