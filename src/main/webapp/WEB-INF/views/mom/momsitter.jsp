@@ -100,7 +100,7 @@ https://templatemo.com/tm-580-woox-travel
 										style="display: flex; justify-content: center">
 										<input id="searchBar" placeholder="검색을 해주세요">
 									</h3>
-									<c:forEach var="m" items="${momsiiters }">
+									<c:forEach var="m" items="${momsitters }">
 										<div class="d-md-flex post-entry-2 half">
 											<div class="mom-select-img">
 												<div>사진</div>
