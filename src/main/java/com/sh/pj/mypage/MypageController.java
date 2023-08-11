@@ -58,6 +58,16 @@ public class MypageController {
 	public String mypageSitterRegPet(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		mDAO.logincheck(req);
+//		여기서부터는 jason이 집도한다는 마인드
+		req.setAttribute("mypageContentPage", "mypageSitterRegPet.jsp");
+		return "home";
+	}
+	
+	@RequestMapping(value = "/mypage.sitterRegPet.do", method = RequestMethod.GET)
+	public String mypageSitterRegPetDo(HttpServletRequest req) {
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		mDAO.logincheck(req);
+//		여기서부터는 jason이 집도한다는 마인드
 		req.setAttribute("mypageContentPage", "mypageSitterRegPet.jsp");
 		return "home";
 	}

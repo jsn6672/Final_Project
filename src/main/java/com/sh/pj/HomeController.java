@@ -24,9 +24,6 @@ public class HomeController {
 
 	@Autowired
 	private MembertDAO mDAO;
-	
-	@Autowired
-	private JavaMailSenderImpl mailSender;
 
 	@Autowired
 	private AskDAO aDAO;
@@ -40,7 +37,8 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest req) {
 		mDAO.logincheck(req);
-
+		
+		
 		if (firstReq) {
 			aDAO.calcAllMsgCount();
 			firstReq=false;
@@ -102,38 +100,8 @@ public class HomeController {
 //	이메일 인증 하려고 했는데 잘 안된 흔적
 	@RequestMapping(value = "/emailAuth", method = RequestMethod.POST)
 	public @ResponseBody String emailAuth(String user_email) {
-		System.out.println("이메일 확인" + user_email);
-		Random random = new Random();
-		int checkNum = random.nextInt(888888) + 111111;
-
-		/* 이메일 보내기 */
-        String setFrom = "sold802sbt7@gmail.com";
-        String toMail = user_email;
-        String title = "회원가입 인증 이메일 입니다.";
-        String content = 
-                "홈페이지를 방문해주셔서 감사합니다." +
-                "<br><br>" + 
-                "인증 번호는 " + checkNum + "입니다." + 
-                "<br>" + 
-                "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
-        
-        try {
-            
-            MimeMessage message = mailSender.createMimeMessage();
-            MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
-            helper.setFrom(setFrom);
-            helper.setTo(toMail);
-            helper.setSubject(title);
-            helper.setText(content,true);
-            mailSender.send(message);
-            
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
-        
-        System.out.println(Integer.toString(checkNum));
-        return Integer.toString(checkNum);
- 
+		
+		return mDAO.sendEmail(user_email);
 	}
 	
 	@RequestMapping(value = "regAccount.do", method = RequestMethod.POST)
