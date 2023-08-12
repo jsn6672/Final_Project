@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div style="display: flex;">
-		<a href="mypage.go" class="nav-item nav-link">마이페이지</a>
+		<a href="mypage.go.jason" class="nav-item nav-link">마이페이지</a>
 
 		<a href="logout" class="nav-item nav-link">로그아웃</a>		
 	</div>
