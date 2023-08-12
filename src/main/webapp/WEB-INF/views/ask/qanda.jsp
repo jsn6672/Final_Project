@@ -38,7 +38,7 @@
 						onmouseover="changeColorOnMouseOver('notice1')"
 						onmouseout="changeColorOnMouseOut('notice1')"
 						onclick="location.href='mainask.go?category=1'">공지사항</div>
-						
+
 					<div class="QnA-left-list highlightable" id="notice3"
 						onmouseover="changeColorOnMouseOver('notice3')"
 						onmouseout="changeColorOnMouseOut('notice3')"
@@ -49,7 +49,7 @@
 						onmouseout="changeColorOnMouseOut('notice2')"
 						onclick="location.href='manyask.go?category=2'">자주묻는질문</div>
 
-		
+
 				</div>
 			</div>
 			<div class="QnA-body">
@@ -69,13 +69,15 @@
 						<div>
 							<input class="QnA-search" type="text" name="a_search"
 								value="${param.a_search}" placeholder="검색어를 입력해주세요."> <input
-								type="hidden" name="p" value="1">
+								type="hidden" name="p" value="1"> <input name="category"
+								value="${param.category }" hidden="hidden">
 							<button class="QnA-searchbutton" type="submit">검색</button>
 						</div>
 					</form>
 					<div>
 						<c:choose>
-							<c:when test="${param.category eq '2'||sessionScope.userInfo.user_id eq 'admin'}">
+							<c:when
+								test="${param.category eq '2'||sessionScope.userInfo.user_id eq 'admin'}">
 								<button id="writeButton" class="QnA-searchbutton"
 									onclick="location.href='regask.go'">작성</button>
 							</c:when>
@@ -87,7 +89,7 @@
 					</div>
 				</div>
 
-			<div class="QnA-body-list">
+				<div class="QnA-body-list">
 					<div class="QnA-list-titles">
 						<div class="QnA-list-title1">유형</div>
 						<div class="QnA-list-title2" style="background-color: #E8F5E9">제목</div>
@@ -97,12 +99,12 @@
 						<div class="QnA-list-title5">답변여부</div>
 					</div>
 				</div>
-			<div class="QnA-body-list-FAQ"></div>
+				<div class="QnA-body-list-FAQ"></div>
 				<c:forEach items="${s}" var="s">
 					<c:if test="${s.inquiry_category eq '3'}">
 						<div class="QnA-lists">
-						<c:if test="${s.inquiry_category eq '3'}">
-							<div class="QnA-list1">문의하기</div>
+							<c:if test="${s.inquiry_category eq '3'}">
+								<div class="QnA-list1">문의하기</div>
 							</c:if>
 							<div class="QnA-list2"
 								onclick="location.href='detail.go?inquiry_no=${s.inquiry_no}'">
@@ -143,7 +145,7 @@
 							<div class="custom-pagination">
 								<c:if test="${curPage != 1 }">
 									<a
-										href="page.change?p=${curPage - 1}&a_search=${asksearch.a_search}"
+										href="page.change?p=${curPage - 1}&a_search=${asksearch.a_search}&category=${param.category}"
 										class="prev">Previous</a>
 								</c:if>
 								<c:forEach begin="${startPage}" end="${endPage}"
@@ -151,18 +153,18 @@
 									<c:choose>
 										<c:when test="${curPage == loop.index}">
 											<a
-												href="page.change?p=${loop.index}&a_search=${asksearch.a_search}"
+												href="page.change?p=${loop.index}&a_search=${asksearch.a_search}&category=${param.category}"
 												class="active">${loop.index}</a>
 										</c:when>
 										<c:otherwise>
 											<a
-												href="page.change?p=${loop.index}&a_search=${asksearch.a_search}">${loop.index}</a>
+												href="page.change?p=${loop.index}&a_search=${asksearch.a_search}&category=${param.category}">${loop.index}</a>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 								<c:if test="${curPage != pageCount }">
 									<a
-										href="page.change?p=${curPage + 1}&a_search=${asksearch.a_search}"
+										href="page.change?p=${curPage + 1}&a_search=${asksearch.a_search}&category=${param.category}"
 										class="prev">Next</a>
 								</c:if>
 							</div>

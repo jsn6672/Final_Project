@@ -135,7 +135,16 @@ public class AskController {
 //	    req.getSession().setAttribute("asksearch", askSearch);
 	    aDAO.getMsg(p, req);
 	    mDAO.logincheck(req);
-        req.setAttribute("contentPage", "ask/mainask.jsp");
+	    
+	    
+	    if (req.getParameter("category").equals("1")) {
+	    	req.setAttribute("contentPage", "ask/mainask.jsp");			
+		} else if (req.getParameter("category").equals("2")) {
+			req.setAttribute("contentPage", "ask/manyask.jsp");						
+		} else {
+			req.setAttribute("contentPage", "ask/qanda.jsp");									
+		}
+	    
         return "home";
     }
 	
