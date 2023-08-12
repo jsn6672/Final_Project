@@ -18,7 +18,8 @@
 	</select>
 
 	<delete id="deleteask">
-		DELETE FROM inquiry_tbl WHERE inquiry_no = #{inquiry_no}
+		DELETE FROM inquiry_tbl WHERE inquiry_no =
+		#{inquiry_no}
 	</delete>
 
 	<update id="upadteask">
@@ -30,26 +31,31 @@
 
 	<select id="searchask" resultType="com.sh.pj.ask.AskDTO">
 		SELECT * FROM inquiry_tbl
-		WHERE inquiry_title LIKE '%' || #{keyword} || '%' OR inquiry_body LIKE '%'
+		WHERE inquiry_title LIKE '%' || #{keyword} || '%' OR inquiry_body LIKE
+		'%'
 		|| #{keyword} || '%'
 	</select>
 
-	<select id="getMsg" resultType="com.sh.pj.ask.AskDTO" >
-		
-		SELECT * FROM 
-			(SELECT ROWNUM AS rn, it.* FROM inquiry_tbl it 
-			WHERE it.inquiry_title LIKE '%' || #{a_search} || '%' OR it.inquiry_body LIKE '%' || #{a_search} || '%'
-    		ORDER BY it.inquiry_question_day DESC
-		) WHERE rn &gt;= #{a_start} and rn &lt;= #{a_end}
-		
+	<select id="getMsg" resultType="com.sh.pj.ask.AskDTO">
+
+
+		SELECT * fROM (SELECT ROWNUM AS rn, it.* FROM inquiry_tbl it WHERE
+		(it.inquiry_title LIKE '%' || #{a_search} || '%' OR it.inquiry_body
+		LIKE '%' || #{a_search} || '%')
+		AND it.inquiry_category = #{category}
+		ORDER BY it.inquiry_question_day DESC)
+		WHERE rn &gt;= #{a_start} and rn &lt;= #{a_end}
+
+
 	</select>
 
 
 
 
 	<select id="getMsgCount" resultType="int"
-	parameterType="com.sh.pj.ask.AskSelector">
-		select count(*) from inquiry_tbl where inquiry_body like '%'||#{a_search}||'%' or inquiry_title like '%'||#{a_search}||'%'
+		parameterType="com.sh.pj.ask.AskSelector">
+		select count(*) from inquiry_tbl where inquiry_category = #{category} and (inquiry_body like
+		'%'||#{a_search}||'%' or inquiry_title like '%'||#{a_search}||'%')
 	</select>
 
 
