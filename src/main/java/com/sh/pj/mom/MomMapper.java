@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface MomMapper {
 
-	List<MomDTO> getAll();
+	List<MomDTO> getAll(MomDTO momDTO);
 
 }

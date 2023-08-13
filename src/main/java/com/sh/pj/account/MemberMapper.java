@@ -16,4 +16,5 @@ public interface MemberMapper {
 
 	int checkuserEMail(MemberDTO mDTO);
 
+
 }

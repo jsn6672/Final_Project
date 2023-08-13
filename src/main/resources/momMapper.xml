@@ -3,7 +3,9 @@
 <mapper namespace="com.sh.pj.mom.MomMapper">
 
 	<select id="getAll" resultType="com.sh.pj.mom.MomDTO">
-		select * from momsitter_tbl
+		select * from momsitter_tbl, jsn_user_tbl 
+		where user_id = ms_id and		
+		ms_id = #{ms_id}
 	</select>
 
 </mapper>

@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.sh.pj.account.MemberDTO;
+import com.sh.pj.account.MemberMapper;
+
 @Service
 public class MomDAO {
 
@@ -20,7 +23,12 @@ public class MomDAO {
 
 	public void getAll(HttpServletRequest req, MomDTO momDTO, Model m ) {
 		
-		m.addAttribute("momsitters", ss.getMapper(MomMapper.class).getAll());
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		
+		momDTO.setMs_id(mDTO.getUser_id());	
+		
+		m.addAttribute("momsitters", ss.getMapper(MomMapper.class).getAll(momDTO));
+		
 		
 		
 	}
