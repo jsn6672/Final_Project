@@ -67,8 +67,13 @@ public class AskDAO {
 //		}
 
 		aDTO.setInquiry_encoding("미답변");
+		aDTO.setInquiry_encodingbody("");
+		
+		System.out.println(aDTO);
 
-		ss.getMapper(AskMapper.class).insertask(aDTO);
+		if(ss.getMapper(AskMapper.class).insertask(aDTO)==1) {
+			System.out.println("등록 완료");
+		};
 	}
 
 	public void getAskNo(Model model, AskDTO aDTO) {
@@ -124,13 +129,22 @@ public class AskDAO {
 			String category = req.getParameter("category");
 			askSearch = new AskSelector("", new BigDecimal(start), new BigDecimal(end), category);
 			
-			msgCount = allMsgCountQandA;
-						
-			if (category.equals("1")) {
-				msgCount = allMsgCountMain;				
-			} else if (category.equals("2")) {
-				msgCount = allMsgCountMany;								
+			
+			try {
+				msgCount = allMsgCountQandA;
+				
+				if (category.equals("1")) {
+					msgCount = allMsgCountMain;				
+				} else if (category.equals("2")) {
+					msgCount = allMsgCountMany;								
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
 			}
+			
+			System.out.println("총 갯수 = " + msgCount);
+			
 			
 		}
 
@@ -155,6 +169,10 @@ public class AskDAO {
 		int endPage = Math.min(pageCount, startPage + numPagesToShow - 1);
 		req.setAttribute("startPage", startPage);
 		req.setAttribute("endPage", endPage);
+	}
+
+	public void askanswerdo(AskDTO aDTO) {
+		ss.getMapper(AskMapper.class).askanswerdo(aDTO);
 	}
 
 }

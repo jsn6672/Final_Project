@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="update">
+	<form action="askanswer.do">
 		<input value="${s.inquiry_no }" type="hidden" name="inquiry_no">
 		<div class="QnA-container">
 			<div class="QnA-content">
@@ -30,12 +30,11 @@
 							onmouseover="changeColorOnMouseOver('notice2')"
 							onmouseout="changeColorOnMouseOut('notice2')"
 							onclick="location.href='manyask.go?category=2'">자주묻는질문</div>
-
 					</div>
 				</div>
 				<div class="QnA-body">
 					<div class="QnA-body-title">
-						<div class="QnA-header">수정페이지</div>
+						<div class="QnA-header">답변페이지</div>
 						<hr>
 					</div>
 					<div class="QnA-list-titles">
@@ -75,13 +74,12 @@
 							</select>
 						</div>
 					</div>
-
 					<div class="QnA-list-titles">
 						<div class="QnA-list-title1">제목</div>
 						<div class="QnA-list-title2">
 							<div>
 								<input name="inquiry_title" placeholder="${s.inquiry_title }"
-									style="border: none; width: 100%" value="${s.inquiry_title }">
+									style="border: none;width: 100%" value="${s.inquiry_title }">
 							</div>
 						</div>
 					</div>
@@ -90,7 +88,16 @@
 						<div class="QnA-list-title2">
 							<div>
 								<input name="inquiry_body" placeholder="${s.inquiry_body }"
-									style="border: none; width: 100%" value="${s.inquiry_body }">
+									style="border: none;width: 100%" value="${s.inquiry_body }">
+							</div>
+						</div>
+					</div>
+					<div class="QnA-list-titles">
+						<div class="QnA-list-title1">답변</div>
+						<div class="QnA-list-title2">
+							<div style="display: flex; justify-content: flex-end;">
+								<textarea rows="" cols="" name="inquiry_encodingbody"
+									style="width: 100%; border: none;"></textarea>
 							</div>
 						</div>
 					</div>

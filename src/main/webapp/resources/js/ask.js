@@ -98,3 +98,19 @@ function changeColorOnMouseOver(elementId) {
 function changeColorOnMouseOut(elementId) {
   document.getElementById(elementId).classList.remove("highlight");
 }
+
+	// 페이지가 로드될 때 실행되는 함수
+	window.onload = function() {
+		// 현재 로그인한 사용자의 id를 얻어온다 (여기에서는 임의로 "admin"이라고 가정)
+		var currentUserId = "${sessionScope.userInfo.user_id}"; // 실제 사용자 id 값을 얻어와야 합니다
+
+		// 작성 버튼을 가져온다
+		var writeButton = document.getElementById("writeButton");
+
+		// 조건에 따라 버튼을 활성화/비활성화 한다
+		if (currentUserId === "") {
+			writeButton.style.display = "none"; // 버튼 숨기기
+		} else {
+			writeButton.style.display = "block"; // 버튼 보이기
+		}
+	}

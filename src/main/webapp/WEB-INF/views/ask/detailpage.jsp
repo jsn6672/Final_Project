@@ -18,17 +18,17 @@
 					<div class="QnA-left-list highlightable" id="notice1"
 						onmouseover="changeColorOnMouseOver('notice1')"
 						onmouseout="changeColorOnMouseOut('notice1')"
-						onclick="location.href='mainask.go'">공지사항</div>
+						onclick="location.href='mainask.go?category=1'">공지사항</div>
+
+					<div class="QnA-left-list highlightable" id="notice3"
+						onmouseover="changeColorOnMouseOver('notice3')"
+						onmouseout="changeColorOnMouseOut('notice3')"
+						onclick="location.href='qanda.go?category=3'">문의하기</div>
 
 					<div class="QnA-left-list highlightable" id="notice2"
 						onmouseover="changeColorOnMouseOver('notice2')"
 						onmouseout="changeColorOnMouseOut('notice2')"
 						onclick="location.href='manyask.go?category=2'">자주묻는질문</div>
-
-					<div class="QnA-left-list highlightable" id="notice3"
-						onmouseover="changeColorOnMouseOver('notice3')"
-						onmouseout="changeColorOnMouseOut('notice3')"
-						onclick="location.href='qanda?category=3'">문의하기</div>
 				</div>
 			</div>
 			<div class="QnA-body">
@@ -38,9 +38,29 @@
 				</div>
 				<div class="QnA-list-titles">
 					<div class="QnA-list-title1">카테고리</div>
-					<div class="QnA-list-title2">
-						<div>${s.inquiry_category }</div>
-					</div>
+					<c:choose>
+						<c:when test="${s.inquiry_category eq '3'}">
+							<div class="QnA-list-title2">
+								<div>문의하기</div>
+							</div>
+						</c:when>
+						<c:when test="${s.inquiry_category eq '2'}">
+							<div class="QnA-list-title2">
+								<div>자주묻는질문</div>
+							</div>
+						</c:when>
+						<c:when test="${s.inquiry_category eq '1'}">
+							<div class="QnA-list-title2">
+								<div>공지사항</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="QnA-list-title2">
+								<div></div>
+							</div>
+						</c:otherwise>
+					</c:choose>
+
 					<div class="QnA-list-title1">유형</div>
 					<div class="QnA-list-title2">
 						<div>${s.inquiry_type }</div>
@@ -70,7 +90,14 @@
 						<div>${s.inquiry_body }</div>
 					</div>
 				</div>
-
+				<c:if test="${sessionScope.userInfo.user_id eq 'admin'}">
+				<div class="QnA-list-titles">
+					<div class="QnA-list-title1">답변</div>
+					<div class="QnA-list-title2">
+						<div>${s.inquiry_encodingbody }</div>
+					</div>
+				</div>
+				</c:if>
 				<c:if
 					test="${sessionScope.userInfo.user_id eq 'admin' ||sessionScope.userInfo.user_id eq s.inquiry_id}">
 					<div style="display: flex; justify-content: flex-end;">
@@ -79,10 +106,10 @@
 						<button class="QnA-searchbutton"
 							onclick="location.href='update.go?inquiry_no=${s.inquiry_no}'">수정</button>
 					</div>
-				</c:if>
-				<c:if test="${sessionScope.userInfo.user_id eq 'admin'">
-					<button class="QnA-searchbutton"
-						onclick="location.href='update.go.incoding?inquiry_no=${s.inquiry_no}'">답변</button>
+					<c:if test="${sessionScope.userInfo.user_id eq 'admin'}">
+						<button class="QnA-searchbutton"
+							onclick="location.href='askanswer.go?inquiry_no=${s.inquiry_no}'">답변</button>
+					</c:if>
 				</c:if>
 			</div>
 		</div>
