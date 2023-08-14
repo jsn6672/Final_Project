@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MembertDAO;
@@ -47,7 +48,7 @@ public class MypageController {
 		mpDAO.pwupdate(m, req);
 		/* mDAO.pwchangedo(req, m); */
 		mDAO.logincheck(req);
-		req.setAttribute("contentPage", "loginPage.jsp");
+		req.setAttribute("contentPage", "mypageProfile.jsp");
 		return "home";
 	}
 	
@@ -56,10 +57,11 @@ public class MypageController {
 		/*
 		 * req.setAttribute("contentPage", "mypage/mypage.jsp"); mDAO.logincheck(req);
 		 */
-		MypageDAO.update(m, req);
+		mpDAO.updateProfile(m, req);
 		mDAO.logincheck(req);
-		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
-		return "redirect:mypage.profile.go";
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageHome.jsp");
+		return "home";
 	}
 	
 	@RequestMapping(value = "/mypage.sitterReg.go", method = RequestMethod.GET)

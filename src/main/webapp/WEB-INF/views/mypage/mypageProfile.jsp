@@ -14,6 +14,7 @@
 	<div class="mpP">
 		<!-- 내용 부분 컨테이너 -->
 		<div class="mpPDetailContainer">
+			<div class="mpPWelcomeSpace"><br></div>
 			<div class="mpPWelcome">${sessionScope.userInfo.user_name }님,환영합니다!</div>
 			<!-- 프로필 부분 컨테이너 -->
 			<div class="mpPProfile">
@@ -22,16 +23,13 @@
 					<div class="mpPPicture">
 						<img id="mpPPicture" alt=""
 							src="resources/img/${sessionScope.userInfo.user_pic  } ">
-						<div id="mpPPicInput">
-							<input name="mpPPicInput" type="file">
-						</div>
 					</div>
 					<div class="mpPService">
+						<span>현재 모두의 시터를 이렇게 이용하고 계세요!</span>
+								<br>
 						<div class="mpPService-state">
-							<!-- <span>현재 모두의 시터를 이렇게 이용하고 계세요!</span>
-								<br> -->
 							<div class="mpPSitter">
-								모시 사용자 <br>
+								<!-- 모시 사용자 <br> -->
 								<div class="mpPSitter-part">
 									<div class="mpPSitter-part-name">맘시터</div>
 									<div class="mpPSitter-part-state">이용상황</div>
@@ -46,7 +44,7 @@
 								</div>
 							</div>
 							<div class="mpPSitter">
-								시터사용자 <br>
+								<!-- 시터사용자 <br> -->
 								<div class="mpPSitter-part">
 									<div class="mpPSitter-part-name">맘시터</div>
 									<div class="mpPSitter-part-state">이용상황</div>
@@ -109,12 +107,17 @@
 
 
 					<form action="mypage.profile.do">
+									<input name="user_id" type="hidden" value=${sessionScope.userInfo.user_id }>
+					<!-- 	<div id="mpPPicInput">
+							<input name="user_pic" type="file">
+						</div> -->
 						<div class="mpPAddr">
-							주소 <br> <input class="mpPInput" placeholder="변경 전 주소"
+							주소 <br> <input name="user_location" class="mpPInput" placeholder="변경 전 주소"
 								value=${sessionScope.userInfo.user_location }>
 						</div>
 						<div class="mpPAddr">
-							연락처 <br> <input class="mpPInput" placeholder="변경 전 전화번호"
+							<div>연락처 <br></div> 
+							<input name="user_phone" class="user_phone" placeholder="변경 전 전화번호"
 								value=${sessionScope.userInfo.user_phone }>
 						</div>
 						<br>

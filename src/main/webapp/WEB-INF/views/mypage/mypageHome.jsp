@@ -14,6 +14,7 @@
 	<div class="mpP">
 		<!-- 내용 부분 컨테이너 -->
 		<div class="mpPDetailContainer">
+			<div class="mpPWelcomeSpace"><br></div>
 			<div class="mpPWelcome">${sessionScope.userInfo.user_name }님,환영합니다!</div>
 			<!-- 프로필 부분 컨테이너 -->
 			<div class="mpPProfile">
