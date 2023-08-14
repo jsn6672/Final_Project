@@ -34,4 +34,9 @@
 		select count(*) from jsn_user_tbl where user_email = #{user_email}
 	</select>
 	
+	<insert id="regPTAccount">
+		insert into pettaker_tbl values(#{pt_id}, #{pt_file})
+	</insert>
+	
+	
 </mapper>
