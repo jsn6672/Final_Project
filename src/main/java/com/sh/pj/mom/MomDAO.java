@@ -13,7 +13,6 @@ import com.sh.pj.account.MemberMapper;
 
 @Service
 public class MomDAO {
-
 	
 	@Autowired
 	private SqlSession ss;
@@ -24,8 +23,6 @@ public class MomDAO {
 	public void getAll(HttpServletRequest req, MomDTO momDTO, Model m ) {
 		
 		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
-		
-		momDTO.setMs_id(mDTO.getUser_id());	
 		
 		m.addAttribute("momsitters", ss.getMapper(MomMapper.class).getAll(momDTO));
 		

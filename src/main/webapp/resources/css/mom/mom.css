@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.mom-select-img{
+	width: 20%;
+}
+
+.mom-select-locations{
+	display: flex;
+}
+
+.mom-select-location{
+	margin-left: 10px;
+}

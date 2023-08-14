@@ -17,6 +17,7 @@
 
 <!-- Bootstrap core CSS -->
 <link href="resources/css/rbootstrap.min.css" rel="stylesheet">
+<link href="resources/css/mom/mom.css" rel="stylesheet">
 
 <!-- Additional CSS Files -->
 <link rel="stylesheet" href="resources/css/fontawesome.css">
@@ -107,16 +108,26 @@ https://templatemo.com/tm-580-woox-travel
 											</div>
 											<div>
 												<div class="post-meta">
-													<span class="date">Culture</span> <span class="mx-1">&bullet;</span>
-													<span>Jul 5th '22</span>
+													<span class="date">00전 작성 </span> 
+													<span>${m.ms_can_date }</span>
 												</div>
 												<div>
-													<a href="momsitter.detail.go">${m.ms_id }</a>
+													<a href="momsitter.detail.go">맘시터: ${m.ms_id }(이름)</a>
+													<span>나이</span>
+													<span>성별</span>
+													<span>cctv촬영 - ${m.ms_cctv }</span>
 												</div>
-												<p>아이 정보 및 00전 작성</p>
-												<p>시급</p>
-												<p>원하는 요일 및 정기 단기 표시</p>
-												<br>
+												<div>시급: ${m.ms_pay }</div>
+												<div class="mom-select-locations">
+													<div>
+														<div>활동 가능 지역:</div>
+													</div>
+													<div class="mom-select-location">
+														<div>${m.ms_location1 }</div>
+														<div>${m.ms_location2 }</div>
+														<div>${m.ms_location3 }</div>
+													</div>
+												</div>
 											</div>
 										</div>
 									</c:forEach>
