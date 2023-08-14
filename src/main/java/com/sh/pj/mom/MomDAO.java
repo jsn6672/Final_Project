@@ -25,8 +25,11 @@ public class MomDAO {
 		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 		
 		m.addAttribute("momsitters", ss.getMapper(MomMapper.class).getAll(momDTO));
+	}
+
+	public void detail(HttpServletRequest req, MomDTO momDTO, Model m) {
 		
-		
+		m.addAttribute("momsitter", ss.getMapper(MomMapper.class).detail(momDTO));
 		
 	}
 	

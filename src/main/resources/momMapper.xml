@@ -9,5 +9,9 @@
 	<!-- , jsn_user_tbl 
 		where user_id = ms_id and		
 		ms_id = #{ms_id} -->
+		
+	<select id="detail" resultType="com.sh.pj.mom.MomDTO">
+		select * from momsitter_tbl where ms_no = #{ms_no}
+	</select>
 
 </mapper>

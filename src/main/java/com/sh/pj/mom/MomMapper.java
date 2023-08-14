@@ -6,4 +6,6 @@ public interface MomMapper {
 
 	List<MomDTO> getAll(MomDTO momDTO);
 
+	MomDTO detail(MomDTO momDTO);
+
 }

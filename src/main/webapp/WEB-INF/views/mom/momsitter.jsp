@@ -109,10 +109,10 @@ https://templatemo.com/tm-580-woox-travel
 											<div>
 												<div class="post-meta">
 													<span class="date">00전 작성 </span> 
-													<span>${m.ms_can_date }</span>
+													<span>${m.ms_write_date }</span>
 												</div>
 												<div>
-													<a href="momsitter.detail.go">맘시터: ${m.ms_id }(이름)</a>
+													<a href="momsitter.detail.go?ms_no=${m.ms_no }">맘시터: ${m.ms_id }(이름)</a>
 													<span>나이</span>
 													<span>성별</span>
 													<span>cctv촬영 - ${m.ms_cctv }</span>
