@@ -1,12 +1,24 @@
 package com.sh.pj.mypage;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.channels.Selector;
+
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MemberMapper;
 
@@ -18,14 +30,6 @@ public class MypageDAO {
 	
 	public void getMember(HttpServletRequest req) {
 		req.setAttribute("myMembers", ss.getMapper(MypageMapper.class).getMember());
-		
-	}
-
-	public static void update(MemberDTO m, HttpServletRequest req) {
-		String path = req.getSession().getServletContext().getRealPath("resources/img");
-		MultipartRequest mr = null;
-		
-		MemberDTO loginMember = (MemberDTO) req.getSession().getAttribute("loginMember");
 		
 	}
 
@@ -59,6 +63,25 @@ public class MypageDAO {
 			e.printStackTrace();
 		}
 		
+	}
+
+	public void updateProfile(MemberDTO m, HttpServletRequest req) {
+		MemberDTO loginMember = (MemberDTO) req.getSession().getAttribute("userInfo");
+		String user_location = req.getParameter("user_location");
+		System.out.println(user_location);
+		String user_phone = req.getParameter("user_phone");
+		System.out.println(user_phone);
+		
+		if (ss.getMapper(MypageMapper.class).updateProfile(m) == 1) {
+			System.out.println("프로필 수정 성공");
+			req.setAttribute("mypageContentPage", "mypageProfile.jsp");
+			req.getSession().setAttribute("loginMember", m);
+			
+			req.getSession().setAttribute("userInfo", ss.getMapper(MypageMapper.class).getMemberById(m));
+			 
+		} else {
+			System.out.println("프로필 수정 실패");
+		}
 	}
 	
 	

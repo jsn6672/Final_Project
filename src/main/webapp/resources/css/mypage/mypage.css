@@ -134,7 +134,7 @@
 }
 
 #mpPPicInput {
-	margin-top: 100px;
+	margin-top: 5%;
 }
 
 #mpPPicture {
@@ -143,32 +143,36 @@
 }
 
 .mpPService {
-	width: 500px;
+	width: 700px;
 	margin: auto;
 	margin-left: 30px;
-	justify-content: space-between;
-	border: 1px solid red;
+	justify-content: center;
 }
 
 .mpPService-state {
 	display: flex;
-	justify-content: space-between;
-	
-	border: 1px solid black;
+	justify-content: center;
 }
 
 .mpPSitter {
-	width: 45%
+	width: 80%;
 }
 
 .mpPSitter-part {
+	width: 50%;
+	height: 35%;
+	margin-top: 3%;
 	display: flex;	
 	background-color: white; 
 	border-radius: 5px;	
+	justify-content: center;
+	align-items: center;
 }
 
 .mpPSitter-part-state {
-	width: 100px;
+	/* width: 100%; */
+	margin-left: 5%;
+	margin-right: 0;
 	background-color: #E7B5AC;
 	border: none;
 	border-radius: 10%
