@@ -77,9 +77,10 @@
 					<div>
 						<c:choose>
 							<c:when
-								test="${param.category eq '2'||sessionScope.userInfo.user_id eq 'admin'}">
+								test="${param.category eq '3'||sessionScope.userInfo.user_id eq 'admin'}">
 								<button id="writeButton" class="QnA-searchbutton"
-									onclick="location.href='regask.go'">작성</button>
+									onclick="checkAndOpenWritePopup()">작성</button>
+
 							</c:when>
 							<c:otherwise>
 								<button id="writeButton" class="QnA-searchbutton"
@@ -95,7 +96,6 @@
 						<div class="QnA-list-title2" style="background-color: #E8F5E9">제목</div>
 						<div class="QnA-list-title3">아이디</div>
 						<div class="QnA-list-title4">날짜</div>
-						<div class="QnA-list-title3">공개여부</div>
 						<div class="QnA-list-title5">답변여부</div>
 					</div>
 				</div>
@@ -115,12 +115,11 @@
 							<div class="QnA-list4">
 								<fmt:formatDate value="${s.inquiry_question_day }" />
 							</div>
-							<div class="QnA-list3">${s.inquiry_encoding }</div>
 							<c:choose>
 								<c:when test="${s.inquiry_encoding eq '미답변'}">
 									<div class="QnA-list5">미답변</div>
 								</c:when>
-								<c:when test="${s.inquiry_encoding eq '답변완료'}">
+								<c:when test="${s.inquiry_encoding eq '답변'}">
 									<div class="QnA-list5">답변완료</div>
 								</c:when>
 							</c:choose>
@@ -188,19 +187,13 @@
 		document.getElementById(elementId).classList.remove("highlight");
 	}
 
-	// 페이지가 로드될 때 실행되는 함수
-	window.onload = function() {
-		// 현재 로그인한 사용자의 id를 얻어온다 (여기에서는 임의로 "admin"이라고 가정)
-		var currentUserId = "admin"; // 실제 사용자 id 값을 얻어와야 합니다
-
-		// 작성 버튼을 가져온다
-		var writeButton = document.getElementById("writeButton");
-
-		// 조건에 따라 버튼을 활성화/비활성화 한다
-		if (currentUserId === "admin") {
-			writeButton.disabled = false; // 버튼 활성화
+	// 작성 버튼 클릭 시 로그인 상태 확인 후 팝업 열기
+	function checkAndOpenWritePopup() {
+		var currentUser = "${sessionScope.userInfo.user_id}";
+		if (currentUser === "") {
+			alert("로그인 후에 작성할 수 있습니다. 로그인 해주세요.");
 		} else {
-			writeButton.disabled = true; // 버튼 비활성화
+			location.href = 'regask.go';
 		}
 	}
 </script>

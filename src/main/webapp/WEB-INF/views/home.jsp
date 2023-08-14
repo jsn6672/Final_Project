@@ -70,8 +70,8 @@
 		<div class="container">
 			<nav
 				class="navbar navbar-expand-lg bg-white navbar-light py-2 py-lg-0">
-				<a href="go.home" class="navbar-brand"> <img
-					class="img-fluid" src="resources/img/logo2.png" alt="Logo">
+				<a href="go.home" class="navbar-brand"> <img class="img-fluid"
+					src="resources/img/logo2.png" alt="Logo">
 				</a>
 				<button type="button" class="navbar-toggler ms-auto me-0"
 					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -108,8 +108,8 @@
 								data-bs-toggle="dropdown">Q&A</a>
 							<div class="dropdown-menu bg-light rounded-0 m-0">
 								<a href="mainask.go?category=1" class="dropdown-item">공지사항</a> <a
-									href="manyask.go?category=2" class="dropdown-item">자주묻는질문</a> <a
-									href="qanda.go?category=3" class="dropdown-item">문의하기</a>
+									href="qanda.go?category=3" class="dropdown-item">문의하기</a> <a
+									href="manyask.go?category=2" class="dropdown-item">자주묻는질문</a>
 							</div>
 						</div>
 					</div>

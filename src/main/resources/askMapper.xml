@@ -9,8 +9,10 @@
 		insert into inquiry_tbl
 		values (inquiry_tbl_no_seq.nextval, #{inquiry_id}, #{inquiry_title},
 		#{inquiry_body}, sysdate, #{inquiry_category},#{inquiry_encoding},
-		#{inquiry_type})
+		#{inquiry_type}, #{inquiry_encodingbody})
 	</insert>
+	
+	
 
 	<select id="getaskno" resultType="com.sh.pj.ask.AskDTO">
 		SELECT * FROM inquiry_tbl WHERE
@@ -27,6 +29,13 @@
 		#{inquiry_type}, inquiry_question_day = sysdate,inquiry_title =
 		#{inquiry_title},inquiry_body = #{inquiry_body} where inquiry_no =
 		#{inquiry_no}
+	</update>
+
+
+	<update id="askanswerdo">
+		update inquiry_tbl set inquiry_type =
+		#{inquiry_type}, inquiry_question_day = sysdate,inquiry_title =
+		#{inquiry_title},inquiry_body= #{inquiry_body} ,inquiry_encoding='답변',inquiry_encodingbody=#{inquiry_encodingbody} where inquiry_no= #{inquiry_no}
 	</update>
 
 	<select id="searchask" resultType="com.sh.pj.ask.AskDTO">
@@ -48,9 +57,6 @@
 
 
 	</select>
-
-
-
 
 	<select id="getMsgCount" resultType="int"
 		parameterType="com.sh.pj.ask.AskSelector">

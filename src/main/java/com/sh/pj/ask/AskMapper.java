@@ -24,5 +24,7 @@ public interface AskMapper {
 
 	public List<AskDTO> getMsg(AskSelector search);
 
+	public int askanswerdo(AskDTO aDTO);
+
 
 }
