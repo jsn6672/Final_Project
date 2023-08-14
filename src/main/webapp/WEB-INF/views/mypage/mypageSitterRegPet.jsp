@@ -107,7 +107,7 @@ body {
 </head>
 <body>
 
-	<form action="mypage.sitterRegPet.do" method="post"
+	<form action="pettaker.be" method="post"
 		enctype="multipart/form-data">
 
 		<!-- 전체 컨테이너 -->
@@ -122,7 +122,7 @@ body {
 				<div>${userInfo.user_name}님의정보를입력해주세요</div>
 				<div>필요한 서류를 등록해주세요</div>
 				<div>
-					<input type="file" name="pt_file">
+					<input type="file" name="pt_Rfile">
 				</div>
 
 				<!-- 정보입력 -->
@@ -214,7 +214,7 @@ body {
 							<div class="body-times">
 								<div class="body-time-days">
 									<div class="body-time-day">
-										<input type="checkbox" name="monday" id="monday"> 월요일
+										<input type="checkbox" name="monday" id="monday" value="monday"> 월요일
 									</div>
 									<div class="body-time-day">
 										<select disabled="disabled" id="monday_start"
@@ -234,7 +234,7 @@ body {
 								</div>
 								<div class="body-time-days">
 									<div class="body-time-day">
-										<input type="checkbox" name="tuesday" id="tuesday">
+										<input type="checkbox" name="tuesday" id="tuesday" value="tuesday">
 										화요일
 									</div>
 									<div class="body-time-day">
@@ -255,7 +255,7 @@ body {
 								</div>
 								<div class="body-time-days">
 									<div class="body-time-day">
-										<input type="checkbox" name="wednesday" id="wednesday">
+										<input type="checkbox" name="wednesday" id="wednesday" value="wednesday">
 										수요일
 									</div>
 									<div class="body-time-day">
@@ -276,7 +276,7 @@ body {
 								</div>
 								<div class="body-time-days">
 									<div class="body-time-day">
-										<input type="checkbox" name="thursday" id="thursday">
+										<input type="checkbox" name="thursday" id="thursday" value="thursday">
 										목요일
 									</div>
 									<div class="body-time-day">
@@ -297,7 +297,7 @@ body {
 								</div>
 								<div class="body-time-days">
 									<div class="body-time-day">
-										<input type="checkbox" name="friday" id="friday"> 금요일
+										<input type="checkbox" name="friday" id="friday" value="friday"> 금요일
 									</div>
 									<div class="body-time-day">
 										<select disabled="disabled" id="friday_start"
@@ -319,7 +319,7 @@ body {
 							<div class="body-times">
 								<div class="body-time-days">
 									<div class="body-time-day">
-										<input type="checkbox" name="saturday" id="saturday">
+										<input type="checkbox" name="saturday" id="saturday" value="saturday">
 										토요일
 									</div>
 									<div class="body-time-day">
@@ -340,7 +340,7 @@ body {
 								</div>
 								<div class="body-time-days">
 									<div class="body-time-day">
-										<input type="checkbox" name="sunday" id="sunday"> 일요일
+										<input type="checkbox" name="sunday" id="sunday" value="sunday"> 일요일
 									</div>
 									<div class="body-time-day">
 										<select disabled="disabled" id="sunday_start"

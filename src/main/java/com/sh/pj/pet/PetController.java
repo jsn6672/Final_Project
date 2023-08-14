@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MembertDAO;
 
 @Controller
@@ -15,6 +16,11 @@ public class PetController {
 	
 	@Autowired
 	private MembertDAO mDAO;
+
+	@Autowired
+	private PetDAO pDAO;
+	
+	
 	
 	@RequestMapping(value = "/petsitter.go", method = RequestMethod.GET)
 	public String petsitter(HttpServletRequest req) {
@@ -31,5 +37,22 @@ public class PetController {
 
 		return "home";
 	}
+	
+	@RequestMapping(value = "/pettaker.be", method = RequestMethod.POST)
+	public String pettaker_be(HttpServletRequest req, PetTakerDTO ptDTO, DolbomDTO dDTO) {
+		mDAO.logincheck(req);	
+		
+		mDAO.regPetTaker(req, ptDTO);
+		pDAO.regPetDolbom(req, dDTO);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
+		
+		return "home";
+	}
+	
+	
+	
+	
+	
 	
 }

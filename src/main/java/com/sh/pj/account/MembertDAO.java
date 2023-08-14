@@ -15,6 +15,8 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import com.sh.pj.pet.PetTakerDTO;
+
 @Service
 public class MembertDAO {
 
@@ -165,6 +167,41 @@ public class MembertDAO {
 
 		System.out.println(Integer.toString(checkNum));
 		return Integer.toString(checkNum);
+	}
+
+	public void regPetTaker(HttpServletRequest req, PetTakerDTO ptDTO) {
+
+		try {
+			String imgOrgName = ptDTO.getPt_Rfile().getOriginalFilename();
+			long imgSize = ptDTO.getPt_Rfile().getSize();
+
+			String extension = imgOrgName.substring(imgOrgName.lastIndexOf("."), imgOrgName.length());
+
+			String newName = UUID.randomUUID().toString().split("-")[0];
+
+			String path = sc.getRealPath("resources/img");
+
+			File saveImg = new File(path + "//" + newName + extension);
+
+			ptDTO.getPt_Rfile().transferTo(saveImg);
+			ptDTO.setPt_file(newName + extension);
+			
+			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+			ptDTO.setPt_id(mDTO.getUser_id());
+			System.out.println(ptDTO);
+
+			if (ss.getMapper(MemberMapper.class).regPTAccount(ptDTO) == 1) {
+
+				System.out.println("등록 완료");
+				mDTO.setPt_id(mDTO.getUser_id());
+				req.getSession().setAttribute("userInfo", mDTO);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+
 	}
 
 }

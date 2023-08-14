@@ -1,5 +1,7 @@
 package com.sh.pj.account;
 
+import com.sh.pj.pet.PetTakerDTO;
+
 public interface MemberMapper {
 
 	MemberDTO getUserID(MemberDTO aDTO);
@@ -15,6 +17,8 @@ public interface MemberMapper {
 	int checkid(MemberDTO mDTO);
 
 	int checkuserEMail(MemberDTO mDTO);
+
+	int regPTAccount(PetTakerDTO ptDTO);
 
 
 }
