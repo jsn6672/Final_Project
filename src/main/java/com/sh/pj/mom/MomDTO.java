@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class MomDTO {
 
+	private int ms_no;
 	private String ms_id;
 	private MultipartFile ms_file;
 	private String ms_certif;
@@ -22,17 +23,18 @@ public class MomDTO {
 	private int ms_can_age;
 	private Date ms_ticket_start;
 	private Date ms_ticket_end;
-	private Date ms_can_date;
+	private Date ms_write_date;
 	
 	public MomDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MomDTO(String ms_id, MultipartFile ms_file, String ms_certif, String ms_cctv, String ms_location1,
+	public MomDTO(int ms_no, String ms_id, MultipartFile ms_file, String ms_certif, String ms_cctv, String ms_location1,
 			String ms_location2, String ms_location3, String ms_intro, String ms_exp, int ms_pay, int ms_point,
 			int ms_count, String ms_can_do, int ms_can_age, Date ms_ticket_start, Date ms_ticket_end,
-			Date ms_can_date) {
+			Date ms_write_date) {
 		super();
+		this.ms_no = ms_no;
 		this.ms_id = ms_id;
 		this.ms_file = ms_file;
 		this.ms_certif = ms_certif;
@@ -49,7 +51,15 @@ public class MomDTO {
 		this.ms_can_age = ms_can_age;
 		this.ms_ticket_start = ms_ticket_start;
 		this.ms_ticket_end = ms_ticket_end;
-		this.ms_can_date = ms_can_date;
+		this.ms_write_date = ms_write_date;
+	}
+
+	public int getMs_no() {
+		return ms_no;
+	}
+
+	public void setMs_no(int ms_no) {
+		this.ms_no = ms_no;
 	}
 
 	public String getMs_id() {
@@ -180,23 +190,28 @@ public class MomDTO {
 		this.ms_ticket_end = ms_ticket_end;
 	}
 
-	public Date getMs_can_date() {
-		return ms_can_date;
+	public Date getMs_write_date() {
+		return ms_write_date;
 	}
 
-	public void setMs_can_date(Date ms_can_date) {
-		this.ms_can_date = ms_can_date;
+	public void setMs_write_date(Date ms_write_date) {
+		this.ms_write_date = ms_write_date;
 	}
 
 	@Override
 	public String toString() {
-		return "MomDTO [ms_id=" + ms_id + ", ms_file=" + ms_file + ", ms_certif=" + ms_certif + ", ms_cctv=" + ms_cctv
-				+ ", ms_location1=" + ms_location1 + ", ms_location2=" + ms_location2 + ", ms_location3=" + ms_location3
-				+ ", ms_intro=" + ms_intro + ", ms_exp=" + ms_exp + ", ms_pay=" + ms_pay + ", ms_point=" + ms_point
-				+ ", ms_count=" + ms_count + ", ms_can_do=" + ms_can_do + ", ms_can_age=" + ms_can_age
-				+ ", ms_ticket_start=" + ms_ticket_start + ", ms_ticket_end=" + ms_ticket_end + ", ms_can_date="
-				+ ms_can_date + "]";
+		return "MomDTO [ms_no=" + ms_no + ", ms_id=" + ms_id + ", ms_file=" + ms_file + ", ms_certif=" + ms_certif
+				+ ", ms_cctv=" + ms_cctv + ", ms_location1=" + ms_location1 + ", ms_location2=" + ms_location2
+				+ ", ms_location3=" + ms_location3 + ", ms_intro=" + ms_intro + ", ms_exp=" + ms_exp + ", ms_pay="
+				+ ms_pay + ", ms_point=" + ms_point + ", ms_count=" + ms_count + ", ms_can_do=" + ms_can_do
+				+ ", ms_can_age=" + ms_can_age + ", ms_ticket_start=" + ms_ticket_start + ", ms_ticket_end="
+				+ ms_ticket_end + ", ms_write_date=" + ms_write_date + "]";
 	}
+	
+	
+	
+	
+	
 	
 	 
 	

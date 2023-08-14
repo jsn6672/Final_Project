@@ -16,23 +16,25 @@
 				<div class="header-data-detail">
 					<div class="header-data1">
 						<div>
-							<span style="font-size: 14pt;">맘시터 대전공주님</span>
+							<span style="font-size: 14pt;">맘시터 ${momsitter.ms_id }</span>
 						</div>
 						<div>
 							<span style="font-size: 10pt;">31살,여</span>
 						</div>
 						<div>
-							<span style="font-size: 10pt;">cctv촬영 동의함</span>
+							<span style="font-size: 10pt;">cctv촬영 - ${momsitter.ms_cctv }</span>
 						</div>
 					</div>
 					<div class="header-data1">
-						<div>희망 시급:</div>
-						<div>000원</div>
-						<div>(협의가능)</div>
+						<div>희망 시급: ${momsitter.ms_pay }</div>
 					</div>
 					<div class="header-data1">
 						<div>활동 가능 지역:</div>
-						<div>대전광역시 유성구 00동</div>
+						<div class="header-location">
+							<div>${momsitter.ms_location1 }</div>
+							<div>${momsitter.ms_location2 }</div>
+							<div>${momsitter.ms_location3 }</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -40,22 +42,20 @@
 				<div>
 					<div class="body-title-detail">인증</div>
 					<div>
-						<div></div>
+						<div class="body-content-detail">${momsitter.ms_certif }</div>
 					</div>
 				</div>
 				<div>
 					<div class="body-title-detail">간단 자기소개</div>
-					<div></div>
+					<div class="body-content-detail">${momsitter.ms_intro }</div>
 				</div>
 				<div>
 					<div class="body-title-detail">관련 경험</div>
-					<div>
-						<textarea rows="8" cols="100%"></textarea>
-					</div>
+					<div class="body-content-detail">${momsitter.ms_exp }</div>
 				</div>
 				<div>
 					<div class="body-title-detail">선호하는 돌봄 유형</div>
-					<div>내용</div>
+					<div class="body-content-detail">${momsitter.ms_can_do }</div>
 				</div>
 				<div>
 					<div class="body-title-detail">활동 가능 시간</div>
@@ -102,12 +102,18 @@
 				</div>
 				<div>
 					<div class="body-title-detail">돌봄 가능 연령</div>
-					<div>내용</div>
+					<div class="body-content-detail">내용</div>
 				</div>
 				<div>
 					<div class="body-title-detail">리뷰</div>
-					<div>내용</div>
+					<div class="body-content-detail">내용</div>
 				</div>
+				<c:if test="${momsitter.ms_id eq sessionScope.userInfo.user_id }">
+				<div class="detail-btn">
+					<button>수정</button>
+					<button style="margin-left: 10px;">삭제</button>
+				</div>
+				</c:if>
 			</div>
 		</div>
 		<div class="container-side"></div>
