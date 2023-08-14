@@ -23,9 +23,9 @@ public class MomController {
 	
 	@RequestMapping(value = "/momsitter.go", method = RequestMethod.GET)
 	public String momsitter(HttpServletRequest req, MomDTO momDTO, Model m) {
-		req.setAttribute("contentPage", "mom/momsitter.jsp");
 		mDAO.logincheck(req);	
 		momDAO.getAll(req, momDTO, m);
+		req.setAttribute("contentPage", "mom/momsitter.jsp");
 
 		return "home";
 	}
@@ -39,11 +39,10 @@ public class MomController {
 	}
 	
 	@RequestMapping(value = "/momsitter.detail.go", method = RequestMethod.GET)
-	public String momsitterDetail(HttpServletRequest req) {
-		req.setAttribute("contentPage", "detail/sitter.jsp");
+	public String momsitterDetail(HttpServletRequest req, MomDTO momDTO, Model m) {
 		mDAO.logincheck(req);	
-	//	req.setAttribute("background_color", "#FCE4EC");
-		
+		momDAO.detail(req, momDTO, m);
+		req.setAttribute("contentPage", "detail/sitter.jsp");
 		
 		return "home";
 	}

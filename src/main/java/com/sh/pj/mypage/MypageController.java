@@ -27,6 +27,15 @@ public class MypageController {
 	@RequestMapping(value = "/mypage.go", method = RequestMethod.GET)
 	public String petsitter(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.getSession().setAttribute("checkMyPage", "2");
+		mDAO.logincheck(req);
+		req.setAttribute("mypageContentPage", "mypageHome.jsp");
+		return "home";
+	}
+	@RequestMapping(value = "/mypage.go.jason", method = RequestMethod.GET)
+	public String mypage(HttpServletRequest req) {
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.getSession().setAttribute("checkMyPage", "1");
 		mDAO.logincheck(req);
 		req.setAttribute("mypageContentPage", "mypageHome.jsp");
 		return "home";
@@ -76,8 +85,15 @@ public class MypageController {
 	public String mypageSitterRegPet(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		mDAO.logincheck(req);
-//		여기서부터는 jason이 집도한다는 마인드
-		req.setAttribute("mypageContentPage", "mypageSitterRegPet.jsp");
+		String checkMyPage = (String) req.getSession().getAttribute("checkMyPage");
+		if (checkMyPage.equals("1")) {
+//			여긴 제이슨이 만든 페이지 넣은 곳임다
+			req.setAttribute("mypageContentPage", "mypageSitterRegPet.jsp");
+		} else {
+//			여기는 수진이가 쓴 페이지 넣어놔줘.... 
+			req.setAttribute("mypageContentPage", "mypageSitterRegPet.jsp");			
+		}
+		
 		return "home";
 	}
 	
@@ -85,7 +101,6 @@ public class MypageController {
 	public String mypageSitterRegPetDo(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		mDAO.logincheck(req);
-//		여기서부터는 jason이 집도한다는 마인드
 		req.setAttribute("mypageContentPage", "mypageSitterRegPet.jsp");
 		return "home";
 	}

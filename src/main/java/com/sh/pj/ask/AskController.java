@@ -82,7 +82,11 @@ public class AskController {
 		MemberDTO m = (MemberDTO) req.getSession().getAttribute("userInfo");
 		mDAO.logincheck(req);
 		aDAO.insertask(aDTO,req);
-		return "redirect:mainask.go";
+		req.getSession().removeAttribute("asksearch");
+	    aDAO.getMsg(1, req);
+		req.setAttribute("contentPage", "ask/mainask.jsp");
+		mDAO.logincheck(req);
+		return "home";
 	}
 
 
@@ -91,7 +95,10 @@ public class AskController {
 	public String delete(AskDTO aDTO,HttpServletRequest req) {
 		mDAO.logincheck(req);
 		aDAO.deleteask(aDTO);
-		return "redirect:mainask.go";
+		req.getSession().removeAttribute("asksearch");
+	    aDAO.getMsg(1, req);
+		req.setAttribute("contentPage", "ask/mainask.jsp");
+		return "home";
 	}
 	
 	@RequestMapping(value = "/update.go", method = RequestMethod.GET)
@@ -102,12 +109,35 @@ public class AskController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/askanswer.go", method = RequestMethod.GET)
+	public String askanswergo(HttpServletRequest req, Model model,AskDTO aDTO) {
+		req.setAttribute("contentPage", "ask/askanswer.jsp");
+		mDAO.logincheck(req);
+		aDAO.getAskNo(model,aDTO);
+		
+		return "home";
+	}
+	
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String upadte(AskDTO aDTO,HttpServletRequest req) {
 		mDAO.logincheck(req);
 		aDAO.updateask(aDTO);
-		return "redirect:mainask.go";
+		req.getSession().removeAttribute("asksearch");
+	    aDAO.getMsg(1, req);
+		req.setAttribute("contentPage", "ask/mainask.jsp");
+		return "home";
 	}
+	
+	@RequestMapping(value = "/askanswer.do", method = RequestMethod.GET)
+	public String askanswerdo(AskDTO aDTO,HttpServletRequest req) {
+		mDAO.logincheck(req);
+		aDAO.askanswerdo(aDTO);
+		req.getSession().removeAttribute("asksearch");
+	    aDAO.getMsg(1, req);
+		req.setAttribute("contentPage", "ask/mainask.jsp");
+		return "home";
+	}
+
 	
 	@RequestMapping(value = "/searchask", method = RequestMethod.GET)
 	public String searchask(HttpServletRequest req, Model model, AskDTO aDTO) {
@@ -135,7 +165,16 @@ public class AskController {
 //	    req.getSession().setAttribute("asksearch", askSearch);
 	    aDAO.getMsg(p, req);
 	    mDAO.logincheck(req);
-        req.setAttribute("contentPage", "ask/mainask.jsp");
+	    
+	    
+	    if (req.getParameter("category").equals("1")) {
+	    	req.setAttribute("contentPage", "ask/mainask.jsp");			
+		} else if (req.getParameter("category").equals("2")) {
+			req.setAttribute("contentPage", "ask/manyask.jsp");						
+		} else {
+			req.setAttribute("contentPage", "ask/qanda.jsp");									
+		}
+	    
         return "home";
     }
 	

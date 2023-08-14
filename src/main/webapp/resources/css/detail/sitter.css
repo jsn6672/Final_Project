@@ -4,13 +4,17 @@
 	display: flex;
 	width: 100%;
 	height: 100%;
+	background-color: #FCE4EC;
+	padding-bottom: 20px;
+	padding-top: 20px;
 }
 
 .content-detail{
+	width: 100%;
 }
 
 .container-side{
-	width: 40%;
+	width: 60%;
 }
 
 .header-detail{
@@ -30,14 +34,27 @@
 	display: flex;
 }
 
+.header-location{
+	margin-left: 10px;
+}
+
 .body-title-detail{
 	padding-top: 10px;
 	font-weight: 600;
 	font-size: 16pt;
 }
 
+.body-content-detail{
+	width: 100%;
+	border: 1px solid black;
+	height: 200px;
+}
+
 /* 활동 가능 시간 */
 .body-time{
+	border: 1px solid black;
+	padding-bottom: 20px;
+	padding-top: 20px;
 }
 
 .body-time-title{
@@ -65,5 +82,10 @@
 	 display: flex;
   justify-content:center;
   align-items:center;
+}
+
+.detail-btn{
+	display: flex;
+	justify-content: flex-end;
 }
 

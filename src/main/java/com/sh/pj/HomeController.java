@@ -40,7 +40,9 @@ public class HomeController {
 		
 		
 		if (firstReq) {
-			aDAO.calcAllMsgCount();
+			aDAO.calcAllMsgCountmain();
+			aDAO.calcAllMsgCountmany();
+			aDAO.calcAllMsgCountqanda();
 			firstReq=false;
 		}
 		

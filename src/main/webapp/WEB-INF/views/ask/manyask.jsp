@@ -68,14 +68,15 @@
 						<div>
 							<input class="QnA-search" type="text" name="a_search"
 								value="${param.a_search}" placeholder="검색어를 입력해주세요."> <input
-								type="hidden" name="p" value="1">
+								type="hidden" name="p" value="1"> <input name="category"
+								value="${param.category }" hidden="hidden">
 							<button class="QnA-searchbutton" type="submit">검색</button>
 						</div>
 					</form>
 					<div>
 						<c:choose>
 							<c:when
-								test="${param.category eq '2' ||sessionScope.userInfo.user_id eq 'admin'}">
+								test="${param.category eq '3'||sessionScope.userInfo.user_id eq 'admin'}">
 								<button id="writeButton" class="QnA-searchbutton"
 									onclick="location.href='regask.go'">작성</button>
 							</c:when>
@@ -87,54 +88,23 @@
 					</div>
 				</div>
 
-				<div class="QnA-body-list">
-					<div class="QnA-list-titles">
-						<div class="QnA-list-title1">유형</div>
-						<div class="QnA-list-title2" style="background-color: #E8F5E9">제목</div>
-						<div class="QnA-list-title3">아이디</div>
-						<div class="QnA-list-title4">날짜</div>
-						<div class="QnA-list-title3">공개여부</div>
-						<div class="QnA-list-title5">답변여부</div>
+					<c:if test="${param.category == 2 }">
+				<div id="Accordion_wrap">
+				<c:forEach items="${s }" var="s">
+					<div class="que">
+						<span>${s.inquiry_title }</span>
+						<!--
+						 <div class="arrow-wrap">
+							<span class="arrow-top">↑</span> <span class="arrow-bottom">↓</span>
+						</div> 
+						-->
 					</div>
-				</div>
-				<div class="QnA-body-list-FAQ"></div>
-				<c:forEach items="${s}" var="s">
-					<c:if test="${s.inquiry_category eq '2'}">
-						<div class="QnA-lists">
-						<c:if test="${s.inquiry_category eq '2'}">
-							<div class="QnA-list1">자주묻는질문</div>
-							</c:if>
-							<div class="QnA-list2"
-								onclick="location.href='detail.go?inquiry_no=${s.inquiry_no}'">
-								<span class="leftToRight">${s.inquiry_title }</span>
-							</div>
-							<div class="QnA-list2"></div>
-							<div class="QnA-list3">${s.inquiry_id}</div>
-							<div class="QnA-list4">
-								<fmt:formatDate value="${s.inquiry_question_day }" />
-							</div>
-							<div class="QnA-list3">${s.inquiry_encoding }</div>
-							<c:choose>
-								<c:when test="${s.inquiry_encoding eq '미답변'}">
-									<div class="QnA-list5">미답변</div>
-								</c:when>
-								<c:when test="${s.inquiry_encoding eq '답변완료'}">
-									<div class="QnA-list5">답변완료</div>
-								</c:when>
-							</c:choose>
-						</div>
-					</c:if>
+					<div class="anw">
+						<span onclick="location.href='detail.go?inquiry_no=${s.inquiry_no}'">${s.inquiry_body }</span>
+					</div>
 				</c:forEach>
-				<%-- 					<div id="Accordion_wrap">
-						<c:forEach items="${s }" var="s">
-							<div class="que">
-								<span>${s.inquiry_title }</span>
-							</div>
-							<div class="anw">
-								<span>${s.inquiry_answer }</span>
-							</div>
-						</c:forEach>
-					</div> --%>
+				</div>
+				</c:if>
 				<div class="row mt-5">
 					<div class="col text-center">
 						<div class="text-start py-4"
@@ -142,7 +112,7 @@
 							<div class="custom-pagination">
 								<c:if test="${curPage != 1 }">
 									<a
-										href="page.change?p=${curPage - 1}&a_search=${asksearch.a_search}"
+										href="page.change?p=${curPage - 1}&a_search=${asksearch.a_search}&category=${param.category}"
 										class="prev">Previous</a>
 								</c:if>
 								<c:forEach begin="${startPage}" end="${endPage}"
@@ -150,18 +120,18 @@
 									<c:choose>
 										<c:when test="${curPage == loop.index}">
 											<a
-												href="page.change?p=${loop.index}&a_search=${asksearch.a_search}"
+												href="page.change?p=${loop.index}&a_search=${asksearch.a_search}&category=${param.category}"
 												class="active">${loop.index}</a>
 										</c:when>
 										<c:otherwise>
 											<a
-												href="page.change?p=${loop.index}&a_search=${asksearch.a_search}">${loop.index}</a>
+												href="page.change?p=${loop.index}&a_search=${asksearch.a_search}&category=${param.category}">${loop.index}</a>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 								<c:if test="${curPage != pageCount }">
 									<a
-										href="page.change?p=${curPage + 1}&a_search=${asksearch.a_search}"
+										href="page.change?p=${curPage + 1}&a_search=${asksearch.a_search}&category=${param.category}"
 										class="prev">Next</a>
 								</c:if>
 							</div>

@@ -21,14 +21,32 @@ public class AskDAO {
 	@Autowired
 	private SiteOption so; // 한페이지에 몇개씩 보여줄지.
 
-	private int allMsgCount; // 전체개수
+	private int allMsgCountMain; // 공지전체개수
+	private int allMsgCountMany; // 자주묻는질문전체개수
+	private int allMsgCountQandA; // 문의전체개수
 
-	public int getAllMsgCount() {
-		return allMsgCount;
+	public int getAllMsgCountMain() {
+		return allMsgCountMain;
 	}
 
-	public void setAllMsgCount(int allMsgCount) {
-		this.allMsgCount = allMsgCount;
+	public void setAllMsgCountMain(int allMsgCountMain) {
+		this.allMsgCountMain = allMsgCountMain;
+	}
+
+	public int getAllMsgCountMany() {
+		return allMsgCountMany;
+	}
+
+	public void setAllMsgCountMany(int allMsgCountMany) {
+		this.allMsgCountMany = allMsgCountMany;
+	}
+
+	public int getAllMsgCountQandA() {
+		return allMsgCountQandA;
+	}
+
+	public void setAllMsgCountQandA(int allMsgCountQandA) {
+		this.allMsgCountQandA = allMsgCountQandA;
 	}
 
 	public void getAllAsk(Model model) {
@@ -49,8 +67,13 @@ public class AskDAO {
 //		}
 
 		aDTO.setInquiry_encoding("미답변");
+		aDTO.setInquiry_encodingbody("");
+		
+		System.out.println(aDTO);
 
-		ss.getMapper(AskMapper.class).insertask(aDTO);
+		if(ss.getMapper(AskMapper.class).insertask(aDTO)==1) {
+			System.out.println("등록 완료");
+		};
 	}
 
 	public void getAskNo(Model model, AskDTO aDTO) {
@@ -72,9 +95,19 @@ public class AskDAO {
 
 	}
 
-	public void calcAllMsgCount() {
-		AskSelector sSel = new AskSelector("", null, null);
-		allMsgCount = ss.getMapper(AskMapper.class).getMsgCount(sSel);
+	public void calcAllMsgCountmain() {
+		AskSelector sSel = new AskSelector("", null, null, "1");
+		allMsgCountMain = ss.getMapper(AskMapper.class).getMsgCount(sSel);
+	}
+
+	public void calcAllMsgCountmany() {
+		AskSelector sSel = new AskSelector("", null, null, "2");
+		allMsgCountMany = ss.getMapper(AskMapper.class).getMsgCount(sSel);
+	}
+
+	public void calcAllMsgCountqanda() {
+		AskSelector sSel = new AskSelector("", null, null, "3");
+		allMsgCountQandA = ss.getMapper(AskMapper.class).getMsgCount(sSel);
 	}
 
 	public void getMsg(int pageNo, HttpServletRequest req) {
@@ -84,19 +117,48 @@ public class AskDAO {
 
 		AskSelector askSearch = (AskSelector) req.getSession().getAttribute("asksearch");
 		int msgCount = 1;
+		System.out.println("세션 asksearch = " + askSearch);
 
 		if (askSearch != null) {
 			askSearch.setA_start(new BigDecimal(start));
 			askSearch.setA_end(new BigDecimal(end));
+			askSearch.setCategory(req.getParameter("category"));
 			msgCount = ss.getMapper(AskMapper.class).getMsgCount(askSearch);
 		} else {
 			// 검색 조건이 없는 경우에 전체 데이터 수를 가져오도록 변경
-			askSearch = new AskSelector("", new BigDecimal(start), new BigDecimal(end)); // 이전에 구현한 메서드로 전체 데이터 수를 계산
-			msgCount = allMsgCount;
+			String category = req.getParameter("category");
+			askSearch = new AskSelector("", new BigDecimal(start), new BigDecimal(end), category);
+			
+			
+			try {
+				msgCount = allMsgCountQandA;
+				
+				if (category.equals("1")) {
+					msgCount = allMsgCountMain;				
+				} else if (category.equals("2")) {
+					msgCount = allMsgCountMany;								
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			
+			System.out.println("총 갯수 = " + msgCount);
+			
+			
 		}
 
-		List<AskDTO> resultList = ss.getMapper(AskMapper.class).getMsg(askSearch);
-		req.setAttribute("s", resultList);
+//		aDTO.setInquiry_category(req.getParameter("inquiry_category"));
+		System.out.println("asksearch = " + askSearch);
+		try {
+			List<AskDTO> resultList = ss.getMapper(AskMapper.class).getMsg(askSearch);
+			req.setAttribute("s", resultList);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("여기까지 나오나 쳌");
 
 		int pageCount = (int) Math.ceil(msgCount / (double) count);
 		req.setAttribute("pageCount", pageCount);
@@ -107,6 +169,10 @@ public class AskDAO {
 		int endPage = Math.min(pageCount, startPage + numPagesToShow - 1);
 		req.setAttribute("startPage", startPage);
 		req.setAttribute("endPage", endPage);
+	}
+
+	public void askanswerdo(AskDTO aDTO) {
+		ss.getMapper(AskMapper.class).askanswerdo(aDTO);
 	}
 
 }
