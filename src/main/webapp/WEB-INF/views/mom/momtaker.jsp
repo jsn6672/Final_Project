@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,7 @@
 
 <!-- Bootstrap core CSS -->
 <link href="resources/css/rbootstrap.min.css" rel="stylesheet">
+<link href="resources/css/mom/mom.css" rel="stylesheet">
 
 <!-- Additional CSS Files -->
 <link rel="stylesheet" href="resources/css/fontawesome.css">
@@ -99,135 +101,38 @@ https://templatemo.com/tm-580-woox-travel
 										style="display: flex; justify-content: center">
 										<input id="searchBar" placeholder="검색을 해주세요">
 									</h3>
-									<div class="d-md-flex post-entry-2 half">
-										<div>
-											<div class="post-meta">
-												<span class="date">Culture</span> <span class="mx-1">&bullet;</span>
-												<span>Jul 5th '22</span>
+									<c:forEach var="m" items="${momsitters }">
+										<div class="d-md-flex post-entry-2 half">
+											<div class="mom-select-img">
+												<div>사진</div>
 											</div>
-											<h3>
-												<a href="single-post.html">What is the son of Football
-													Coach John Gruden, Deuce Gruden doing Now?</a>
-											</h3>
-											<p>Lorem ipsum dolor sit amet consectetur adipisicing
-												elit. Distinctio placeat exercitationem magni voluptates
-												dolore. Tenetur fugiat voluptates quas, nobis error deserunt
-												aliquam temporibus sapiente, laudantium dolorum itaque
-												libero eos deleniti?</p>
-											<div class="d-flex align-items-center author">
-												<div class="photo">
-													<img src="assets/img/person-2.jpg" alt="" class="img-fluid">
+											<div>
+												<div class="post-meta">
+													<span class="date">00전 작성 </span> 
+													<span>${m.ms_write_date }</span>
 												</div>
-												<div class="name">
-													<h3 class="m-0 p-0">Wade Warren</h3>
+												<div>
+													<a href="momtaker.detail.go?ms_no=${m.ms_no }">맘시터: ${m.ms_id }(이름)</a>
+													<span>나이</span>
+													<span>성별</span>
+													<span>cctv촬영 - ${m.ms_cctv }</span>
+												</div>
+												<div>시급: ${m.ms_pay }</div>
+												<div class="mom-select-locations">
+													<div>
+														<div>활동 가능 지역:</div>
+													</div>
+													<div class="mom-select-location">
+														<div>${m.ms_location1 }</div>
+														<div>${m.ms_location2 }</div>
+														<div>${m.ms_location3 }</div>
+													</div>
 												</div>
 											</div>
 										</div>
-									</div>
+									</c:forEach>
 
-									<div class="d-md-flex post-entry-2 half">
-										<div>
-											<div class="post-meta">
-												<span class="date">Culture</span> <span class="mx-1">&bullet;</span>
-												<span>Jul 5th '22</span>
-											</div>
-											<h3>
-												<a href="single-post.html">What is the son of Football
-													Coach John Gruden, Deuce Gruden doing Now?</a>
-											</h3>
-											<p>Lorem ipsum dolor sit amet consectetur adipisicing
-												elit. Distinctio placeat exercitationem magni voluptates
-												dolore. Tenetur fugiat voluptates quas, nobis error deserunt
-												aliquam temporibus sapiente, laudantium dolorum itaque
-												libero eos deleniti?</p>
-											<div class="d-flex align-items-center author">
-												<div class="photo">
-													<img src="assets/img/person-2.jpg" alt="" class="img-fluid">
-												</div>
-												<div class="name">
-													<h3 class="m-0 p-0">Wade Warren</h3>
-												</div>
-											</div>
-										</div>
-									</div>
 
-									<div class="d-md-flex post-entry-2 half">
-										<div>
-											<div class="post-meta">
-												<span class="date">Culture</span> <span class="mx-1">&bullet;</span>
-												<span>Jul 5th '22</span>
-											</div>
-											<h3>
-												<a href="single-post.html">What is the son of Football
-													Coach John Gruden, Deuce Gruden doing Now?</a>
-											</h3>
-											<p>Lorem ipsum dolor sit amet consectetur adipisicing
-												elit. Distinctio placeat exercitationem magni voluptates
-												dolore. Tenetur fugiat voluptates quas, nobis error deserunt
-												aliquam temporibus sapiente, laudantium dolorum itaque
-												libero eos deleniti?</p>
-											<div class="d-flex align-items-center author">
-												<div class="photo">
-													<img src="assets/img/person-2.jpg" alt="" class="img-fluid">
-												</div>
-												<div class="name">
-													<h3 class="m-0 p-0">Wade Warren</h3>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<div class="d-md-flex post-entry-2 half">
-										<div>
-											<div class="post-meta">
-												<span class="date">Culture</span> <span class="mx-1">&bullet;</span>
-												<span>Jul 5th '22</span>
-											</div>
-											<h3>
-												<a href="single-post.html">What is the son of Football
-													Coach John Gruden, Deuce Gruden doing Now?</a>
-											</h3>
-											<p>Lorem ipsum dolor sit amet consectetur adipisicing
-												elit. Distinctio placeat exercitationem magni voluptates
-												dolore. Tenetur fugiat voluptates quas, nobis error deserunt
-												aliquam temporibus sapiente, laudantium dolorum itaque
-												libero eos deleniti?</p>
-											<div class="d-flex align-items-center author">
-												<div class="photo">
-													<img src="assets/img/person-2.jpg" alt="" class="img-fluid">
-												</div>
-												<div class="name">
-													<h3 class="m-0 p-0">Wade Warren</h3>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<div class="d-md-flex post-entry-2 half">
-										<div>
-											<div class="post-meta">
-												<span class="date">Culture</span> <span class="mx-1">&bullet;</span>
-												<span>Jul 5th '22</span>
-											</div>
-											<h3>
-												<a href="single-post.html">What is the son of Football
-													Coach John Gruden, Deuce Gruden doing Now?</a>
-											</h3>
-											<p>Lorem ipsum dolor sit amet consectetur adipisicing
-												elit. Distinctio placeat exercitationem magni voluptates
-												dolore. Tenetur fugiat voluptates quas, nobis error deserunt
-												aliquam temporibus sapiente, laudantium dolorum itaque
-												libero eos deleniti?</p>
-											<div class="d-flex align-items-center author">
-												<div class="photo">
-													<img src="assets/img/person-2.jpg" alt="" class="img-fluid">
-												</div>
-												<div class="name">
-													<h3 class="m-0 p-0">Wade Warren</h3>
-												</div>
-											</div>
-										</div>
-									</div>
 
 									<div class="text-start py-4"
 										style="display: flex; justify-content: center;">

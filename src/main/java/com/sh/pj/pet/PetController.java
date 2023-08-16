@@ -5,11 +5,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MembertDAO;
+import com.sh.pj.mom.MomDTO;
 
 @Controller
 public class PetController {
@@ -23,10 +25,10 @@ public class PetController {
 	
 	
 	@RequestMapping(value = "/petsitter.go", method = RequestMethod.GET)
-	public String petsitter(HttpServletRequest req) {
+	public String petsitter(HttpServletRequest req,PetDTO petDTO,Model m) {
 		req.setAttribute("contentPage", "pet/petsitter.jsp");
 		mDAO.logincheck(req);	
-
+		pDAO.getAll(req,petDTO,m);
 		return "home";
 	}
 	
@@ -37,6 +39,17 @@ public class PetController {
 
 		return "home";
 	}
+	
+	@RequestMapping(value = "/petsitter.detail.go", method = RequestMethod.GET)
+	public String momsitterDetail(HttpServletRequest req, PetDTO petDTO, Model m) {
+		mDAO.logincheck(req);	
+		pDAO.detail(req, petDTO, m);
+		req.setAttribute("contentPage", "detail/petsitter.jsp");
+		
+		return "home";
+	}
+	
+	
 	
 	@RequestMapping(value = "/pettaker.be", method = RequestMethod.POST)
 	public String pettaker_be(HttpServletRequest req, PetTakerDTO ptDTO, DolbomDTO dDTO) {
