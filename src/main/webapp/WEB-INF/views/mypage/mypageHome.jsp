@@ -24,11 +24,11 @@
 							<img id="mpPPicture" alt="" src="resources/img/${sessionScope.userInfo.user_pic  } ">
 					</div>
 					<div class="mpPService">
+							 <span>현재 모두의 시터를 이렇게 이용하고 계세요!</span>
+								<br>
 						<div class="mpPService-state">
-							<!-- <span>현재 모두의 시터를 이렇게 이용하고 계세요!</span>
-								<br> -->
 							<div class="mpPSitter">
-								모시 사용자 <br>
+								<!-- 모시 사용자 <br> -->
 								<div class="mpPSitter-part">
 									<div class="mpPSitter-part-name">맘시터</div>
 									<div class="mpPSitter-part-state">이용상황</div>
@@ -42,8 +42,9 @@
 									<div class="mpPSitter-part-state">이용상황</div>
 								</div>
 							</div>
+							<!-- <div class="mpPSitterSpace"></div> -->
 							<div class="mpPSitter">
-								시터사용자 <br>
+								<!-- 시터사용자 <br> -->
 								<div class="mpPSitter-part">
 									<div class="mpPSitter-part-name">맘시터</div>
 									<div class="mpPSitter-part-state">이용상황</div>
