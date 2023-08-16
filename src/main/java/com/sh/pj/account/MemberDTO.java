@@ -20,6 +20,12 @@ public class MemberDTO {
 	private String pt_id;
 	private String cs_id;
 	private String ct_id;
+	private String phone_first;
+	private String phone_second;
+	private String phone_third;
+	private String m_addr1;
+	private String m_addr2;
+	private String m_addr3;
 
 	@Override
 	public String toString() {
@@ -27,7 +33,57 @@ public class MemberDTO {
 				+ user_gender + ", user_phone=" + user_phone + ", user_email_authkey=" + user_email_authkey
 				+ ", user_email_auth=" + user_email_auth + ", user_email=" + user_email + ", user_location="
 				+ user_location + ", user_pic=" + user_pic + ", pic=" + pic + ", ms_id=" + ms_id + ", mt_id=" + mt_id
-				+ ", ps_id=" + ps_id + ", pt_id=" + pt_id + ", cs_id=" + cs_id + ", ct_id=" + ct_id + "]";
+				+ ", ps_id=" + ps_id + ", pt_id=" + pt_id + ", cs_id=" + cs_id + ", ct_id=" + ct_id + ", phone_first="
+				+ phone_first + ", phone_second=" + phone_second + ", phone_third=" + phone_third + ", m_addr1="
+				+ m_addr1 + ", m_addr2=" + m_addr2 + ", m_addr3=" + m_addr3 + "]";
+	}
+
+	public String getPhone_first() {
+		return phone_first;
+	}
+
+	public void setPhone_first(String phone_first) {
+		this.phone_first = phone_first;
+	}
+
+	public String getPhone_second() {
+		return phone_second;
+	}
+
+	public void setPhone_second(String phone_second) {
+		this.phone_second = phone_second;
+	}
+
+	public String getPhone_third() {
+		return phone_third;
+	}
+
+	public void setPhone_third(String phone_third) {
+		this.phone_third = phone_third;
+	}
+
+	public String getM_addr1() {
+		return m_addr1;
+	}
+
+	public void setM_addr1(String m_addr1) {
+		this.m_addr1 = m_addr1;
+	}
+
+	public String getM_addr2() {
+		return m_addr2;
+	}
+
+	public void setM_addr2(String m_addr2) {
+		this.m_addr2 = m_addr2;
+	}
+
+	public String getM_addr3() {
+		return m_addr3;
+	}
+
+	public void setM_addr3(String m_addr3) {
+		this.m_addr3 = m_addr3;
 	}
 
 	public String getUser_phone() {

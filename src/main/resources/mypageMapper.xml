@@ -16,7 +16,7 @@
 
 	 <update id="updateProfile" parameterType="com.sh.pj.account.MemberDTO">
         update jsn_user_tbl
-        set user_location = #{user_location }, user_phone = #{user_phone}
+        set user_location = #{user_location }, user_phone = #{user_phone}, user_pic = #{user_pic}
         where user_id = #{user_id}
     </update>
     
