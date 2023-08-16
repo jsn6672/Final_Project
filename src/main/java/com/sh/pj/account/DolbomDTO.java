@@ -1,5 +1,6 @@
 package com.sh.pj.account;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class DolbomDTO {
@@ -9,6 +10,7 @@ public class DolbomDTO {
 	private int d_category;
 	private int d_year;
 	private int d_month;
+	private String d_check;
 	private String d_location;
 	private String d_gender;
 	private String d_personality;
@@ -17,6 +19,7 @@ public class DolbomDTO {
 	private String d_act;
 	private String d_day;
 	private String d_hour;
+	private int[] dolbom_act;
 
 	private String monday;
 	private String tuesday;
@@ -51,18 +54,34 @@ public class DolbomDTO {
 	@Override
 	public String toString() {
 		return "DolbomDTO [d_no=" + d_no + ", d_id=" + d_id + ", d_name=" + d_name + ", d_category=" + d_category
-				+ ", d_year=" + d_year + ", d_month=" + d_month + ", d_location=" + d_location + ", d_gender="
-				+ d_gender + ", d_personality=" + d_personality + ", d_pay=" + d_pay + ", d_cctv=" + d_cctv + ", d_act="
-				+ d_act + ", d_day=" + d_day + ", d_hour=" + d_hour + ", monday=" + monday + ", tuesday=" + tuesday
-				+ ", wednesday=" + wednesday + ", thursday=" + thursday + ", friday=" + friday + ", saturday="
-				+ saturday + ", sunday=" + sunday + ", monday_start=" + monday_start + ", tuesday_start="
-				+ tuesday_start + ", wednesday_start=" + wednesday_start + ", thursday_start=" + thursday_start
-				+ ", friday_start=" + friday_start + ", saturday_start=" + saturday_start + ", sunday_start="
-				+ sunday_start + ", monday_end=" + monday_end + ", tuesday_end=" + tuesday_end + ", wednesday_end="
-				+ wednesday_end + ", thursday_end=" + thursday_end + ", friday_end=" + friday_end + ", saturday_end="
-				+ saturday_end + ", sunday_end=" + sunday_end + ", d_sitterage=" + d_sitterage + ", d_need=" + d_need
-				+ ", d_title=" + d_title + ", d_term=" + d_term + ", d_startdate=" + d_startdate + ", d_writedate="
-				+ d_writedate + "]";
+				+ ", d_year=" + d_year + ", d_month=" + d_month + ", d_check=" + d_check + ", d_location=" + d_location
+				+ ", d_gender=" + d_gender + ", d_personality=" + d_personality + ", d_pay=" + d_pay + ", d_cctv="
+				+ d_cctv + ", d_act=" + d_act + ", d_day=" + d_day + ", d_hour=" + d_hour + ", dolbom_act="
+				+ Arrays.toString(dolbom_act) + ", monday=" + monday + ", tuesday=" + tuesday + ", wednesday="
+				+ wednesday + ", thursday=" + thursday + ", friday=" + friday + ", saturday=" + saturday + ", sunday="
+				+ sunday + ", monday_start=" + monday_start + ", tuesday_start=" + tuesday_start + ", wednesday_start="
+				+ wednesday_start + ", thursday_start=" + thursday_start + ", friday_start=" + friday_start
+				+ ", saturday_start=" + saturday_start + ", sunday_start=" + sunday_start + ", monday_end=" + monday_end
+				+ ", tuesday_end=" + tuesday_end + ", wednesday_end=" + wednesday_end + ", thursday_end=" + thursday_end
+				+ ", friday_end=" + friday_end + ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end
+				+ ", d_sitterage=" + d_sitterage + ", d_need=" + d_need + ", d_title=" + d_title + ", d_term=" + d_term
+				+ ", d_startdate=" + d_startdate + ", d_writedate=" + d_writedate + "]";
+	}
+
+	public int[] getDolbom_act() {
+		return dolbom_act;
+	}
+
+	public void setDolbom_act(int[] dolbom_act) {
+		this.dolbom_act = dolbom_act;
+	}
+
+	public String getD_check() {
+		return d_check;
+	}
+
+	public void setD_check(String d_check) {
+		this.d_check = d_check;
 	}
 
 	public int getD_no() {
