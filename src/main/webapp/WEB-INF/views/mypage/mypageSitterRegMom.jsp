@@ -144,7 +144,7 @@ body {
 </head>
 <body>
 
-	<form action="pettaker.be" method="post" enctype="multipart/form-data">
+	<form action="momtaker.be" method="post" enctype="multipart/form-data">
 
 		<!-- 전체 컨테이너 -->
 		<div class="mpS-pet">
@@ -163,10 +163,10 @@ body {
 
 				<!-- 정보입력 -->
 				<div class="mpS-pet-inform2">
-					반려동물의 정보를 한 마리만 입력해 주세요! <br> 만약 적으셔야 하는 반려동물이 여러 마리라면 한마리 먼저
-					입력해주시고 나머지 반려동물들은 마이페이지에서 등록해주세요
+					아이의 정보를 한 마리만 입력해 주세요! <br> 만약 적으셔야 하는 아이가 여러 명이라면 한명 먼저
+					입력해주시고 나머지 아이들은 마이페이지에서 다시 등록해주세요
 				</div>
-				<div>반려동물의 이름을 입력해주세요</div>
+				<div>아이의 이름을 입력해주세요</div>
 				<div>
 					<input placeholder="이름을 입력해주세요" name="d_name">
 				</div>
@@ -179,8 +179,7 @@ body {
 				</div>
 				<div class="mpS-pet-gender">
 					<input type="radio" name="d_gender" value="male" checked="checked">남아
-					<input type="radio" name="d_gender" value="female">여아 <input
-						type="radio" name="d_gender" value="neut">중성화 완료
+					<input type="radio" name="d_gender" value="female">여아 
 				</div>
 
 				<div>
@@ -218,13 +217,13 @@ body {
 					정기적 계약을 원해요 <input type="radio" name="d_term" value="2">
 					단발성 계약을 원해요
 				</div>
-				<div>반려동물의 성격은 다음과 같아요</div>
+				<div>아이의 성격은 다음과 같아요</div>
 				<div>
 					<textarea rows="10" cols="50" name="d_personality"
-						placeholder="성격을 간단히 입력해주세요(ex)사나움, 온순함, 사람을 무서워함, 사람을 너무 좋아함 등등)"></textarea>
+						placeholder="성격을 간단히 입력해주세요(ex)낯을 가려요, 밥투정이 심해요, 잠 잘때 잘 안깨요)"></textarea>
 				</div>
 
-				<div class="mpS-pet-inform1">반려동물에게 이런 활동이 필요해요!</div>
+				<div class="mpS-pet-inform1">아이에게 이런 활동이 필요해요!</div>
 				<div class="mpS-pet-act">
 					<div class="mpS-pet-act-bottom">
 						<div class="mpS-pet-act-detail">
