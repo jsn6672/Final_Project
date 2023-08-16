@@ -15,14 +15,14 @@
 		<!-- 내용 부분 컨테이너 -->
 		<div class="mpPDetailContainer">
 			<div class="mpPWelcomeSpace"><br></div>
-			<div class="mpPWelcome">${sessionScope.userInfo.user_name }님,환영합니다!</div>
+			<div class="mpPWelcome">${sessionScope.userInfo.user_name }님, 환영합니다!</div>
 			<!-- 프로필 부분 컨테이너 -->
 			<div class="mpPProfile">
 				<!-- 사진 및 사용 중인 서비스 -->
 				<div class="mpPPicAndServ">
 					<div class="mpPPicture">
 						<img id="mpPPicture" alt=""
-							src="resources/img/${sessionScope.userInfo.user_pic  } ">
+							src="resources/img/${sessionScope.userInfo.user_pic }">
 					</div>
 					<div class="mpPService">
 						<span>현재 모두의 시터를 이렇게 이용하고 계세요!</span>
@@ -31,7 +31,7 @@
 							<div class="mpPSitter">
 								<!-- 모시 사용자 <br> -->
 								<div class="mpPSitter-part">
-									<div class="mpPSitter-part-name">맘시터</div>
+									<div class="mpPSitter-part-name">맘시터&nbsp</div>
 									<div class="mpPSitter-part-state">이용상황</div>
 								</div>
 								<div class="mpPSitter-part">
@@ -39,10 +39,11 @@
 									<div class="mpPSitter-part-state">이용상황</div>
 								</div>
 								<div class="mpPSitter-part">
-									<div class="mpPSitter-part-name">펫시터</div>
+									<div class="mpPSitter-part-name">펫시터&nbsp</div>
 									<div class="mpPSitter-part-state">이용상황</div>
 								</div>
 							</div>
+							<div class="mpPSitterSpace"></div>
 							<div class="mpPSitter">
 								<!-- 시터사용자 <br> -->
 								<div class="mpPSitter-part">
@@ -63,7 +64,7 @@
 					</div>
 				</div>
 				<!-- 정보 -->
-				<div class="mpP-info">
+				<div class="mpP-info-update">
 					<!-- <div class="mpPPWUpdate">
 						<div class="mpPPW">
 							비밀번호 <br> <input class="mpPPWInput"
