@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MembertDAO;
-import com.sh.pj.mom.MomDTO;
 
 @Controller
 public class PetController {
@@ -41,7 +40,7 @@ public class PetController {
 	}
 	
 	@RequestMapping(value = "/petsitter.detail.go", method = RequestMethod.GET)
-	public String momsitterDetail(HttpServletRequest req, PetDTO petDTO, Model m) {
+	public String petsitterDetail(HttpServletRequest req, PetDTO petDTO, Model m) {
 		mDAO.logincheck(req);	
 		pDAO.detail(req, petDTO, m);
 		req.setAttribute("contentPage", "detail/petsitter.jsp");
