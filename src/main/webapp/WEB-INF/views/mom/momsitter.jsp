@@ -108,8 +108,7 @@ https://templatemo.com/tm-580-woox-travel
 											</div>
 											<div>
 												<div class="post-meta">
-													<span class="date">00전 작성 </span> 
-													<span>${m.ms_write_date }</span>
+													<span class="date" id="write-date-placeholder">${m.ms_write_date }</span>
 												</div>
 												<div>
 													<a href="momsitter.detail.go?ms_no=${m.ms_no }">맘시터: ${m.ms_id }(이름)</a>
@@ -426,7 +425,8 @@ https://templatemo.com/tm-580-woox-travel
 	<script src="resources/js/tabs.js"></script>
 	<script src="resources/js/popup.js"></script>
 	<script src="resources/js/custom.js"></script>
-
+	<script src="resources/js/sitter.js"></script>
+	
 	<script>
 		function bannerSwitcher() {
 			next = $('.sec-1-input').filter(':checked').next('.sec-1-input');
