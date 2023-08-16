@@ -75,24 +75,30 @@
 
 /* 마이페이지 홈화면 */
 .mpPAddr-detail {
-	font-size: 18pt;
+	font-size: 1rem;
+	font-weight: bold;
+	margin-top: 3rem;
+	margin-left: 1rem;
 	display: flex;
 	flex-direction: column;
-    justify-content: center; /* 가로 방향 가운데 정렬 */
-    align-items: center; /* 세로 방향 가운데 정렬 */
+    justify-content: flex-start; /* 가로 방향 가운데 정렬  */
+    align-items: flex-start; /* 세로 방향 가운데 정렬 */
 }
 
 .mpPAddr-detail-answer {
-	height: 100%;
+	height: 3rem;
 	margin-top:1%;
+	margin-left: 1rem;
 	background: white;
 	border-radius: 5pt;
-	font-size: 15pt;
+	font-size: 1rem;
 	display: flex;
 	flex-direction: column;
-    justify-content: ; /* 가로 방향 가운데 정렬 */
-    align-items: center; /* 세로 방향 가운데 정렬 */
+    justify-content: center; /* 가로 방향 가운데 정렬 */
+    align-items: flex-start; /* 세로 방향 가운데 정렬 */
 }
+
+
 
 
 
@@ -109,16 +115,16 @@
 
 .mpPWelcome {
 	margin-left: 5%;
-	font-size: 20pt;
+	font-size: 25pt;
+	font-weight: bold;
 }
 
 .mpPProfile {
 	width: 80%;
 	height: 100%;
-	margin-top: 5%;
+	margin-top: 2%;
 	margin-left: 5%;
 	margin-right: 5%;	
-	border: 1px solid black; 
 }
 
 .mpPPicAndServ {
@@ -126,10 +132,12 @@
 }
 
 .mpPPicture {
- width: 170px;
- height: 220px;
+ width: 220px;
+ height: 280px;
+ /* margin-top: 3%;
+ margin-left: 3%; */
  background-color: white;	
- border: 10px solid #D9D9D9;
+ border: 20px solid #D9D9D9;
  border-radius: 15px;
 }
 
@@ -138,49 +146,62 @@
 }
 
 #mpPPicture {
-	width: 150px;
-	height: 200px;
+	width: 180px;
+	height: 240px;
 }
 
 .mpPService {
-	width: 700px;
+	width: 50%;
 	margin: auto;
 	margin-left: 30px;
 	justify-content: center;
 }
 
 .mpPService-state {
+	width: 100%;
 	display: flex;
+	padding: 0 auto;
 	justify-content: center;
 }
 
 .mpPSitter {
-	width: 80%;
+	width: 50%;
+	/* height: 100%; */
+}
+
+.mpPSitterSpace{
+	width: 10px;
 }
 
 .mpPSitter-part {
-	width: 50%;
-	height: 35%;
+    width: 90%;
+	height: 50%;
 	margin-top: 3%;
 	display: flex;	
-	background-color: white; 
+	background-color: rgba(255, 255, 255, 0.7);
 	border-radius: 5px;	
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
 }
 
 .mpPSitter-part-state {
-	/* width: 100%; */
 	margin-left: 5%;
-	margin-right: 0;
+	margin-right: 0 auto;
 	background-color: #E7B5AC;
 	border: none;
 	border-radius: 10%
 }
 
 .mpP-info {
-	margin-top: 5%;
-	border: 1px solid red;
+	margin-top: 1%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	/* align-items: center; */
+}
+
+.mpP-info-update {
+	margin-top: 1%;
 }
 
 .mpPPWUpdate {
@@ -202,7 +223,7 @@
 
 .mpPAddr {
 	width: 100%;
-	border: 1px solid green; 
+	/* border: 1px solid red;  */
 	border: none;
 }
 
@@ -415,6 +436,8 @@
 }
 
 .close {
+	display: flex;
+	
     color: #aaa;
     float: right;
     font-size: 28px;

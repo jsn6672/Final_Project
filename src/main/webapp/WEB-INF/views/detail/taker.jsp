@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +41,7 @@
 			</div>
 			<div class="body-detail">
 				<div>
-					<div class="body-title-detail">인증</div>
+					<div class="body-title-detail">아이성격</div>
 					<div class="body-content-detail-cover">
 					<div>
 						<div class="body-content-detail">${momsitter.ms_certif }</div>
@@ -48,30 +49,13 @@
 					</div>
 				</div>
 				<div>
-					<div class="body-title-detail">간단 자기소개</div>
+					<div class="body-title-detail">원하는 활동</div>
 					<div class="body-content-detail-cover">
 					<div class="body-content-detail">${momsitter.ms_intro }</div>
 					</div>
 				</div>
 				<div>
-					<div class="body-title-detail">관련 경험</div>
-					<div class="body-content-detail-cover">
-					<div class="body-content-detail">${momsitter.ms_exp }</div>
-					</div>
-				</div>
-				<div>
-					<div class="body-title-detail">선호하는 돌봄 유형</div>
-					<div class="body-content-detail-cover">
-					<div class="body-content-detail">
-					<div>실내놀이</div>
-					<div>실내놀이</div>
-					<div>실내놀이</div>
-					<div>실내놀이</div>															
-					${momsitter.ms_can_do }</div>
-					</div>
-				</div>
-				<div>
-					<div class="body-title-detail">활동 가능 시간</div>
+					<div class="body-title-detail">원하는 시간</div>
 					<div class="body-content-detail-cover">
 					<div class="body-time">
 						<div class="body-time-title">
@@ -116,15 +100,15 @@
 					</div>
 				</div>
 				<div>
-					<div class="body-title-detail">돌봄 가능 연령</div>
+					<div class="body-title-detail">원하는 시터나이</div>
 					<div class="body-content-detail-cover">
 					<div class="body-content-detail">내용</div>
 					</div>
 				</div>
 				<div>
-					<div class="body-title-detail">리뷰</div>
+					<div class="body-title-detail">그 외 요청사항</div>
 					<div class="body-content-detail-cover">
-					<div class="body-content-detail">내용</div>
+					<div class="body-content-detail">공주는 그런거 몰라</div>
 					</div>
 				</div>
 				<c:if test="${momsitter.ms_id eq sessionScope.userInfo.user_id }">

@@ -4,7 +4,9 @@ import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class MomDTO {
+import com.sh.pj.care.CareDTO;
+
+public class MomDTO  {
 
 	private int ms_no;
 	private String ms_id;

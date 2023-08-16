@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="containar-detail">
+	<div class="containar-detail-pet">
 		<div class="container-side"></div>
 		<div class="content-detail">
 			<div class="header-detail">
@@ -21,17 +21,17 @@
 	
 					<div class="header-data1">
 						<div>
-							<span style="font-size: 14pt;">맘시터 ${momsitter.ms_id }</span>
+							<span style="font-size: 14pt;">펫시터 ${petsitter.ps_id }</span>
 
 							<span style="font-size: 10pt;">31살,여</span>
 
-							<span style="font-size: 10pt;">cctv촬영 - ${momsitter.ms_cctv }</span>
-						<div>희망 시급: ${momsitter.ms_pay }</div>
+							<span style="font-size: 10pt;">cctv촬영 - ${petsitter.ps_cctv }</span>
+						<div>희망 시급: ${petsitter.ps_pay }</div>
 						<div>활동 가능 지역:</div>
 						<div class="header-location">
-							<div>${momsitter.ms_location1 }</div>
-							<div>${momsitter.ms_location2 }</div>
-							<div>${momsitter.ms_location3 }</div>
+							<div>${petsitter.ps_location1 }</div>
+							<div>${petsitter.ps_location2 }</div>
+							<div>${petsitter.ps_location3 }</div>
 						</div>
 					</div>
 					</div>
@@ -43,20 +43,20 @@
 					<div class="body-title-detail">인증</div>
 					<div class="body-content-detail-cover">
 					<div>
-						<div class="body-content-detail">${momsitter.ms_certif }</div>
+						<div class="body-content-detail">${petsitter.ps_certif }</div>
 					</div>
 					</div>
 				</div>
 				<div>
 					<div class="body-title-detail">간단 자기소개</div>
 					<div class="body-content-detail-cover">
-					<div class="body-content-detail">${momsitter.ms_intro }</div>
+					<div class="body-content-detail">${petsitter.ps_intro }</div>
 					</div>
 				</div>
 				<div>
 					<div class="body-title-detail">관련 경험</div>
 					<div class="body-content-detail-cover">
-					<div class="body-content-detail">${momsitter.ms_exp }</div>
+					<div class="body-content-detail">${petsitter.ps_exp }</div>
 					</div>
 				</div>
 				<div>
@@ -67,7 +67,7 @@
 					<div>실내놀이</div>
 					<div>실내놀이</div>
 					<div>실내놀이</div>															
-					${momsitter.ms_can_do }</div>
+					${petsitter.ps_can_do }</div>
 					</div>
 				</div>
 				<div>
@@ -127,14 +127,14 @@
 					<div class="body-content-detail">내용</div>
 					</div>
 				</div>
-				<c:if test="${momsitter.ms_id eq sessionScope.userInfo.user_id }">
+				<c:if test="${petsitter.ps_id eq sessionScope.userInfo.user_id }">
 				<div class="detail-btn">
 					<button>수정</button>
 					<button style="margin-left: 10px;">삭제</button>
 				</div>
 				</c:if>
 			</div>
-		</div>
+		</div>	
 		<div class="container-side"></div>
 	</div>
 </body>
