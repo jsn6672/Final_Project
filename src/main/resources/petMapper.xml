@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sh.pj.pet.PetMapper"></mapper>
+<mapper namespace="com.sh.pj.pet.PetMapper">
+
+	<select id="getAll" resultType="com.sh.pj.pet.PetDTO">
+		select*from petsitter_tbl
+	</select>
+
+	<select id="detail" resultType="com.sh.pj.pet.PetDTO">
+		select*from petsitter_tbl where ps_no = #{ps_no}
+	</select>
+
+</mapper>

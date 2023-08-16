@@ -35,7 +35,7 @@
 			value="oracle.jdbc.driver.OracleDriver" />
 		<beans:property name="url"
 
-			value="jdbc:oracle:thin:@DB202204301707_high?TNS_ADMIN=C:/SBT/Wallet_DB202`204301707" />
+			value="jdbc:oracle:thin:@DB202204301707_high?TNS_ADMIN=C:/oracleDB/Wallet_DB202204301707" />
 
 		<beans:property name="username" value="JM" />
 		<beans:property name="password" value="Soldesk802!!!" />

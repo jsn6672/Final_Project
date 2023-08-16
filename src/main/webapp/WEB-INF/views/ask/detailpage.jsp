@@ -101,15 +101,15 @@
 				<c:if
 					test="${sessionScope.userInfo.user_id eq 'admin' ||sessionScope.userInfo.user_id eq s.inquiry_id}">
 					<div style="display: flex; justify-content: flex-end;">
+										<c:if test="${sessionScope.userInfo.user_id eq 'admin'}">
+						<button class="QnA-searchbutton"
+							onclick="location.href='askanswer.go?inquiry_no=${s.inquiry_no}'">답변</button>
+					</c:if>
 						<button class="QnA-searchbutton"
 							onclick="location.href='delete?inquiry_no=${s.inquiry_no}'">삭제</button>
 						<button class="QnA-searchbutton"
 							onclick="location.href='update.go?inquiry_no=${s.inquiry_no}'">수정</button>
 					</div>
-					<c:if test="${sessionScope.userInfo.user_id eq 'admin'}">
-						<button class="QnA-searchbutton"
-							onclick="location.href='askanswer.go?inquiry_no=${s.inquiry_no}'">답변</button>
-					</c:if>
 				</c:if>
 			</div>
 		</div>
