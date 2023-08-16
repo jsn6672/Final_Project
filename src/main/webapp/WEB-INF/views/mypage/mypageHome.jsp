@@ -15,7 +15,7 @@
 		<!-- 내용 부분 컨테이너 -->
 		<div class="mpPDetailContainer">
 			<div class="mpPWelcomeSpace"><br></div>
-			<div class="mpPWelcome">${sessionScope.userInfo.user_name }님,환영합니다!</div>
+			<div class="mpPWelcome">${memberProfile.user_name }님,환영합니다!</div>
 			<!-- 프로필 부분 컨테이너 -->
 			<div class="mpPProfile">
 				<!-- 사진 및 사용 중인 서비스 -->
@@ -69,7 +69,7 @@
 					</div>
 					<div class="mpPAddr">
 						<div class="mpPAddr-detail">주소</div>
-						<div class="mpPAddr-detail-answer">${sessionScope.userInfo.user_location }</div>
+						<div class="mpPAddr-detail-answer">우편번호 : ${memberProfile.m_addr3} 주소 : ${memberProfile.m_addr1 } ${memberProfile.m_addr2 }</div>
 					</div>
 					<div class="mpPAddr">
 						<div class="mpPAddr-detail">연락처</div>

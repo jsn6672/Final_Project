@@ -29,6 +29,7 @@ public class MypageController {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.getSession().setAttribute("checkMyPage", "2");
 		mDAO.logincheck(req);
+		mpDAO.mypage(req);
 		req.setAttribute("mypageContentPage", "mypageHome.jsp");
 		return "home";
 	}
@@ -45,6 +46,7 @@ public class MypageController {
 	public String mypageProfile(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		mDAO.logincheck(req);
+		mpDAO.mypage(req);
 		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
 		return "home";
 	}
@@ -61,7 +63,7 @@ public class MypageController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/mypage.profile.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage.profile.do", method = RequestMethod.POST)
 	public String mypageProfileUpdate(MemberDTO m, HttpServletRequest req) {
 		/*
 		 * req.setAttribute("contentPage", "mypage/mypage.jsp"); mDAO.logincheck(req);

@@ -15,6 +15,11 @@
 
 <title>WoOx Travel Bootstrap 5 Theme</title>
 
+<!--  jquery script -->
+<script src="https://code.jquery.com/jquery-3.7.0.js"
+	integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+	crossorigin="anonymous"></script>
+
 <!-- Bootstrap core CSS -->
 <link href="resources/css/rbootstrap.min.css" rel="stylesheet">
 <link href="resources/css/mom/mom.css" rel="stylesheet">
@@ -33,6 +38,58 @@ TemplateMo 580 Woox Travel
 https://templatemo.com/tm-580-woox-travel
 
 -->
+
+<script type="text/javascript">
+$(function() {
+	
+	console.log(${m.ms_write_date});
+	$(".date").text(elapsedTime(${m.ms_write_date}));
+	
+	
+	
+}) //레디펑션
+
+const TIME_ZONE = 3240 * 10000;
+
+function elapsedTime(date) {
+  const start = new Date(date);
+  const end = new Date(new Date().getTime() + TIME_ZONE); // 현재 날짜
+  
+  const diff = (end - start) / 1000; // 경과 시간
+  console.log(start);
+  console.log(end);
+  console.log(diff);
+ 
+  const times = [
+    { name: '년', milliSeconds: 60 * 60 * 24 * 365 },
+    { name: '개월', milliSeconds: 60 * 60 * 24 * 30 },
+    { name: '일', milliSeconds: 60 * 60 * 24 },
+    { name: '시간', milliSeconds: 60 * 60 },
+    { name: '분', milliSeconds: 60 },
+  ];
+  
+  // 년 단위부터 알맞는 단위 찾기
+  for (const value of times) {
+    const betweenTime = Math.floor(diff / value.milliSeconds);
+    
+    console.log(betweenTime);
+    const namevalue = value.name;
+    console.log(namevalue);
+    
+    // 큰 단위는 0보다 작은 소수 단위 나옴
+    if (betweenTime > 0) {
+    	console.log(namevalue);
+    	return betweenTime + namevalue + "전";
+    }
+  }
+  
+  // 모든 단위가 맞지 않을 시
+  return "방금 전";
+}
+
+
+
+</script>
 
 </head>
 
@@ -108,7 +165,7 @@ https://templatemo.com/tm-580-woox-travel
 											</div>
 											<div>
 												<div class="post-meta">
-													<span class="date">00전 작성 </span> 
+													<span class="date"> </span> 
 													<span>${m.ms_write_date }</span>
 												</div>
 												<div>
@@ -426,7 +483,16 @@ https://templatemo.com/tm-580-woox-travel
 	<script src="resources/js/tabs.js"></script>
 	<script src="resources/js/popup.js"></script>
 	<script src="resources/js/custom.js"></script>
+	
+	
+	<!-- 작성 시간 표시 -->
+	<script type="text/javascript">
 
+
+</script>
+	
+	
+	
 	<script>
 		function bannerSwitcher() {
 			next = $('.sec-1-input').filter(':checked').next('.sec-1-input');

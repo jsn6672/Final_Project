@@ -199,9 +199,7 @@ body {
 							maxlength="30" autocomplete="off" placeholder="주소"
 							class="normal_input"><br> <br> <input
 							name="m_addr2" maxlength="30" autocomplete="off"
-							class="normal_input" placeholder="상세주소" id="jm_addr2Input"
-							>
-
+							class="normal_input" placeholder="상세주소" id="jm_addr2Input">
 					</div>
 				</div>
 				<div>
