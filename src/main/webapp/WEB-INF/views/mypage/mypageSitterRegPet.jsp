@@ -9,8 +9,45 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"
 	integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
 	crossorigin="anonymous"></script>
+<script
+	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
+	let disableConnectAddrSearch = false; // 이벤트 발동을 제어할 변수
+	function connectAddrSearchEvent() {
+		$("#addrSearchBtn").click(function() {
+			console.log(disableConnectAddrSearch);
+			if (!disableConnectAddrSearch) { // disableConnectAddrSearch 변수의 값에 따라 이벤트 발동 여부 결정
+				new daum.Postcode({
+					oncomplete : function(data) {
+						$("#jm_addr3Input").val(data.zonecode);
+						$("#jm_addr1Input").val(data.roadAddress);
+					}
+				}).open();
+			}
+		});
+	}
 	$(function() {
+
+		const addr = '${userInfo.user_location}';
+		console.log(addr);
+		const arr = addr.split('!');
+		$("#sameaddr").on("change", function() {
+			if (this.checked) {
+				disableConnectAddrSearch = true; // 체크되었을 때 connectAddrSearchEvent() 비활성화
+				document.getElementById('jm_addr1Input').value = arr[0];
+				document.getElementById('jm_addr2Input').value = arr[1];
+				document.getElementById('jm_addr3Input').value = arr[2];
+				$("#jm_addr2Input").prop("readonly", true); // 상세주소에 readonly 붙이기
+			} else {
+				disableConnectAddrSearch = false; // 체크 해제되었을 때 connectAddrSearchEvent() 활성화
+				document.getElementById('jm_addr1Input').value = '';
+				document.getElementById('jm_addr2Input').value = '';
+				document.getElementById('jm_addr3Input').value = '';
+				$("#jm_addr2Input").prop("readonly", false); // 상세주소에 readonly 떨어트리기
+			}
+
+		})
+		connectAddrSearchEvent();
 
 		$("#monday").on("change", function() {
 			if (this.checked) {
@@ -107,8 +144,7 @@ body {
 </head>
 <body>
 
-	<form action="pettaker.be" method="post"
-		enctype="multipart/form-data">
+	<form action="pettaker.be" method="post" enctype="multipart/form-data">
 
 		<!-- 전체 컨테이너 -->
 		<div class="mpS-pet">
@@ -145,6 +181,28 @@ body {
 					<input type="radio" name="d_gender" value="male" checked="checked">남아
 					<input type="radio" name="d_gender" value="female">여아 <input
 						type="radio" name="d_gender" value="neut">중성화 완료
+				</div>
+
+				<div>
+					<div style="display: flex;">
+						<div class="join_column">주소</div>
+						<div>
+							<input type="checkbox" id="sameaddr"> 보호자의 주소와 같습니다
+						</div>
+					</div>
+					<div>
+						<input id="jm_addr3Input" readonly="readonly" name="m_addr3"
+							class="normal_input" maxlength="5" autocomplete="off"
+							style="width: 620px;" placeholder="우편번호"> <span
+							id="addrSearchBtn">[검색]</span><br> <br> <input
+							id="jm_addr1Input" readonly="readonly" name="m_addr1"
+							maxlength="30" autocomplete="off" placeholder="주소"
+							class="normal_input"><br> <br> <input
+							name="m_addr2" maxlength="30" autocomplete="off"
+							class="normal_input" placeholder="상세주소" id="jm_addr2Input"
+							>
+
+					</div>
 				</div>
 				<div>
 					<input type="checkbox" name="d_check" value="1"> 알러지 또는 주의할
@@ -214,19 +272,20 @@ body {
 							<div class="body-times">
 								<div class="body-time-days">
 									<div class="body-time-day">
-										<input type="checkbox" name="monday" id="monday" value="monday"> 월요일
+										<input type="checkbox" name="monday" id="monday"
+											value="monday"> 월요일
 									</div>
 									<div class="body-time-day">
 										<select disabled="disabled" id="monday_start"
 											name="monday_start">
 											<option value="" selected disabled>선택해주세요.</option>
-											<c:forEach var="r" begin="0" end="24">
+											<c:forEach var="r" begin="1" end="24">
 												<option value="${r}">${r }시</option>
 											</c:forEach>
 										</select> ~ <select disabled="disabled" id="monday_end"
 											name="monday_end">
 											<option value="" selected disabled>선택해주세요.</option>
-											<c:forEach var="r" begin="0" end="24">
+											<c:forEach var="r" begin="1" end="24">
 												<option value="${r}">${r }시</option>
 											</c:forEach>
 										</select>
@@ -234,20 +293,20 @@ body {
 								</div>
 								<div class="body-time-days">
 									<div class="body-time-day">
-										<input type="checkbox" name="tuesday" id="tuesday" value="tuesday">
-										화요일
+										<input type="checkbox" name="tuesday" id="tuesday"
+											value="tuesday"> 화요일
 									</div>
 									<div class="body-time-day">
 										<select disabled="disabled" id="tuesday_start"
 											name="tuesday_start">
 											<option value="" selected disabled>선택해주세요.</option>
-											<c:forEach var="r" begin="0" end="24">
+											<c:forEach var="r" begin="1" end="24">
 												<option value="${r}">${r }시</option>
 											</c:forEach>
 										</select> ~ <select disabled="disabled" id="tuesday_end"
 											name="tuesday_end">
 											<option value="" selected disabled>선택해주세요.</option>
-											<c:forEach var="r" begin="0" end="24">
+											<c:forEach var="r" begin="1" end="24">
 												<option value="${r}">${r }시</option>
 											</c:forEach>
 										</select>
@@ -255,20 +314,20 @@ body {
 								</div>
 								<div class="body-time-days">
 									<div class="body-time-day">
-										<input type="checkbox" name="wednesday" id="wednesday" value="wednesday">
-										수요일
+										<input type="checkbox" name="wednesday" id="wednesday"
+											value="wednesday"> 수요일
 									</div>
 									<div class="body-time-day">
 										<select disabled="disabled" id="wednesday_start"
 											name="wednesday_start">
 											<option value="" selected disabled>선택해주세요.</option>
-											<c:forEach var="r" begin="0" end="24">
+											<c:forEach var="r" begin="1" end="24">
 												<option value="${r}">${r }시</option>
 											</c:forEach>
 										</select> ~ <select disabled="disabled" id="wednesday_end"
 											name="wednesday_end">
 											<option value="" selected disabled>선택해주세요.</option>
-											<c:forEach var="r" begin="0" end="24">
+											<c:forEach var="r" begin="1" end="24">
 												<option value="${r}">${r }시</option>
 											</c:forEach>
 										</select>
@@ -276,20 +335,20 @@ body {
 								</div>
 								<div class="body-time-days">
 									<div class="body-time-day">
-										<input type="checkbox" name="thursday" id="thursday" value="thursday">
-										목요일
+										<input type="checkbox" name="thursday" id="thursday"
+											value="thursday"> 목요일
 									</div>
 									<div class="body-time-day">
 										<select disabled="disabled" id="thursday_start"
 											name="thursday_start">
 											<option value="" selected disabled>선택해주세요.</option>
-											<c:forEach var="r" begin="0" end="24">
+											<c:forEach var="r" begin="1" end="24">
 												<option value="${r}">${r }시</option>
 											</c:forEach>
 										</select> ~ <select disabled="disabled" id="thursday_end"
 											name="thursday_end">
 											<option value="" selected disabled>선택해주세요.</option>
-											<c:forEach var="r" begin="0" end="24">
+											<c:forEach var="r" begin="1" end="24">
 												<option value="${r}">${r }시</option>
 											</c:forEach>
 										</select>
@@ -297,19 +356,20 @@ body {
 								</div>
 								<div class="body-time-days">
 									<div class="body-time-day">
-										<input type="checkbox" name="friday" id="friday" value="friday"> 금요일
+										<input type="checkbox" name="friday" id="friday"
+											value="friday"> 금요일
 									</div>
 									<div class="body-time-day">
 										<select disabled="disabled" id="friday_start"
 											name="friday_start">
 											<option value="" selected disabled>선택해주세요.</option>
-											<c:forEach var="r" begin="0" end="24">
+											<c:forEach var="r" begin="1" end="24">
 												<option value="${r}">${r }시</option>
 											</c:forEach>
 										</select> ~ <select disabled="disabled" id="friday_end"
 											name="friday_end">
 											<option value="" selected disabled>선택해주세요.</option>
-											<c:forEach var="r" begin="0" end="24">
+											<c:forEach var="r" begin="1" end="24">
 												<option value="${r}">${r }시</option>
 											</c:forEach>
 										</select>
@@ -319,20 +379,20 @@ body {
 							<div class="body-times">
 								<div class="body-time-days">
 									<div class="body-time-day">
-										<input type="checkbox" name="saturday" id="saturday" value="saturday">
-										토요일
+										<input type="checkbox" name="saturday" id="saturday"
+											value="saturday"> 토요일
 									</div>
 									<div class="body-time-day">
 										<select disabled="disabled" id="saturday_start"
 											name="saturday_start">
 											<option value="" selected disabled>선택해주세요.</option>
-											<c:forEach var="r" begin="0" end="24">
+											<c:forEach var="r" begin="1" end="24">
 												<option value="${r}">${r }시</option>
 											</c:forEach>
 										</select> ~ <select disabled="disabled" id="saturday_end"
 											name="saturday_end">
 											<option value="" selected disabled>선택해주세요.</option>
-											<c:forEach var="r" begin="0" end="24">
+											<c:forEach var="r" begin="1" end="24">
 												<option value="${r}">${r }시</option>
 											</c:forEach>
 										</select>
@@ -340,19 +400,20 @@ body {
 								</div>
 								<div class="body-time-days">
 									<div class="body-time-day">
-										<input type="checkbox" name="sunday" id="sunday" value="sunday"> 일요일
+										<input type="checkbox" name="sunday" id="sunday"
+											value="sunday"> 일요일
 									</div>
 									<div class="body-time-day">
 										<select disabled="disabled" id="sunday_start"
 											name="sunday_start">
 											<option value="" selected disabled>선택해주세요.</option>
-											<c:forEach var="r" begin="0" end="24">
+											<c:forEach var="r" begin="1" end="24">
 												<option value="${r}">${r }시</option>
 											</c:forEach>
 										</select> ~ <select disabled="disabled" id="sunday_end"
 											name="sunday_end">
 											<option value="" selected disabled>선택해주세요.</option>
-											<c:forEach var="r" begin="0" end="24">
+											<c:forEach var="r" begin="1" end="24">
 												<option value="${r}">${r }시</option>
 											</c:forEach>
 										</select>

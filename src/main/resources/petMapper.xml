@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sh.pj.pet.PetMapper"></mapper>
+<mapper namespace="com.sh.pj.pet.PetMapper">
+
+	<insert id="regDolbom">
+		insert into dolbom_tbl values (dolbom_tbl_seq.nextval, #{d_id}, #{d_name}, #{d_category}, #{d_year}, #{d_month}, #{d_day}, #{d_hour}, #{d_check}, #{d_location}, #{d_gender}, #{d_personality}, #{d_pay}, #{d_cctv}, #{d_act}, #{d_sitterage}, #{d_need}, #{d_title}, #{d_term})
+	</insert>
+
+</mapper>

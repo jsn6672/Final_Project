@@ -66,22 +66,23 @@ public class MembertDAO {
 
 	public void regAccount(HttpServletRequest req, MemberDTO mDTO) {
 		try {
-			String imgOrgName = mDTO.getPic().getOriginalFilename();
-			long imgSize = mDTO.getPic().getSize();
+			String imgOrgName = mDTO.getPic().getOriginalFilename(); // 이미지 원래 이름
+			long imgSize = mDTO.getPic().getSize(); //이미지 사이즈
 
 			if (imgSize == 0) {
+//				mDTO.setUser_pic(req.getParameter("org_pic"));
 				mDTO.setUser_pic("anonymousicon.png");
 			} else {
-				String extension = imgOrgName.substring(imgOrgName.lastIndexOf("."), imgOrgName.length());
+				String extension = imgOrgName.substring(imgOrgName.lastIndexOf("."), imgOrgName.length()); //원래 이름에서 확장자만 따오기
 
-				String newName = UUID.randomUUID().toString().split("-")[0];
+				String newName = UUID.randomUUID().toString().split("-")[0]; //새로운 이름 만들기
 
-				String path = sc.getRealPath("resources/img");
+				String path = sc.getRealPath("resources/img"); // 이미지 저장할 루트
 
-				File saveImg = new File(path + "//" + newName + extension);
+				File saveImg = new File(path + "//" + newName + extension); //그래서 java에서 file 인식시키게 하기 (루트 + 새 이름 + 기존에 따온 확장자)
 
-				mDTO.getPic().transferTo(saveImg);
-				mDTO.setUser_pic(newName + extension);
+				mDTO.getPic().transferTo(saveImg); // 실제 업로드 코드
+				mDTO.setUser_pic(newName + extension); //db에 넣는 이름
 			}
 
 			mDTO.setUser_email_auth("1");

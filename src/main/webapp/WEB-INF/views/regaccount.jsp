@@ -434,9 +434,9 @@ body {
 									id="addrSearchBtn">[검색]</span><br> <br> <input
 									id="jm_addr1Input" readonly="readonly" name="m_addr1"
 									maxlength="30" autocomplete="off" placeholder="주소"
-									class="normal_input"><br> <br> <input
+									class="normal_input"><br> <br> <input 
 									name="m_addr2" maxlength="30" autocomplete="off"
-									class="normal_input" placeholder="상세주소">
+									class="normal_input" placeholder="상세주소" id="jm_addr2Input">
 
 							</div>
 						</div>
