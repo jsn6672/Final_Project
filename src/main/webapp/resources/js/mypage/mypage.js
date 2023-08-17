@@ -1,3 +1,4 @@
+/*비밀번호 모달창*/
 document.addEventListener("DOMContentLoaded", function() {
     var openModalBtn = document.getElementById("openModalBtn");
     var modal = document.getElementById("myModal");
