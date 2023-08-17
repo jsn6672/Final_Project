@@ -28,7 +28,6 @@ public class MomDAO {
 	}
 
 	public void detail(HttpServletRequest req, MomDTO momDTO, Model m) {
-		
 		m.addAttribute("momsitter", ss.getMapper(MomMapper.class).detail(momDTO));
 		
 	}
