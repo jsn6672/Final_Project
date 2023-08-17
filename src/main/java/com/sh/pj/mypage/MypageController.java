@@ -27,6 +27,7 @@ public class MypageController {
 	private MypageDAO mpDAO;
 	
 	
+	
 	@RequestMapping(value = "/mypage.go", method = RequestMethod.GET)
 	public String petsitter(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");

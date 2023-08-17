@@ -40,7 +40,7 @@ public class MomController {
 	}
 	
 	@RequestMapping(value = "/momsitter.detail.go", method = RequestMethod.GET)
-	public String momsitterDetail(HttpServletRequest req, MomDTO momDTO, Model m ) {
+	public String momsitterDetail(HttpServletRequest req, MomDTO momDTO, Model m) {
 		mDAO.logincheck(req);	
 		momDAO.detail(req, momDTO, m);
 		req.setAttribute("contentPage", "detail/sitter.jsp");
