@@ -51,8 +51,6 @@ https://templatemo.com/tm-580-woox-travel
       	console.log(${m.ms_write_date});
       	$(".date").text(elapsedTime(${m.ms_write_date}));
 
-
-
       }) //레디펑션
 
       const TIME_ZONE = 3240 * 10000;

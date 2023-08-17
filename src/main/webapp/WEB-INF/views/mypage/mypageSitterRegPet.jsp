@@ -246,8 +246,7 @@ body {
 							<input type="checkbox" name="dolbom_act" value="13"> 놀이훈련
 						</div>
 						<div class="mpS-pet-act-detail">
-							<input type="checkbox" name="dolbom_act" value="17">
-							사회화훈련
+							<input type="checkbox" name="dolbom_act" value="17"> 사회화훈련
 						</div>
 						<div class="mpS-pet-act-detail">
 							<input type="checkbox" name="dolbom_act" value="19"> 기타활동
