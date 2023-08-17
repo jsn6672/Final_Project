@@ -291,7 +291,31 @@
   margin: 0 5px;
 }
 
+.message{
+  position: relative;
+  padding: 17px 0;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid #dddddd;
+  
+}
+  
+.message::before{
+  display: inline-block;
+  content: '메세지:';
+  font-size: 14px;
+  color: #f15d30;
+  margin: 0 5px;
+}
+
+
+
 .que.on>span{
+  font-weight: bold;
+  color: #f15d30; 
+}
+
+.message.on>span{
   font-weight: bold;
   color: #f15d30; 
 }
@@ -307,6 +331,23 @@
 .anw::before {
   display: inline-block;
   content: 'A';
+  font-size: 14px;
+  font-weight: bold;
+  color: #f15d30;
+  margin: 0 5px;
+}
+
+.messageans {
+  display: none;
+  overflow: hidden;
+  font-size: 14px;
+  background-color: #f15d3017;
+  padding: 27px 0;
+}
+  
+.messageans::before {
+  display: inline-block;
+  content: '내용:';
   font-size: 14px;
   font-weight: bold;
   color: #f15d30;

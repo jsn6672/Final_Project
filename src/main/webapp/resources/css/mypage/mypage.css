@@ -466,3 +466,33 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+
+
+.que.on>span{
+  font-weight: bold;
+  color: #f15d30; 
+}
+
+.message.on>span{
+  font-weight: bold;
+  color: #f15d30; 
+}
+  
+
+.messageans {
+  display: none;
+  overflow: hidden;
+  font-size: 14px;
+  background-color: #f15d3017;
+  padding: 27px 0;
+}
+  
+.messageans::before {
+  display: inline-block;
+  content: '내용:';
+  font-size: 14px;
+  font-weight: bold;
+  color: #f15d30;
+  margin: 0 5px;
+}
