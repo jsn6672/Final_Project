@@ -5,6 +5,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+var div2 = document.getElementsByClassName("mpMenu-part");
+
+function handleClick(event) {
+  console.log(event.target);
+  // console.log(this);
+  // 콘솔창을 보면 둘다 동일한 값이 나온다
+
+  console.log(event.target.classList);
+
+  if (event.target.classList[1] === "clicked") {
+    event.target.classList.remove("clicked");
+  } else {
+    for (var i = 0; i < div2.length; i++) {
+      div2[i].classList.remove("clicked");
+    }
+
+    event.target.classList.add("clicked");
+  }
+}
+
+function init() {
+  for (var i = 0; i < div2.length; i++) {
+    div2[i].addEventListener("click", handleClick);
+  }
+}
+
+init();
+</script>
 </head>
 <body>
 
@@ -15,16 +44,24 @@
 		<div id="mpName"><a href="mypage.go">마이페이지</a></div>
 		<!-- 메뉴 컨테이너 -->
 		<div class="mpMenu">
-			<div class="mpMenu-part" onclick="selectMenu(this)">
+			<div class="mpMenu-part" id="mpMenu-part1"
+			onmouseover="changeColor('mpMenu-part1')"
+			onmouseout="restoreColor('mpMenu-part1')">
 				<a href="mypage.profile.go">프로필 수정</a>	
 			</div>
-			<div class="mpMenu-part" onclick="selectMenu(this)">
+			<div class="mpMenu-part" id="mpMenu-part2"
+			onmouseover="changeColor('mpMenu-part2')"
+			onmouseout="restoreColor('mpMenu-part2')">
 				<a href="mypage.sitterReg.go">시터 등록 및 수정</a>	
 			</div>
-			<div class="mpMenu-part" onclick="selectMenu(this)">
+			<div class="mpMenu-part" id="mpMenu-part3"
+			onmouseover="changeColor('mpMenu-part3')"
+			onmouseout="restoreColor('mpMenu-part3')">
 				<a href="mypage.ticket.go">이용권</a>	
 			</div>
-			<div class="mpMenu-part" onclick="selectMenu(this)">
+			<div class="mpMenu-part" id="mpMenu-part4"
+			onmouseover="changeColor('mpMenu-part4')"
+			onmouseout="restoreColor('mpMenu-part4')">
 				<a href="mypage.usage.go">이용내역 및 리뷰작성</a>	
 			</div>
 		</div>
@@ -35,4 +72,43 @@
 </div>
 
 </body>
+<script>
+var div2 = document.getElementsByClassName("mpMenu-part");
+
+function handleClick(event) {
+  console.log(event.target);
+  // console.log(this);
+  // 콘솔창을 보면 둘다 동일한 값이 나온다
+
+  console.log(event.target.classList);
+
+  if (event.target.classList[1] === "clicked") {
+    event.target.classList.remove("clicked");
+  } else {
+    for (var i = 0; i < div2.length; i++) {
+      div2[i].classList.remove("clicked");
+    }
+
+    event.target.classList.add("clicked");
+  }
+}
+
+function init() {
+  for (var i = 0; i < div2.length; i++) {
+    div2[i].addEventListener("click", handleClick);
+  }
+}
+
+init();
+
+function changeColor(id) {
+  var element = document.getElementById(id);
+  element.style.backgroundColor =  '#FFEBE4';
+}
+
+function restoreColor(id) {
+    var element = document.getElementById(id);
+    element.style.backgroundColor = ''; // 기존 배경색으로 복원
+  }
+</script>
 </html>

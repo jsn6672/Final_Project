@@ -33,7 +33,7 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
                   alt=""
                   src="resources/img/${sessionScope.userInfo.user_pic  } "
                 />
-                <input type="file" name="pic" />
+                <input class="mpPInputPic" type="file" name="pic" />
                 <input
                   hidden="hidden"
                   name="org_pic"
@@ -95,14 +95,13 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
               <input
                 name="user_id"
                 type="hidden"
-                value="${sessionScope.userInfo.user_id"
-                }
+                value="${sessionScope.userInfo.user_id}"
               />
               <!-- 	<div id="mpPPicInput">
 							<input name="user_pic" type="file">
 						</div> -->
               <div class="mpPAddr">
-                주소 <br />
+                <div class="mpPAddr-span">주소</br></div>
                 <input
                   id="jm_addr3Input"
                   readonly="readonly"
@@ -138,29 +137,29 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
                 />
               </div>
               <div class="mpPAddr">
-                <div>연락처 <br /></div>
+                <div class="mpPAddr-span">연락처</br></div>
                 <input
                   name="phone_first"
                   class="user_phone"
                   placeholder="전화번호를 입력해주세요"
-                  value="${memberProfile.phone_first"
-                  }
+                  value="${memberProfile.phone_first }"
+                  
                 />
                 -
                 <input
                   name="phone_second"
                   class="user_phone"
                   placeholder="전화번호를 입력해주세요"
-                  value="${memberProfile.phone_second"
-                  }
+                  value="${memberProfile.phone_second }"
+                  
                 />
                 -
                 <input
                   name="phone_third"
                   class="user_phone"
                   placeholder="전화번호를 입력해주세요"
-                  value="${memberProfile.phone_third"
-                  }
+                  value="${memberProfile.phone_third }"
+                  
                 />
               </div>
               <br />
@@ -183,8 +182,8 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
             <input
               name="user_id"
               type="hidden"
-              value="${sessionScope.userInfo.user_id"
-              }
+              value="${sessionScope.userInfo.user_id }"
+              
             />
             <div class="mpPPW">
               비밀번호 <br />
