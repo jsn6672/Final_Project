@@ -15,6 +15,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import com.sh.pj.pet.PetDTO;
 import com.sh.pj.pet.PetTakerDTO;
 
 @Service
@@ -204,5 +205,7 @@ public class MembertDAO {
 		}
 
 	}
+
+	
 
 }

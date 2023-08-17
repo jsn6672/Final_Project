@@ -10,15 +10,15 @@ public class DolbomDTO {
 	private int d_category;
 	private int d_year;
 	private int d_month;
+	private String d_day;
+	private String d_hour;
 	private String d_check;
 	private String d_location;
 	private String d_gender;
 	private String d_personality;
 	private int d_pay;
 	private String d_cctv;
-	private String d_act;
-	private String d_day;
-	private String d_hour;
+	private String d_can_do;
 	private int[] dolbom_act;
 
 	private String monday;
@@ -50,13 +50,14 @@ public class DolbomDTO {
 	private String d_term;
 	private Date d_startdate;
 	private Date d_writedate;
+	private Date d_enddate;
 
 	@Override
 	public String toString() {
 		return "DolbomDTO [d_no=" + d_no + ", d_id=" + d_id + ", d_name=" + d_name + ", d_category=" + d_category
-				+ ", d_year=" + d_year + ", d_month=" + d_month + ", d_check=" + d_check + ", d_location=" + d_location
-				+ ", d_gender=" + d_gender + ", d_personality=" + d_personality + ", d_pay=" + d_pay + ", d_cctv="
-				+ d_cctv + ", d_act=" + d_act + ", d_day=" + d_day + ", d_hour=" + d_hour + ", dolbom_act="
+				+ ", d_year=" + d_year + ", d_month=" + d_month + ", d_day=" + d_day + ", d_hour=" + d_hour
+				+ ", d_check=" + d_check + ", d_location=" + d_location + ", d_gender=" + d_gender + ", d_personality="
+				+ d_personality + ", d_pay=" + d_pay + ", d_cctv=" + d_cctv + ", d_can_do=" + d_can_do + ", dolbom_act="
 				+ Arrays.toString(dolbom_act) + ", monday=" + monday + ", tuesday=" + tuesday + ", wednesday="
 				+ wednesday + ", thursday=" + thursday + ", friday=" + friday + ", saturday=" + saturday + ", sunday="
 				+ sunday + ", monday_start=" + monday_start + ", tuesday_start=" + tuesday_start + ", wednesday_start="
@@ -65,7 +66,23 @@ public class DolbomDTO {
 				+ ", tuesday_end=" + tuesday_end + ", wednesday_end=" + wednesday_end + ", thursday_end=" + thursday_end
 				+ ", friday_end=" + friday_end + ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end
 				+ ", d_sitterage=" + d_sitterage + ", d_need=" + d_need + ", d_title=" + d_title + ", d_term=" + d_term
-				+ ", d_startdate=" + d_startdate + ", d_writedate=" + d_writedate + "]";
+				+ ", d_startdate=" + d_startdate + ", d_writedate=" + d_writedate + ", d_enddate=" + d_enddate + "]";
+	}
+
+	public Date getD_enddate() {
+		return d_enddate;
+	}
+
+	public void setD_enddate(Date d_enddate) {
+		this.d_enddate = d_enddate;
+	}
+
+	public String getD_can_do() {
+		return d_can_do;
+	}
+
+	public void setD_can_do(String d_can_do) {
+		this.d_can_do = d_can_do;
 	}
 
 	public int[] getDolbom_act() {
@@ -170,14 +187,6 @@ public class DolbomDTO {
 
 	public void setD_cctv(String d_cctv) {
 		this.d_cctv = d_cctv;
-	}
-
-	public String getD_act() {
-		return d_act;
-	}
-
-	public void setD_act(String d_act) {
-		this.d_act = d_act;
 	}
 
 	public String getD_day() {

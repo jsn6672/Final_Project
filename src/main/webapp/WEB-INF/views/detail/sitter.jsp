@@ -18,7 +18,6 @@
 				</div>
 				</div>
 				<div class="header-data-detail">
-	
 					<div class="header-data1">
 						<div>
 							<span style="font-size: 14pt;">맘시터 ${momsitter.ms_id }</span>
@@ -27,13 +26,15 @@
 
 							<span style="font-size: 10pt;">cctv촬영 - ${momsitter.ms_cctv }</span>
 						<div>희망 시급: ${momsitter.ms_pay }</div>
-						<div>활동 가능 지역:</div>
-						<div class="header-location">
-							<div>${momsitter.ms_location1 }</div>
-							<div>${momsitter.ms_location2 }</div>
-							<div>${momsitter.ms_location3 }</div>
+							<div style="display: flex;">
+								<div>활동 가능 지역:</div>
+								<div class="header-location">
+									<div>${momsitter.ms_location1 }</div>
+									<div>${momsitter.ms_location2 }</div>
+									<div>${momsitter.ms_location3 }</div>
+								</div>
+							</div>
 						</div>
-					</div>
 					</div>
 		
 				</div>
@@ -62,14 +63,17 @@
 				<div>
 					<div class="body-title-detail">선호하는 돌봄 유형</div>
 					<div class="body-content-detail-cover">
-					<div class="body-content-detail">
-					<div>실내놀이</div>
-					<div>실내놀이</div>
-					<div>실내놀이</div>
-					<div>실내놀이</div>															
-					${momsitter.ms_can_do }</div>
+						<div class="body-content-detail">
+							<c:if test="${momsitter.ms_can_do %2 == 0 }">
+								<div><img alt="" src="dfsijodfs"></div>
+								<div></div>
+							</c:if>
+							<div>실내놀이</div>
+							<div>실내놀이</div>
+							<div>실내놀이</div>
+							<div>실내놀이</div>
+						</div>
 					</div>
-				</div>
 				<div>
 					<div class="body-title-detail">활동 가능 시간</div>
 					<div class="body-content-detail-cover">
