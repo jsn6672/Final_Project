@@ -41,6 +41,7 @@ https://templatemo.com/tm-580-woox-travel
 
 <script type="text/javascript">
       $(function() {
+
     	const write_date = $('#write_date').text();
     	
     	console.log(write_date);

@@ -71,6 +71,7 @@
 	height: 200px;
 	background-color: white;
 	border-radius: 10px;
+	display: flex;
 }
 
 .body-content-detail-cover {
