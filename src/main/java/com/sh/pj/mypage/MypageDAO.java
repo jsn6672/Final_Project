@@ -141,17 +141,16 @@ public class MypageDAO {
 
 	}
 
-	public void getAll(HttpServletRequest req, MomDTO momDTO, Model m) {
+	public void getAll(HttpServletRequest req, AcceptDTO aDTO, Model m) {
 		//for문
 		
-		/*
-		 * m.addAttribute("getall",ss.getMapper(MypageMapper.class).getAllmom(momDTO));
-		 * 
-		 * 
-		 * m.addAttribute("getallsi",ss.getMapper(MypageMapper.class).getAllmom(accDTO);
-		 * );
-		 * m.addAttribute("getall",ss.getMapper(MypageMapper.class).getAllmom(accDTO););
-		 */
+		if (aDTO.getSitter_type()==1) {
+			m.addAttribute("getall",ss.getMapper(MypageMapper.class).getAllcare(aDTO));
+		}else if (aDTO.getSitter_type()==2) {
+			m.addAttribute("getall",ss.getMapper(MypageMapper.class).getAllmom(aDTO));
+		}else {
+			m.addAttribute("getall",ss.getMapper(MypageMapper.class).getAllpet(aDTO));
+		}
 		
 	}
 

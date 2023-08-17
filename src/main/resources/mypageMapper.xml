@@ -30,5 +30,12 @@
     	select * from momsitter_tbl where ms_id = #{ms_id}
     </select>
     
+      <select id="getAllcare" resultType="com.sh.pj.care.CareDTO">
+    	select * from caresitter_tbl where ms_id = #{ms_id}
+    </select>
+     <select id="getAllpet" resultType="com.sh.pj.pet.PetDTO">
+    	select*from petsitter_tbl where ps_no = #{ps_no}
+    </select>
+
 
 </mapper>
