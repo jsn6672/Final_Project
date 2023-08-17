@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,6 +24,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MemberMapper;
+import com.sh.pj.mom.MomDTO;
 
 @Service
 public class MypageDAO {
@@ -137,6 +139,20 @@ public class MypageDAO {
 
 		req.setAttribute("memberProfile", mDTO);
 
+	}
+
+	public void getAll(HttpServletRequest req, MomDTO momDTO, Model m) {
+		//for문
+		
+		/*
+		 * m.addAttribute("getall",ss.getMapper(MypageMapper.class).getAllmom(momDTO));
+		 * 
+		 * 
+		 * m.addAttribute("getallsi",ss.getMapper(MypageMapper.class).getAllmom(accDTO);
+		 * );
+		 * m.addAttribute("getall",ss.getMapper(MypageMapper.class).getAllmom(accDTO););
+		 */
+		
 	}
 
 }

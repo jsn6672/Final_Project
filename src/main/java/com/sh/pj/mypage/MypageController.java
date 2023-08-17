@@ -13,6 +13,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MembertDAO;
+import com.sh.pj.care.CareDTO;
+import com.sh.pj.mom.MomDTO;
+import com.sh.pj.pet.PetDTO;
 
 @Controller
 public class MypageController {
@@ -22,6 +25,15 @@ public class MypageController {
 	
 	@Autowired
 	private MypageDAO mpDAO;
+	
+	@Autowired
+	private MomDTO mDTO;
+	
+	@Autowired
+	private CareDTO cDTO;
+	
+	@Autowired
+	private PetDTO pDTO;
 	
 	
 	@RequestMapping(value = "/mypage.go", method = RequestMethod.GET)
@@ -128,6 +140,17 @@ public class MypageController {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		mDAO.logincheck(req);
 		req.setAttribute("mypageContentPage", "mypageUsageDetail.jsp");
+		return "home";
+	}
+	
+	@RequestMapping(value = "/getall", method = RequestMethod.GET)
+	public String getallgo(HttpServletRequest req, MomDTO momDTO, PetDTO petDTO, CareDTO careDTO, Model m) {
+		mDAO.logincheck(req);	
+		/*
+		 * mpDAO.getAll(req, momDTO, petDTO,careDTO, m);
+		 */		
+		req.setAttribute("contentPage", "mom/momtaker.jsp");
+
 		return "home";
 	}
 	

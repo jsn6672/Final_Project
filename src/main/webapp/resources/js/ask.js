@@ -89,6 +89,12 @@ $(".que").click(function () {
   $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
 });
 
+$(".message").click(function () {
+  $(this).next(".messageans").stop().slideToggle(300);
+  $(this).toggleClass("on").siblings().removeClass("on");
+  $(this).next(".messageans").siblings(".messageans").slideUp(300); // 1개씩 펼치기
+});
+
 // 마우스 오버 시 색깔 변경
 function changeColorOnMouseOver(elementId) {
   document.getElementById(elementId).classList.add("highlight");

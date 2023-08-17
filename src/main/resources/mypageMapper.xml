@@ -26,5 +26,9 @@
     	
     </select>
     
+    <select id="getAllmom" resultType="com.sh.pj.mom.MomDTO">
+    	select * from momsitter_tbl where ms_id = #{ms_id}
+    </select>
+    
 
 </mapper>
