@@ -26,15 +26,6 @@ public class MypageController {
 	@Autowired
 	private MypageDAO mpDAO;
 	
-	@Autowired
-	private MomDTO mDTO;
-	
-	@Autowired
-	private CareDTO cDTO;
-	
-	@Autowired
-	private PetDTO pDTO;
-	
 	
 	@RequestMapping(value = "/mypage.go", method = RequestMethod.GET)
 	public String petsitter(HttpServletRequest req) {
@@ -172,12 +163,10 @@ public class MypageController {
 	
 	
 	@RequestMapping(value = "/getall", method = RequestMethod.GET)
-	public String getallgo(HttpServletRequest req, MomDTO momDTO, PetDTO petDTO, CareDTO careDTO, Model m) {
+	public String getallgo(HttpServletRequest req, AcceptDTO aDTO, Model m) {
 		mDAO.logincheck(req);	
-		/*
-		 * mpDAO.getAll(req, momDTO, petDTO,careDTO, m);
-		 */		
-		req.setAttribute("contentPage", "mom/momtaker.jsp");
+		
+		mpDAO.getAll(req,aDTO, m);	
 
 		return "home";
 	}
