@@ -33,7 +33,7 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
                   <!-- 모시 사용자 <br> -->
                   <div class="mpPSitter-part">
                     <div class="mpPSitter-part-name">맘시터&nbsp</div>
-                    <div class="mpPSitter-part-state">이용상황</div>
+                    <div class="mpPSitter-part-state"><a href="mypage.ticket.do">이용상황</a></div>
                   </div>
                   <div class="mpPSitter-part">
                     <div class="mpPSitter-part-name">케어시터</div>

@@ -142,6 +142,34 @@ public class MypageController {
 		req.setAttribute("mypageContentPage", "mypageUsageDetail.jsp");
 		return "home";
 	}
+
+	// 티켓 구매 페이지로 가는 컨트롤러
+	@RequestMapping(value = "/mypage.ticket.do", method = RequestMethod.GET)
+	public String ticket(HttpServletRequest req) {
+		req.setAttribute("contentPage", "mypage/mypageTicket1.jsp");
+		mDAO.logincheck(req);
+		return "home";
+	}
+	  
+	@RequestMapping(value = "/mypage.ticket.buy", method = RequestMethod.POST)
+	public String ticketBuy(HttpServletRequest req) {
+		req.setAttribute("contentPage", "mypage/mypageTicket2Buy.jsp");
+		mDAO.logincheck(req);
+		return "home";
+	}
+	
+	@RequestMapping(value = "/mypage.ticket.sendMoney", method = RequestMethod.POST)
+	public String ticketSendMoney(HttpServletRequest req) {
+		req.setAttribute("contentPage", "mypage/mypageTicket3SendMoney.jsp");
+		String price = req.getParameter("choiceTicketPrice");
+		System.out.println(price);
+		mDAO.logincheck(req);
+		return "home";
+	}
+	
+
+	
+	
 	
 	@RequestMapping(value = "/getall", method = RequestMethod.GET)
 	public String getallgo(HttpServletRequest req, MomDTO momDTO, PetDTO petDTO, CareDTO careDTO, Model m) {

@@ -45,9 +45,6 @@
     align-items: center;
 }
 
-.clicked {
-	background-color: black;
-}
 
 /* #mpProfile {
 	
@@ -71,6 +68,9 @@
 	border: 1px solid green;
 } */
 
+.highlight {
+    background-color: #FFB4FF;
+  }
 
 
 /* 마이페이지 홈화면 */
@@ -141,13 +141,14 @@
  border-radius: 15px;
 }
 
-#mpPPicInput {
-	margin-top: 5%;
-}
 
 #mpPPicture {
 	width: 180px;
 	height: 240px;
+}
+
+.mpPInputPic {
+	margin-top: 20%;
 }
 
 .mpPService {
@@ -193,11 +194,16 @@
 }
 
 .mpP-info {
-	margin-top: 1%;
+	margin-top: 8%;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	/* align-items: center; */
+}
+
+.mpPAddr-span {
+	margin-top: 5%;
+	font-weight: bold;
 }
 
 .mpP-info-update {
@@ -225,6 +231,16 @@
 	width: 100%;
 	/* border: 1px solid red;  */
 	border: none;
+}
+
+.normal_input {
+	height: 2rem;
+	border: none;
+}
+
+.user_phone {
+	height: 2rem;
+	border: none;	
 }
 
 .mpPInput {

@@ -9,6 +9,7 @@ public interface PetMapper {
 	List<PetDTO> getAll(PetDTO petDTO);
 	PetDTO detail(PetDTO petDTO);
 	int regDolbom(DolbomDTO dDTO);
+	int regPetSitter(PetDTO pDTO);
 
 
 

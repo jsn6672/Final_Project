@@ -62,12 +62,40 @@
 				<div>
 					<div class="body-title-detail">선호하는 돌봄 유형</div>
 					<div class="body-content-detail-cover">
-					<div class="body-content-detail">
-					<div>실내놀이</div>
-					<div>실내놀이</div>
-					<div>실내놀이</div>
-					<div>실내놀이</div>															
-					${petsitter.ps_can_do }</div>
+						<div class="body-content-detail">
+							<c:if test="${petsitter.ps_can_do %2 == 0 }">
+								<div><img alt="" src="resources/img/logo/산책.png"></div>
+								<div>산책</div>
+							</c:if>
+							<c:if test="${petsitter.ps_can_do %3 == 0 }">
+								<div><img alt="" src="resources/img/logo/목욕.png"></div>
+								<div>목욕</div>
+							</c:if>
+							<c:if test="${petsitter.ps_can_do %5 == 0 }">
+								<div><img alt="" src="resources/img/logo/사료.png"></div>
+								<div>밥챙겨주기</div>
+							</c:if>
+							<c:if test="${petsitter.ps_can_do %19 == 0 }">
+								<div><img alt="" src="resources/img/logo/호텔.png"></div>
+								<div>호텔링</div>
+							</c:if>
+							<c:if test="${petsitter.ps_can_do %7 == 0 }">
+								<div><img alt="" src="resources/img/logo/배변훈련.png"></div>
+								<div>배변훈련</div>
+							</c:if>
+							<c:if test="${petsitter.ps_can_do %11 == 0 }">
+								<div><img alt="" src="resources/img/logo/놀이훈련.png"></div>
+								<div>놀이훈련</div>
+							</c:if>
+							<c:if test="${petsitter.ps_can_do %13 == 0 }">
+								<div><img alt="" src="resources/img/logo/.png"></div>
+								<div>사회화훈련</div>
+							</c:if>
+							<c:if test="${petsitter.ps_can_do %17 == 0 }">
+								<div><img alt="" src="resources/img/logo/기타.png"></div>
+								<div>기타활동</div>
+							</c:if>
+						</div>
 					</div>
 				</div>
 				<div>
