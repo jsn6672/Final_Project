@@ -1,5 +1,9 @@
 package com.sh.pj.pet;
 
+import java.io.File;
+import java.util.UUID;
+
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -10,12 +14,14 @@ import org.springframework.ui.Model;
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 
-
 @Service
 public class PetDAO {
 
 	@Autowired
 	private SqlSession ss;
+
+	@Autowired
+	private ServletContext sc;
 
 	public void regPetDolbom(HttpServletRequest req, DolbomDTO dDTO) {
 
@@ -43,34 +49,97 @@ public class PetDAO {
 			i *= dDTO.getDolbom_act()[j];
 		}
 
-		dDTO.setD_act(Integer.toString(i));
-		
-		dDTO.setD_location(req.getParameter("m_addr1") + "!" + req.getParameter("m_addr2") + "!"
-				+ req.getParameter("m_addr3"));
-		
+		dDTO.setD_can_do(Integer.toString(i));
+
+		dDTO.setD_location(
+				req.getParameter("m_addr1") + "!" + req.getParameter("m_addr2") + "!" + req.getParameter("m_addr3"));
+
 		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 		dDTO.setD_id(mDTO.getUser_id());
-		
+
 		dDTO.setD_sitterage("ndy");
 		dDTO.setD_title("ndy");
-		
+
 		System.out.println(dDTO);
-		
-		if(ss.getMapper(PetMapper.class).regDolbom(dDTO) == 1) {
+
+		if (ss.getMapper(PetMapper.class).regDolbom(dDTO) == 1) {
 			System.out.println("돌보미 등록 완료");
 		}
-		
-		
-		
+
 	}
+
 	public void getAll(HttpServletRequest req, PetDTO petDTO, Model m) {
-		m.addAttribute("petsitter",ss.getMapper(PetMapper.class).getAll(petDTO));
+		m.addAttribute("petsitter", ss.getMapper(PetMapper.class).getAll(petDTO));
 	}
 
 	public void detail(HttpServletRequest req, PetDTO petDTO, Model m) {
-		m.addAttribute("petsitter",ss.getMapper(PetMapper.class).detail(petDTO));
+		m.addAttribute("petsitter", ss.getMapper(PetMapper.class).detail(petDTO));
 
 	}
 
+	public void regPetSitter(HttpServletRequest req, PetDTO pDTO) {
+		try {
+			String imgOrgName = pDTO.getPs_Rfile().getOriginalFilename();
+			long imgSize = pDTO.getPs_Rfile().getSize();
+
+			String extension = imgOrgName.substring(imgOrgName.lastIndexOf("."), imgOrgName.length());
+
+			String newName = UUID.randomUUID().toString().split("-")[0];
+
+			String path = sc.getRealPath("resources/img");
+
+			File saveImg = new File(path + "//" + newName + extension);
+
+			pDTO.getPs_Rfile().transferTo(saveImg);
+			pDTO.setPs_file(newName + extension);
+
+			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+			pDTO.setPs_id(mDTO.getUser_id());
+
+			pDTO.setPs_confirm("0");
+			pDTO.setPs_confirm_answer("ndy");
+
+			int j = 1;
+			for (int i = 0; i < pDTO.getPetsitter_act().length; i++) {
+				j *= pDTO.getPetsitter_act()[i];
+			}
+
+			pDTO.setPs_can_do(Integer.toString(j));
+
+			String ps_day = pDTO.getMonday() + "!" + pDTO.getTuesday() + "!" + pDTO.getWednesday() + "!"
+					+ pDTO.getThursday() + "!" + pDTO.getFriday() + "!" + pDTO.getSaturday() + "!" + pDTO.getSunday();
+
+			pDTO.setPs_day(ps_day);
+
+			String d_hour = pDTO.getMonday_start() + "!" + pDTO.getMonday_end() + "!" + pDTO.getTuesday_start() + "!"
+					+ pDTO.getTuesday_end() + "!" + pDTO.getWednesday_start() + "!" + pDTO.getWednesday_end() + "!"
+					+ pDTO.getThursday_start() + "!" + pDTO.getThursday_end() + "!" + pDTO.getFriday_start() + "!"
+					+ pDTO.getFriday_end() + "!" + pDTO.getSaturday_start() + "!" + pDTO.getSaturday_end() + "!"
+					+ pDTO.getSunday_start() + "!" + pDTO.getSunday_end();
+			pDTO.setPs_hour(d_hour);
+			
+			int j1 = 1;
+			for (int i1 = 0; i1 < pDTO.getPs_type().length; i1++) {
+				j1 *= pDTO.getPs_type()[i1];
+			}
+			pDTO.setPs_can_type(Integer.toString(j1));
+			
+			
+
+			System.out.println(pDTO);
+
+			if (ss.getMapper(PetMapper.class).regPetSitter(pDTO) == 1 ){
+
+				System.out.println("등록 완료");
+				mDTO.setPs_id(mDTO.getUser_id());
+				req.getSession().setAttribute("userInfo", mDTO);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+
+	}
 
 }
