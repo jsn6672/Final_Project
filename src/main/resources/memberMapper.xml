@@ -35,7 +35,7 @@
 	</select>
 	
 	<insert id="regPTAccount">
-		insert into pettaker_tbl values(#{pt_id}, #{pt_file})
+		insert into pettaker_tbl values(#{pt_id}, #{pt_file}, 0, 'none')
 	</insert>
 	
 	
