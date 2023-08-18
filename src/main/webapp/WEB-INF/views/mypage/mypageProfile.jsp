@@ -7,10 +7,28 @@
 <head>
 <meta charset="UTF-8" />
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.7.0.js"
+	integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+	crossorigin="anonymous"></script>
+	
+<script type="text/javascript">
+$(function() {
+	
+	let deletecheck = $("#deletecheck").text();
+	console.log(deletecheck);
+	if (deletecheck === 1) {
+		alert('삭제가 완료되었습니다');
+	}
+	
+	
+})
+
+</script>
 </head>
 <body>
 	<!-- 프로필 수정의 전체 컨테이너 -->
 	<div class="mpP">
+	<span id="deletecheck" hidden="hidden">${deletecheck }</span>
 		<form action="mypage.profile.do" method="post"
 			enctype="multipart/form-data">
 			<!-- 내용 부분 컨테이너 -->

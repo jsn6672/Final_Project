@@ -5,6 +5,8 @@ import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sh.pj.account.MemberDTO;
+
 public class PetDTO {
 
 	private String ps_id;
@@ -57,13 +59,122 @@ public class PetDTO {
 	private int saturday_end;
 	private int sunday_end;
 	
-public PetDTO() {
-	// TODO Auto-generated constructor stub
-}
+	private MemberDTO mm;
+	
+	@Override
+	public String toString() {
+		return "PetDTO [ps_id=" + ps_id + ", ps_file=" + ps_file + ", ps_Rfile=" + ps_Rfile + ", ps_confirm="
+				+ ps_confirm + ", ps_confirm_answer=" + ps_confirm_answer + ", ps_cctv=" + ps_cctv + ", ps_term="
+				+ ps_term + ", ps_day=" + ps_day + ", ps_hour=" + ps_hour + ", ps_location1=" + ps_location1
+				+ ", ps_location2=" + ps_location2 + ", ps_location3=" + ps_location3 + ", ps_extra=" + ps_extra
+				+ ", ps_exp=" + ps_exp + ", ps_pay=" + ps_pay + ", ps_point=" + ps_point + ", ps_count=" + ps_count
+				+ ", ps_can_do=" + ps_can_do + ", ps_can_type=" + ps_can_type + ", ps_ticket_start=" + ps_ticket_start
+				+ ", ps_ticket_end=" + ps_ticket_end + ", ps_write_date=" + ps_write_date + ", ps_type="
+				+ Arrays.toString(ps_type) + ", petsitter_act=" + Arrays.toString(petsitter_act) + ", monday=" + monday
+				+ ", tuesday=" + tuesday + ", wednesday=" + wednesday + ", thursday=" + thursday + ", friday=" + friday
+				+ ", saturday=" + saturday + ", sunday=" + sunday + ", monday_start=" + monday_start
+				+ ", tuesday_start=" + tuesday_start + ", wednesday_start=" + wednesday_start + ", thursday_start="
+				+ thursday_start + ", friday_start=" + friday_start + ", saturday_start=" + saturday_start
+				+ ", sunday_start=" + sunday_start + ", monday_end=" + monday_end + ", tuesday_end=" + tuesday_end
+				+ ", wednesday_end=" + wednesday_end + ", thursday_end=" + thursday_end + ", friday_end=" + friday_end
+				+ ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end + ", mm=" + mm + "]";
+	}
+	
+	public String getPs_id() {
+		return ps_id;
+	}
 
-public String getPs_id() {
-	return ps_id;
-}
+	public void setPs_id(String ps_id) {
+		this.ps_id = ps_id;
+	}
+
+	public String getPs_file() {
+		return ps_file;
+	}
+
+	public void setPs_file(String ps_file) {
+		this.ps_file = ps_file;
+	}
+
+	public MultipartFile getPs_Rfile() {
+		return ps_Rfile;
+	}
+
+	public void setPs_Rfile(MultipartFile ps_Rfile) {
+		this.ps_Rfile = ps_Rfile;
+	}
+
+	public String getPs_confirm() {
+		return ps_confirm;
+	}
+
+	public void setPs_confirm(String ps_confirm) {
+		this.ps_confirm = ps_confirm;
+	}
+
+	public String getPs_confirm_answer() {
+		return ps_confirm_answer;
+	}
+
+	public void setPs_confirm_answer(String ps_confirm_answer) {
+		this.ps_confirm_answer = ps_confirm_answer;
+	}
+
+	public String getPs_cctv() {
+		return ps_cctv;
+	}
+
+	public void setPs_cctv(String ps_cctv) {
+		this.ps_cctv = ps_cctv;
+	}
+
+	public String getPs_term() {
+		return ps_term;
+	}
+
+	public void setPs_term(String ps_term) {
+		this.ps_term = ps_term;
+	}
+
+	public String getPs_day() {
+		return ps_day;
+	}
+
+	public void setPs_day(String ps_day) {
+		this.ps_day = ps_day;
+	}
+
+	public String getPs_hour() {
+		return ps_hour;
+	}
+
+	public void setPs_hour(String ps_hour) {
+		this.ps_hour = ps_hour;
+	}
+
+	public String getPs_location1() {
+		return ps_location1;
+	}
+
+	public void setPs_location1(String ps_location1) {
+		this.ps_location1 = ps_location1;
+	}
+
+	public String getPs_location2() {
+		return ps_location2;
+	}
+
+	public void setPs_location2(String ps_location2) {
+		this.ps_location2 = ps_location2;
+	}
+
+	public String getPs_location3() {
+		return ps_location3;
+	}
+
+	public void setPs_location3(String ps_location3) {
+		this.ps_location3 = ps_location3;
+	}
 
 public void setPs_id(String ps_id) {
 	this.ps_id = ps_id;
