@@ -2,7 +2,6 @@ package com.sh.pj.mypage;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.mom.MomDTO;
@@ -17,7 +16,13 @@ public interface MypageMapper {
 
 	public int updateProfile(MemberDTO m);
 
-	public List<MomDTO> getAllmom(MomDTO momDTO);
+	public AcceptDTO getAllcare(AcceptDTO aDTO);
+
+	public AcceptDTO getAllmom(AcceptDTO aDTO);
+
+	public AcceptDTO getAllpet(AcceptDTO aDTO);
+
+
 
 
 }
