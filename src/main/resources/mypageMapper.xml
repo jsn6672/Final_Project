@@ -30,10 +30,19 @@
     	select * from momsitter_tbl where ms_id = #{ms_id}
     </select>
     
+
     <insert id="insertmoney">
     	insert into money 
     	values (#{mm_id}, #{mm_name}, sysdate, #{mm_ticket}, #{mm_price}, #{mm_state})
     </insert>
+
+      <select id="getAllcare" resultType="com.sh.pj.care.CareDTO">
+    	select * from caresitter_tbl where ms_id = #{ms_id}
+    </select>
+     <select id="getAllpet" resultType="com.sh.pj.pet.PetDTO">
+    	select*from petsitter_tbl where ps_no = #{ps_no}
+    </select>
+
 
 	<select id="getbuylist" resultType="com.sh.pj.mypage.MoneyDTO">
 		select * from money

@@ -143,9 +143,8 @@ public class MypageDAO {
 
 	}
 
-	public void getAll(HttpServletRequest req, MomDTO momDTO, Model m) {
+	public void getAll(HttpServletRequest req, AcceptDTO aDTO, Model m) {
 		//for문
-		
 		/*
 		 * m.addAttribute("getall",ss.getMapper(MypageMapper.class).getAllmom(momDTO));
 		 * 
@@ -179,6 +178,7 @@ public class MypageDAO {
 		if (ss.getMapper(MypageMapper.class).insertmoney(mm) == 1) {
 			System.out.println("거래성공");
 			req.setAttribute("result", "성공");
+
 		
 		} else {
 			req.setAttribute("result", "실패");

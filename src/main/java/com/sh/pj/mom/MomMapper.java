@@ -8,4 +8,6 @@ public interface MomMapper {
 
 	MomDTO detail(MomDTO momDTO);
 
+	int regMomSitter(MomDTO momDTO);
+
 }

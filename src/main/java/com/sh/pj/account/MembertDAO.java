@@ -15,6 +15,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import com.sh.pj.mom.MomTakerDTO;
 import com.sh.pj.pet.PetDTO;
 import com.sh.pj.pet.PetTakerDTO;
 
@@ -206,6 +207,35 @@ public class MembertDAO {
 
 	}
 
-	
+	public void regMomTaker(HttpServletRequest req, MomTakerDTO mtDTO) {
+		try {
+			String imgOrgName = mtDTO.getMt_Rfile().getOriginalFilename();
+			long imgSize = mtDTO.getMt_Rfile().getSize();
 
+			String extension = imgOrgName.substring(imgOrgName.lastIndexOf("."), imgOrgName.length());
+
+			String newName = UUID.randomUUID().toString().split("-")[0];
+
+			String path = sc.getRealPath("resources/img");
+
+			File saveImg = new File(path + "//" + newName + extension);
+
+			mtDTO.getMt_Rfile().transferTo(saveImg);
+			mtDTO.setMt_file(newName + extension);
+			
+			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+			mtDTO.setMt_id(mDTO.getUser_id());
+			System.out.println(mtDTO);
+
+			if (ss.getMapper(MemberMapper.class).regMTAccount(mtDTO) == 1) {
+
+				System.out.println("등록 완료");
+				mDTO.setPt_id(mDTO.getUser_id());
+				req.getSession().setAttribute("userInfo", mDTO);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
