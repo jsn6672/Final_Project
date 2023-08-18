@@ -25,7 +25,7 @@ public class MypageController {
 	
 	@Autowired
 	private MypageDAO mpDAO;
-	
+
 	
 	
 	@RequestMapping(value = "/mypage.go", method = RequestMethod.GET)
