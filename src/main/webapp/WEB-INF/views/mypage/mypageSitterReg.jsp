@@ -22,13 +22,13 @@
 					<div class="mpS-icon">
 						<div class="mpS-icon-name">
 							<div class="mpS-icon-mom">
-								<img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpBaby.png">
+							<div class="mpS-icon-pet"><a href="mypage.sitterRegMom.go"><img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpBaby.png"></a></div>
 							</div>
 								<div>맘시터</div>
 						</div>
 						<div class="mpS-icon-name">
 							<div class="mpS-icon-care">
-								<img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpHospital.png">
+							<div class="mpS-icon-pet"><a href="mypage.sitterRegCare.go"><img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpHospital.png"></a></div>
 							</div>
 								<div>케어시터</div>
 						</div>
@@ -45,18 +45,18 @@
 					<div class="mpS-icon">
 						<div class="mpS-icon-name">
 							<div class="mpS-icon-mom">
-								<img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpBaby.png">
+							<div class="mpS-icon-pet"><a href="mypage.takerRegMom.go"><img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpBaby.png"></a></div>
 							</div>
 								<div>맘시터</div>
 						</div>
 						<div class="mpS-icon-name">
 							<div class="mpS-icon-care">
-								<img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpHospital.png">
+							<div class="mpS-icon-pet"><a href="mypage.takerRegCare.go"><img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpHospital.png"></a></div>
 							</div>
 								<div>케어시터</div>
 						</div>
 						<div class="mpS-icon-name2">
-							<div class="mpS-icon-pet"><a href="mypage.sitterRegPetCare.go"><img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpPet.png"></a></div>
+							<div class="mpS-icon-pet"><a href="mypage.takerRegPet.go"><img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpPet.png"></a></div>
 								<div>펫시터</div>
 						</div>
 					</div>
