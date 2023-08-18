@@ -8,7 +8,7 @@
 	</select>
 
 	<select id="detail" resultType="com.sh.pj.pet.PetDTO">
-		select*from petsitter_tbl where ps_no = #{ps_no}
+		select*from petsitter_tbl where ps_id = #{ps_id}
 	</select>
 
 	<insert id="regDolbom">

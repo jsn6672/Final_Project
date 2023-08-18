@@ -24,7 +24,7 @@ public class PetController {
 	
 	
 	@RequestMapping(value = "/petsitter.go", method = RequestMethod.GET)
-	public String petsitter(HttpServletRequest req,PetDTO petDTO,Model m) {
+	public String petsitter(HttpServletRequest req, PetDTO petDTO, Model m) {
 		req.setAttribute("contentPage", "pet/petsitter.jsp");
 		mDAO.logincheck(req);	
 		pDAO.getAll(req,petDTO,m);

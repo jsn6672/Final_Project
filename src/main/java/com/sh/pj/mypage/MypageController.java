@@ -25,15 +25,7 @@ public class MypageController {
 	
 	@Autowired
 	private MypageDAO mpDAO;
-	
-	@Autowired
-	private MomDTO mDTO;
-	
-	@Autowired
-	private CareDTO cDTO;
-	
-	@Autowired
-	private PetDTO pDTO;
+
 	
 	
 	@RequestMapping(value = "/mypage.go", method = RequestMethod.GET)
