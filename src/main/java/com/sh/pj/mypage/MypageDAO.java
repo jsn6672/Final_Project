@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.channels.Selector;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 import javax.mail.Session;
@@ -22,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MemberMapper;
 import com.sh.pj.mom.MomDTO;
@@ -141,16 +144,90 @@ public class MypageDAO {
 
 	}
 
-	public void getAll(HttpServletRequest req, AcceptDTO aDTO, Model m) {
-		//for문
-		
-		if (aDTO.getSitter_type()==1) {
-			m.addAttribute("getall",ss.getMapper(MypageMapper.class).getAllcare(aDTO));
-		}else if (aDTO.getSitter_type()==2) {
-			m.addAttribute("getall",ss.getMapper(MypageMapper.class).getAllmom(aDTO));
-		}else {
-			m.addAttribute("getall",ss.getMapper(MypageMapper.class).getAllpet(aDTO));
+	public void getAll(HttpServletRequest req, ContractDTO cntDTO, Model m) {
+
+		List<ContractDTO> dolbomCnt = ss.getMapper(MypageMapper.class).getAllDolbomCont(cntDTO);
+		for (ContractDTO contractDTO : dolbomCnt) {
+			contractDTO.setCnt_petdto(ss.getMapper(MypageMapper.class).getPetDTO(contractDTO));
 		}
+		req.setAttribute("contractDolbomInfo", dolbomCnt);
+		
+		
+		
+		
+		
+	}
+
+	public void getSitterAllCont(HttpServletRequest req, ContractDTO cntDTO) {
+		
+//		시터로서 테이커에게 받을 경우
+		
+		 // 현재 날짜 구하기 (시스템 시계, 시스템 타임존)
+        LocalDate now = LocalDate.now();
+ 
+        // 연도, 월(문자열, 숫자), 일, 일(year 기준), 요일(문자열, 숫자)
+        int nowyear = now.getYear();
+        int nowmonthValue = now.getMonthValue();
+		
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		cntDTO.setCnt_sitter_id(mDTO.getUser_id());
+		System.out.println("1" + cntDTO);
+		
+		List<ContractDTO> sitterCnt = ss.getMapper(MypageMapper.class).getAllSitterCont(cntDTO);
+		System.out.println("2" + sitterCnt);
+		for (ContractDTO contractDTO : sitterCnt) {
+			contractDTO.setCnt_dolbomdto(ss.getMapper(MypageMapper.class).getDolbomDTO(contractDTO));
+			
+			DolbomDTO dDTO = contractDTO.getCnt_dolbomdto();
+			
+			contractDTO.setCnt_memberDTO(ss.getMapper(MypageMapper.class).getTakerDTO(dDTO));
+			
+			int year = nowyear - dDTO.getD_year();
+			int month = nowmonthValue - dDTO.getD_month();
+			
+			if ((year*12)+month >= 36) {
+				contractDTO.setAge(year+1);
+				contractDTO.setAgetype("살");
+			} else {
+				contractDTO.setAge((year*12)+month+1);
+				contractDTO.setAgetype("개월");
+			}
+			
+			int can_do = Integer.parseInt(dDTO.getD_can_do());
+			contractDTO.setCnt_can_do(""); 
+			if (contractDTO.getCnt_type() == 3) {
+				
+				if (can_do % 2 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 산책");
+				}
+				if (can_do % 3 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 목욕");
+				}
+				if (can_do % 5 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 밥챙겨주기");
+				}
+				if (can_do % 7 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 호텔링");
+				}
+				if (can_do % 11 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 배변훈련");
+				}
+				if (can_do % 13 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 놀이훈련");
+				}
+				if (can_do % 17 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 사회화훈련");
+				}
+				if (can_do % 19 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 기타활동");
+				}
+			}
+			
+			contractDTO.setCnt_can_do(contractDTO.getCnt_can_do().substring(3));
+			
+		}
+		
+		req.setAttribute("contractSitterInfo", sitterCnt);
 		
 	}
 
