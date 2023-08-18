@@ -26,5 +26,9 @@ public interface MypageMapper {
 	public List<ContractDTO> getAllDolbomCont(ContractDTO cntDTO);
 
 	public MemberDTO getTakerDTO(DolbomDTO dDTO);
+	public int insertmoney(MoneyDTO mmDTO);
+
+	public List<MoneyDTO> getbuylist();
+
 
 }

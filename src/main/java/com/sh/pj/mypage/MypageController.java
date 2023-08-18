@@ -2,6 +2,7 @@ package com.sh.pj.mypage;
 
 import java.util.Locale;
 
+import javax.naming.spi.DirStateFactory.Result;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sh.pj.account.MemberDTO;
@@ -25,8 +27,6 @@ public class MypageController {
 	
 	@Autowired
 	private MypageDAO mpDAO;
-	
-	
 	
 	@RequestMapping(value = "/mypage.go", method = RequestMethod.GET)
 	public String petsitter(HttpServletRequest req) {
@@ -79,6 +79,7 @@ public class MypageController {
 		return "home";
 	}
 	
+	//등록페이지
 	@RequestMapping(value = "/mypage.sitterReg.go", method = RequestMethod.GET)
 	public String mypageSitterRegAndModi(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
@@ -86,38 +87,74 @@ public class MypageController {
 		req.setAttribute("mypageContentPage", "mypageSitterReg.jsp");
 		return "home";
 	}
-
+	
+	//펫시터페이지
 	@RequestMapping(value = "/mypage.sitterRegPet.go", method = RequestMethod.GET)
 	public String mypageSitterRegPet(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		mDAO.logincheck(req);
-		String checkMyPage = (String) req.getSession().getAttribute("checkMyPage");
-		if (checkMyPage.equals("1")) {
-//			여긴 제이슨이 만든 페이지 넣은 곳임다
-			req.setAttribute("mypageContentPage", "mypageSitterRegPet.jsp");
-		} else {
-//			여기는 수진이가 쓴 페이지 넣어놔줘.... 
-			req.setAttribute("mypageContentPage", "mypageSitterRegPet.jsp");			
-		}
+		req.setAttribute("mypageContentPage", "sitter/mypageSitterRegPet.jsp");
 		
 		return "home";
 	}
 	
-	@RequestMapping(value = "/mypage.sitterRegPet.do", method = RequestMethod.GET)
-	public String mypageSitterRegPetDo(HttpServletRequest req) {
+	//맘시터페이지
+	@RequestMapping(value = "/mypage.sitterRegMom.go", method = RequestMethod.GET)
+	public String mypageSitterRegMom(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		mDAO.logincheck(req);
-		req.setAttribute("mypageContentPage", "mypageSitterRegPet.jsp");
+		req.setAttribute("mypageContentPage", "sitter/mypageSitterRegMom.jsp");
+		
 		return "home";
 	}
 	
-	@RequestMapping(value = "/mypage.sitterRegPetCare.go", method = RequestMethod.GET)
-	public String mypageSitterRegPetCare(HttpServletRequest req) {
+	//케어시터페이지
+	@RequestMapping(value = "/mypage.sitterRegCare.go", method = RequestMethod.GET)
+	public String mypageSitterRegCare(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		mDAO.logincheck(req);
-		req.setAttribute("mypageContentPage", "mypageSitterRegPetCare.jsp");
+		req.setAttribute("mypageContentPage", "sitter/mypageSitterRegCare.jsp");
+		
 		return "home";
 	}
+	
+	/*
+	 * @RequestMapping(value = "/mypage.sitterRegPet.do", method =
+	 * RequestMethod.GET) public String mypageSitterRegPetDo(HttpServletRequest req)
+	 * { req.setAttribute("contentPage", "mypage/mypage.jsp"); mDAO.logincheck(req);
+	 * req.setAttribute("mypageContentPage", "mypageSitterRegPet.jsp"); return
+	 * "home"; }
+	 */
+	
+	//펫테이커페이지
+	@RequestMapping(value = "/mypage.takerRegPet.go", method = RequestMethod.GET)
+	public String mypageTakerRegPet(HttpServletRequest req) {
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		mDAO.logincheck(req);
+		req.setAttribute("mypageContentPage", "taker/mypageTakerRegPet.jsp");
+		return "home";
+	}
+	
+	//맘테이커페이지
+	@RequestMapping(value = "/mypage.takerRegMom.go", method = RequestMethod.GET)
+	public String mypageTakerRegMom(HttpServletRequest req) {
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		mDAO.logincheck(req);
+		req.setAttribute("mypageContentPage", "taker/mypageTakerRegMom.jsp");
+		return "home";
+	}
+	
+	
+	//케어테이커페이지
+	@RequestMapping(value = "/mypage.takerRegCare.go", method = RequestMethod.GET)
+	public String mypageTakerRegCare(HttpServletRequest req) {
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		mDAO.logincheck(req);
+		req.setAttribute("mypageContentPage", "taker/mypageTakerRegCare.jsp");
+		return "home";
+	}
+	
+	
 	
 	@RequestMapping(value = "/mypage.ticket.go", method = RequestMethod.GET)
 	public String mypageTicket(HttpServletRequest req) {
@@ -144,21 +181,41 @@ public class MypageController {
 		return "home";
 	}
 	  
-	@RequestMapping(value = "/mypage.ticket.buy", method = RequestMethod.POST)
-	public String ticketBuy(HttpServletRequest req) {
-		req.setAttribute("contentPage", "mypage/mypageTicket2Buy.jsp");
-		mDAO.logincheck(req);
-		return "home";
+	
+	 @RequestMapping(value = "/mypage.ticket.buy", method = RequestMethod.POST)
+	 public String ticketBuy(HttpServletRequest req) {
+		 req.setAttribute("contentPage", "mypage/mypageTicket2Buy.jsp");
+		 mDAO.logincheck(req); 
+		 return "home"; 
 	}
 	
-	@RequestMapping(value = "/mypage.ticket.sendMoney", method = RequestMethod.POST)
-	public String ticketSendMoney(HttpServletRequest req) {
-		req.setAttribute("contentPage", "mypage/mypageTicket3SendMoney.jsp");
-		String price = req.getParameter("choiceTicketPrice");
-		System.out.println(price);
+	 @RequestMapping(value = "/mypage.ticket.send", method = RequestMethod.POST)
+	 public @ResponseBody String ticketSend(HttpServletRequest req, MoneyDTO mm) {
+		req.setAttribute("contentPage", "mypage/mypageTicket2Buy.jsp");
 		mDAO.logincheck(req);
-		return "home";
+		mpDAO.insertmoney(req, mm);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
+		
+		String result = (String) req.getAttribute("result");
+		if (result.equals("성공")) {
+	        return "home";
+	    } else {
+	        return "";
+	    }
 	}
+	
+	 @RequestMapping(value = "/mypage.ticket.check", method = RequestMethod.GET)
+	 public String ticketCheck(HttpServletRequest req, MoneyDTO mm) {
+		 mDAO.logincheck(req);
+		 mpDAO.getbuylist(req, mm);
+		 req.setAttribute("contentPage", "mypage/mypage.jsp");
+		 req.setAttribute("mypageContentPage", "mypageTicket3Check.jsp");
+		return "home";
+	 }
+	
+	 
+
 	
 
 	

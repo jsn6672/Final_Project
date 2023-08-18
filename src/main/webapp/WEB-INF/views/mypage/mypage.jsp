@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,7 +59,15 @@ init();
 			<div class="mpMenu-part" id="mpMenu-part3"
 			onmouseover="changeColor('mpMenu-part3')"
 			onmouseout="restoreColor('mpMenu-part3')">
-				<a href="mypage.ticket.go">이용권</a>	
+				<c:choose>
+					<c:when test="${userInfo.user_id == 'admin' }">
+					<a href="mypage.ticket.check">이용권</a></c:when>
+					<c:otherwise>
+						<span>이용권</span>
+					</c:otherwise>				
+				</c:choose>
+			
+				
 			</div>
 			<div class="mpMenu-part" id="mpMenu-part4"
 			onmouseover="changeColor('mpMenu-part4')"

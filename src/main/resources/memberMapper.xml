@@ -38,5 +38,9 @@
 		insert into pettaker_tbl values(#{pt_id}, #{pt_file}, 0, 'ndy')
 	</insert>
 	
+		<insert id="regMTAccount">
+		insert into pettaker_tbl values(#{mt_id}, #{mt_file}, 0, 'none')
+	</insert>
+	
 	
 </mapper>
