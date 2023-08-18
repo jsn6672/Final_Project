@@ -5,6 +5,8 @@ import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sh.pj.account.MemberDTO;
+
 public class PetDTO {
 
 	private String ps_id;
@@ -55,7 +57,9 @@ public class PetDTO {
 	private int friday_end;
 	private int saturday_end;
 	private int sunday_end;
-
+	
+	private MemberDTO mm;
+	
 	@Override
 	public String toString() {
 		return "PetDTO [ps_id=" + ps_id + ", ps_file=" + ps_file + ", ps_Rfile=" + ps_Rfile + ", ps_confirm="
@@ -72,9 +76,9 @@ public class PetDTO {
 				+ thursday_start + ", friday_start=" + friday_start + ", saturday_start=" + saturday_start
 				+ ", sunday_start=" + sunday_start + ", monday_end=" + monday_end + ", tuesday_end=" + tuesday_end
 				+ ", wednesday_end=" + wednesday_end + ", thursday_end=" + thursday_end + ", friday_end=" + friday_end
-				+ ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end + "]";
+				+ ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end + ", mm=" + mm + "]";
 	}
-
+	
 	public String getPs_id() {
 		return ps_id;
 	}
@@ -433,6 +437,14 @@ public class PetDTO {
 
 	public void setSunday_end(int sunday_end) {
 		this.sunday_end = sunday_end;
+	}
+	
+	public MemberDTO getMm() {
+		return mm;
+	}
+
+	public void setMm(MemberDTO mm) {
+		this.mm = mm;
 	}
 
 }

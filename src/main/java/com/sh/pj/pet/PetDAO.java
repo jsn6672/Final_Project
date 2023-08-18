@@ -103,6 +103,8 @@ public class PetDAO {
 		pp.setSaturday(ps_day[5]);
 		pp.setSunday(ps_day[6]);
 		
+		pp.setMm(ss.getMapper(PetMapper.class).detailUser(pp));
+		
 		m.addAttribute("petsitter", pp);
 
 	}
@@ -170,6 +172,15 @@ public class PetDAO {
 
 		}
 
+	}
+
+	public void deletePetsitter(HttpServletRequest req, PetDTO pDTO, Model model) {
+		
+		if(ss.getMapper(PetMapper.class).deletePetsitter(pDTO) == 1) {
+			System.out.println("삭제 성공!");
+			req.setAttribute("deletecheck", "1");
+		}
+		
 	}
 
 }

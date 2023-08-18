@@ -63,7 +63,7 @@
 	font-size: 16pt;
 }
 
-.body-content-detail {
+.body-content-detail-center {
 	width: 100%;
 	border: 2px solid white;
 	height: 200px;
@@ -72,6 +72,15 @@
 	display: flex;
 	justify-content: space-evenly;
     text-align: center;
+}
+
+.body-content-detail {
+	width: 100%;
+	border: 2px solid white;
+	height: 200px;
+	background-color: white;
+	border-radius: 10px;
+	display: flex;
 }
 
 .body-content-detail-cover {

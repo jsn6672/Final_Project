@@ -53,7 +53,6 @@ public class PetController {
 	@RequestMapping(value = "/pettaker.be", method = RequestMethod.POST)
 	public String pettaker_be(HttpServletRequest req, PetTakerDTO ptDTO, DolbomDTO dDTO) {
 		mDAO.logincheck(req);	
-		
 		mDAO.regPetTaker(req, ptDTO);
 		pDAO.regPetDolbom(req, dDTO);
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
@@ -61,16 +60,28 @@ public class PetController {
 		
 		return "home";
 	}
+	
 	@RequestMapping(value = "/petsitter.be", method = RequestMethod.POST)
 	public String petsitter_be(HttpServletRequest req, PetDTO pDTO) {
 		mDAO.logincheck(req);	
-		
 		pDAO.regPetSitter(req, pDTO);
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
 		
 		return "home";
 	}
+	
+	@RequestMapping(value = "/petsitter.delete.go", method = RequestMethod.POST)
+	public String petsitter_delete(HttpServletRequest req, PetDTO pDTO, Model model) {
+		mDAO.logincheck(req);	
+		pDAO.deletePetsitter(req, pDTO, model);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
+		
+		return "home";
+	}
+	
+	
 	
 	
 	

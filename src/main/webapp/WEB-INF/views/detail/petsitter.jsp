@@ -20,8 +20,8 @@
 
 					<div class="header-data1">
 						<div>
-							<span style="font-size: 14pt;">펫시터 ${petsitter.ps_id }</span>
-							<span style="font-size: 10pt;">31살,여</span>
+							<span style="font-size: 14pt;">펫시터 ${petsitter.mm.user_name }</span>
+							<span style="font-size: 10pt;">,${petsitter.mm.user_gender }</span>
 							<span style="font-size: 10pt;">cctv촬영 - ${petsitter.ps_cctv }</span>
 							<div>희망 시급: ${petsitter.ps_pay }</div>
 							<div style="display: flex;">
@@ -41,8 +41,11 @@
 				<div>
 					<div class="body-title-detail">인증</div>
 					<div class="body-content-detail-cover">
-						<div>
-							<div class="body-content-detail">주민등록등본이 인증된 회원입니다.</div>
+						<div class="body-content-detail">
+							<div style="width: 30%; margin-top: auto; margin-bottom: auto; text-align: center;">
+								<img alt="" src="resources/img/logo/인증.png" style="width: 100px; height: 100px;">
+							</div>
+							<div style="width: 70%; margin-top: auto; margin-bottom: auto;">주민등록등본이 인증된 회원입니다.</div>
 						</div>
 					</div>
 				</div>
@@ -61,53 +64,53 @@
 				<div>
 					<div class="body-title-detail">선호하는 돌봄 유형</div>
 					<div class="body-content-detail-cover">
-						<div class="body-content-detail">
+						<div class="body-content-detail-center">
 							<c:if test="${petsitter.ps_can_do %2 == 0 }">
 								<div class="can-do-img">
 									<img alt="" src="resources/img/logo/산책.png">
+									<div class="can-do-text">산책</div>
 								</div>
-								<div class="can-do-text">산책</div>
 							</c:if>
 							<c:if test="${petsitter.ps_can_do %3 == 0 }">
 								<div class="can-do-img">
 									<img alt="" src="resources/img/logo/목욕.png">
-								<div class="can-do-text">목욕</div>
+									<div class="can-do-text">목욕</div>
 								</div>
 							</c:if>
 							<c:if test="${petsitter.ps_can_do %5 == 0 }">
 								<div class="can-do-img">
 									<img alt="" src="resources/img/logo/사료.png">
-								<div class="can-do-text">밥챙겨주기</div>
+									<div class="can-do-text">밥챙겨주기</div>
 								</div>
 							</c:if>
 							<c:if test="${petsitter.ps_can_do %19 == 0 }">
 								<div class="can-do-img">
 									<img alt="" src="resources/img/logo/호텔.png">
-								<div class="can-do-text">호텔링</div>
+									<div class="can-do-text">호텔링</div>
 								</div>
 							</c:if>
 							<c:if test="${petsitter.ps_can_do %7 == 0 }">
 								<div class="can-do-img">
 									<img alt="" src="resources/img/logo/배변훈련.png">
-								<div class="can-do-text">배변훈련</div>
+									<div class="can-do-text">배변훈련</div>
 								</div>
 							</c:if>
 							<c:if test="${petsitter.ps_can_do %11 == 0 }">
 								<div class="can-do-img">
 									<img alt="" src="resources/img/logo/놀이훈련.png">
-								<div class="can-do-text">놀이훈련</div>
+									<div class="can-do-text">놀이훈련</div>
 								</div>
 							</c:if>
 							<c:if test="${petsitter.ps_can_do %13 == 0 }">
 								<div class="can-do-img">
 									<img alt="" src="resources/img/logo/.png">
+									<div class="can-do-text">사회화훈련</div>
 								</div>
-								<div class="can-do-text">사회화훈련</div>
 							</c:if>
 							<c:if test="${petsitter.ps_can_do %17 == 0 }">
 								<div class="can-do-img">
 									<img alt="" src="resources/img/logo/기타.png">
-								<div class="can-do-text">기타활동</div>
+									<div class="can-do-text">기타활동</div>
 								</div>
 							</c:if>
 						</div>
@@ -236,9 +239,34 @@
 					</div>
 				</div>
 				<div>
-					<div class="body-title-detail">돌봄 가능 연령</div>
+					<div class="body-title-detail">돌봄 가능한 펫</div>
 					<div class="body-content-detail-cover">
-						<div class="body-content-detail">내용</div>
+						<div class="body-content-detail-center">
+							<c:if test="${petsitter.ps_can_type %2 == 0 }">
+								<div class="can-do-img">
+									<img alt="" src="resources/img/logo/강아지.png">
+									<div class="can-do-text">강아지</div>
+								</div>
+							</c:if>
+							<c:if test="${petsitter.ps_can_type %3 == 0 }">
+								<div class="can-do-img">
+									<img alt="" src="resources/img/logo/고양이.png">
+									<div class="can-do-text">고양이</div>
+								</div>
+							</c:if>
+							<c:if test="${petsitter.ps_can_type %5 == 0 }">
+								<div class="can-do-img">
+									<img alt="" src="resources/img/logo/조류.png">
+									<div class="can-do-text">조류</div>
+								</div>
+							</c:if>
+							<c:if test="${petsitter.ps_can_type %7 == 0 }">
+								<div class="can-do-img">
+									<img alt="" src="resources/img/logo/타입 기타.png">
+									<div class="can-do-text">기타</div>
+								</div>
+							</c:if>
+						</div>
 					</div>
 				</div>
 				<div>
@@ -249,8 +277,18 @@
 				</div>
 				<c:if test="${petsitter.ps_id eq sessionScope.userInfo.user_id }">
 					<div class="detail-btn">
-						<button>수정</button>
-						<button style="margin-left: 10px;">삭제</button>
+						<c:choose>
+							<c:when test="${petsitter.ps_notice == '1' }">
+								<button onclick="location.href='petsitter.update.go?ps_id=${petsitter.ps_id}'">수정</button>
+								<button onclick="location.href='petsitter.notice.up?ps_id=${petsitter.ps_id}'" style="margin-left: 10px;">공고 올리기</button>
+								<button onclick="petsitterDelete(${petsitter.ps_id})" style="margin-left: 10px;">삭제</button>
+							</c:when>
+							<c:otherwise>
+								<button onclick="location.href='petsitter.update.go?ps_id=${petsitter.ps_id}'">수정</button>
+								<button onclick="location.href='petsitter.notice.up?ps_id=${petsitter.ps_id}'" style="margin-left: 10px;">공고 올리기</button>
+								<button onclick="petsitterDelete(${petsitter.ps_id})" style="margin-left: 10px;">삭제</button>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</c:if>
 			</div>
