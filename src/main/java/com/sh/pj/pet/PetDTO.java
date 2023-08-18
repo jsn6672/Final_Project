@@ -28,6 +28,7 @@ public class PetDTO {
 	private int ps_count;
 	private String ps_can_do;
 	private String ps_can_type;
+	private String ps_notice;
 	private Date ps_ticket_start;
 	private Date ps_ticket_end;
 	private Date ps_write_date;
@@ -68,16 +69,24 @@ public class PetDTO {
 				+ ps_term + ", ps_day=" + ps_day + ", ps_hour=" + ps_hour + ", ps_location1=" + ps_location1
 				+ ", ps_location2=" + ps_location2 + ", ps_location3=" + ps_location3 + ", ps_extra=" + ps_extra
 				+ ", ps_exp=" + ps_exp + ", ps_pay=" + ps_pay + ", ps_point=" + ps_point + ", ps_count=" + ps_count
-				+ ", ps_can_do=" + ps_can_do + ", ps_can_type=" + ps_can_type + ", ps_ticket_start=" + ps_ticket_start
-				+ ", ps_ticket_end=" + ps_ticket_end + ", ps_write_date=" + ps_write_date + ", ps_type="
-				+ Arrays.toString(ps_type) + ", petsitter_act=" + Arrays.toString(petsitter_act) + ", monday=" + monday
-				+ ", tuesday=" + tuesday + ", wednesday=" + wednesday + ", thursday=" + thursday + ", friday=" + friday
-				+ ", saturday=" + saturday + ", sunday=" + sunday + ", monday_start=" + monday_start
-				+ ", tuesday_start=" + tuesday_start + ", wednesday_start=" + wednesday_start + ", thursday_start="
-				+ thursday_start + ", friday_start=" + friday_start + ", saturday_start=" + saturday_start
-				+ ", sunday_start=" + sunday_start + ", monday_end=" + monday_end + ", tuesday_end=" + tuesday_end
-				+ ", wednesday_end=" + wednesday_end + ", thursday_end=" + thursday_end + ", friday_end=" + friday_end
-				+ ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end + ", mm=" + mm + "]";
+				+ ", ps_can_do=" + ps_can_do + ", ps_can_type=" + ps_can_type + ", ps_notice=" + ps_notice
+				+ ", ps_ticket_start=" + ps_ticket_start + ", ps_ticket_end=" + ps_ticket_end + ", ps_write_date="
+				+ ps_write_date + ", ps_type=" + Arrays.toString(ps_type) + ", petsitter_act="
+				+ Arrays.toString(petsitter_act) + ", monday=" + monday + ", tuesday=" + tuesday + ", wednesday="
+				+ wednesday + ", thursday=" + thursday + ", friday=" + friday + ", saturday=" + saturday + ", sunday="
+				+ sunday + ", monday_start=" + monday_start + ", tuesday_start=" + tuesday_start + ", wednesday_start="
+				+ wednesday_start + ", thursday_start=" + thursday_start + ", friday_start=" + friday_start
+				+ ", saturday_start=" + saturday_start + ", sunday_start=" + sunday_start + ", monday_end=" + monday_end
+				+ ", tuesday_end=" + tuesday_end + ", wednesday_end=" + wednesday_end + ", thursday_end=" + thursday_end
+				+ ", friday_end=" + friday_end + ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end + "]";
+	}
+
+	public String getPs_notice() {
+		return ps_notice;
+	}
+
+	public void setPs_notice(String ps_notice) {
+		this.ps_notice = ps_notice;
 	}
 	
 	public String getPs_id() {

@@ -165,9 +165,10 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value = "/mypage.usage.go", method = RequestMethod.GET)
-	public String mypageUsage(HttpServletRequest req) {
+	public String mypageUsage(HttpServletRequest req, ContractDTO cntDTO) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		mDAO.logincheck(req);
+		mpDAO.getSitterAllCont(req, cntDTO);	
 		req.setAttribute("mypageContentPage", "mypageUsageDetail.jsp");
 		return "home";
 	}
@@ -220,13 +221,13 @@ public class MypageController {
 	
 	
 	
-	@RequestMapping(value = "/getall", method = RequestMethod.GET)
-	public String getallgo(HttpServletRequest req, AcceptDTO aDTO, Model m) {
-		mDAO.logincheck(req);	
+	@RequestMapping(value = "/contract.get", method = RequestMethod.GET)
+	public String contract_get(HttpServletRequest req, ContractDTO cntDTO, Model m) {
+		mDAO.logincheck(req);			
+		mpDAO.getSitterAllCont(req, cntDTO);	
+		req.setAttribute("contentPage", "mypage/check123.jsp");
 		
-		mpDAO.getAll(req,aDTO, m);	
-
-		return "petsitter";
+		return "home";
 	}
 	
 	

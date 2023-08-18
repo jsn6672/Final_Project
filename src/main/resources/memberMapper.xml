@@ -10,7 +10,7 @@
 	<insert id="regAccount">
 		insert into jsn_user_tbl values (#{user_id}, #{user_pw}, #{user_name},
 		#{user_gender}, #{user_phone}, #{user_email_authkey}, 1, #{user_email},
-		#{user_location}, #{user_pic})
+		#{user_location}, #{user_pic}, 0, 0, 0, 0, 0, 0)
 	</insert>
 	
 	<select id="checkEmail" resultType="int">
@@ -35,7 +35,7 @@
 	</select>
 	
 	<insert id="regPTAccount">
-		insert into pettaker_tbl values(#{pt_id}, #{pt_file}, 0, 'none')
+		insert into pettaker_tbl values(#{pt_id}, #{pt_file}, 0, 'ndy')
 	</insert>
 	
 		<insert id="regMTAccount">

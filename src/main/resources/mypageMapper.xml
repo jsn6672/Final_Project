@@ -26,6 +26,26 @@
     	
     </select>
     
+   <select id="getAllSitterCont" resultType="com.sh.pj.mypage.ContractDTO">
+  	 	select * from contract_tbl where cnt_sitter_id = #{cnt_sitter_id}
+   </select>
+   
+   <select id="getAllDolbomCont" resultType="com.sh.pj.mypage.ContractDTO">
+  	 	select * from contract_tbl where cnt_dolbom_no = #{cnt_dolbom_no}
+   </select>
+
+   
+   <select id="getPetDTO" resultType="com.sh.pj.pet.PetDTO">
+  	 	select * from petsitter_tbl where ps_id = #{cnt_sitter_id}
+   </select>
+   
+   <select id="getDolbomDTO" resultType="com.sh.pj.account.DolbomDTO">
+  	 	select * from dolbom_tbl where d_no = #{cnt_dolbom_no}
+   </select>
+   
+   <select id="getTakerDTO" resultType="com.sh.pj.account.MemberDTO">
+  	 	select * from jsn_user_tbl where user_id = #{d_id}
+   </select>
     <select id="getAllmom" resultType="com.sh.pj.mom.MomDTO">
     	select * from momsitter_tbl where ms_id = #{ms_id}
     </select>

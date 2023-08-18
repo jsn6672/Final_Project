@@ -76,6 +76,7 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
               <div class="mpPAddr-detail-answer">
                 우편번호 : ${memberProfile.m_addr3} / 주소 :
                 ${memberProfile.m_addr1 } ${memberProfile.m_addr2 }
+                <a href="contract.get?cnt_sitter_id=${sessionScope.userInfo.user_id }&cnt_dolbom_no=24">testetst</a>
               </div>
             </div>
             <div class="mpPAddr">
