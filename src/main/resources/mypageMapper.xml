@@ -30,5 +30,12 @@
     	select * from momsitter_tbl where ms_id = #{ms_id}
     </select>
     
+    <insert id="insertmoney">
+    	insert into money 
+    	values (#{mm_id}, #{mm_name}, sysdate, #{mm_ticket}, #{mm_price}, #{mm_state})
+    </insert>
 
+	<select id="getbuylist" resultType="com.sh.pj.mypage.MoneyDTO">
+		select * from money
+	</select>
 </mapper>

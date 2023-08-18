@@ -2,6 +2,7 @@ package com.sh.pj.mypage;
 
 import java.util.Locale;
 
+import javax.naming.spi.DirStateFactory.Result;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sh.pj.account.MemberDTO;
@@ -26,15 +28,7 @@ public class MypageController {
 	@Autowired
 	private MypageDAO mpDAO;
 	
-	@Autowired
-	private MomDTO mDTO;
-	
-	@Autowired
-	private CareDTO cDTO;
-	
-	@Autowired
-	private PetDTO pDTO;
-	
+
 	
 	@RequestMapping(value = "/mypage.go", method = RequestMethod.GET)
 	public String petsitter(HttpServletRequest req) {
@@ -151,21 +145,41 @@ public class MypageController {
 		return "home";
 	}
 	  
-	@RequestMapping(value = "/mypage.ticket.buy", method = RequestMethod.POST)
-	public String ticketBuy(HttpServletRequest req) {
-		req.setAttribute("contentPage", "mypage/mypageTicket2Buy.jsp");
-		mDAO.logincheck(req);
-		return "home";
+	
+	 @RequestMapping(value = "/mypage.ticket.buy", method = RequestMethod.POST)
+	 public String ticketBuy(HttpServletRequest req) {
+		 req.setAttribute("contentPage", "mypage/mypageTicket2Buy.jsp");
+		 mDAO.logincheck(req); 
+		 return "home"; 
 	}
 	
-	@RequestMapping(value = "/mypage.ticket.sendMoney", method = RequestMethod.POST)
-	public String ticketSendMoney(HttpServletRequest req) {
-		req.setAttribute("contentPage", "mypage/mypageTicket3SendMoney.jsp");
-		String price = req.getParameter("choiceTicketPrice");
-		System.out.println(price);
+	 @RequestMapping(value = "/mypage.ticket.send", method = RequestMethod.POST)
+	 public @ResponseBody String ticketSend(HttpServletRequest req, MoneyDTO mm) {
+		req.setAttribute("contentPage", "mypage/mypageTicket2Buy.jsp");
 		mDAO.logincheck(req);
-		return "home";
+		mpDAO.insertmoney(req, mm);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
+		
+		String result = (String) req.getAttribute("result");
+		if (result.equals("성공")) {
+	        return "home";
+	    } else {
+	        return "";
+	    }
 	}
+	
+	 @RequestMapping(value = "/mypage.ticket.check", method = RequestMethod.GET)
+	 public String ticketCheck(HttpServletRequest req, MoneyDTO mm) {
+		 mDAO.logincheck(req);
+		 mpDAO.getbuylist(req, mm);
+		 req.setAttribute("contentPage", "mypage/mypage.jsp");
+		 req.setAttribute("mypageContentPage", "mypageTicket3Check.jsp");
+		return "home";
+	 }
+	
+	 
+
 	
 
 	
@@ -179,7 +193,7 @@ public class MypageController {
 		 */		
 		req.setAttribute("contentPage", "mom/momtaker.jsp");
 
-		return "home";
+		return "petsitter";
 	}
 	
 	

@@ -19,5 +19,9 @@ public interface MypageMapper {
 
 	public List<MomDTO> getAllmom(MomDTO momDTO);
 
+	public int insertmoney(MoneyDTO mmDTO);
+
+	public List<MoneyDTO> getbuylist();
+
 
 }

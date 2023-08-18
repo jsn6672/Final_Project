@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.channels.Selector;
+import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.mail.Session;
@@ -152,7 +154,48 @@ public class MypageDAO {
 		 * );
 		 * m.addAttribute("getall",ss.getMapper(MypageMapper.class).getAllmom(accDTO););
 		 */
-		
 	}
+
+	public void insertmoney(HttpServletRequest req, MoneyDTO mm) {
+		
+		String mm_id = req.getParameter("mm_id");
+		String mm_name = req.getParameter("mm_name");
+		Date mm_date = new Date();
+		String mm_ticket = req.getParameter("mm_ticket");
+		int mm_price = Integer.parseInt(req.getParameter("mm_price"));
+		String mm_state = req.getParameter("mm_state");
+		/* System.out.println(mm_id) */;
+		
+		mm.setMm_id(mm_id);
+		mm.setMm_name(mm_name);
+		mm.setMm_date(mm_date);
+		mm.setMm_ticket(mm_ticket);
+		mm.setMm_price(mm_price);
+		mm.setMm_state(mm_state);
+		System.out.println("---*---*---*");
+		System.out.println(mm.toString());
+		req.setAttribute("money", mm);
+		
+		if (ss.getMapper(MypageMapper.class).insertmoney(mm) == 1) {
+			System.out.println("거래성공");
+			req.setAttribute("result", "성공");
+		
+		} else {
+			req.setAttribute("result", "실패");
+		}
+	}
+
+	public void getbuylist(HttpServletRequest req, MoneyDTO mm) {
+		List<MoneyDTO> moneyList =  ss.getMapper(MypageMapper.class).getbuylist();
+		req.setAttribute("moneyList", moneyList);
+		System.out.println("이밑에 리스트");
+		System.out.println(moneyList);
+		System.out.println();
+	}
+
+	
+	
+	
+	
 
 }
