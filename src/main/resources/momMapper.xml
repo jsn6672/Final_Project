@@ -14,4 +14,11 @@
 		select * from momsitter_tbl where ms_no = #{ms_no}
 	</select>
 
+	<insert id="regMomSitter">
+		insert into momsitter_tbl values (#{ms_id}, #{ms_file}, #{ms_confirm}, #{ms_confirm_answer}, #{ms_cctv}, #{ms_term}, #{ms_day}, #{ms_hour}, #{ms_location1}, #{ms_location2}, #{ms_location3}, #{ms_extra}, #{ms_exp}, #{ms_pay}, #{ms_point}, #{ms_count}, #{ms_can_do}, #{ms_can_type}, null, null, null)
+	</insert>
+
+
+
+
 </mapper>

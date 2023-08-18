@@ -9,7 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MembertDAO;
+import com.sh.pj.pet.PetDTO;
+import com.sh.pj.pet.PetTakerDTO;
 
 @Controller
 public class MomController {
@@ -53,6 +56,28 @@ public class MomController {
 		mDAO.logincheck(req);	
 		momDAO.detail(req, momDTO, m);
 		req.setAttribute("contentPage", "detail/taker.jsp");
+		
+		return "home";
+	}
+	
+	@RequestMapping(value = "/momtaker.be", method = RequestMethod.POST)
+	public String momtaker_be(HttpServletRequest req, MomTakerDTO mtDTO, DolbomDTO dDTO) {
+		mDAO.logincheck(req);	
+		
+		mDAO.regMomTaker(req, mtDTO);
+		momDAO.regMomDolbom(req, dDTO);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
+		
+		return "home";
+	}
+	@RequestMapping(value = "/momsitter.be", method = RequestMethod.POST)
+	public String momsitter_be(HttpServletRequest req, MomDTO mDTO) {
+		mDAO.logincheck(req);	
+		
+		momDAO.regMomSitter(req, mDTO);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
 		
 		return "home";
 	}
