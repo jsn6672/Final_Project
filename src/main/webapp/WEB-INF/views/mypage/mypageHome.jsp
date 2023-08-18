@@ -74,7 +74,7 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
             <div class="mpPAddr">
               <div class="mpPAddr-detail">주소</div>
               <div class="mpPAddr-detail-answer">
-                우편번호 : ${memberProfile.m_addr3} 주소 :
+                우편번호 : ${memberProfile.m_addr3} / 주소 :
                 ${memberProfile.m_addr1 } ${memberProfile.m_addr2 }
               </div>
             </div>

@@ -24,5 +24,9 @@ public interface MypageMapper {
 
 
 
+	public int insertmoney(MoneyDTO mmDTO);
+
+	public List<MoneyDTO> getbuylist();
+
 
 }
