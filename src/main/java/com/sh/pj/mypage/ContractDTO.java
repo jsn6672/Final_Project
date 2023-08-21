@@ -1,5 +1,7 @@
 package com.sh.pj.mypage;
 
+import java.util.List;
+
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.pet.PetDTO;
@@ -16,6 +18,8 @@ public class ContractDTO {
 	private PetDTO cnt_petdto;
 	private DolbomDTO cnt_dolbomdto;
 
+	private List<DolbomDTO> cnt_list_dolbomdto;
+
 	private MemberDTO cnt_memberDTO;
 	private int age;
 	private String agetype;
@@ -26,8 +30,17 @@ public class ContractDTO {
 	public String toString() {
 		return "ContractDTO [cnt_no=" + cnt_no + ", cnt_type=" + cnt_type + ", cnt_sitter_id=" + cnt_sitter_id
 				+ ", cnt_dolbom_no=" + cnt_dolbom_no + ", cnt_sitter_ok=" + cnt_sitter_ok + ", cnt_dolbom_ok="
-				+ cnt_dolbom_ok + ", cnt_petdto=" + cnt_petdto + ", cnt_dolbomdto=" + cnt_dolbomdto + ", cnt_memberDTO="
-				+ cnt_memberDTO + ", age=" + age + ", agetype=" + agetype + ", cnt_can_do=" + cnt_can_do + "]";
+				+ cnt_dolbom_ok + ", cnt_petdto=" + cnt_petdto + ", cnt_dolbomdto=" + cnt_dolbomdto
+				+ ", cnt_list_dolbomdto=" + cnt_list_dolbomdto + ", cnt_memberDTO=" + cnt_memberDTO + ", age=" + age
+				+ ", agetype=" + agetype + ", cnt_can_do=" + cnt_can_do + "]";
+	}
+
+	public List<DolbomDTO> getCnt_list_dolbomdto() {
+		return cnt_list_dolbomdto;
+	}
+
+	public void setCnt_list_dolbomdto(List<DolbomDTO> cnt_list_dolbomdto) {
+		this.cnt_list_dolbomdto = cnt_list_dolbomdto;
 	}
 
 	public String getCnt_can_do() {

@@ -29,6 +29,18 @@ public interface MypageMapper {
 	public int insertmoney(MoneyDTO mmDTO);
 
 	public List<MoneyDTO> getbuylist();
+	
+	
+	//시터로서 들어온 계약 갯수 확인용
+	public int countSitterCont(ContractDTO cntDTO);
+	//돌보미로서 들어온 계약 갯수 확인용
+	public int countDolbomCont(ContractDTO cntDTO);
+	//테이커로서 돌보미가 몇명인지 확인용
+	public int countTakerCont(MemberDTO mDTO);
+
+	public List<DolbomDTO> getDolbomList(MemberDTO mDTO);
+
+	public MemberDTO getUserID(ContractDTO cntDTO2);
 
 
 }

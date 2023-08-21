@@ -168,7 +168,11 @@ public class MypageController {
 	public String mypageUsage(HttpServletRequest req, ContractDTO cntDTO) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		mDAO.logincheck(req);
-		mpDAO.getSitterAllCont(req, cntDTO);	
+		mpDAO.countSitterCont(req, cntDTO);
+		mpDAO.getSitterAllCont(req, cntDTO);
+		mpDAO.countTakerCont(req, cntDTO);
+		mpDAO.getTakerAllCont(req);
+		
 		req.setAttribute("mypageContentPage", "mypageUsageDetail.jsp");
 		return "home";
 	}
@@ -223,7 +227,8 @@ public class MypageController {
 	
 	@RequestMapping(value = "/contract.get", method = RequestMethod.GET)
 	public String contract_get(HttpServletRequest req, ContractDTO cntDTO, Model m) {
-		mDAO.logincheck(req);			
+		mDAO.logincheck(req);
+		mpDAO.countSitterCont(req, cntDTO);
 		mpDAO.getSitterAllCont(req, cntDTO);	
 		req.setAttribute("contentPage", "mypage/check123.jsp");
 		

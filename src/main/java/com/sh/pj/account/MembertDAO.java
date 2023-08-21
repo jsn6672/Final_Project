@@ -95,12 +95,12 @@ public class MembertDAO {
 			mDTO.setUser_location(req.getParameter("m_addr1") + "!" + req.getParameter("m_addr2") + "!"
 					+ req.getParameter("m_addr3"));
 			
-			mDTO.setUser_cs_status("0");
-			mDTO.setUser_ps_status("0");
-			mDTO.setUser_ms_status("0");
-			mDTO.setUser_ct_status("0");
-			mDTO.setUser_pt_status("0");
-			mDTO.setUser_mt_status("0");
+			mDTO.setUser_cs_status(0);
+			mDTO.setUser_ps_status(0);
+			mDTO.setUser_ms_status(0);
+			mDTO.setUser_ct_status(0);
+			mDTO.setUser_pt_status(0);
+			mDTO.setUser_mt_status(0);
 			
 
 			System.out.println(mDTO);

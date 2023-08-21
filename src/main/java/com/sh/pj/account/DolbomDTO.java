@@ -2,6 +2,9 @@ package com.sh.pj.account;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+
+import com.sh.pj.mypage.ContractDTO;
 
 public class DolbomDTO {
 	private int d_no;
@@ -52,6 +55,9 @@ public class DolbomDTO {
 	private Date d_writedate;
 	private Date d_enddate;
 
+	private List<ContractDTO> cntDTOs;
+	private String cntDTOMessage;
+
 	@Override
 	public String toString() {
 		return "DolbomDTO [d_no=" + d_no + ", d_id=" + d_id + ", d_name=" + d_name + ", d_category=" + d_category
@@ -66,7 +72,24 @@ public class DolbomDTO {
 				+ ", tuesday_end=" + tuesday_end + ", wednesday_end=" + wednesday_end + ", thursday_end=" + thursday_end
 				+ ", friday_end=" + friday_end + ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end
 				+ ", d_sitterage=" + d_sitterage + ", d_need=" + d_need + ", d_title=" + d_title + ", d_term=" + d_term
-				+ ", d_startdate=" + d_startdate + ", d_writedate=" + d_writedate + ", d_enddate=" + d_enddate + "]";
+				+ ", d_startdate=" + d_startdate + ", d_writedate=" + d_writedate + ", d_enddate=" + d_enddate
+				+ ", cntDTOs=" + cntDTOs + ", cntDTOMessage=" + cntDTOMessage + "]";
+	}
+
+	public String getCntDTOMessage() {
+		return cntDTOMessage;
+	}
+
+	public void setCntDTOMessage(String cntDTOMessage) {
+		this.cntDTOMessage = cntDTOMessage;
+	}
+
+	public List<ContractDTO> getCntDTOs() {
+		return cntDTOs;
+	}
+
+	public void setCntDTOs(List<ContractDTO> cntDTOs) {
+		this.cntDTOs = cntDTOs;
 	}
 
 	public Date getD_enddate() {
