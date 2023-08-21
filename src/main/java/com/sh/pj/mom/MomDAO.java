@@ -34,7 +34,38 @@ public class MomDAO {
 	}
 
 	public void detail(HttpServletRequest req, MomDTO momDTO, Model m) {
-		m.addAttribute("momsitter", ss.getMapper(MomMapper.class).detail(momDTO));
+		MomDTO mm = ss.getMapper(MomMapper.class).detail(momDTO);
+
+		String[] ms_hour = mm.getMs_hour().split("!");
+
+		mm.setMonday_start(Integer.parseInt(ms_hour[0]));
+		mm.setMonday_end(Integer.parseInt(ms_hour[1]));
+		mm.setTuesday_start(Integer.parseInt(ms_hour[2]));
+		mm.setTuesday_end(Integer.parseInt(ms_hour[3]));
+		mm.setWednesday_start(Integer.parseInt(ms_hour[4]));
+		mm.setWednesday_end(Integer.parseInt(ms_hour[5]));
+		mm.setThursday_start(Integer.parseInt(ms_hour[6]));
+		mm.setThursday_end(Integer.parseInt(ms_hour[7]));
+		mm.setFriday_start(Integer.parseInt(ms_hour[8]));
+		mm.setFriday_end(Integer.parseInt(ms_hour[9]));
+		mm.setSaturday_start(Integer.parseInt(ms_hour[10]));
+		mm.setSaturday_end(Integer.parseInt(ms_hour[11]));
+		mm.setSunday_start(Integer.parseInt(ms_hour[12]));
+		mm.setSunday_end(Integer.parseInt(ms_hour[13]));
+
+		String[] ps_day = mm.getMs_day().split("!");
+
+		mm.setMonday(ps_day[0]);
+		mm.setTuesday(ps_day[1]);
+		mm.setWednesday(ps_day[2]);
+		mm.setThursday(ps_day[3]);
+		mm.setFriday(ps_day[4]);
+		mm.setSaturday(ps_day[5]);
+		mm.setSunday(ps_day[6]);
+
+		mm.setMm(ss.getMapper(MomMapper.class).detailUser(mm));
+
+		m.addAttribute("petsitter", mm);
 
 	}
 
@@ -74,7 +105,7 @@ public class MomDAO {
 
 		System.out.println(dDTO);
 
-		if (ss.getMapper(PetMapper.class).regDolbom(dDTO) == 1) {
+		if (ss.getMapper(MomMapper.class).regDolbom(dDTO) == 1) {
 			System.out.println("돌보미 등록 완료");
 		}
 
@@ -97,7 +128,7 @@ public class MomDAO {
 			momDTO.setMs_file(newName + extension);
 
 			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
-			mDTO.setPs_id(mDTO.getUser_id());
+			mDTO.setMs_id(mDTO.getUser_id());
 
 			momDTO.setMs_confirm("0");
 			momDTO.setMs_confirm_answer("ndy");
@@ -109,29 +140,28 @@ public class MomDAO {
 
 			momDTO.setMs_can_do(Integer.toString(j));
 
-			String ps_day = momDTO.getMonday() + "!" + momDTO.getTuesday() + "!" + momDTO.getWednesday() + "!"
-					+ momDTO.getThursday() + "!" + momDTO.getFriday() + "!" + momDTO.getSaturday() + "!" + momDTO.getSunday();
+			String ms_day = momDTO.getMonday() + "!" + momDTO.getTuesday() + "!" + momDTO.getWednesday() + "!"
+					+ momDTO.getThursday() + "!" + momDTO.getFriday() + "!" + momDTO.getSaturday() + "!"
+					+ momDTO.getSunday();
 
-			momDTO.setMs_day(ps_day);
+			momDTO.setMs_day(ms_day);
 
-			String d_hour = momDTO.getMonday_start() + "!" + momDTO.getMonday_end() + "!" + momDTO.getTuesday_start() + "!"
-					+ momDTO.getTuesday_end() + "!" + momDTO.getWednesday_start() + "!" + momDTO.getWednesday_end() + "!"
-					+ momDTO.getThursday_start() + "!" + momDTO.getThursday_end() + "!" + momDTO.getFriday_start() + "!"
-					+ momDTO.getFriday_end() + "!" + momDTO.getSaturday_start() + "!" + momDTO.getSaturday_end() + "!"
-					+ momDTO.getSunday_start() + "!" + momDTO.getSunday_end();
+			String d_hour = momDTO.getMonday_start() + "!" + momDTO.getMonday_end() + "!" + momDTO.getTuesday_start()
+					+ "!" + momDTO.getTuesday_end() + "!" + momDTO.getWednesday_start() + "!"
+					+ momDTO.getWednesday_end() + "!" + momDTO.getThursday_start() + "!" + momDTO.getThursday_end()
+					+ "!" + momDTO.getFriday_start() + "!" + momDTO.getFriday_end() + "!" + momDTO.getSaturday_start()
+					+ "!" + momDTO.getSaturday_end() + "!" + momDTO.getSunday_start() + "!" + momDTO.getSunday_end();
 			momDTO.setMs_hour(d_hour);
-			
+
 			int j1 = 1;
 			for (int i1 = 0; i1 < momDTO.getMs_type().length; i1++) {
 				j1 *= momDTO.getMs_type()[i1];
 			}
 			momDTO.setMs_can_type(Integer.toString(j1));
-			
-			
 
 			System.out.println(momDTO);
 
-			if (ss.getMapper(MomMapper.class).regMomSitter(momDTO) == 1 ){
+			if (ss.getMapper(MomMapper.class).regMomSitter(momDTO) == 1) {
 
 				System.out.println("등록 완료");
 				mDTO.setMs_id(mDTO.getUser_id());
@@ -145,5 +175,13 @@ public class MomDAO {
 
 	}
 
-}
+	public void deteteMomsitter(HttpServletRequest req, MomDTO mDTO, Model model) {
+		if(ss.getMapper(MomMapper.class).deleteMomsitter(mDTO) == 1) {
+			System.out.println("삭제 성공!");
+			req.setAttribute("deletecheck", "1");
+		}
+		
+	}
+	}
+
 
