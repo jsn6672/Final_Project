@@ -15,6 +15,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import com.sh.pj.care.CareDTO;
 import com.sh.pj.mom.MomTakerDTO;
 import com.sh.pj.pet.PetDTO;
 import com.sh.pj.pet.PetTakerDTO;
@@ -246,4 +247,9 @@ public class MembertDAO {
 			e.printStackTrace();
 		}
 	}
+
+	public void regcareTaker(HttpServletRequest req, CareDTO cDTO) {
+		
+	}
+
 }
