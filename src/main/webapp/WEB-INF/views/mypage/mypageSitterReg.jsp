@@ -17,7 +17,7 @@
 			<div class="mpS-sub">
 				<div class="mpS-part-need">
 					<div class="mpS-part-pic"><img class="mpS-part-picture1" alt="" src="resources/img/mypage/mpHeart12.png"></div>
-					<div class="mpS-part-inform">"돌보미가 필요해요!"</div>
+					<div class="mpS-part-inform">"시터가 필요해요!"</div>
 					<div class="mpS-part-inform2">필요한 시터를 선택해 주세요!</div>
 					<div class="mpS-icon">
 						<div class="mpS-icon-name">
@@ -40,24 +40,24 @@
 				</div>
 				<div class="mpS-part-gonnabe">
 					<div class="mpS-part-pic"><img class="mpS-part-picture2" alt="" src="resources/img/mypage/mpHeart2.png"></div>
-					<div class="mpS-part-inform">"돌보미가 되고싶어요!"</div>
-					<div class="mpS-part-inform2">되고싶은 시터를 선택해 주세요!</div>
+					<div class="mpS-part-inform">"테이커 되고싶어요!"</div>
+					<div class="mpS-part-inform2">되고싶은 테이커를 선택해 주세요!</div>
 					<div class="mpS-icon">
 						<div class="mpS-icon-name">
 							<div class="mpS-icon-mom">
 							<div class="mpS-icon-pet"><a href="mypage.takerRegMom.go"><img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpBaby.png"></a></div>
 							</div>
-								<div>맘시터</div>
+								<div>맘테이커</div>
 						</div>
 						<div class="mpS-icon-name">
 							<div class="mpS-icon-care">
 							<div class="mpS-icon-pet"><a href="mypage.takerRegCare.go"><img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpHospital.png"></a></div>
 							</div>
-								<div>케어시터</div>
+								<div>케어테이커</div>
 						</div>
 						<div class="mpS-icon-name2">
 							<div class="mpS-icon-pet"><a href="mypage.takerRegPet.go"><img class="mpS-icon-pic" alt="" src="resources/img/mypage/mpPet.png"></a></div>
-								<div>펫시터</div>
+								<div>펫테이커</div>
 						</div>
 					</div>
 				</div>

@@ -138,16 +138,16 @@ body {
 	border-radius: 5%;
 	border: none;
 }
-.mpS-pet-sub div{
+
+.mpS-pet-sub div {
 	margin: 7px;
 }
-
 </style>
 
 </head>
 <body>
 
-	<form action="caretaker.be" method="post" enctype="multipart/form-data">
+	<form action="caresitter.be" method="post" enctype="multipart/form-data">
 
 		<!-- 전체 컨테이너 -->
 		<div class="mpS-pet">
@@ -158,101 +158,70 @@ body {
 					<img id="mpS-logo" alt="" src="resources/img/mypage/MOSI-logo.png">
 				</div>
 
-				<div>
-				<span style="font-weight: bold;"> ${userInfo.user_name}</span>
-				님의정보를입력해주세요</div>
+				<div>${userInfo.user_name}님의정보를입력해주세요</div>
 				<div>필요한 서류를 등록해주세요</div>
 				<div>
-					<input type="file" name="pt_Rfile"  style="background-color: #D9D9D9; color: black; border: none; border-radius: 5px; padding: 5px; width: 225px;">
+					<input type="file" name="ps_Rfile"  style="background-color: #D9D9D9; color: black; border: none; border-radius: 5px; padding: 5px; width: 225px;">
 				</div>
 
 				<!-- 정보입력 -->
-				<div class="mpS-pet-inform2" style="margin: 10px; text-align: center;">
-					돌보아야할 대상의 정보를 넣어주세요! <br> 만약 적으셔야 하는 돌봄이 필요한 분이 한분이상이 먼저
-					한분의 정보를 넣어주시고 나머지 분의 정보는  마이페이지에서 등록해주세요
-				</div>
-				<div>돌봄대상자의 이름을 입력해주세요</div>
-				<div>
-					<input placeholder="이름을 입력해주세요" name="d_name" style="border: none;border-radius: 10px;">
-				</div>
-				<input hidden="hidden" name="d_category" value="3">
-				<div class="mpS-pet-birth">대상자의 생년 / 월</div>
-				<div>
-					<input placeholder="돌봄대상자의 태어난 해를 입력해주세요 (YYYY)" class="birth_input"
-						name="d_year"> <input placeholder="돌봄대상자의  태어난 달을 입력해주세요"
-						class="birth_input" name="d_month">
-				</div>
-				<div class="mpS-pet-gender">
-					<input type="radio" name="d_gender" value="male" checked="checked">남성
-					<input type="radio" name="d_gender" value="female">여성
-				</div>
-
-				<div>
-					<div style="display: flex;">
-						<div class="join_column">주소</div>
-						<div>
-							<input type="checkbox" id="sameaddr"> 보호자의 주소와 같습니다
-						</div>
+				<div class="mpS-pet-inform2">할 수 있는 케어 종류를 선택해주세요</div>
+				<div style="text-align: center;">
+					희망 지역1은 필수입력입니다
+					<div>
+						희망지역 1 <input name="ps_location1" style="width: 300px;border: none; border-radius: 10px;">
 					</div>
 					<div>
-						<input id="jm_addr3Input" readonly="readonly" name="m_addr3"
-							class="normal_input" maxlength="5" autocomplete="off"
-							placeholder="우편번호"> <span
-							id="addrSearchBtn">[검색]</span><br> <br> <input
-							id="jm_addr1Input" readonly="readonly" name="m_addr1"
-							maxlength="30" autocomplete="off" placeholder="주소"
-							class="normal_input"><br> <br> <input
-							name="m_addr2" maxlength="30" autocomplete="off"
-							class="normal_input" placeholder="상세주소" id="jm_addr2Input">
+						희망지역 2 <input name="ps_location2" style="width: 300px;border: none; border-radius: 10px;">
+					</div>
+					<div>
+						희망지역 3 <input name="ps_location3" style="width: 300px;border: none; border-radius: 10px;">
 					</div>
 				</div>
 				<div>
-					<input type="checkbox" name="d_check" value="1"> 알러지 또는 주의할
-					점이 있어요!
+					<input type="radio" name="ps_cctv" value="1" checked="checked">
+					cctv촬영도 괜찮아요 <input type="radio" name="ps_cctv" value="2">
+					cctv촬영 없는 곳을 원해요
 				</div>
 				<div>
-					<input type="radio" name="d_cctv" value="1" checked="checked">
-					cctv촬영이 필요해요 <input type="radio" name="d_cctv" value="2">
-					cctv촬영은 안할거에요
-				</div>
-				<div>
-					<input type="radio" name="d_term" value="1" checked="checked">
-					정기적 계약을 원해요 <input type="radio" name="d_term" value="2">
+					<input type="radio" name="ps_term" value="1" checked="checked">
+					정기적 계약을 원해요 <input type="radio" name="ps_term" value="2">
 					단발성 계약을 원해요
 				</div>
-				<div>돌봄대상자의 성격은 다음과 같아요</div>
+				<div>원하시는 시급을 입력해주세요</div>
 				<div>
-					<textarea rows="10" cols="50" name="d_personality"
-						placeholder="성격을 간단히 입력해주세요"
-						style="width: 670px; border-radius: 10px; border: none"></textarea>
+					<input name="ps_pay" style="width: 200px;border: none; border-radius: 10px;">
 				</div>
 
-				<div class="mpS-pet-inform1">돌봄대상자에게 이런 활동이 필요해요!</div>
+				<div>
+					<textarea rows="" cols="" name="ps_exp" placeholder="관련 경험을 적어주세요" style="width: 620px; height: 300px; border: none; border-radius: 10px;"></textarea>
+				</div>
 
+				<div class="mpS-pet-inform1">돌봄대상자에게 이런 활동을 시켜줄 수 있어요!</div>
 				<div class="mpS-pet-act">
 					<div class="mpS-pet-act-bottom">
 						<div class="mpS-pet-act-detail">
-						<img alt="" src="resources/img/logo/설거지.png" style="width: 70px;">
-						 <div>
-						 <input type="checkbox" name="dolbom_act" value="2">가사활동
-						 </div>
-						</div>
+							<img alt="" src="resources/img/logo/설거지.png" style="width: 70px;">
+							<div>
+							<input type="checkbox" name="petsitter_act" value="2"> 가사활동
+							</div>
+						</div>				
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/신체활동.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="dolbom_act" value="3"> 신체활동
+							<input type="checkbox" name="petsitter_act" value="3"> 신체활동
 						</div>	
 						</div>
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/인지활동.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="dolbom_act" value="5"> 인지활동
+							<input type="checkbox" name="petsitter_act" value="5"> 인지활동
 						</div>
 						</div>
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/식사활동.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="dolbom_act" value="7"> 식사
+							<input type="checkbox" name="petsitter_act" value="7"> 식사
 						</div>	
 						</div>
 					</div>
@@ -260,32 +229,32 @@ body {
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/기저귀.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="dolbom_act" value="11"> 기저귀 케어
+							<input type="checkbox" name="petsitter_act" value="11"> 기저귀케어
 						</div>	
 						</div>
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/목욕2.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="dolbom_act" value="13"> 샤워
+							<input type="checkbox" name="petsitter_act" value="13"> 샤워
 						</div>	
 						</div>
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/말벗.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="dolbom_act" value="17"> 말벗
+							<input type="checkbox" name="petsitter_act" value="17"> 말벗
 						</div>	
 						</div>
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/기타.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="dolbom_act" value="19"> 기타활동
+							<input type="checkbox" name="petsitter_act" value="19"> 기타활동
 						</div>	
 						</div>
 					</div>
 				</div>
 				<div>
 					<textarea rows="10" cols="50" placeholder="추가사항이 있다면 이곳에 적어주세요!"
-						name="d_need" style="width: 670px; border-radius: 10px; border: none"></textarea>
+						name="ps_extra" style="width: 620px; border: none; border-radius: 10px;"></textarea>
 				</div>
 
 				<div style="width: 75%;">
@@ -450,7 +419,7 @@ body {
 						</div>
 					</div>
 				</div>
-				<button style="margin: 20px;">등록 완료</button>
+				<button>등록 완료</button>
 			</div>
 
 
@@ -459,8 +428,6 @@ body {
 
 
 	</form>
-
-
 
 </body>
 </html>
