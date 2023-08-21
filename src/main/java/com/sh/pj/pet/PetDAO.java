@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.sh.pj.ReviewDTO;
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
+import com.sh.pj.account.MemberMapper;
 
 @Service
 public class PetDAO {
@@ -104,6 +106,9 @@ public class PetDAO {
 		pp.setSunday(ps_day[6]);
 		
 		pp.setMm(ss.getMapper(PetMapper.class).detailUser(pp));
+		
+		m.addAttribute("reviews", ss.getMapper(PetMapper.class).review(petDTO));
+		System.out.println(ss.getMapper(PetMapper.class).review(petDTO));
 		
 		m.addAttribute("petsitter", pp);
 

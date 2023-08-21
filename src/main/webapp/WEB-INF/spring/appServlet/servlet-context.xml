@@ -63,7 +63,6 @@
 				<beans:value>classpath:askMapper.xml</beans:value>
 				<beans:value>classpath:memberMapper.xml</beans:value>
 				<beans:value>classpath:mypageMapper.xml</beans:value>
-				<beans:value>classpath:petMapper.xml</beans:value>
 				<beans:value>classpath:momMapper.xml</beans:value>
 				<beans:value>classpath:careMapper.xml</beans:value>
 			</beans:list>

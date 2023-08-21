@@ -112,12 +112,15 @@ https://templatemo.com/tm-580-woox-travel
 													<span>${p.ps_write_date }</span>
 												</div>
 												<div>
-													<a href="petsitter.detail.go?ps_id=${p.ps_id }">맘시터: ${p.ps_id }(이름)</a>
+													<a href="petsitter.detail.go?ps_id=${p.ps_id }">펫시터: ${p.ps_id }(이름)</a>
 													<span>나이</span>
 													<span>성별</span>
 													<span>cctv촬영 - ${p.ps_cctv }</span>
 												</div>
-												<div>시급: ${p.ps_pay }</div>
+												<div style="display: flex;">
+													<div>시급: ${p.ps_pay }</div>
+													<div style="margin-left: 10px;">(${p.ps_term })</div>
+												</div>
 												<div class="mom-select-locations">
 													<div>
 														<div>활동 가능 지역:</div>
