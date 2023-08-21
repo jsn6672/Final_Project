@@ -4,7 +4,7 @@
 
 
 	<select id="getAll" resultType="com.sh.pj.pet.PetDTO">
-		select*from petsitter_tbl where ps_notice = '1'
+		select*from petsitter_tbl where ps_notice = '0'
 	</select>
 
 	<select id="detail" resultType="com.sh.pj.pet.PetDTO">
