@@ -3,6 +3,7 @@ package com.sh.pj.mypage;
 import java.util.Date;
 
 public class MoneyDTO {
+	private int mm_no;
 	private String mm_id;
 	private String mm_name;
 	private Date mm_date;
@@ -12,6 +13,14 @@ public class MoneyDTO {
 	
 	public MoneyDTO() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public int getMm_no() {
+		return mm_no;
+	}
+
+	public void setMm_no(int mm_no) {
+		this.mm_no = mm_no;
 	}
 
 	public String getMm_id() {
@@ -62,8 +71,10 @@ public class MoneyDTO {
 		this.mm_state = mm_state;
 	}
 
-	public MoneyDTO(String mm_id, String mm_name, Date mm_date, String mm_ticket, int mm_price, String mm_state) {
+	public MoneyDTO(int mm_no, String mm_id, String mm_name, Date mm_date, String mm_ticket, int mm_price,
+			String mm_state) {
 		super();
+		this.mm_no = mm_no;
 		this.mm_id = mm_id;
 		this.mm_name = mm_name;
 		this.mm_date = mm_date;
@@ -74,8 +85,10 @@ public class MoneyDTO {
 
 	@Override
 	public String toString() {
-		return "MoneyDTO [mm_id=" + mm_id + ", mm_name=" + mm_name + ", mm_date=" + mm_date + ", mm_ticket=" + mm_ticket
-				+ ", mm_price=" + mm_price + ", mm_state=" + mm_state + "]";
+		return "MoneyDTO [mm_no=" + mm_no + ", mm_id=" + mm_id + ", mm_name=" + mm_name + ", mm_date=" + mm_date
+				+ ", mm_ticket=" + mm_ticket + ", mm_price=" + mm_price + ", mm_state=" + mm_state + "]";
 	}
+	
+	
 	
 }

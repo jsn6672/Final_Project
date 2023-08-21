@@ -42,5 +42,7 @@ public interface MypageMapper {
 
 	public MemberDTO getUserID(ContractDTO cntDTO2);
 
+	public int confirmticket(MoneyDTO mm);
+
 
 }

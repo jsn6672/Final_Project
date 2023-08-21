@@ -53,7 +53,7 @@
 
     <insert id="insertmoney">
     	insert into money 
-    	values (#{mm_id}, #{mm_name}, sysdate, #{mm_ticket}, #{mm_price}, #{mm_state})
+    	values (money_seq.nextval, #{mm_id}, #{mm_name}, sysdate, #{mm_ticket}, #{mm_price}, #{mm_state})
     </insert>
 
       <select id="getAllcare" resultType="com.sh.pj.care.CareDTO">
@@ -63,9 +63,8 @@
     	select*from petsitter_tbl where ps_no = #{ps_no}
     </select>
 
-
 	<select id="getbuylist" resultType="com.sh.pj.mypage.MoneyDTO">
-		select * from money
+		select * from money where mm_state='신청완료'
 	</select>
 	
 	<select id="countSitterCont" resultType="int">
@@ -89,4 +88,9 @@
 	</select>
 	
 	
+	<update id="confirmticket" parameterType="com.sh.pj.mypage.MoneyDTO">
+		update money
+		set mm_state = '확인완료'	
+		where mm_no = #{mm_no}
+	</update>
 </mapper>
