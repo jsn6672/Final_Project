@@ -30,5 +30,7 @@ public interface MypageMapper {
 
 	public List<MoneyDTO> getbuylist();
 
+	public int confirmticket(MoneyDTO mm);
+
 
 }

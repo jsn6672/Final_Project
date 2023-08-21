@@ -271,6 +271,27 @@ public class MypageDAO {
 	}
 
 	
+	public void confirmticket(HttpServletRequest req, MoneyDTO mm) {
+		int mm_no = Integer.parseInt(req.getParameter("mm_no"));
+		String mm_state = req.getParameter("mm_state");
+
+		System.out.println("이밑으로 컨펌티켓");
+		System.out.println(mm_no);
+		System.out.println(mm_state);
+		mm.setMm_no(mm_no);
+		mm.setMm_state(mm_state);
+
+		if (ss.getMapper(MypageMapper.class).confirmticket(mm) == 1) {
+			System.out.println("결제정보 업데이트 완료");
+		} else {
+			System.out.println("실패");
+
+		}
+	}
+
+	
+
+	
 	
 	
 	
