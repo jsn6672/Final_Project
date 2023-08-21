@@ -9,7 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MembertDAO;
+import com.sh.pj.pet.PetDTO;
+import com.sh.pj.pet.PetTakerDTO;
 
 @Controller
 public class CareController {
@@ -57,6 +60,26 @@ public class CareController {
 		req.setAttribute("background_color", "#FBE9E7");
 		return "home";
 	}
-
+	
+	@RequestMapping(value = "/caretaker.be", method = RequestMethod.POST)
+	public String caretaker_be(HttpServletRequest req, CareDTO cDTO, DolbomDTO dDTO) {
+		mDAO.logincheck(req);	
+		mDAO.regcareTaker(req, cDTO);
+		cDAO.regcareDolbom(req, dDTO);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
+		
+		return "home";
+	}
+	
+	@RequestMapping(value = "/petsitter.be", method = RequestMethod.POST)
+	public String petsitter_be(HttpServletRequest req, PetDTO pDTO) {
+		mDAO.logincheck(req);	
+		pDAO.regPetSitter(req, pDTO);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
+		
+		return "home";
+	}
 	
 }

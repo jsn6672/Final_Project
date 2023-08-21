@@ -80,6 +80,12 @@
 								alert("이름을 입력해주세요.");
 								return false;
 							}
+							var userAge = parseInt($('#user_age').val(), 10); // 문자열을 정수로 변환
+
+							if (isNaN(userAge) || userAge < 10000000) {
+							    alert("생년월일 8자리(예시)20020717)를 입력해주세요.");
+							    return false;
+							}
 
 							if ($('#password').val() == "") {
 								alert("비밀번호를 입력해주세요.");
@@ -412,6 +418,14 @@ body {
 									<input name="user_gender" type="radio" value="female"
 										class="gender_input"> 여
 								</div>
+							</div>
+						</div>
+						<br>
+						<div>
+							<div class="join_column">나이</div>
+							<div>
+								<input placeholder="생년월일 8자리를 입력해주세요 (YYYYMMDD)" name="user_age" id=""
+									class="normal_input">
 							</div>
 						</div>
 						<br>

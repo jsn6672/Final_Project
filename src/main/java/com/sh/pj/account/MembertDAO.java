@@ -15,6 +15,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import com.sh.pj.care.CareDTO;
 import com.sh.pj.mom.MomTakerDTO;
 import com.sh.pj.pet.PetDTO;
 import com.sh.pj.pet.PetTakerDTO;
@@ -95,12 +96,12 @@ public class MembertDAO {
 			mDTO.setUser_location(req.getParameter("m_addr1") + "!" + req.getParameter("m_addr2") + "!"
 					+ req.getParameter("m_addr3"));
 			
-			mDTO.setUser_cs_status("0");
-			mDTO.setUser_ps_status("0");
-			mDTO.setUser_ms_status("0");
-			mDTO.setUser_ct_status("0");
-			mDTO.setUser_pt_status("0");
-			mDTO.setUser_mt_status("0");
+			mDTO.setUser_cs_status(0);
+			mDTO.setUser_ps_status(0);
+			mDTO.setUser_ms_status(0);
+			mDTO.setUser_ct_status(0);
+			mDTO.setUser_pt_status(0);
+			mDTO.setUser_mt_status(0);
 			
 
 			System.out.println(mDTO);
@@ -246,4 +247,9 @@ public class MembertDAO {
 			e.printStackTrace();
 		}
 	}
+
+	public void regcareTaker(HttpServletRequest req, CareDTO cDTO) {
+		
+	}
+
 }

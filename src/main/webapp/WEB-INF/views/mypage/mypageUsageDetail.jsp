@@ -17,62 +17,59 @@
 	<div class="mpS">
 		<!-- <h1>시터 등록 및 수정</h1> -->
 		<div>시터 요청</div>
+		<div>${SitterNotice }</div>
 		<!-- 페이지 본문 컨테이너 -->
 		<div id="Accordion_wrap">
 			<c:forEach items="${contractSitterInfo }" var="s">
-			<div class="message">
-				<c:if test="${s.cnt_type eq 3 }">
-				<span>${s.cnt_memberDTO.user_name }님에게 펫시터가 되어달라는 신청이 들어왔습니다.</span>
-				</c:if>
-				<c:if test="${s.cnt_type eq 2 }">
-				<span>${s.cnt_memberDTO.user_name }님에게 맘시터가 되어달라는 신청이 들어왔습니다.</span>
-				</c:if>
-				<c:if test="${s.cnt_type eq 1 }">
-				<span>${s.cnt_memberDTO.user_name }님에게 요양시터가 되어달라는 신청이 들어왔습니다.</span>
-				</c:if>
-			</div>
-			<div class="messageans">
-				<div onclick="location.href='detail.go?inquiry_no=${s.cnt_dolbomdto.d_no}'">이름 : ${s.cnt_dolbomdto.d_name}</div>
-				<div>나이 : ${s.age }${s.agetype }</div>
-				<div>활동 : ${s.cnt_can_do }</div>
-				<div style="display: flex;justify-content: flex-end; gap:10px;">
-				<span>수락</span>
-				<span>거절</span>
-				<span>삭제</span>
+				<div class="message">
+					<c:if test="${s.cnt_type eq 3 }">
+						<span>${s.cnt_memberDTO.user_name }님에게 펫시터가 되어달라는 신청이
+							들어왔습니다.</span>
+					</c:if>
+					<c:if test="${s.cnt_type eq 2 }">
+						<span>${s.cnt_memberDTO.user_name }님에게 맘시터가 되어달라는 신청이
+							들어왔습니다.</span>
+					</c:if>
+					<c:if test="${s.cnt_type eq 1 }">
+						<span>${s.cnt_memberDTO.user_name }님에게 요양시터가 되어달라는 신청이
+							들어왔습니다.</span>
+					</c:if>
 				</div>
-			</div>
+				<div class="messageans">
+					<div
+						onclick="location.href='detail.go?inquiry_no=${s.cnt_dolbomdto.d_no}'">이름
+						: ${s.cnt_dolbomdto.d_name}</div>
+					<div>나이 : ${s.age }${s.agetype }</div>
+					<div>활동 : ${s.cnt_can_do }</div>
+					<div style="display: flex; justify-content: flex-end; gap: 10px;">
+						<span>수락</span> <span>거절</span> <span>삭제</span>
+					</div>
+				</div>
 
-			</c:forEach> 
+			</c:forEach>
 		</div>
 		<hr>
 		<div>테이커 요청</div>
+		<div>${takerNotice }</div>
 		<div id="Accordion_wrap">
-			<c:forEach items="${contractSitterInfo }" var="s">
-			<div class="message">
-				<c:if test="${s.cnt_type eq 3 }">
-				<span>${s.cnt_memberDTO.user_name }님에게 펫테이커가 되어달라는 신청이 들어왔습니다.</span>
-				</c:if>
-				<c:if test="${s.cnt_type eq 2 }">
-				<span>${s.cnt_memberDTO.user_name }님에게 맘테이커가 되어달라는 신청이 들어왔습니다.</span>
-				</c:if>
-				<c:if test="${s.cnt_type eq 1 }">
-				<span>${s.cnt_memberDTO.user_name }님에게 요양테이커가 되어달라는 신청이 들어왔습니다.</span>
-				</c:if>
-			</div>
-			<div class="messageans">
-				<div onclick="location.href='detail.go?inquiry_no=${s.cnt_dolbomdto.d_no}'">이름 : ${s.cnt_dolbomdto.d_name}</div>
-				<div>나이 : ${s.age }${s.agetype }</div>
-				<div>활동 : ${s.cnt_can_do }</div>
-				<div style="display: flex;justify-content: flex-end; gap:10px;">
-				<span>수락</span>
-				<span>거절</span>
-				<span>삭제</span>
-				</div>
-			</div>
+			<c:forEach items="${contractTakerInfo }" var="s">
 
-			</c:forEach> 
+				<div>${s.d_name }</div>
+				<c:choose>
+					<c:when test="${s.cntDTOMessage eq '1' }">
+						보여줘야 할것 > 사진, 나이, 이름, 활동
+					</c:when>
+					<c:otherwise>
+						<div>${s.cntDTOMessage }</div>
+					</c:otherwise>
+
+				</c:choose>
+
+
+				<hr>
+			</c:forEach>
 		</div>
-		
+
 	</div>
 </body>
 </html>

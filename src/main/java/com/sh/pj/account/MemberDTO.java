@@ -7,18 +7,19 @@ public class MemberDTO {
 	private String user_pw;
 	private String user_name;
 	private String user_gender;
+	private String user_age;
 	private String user_phone;
 	private String user_email_authkey;
 	private String user_email_auth;
 	private String user_email;
 	private String user_location;
 	private String user_pic;
-	private String user_ms_status;
-	private String user_ps_status;
-	private String user_cs_status;
-	private String user_mt_status;
-	private String user_pt_status;
-	private String user_ct_status;
+	private int user_ms_status;
+	private int user_ps_status;
+	private int user_cs_status;
+	private int user_mt_status;
+	private int user_pt_status;
+	private int user_ct_status;
 	private MultipartFile pic;
 	private String ms_id;
 	private String mt_id;
@@ -33,67 +34,73 @@ public class MemberDTO {
 	private String m_addr2;
 	private String m_addr3;
 
-	
-
 	@Override
 	public String toString() {
 		return "MemberDTO [user_id=" + user_id + ", user_pw=" + user_pw + ", user_name=" + user_name + ", user_gender="
-				+ user_gender + ", user_phone=" + user_phone + ", user_email_authkey=" + user_email_authkey
-				+ ", user_email_auth=" + user_email_auth + ", user_email=" + user_email + ", user_location="
-				+ user_location + ", user_pic=" + user_pic + ", user_ms_status=" + user_ms_status + ", user_ps_status="
-				+ user_ps_status + ", user_cs_status=" + user_cs_status + ", user_mt_status=" + user_mt_status
-				+ ", user_pt_status=" + user_pt_status + ", user_ct_status=" + user_ct_status + ", pic=" + pic
-				+ ", ms_id=" + ms_id + ", mt_id=" + mt_id + ", ps_id=" + ps_id + ", pt_id=" + pt_id + ", cs_id=" + cs_id
-				+ ", ct_id=" + ct_id + ", phone_first=" + phone_first + ", phone_second=" + phone_second
-				+ ", phone_third=" + phone_third + ", m_addr1=" + m_addr1 + ", m_addr2=" + m_addr2 + ", m_addr3="
-				+ m_addr3 + "]";
+				+ user_gender + ", user_age=" + user_age + ", user_phone=" + user_phone + ", user_email_authkey="
+				+ user_email_authkey + ", user_email_auth=" + user_email_auth + ", user_email=" + user_email
+				+ ", user_location=" + user_location + ", user_pic=" + user_pic + ", user_ms_status=" + user_ms_status
+				+ ", user_ps_status=" + user_ps_status + ", user_cs_status=" + user_cs_status + ", user_mt_status="
+				+ user_mt_status + ", user_pt_status=" + user_pt_status + ", user_ct_status=" + user_ct_status
+				+ ", pic=" + pic + ", ms_id=" + ms_id + ", mt_id=" + mt_id + ", ps_id=" + ps_id + ", pt_id=" + pt_id
+				+ ", cs_id=" + cs_id + ", ct_id=" + ct_id + ", phone_first=" + phone_first + ", phone_second="
+				+ phone_second + ", phone_third=" + phone_third + ", m_addr1=" + m_addr1 + ", m_addr2=" + m_addr2
+				+ ", m_addr3=" + m_addr3 + "]";
 	}
 
-	public String getUser_ms_status() {
+	public String getUser_age() {
+		return user_age;
+	}
+
+	public void setUser_age(String user_age) {
+		this.user_age = user_age;
+	}
+
+	public int getUser_ms_status() {
 		return user_ms_status;
 	}
 
-	public void setUser_ms_status(String user_ms_status) {
+	public void setUser_ms_status(int user_ms_status) {
 		this.user_ms_status = user_ms_status;
 	}
 
-	public String getUser_ps_status() {
+	public int getUser_ps_status() {
 		return user_ps_status;
 	}
 
-	public void setUser_ps_status(String user_ps_status) {
+	public void setUser_ps_status(int user_ps_status) {
 		this.user_ps_status = user_ps_status;
 	}
 
-	public String getUser_cs_status() {
+	public int getUser_cs_status() {
 		return user_cs_status;
 	}
 
-	public void setUser_cs_status(String user_cs_status) {
+	public void setUser_cs_status(int user_cs_status) {
 		this.user_cs_status = user_cs_status;
 	}
 
-	public String getUser_mt_status() {
+	public int getUser_mt_status() {
 		return user_mt_status;
 	}
 
-	public void setUser_mt_status(String user_mt_status) {
+	public void setUser_mt_status(int user_mt_status) {
 		this.user_mt_status = user_mt_status;
 	}
 
-	public String getUser_pt_status() {
+	public int getUser_pt_status() {
 		return user_pt_status;
 	}
 
-	public void setUser_pt_status(String user_pt_status) {
+	public void setUser_pt_status(int user_pt_status) {
 		this.user_pt_status = user_pt_status;
 	}
 
-	public String getUser_ct_status() {
+	public int getUser_ct_status() {
 		return user_ct_status;
 	}
 
-	public void setUser_ct_status(String user_ct_status) {
+	public void setUser_ct_status(int user_ct_status) {
 		this.user_ct_status = user_ct_status;
 	}
 

@@ -29,6 +29,7 @@ import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MemberMapper;
 import com.sh.pj.mom.MomDTO;
+import com.sh.pj.pet.PetDTO;
 
 @Service
 public class MypageDAO {
@@ -269,6 +270,97 @@ public class MypageDAO {
 		System.out.println(moneyList);
 		System.out.println();
 	}
+
+	public void countSitterCont(HttpServletRequest req, ContractDTO cntDTO) {
+		
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		cntDTO.setCnt_sitter_id(mDTO.getUser_id());
+		
+		if (mDTO.getUser_ms_status() == 0 && mDTO.getUser_cs_status() == 0 && mDTO.getUser_ps_status() == 0) {
+			req.setAttribute("SitterNotice", "아직 시터 등록을 안하셨습니다 <br> 시터 등록을 하시고 우리의 가족이 되어주세요!!");
+		} else {
+			if (ss.getMapper(MypageMapper.class).countSitterCont(cntDTO) == 0) {
+				req.setAttribute("SitterNotice", "아직 시터가 되어달라는 요청이 없습니다");
+			}
+			
+		}
+		
+		
+	}
+
+	public void countTakerCont(HttpServletRequest req, ContractDTO cntDTO) {
+		
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		
+		if (mDTO.getUser_mt_status() == 0 && mDTO.getUser_ct_status() == 0 && mDTO.getUser_pt_status() == 0) {
+			req.setAttribute("TakerNotice", "아직 돌보미 등록을 안하셨습니다 <br> 돌보미 등록을 하시고 시터분들의 가족이 되어주세요!!");
+		}
+
+	}
+
+	public void getTakerAllCont(HttpServletRequest req) {
+		
+		 // 현재 날짜 구하기 (시스템 시계, 시스템 타임존)
+        LocalDate now = LocalDate.now();
+ 
+        // 연도, 월(문자열, 숫자), 일, 일(year 기준), 요일(문자열, 숫자)
+        int nowyear = now.getYear();
+		
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		
+		
+		List<DolbomDTO> dDTOs = ss.getMapper(MypageMapper.class).getDolbomList(mDTO);
+		
+		ContractDTO cntDTO = new ContractDTO();
+		
+		for (DolbomDTO dolbomDTO : dDTOs) {
+			cntDTO.setCnt_dolbom_no(Integer.toString(dolbomDTO.getD_no()));
+			
+			if (ss.getMapper(MypageMapper.class).countDolbomCont(cntDTO) == 0) {
+				dolbomDTO.setCntDTOMessage("아직 돌보미에게 도움을 줄 시터가 신청을 안했습니다");
+			}else {
+				
+				List<ContractDTO> cntDTOs = ss.getMapper(MypageMapper.class).getAllDolbomCont(cntDTO);
+				
+				for (ContractDTO cntDTO2 : cntDTOs) {
+					
+					MemberDTO sitterDTO = ss.getMapper(MypageMapper.class).getUserID(cntDTO2);
+					
+					int age = nowyear - (Integer.parseInt(sitterDTO.getUser_age())/10000);
+					cntDTO2.setAge(age);
+				}
+				
+				
+				dolbomDTO.setCntDTOs(cntDTOs);
+				dolbomDTO.setCntDTOMessage("1");
+			}
+			
+		}
+		
+		
+		req.setAttribute("contractTakerInfo", dDTOs);
+	}
+
+	
+	public void confirmticket(HttpServletRequest req, MoneyDTO mm) {
+		int mm_no = Integer.parseInt(req.getParameter("mm_no"));
+		String mm_state = req.getParameter("mm_state");
+
+		System.out.println("이밑으로 컨펌티켓");
+		System.out.println(mm_no);
+		System.out.println(mm_state);
+		mm.setMm_no(mm_no);
+		mm.setMm_state(mm_state);
+
+		if (ss.getMapper(MypageMapper.class).confirmticket(mm) == 1) {
+			System.out.println("결제정보 업데이트 완료");
+		} else {
+			System.out.println("실패");
+
+		}
+	}
+
+	
 
 	
 	

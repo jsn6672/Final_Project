@@ -71,16 +71,15 @@ public class PetController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/petsitter.delete.go", method = RequestMethod.POST)
-	public String petsitter_delete(HttpServletRequest req, PetDTO pDTO, Model model) {
-		mDAO.logincheck(req);	
-		pDAO.deletePetsitter(req, pDTO, model);
-		req.setAttribute("contentPage", "mypage/mypage.jsp");
-		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
-		
-		return "home";
-	}
-	
+	/*
+	 * @RequestMapping(value = "/petsitter.delete.go", method = RequestMethod.POST)
+	 * public String petsitter_delete(HttpServletRequest req, PetDTO pDTO, Model
+	 * model) { mDAO.logincheck(req); pDAO.deletePetsitter(req, pDTO, model);
+	 * req.setAttribute("contentPage", "mypage/mypage.jsp");
+	 * req.setAttribute("mypageContentPage", "mypageProfile.jsp");
+	 * 
+	 * return "home"; }
+	 */
 	
 	
 	
