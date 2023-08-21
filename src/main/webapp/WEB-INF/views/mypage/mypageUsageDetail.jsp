@@ -58,7 +58,6 @@
 				<c:choose>
 					<c:when test="${s.cntDTOMessage eq '1' }">
 						보여줘야 할것 > 사진, 나이, 이름, 활동
-						${ }
 					</c:when>
 					<c:otherwise>
 						<div>${s.cntDTOMessage }</div>
