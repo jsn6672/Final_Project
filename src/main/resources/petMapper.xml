@@ -4,7 +4,7 @@
 
 
 	<select id="getAll" resultType="com.sh.pj.pet.PetDTO">
-		select*from petsitter_tbl where ps_notice = '1'
+		select*from petsitter_tbl where ps_notice = '0'
 	</select>
 
 	<select id="detail" resultType="com.sh.pj.pet.PetDTO">
@@ -26,6 +26,10 @@
 	<delete id="deletePetsitter">
 		delete from petsitter_tbl where ps_id = #{ps_id}
 	</delete>
+	
+	<select id="review" resultType="com.sh.pj.ReviewDTO">
+		select * from review_tbl where review_sitter_id = #{ps_id}
+	</select>
 
 
 </mapper>

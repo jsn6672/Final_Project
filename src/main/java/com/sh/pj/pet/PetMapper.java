@@ -1,4 +1,5 @@
 package com.sh.pj.pet;
+import com.sh.pj.ReviewDTO;
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 
@@ -13,9 +14,6 @@ public interface PetMapper {
 	int regPetSitter(PetDTO pDTO);
 	MemberDTO detailUser(PetDTO pp);
 	int deletePetsitter(PetDTO pDTO);
-
-
-
-
+	List<ReviewDTO> review(PetDTO petDTO);
 
 }
