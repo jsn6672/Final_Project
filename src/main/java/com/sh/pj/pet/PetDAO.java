@@ -75,11 +75,11 @@ public class PetDAO {
 	}
 
 	public void detail(HttpServletRequest req, PetDTO petDTO, Model m) {
-		
+
 		PetDTO pp = ss.getMapper(PetMapper.class).detail(petDTO);
-		
+
 		String[] ps_hour = pp.getPs_hour().split("!");
-		
+
 		pp.setMonday_start(Integer.parseInt(ps_hour[0]));
 		pp.setMonday_end(Integer.parseInt(ps_hour[1]));
 		pp.setTuesday_start(Integer.parseInt(ps_hour[2]));
@@ -94,9 +94,9 @@ public class PetDAO {
 		pp.setSaturday_end(Integer.parseInt(ps_hour[11]));
 		pp.setSunday_start(Integer.parseInt(ps_hour[12]));
 		pp.setSunday_end(Integer.parseInt(ps_hour[13]));
-		
-		String[] ps_day =pp.getPs_day().split("!");
-		
+
+		String[] ps_day = pp.getPs_day().split("!");
+
 		pp.setMonday(ps_day[0]);
 		pp.setTuesday(ps_day[1]);
 		pp.setWednesday(ps_day[2]);
@@ -104,7 +104,7 @@ public class PetDAO {
 		pp.setFriday(ps_day[4]);
 		pp.setSaturday(ps_day[5]);
 		pp.setSunday(ps_day[6]);
-		
+
 		pp.setMm(ss.getMapper(PetMapper.class).detailUser(pp));
 		
 		m.addAttribute("reviews", ss.getMapper(PetMapper.class).review(petDTO));
@@ -154,18 +154,16 @@ public class PetDAO {
 					+ pDTO.getFriday_end() + "!" + pDTO.getSaturday_start() + "!" + pDTO.getSaturday_end() + "!"
 					+ pDTO.getSunday_start() + "!" + pDTO.getSunday_end();
 			pDTO.setPs_hour(d_hour);
-			
+
 			int j1 = 1;
 			for (int i1 = 0; i1 < pDTO.getPs_type().length; i1++) {
 				j1 *= pDTO.getPs_type()[i1];
 			}
 			pDTO.setPs_can_type(Integer.toString(j1));
-			
-			
 
 			System.out.println(pDTO);
 
-			if (ss.getMapper(PetMapper.class).regPetSitter(pDTO) == 1 ){
+			if (ss.getMapper(PetMapper.class).regPetSitter(pDTO) == 1) {
 
 				System.out.println("등록 완료");
 				mDTO.setPs_id(mDTO.getUser_id());
@@ -180,12 +178,12 @@ public class PetDAO {
 	}
 
 	public void deletePetsitter(HttpServletRequest req, PetDTO pDTO, Model model) {
-		
-		if(ss.getMapper(PetMapper.class).deletePetsitter(pDTO) == 1) {
+
+		if (ss.getMapper(PetMapper.class).deletePetsitter(pDTO) == 1) {
 			System.out.println("삭제 성공!");
 			req.setAttribute("deletecheck", "1");
 		}
-		
+
 	}
 
 }

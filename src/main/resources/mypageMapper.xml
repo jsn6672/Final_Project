@@ -87,10 +87,18 @@
 		where user_id = #{cnt_sitter_id}
 	</select>
 	
-	
 	<update id="confirmticket" parameterType="com.sh.pj.mypage.MoneyDTO">
 		update money
 		set mm_state = '확인완료'	
 		where mm_no = #{mm_no}
 	</update>
+	
+	<select id="getPetSitter" resultType="com.sh.pj.pet.PetDTO">
+		select * from petsitter_tbl where ps_id = #{user_id}
+	</select>
+	
+	<select id="getDolbomInfo" resultType="com.sh.pj.account.DolbomDTO">
+		select * from dolbom_tbl where d_no = #{d_no}
+	</select>
+	
 </mapper>
