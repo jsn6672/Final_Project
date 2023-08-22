@@ -50,14 +50,22 @@
 		</div>
 		<hr>
 		<div>테이커 요청</div>
-		<div>${takerNotice }</div>
+		<div>${TakerNotice }</div>
 		<div id="Accordion_wrap">
 			<c:forEach items="${contractTakerInfo }" var="s">
 
 				<div>${s.d_name }</div>
 				<c:choose>
 					<c:when test="${s.cntDTOMessage eq '1' }">
-						보여줘야 할것 > 사진, 나이, 이름, 활동
+						<c:forEach items="${s.cntDTOs }" var="ss">
+							<div>
+								사진 : <img alt=""
+									src="resources/img/${ss.cnt_memberDTO.user_pic }">
+							</div>
+							<div>나이 : ${ss.age }</div>
+							<div>이름 : ${ss.cnt_memberDTO.user_name }</div>
+							<div>활동 : ${ss.cnt_can_do }</div>
+						</c:forEach>
 					</c:when>
 					<c:otherwise>
 						<div>${s.cntDTOMessage }</div>
