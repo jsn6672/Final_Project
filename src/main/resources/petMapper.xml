@@ -4,7 +4,7 @@
 
 
 	<select id="getAll" resultType="com.sh.pj.pet.PetDTO">
-		select*from petsitter_tbl where ps_notice = '1'
+		select*from petsitter_tbl where ps_notice = '0'
 	</select>
 
 	<select id="detail" resultType="com.sh.pj.pet.PetDTO">
@@ -31,6 +31,15 @@
 	<delete id="deletePetsitter">
 		delete from petsitter_tbl where ps_id = #{ps_id}
 	</delete>
+	
+	<select id="review" resultType="com.sh.pj.ReviewDTO">
+		select * from review_tbl where review_sitter_id = #{ps_id}
+	</select>
+	
+	<update id="updateDolbom">
+		update dolbom_tbl set d_name = #{d_name}, d_year = #{d_year}, d_month = #{d_month}, d_day = #{d_day}, d_hour = #{d_hour}, d_check = #{d_check}, d_location = #{d_location}, d_gender = #{d_gender}, d_personality = #{d_personality}, d_pay = #{d_pay}, d_cctv = #{d_cctv}, d_can_do = #{d_can_do}, d_sitterage = #{d_sitterage}, d_need = #{d_need}, d_title = #{d_title}, d_term = #{d_term} where d_no = #{d_no}
+	
+	</update>
 
 
 

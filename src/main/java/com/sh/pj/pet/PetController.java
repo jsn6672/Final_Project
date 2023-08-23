@@ -71,6 +71,14 @@ public class PetController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/updatePetDolbom.do", method = RequestMethod.POST)
+	public String updatePetDolbom(HttpServletRequest req, DolbomDTO dDTO) {
+		mDAO.logincheck(req);	
+		pDAO.updatePetDolbom(req, dDTO);
+		
+		return "redirect:/mypage.takerRegPet.go";
+	}
+	
 	/*
 	 * @RequestMapping(value = "/petsitter.delete.go", method = RequestMethod.POST)
 	 * public String petsitter_delete(HttpServletRequest req, PetDTO pDTO, Model

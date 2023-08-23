@@ -64,14 +64,17 @@ public class CareController {
 	@RequestMapping(value = "/caretaker.be", method = RequestMethod.POST)
 	public String caretaker_be(HttpServletRequest req, CareTakerDTO ctDTO, DolbomDTO dDTO) {
 		mDAO.logincheck(req);	
+
 		mDAO.regcareTaker(req, ctDTO);
 		cDAO.regcareDolbom(req, dDTO);
+
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
 		
 		return "home";
 	}
 	
+
 	@RequestMapping(value = "/caresitter.be", method = RequestMethod.POST)
 	public String caresitter_be(HttpServletRequest req, CareDTO cDTO) {
 		mDAO.logincheck(req);	
@@ -81,5 +84,6 @@ public class CareController {
 		System.out.println(cDTO);
 		return "home";
 	}
+
 	
 }

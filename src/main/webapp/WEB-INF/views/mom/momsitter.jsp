@@ -99,17 +99,19 @@ https://templatemo.com/tm-580-woox-travel
 
 <body>
 	<main id="main">
-		<section style="background-color: #fbe9e7">
+			<section style="background-color: #EDE7F6;">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-9" data-aos="fade-up">
 						<!-- ======= Stats Counter Section ======= -->
 						<section id="stats-counter" class="stats-counter section-bg">
 							<div class="container">
+
 								<div class="row gy-4">
+
 									<div class="col-lg-3 col-md-6">
 										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #fce4ec">
+											style="background-color: #FCE4EC">
 											<i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
 											<div>
 												<span class="purecounter" data-count="180">0</span>
@@ -121,7 +123,7 @@ https://templatemo.com/tm-580-woox-travel
 
 									<div class="col-lg-3 col-md-6">
 										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #fce4ec">
+											style="background-color: #FCE4EC">
 											<i class="bi bi-journal-richtext color-orange flex-shrink-0"></i>
 											<div>
 												<span class="purecounter" data-count="250">0</span>
@@ -133,7 +135,7 @@ https://templatemo.com/tm-580-woox-travel
 
 									<div class="col-lg-3 col-md-6">
 										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #fce4ec">
+											style="background-color: #FCE4EC">
 											<i class="bi bi-headset color-green flex-shrink-0"></i>
 											<div>
 												<span class="purecounter" data-count="1500">0</span>
@@ -145,7 +147,7 @@ https://templatemo.com/tm-580-woox-travel
 
 									<div class="col-lg-3 col-md-6">
 										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #fce4ec">
+											style="background-color: #FCE4EC">
 											<i class="bi bi-people color-pink flex-shrink-0"></i>
 											<div>
 												<span class="purecounter" data-count="666">0</span>
@@ -156,27 +158,28 @@ https://templatemo.com/tm-580-woox-travel
 									<!-- End Stats Item -->
 									<h3 class="category-title"
 										style="display: flex; justify-content: center">
-										<input id="searchBar" placeholder="검색을 해주세요" />
+										<input id="searchBar" placeholder="검색을 해주세요">
 									</h3>
-									<c:forEach var="m" items="${momsitters }">
+									<c:forEach var="m" items="${momsitter }">
 										<div class="d-md-flex post-entry-2 half">
 											<div class="mom-select-img">
 												<div>사진</div>
 											</div>
 											<div>
 												<div class="post-meta">
-												<span id="write_date">
-											<fmt:formatDate value="${m.ms_write_date}" type="date" pattern="yyyy. MM. dd. HH:mm"/>
-												</span>
-													 <span class="date"
-														id="write-date-placeholder"></span>${m.ms_write_date }
+													<span class="date">00전 작성 </span> 
+													<span>${m.ms_write_date }</span>
 												</div>
 												<div>
-													<a href="momsitter.detail.go?ms_no=${m.ms_no }">맘시터:
-														${m.ms_id }(이름)</a> <span>나이</span> <span>성별</span> <span>cctv촬영
-														- ${m.ms_cctv }</span>
+													<a href="petsitter.detail.go?ps_id=${m.ms_id }">맘시터: ${m.ms_id }(이름)</a>
+													<span>나이</span>
+													<span>성별</span>
+													<span>cctv촬영 - ${m.ms_cctv }</span>
 												</div>
-												<div>시급: ${m.ms_pay }</div>
+												<div style="display: flex;">
+													<div>시급: ${m.ms_pay }</div>
+													<div style="margin-left: 10px;">(${m.ms_term })</div>
+												</div>
 												<div class="mom-select-locations">
 													<div>
 														<div>활동 가능 지역:</div>
@@ -190,16 +193,17 @@ https://templatemo.com/tm-580-woox-travel
 											</div>
 										</div>
 									</c:forEach>
-
 									<div class="text-start py-4"
-										style="display: flex; justify-content: center">
+										style="display: flex; justify-content: center;">
 										<div class="custom-pagination">
 											<a href="#" class="prev">Prevous</a> <a href="#"
 												class="active">1</a> <a href="#">2</a> <a href="#">3</a> <a
 												href="#">4</a> <a href="#">5</a> <a href="#" class="next">Next</a>
 										</div>
 									</div>
+
 								</div>
+
 							</div>
 						</section>
 						<!-- End Stats Counter Section -->
@@ -208,6 +212,7 @@ https://templatemo.com/tm-580-woox-travel
 					<div class="col-md-3">
 						<!-- ======= Sidebar ======= -->
 						<div class="aside-block">
+
 							<ul class="nav nav-pills custom-tab-nav mb-4" id="pills-tab"
 								role="tablist">
 								<li class="nav-item" role="presentation">
@@ -231,6 +236,7 @@ https://templatemo.com/tm-580-woox-travel
 							</ul>
 
 							<div class="tab-content" id="pills-tabContent">
+
 								<!-- Popular -->
 								<div class="tab-pane fade show active" id="pills-popular"
 									role="tabpanel" aria-labelledby="pills-popular-tab">
@@ -246,6 +252,7 @@ https://templatemo.com/tm-580-woox-travel
 										<span class="author mb-3 d-block">Jenny Wilson</span>
 									</div>
 
+
 									<div class="post-entry-1 border-bottom">
 										<div class="post-meta">
 											<span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span>
@@ -257,6 +264,7 @@ https://templatemo.com/tm-580-woox-travel
 										</h2>
 										<span class="author mb-3 d-block">Jenny Wilson</span>
 									</div>
+
 
 									<div class="post-entry-1 border-bottom">
 										<div class="post-meta">
@@ -422,8 +430,10 @@ https://templatemo.com/tm-580-woox-travel
 										</h2>
 										<span class="author mb-3 d-block">Jenny Wilson</span>
 									</div>
+
 								</div>
 								<!-- End Latest -->
+
 							</div>
 						</div>
 
@@ -433,7 +443,7 @@ https://templatemo.com/tm-580-woox-travel
 								<a href="https://www.youtube.com/watch?v=AiFfDjmd0jU"
 									class="glightbox link-video"> <span class="bi-play-fill"></span>
 									<img src="assets/img/post-landscape-5.jpg" alt=""
-									class="img-fluid" />
+									class="img-fluid">
 								</a>
 							</div>
 						</div>
@@ -453,7 +463,9 @@ https://templatemo.com/tm-580-woox-travel
 							</ul>
 						</div>
 						<!-- End Tags -->
+
 					</div>
+
 				</div>
 			</div>
 		</section>

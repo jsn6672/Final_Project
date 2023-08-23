@@ -16,11 +16,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MembertDAO;
 import com.sh.pj.care.CareDTO;
 import com.sh.pj.mom.MomDTO;
+import com.sh.pj.pet.PetDAO;
 import com.sh.pj.pet.PetDTO;
+import com.sh.pj.pet.PetTakerDTO;
 
 @Controller
 public class MypageController {
@@ -30,6 +33,9 @@ public class MypageController {
 
 	@Autowired
 	private MypageDAO mpDAO;
+	
+	@Autowired
+	private PetDAO pDAO;
 
 	@RequestMapping(value = "/mypage.go", method = RequestMethod.GET)
 	public String petsitter(HttpServletRequest req) {
@@ -133,9 +139,19 @@ public class MypageController {
 	// 펫테이커페이지
 	@RequestMapping(value = "/mypage.takerRegPet.go", method = RequestMethod.GET)
 	public String mypageTakerRegPet(HttpServletRequest req) {
-		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		
 		mDAO.logincheck(req);
-		req.setAttribute("mypageContentPage", "taker/mypageTakerRegPet.jsp");
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");		
+		if (mDTO.getUser_pt_status()==0) {
+			req.setAttribute("contentPage", "mypage/mypage.jsp");
+			req.setAttribute("mypageContentPage", "taker/mypageTakerRegPet.jsp");
+			
+		} else {
+			//해야할 것 > 새로운 돌보미 등록 or 기존 돌보미 수정?
+			mpDAO.getListOfDolbom(req);
+			req.setAttribute("contentPage", "mypage/mypage.jsp");
+			req.setAttribute("mypageContentPage", "taker/mypageTakerRegAnotherDolbom.jsp");
+		}
 		return "home";
 	}
 
@@ -217,6 +233,7 @@ public class MypageController {
 		req.setAttribute("mypageContentPage", "mypageTicket3Check.jsp");
 		return "home";
 	}
+	
 
 	@RequestMapping(value = "/mypage.ticket.confirm", method = RequestMethod.POST)
 	public String ticketConfirm(HttpServletRequest req, MoneyDTO mm) {
@@ -241,4 +258,55 @@ public class MypageController {
 		return "home";
 	}
 
+	@RequestMapping(value = "/mypage.takerRegAnotherDolbom.go", method = RequestMethod.GET)
+	public String ticketCheck(HttpServletRequest req) {
+		mDAO.logincheck(req);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "taker/mypageTakerRegAnotherPet.jsp");
+		return "home";
+	}
+	
+	@RequestMapping(value = "/mypage.takerUpdateAnotherDolbom.go", method = RequestMethod.GET)
+	public String updateDolbom(HttpServletRequest req, DolbomDTO dDTO) {
+		mDAO.logincheck(req);
+		mpDAO.getDolbomInfo(req, dDTO);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "taker/mypageTakerUpdatePetDolbom.jsp");
+		return "home";
+	}
+	
+	@RequestMapping(value = "/regPetDolbom.do", method = RequestMethod.POST)
+	public String regdolbom_do(HttpServletRequest req, PetTakerDTO ptDTO, DolbomDTO dDTO) {
+		pDAO.regPetDolbom(req, dDTO);
+		
+		return "redirect:/mypage.takerRegPet.go";
+	}
+	
+	@RequestMapping(value = "/cntSitterUpdate.do", method = RequestMethod.GET)
+	public String cntSitterUpdate_do(HttpServletRequest req, ContractDTO cntDTO) {
+		mpDAO.updateCntSitter(req, cntDTO);
+		
+		return "redirect:/mypage.usage.go";
+	}
+	@RequestMapping(value = "/cntSitterUpdate.nope", method = RequestMethod.GET)
+	public String cntSitterUpdate_nope(HttpServletRequest req, ContractDTO cntDTO) {
+		mpDAO.updateCntSitterNope(req, cntDTO);
+		
+		return "redirect:/mypage.usage.go";
+	}
+	@RequestMapping(value = "/cntDolbomUpdate.do", method = RequestMethod.GET)
+	public String cntDolbomUpdate_do(HttpServletRequest req, ContractDTO cntDTO) {
+		mpDAO.updateCntDolbom(req, cntDTO);
+		
+		return "redirect:/mypage.usage.go";
+	}
+	@RequestMapping(value = "/cntDolbomUpdate.nope", method = RequestMethod.GET)
+	public String cntDolbomUpdate_nope(HttpServletRequest req, ContractDTO cntDTO) {
+		mpDAO.updateCntDolbomNope(req, cntDTO);
+		
+		return "redirect:/mypage.usage.go";
+	}
+	
+	
+	
 }
