@@ -381,8 +381,9 @@ public class MypageDAO {
 		 * mm.setMm_no(mm_no); mm.setMm_state(mm_state);
 		 */
 		
-		mm.setMm_start_date(mm_start_date);
-		mm.setMm_end_date(mm_end_date);
+		/*
+		 * mm.setMm_start_date(mm_start_date); mm.setMm_end_date(mm_end_date);
+		 */
 
 		if (ss.getMapper(MypageMapper.class).confirmticket(mm) == 1) {
 			System.out.println("결제정보 업데이트 완료");

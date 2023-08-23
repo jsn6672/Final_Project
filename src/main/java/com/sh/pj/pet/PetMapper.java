@@ -11,21 +11,13 @@ public interface PetMapper {
 
 	List<PetDTO> getAll(PetDTO petDTO);
 
-	PetDTO detail(PetDTO petDTO);
+    PetDTO detail(PetDTO petDTO);
 
-	int regPetSitter(PetDTO pDTO);
-	MemberDTO detailUser(PetDTO pp);
-	int deletePetsitter(PetDTO pDTO);
-	int regDolbom(DolbomDTO dDTO);
-	int changemsstatus(MemberDTO mDTO);
+    int regPetSitter(PetDTO pDTO);
+    MemberDTO detailUser(PetDTO pp);
+    int deletePetsitter(PetDTO pDTO);
+    int regDolbom(DolbomDTO dDTO);
+    int changemsstatus(MemberDTO mDTO);
 
-
-	MemberDTO detailUser(PetDTO pp);
-
-	int deletePetsitter(PetDTO pDTO);
-
-	List<ReviewDTO> review(PetDTO petDTO);
-
-	int updateDolbom(DolbomDTO dDTO);
 
 }

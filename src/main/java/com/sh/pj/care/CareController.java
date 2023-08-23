@@ -65,8 +65,8 @@ public class CareController {
 	public String caretaker_be(HttpServletRequest req, CareTakerDTO ctDTO, DolbomDTO dDTO) {
 		mDAO.logincheck(req);	
 
-		mDAO.regcareTaker(req, cDTO);
-		/* cDAO.regcareDolbom(req, dDTO); */
+		mDAO.regcareTaker(req, ctDTO);
+		cDAO.regcareDolbom(req, dDTO);
 
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
@@ -76,18 +76,14 @@ public class CareController {
 	
 
 
-	@RequestMapping(value = "/caresitter.be", method = RequestMethod.POST)
-	public String caresitter_be(HttpServletRequest req, CareDTO cDTO) {
-
-		mDAO.logincheck(req);	
-
-		/* pDAO.regPetSitter(req, pDTO); */
-
-		req.setAttribute("contentPage", "mypage/mypage.jsp");
-		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
-		System.out.println(cDTO);
-		return "home";
-	}
-
+    @RequestMapping(value = "/caresitter.be", method = RequestMethod.POST)
+    public String caresitter_be(HttpServletRequest req, CareDTO cDTO) {
+        mDAO.logincheck(req);    
+        cDAO.regcareSitter(req, cDTO);
+        req.setAttribute("contentPage", "mypage/mypage.jsp");
+        req.setAttribute("mypageContentPage", "mypageProfile.jsp");
+        System.out.println(cDTO);
+        return "home";
+    }
 	
 }

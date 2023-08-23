@@ -72,7 +72,7 @@
     </select>
 
 
-	</select>
+
 
 	<select id="getAllSitterCont"
 		resultType="com.sh.pj.mypage.ContractDTO">
