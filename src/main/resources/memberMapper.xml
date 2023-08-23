@@ -38,9 +38,24 @@
 		insert into pettaker_tbl values(#{pt_id}, #{pt_file}, 0, 'ndy')
 	</insert>
 	
-		<insert id="regMTAccount">
-		insert into pettaker_tbl values(#{mt_id}, #{mt_file}, 0, 'none')
+	<insert id="regMTAccount">
+		insert into momtaker_tbl values(#{mt_id}, #{mt_file}, 0, 'ndy')
 	</insert>
 	
+	<insert id="regCTAccount">
+		insert into caretaker_tbl values(#{ct_id}, #{ct_file}, 0, 'ndy')
+	</insert>
+	
+	<update id="changectstatus">
+		update jsn_user_tbl set user_ct_status = 1 where user_id = #{user_id}
+	</update>
+	
+	<update id="changemtstatus">
+		update jsn_user_tbl set user_mt_status = 1 where user_id = #{user_id}
+	</update>
+	
+	<update id="changeptstatus">
+		update jsn_user_tbl set user_pt_status = 1 where user_id = #{user_id}
+	</update>
 	
 </mapper>

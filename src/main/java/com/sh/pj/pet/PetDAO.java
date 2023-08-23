@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
+import com.sh.pj.mom.MomMapper;
 
 @Service
 public class PetDAO {
@@ -39,8 +40,10 @@ public class PetDAO {
 				+ dDTO.getSunday_start() + "!" + dDTO.getSunday_end();
 		dDTO.setD_hour(d_hour);
 
-		if (!dDTO.getD_check().equals("1")) {
+		if (dDTO.getD_check()==null) {
 			dDTO.setD_check("0");
+		}else {
+			dDTO.setD_check("1");
 		}
 
 		int i = 1;
@@ -163,8 +166,10 @@ public class PetDAO {
 			if (ss.getMapper(PetMapper.class).regPetSitter(pDTO) == 1 ){
 
 				System.out.println("등록 완료");
-				mDTO.setPs_id(mDTO.getUser_id());
+				ss.getMapper(PetMapper.class).changemsstatus(mDTO);
+				mDTO.setUser_ps_status(1);
 				req.getSession().setAttribute("userInfo", mDTO);
+				
 			}
 
 		} catch (Exception e) {

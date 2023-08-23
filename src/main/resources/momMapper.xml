@@ -15,10 +15,16 @@
 	</select>
 
 	<insert id="regMomSitter">
-		insert into momsitter_tbl values (#{ms_id}, #{ms_file}, #{ms_confirm}, #{ms_confirm_answer}, #{ms_cctv}, #{ms_term}, #{ms_day}, #{ms_hour}, #{ms_location1}, #{ms_location2}, #{ms_location3}, #{ms_extra}, #{ms_exp}, #{ms_pay}, #{ms_point}, #{ms_count}, #{ms_can_do}, #{ms_can_type}, null, null, null)
+		insert into momsitter_tbl values (#{ms_id}, #{ms_file}, #{ms_confirm}, #{ms_confirm_answer}, #{ms_cctv}, #{ms_term}, #{ms_day}, #{ms_hour}, #{ms_location1}, #{ms_location2}, #{ms_location3}, #{ms_extra}, #{ms_exp}, #{ms_pay}, #{ms_point}, #{ms_count}, #{ms_can_do}, #{ms_can_type}, null, null, null,0)
 	</insert>
 
-
-
+	<insert id="regDolbom">
+		insert into dolbom_tbl values (dolbom_tbl_seq.nextval, #{d_id}, #{d_name}, #{d_category}, #{d_year}, #{d_month}, #{d_day}, #{d_hour}, #{d_check}, #{d_location}, #{d_gender}, #{d_personality}, #{d_pay}, #{d_cctv}, #{d_can_do}, #{d_sitterage}, #{d_need}, #{d_title}, #{d_term}, null, null, null)
+	</insert>
+	
+	<update id="changemsstatus">
+		update jsn_user_tbl set user_ms_status = 1 where user_id = #{user_id}
+	</update>
+	
 
 </mapper>

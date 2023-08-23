@@ -161,7 +161,7 @@ body {
 				<div>${userInfo.user_name}님의정보를입력해주세요</div>
 				<div>필요한 서류를 등록해주세요</div>
 				<div>
-					<input type="file" name="ps_Rfile"  style="background-color: #D9D9D9; color: black; border: none; border-radius: 5px; padding: 5px; width: 225px;">
+					<input type="file" name="ms_Rfile"  style="background-color: #D9D9D9; color: black; border: none; border-radius: 5px; padding: 5px; width: 225px;">
 				</div>
 
 				<!-- 정보입력 -->
@@ -169,32 +169,32 @@ body {
 				<div style="text-align: center;">
 					희망 지역1은 필수입력입니다
 					<div>
-						희망지역 1 <input name="ps_location1" style="width: 300px;border: none; border-radius: 10px;">
+						희망지역 1 <input name="ms_location1" style="width: 300px;border: none; border-radius: 10px;">
 					</div>
 					<div>
-						희망지역 2 <input name="ps_location2" style="width: 300px;border: none; border-radius: 10px;">
+						희망지역 2 <input name="ms_location2" style="width: 300px;border: none; border-radius: 10px;">
 					</div>
 					<div>
-						희망지역 3 <input name="ps_location3" style="width: 300px;border: none; border-radius: 10px;">
+						희망지역 3 <input name="ms_location3" style="width: 300px;border: none; border-radius: 10px;">
 					</div>
 				</div>
 				<div>
-					<input type="radio" name="ps_cctv" value="1" checked="checked">
+					<input type="radio" name="ms_cctv" value="1" checked="checked">
 					cctv촬영도 괜찮아요 <input type="radio" name="ps_cctv" value="2">
 					cctv촬영 없는 곳을 원해요
 				</div>
 				<div>
-					<input type="radio" name="ps_term" value="1" checked="checked">
+					<input type="radio" name="ms_term" value="1" checked="checked">
 					정기적 계약을 원해요 <input type="radio" name="ps_term" value="2">
 					단발성 계약을 원해요
 				</div>
 				<div>원하시는 시급을 입력해주세요</div>
 				<div>
-					<input name="ps_pay" style="width: 200px;border: none; border-radius: 10px;">
+					<input name="ms_pay" style="width: 200px;border: none; border-radius: 10px;">
 				</div>
 
 				<div>
-					<textarea rows="" cols="" name="ps_exp" placeholder="관련 경험을 적어주세요" style="width: 620px; height: 300px; border: none; border-radius: 10px;"></textarea>
+					<textarea rows="" cols="" name="ms_exp" placeholder="관련 경험을 적어주세요" style="width: 620px; height: 300px; border: none; border-radius: 10px;"></textarea>
 				</div>
 
 				<div class="mpS-pet-inform1">이런 아이에게 도움을 줄 수 있어요!</div>
@@ -203,25 +203,25 @@ body {
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/신생아.png" style="width: 70px; height: 80px;">
 						<div>
-							<input type="checkbox" name="ps_type" value="2"> 신생아
+							<input type="checkbox" name="ms_type" value="2"> 신생아
 						</div>
 						</div>
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/영아.png" style="width: 70px; height: 80px;">
 						<div>
-							<input type="checkbox" name="ps_type" value="3"> 영아
+							<input type="checkbox" name="ms_type" value="3"> 영아
 						</div>	
 						</div>
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/유아.png" style="width: 70px; height: 80px;">
 						<div>
-							<input type="checkbox" name="ps_type" value="5"> 유아
+							<input type="checkbox" name="ms_type" value="5"> 유아
 						</div>	
 						</div>
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/초등학생.png" style="width: 70px; height: 80px;">
 						<div>
-							<input type="checkbox" name="ps_type" value="7"> 초등학생
+							<input type="checkbox" name="ms_type" value="7"> 초등학생
 						</div>	
 						</div>
 					</div>
@@ -234,25 +234,25 @@ body {
 						<div class="mpS-pet-act-detail">
 							<img alt="" src="resources/img/logo/실내놀이.png" style="width: 70px;">
 							<div>
-							<input type="checkbox" name="petsitter_act" value="2"> 실내놀이
+							<input type="checkbox" name="momsitter_act" value="2"> 실내놀이
 							</div>
 						</div>				
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/야외놀이.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="petsitter_act" value="3"> 야외놀이
+							<input type="checkbox" name="momsitter_act" value="3"> 야외놀이
 						</div>	
 						</div>
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/밥챙겨주기.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="petsitter_act" value="5"> 밥챙겨주기
+							<input type="checkbox" name="momsitter_act" value="5"> 밥챙겨주기
 						</div>
 						</div>
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/등하원.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="petsitter_act" value="7"> 등하원돕기
+							<input type="checkbox" name="momsitter_act" value="7"> 등하원돕기
 						</div>	
 						</div>
 					</div>
@@ -260,32 +260,32 @@ body {
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/영어.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="petsitter_act" value="11"> 영어공부
+							<input type="checkbox" name="momsitter_act" value="11"> 영어공부
 						</div>	
 						</div>
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/독서.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="petsitter_act" value="13"> 한글공부
+							<input type="checkbox" name="momsitter_act" value="13"> 한글공부
 						</div>	
 						</div>
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/똥.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="petsitter_act" value="17"> 대소변
+							<input type="checkbox" name="momsitter_act" value="17"> 대소변
 						</div>	
 						</div>
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/기타.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="petsitter_act" value="19"> 기타활동
+							<input type="checkbox" name="momsitter_act" value="19"> 기타활동
 						</div>	
 						</div>
 					</div>
 				</div>
 				<div>
 					<textarea rows="10" cols="50" placeholder="추가사항이 있다면 이곳에 적어주세요!"
-						name="ps_extra" style="width: 620px; border: none; border-radius: 10px;"></textarea>
+						name="ms_extra" style="width: 620px; border: none; border-radius: 10px;"></textarea>
 				</div>
 
 				<div style="width: 75%;">

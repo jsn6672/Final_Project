@@ -41,7 +41,7 @@ public class PetDTO {
 	private String wednesday;
 	private String thursday;
 	private String friday;
-	private String saturday;
+	private String saturday;	
 	private String sunday;
 
 	private int monday_start;

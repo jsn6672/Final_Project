@@ -163,7 +163,7 @@ body {
 				님의정보를입력해주세요</div>
 				<div>필요한 서류를 등록해주세요</div>
 				<div>
-					<input type="file" name="pt_Rfile"  style="background-color: #D9D9D9; color: black; border: none; border-radius: 5px; padding: 5px; width: 225px;">
+					<input type="file" name="ct_Rfile"  style="background-color: #D9D9D9; color: black; border: none; border-radius: 5px; padding: 5px; width: 225px;">
 				</div>
 
 				<!-- 정보입력 -->
