@@ -82,6 +82,10 @@ public class PetDAO {
 
 		PetDTO pp = ss.getMapper(PetMapper.class).detail(petDTO);
 
+		
+		
+		
+
 		String[] ps_hour = pp.getPs_hour().split("!");
 
 		pp.setMonday_start(Integer.parseInt(ps_hour[0]));

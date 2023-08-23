@@ -286,9 +286,20 @@
 					<div class="body-title-detail">리뷰</div>
 					<div class="body-content-detail-cover">
 						<div class="body-content-detail">
-							<c:forEach var="r" items="${reviews }">
-								<div> ${r }	</div>
-							</c:forEach>
+							<c:choose>
+								<c:when test="${reviews ne null }">
+									<c:forEach var="r" items="${reviews }">
+										<div>
+											
+										</div>
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<div>
+										아직 작성된 리뷰가 없습니다.
+									</div>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 				</div>
