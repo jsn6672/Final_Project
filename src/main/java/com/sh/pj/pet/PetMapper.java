@@ -19,5 +19,8 @@ public interface PetMapper {
     int regDolbom(DolbomDTO dDTO);
     int changemsstatus(MemberDTO mDTO);
 
+	List<ReviewDTO> review(PetDTO petDTO);
+
+
 
 }
