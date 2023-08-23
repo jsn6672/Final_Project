@@ -1,5 +1,6 @@
 package com.sh.pj.account;
 
+import com.sh.pj.care.CareTakerDTO;
 import com.sh.pj.mom.MomTakerDTO;
 import com.sh.pj.pet.PetTakerDTO;
 
@@ -22,6 +23,14 @@ public interface MemberMapper {
 	int regPTAccount(PetTakerDTO ptDTO);
 
 	int regMTAccount(MomTakerDTO mtDTO);
+
+	int regCTAccount(CareTakerDTO ctDTO);
+
+	int changectstatus(MemberDTO mDTO);
+
+	int changemtstatus(MemberDTO mDTO);
+
+	int changeptstatus(MemberDTO mDTO);
 
 
 

@@ -28,9 +28,10 @@ public class MomDTO  {
 	private int ms_count;
 	private String ms_can_do;
 	private String ms_can_type;
+	private Date ms_write_date;
 	private Date ms_ticket_start;
 	private Date ms_ticket_end;
-	private Date ms_write_date;
+	private String ms_notice;
 
 	private int[] ms_type;
 	private int[] momsitter_act;
@@ -273,6 +274,14 @@ public class MomDTO  {
 		this.ms_can_type = ms_can_type;
 	}
 
+	public Date getMs_write_date() {
+		return ms_write_date;
+	}
+
+	public void setMs_write_date(Date ms_write_date) {
+		this.ms_write_date = ms_write_date;
+	}
+
 	public Date getMs_ticket_start() {
 		return ms_ticket_start;
 	}
@@ -289,12 +298,12 @@ public class MomDTO  {
 		this.ms_ticket_end = ms_ticket_end;
 	}
 
-	public Date getMs_write_date() {
-		return ms_write_date;
+	public String getMs_notice() {
+		return ms_notice;
 	}
 
-	public void setMs_write_date(Date ms_write_date) {
-		this.ms_write_date = ms_write_date;
+	public void setMs_notice(String ms_notice) {
+		this.ms_notice = ms_notice;
 	}
 
 	public int[] getMs_type() {
@@ -496,26 +505,76 @@ public class MomDTO  {
 				+ ms_term + ", ms_day=" + ms_day + ", ms_hour=" + ms_hour + ", ms_location1=" + ms_location1
 				+ ", ms_location2=" + ms_location2 + ", ms_location3=" + ms_location3 + ", ms_extra=" + ms_extra
 				+ ", ms_exp=" + ms_exp + ", ms_pay=" + ms_pay + ", ms_point=" + ms_point + ", ms_count=" + ms_count
-				+ ", ms_can_do=" + ms_can_do + ", ms_can_type=" + ms_can_type + ", ms_ticket_start=" + ms_ticket_start
-				+ ", ms_ticket_end=" + ms_ticket_end + ", ms_write_date=" + ms_write_date + ", ms_type="
-				+ Arrays.toString(ms_type) + ", momsitter_act=" + Arrays.toString(momsitter_act) + ", monday=" + monday
-				+ ", tuesday=" + tuesday + ", wednesday=" + wednesday + ", thursday=" + thursday + ", friday=" + friday
-				+ ", saturday=" + saturday + ", sunday=" + sunday + ", monday_start=" + monday_start
-				+ ", tuesday_start=" + tuesday_start + ", wednesday_start=" + wednesday_start + ", thursday_start="
-				+ thursday_start + ", friday_start=" + friday_start + ", saturday_start=" + saturday_start
-				+ ", sunday_start=" + sunday_start + ", monday_end=" + monday_end + ", tuesday_end=" + tuesday_end
-				+ ", wednesday_end=" + wednesday_end + ", thursday_end=" + thursday_end + ", friday_end=" + friday_end
-				+ ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end + ", mm=" + mm + "]";
+
+				+ ", ms_can_do=" + ms_can_do + ", ms_can_type=" + ms_can_type + ", ms_write_date=" + ms_write_date
+				+ ", ms_ticket_start=" + ms_ticket_start + ", ms_ticket_end=" + ms_ticket_end + ", ms_notice="
+				+ ms_notice + ", ms_type=" + Arrays.toString(ms_type) + ", momsitter_act="
+				+ Arrays.toString(momsitter_act) + ", monday=" + monday + ", tuesday=" + tuesday + ", wednesday="
+				+ wednesday + ", thursday=" + thursday + ", friday=" + friday + ", saturday=" + saturday + ", sunday="
+				+ sunday + ", monday_start=" + monday_start + ", tuesday_start=" + tuesday_start + ", wednesday_start="
+				+ wednesday_start + ", thursday_start=" + thursday_start + ", friday_start=" + friday_start
+				+ ", saturday_start=" + saturday_start + ", sunday_start=" + sunday_start + ", monday_end=" + monday_end
+				+ ", tuesday_end=" + tuesday_end + ", wednesday_end=" + wednesday_end + ", thursday_end=" + thursday_end
+				+ ", friday_end=" + friday_end + ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end + "]";
+	}
+
+	public MomDTO(String ms_id, String ms_file, MultipartFile ms_Rfile, String ms_confirm, String ms_confirm_answer,
+			String ms_cctv, String ms_term, String ms_day, String ms_hour, String ms_location1, String ms_location2,
+			String ms_location3, String ms_extra, String ms_exp, int ms_pay, int ms_point, int ms_count,
+			String ms_can_do, String ms_can_type, Date ms_write_date, Date ms_ticket_start, Date ms_ticket_end,
+			String ms_notice, int[] ms_type, int[] momsitter_act, String monday, String tuesday, String wednesday,
+			String thursday, String friday, String saturday, String sunday, int monday_start, int tuesday_start,
+			int wednesday_start, int thursday_start, int friday_start, int saturday_start, int sunday_start,
+			int monday_end, int tuesday_end, int wednesday_end, int thursday_end, int friday_end, int saturday_end,
+			int sunday_end) {
+		super();
+		this.ms_id = ms_id;
+		this.ms_file = ms_file;
+		this.ms_Rfile = ms_Rfile;
+		this.ms_confirm = ms_confirm;
+		this.ms_confirm_answer = ms_confirm_answer;
+		this.ms_cctv = ms_cctv;
+		this.ms_term = ms_term;
+		this.ms_day = ms_day;
+		this.ms_hour = ms_hour;
+		this.ms_location1 = ms_location1;
+		this.ms_location2 = ms_location2;
+		this.ms_location3 = ms_location3;
+		this.ms_extra = ms_extra;
+		this.ms_exp = ms_exp;
+		this.ms_pay = ms_pay;
+		this.ms_point = ms_point;
+		this.ms_count = ms_count;
+		this.ms_can_do = ms_can_do;
+		this.ms_can_type = ms_can_type;
+		this.ms_write_date = ms_write_date;
+		this.ms_ticket_start = ms_ticket_start;
+		this.ms_ticket_end = ms_ticket_end;
+		this.ms_notice = ms_notice;
+		this.ms_type = ms_type;
+		this.momsitter_act = momsitter_act;
+		this.monday = monday;
+		this.tuesday = tuesday;
+		this.wednesday = wednesday;
+		this.thursday = thursday;
+		this.friday = friday;
+		this.saturday = saturday;
+		this.sunday = sunday;
+		this.monday_start = monday_start;
+		this.tuesday_start = tuesday_start;
+		this.wednesday_start = wednesday_start;
+		this.thursday_start = thursday_start;
+		this.friday_start = friday_start;
+		this.saturday_start = saturday_start;
+		this.sunday_start = sunday_start;
+		this.monday_end = monday_end;
+		this.tuesday_end = tuesday_end;
+		this.wednesday_end = wednesday_end;
+		this.thursday_end = thursday_end;
+		this.friday_end = friday_end;
+		this.saturday_end = saturday_end;
+		this.sunday_end = sunday_end;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	 
-	
-	
+
 }

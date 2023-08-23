@@ -111,41 +111,15 @@
             <div>신청일자 : ${ml.mm_date }</div>
             <div>이용권 : ${ml.mm_ticket }</div>
             <div>이용ID : ${ml.mm_id }</div>
-            <br>
-            <form class="confirm-form" data-mm-no="${ml.mm_no}" data-mm-state="${ml.mm_state}">
-                <button class="confirm-button">입금확인</button>
+            <form action="mypage.ticket.confirm" method="post">
+            	<input name="mm_no" type="hidden" value="${ml.mm_no }">
+            	<input name="mm_state" type="hidden" value="${ml.mm_state }" >
+            	<input name="mm_id" type="hidden" value="${ml.mm_id }" >
+                <button>입금확인</button>
             </form>
             <br>
         </div>
     </c:forEach>
 </div>
-
-<script>
-$(document).ready(function() {
-    $(".confirm-form").submit(function(event) {
-        event.preventDefault();
-        var form = $(this);
-        var mm_no = form.data("mm-no");
-        var mm_state = form.data("mm-state");
-
-        $.ajax({
-            type: "POST",
-            url: "mypage.ticket.confirm",
-            data: {
-                mm_no: mm_no,
-                mm_state: mm_state
-            },
-            success: function(response) {
-                // 성공적으로 처리되었을 때 해당 부분을 업데이트
-                form.find("div.mm_state").text("확인완료");
-            },
-            error: function() {
-                console.log("Error updating mm_state.");
-            }
-        });
-    });
-});
-</script>
-
 </body>
 </html>

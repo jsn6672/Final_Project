@@ -16,6 +16,8 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.sh.pj.care.CareDTO;
+import com.sh.pj.care.CareTakerDTO;
+import com.sh.pj.mom.MomMapper;
 import com.sh.pj.mom.MomTakerDTO;
 import com.sh.pj.pet.PetDTO;
 import com.sh.pj.pet.PetTakerDTO;
@@ -205,7 +207,8 @@ public class MembertDAO {
 			if (ss.getMapper(MemberMapper.class).regPTAccount(ptDTO) == 1) {
 
 				System.out.println("등록 완료");
-				mDTO.setPt_id(mDTO.getUser_id());
+				ss.getMapper(MemberMapper.class).changeptstatus(mDTO);
+				mDTO.setUser_pt_status(1);
 				req.getSession().setAttribute("userInfo", mDTO);
 			}
 
@@ -239,7 +242,8 @@ public class MembertDAO {
 			if (ss.getMapper(MemberMapper.class).regMTAccount(mtDTO) == 1) {
 
 				System.out.println("등록 완료");
-				mDTO.setPt_id(mDTO.getUser_id());
+				ss.getMapper(MemberMapper.class).changemtstatus(mDTO);
+				mDTO.setUser_mt_status(1);
 				req.getSession().setAttribute("userInfo", mDTO);
 			}
 
@@ -248,8 +252,41 @@ public class MembertDAO {
 		}
 	}
 
-	public void regcareTaker(HttpServletRequest req, CareDTO cDTO) {
+	public void regcareTaker(HttpServletRequest req, CareTakerDTO ctDTO) {
+		try {
+			String imgOrgName = ctDTO.getCt_Rfile().getOriginalFilename();
+			long imgSize = ctDTO.getCt_Rfile().getSize();
+
+			String extension = imgOrgName.substring(imgOrgName.lastIndexOf("."), imgOrgName.length());
+
+			String newName = UUID.randomUUID().toString().split("-")[0];
+
+			String path = sc.getRealPath("resources/img");
+
+			File saveImg = new File(path + "//" + newName + extension);
+
+			ctDTO.getCt_Rfile().transferTo(saveImg);
+			ctDTO.setCt_file(newName + extension);
+			
+			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+			ctDTO.setCt_id(mDTO.getUser_id());
+			System.out.println(ctDTO);
+
+			if (ss.getMapper(MemberMapper.class).regCTAccount(ctDTO) == 1) {
+
+				System.out.println("등록 완료");
+				ss.getMapper(MemberMapper.class).changectstatus(mDTO);
+				mDTO.setUser_ct_status(1);
+				req.getSession().setAttribute("userInfo", mDTO);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
+
+
+	
 
 }
