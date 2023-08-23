@@ -40,6 +40,8 @@ public class MypageDAO {
 	@Autowired
 	private ServletContext sc;
 
+
+
 	public void getMember(HttpServletRequest req) {
 		req.setAttribute("myMembers", ss.getMapper(MypageMapper.class).getMember());
 
@@ -237,7 +239,7 @@ public class MypageDAO {
 		
 		String mm_id = req.getParameter("mm_id");
 		String mm_name = req.getParameter("mm_name");
-		Date mm_date = new Date();
+		int mm_date = Integer.parseInt(req.getParameter("mm_date"));
 		String mm_ticket = req.getParameter("mm_ticket");
 		int mm_price = Integer.parseInt(req.getParameter("mm_price"));
 		String mm_state = req.getParameter("mm_state");
@@ -343,21 +345,37 @@ public class MypageDAO {
 
 	
 	public void confirmticket(HttpServletRequest req, MoneyDTO mm) {
-		int mm_no = Integer.parseInt(req.getParameter("mm_no"));
-		String mm_state = req.getParameter("mm_state");
-
-		System.out.println("이밑으로 컨펌티켓");
-		System.out.println(mm_no);
-		System.out.println(mm_state);
-		mm.setMm_no(mm_no);
-		mm.setMm_state(mm_state);
+		/*
+		 * int mm_no = Integer.parseInt(req.getParameter("mm_no")); String mm_state =
+		 * req.getParameter("mm_state"); System.out.println("이밑으로 컨펌티켓");
+		 * System.out.println(mm_no); System.out.println(mm_state);
+		 */
+		/*
+		 * mm.setMm_no(mm_no); mm.setMm_state(mm_state);
+		 */
+		
+		mm.setMm_start_date(mm_start_date);
+		mm.setMm_end_date(mm_end_date);
 
 		if (ss.getMapper(MypageMapper.class).confirmticket(mm) == 1) {
 			System.out.println("결제정보 업데이트 완료");
+			if (ss.getMapper(MypageMapper.class).confirmdate(mm) == 1) {
+				
+			}
 		} else {
-			System.out.println("실패");
-
+			System.out.println("결제정보 업데이트 실패");
 		}
+		
+		
+		
+		
+		
+	
+	
+	
+	
+	
+	
 	}
 
 	

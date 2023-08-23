@@ -54,9 +54,10 @@ function showAlert(message) {
 				<form action="mypage.ticket.send" method="post">
 				<div><input name="mm_name"></div>
 				<input name="mm_id" type="hidden" value="${sessionScope.userInfo.user_id }">
-				<input name="mm_ticket"type="hidden" value="${param['monthTicket']}">
+				<input name="mm_ticket" type="hidden" value="${param['monthTicket']}">
 				<input name="mm_price" type="hidden" value="${param['monthTicketPrice']}">
-				<input name="mm_state"type="hidden" value="신청완료">
+				<input name="mm_state" type="hidden" value="신청완료">
+				<input name="mm_date" type="hidden" value="${param['ticketMonth']}">
 				<button>확인</button>
 				</form>
 			</div>			

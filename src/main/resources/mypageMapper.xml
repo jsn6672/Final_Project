@@ -53,7 +53,7 @@
 
     <insert id="insertmoney">
     	insert into money 
-    	values (money_seq.nextval, #{mm_id}, #{mm_name}, sysdate, #{mm_ticket}, #{mm_price}, #{mm_state})
+    	values (money_seq.nextval, #{mm_id}, #{mm_name}, #{mm_date}, #{mm_ticket}, #{mm_price}, #{mm_state}, sysdate)
     </insert>
 
       <select id="getAllcare" resultType="com.sh.pj.care.CareDTO">
@@ -92,5 +92,11 @@
 		update money
 		set mm_state = '확인완료'	
 		where mm_no = #{mm_no}
+	</update>
+	
+	<update id="confirmdate" parameterType="com.sh.pj.mypage.MoneyDTO">
+		update momsitter_tbl
+		set ms_ticket_start = #{mm_start_date}, ms_ticket_end = #{mm_end_date}
+		where ms_id = #{mm_id}
 	</update>
 </mapper>

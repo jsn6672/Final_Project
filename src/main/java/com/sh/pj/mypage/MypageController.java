@@ -222,10 +222,9 @@ public class MypageController {
 	public String ticketConfirm(HttpServletRequest req, MoneyDTO mm) {
 		mDAO.logincheck(req);
 		mpDAO.confirmticket(req, mm);
-		/*
-		 * req.setAttribute("contentPage", "mypage/mypage.jsp");
-		 * req.setAttribute("mypageContentPage", "mypageTicket3Check.jsp");
-		 */
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageTicket3Check.jsp");
+
 		return ticketCheck(req, mm);
 	}
 

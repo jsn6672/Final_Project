@@ -44,5 +44,7 @@ public interface MypageMapper {
 
 	public int confirmticket(MoneyDTO mm);
 
+	public int confirmdate(MoneyDTO mm); 
+
 
 }
