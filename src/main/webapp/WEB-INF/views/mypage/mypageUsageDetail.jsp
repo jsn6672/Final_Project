@@ -41,9 +41,32 @@
 						: ${s.cnt_dolbomdto.d_name}</div>
 					<div>나이 : ${s.age }${s.agetype }</div>
 					<div>활동 : ${s.cnt_can_do }</div>
-					<div style="display: flex; justify-content: flex-end; gap: 10px;">
-						<span>수락</span> <span>거절</span> <span>삭제</span>
-					</div>
+					<c:if test="${s.cnt_sitter_ok eq 1 and s.cnt_dolbom_ok eq 1}">
+						<div style="display: flex; justify-content: flex-end; gap: 10px;">
+							<span
+								onclick="location.href='cntSitterUpdate.do?cnt_no=${s.cnt_no}'">체결</span>
+							<span
+								onclick="location.href='cntSitterUpdate.nope?cnt_no=${s.cnt_no}'">거절</span>
+							<span>삭제</span>
+						</div>
+					</c:if>
+					<c:if test="${s.cnt_sitter_ok eq 1 and s.cnt_dolbom_ok eq 2}">
+						<div style="display: flex; justify-content: flex-end; gap: 10px;">
+							상대가 체결버튼을 눌렀습니다 시터가 되시려면 체결버튼을 눌러주세요 <span
+								onclick="location.href='cntSitterUpdate.do?cnt_no=${s.cnt_no}'">체결</span>
+							<span
+								onclick="location.href='cntSitterUpdate.nope?cnt_no=${s.cnt_no}'">거절</span>
+							<span>삭제</span>
+						</div>
+					</c:if>
+					<c:if test="${s.cnt_sitter_ok eq 2 and s.cnt_dolbom_ok eq 1}">
+						<div style="display: flex; justify-content: flex-end; gap: 10px;">
+							아직 상대편에서 체결버튼을 누르지 않았습니다 확인해주세요^^</div>
+					</c:if>
+					<c:if test="${s.cnt_sitter_ok eq 2 and s.cnt_dolbom_ok eq 2}">
+						<div style="display: flex; justify-content: flex-end; gap: 10px;">
+							계약이 체결되었습니다 체결되지 않은 나머지 신청은 거절을 눌러주세요</div>
+					</c:if>
 				</div>
 
 			</c:forEach>
@@ -53,28 +76,64 @@
 		<div>${TakerNotice }</div>
 		<div id="Accordion_wrap">
 			<c:forEach items="${contractTakerInfo }" var="s">
+				<div class="message">${s.d_name }</div>
+				<div class="messageans">
+					<c:choose>
+						<c:when test="${s.cntDTOMessage eq '1' }">
+							<c:forEach items="${s.cntDTOs }" var="ss">
 
-				<div>${s.d_name }</div>
-				<c:choose>
-					<c:when test="${s.cntDTOMessage eq '1' }">
-						<c:forEach items="${s.cntDTOs }" var="ss">
-							<div>
-								사진 : <img alt=""
-									src="resources/img/${ss.cnt_memberDTO.user_pic }">
-							</div>
-							<div>나이 : ${ss.age }</div>
-							<div>이름 : ${ss.cnt_memberDTO.user_name }</div>
-							<div>활동 : ${ss.cnt_can_do }</div>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<div>${s.cntDTOMessage }</div>
-					</c:otherwise>
+								<div class="message">${ss.cnt_memberDTO.user_name }께서시터가
+									되고 싶다는 요청을 하셨습니다</div>
+								<div class="messageans">
+									<div>
+										사진 : <img alt=""
+											src="resources/img/${ss.cnt_memberDTO.user_pic }"
+											width="100px">
+									</div>
+									<div>나이 : ${ss.age }</div>
+									<div>이름 : ${ss.cnt_memberDTO.user_name }</div>
+									<div>활동 : ${ss.cnt_can_do }</div>
+									<c:if test="${ss.cnt_dolbom_ok eq 1 and ss.cnt_sitter_ok eq 1}">
+										<div
+											style="display: flex; justify-content: flex-end; gap: 10px;">
+											<span
+												onclick="location.href='cntDolbomUpdate.do?cnt_no=${ss.cnt_no}'">체결</span>
+											<span
+												onclick="location.href='cntDolbomUpdate.nope?cnt_no=${ss.cnt_no}'">거절</span>
+											<span>삭제</span>
+										</div>
+										<c:if
+											test="${ss.cnt_dolbom_ok eq 1 and ss.cnt_sitter_ok eq 2}">
+											<div
+												style="display: flex; justify-content: flex-end; gap: 10px;">
+												상대가 체결버튼을 눌렀습니다 시터로 맞아주시려면 체결버튼을 눌러주세요 <span
+													onclick="location.href='cntDolbomUpdate.do?cnt_no=${ss.cnt_no}'">체결</span>
+												<span
+													onclick="location.href='cntDolbomUpdate.nope?cnt_no=${ss.cnt_no}'">거절</span>
+												<span>삭제</span>
+											</div>
+										</c:if>
+									</c:if>
+									<c:if test="${ss.cnt_dolbom_ok eq 2 and ss.cnt_sitter_ok eq 1}">
+										<div
+											style="display: flex; justify-content: flex-end; gap: 10px;">
+											아직 상대편에서 체결버튼을 누르지 않았습니다 확인해주세요^^</div>
+									</c:if>
+									<c:if test="${ss.cnt_dolbom_ok eq 2 and ss.cnt_sitter_ok eq 2}">
+										<div
+											style="display: flex; justify-content: flex-end; gap: 10px;">
+											계약이 체결되었습니다 체결되지 않은 나머지 신청은 거절을 눌러주세요</div>
+									</c:if>
+								</div>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<div>${s.cntDTOMessage }</div>
+						</c:otherwise>
 
-				</c:choose>
+					</c:choose>
+				</div>
 
-
-				<hr>
 			</c:forEach>
 		</div>
 

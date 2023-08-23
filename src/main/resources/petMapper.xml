@@ -30,6 +30,11 @@
 	<select id="review" resultType="com.sh.pj.ReviewDTO">
 		select * from review_tbl where review_sitter_id = #{ps_id}
 	</select>
+	
+	<update id="updateDolbom">
+		update dolbom_tbl set d_name = #{d_name}, d_year = #{d_year}, d_month = #{d_month}, d_day = #{d_day}, d_hour = #{d_hour}, d_check = #{d_check}, d_location = #{d_location}, d_gender = #{d_gender}, d_personality = #{d_personality}, d_pay = #{d_pay}, d_cctv = #{d_cctv}, d_can_do = #{d_can_do}, d_sitterage = #{d_sitterage}, d_need = #{d_need}, d_title = #{d_title}, d_term = #{d_term} where d_no = #{d_no}
+	
+	</update>
 
 
 </mapper>
