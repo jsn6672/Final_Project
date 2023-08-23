@@ -48,5 +48,13 @@ public interface MypageMapper {
 
 	public DolbomDTO getDolbomInfo(DolbomDTO dDTO);
 
+	public int updateCntSitter(ContractDTO cntDTO);
+
+	public int updateCntSitterNope(ContractDTO cntDTO);
+	
+	public int updateCntDolbom(ContractDTO cntDTO);
+	
+	public int updateCntDolbomNope(ContractDTO cntDTO);
+
 
 }

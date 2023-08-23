@@ -15,6 +15,7 @@ import com.sh.pj.ReviewDTO;
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MemberMapper;
+import com.sh.pj.mypage.ContractDTO;
 
 @Service
 public class PetDAO {
@@ -227,5 +228,7 @@ public class PetDAO {
 			System.out.println("돌보미 수정 완료");
 		}
 	}
+
+	
 
 }

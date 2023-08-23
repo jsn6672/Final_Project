@@ -277,10 +277,34 @@ public class MypageController {
 	
 	@RequestMapping(value = "/regPetDolbom.do", method = RequestMethod.POST)
 	public String regdolbom_do(HttpServletRequest req, PetTakerDTO ptDTO, DolbomDTO dDTO) {
-		mDAO.logincheck(req);	
 		pDAO.regPetDolbom(req, dDTO);
 		
 		return "redirect:/mypage.takerRegPet.go";
+	}
+	
+	@RequestMapping(value = "/cntSitterUpdate.do", method = RequestMethod.GET)
+	public String cntSitterUpdate_do(HttpServletRequest req, ContractDTO cntDTO) {
+		mpDAO.updateCntSitter(req, cntDTO);
+		
+		return "redirect:/mypage.usage.go";
+	}
+	@RequestMapping(value = "/cntSitterUpdate.nope", method = RequestMethod.GET)
+	public String cntSitterUpdate_nope(HttpServletRequest req, ContractDTO cntDTO) {
+		mpDAO.updateCntSitterNope(req, cntDTO);
+		
+		return "redirect:/mypage.usage.go";
+	}
+	@RequestMapping(value = "/cntDolbomUpdate.do", method = RequestMethod.GET)
+	public String cntDolbomUpdate_do(HttpServletRequest req, ContractDTO cntDTO) {
+		mpDAO.updateCntDolbom(req, cntDTO);
+		
+		return "redirect:/mypage.usage.go";
+	}
+	@RequestMapping(value = "/cntDolbomUpdate.nope", method = RequestMethod.GET)
+	public String cntDolbomUpdate_nope(HttpServletRequest req, ContractDTO cntDTO) {
+		mpDAO.updateCntDolbomNope(req, cntDTO);
+		
+		return "redirect:/mypage.usage.go";
 	}
 	
 	
