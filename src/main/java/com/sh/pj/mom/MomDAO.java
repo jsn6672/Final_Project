@@ -82,8 +82,10 @@ public class MomDAO {
 				+ dDTO.getSunday_start() + "!" + dDTO.getSunday_end();
 		dDTO.setD_hour(d_hour);
 
-		if (!dDTO.getD_check().equals("1")) {
+		if (dDTO.getD_check()==null) {
 			dDTO.setD_check("0");
+		}else {
+			dDTO.setD_check("1");
 		}
 
 		int i = 1;
@@ -128,7 +130,9 @@ public class MomDAO {
 			momDTO.setMs_file(newName + extension);
 
 			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
-			mDTO.setMs_id(mDTO.getUser_id());
+
+			momDTO.setMs_id(mDTO.getUser_id());
+
 
 			momDTO.setMs_confirm("0");
 			momDTO.setMs_confirm_answer("ndy");
@@ -141,8 +145,9 @@ public class MomDAO {
 			momDTO.setMs_can_do(Integer.toString(j));
 
 			String ms_day = momDTO.getMonday() + "!" + momDTO.getTuesday() + "!" + momDTO.getWednesday() + "!"
-					+ momDTO.getThursday() + "!" + momDTO.getFriday() + "!" + momDTO.getSaturday() + "!"
-					+ momDTO.getSunday();
+
+					+ momDTO.getThursday() + "!" + momDTO.getFriday() + "!" + momDTO.getSaturday() + "!" + momDTO.getSunday();
+
 
 			momDTO.setMs_day(ms_day);
 
@@ -164,8 +169,10 @@ public class MomDAO {
 			if (ss.getMapper(MomMapper.class).regMomSitter(momDTO) == 1) {
 
 				System.out.println("등록 완료");
-				mDTO.setMs_id(mDTO.getUser_id());
-				req.getSession().setAttribute("userInfo", momDTO);
+				ss.getMapper(MomMapper.class).changemsstatus(mDTO);
+				mDTO.setUser_ms_status(1);
+				req.getSession().setAttribute("userInfo", mDTO);
+				
 			}
 
 		} catch (Exception e) {

@@ -14,4 +14,10 @@ public interface MomMapper {
 	MemberDTO detailUser(MomDTO mm);
 	int deleteMomsitter(MomDTO mDTO);
 
+	int regDolbom(DolbomDTO dDTO);
+
+	int changemsstatus(MemberDTO mDTO);
+	
+	
+
 }

@@ -19,6 +19,11 @@
 		insert into petsitter_tbl values (#{ps_id}, #{ps_file}, #{ps_confirm}, #{ps_confirm_answer}, #{ps_cctv}, #{ps_term}, #{ps_day}, #{ps_hour}, #{ps_location1}, #{ps_location2}, #{ps_location3}, #{ps_extra}, #{ps_exp}, #{ps_pay}, #{ps_point}, #{ps_count}, #{ps_can_do}, #{ps_can_type}, 0, null, null, null)
 	</insert>
 
+	<update id="changemsstatus">
+		update jsn_user_tbl set user_ps_status = 1 where user_id = #{user_id}
+	</update>
+
+
 	<select id="detailUser" resultType="com.sh.pj.account.MemberDTO">
 		select * from jsn_user_tbl where user_id = #{ps_id}
 	</select>
@@ -35,6 +40,7 @@
 		update dolbom_tbl set d_name = #{d_name}, d_year = #{d_year}, d_month = #{d_month}, d_day = #{d_day}, d_hour = #{d_hour}, d_check = #{d_check}, d_location = #{d_location}, d_gender = #{d_gender}, d_personality = #{d_personality}, d_pay = #{d_pay}, d_cctv = #{d_cctv}, d_can_do = #{d_can_do}, d_sitterage = #{d_sitterage}, d_need = #{d_need}, d_title = #{d_title}, d_term = #{d_term} where d_no = #{d_no}
 	
 	</update>
+
 
 
 </mapper>
