@@ -266,7 +266,6 @@ public class MypageController {
 		return "home";
 	}
 	
-	//아직 돌보미 업데이트 완성 안됨(checkbox js로 해야함)
 	@RequestMapping(value = "/mypage.takerUpdateAnotherDolbom.go", method = RequestMethod.GET)
 	public String updateDolbom(HttpServletRequest req, DolbomDTO dDTO) {
 		mDAO.logincheck(req);
