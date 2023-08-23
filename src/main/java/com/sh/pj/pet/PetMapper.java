@@ -9,15 +9,20 @@ import java.util.List;
 
 public interface PetMapper {
 
-	List<PetDTO> getAll(PetDTO petDTO);
+	public List<PetDTO> getAll(PetDTO petDTO);
 
-    PetDTO detail(PetDTO petDTO);
+	public PetDTO detail(PetDTO petDTO);
 
-    int regPetSitter(PetDTO pDTO);
-    MemberDTO detailUser(PetDTO pp);
-    int deletePetsitter(PetDTO pDTO);
-    int regDolbom(DolbomDTO dDTO);
-    int changemsstatus(MemberDTO mDTO);
+	public int regPetSitter(PetDTO pDTO);
 
+	public MemberDTO detailUser(PetDTO pp);
+
+	public int deletePetsitter(PetDTO pDTO);
+
+	public int regDolbom(DolbomDTO dDTO);
+
+	public int changemsstatus(MemberDTO mDTO);
+
+	public int updateDolbom(DolbomDTO dDTO);
 
 }
