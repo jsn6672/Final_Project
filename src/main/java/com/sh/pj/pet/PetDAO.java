@@ -78,6 +78,8 @@ public class PetDAO {
 		
 		PetDTO pp = ss.getMapper(PetMapper.class).detail(petDTO);
 		
+		
+		
 		String[] ps_hour = pp.getPs_hour().split("!");
 		
 		pp.setMonday_start(Integer.parseInt(ps_hour[0]));
@@ -109,6 +111,7 @@ public class PetDAO {
 		
 		m.addAttribute("reviews", ss.getMapper(PetMapper.class).review(petDTO));
 		System.out.println(ss.getMapper(PetMapper.class).review(petDTO));
+		
 		
 		m.addAttribute("petsitter", pp);
 

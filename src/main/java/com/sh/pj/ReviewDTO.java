@@ -2,6 +2,8 @@ package com.sh.pj;
 
 import java.util.Date;
 
+import com.sh.pj.account.MemberDTO;
+
 public class ReviewDTO {
 
 	 private int review_no; 
@@ -11,12 +13,14 @@ public class ReviewDTO {
 	 private String review_txt; 
 	 private Date review_create_at; 
 	 
+	 private MemberDTO memberDTO;
+	 
 	 public ReviewDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public ReviewDTO(int review_no, String review_taker_id, String review_sitter_id, int review_dolbom_no,
-			String review_txt, Date review_create_at) {
+			String review_txt, Date review_create_at, MemberDTO memberDTO) {
 		super();
 		this.review_no = review_no;
 		this.review_taker_id = review_taker_id;
@@ -24,6 +28,7 @@ public class ReviewDTO {
 		this.review_dolbom_no = review_dolbom_no;
 		this.review_txt = review_txt;
 		this.review_create_at = review_create_at;
+		this.memberDTO = memberDTO;
 	}
 
 	public int getReview_no() {
@@ -74,12 +79,24 @@ public class ReviewDTO {
 		this.review_create_at = review_create_at;
 	}
 
+	public MemberDTO getMemberDTO() {
+		return memberDTO;
+	}
+
+	public void setMemberDTO(MemberDTO memberDTO) {
+		this.memberDTO = memberDTO;
+	}
+
 	@Override
 	public String toString() {
-		return "reviewDTO [review_no=" + review_no + ", review_taker_id=" + review_taker_id + ", review_sitter_id="
+		return "ReviewDTO [review_no=" + review_no + ", review_taker_id=" + review_taker_id + ", review_sitter_id="
 				+ review_sitter_id + ", review_dolbom_no=" + review_dolbom_no + ", review_txt=" + review_txt
-				+ ", review_create_at=" + review_create_at + "]";
+				+ ", review_create_at=" + review_create_at + ", memberDTO=" + memberDTO + "]";
 	}
+	 
+	 
+	 
+	 
 	 
 	
 	

@@ -72,7 +72,7 @@ public class CareController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/petsitter.be", method = RequestMethod.POST)
+	@RequestMapping(value = "/caresitter.be", method = RequestMethod.POST)
 	public String petsitter_be(HttpServletRequest req, PetDTO pDTO) {
 		mDAO.logincheck(req);	
 		pDAO.regPetSitter(req, pDTO);
