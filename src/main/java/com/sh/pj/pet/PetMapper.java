@@ -24,5 +24,9 @@ public interface PetMapper {
 	public int changemsstatus(MemberDTO mDTO);
 
 	public int updateDolbom(DolbomDTO dDTO);
+	
+	public List<ReviewDTO> review(PetDTO petDTO);
+
+
 
 }
