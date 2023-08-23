@@ -113,16 +113,11 @@
 							</div>
 						</div>
 					</div>
-					<div class="border-start ps-4 d-none d-lg-block">
-						<button type="button" class="btn btn-sm p-0">
-							<i class="fa fa-search"></i>
-						</button>
-					</div>
 					<div>
 						<jsp:include page="${loginPage }"></jsp:include>
 					</div>
 					<div>
-						<a href="mypage.go" class="nav-item nav-link">마이페이지</a>
+						<a href="mypage.go.jason" class="nav-item nav-link">마이페이지</a>
 					</div>
 				</div>
 			</nav>

@@ -161,7 +161,7 @@ body {
 				<div>${userInfo.user_name}님의정보를입력해주세요</div>
 				<div>필요한 서류를 등록해주세요</div>
 				<div>
-					<input type="file" name="ps_Rfile"  style="background-color: #D9D9D9; color: black; border: none; border-radius: 5px; padding: 5px; width: 225px;">
+					<input type="file" name="cs_Rfile"  style="background-color: #D9D9D9; color: black; border: none; border-radius: 5px; padding: 5px; width: 225px;">
 				</div>
 
 				<!-- 정보입력 -->
@@ -169,32 +169,32 @@ body {
 				<div style="text-align: center;">
 					희망 지역1은 필수입력입니다
 					<div>
-						희망지역 1 <input name="ps_location1" style="width: 300px;border: none; border-radius: 10px;">
+						희망지역 1 <input name="cs_location1" style="width: 300px;border: none; border-radius: 10px;">
 					</div>
 					<div>
-						희망지역 2 <input name="ps_location2" style="width: 300px;border: none; border-radius: 10px;">
+						희망지역 2 <input name="cs_location2" style="width: 300px;border: none; border-radius: 10px;">
 					</div>
 					<div>
-						희망지역 3 <input name="ps_location3" style="width: 300px;border: none; border-radius: 10px;">
+						희망지역 3 <input name="cs_location3" style="width: 300px;border: none; border-radius: 10px;">
 					</div>
 				</div>
 				<div>
-					<input type="radio" name="ps_cctv" value="1" checked="checked">
+					<input type="radio" name="cs_cctv" value="1" checked="checked">
 					cctv촬영도 괜찮아요 <input type="radio" name="ps_cctv" value="2">
 					cctv촬영 없는 곳을 원해요
 				</div>
 				<div>
-					<input type="radio" name="ps_term" value="1" checked="checked">
-					정기적 계약을 원해요 <input type="radio" name="ps_term" value="2">
+					<input type="radio" name="cs_term" value="1" checked="checked">
+					정기적 계약을 원해요 <input type="radio" name="cs_term" value="2">
 					단발성 계약을 원해요
 				</div>
 				<div>원하시는 시급을 입력해주세요</div>
 				<div>
-					<input name="ps_pay" style="width: 200px;border: none; border-radius: 10px;">
+					<input name="cs_pay" style="width: 200px;border: none; border-radius: 10px;">
 				</div>
 
 				<div>
-					<textarea rows="" cols="" name="ps_exp" placeholder="관련 경험을 적어주세요" style="width: 620px; height: 300px; border: none; border-radius: 10px;"></textarea>
+					<textarea rows="" cols="" name="cs_exp" placeholder="관련 경험을 적어주세요" style="width: 620px; height: 300px; border: none; border-radius: 10px;"></textarea>
 				</div>
 
 				<div class="mpS-pet-inform1">돌봄대상자에게 이런 활동을 시켜줄 수 있어요!</div>
@@ -203,25 +203,25 @@ body {
 						<div class="mpS-pet-act-detail">
 							<img alt="" src="resources/img/logo/설거지.png" style="width: 70px;">
 							<div>
-							<input type="checkbox" name="petsitter_act" value="2"> 가사활동
+							<input type="checkbox" name="caresitter_act" value="2"> 가사활동
 							</div>
 						</div>				
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/신체활동.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="petsitter_act" value="3"> 신체활동
+							<input type="checkbox" name="caresitter_act" value="3"> 신체활동
 						</div>	
 						</div>
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/인지활동.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="petsitter_act" value="5"> 인지활동
+							<input type="checkbox" name="caresitter_act" value="5"> 인지활동
 						</div>
 						</div>
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/식사활동.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="petsitter_act" value="7"> 식사
+							<input type="checkbox" name="caresitter_act" value="7"> 식사
 						</div>	
 						</div>
 					</div>
@@ -229,32 +229,32 @@ body {
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/기저귀.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="petsitter_act" value="11"> 기저귀케어
+							<input type="checkbox" name="caresitter_act" value="11"> 기저귀케어
 						</div>	
 						</div>
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/목욕2.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="petsitter_act" value="13"> 샤워
+							<input type="checkbox" name="caresitter_act" value="13"> 샤워
 						</div>	
 						</div>
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/말벗.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="petsitter_act" value="17"> 말벗
+							<input type="checkbox" name="caresitter_act" value="17"> 말벗
 						</div>	
 						</div>
 						<div class="mpS-pet-act-detail">
 						<img alt="" src="resources/img/logo/기타.png" style="width: 70px;">
 						<div>
-							<input type="checkbox" name="petsitter_act" value="19"> 기타활동
+							<input type="checkbox" name="caresitter_act" value="19"> 기타활동
 						</div>	
 						</div>
 					</div>
 				</div>
 				<div>
 					<textarea rows="10" cols="50" placeholder="추가사항이 있다면 이곳에 적어주세요!"
-						name="ps_extra" style="width: 620px; border: none; border-radius: 10px;"></textarea>
+						name="cs_extra" style="width: 620px; border: none; border-radius: 10px;"></textarea>
 				</div>
 
 				<div style="width: 75%;">

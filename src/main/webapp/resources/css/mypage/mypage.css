@@ -13,17 +13,17 @@
 }
 
 .mpContainer {
-	width: 20vw;
+	width: 19vw;
 }
 
 .mpSubContainer {
-	width: 20vw;
+	width: 16vw;
 	text-align: center;
 	background-color: white;
 }
 
 #mpName {
-	width: 20vw;
+	width: 16vw;
 	height: 15vh;
 	font-size: 20pt;
 	display: flex;
@@ -247,7 +247,7 @@
 
 /* 마이페이지 시터 등록 및 수정 페이지 */
 .mpS {
-	width: 80vw;
+	width: 84vw;
 	height: 100vh;
 	background-color: #FFEBE4;
 }
@@ -373,13 +373,13 @@
 
 /* 시터 등록 및 수정 페이지 - Pet */
 .mpS-pet {
-	width: 100vw;
+	width: 83vw;
 	height: 100%;
 	background-color: #FFEBE4;
 }
 
 .mpS-pet-sub {
-	width: 80%;
+	width: 95%;
 	margin: auto;
 	display: flex;
 	flex-direction: column;
@@ -486,6 +486,7 @@ button {
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
+	width: 10vw;
 }
 
 

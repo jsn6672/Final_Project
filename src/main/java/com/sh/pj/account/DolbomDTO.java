@@ -58,6 +58,12 @@ public class DolbomDTO {
 	private List<ContractDTO> cntDTOs;
 	private String cntDTOMessage;
 
+	private int age;
+	private String agetype;
+	private String m_addr1;
+	private String m_addr2;
+	private String m_addr3;
+
 	@Override
 	public String toString() {
 		return "DolbomDTO [d_no=" + d_no + ", d_id=" + d_id + ", d_name=" + d_name + ", d_category=" + d_category
@@ -73,7 +79,48 @@ public class DolbomDTO {
 				+ ", friday_end=" + friday_end + ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end
 				+ ", d_sitterage=" + d_sitterage + ", d_need=" + d_need + ", d_title=" + d_title + ", d_term=" + d_term
 				+ ", d_startdate=" + d_startdate + ", d_writedate=" + d_writedate + ", d_enddate=" + d_enddate
-				+ ", cntDTOs=" + cntDTOs + ", cntDTOMessage=" + cntDTOMessage + "]";
+				+ ", cntDTOs=" + cntDTOs + ", cntDTOMessage=" + cntDTOMessage + ", age=" + age + ", agetype=" + agetype
+				+ ", m_addr1=" + m_addr1 + ", m_addr2=" + m_addr2 + ", m_addr3=" + m_addr3 + "]";
+	}
+
+	public String getM_addr1() {
+		return m_addr1;
+	}
+
+	public void setM_addr1(String m_addr1) {
+		this.m_addr1 = m_addr1;
+	}
+
+	public String getM_addr2() {
+		return m_addr2;
+	}
+
+	public void setM_addr2(String m_addr2) {
+		this.m_addr2 = m_addr2;
+	}
+
+	public String getM_addr3() {
+		return m_addr3;
+	}
+
+	public void setM_addr3(String m_addr3) {
+		this.m_addr3 = m_addr3;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getAgetype() {
+		return agetype;
+	}
+
+	public void setAgetype(String agetype) {
+		this.agetype = agetype;
 	}
 
 	public String getCntDTOMessage() {

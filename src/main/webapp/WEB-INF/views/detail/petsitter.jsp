@@ -17,13 +17,22 @@
 					<div class="header-img-detail">사진</div>
 				</div>
 				<div class="header-data-detail">
-
 					<div class="header-data1">
-						<div>
+						<div style="margin: 5px;">
 							<span style="font-size: 14pt;">펫시터 ${petsitter.mm.user_name }</span>
-							<span style="font-size: 10pt;">,${petsitter.mm.user_gender }</span>
+							<c:choose>
+								<c:when test="${petsitter.mm.user_gender eq 'female'}">
+									<span style="font-size: 10pt;;">여</span>
+								</c:when>
+								<c:otherwise>
+									<span style="font-size: 10pt;">남</span>
+								</c:otherwise>
+							</c:choose>
 							<span style="font-size: 10pt;">cctv촬영 - ${petsitter.ps_cctv }</span>
-							<div>희망 시급: ${petsitter.ps_pay }</div>
+							<div style="display: flex;">
+								<div>희망 시급: ${petsitter.ps_pay }</div>
+								<div style="margin-left: 10px;">(${petsitter.ps_term })</div>
+							</div>							
 							<div style="display: flex;">
 								<div>활동 가능 지역:</div>
 								<div class="header-location">
@@ -52,13 +61,17 @@
 				<div>
 					<div class="body-title-detail">간단 자기소개</div>
 					<div class="body-content-detail-cover">
-						<div class="body-content-detail">${petsitter.ps_extra }</div>
+						<div class="body-content-detail">
+							<div style="margin: 5px;">	${petsitter.ps_extra }</div>
+						</div>
 					</div>
 				</div>
 				<div>
 					<div class="body-title-detail">관련 경험</div>
 					<div class="body-content-detail-cover">
-						<div class="body-content-detail">${petsitter.ps_exp }</div>
+						<div class="body-content-detail">
+							<div style="margin: 5px;">${petsitter.ps_exp }</div>	
+						</div>
 					</div>
 				</div>
 				<div>
@@ -272,7 +285,11 @@
 				<div>
 					<div class="body-title-detail">리뷰</div>
 					<div class="body-content-detail-cover">
-						<div class="body-content-detail">내용</div>
+						<div class="body-content-detail">
+							<c:forEach var="r" items="${reviews }">
+								<div> ${r }	</div>
+							</c:forEach>
+						</div>
 					</div>
 				</div>
 				<c:if test="${petsitter.ps_id eq sessionScope.userInfo.user_id }">
