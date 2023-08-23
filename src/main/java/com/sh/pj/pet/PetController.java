@@ -61,15 +61,15 @@ public class PetController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/petsitter.be", method = RequestMethod.POST)
-	public String petsitter_be(HttpServletRequest req, PetDTO pDTO) {
-		mDAO.logincheck(req);	
-		pDAO.regPetSitter(req, pDTO);
-		req.setAttribute("contentPage", "mypage/mypage.jsp");
-		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
-		
-		return "home";
-	}
+	/*
+	 * @RequestMapping(value = "/petsitter.be", method = RequestMethod.POST) public
+	 * String petsitter_be(HttpServletRequest req, PetDTO pDTO) {
+	 * mDAO.logincheck(req); pDAO.regPetSitter(req, pDTO);
+	 * req.setAttribute("contentPage", "mypage/mypage.jsp");
+	 * req.setAttribute("mypageContentPage", "mypageProfile.jsp");
+	 * 
+	 * return "home"; }
+	 */
 	
 	@RequestMapping(value = "/updatePetDolbom.do", method = RequestMethod.POST)
 	public String updatePetDolbom(HttpServletRequest req, DolbomDTO dDTO) {

@@ -44,6 +44,9 @@ public interface MypageMapper {
 
 	public int confirmticket(MoneyDTO mm);
 
+
+	public int confirmdate(MoneyDTO mm); 
+
 	public PetDTO getPetSitter(MemberDTO sitterDTO);
 
 	public DolbomDTO getDolbomInfo(DolbomDTO dDTO);
@@ -55,6 +58,7 @@ public interface MypageMapper {
 	public int updateCntDolbom(ContractDTO cntDTO);
 	
 	public int updateCntDolbomNope(ContractDTO cntDTO);
+
 
 
 }

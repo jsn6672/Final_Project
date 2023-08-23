@@ -31,6 +31,47 @@
 		select * from jsn_user_tbl
 		where user_id = #{user_id}
 
+    	
+    </select>
+    
+   <select id="getAllSitterCont" resultType="com.sh.pj.mypage.ContractDTO">
+  	 	select * from contract_tbl where cnt_sitter_id = #{cnt_sitter_id}
+   </select>
+   
+   <select id="getAllDolbomCont" resultType="com.sh.pj.mypage.ContractDTO">
+  	 	select * from contract_tbl where cnt_dolbom_no = #{cnt_dolbom_no}
+   </select>
+
+   
+   <select id="getPetDTO" resultType="com.sh.pj.pet.PetDTO">
+  	 	select * from petsitter_tbl where ps_id = #{cnt_sitter_id}
+   </select>
+   
+   <select id="getDolbomDTO" resultType="com.sh.pj.account.DolbomDTO">
+  	 	select * from dolbom_tbl where d_no = #{cnt_dolbom_no}
+   </select>
+   
+   <select id="getTakerDTO" resultType="com.sh.pj.account.MemberDTO">
+  	 	select * from jsn_user_tbl where user_id = #{d_id}
+   </select>
+    <select id="getAllmom" resultType="com.sh.pj.mom.MomDTO">
+    	select * from momsitter_tbl where ms_id = #{ms_id}
+    </select>
+    
+
+    <insert id="insertmoney">
+    	insert into money 
+    	values (money_seq.nextval, #{mm_id}, #{mm_name}, #{mm_date}, #{mm_ticket}, #{mm_price}, #{mm_state}, sysdate)
+    </insert>
+
+      <select id="getAllcare" resultType="com.sh.pj.care.CareDTO">
+    	select * from caresitter_tbl where ms_id = #{ms_id}
+    </select>
+     <select id="getAllpet" resultType="com.sh.pj.pet.PetDTO">
+    	select*from petsitter_tbl where ps_no = #{ps_no}
+    </select>
+
+
 	</select>
 
 	<select id="getAllSitterCont"
@@ -84,6 +125,7 @@
 		where ps_no = #{ps_no}
 	</select>
 
+
 	<select id="getbuylist" resultType="com.sh.pj.mypage.MoneyDTO">
 		select * from money where
 		mm_state='신청완료'
@@ -121,6 +163,14 @@
 		set mm_state = '확인완료'
 		where mm_no = #{mm_no}
 	</update>
+
+	
+	<update id="confirmdate" parameterType="com.sh.pj.mypage.MoneyDTO">
+		update momsitter_tbl
+		set ms_ticket_start = #{mm_start_date}, ms_ticket_end = #{mm_end_date}
+		where ms_id = #{mm_id}
+	</update>
+
 
 	<select id="getPetSitter" resultType="com.sh.pj.pet.PetDTO">
 		select * from petsitter_tbl
