@@ -108,13 +108,13 @@
             <div>입금자명 : ${ml.mm_name }</div>
             <div>금액 : ${ml.mm_price }</div>
             <div>내역 : ${ml.mm_state }</div>
-            <div>신청일자 : ${ml.mm_date }</div>
             <div>이용권 : ${ml.mm_ticket }</div>
             <div>이용ID : ${ml.mm_id }</div>
             <form action="mypage.ticket.confirm" method="post">
             	<input name="mm_no" type="hidden" value="${ml.mm_no }">
             	<input name="mm_state" type="hidden" value="${ml.mm_state }" >
             	<input name="mm_id" type="hidden" value="${ml.mm_id }" >
+            	<input name="mm_start_date" type="hidden" value="${ml.mm_start_date }">
                 <button>입금확인</button>
             </form>
             <br>

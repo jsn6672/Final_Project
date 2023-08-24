@@ -117,7 +117,7 @@
 						<jsp:include page="${loginPage }"></jsp:include>
 					</div>
 					<div>
-						<a href="mypage.go.jason" class="nav-item nav-link">마이페이지</a>
+						<a href="mypage.go" class="nav-item nav-link">마이페이지</a>
 					</div>
 				</div>
 			</nav>

@@ -74,7 +74,7 @@ public class PetController {
 		pDAO.updatePetSitter(req, pDTO);
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
-		
+
 		return "home";
 	}
 
