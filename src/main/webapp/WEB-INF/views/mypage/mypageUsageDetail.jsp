@@ -102,17 +102,16 @@
 												onclick="location.href='cntDolbomUpdate.nope?cnt_no=${ss.cnt_no}'">거절</span>
 											<span>삭제</span>
 										</div>
-										<c:if
-											test="${ss.cnt_dolbom_ok eq 1 and ss.cnt_sitter_ok eq 2}">
-											<div
-												style="display: flex; justify-content: flex-end; gap: 10px;">
-												상대가 체결버튼을 눌렀습니다 시터로 맞아주시려면 체결버튼을 눌러주세요 <span
-													onclick="location.href='cntDolbomUpdate.do?cnt_no=${ss.cnt_no}'">체결</span>
-												<span
-													onclick="location.href='cntDolbomUpdate.nope?cnt_no=${ss.cnt_no}'">거절</span>
-												<span>삭제</span>
-											</div>
-										</c:if>
+									</c:if>
+									<c:if test="${ss.cnt_dolbom_ok eq 1 and ss.cnt_sitter_ok eq 2}">
+										<div
+											style="display: flex; justify-content: flex-end; gap: 10px;">
+											상대가 체결버튼을 눌렀습니다 시터로 맞아주시려면 체결버튼을 눌러주세요 <span
+												onclick="location.href='cntDolbomUpdate.do?cnt_no=${ss.cnt_no}'">체결</span>
+											<span
+												onclick="location.href='cntDolbomUpdate.nope?cnt_no=${ss.cnt_no}'">거절</span>
+											<span>삭제</span>
+										</div>
 									</c:if>
 									<c:if test="${ss.cnt_dolbom_ok eq 2 and ss.cnt_sitter_ok eq 1}">
 										<div
@@ -122,7 +121,8 @@
 									<c:if test="${ss.cnt_dolbom_ok eq 2 and ss.cnt_sitter_ok eq 2}">
 										<div
 											style="display: flex; justify-content: flex-end; gap: 10px;">
-											계약이 체결되었습니다 체결되지 않은 나머지 신청은 거절을 눌러주세요</div>
+											계약이 체결되었습니다 체결되지 않은 나머지 신청은 거절을 눌러주세요
+											 </div>
 									</c:if>
 								</div>
 							</c:forEach>

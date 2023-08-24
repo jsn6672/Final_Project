@@ -27,6 +27,7 @@ public class MomController {
 	@RequestMapping(value = "/momsitter.go", method = RequestMethod.GET)
 	public String momsitter(HttpServletRequest req, MomDTO momDTO, Model m) {
 		mDAO.logincheck(req);	
+		mDAO.countAll(req);
 		momDAO.getAll(req, momDTO, m);
 		req.setAttribute("contentPage", "mom/momsitter.jsp");
 
@@ -36,6 +37,7 @@ public class MomController {
 	@RequestMapping(value = "/momtaker.go", method = RequestMethod.GET)
 	public String momtaker(HttpServletRequest req, MomDTO momDTO, Model m) {
 		mDAO.logincheck(req);	
+		mDAO.countAll(req);
 		momDAO.getAll(req, momDTO, m);
 		req.setAttribute("contentPage", "mom/momtaker.jsp");
 

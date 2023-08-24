@@ -41,6 +41,13 @@
 	
 	</update>
 
+	<select id="getPetSitterInfo" resultType="com.sh.pj.pet.PetDTO">
+		select * from petsitter_tbl where ps_id = #{user_id}
+	</select>
+	
+	<update id="updatePetSitter">
+		update petsitter_tbl set ps_file = #{ps_file}, ps_confirm = #{ps_confirm}, ps_confirm_answer = #{ps_confirm_answer}, ps_cctv = #{ps_cctv}, ps_term = #{ps_term}, ps_day = #{ps_day}, ps_hour = #{ps_hour}, ps_location1 = #{ps_location1}, ps_location2 = #{ps_location2}, ps_location3 = #{ps_location3}, ps_extra = #{ps_extra}, ps_exp = #{ps_exp}, ps_pay = #{ps_pay}, ps_can_do = #{ps_can_do}, ps_can_type = #{ps_can_type} where ps_id = #{ps_id}
+	</update>
 
 
 </mapper>

@@ -159,6 +159,12 @@ public class HomeController {
 		return mDAO.emailusercheck(req, mDTO);
 	}
 	
+	@RequestMapping(value = "count.tbl", method = RequestMethod.GET)
+	public String counttbl(HttpServletRequest req) {
+		
+		mDAO.countTBL();
+		return "redirect:/go.home";
+	}
 	
 	
 	

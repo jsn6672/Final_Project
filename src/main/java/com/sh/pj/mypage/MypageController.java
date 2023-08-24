@@ -19,7 +19,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MembertDAO;
+import com.sh.pj.care.CareDAO;
 import com.sh.pj.care.CareDTO;
+import com.sh.pj.mom.MomDAO;
 import com.sh.pj.mom.MomDTO;
 import com.sh.pj.pet.PetDAO;
 import com.sh.pj.pet.PetDTO;
@@ -36,6 +38,12 @@ public class MypageController {
 	
 	@Autowired
 	private PetDAO pDAO;
+	
+	@Autowired
+	private MomDAO momDAO;
+	
+	@Autowired
+	private CareDAO cDAO;
 
 	@RequestMapping(value = "/mypage.go", method = RequestMethod.GET)
 	public String petsitter(HttpServletRequest req) {
@@ -103,7 +111,13 @@ public class MypageController {
 	public String mypageSitterRegPet(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		mDAO.logincheck(req);
-		req.setAttribute("mypageContentPage", "sitter/mypageSitterRegPet.jsp");
+		MemberDTO mDTO = (MemberDTO)req.getSession().getAttribute("userInfo");
+		if (mDTO.getUser_ps_status() == 0) {
+			req.setAttribute("mypageContentPage", "sitter/mypageSitterRegPet.jsp");			
+		}else {
+			pDAO.getPetSitterInfo(req);
+			req.setAttribute("mypageContentPage", "sitter/mypageSitterUpdatePet.jsp");			
+		}
 
 		return "home";
 	}

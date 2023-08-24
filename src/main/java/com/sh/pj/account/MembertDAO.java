@@ -286,6 +286,29 @@ public class MembertDAO {
 		
 	}
 
+	public void countTBL() {
+		
+		int ps = ss.getMapper(MemberMapper.class).countPetSitter();
+		int cs = ss.getMapper(MemberMapper.class).countCareSitter();
+		int ms = ss.getMapper(MemberMapper.class).countMomSitter();
+		int db = ss.getMapper(MemberMapper.class).countDolbom();
+		int cnt = ss.getMapper(MemberMapper.class).countCont();
+		
+		countDTO cntDTO = new countDTO();
+		cntDTO.setCount_sitter(ps+cs+ms);
+		cntDTO.setCount_dolbom(db);
+		cntDTO.setCount_cont(cnt);
+		
+		int a = ss.getMapper(MemberMapper.class).regDefaultcount(cntDTO);
+		
+	}
+
+	public void countAll(HttpServletRequest req) {
+		
+		req.setAttribute("countAll", ss.getMapper(MemberMapper.class).countAll());
+		
+	}
+
 
 	
 

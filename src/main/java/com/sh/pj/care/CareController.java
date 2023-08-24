@@ -26,7 +26,8 @@ public class CareController {
 	@RequestMapping(value = "/caresitter.go", method = RequestMethod.GET)
 	public String caresitter(HttpServletRequest req,Model m, CareDTO cDTO) {
 		req.setAttribute("contentPage", "care/caresitter.jsp");
-		mDAO.logincheck(req);	
+		mDAO.logincheck(req);
+		mDAO.countAll(req);
 		cDAO.getAll(req,m,cDTO);
 		System.out.println(m);
 		System.out.println(cDTO);
@@ -38,6 +39,7 @@ public class CareController {
 	public String caretaker(HttpServletRequest req,Model m, CareDTO cDTO) {
 		req.setAttribute("contentPage", "care/caretaker.jsp");
 		mDAO.logincheck(req);
+		mDAO.countAll(req);
 		cDAO.getAll(req,m,cDTO);
 		req.setAttribute("background_color", "#FBE9E7");
 		return "home";

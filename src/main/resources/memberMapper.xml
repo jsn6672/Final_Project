@@ -30,9 +30,6 @@
 		select count(*) from jsn_user_tbl where user_id = #{user_id}
 	</select>
 	
-	<select id="checkuserEMail" resultType="int">
-		select count(*) from jsn_user_tbl where user_email = #{user_email}
-	</select>
 	
 	<insert id="regPTAccount">
 		insert into pettaker_tbl values(#{pt_id}, #{pt_file}, 0, 'ndy')
@@ -57,5 +54,39 @@
 	<update id="changeptstatus">
 		update jsn_user_tbl set user_pt_status = 1 where user_id = #{user_id}
 	</update>
+	
+	<select id="countAll" resultType="com.sh.pj.account.countDTO">
+		select * from count_tbl where count_no = 1
+	</select>
+	
+	<update id="upSCount">
+		update count_tbl set count_sitter = count_sitter + 1 where count_no = 1
+	</update>
+	
+	<update id="upDCount">
+		update count_tbl set count_dolbom = count_dolbom + 1 where count_no = 1
+	</update>
+	
+	<!-- 최초 카운트 계산용 메소드 / 계산 후 주석처리해도 상관 없음 -->
+	<select id="countPetSitter" resultType="int">
+		select count(*) from petsitter_tbl
+	</select>
+	<select id="countMomSitter" resultType="int">
+		select count(*) from momsitter_tbl
+	</select>
+	<select id="countCareSitter" resultType="int">
+		select count(*) from caresitter_tbl
+	</select>
+	<select id="countDolbom" resultType="int">
+		select count(*) from dolbom_tbl
+	</select>
+	<select id="countCont" resultType="int">
+		select count(*) from contract_tbl where cnt_sitter_ok >= 2 and cnt_dolbom_ok >= 2
+	</select>
+	
+	<insert id="regDefaultcount">
+		insert into count_tbl values (1, #{count_sitter}, #{count_dolbom}, 1557, #{count_cont})
+	</insert>
+	
 	
 </mapper>

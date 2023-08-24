@@ -17,4 +17,5 @@ public interface CareMapper {
 
 	int changecsstatus(MemberDTO mDTO);
 
+
 }
