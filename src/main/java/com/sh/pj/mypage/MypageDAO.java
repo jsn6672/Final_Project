@@ -5,9 +5,14 @@ import java.io.IOException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.channels.Selector;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 import javax.mail.Session;
@@ -39,8 +44,6 @@ public class MypageDAO {
 
 	@Autowired
 	private ServletContext sc;
-
-
 
 	public void getMember(HttpServletRequest req) {
 		req.setAttribute("myMembers", ss.getMapper(MypageMapper.class).getMember());
@@ -234,6 +237,7 @@ public class MypageDAO {
 	public void insertmoney(HttpServletRequest req, MoneyDTO mm) {
 
 		String mm_id = req.getParameter("mm_id");
+		System.out.println(mm_id);
 		String mm_name = req.getParameter("mm_name");
 		int mm_date = Integer.parseInt(req.getParameter("mm_date"));
 		String mm_ticket = req.getParameter("mm_ticket");
@@ -372,39 +376,43 @@ public class MypageDAO {
 	}
 
 	public void confirmticket(HttpServletRequest req, MoneyDTO mm) {
-		/*
-		 * int mm_no = Integer.parseInt(req.getParameter("mm_no")); String mm_state =
-		 * req.getParameter("mm_state"); System.out.println("이밑으로 컨펌티켓");
-		 * System.out.println(mm_no); System.out.println(mm_state);
-		 */
-		/*
-		 * mm.setMm_no(mm_no); mm.setMm_state(mm_state);
-		 */
-		
-		/*
-		 * mm.setMm_start_date(mm_start_date); mm.setMm_end_date(mm_end_date);
-		 */
 
-		if (ss.getMapper(MypageMapper.class).confirmticket(mm) == 1) {
-			System.out.println("결제정보 업데이트 완료");
-			if (ss.getMapper(MypageMapper.class).confirmdate(mm) == 1) {
-				
-			}
-		} else {
-			System.out.println("결제정보 업데이트 실패");
+		int mm_no = Integer.parseInt(req.getParameter("mm_no"));
+		String mm_state = req.getParameter("mm_state");
+		System.out.println("이밑으로 컨펌티켓");
+		System.out.println(mm_no);
+		System.out.println(mm_state);
+		mm.setMm_no(mm_no);
+		mm.setMm_state(mm_state);
+		
+		    if (ss.getMapper(MypageMapper.class).confirmdate(mm) == 1) {
+		        System.out.println("사용날짜 정보 업데이트 완료");
+		        if (ss.getMapper(MypageMapper.class).confirmticket(mm) == 1) {
+		            System.out.println("결제 정보 업데이트 완료");
+		        } else {
+		            System.out.println("결제정보 업데이트 실패");
+		        }
+		    } else {
+		        System.out.println("사용날짜 정보 업데이트 실패");
+		    }
 		}
 		
-		
-		
-		
-		
+		/*
+		 * DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy",
+		 * Locale.US);
+		 * 
+		 * try { Date date = dateFormat.parse(mm_start_date); mm.setMm_start_date(date);
+		 * } catch (Exception e) { e.printStackTrace(); }
+		 */
+	/*
+	 * // 이후 코드는 동일하게 유지 if (ss.getMapper(MypageMapper.class).confirmdate(mm) == 1)
+	 * { System.out.println("사용날짜 정보 업데이트 완료"); if
+	 * (ss.getMapper(MypageMapper.class).confirmticket(mm) == 1) {
+	 * System.out.println("결제 정보 업데이트 완료"); } else {
+	 * System.out.println("결제정보 업데이트 실패"); } } else {
+	 * System.out.println("사용날짜 정보 업데이트 실패"); }
+	 */
 	
-	
-	
-	
-	
-	
-	}
 
 	public void getListOfDolbom(HttpServletRequest req) {
 		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
@@ -484,18 +492,17 @@ public class MypageDAO {
 			System.out.println("번호 바뀜0");
 		}
 	}
-	
+
 	public void updateCntDolbom(HttpServletRequest req, ContractDTO cntDTO) {
 		if (ss.getMapper(MypageMapper.class).updateCntDolbom(cntDTO) == 1) {
 			System.out.println("번호 바뀜2");
 		}
 	}
-	
+
 	public void updateCntDolbomNope(HttpServletRequest req, ContractDTO cntDTO) {
 		if (ss.getMapper(MypageMapper.class).updateCntDolbomNope(cntDTO) == 1) {
 			System.out.println("번호 바뀜0");
 		}
 	}
-
 
 }
