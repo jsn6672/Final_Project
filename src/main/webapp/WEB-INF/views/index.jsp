@@ -21,7 +21,7 @@
 			data-bs-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img class="w-100" src="resources/img/carousel-1.jpg" alt="Image">
+					<img class="w-100" src="resources/img/맘시터.jpg" alt="Image">
 					<div class="carousel-caption">
 						<div class="container">
 							<div class="row justify-content-center">
@@ -29,10 +29,10 @@
 									<p class="fs-4 text-white animated zoomIn">
 										Welcome to <strong class="text-dark">CareSitter</strong>
 									</p>
-									<h1 class="display-1 text-dark mb-4 animated zoomIn">돌보미가
+									<h1 class="display-1 text-dark mb-4 animated zoomIn">맘시터가
 										될래요.</h1>
-									<a href=""
-										class="btn btn-light rounded-pill py-3 px-5 animated zoomIn">돌보미가
+									<a href="momsitter.go"
+										class="btn btn-light rounded-pill py-3 px-5 animated zoomIn">돌봐줄사람이
 										될래요. </a>
 								</div>
 							</div>
@@ -40,7 +40,7 @@
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img class="w-100" src="resources/img/carousel-2.jpg" alt="Image">
+					<img class="w-100" src="resources/img/펫시터.jpg" alt="Image">
 					<div class="carousel-caption">
 						<div class="container">
 							<div class="row justify-content-center">
@@ -48,29 +48,10 @@
 									<p class="fs-4 text-white animated zoomIn">
 										Welcome to <strong class="text-dark">CareSitter</strong>
 									</p>
-									<h1 class="display-1 text-dark mb-4 animated zoomIn">돌보미가
+									<h1 class="display-1 text-dark mb-4 animated zoomIn">펫시터가
 										필요해요.</h1>
-									<a href=""
-										class="btn btn-light rounded-pill py-3 px-5 animated zoomIn">돌보미가
-										필요해요.</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="carousel-item">
-					<img class="w-100" src="resources/img/carousel-2.jpg" alt="Image">
-					<div class="carousel-caption">
-						<div class="container">
-							<div class="row justify-content-center">
-								<div class="col-lg-7 text-center">
-									<p class="fs-4 text-white animated zoomIn">
-										Welcome to <strong class="text-dark">PetSitter</strong>
-									</p>
-									<h1 class="display-1 text-dark mb-4 animated zoomIn">돌보미가
-										될래요.</h1>
-									<a href=""
-										class="btn btn-light rounded-pill py-3 px-5 animated zoomIn">돌보미가
+									<a href="petsitter.go"
+										class="btn btn-light rounded-pill py-3 px-5 animated zoomIn">돌봐줄사람이
 										될래요.</a>
 								</div>
 							</div>
@@ -78,56 +59,18 @@
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img class="w-100" src="resources/img/carousel-2.jpg" alt="Image">
+					<img class="w-100" src="resources/img/케어시터 (2).jpg" alt="Image">
 					<div class="carousel-caption">
 						<div class="container">
 							<div class="row justify-content-center">
 								<div class="col-lg-7 text-center">
 									<p class="fs-4 text-white animated zoomIn">
-										Welcome to <strong class="text-dark">PetSitter</strong>
+										Welcome to <strong class="text-dark">Caresitter</strong>
 									</p>
-									<h1 class="display-1 text-dark mb-4 animated zoomIn">돌보미가
+									<h1 class="display-1 text-dark mb-4 animated zoomIn">케어가
 										필요해요.</h1>
-									<a href=""
-										class="btn btn-light rounded-pill py-3 px-5 animated zoomIn">돌보미가
-										필요해요.</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="carousel-item">
-					<img class="w-100" src="resources/img/momsitter.jpg" alt="Image">
-					<div class="carousel-caption">
-						<div class="container">
-							<div class="row justify-content-center">
-								<div class="col-lg-7 text-center">
-									<p class="fs-4 text-white animated zoomIn">
-										Welcome to <strong class="text-dark">MomSitter</strong>
-									</p>
-									<h1 class="display-1 text-dark mb-4 animated zoomIn">돌보미가
-										될래요.</h1>
-									<a href=""
-										class="btn btn-light rounded-pill py-3 px-5 animated zoomIn">돌보미가
-										될래요.</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="carousel-item">
-					<img class="w-100" src="resources/img/momsitter.jpg" alt="Image">
-					<div class="carousel-caption">
-						<div class="container">
-							<div class="row justify-content-center">
-								<div class="col-lg-7 text-center">
-									<p class="fs-4 text-white animated zoomIn">
-										Welcome to <strong class="text-dark">MomSitter</strong>
-									</p>
-									<h1 class="display-1 text-dark mb-4 animated zoomIn">돌보미가
-										필요해요.</h1>
-									<a href=""
-										class="btn btn-light rounded-pill py-3 px-5 animated zoomIn">돌보미가
+									<a href="caresitter.go"
+										class="btn btn-light rounded-pill py-3 px-5 animated zoomIn">돌봐줄사람이
 										필요해요.</a>
 								</div>
 							</div>
@@ -158,15 +101,15 @@
 					<div class="row g-3">
 						<div class="col-6 text-end">
 							<img class="img-fluid bg-white w-100 mb-3 wow fadeIn"
-								data-wow-delay="0.1s" src="resources/img/about-1.jpg" alt="">
+								data-wow-delay="0.1s" src="resources/img/whitedog.jpg" alt="">
 							<img class="img-fluid bg-white w-50 wow fadeIn"
-								data-wow-delay="0.2s" src="resources/img/about-3.jpg" alt="">
+								data-wow-delay="0.2s" src="resources/img/oldman.jpg" alt="">
 						</div>
 						<div class="col-6">
 							<img class="img-fluid bg-white w-50 mb-3 wow fadeIn"
-								data-wow-delay="0.3s" src="resources/img/about-4.jpg" alt="">
+								data-wow-delay="0.3s" src="resources/img/baby.jpg" alt="">
 							<img class="img-fluid bg-white w-100 wow fadeIn"
-								data-wow-delay="0.4s" src="resources/img/about-2.jpg" alt="">
+								data-wow-delay="0.4s" src="resources/img/dogs.jpg" alt="">
 						</div>
 					</div>
 				</div>
@@ -179,7 +122,7 @@
 					<div class="row g-3 mb-4">
 						<div class="col-sm-4">
 							<img class="img-fluid bg-white w-100"
-								src="resources/img/about-5.jpg" alt="">
+								src="resources/img/baby2.jpg" alt="">
 						</div>
 						<div class="col-sm-8">
 							<h5>돌보미를 원하는 분들에게 니즈에 맞는 돌보미를...</h5>
@@ -196,7 +139,7 @@
 						</div>
 						<div class="col-sm-4">
 							<img class="img-fluid bg-white w-100"
-								src="resources/img/about-6.jpg" alt="">
+								src="resources/img/baby3.jpg" alt="">
 						</div>
 					</div>
 				</div>
@@ -261,20 +204,30 @@
 		<div class="container">
 			<div class="row g-5">
 				<div class="col-lg-5 wow fadeIn" data-wow-delay="0.1s">
-					<img class="img-fluid" src="resources/img/discount.png" alt="">
+					<img class="img-fluid" src="resources/img/이용권.jpg" alt="">
 				</div>
 				<div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-					<div class="section-title">
+					<div>
 						<p class="fs-5 fw-medium fst-italic text-primary">이용권 안내</p>
-						<h1 class="display-6">여기 버튼을 누르면 어떤 페이지로 가게 될까요</h1>
+
 					</div>
-					<p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor
-						diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et
-						lorem et sit, sed stet lorem sit clita duo justo magna dolore erat
-						amet</p>
-					<p class="mb-4">Diam dolor diam ipsum sit. Aliqu diam amet diam
-						et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita
-						duo justo magna. Tempor erat elitr rebum at clita.</p>
+					<p class="mb-4">👶 맘시터 이용권으로 풍요로운 시간을 만끽하세요!</p>
+					<p class="mb-4">🌟 소중한 모든 순간을 위한 특별한 선물</p>
+
+					<p class="mb-4">당신의 소중한 시간과 소중한 동반자들을 위해 최상의 돌봄 서비스를 제공합니다. 모두의
+						시터로 맘시터, 펫시터, 그리고 케어시터와 함께하는 특별한 시간을 만끽하세요.</p>
+
+					<p class="mb-4">👶 아이들과 함께하는 시간: 자녀의 미소와 함께하는 행복한 순간을 위해 전문
+						맘시터가 돌봄을 맡겨드립니다. 안전하고 유익한 활동으로 가득찬 시간을 선물하세요.</p>
+
+					<p class="mb-4">🐾 반려동물과의 소중한 만남: 귀여운 친구들과 함께하는 특별한 시간을 위해 펫시터가
+						최상의 돌봄을 제공합니다. 사랑과 놀이로 가득한 일상을 즐겨보세요.</p>
+
+					<p class="mb-4">🌼 어르신들과의 따뜻한 이야기: 소중한 어르신들과 함께하는 고요하고 따뜻한 순간을
+						위해 케어시터가 최상의 배려와 돌봄을 제공합니다. 함께하는 시간이 더욱 풍요로운 삶을 만듭니다.</p>
+
+					<p class="mb-4">자녀, 반려동물, 어르신 - 모든 소중한 동반자들을 위한 모두의 시터로 더 많은
+						행복을 만끽해보세요!</p>
 					<a href="" class="btn btn-primary rounded-pill py-3 px-5">이용권
 						구매</a>
 				</div>
@@ -285,7 +238,7 @@
 
 
 
-	<!-- Video Start -->
+	<!--  Video Start 
 	<div class="container-fluid video my-5">
 		<div class="container">
 			<div class="row g-0">
@@ -348,7 +301,7 @@
 						</button>
 					</div>
 				</div>
-				<!--  	<div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+				 	<div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
 					<div class="h-100 d-flex align-items-center justify-content-center"
 						style="min-height: 300px;">
 						<button type="button" class="btn-play" data-bs-toggle="modal"
@@ -358,14 +311,14 @@
 						</button>
 					</div>
 				</div>
-				-->
+				
 			</div>
 		</div>
 	</div>
-	<!-- Video End -->
+	Video End
 
 
-	<!-- Video Modal Start -->
+	Video Modal Start
 	<div class="modal modal-video fade" id="videoModal" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -376,7 +329,7 @@
 						aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<!-- 16:9 aspect ratio -->
+					16:9 aspect ratio
 					<div class="ratio ratio-16x9">
 						<iframe class="embed-responsive-item" src="" id="video"
 							allowfullscreen allowscriptaccess="always" allow="autoplay"></iframe>
@@ -385,10 +338,10 @@
 			</div>
 		</div>
 	</div>
-	<!-- Video Modal End -->
+	Video Modal End
+ -->
 
-
-	<!-- Store Start -->
+	<!-- Store Start 
 	<div class="container-xxl py-5">
 		<div class="container">
 			<div class="section-title text-center mx-auto wow fadeInUp"
@@ -481,7 +434,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- Store End -->
+	Store End -->
 
 
 	<!-- Testimonial Start -->
@@ -490,7 +443,8 @@
 			<div class="section-title text-center mx-auto wow fadeInUp"
 				data-wow-delay="0.1s" style="max-width: 500px;">
 				<p class="fs-5 fw-medium fst-italic text-white">리뷰게시판</p>
-				<h1 class="display-6">리뷰게시글 5점만점인 리뷰들만 모아서 거기서 랜덤? 아니면 최신순으로? 골라서 3~5개 보여주면 좋을듯?</h1>
+				<p class="display-6" style="font-size: 1.5rem;">많은 분들의 리뷰를 확인하는것이 가능합니다.</p>
+				<p class="display-6" style="font-size: 1.5rem;">여러분들의 리뷰도 적어주세요.</p>
 			</div>
 			<div class="owl-carousel testimonial-carousel wow fadeInUp"
 				data-wow-delay="0.5s">
@@ -545,12 +499,14 @@
 			<div class="section-title text-center mx-auto wow fadeInUp"
 				data-wow-delay="0.1s" style="max-width: 500px;">
 				<p class="fs-5 fw-medium fst-italic text-primary">Contact Us</p>
-				<h1 class="display-6">긴급한 문의사항은 아래 <br>  전화번호로 전화주세요</h1>
+				<h1 class="display-6">
+					긴급한 문의사항은 아래 <br> 전화번호로 전화주세요
+				</h1>
 			</div>
 			<div class="row justify-content-center wow fadeInUp"
 				data-wow-delay="0.1s">
 				<div class="col-lg-8">
-					<p class="text-center mb-5">친절하게 답해드릴수 있을수도 아닐수도?</p>
+					<p class="text-center mb-5">필요하신 문의사항이 있으시면 문의하기를 이용해주시길 바랍니다.</p>
 					<div class="row g-5">
 						<div class="col-md-4 text-center wow fadeInUp"
 							data-wow-delay="0.3s">

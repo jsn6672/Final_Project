@@ -210,7 +210,6 @@
 
 .section-title::before {
 	position: absolute;
-	content: "";
 	width: 50%;
 	height: 2px;
 	bottom: 0;
@@ -220,7 +219,6 @@
 
 .section-title::after {
 	position: absolute;
-	content: "";
 	width: 28px;
 	height: 28px;
 	bottom: -13px;
@@ -421,9 +419,9 @@ opacity
 
 /*** Testimonial ***/
 .testimonial {
-	background: linear-gradient(rgba(136, 180, 78, .85),
-		rgba(136, 180, 78, .85)), url(../img/testimonial-bg.jpg) center center
-		no-repeat;
+	background: linear-gradient(rgb(212 255 201 / 85%),
+  rgb(142 201 65 / 85%)), url(../img/.jpg) center center
+  no-repeat;
 	background-size: cover;
 }
 
