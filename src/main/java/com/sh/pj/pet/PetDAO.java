@@ -83,11 +83,7 @@ public class PetDAO {
 	public void detail(HttpServletRequest req, PetDTO petDTO, Model m) {
 
 		PetDTO pp = ss.getMapper(PetMapper.class).detail(petDTO);
-
 		
-		
-		
-
 		String[] ps_hour = pp.getPs_hour().split("!");
 
 		pp.setMonday_start(Integer.parseInt(ps_hour[0]));
@@ -340,6 +336,52 @@ public class PetDAO {
 		}
 		
 	}
+
+	public void getAllTaker(HttpServletRequest req, DolbomDTO dolbomDTO, Model m) {
+		m.addAttribute("pettaker", ss.getMapper(PetMapper.class).getAllTaker(dolbomDTO));
+	}
+
+	public void detailtaker(HttpServletRequest req, DolbomDTO dolbomDTO, Model m) {
+		DolbomDTO pp = ss.getMapper(PetMapper.class).detailtaker(dolbomDTO);
+		
+		String[] ps_hour = pp.getD_hour().split("!");
+
+		pp.setMonday_start(Integer.parseInt(ps_hour[0]));
+		pp.setMonday_end(Integer.parseInt(ps_hour[1]));
+		pp.setTuesday_start(Integer.parseInt(ps_hour[2]));
+		pp.setTuesday_end(Integer.parseInt(ps_hour[3]));
+		pp.setWednesday_start(Integer.parseInt(ps_hour[4]));
+		pp.setWednesday_end(Integer.parseInt(ps_hour[5]));
+		pp.setThursday_start(Integer.parseInt(ps_hour[6]));
+		pp.setThursday_end(Integer.parseInt(ps_hour[7]));
+		pp.setFriday_start(Integer.parseInt(ps_hour[8]));
+		pp.setFriday_end(Integer.parseInt(ps_hour[9]));
+		pp.setSaturday_start(Integer.parseInt(ps_hour[10]));
+		pp.setSaturday_end(Integer.parseInt(ps_hour[11]));
+		pp.setSunday_start(Integer.parseInt(ps_hour[12]));
+		pp.setSunday_end(Integer.parseInt(ps_hour[13]));
+
+		String[] ps_day = pp.getD_day().split("!");
+
+		pp.setMonday(ps_day[0]);
+		pp.setTuesday(ps_day[1]);
+		pp.setWednesday(ps_day[2]);
+		pp.setThursday(ps_day[3]);
+		pp.setFriday(ps_day[4]);
+		pp.setSaturday(ps_day[5]);
+		pp.setSunday(ps_day[6]);
+
+		pp.setMm(ss.getMapper(PetMapper.class).detailUser2(pp));
+
+		/*
+		 * m.addAttribute("reviews", ss.getMapper(PetMapper.class).review(dolbomDTO));
+		 * System.out.println(ss.getMapper(PetMapper.class).review(dolbomDTO));
+		 */
+
+		m.addAttribute("dolbom", pp);
+	}
+
+
 
 	
 

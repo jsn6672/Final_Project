@@ -56,8 +56,9 @@ public class CareController {
 	}
 	
 	@RequestMapping(value = "/caretaker.detail", method = RequestMethod.GET)
-	public String caretakerdetail(HttpServletRequest req) {
-		mDAO.logincheck(req);	
+	public String caretakerdetail(HttpServletRequest req, CareDTO cDTO, Model m) {
+		mDAO.logincheck(req);
+		cDAO.detail(req, cDTO, m);
 		req.setAttribute("contentPage", "detail/caretaker.jsp");
 		req.setAttribute("background_color", "#FBE9E7");
 		return "home";
