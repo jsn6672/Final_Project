@@ -74,6 +74,18 @@ init();
 			onmouseout="restoreColor('mpMenu-part4')">
 				<a href="mypage.usage.go">이용내역 및 리뷰작성</a>	
 			</div>
+			<div class="mpMenu-part" id="mpMenu-part5"
+			onmouseover="changeColor('mpMenu-part5')"
+			onmouseout="restoreColor('mpMenu-part5')">
+				<c:choose>
+					<c:when test="${userInfo.user_id == 'admin' }">
+					<a href="mypage.certif.check">관리자 페이지</a></c:when>
+					<c:otherwise>
+						<span>이용권</span>
+					</c:otherwise>				
+				</c:choose>
+				
+			</div>
 		</div>
 	</div>
 	<div>
@@ -121,4 +133,4 @@ function restoreColor(id) {
     element.style.backgroundColor = ''; // 기존 배경색으로 복원
   }
 </script>
-</html>
+</html> 

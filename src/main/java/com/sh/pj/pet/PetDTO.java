@@ -2,6 +2,7 @@ package com.sh.pj.pet;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -60,25 +61,68 @@ public class PetDTO {
 	private int sunday_end;
 
 	private MemberDTO mm;
+	
+	public PetDTO() {
+		// TODO Auto-generated constructor stub
+	}
 
-	@Override
-	public String toString() {
-		return "PetDTO [ps_id=" + ps_id + ", ps_file=" + ps_file + ", ps_Rfile=" + ps_Rfile + ", ps_confirm="
-				+ ps_confirm + ", ps_confirm_answer=" + ps_confirm_answer + ", ps_cctv=" + ps_cctv + ", ps_term="
-				+ ps_term + ", ps_day=" + ps_day + ", ps_hour=" + ps_hour + ", ps_location1=" + ps_location1
-				+ ", ps_location2=" + ps_location2 + ", ps_location3=" + ps_location3 + ", ps_extra=" + ps_extra
-				+ ", ps_exp=" + ps_exp + ", ps_pay=" + ps_pay + ", ps_point=" + ps_point + ", ps_count=" + ps_count
-				+ ", ps_can_do=" + ps_can_do + ", ps_can_type=" + ps_can_type + ", ps_notice=" + ps_notice
-				+ ", ps_ticket_start=" + ps_ticket_start + ", ps_ticket_end=" + ps_ticket_end + ", ps_write_date="
-				+ ps_write_date + ", ps_type=" + Arrays.toString(ps_type) + ", petsitter_act="
-				+ Arrays.toString(petsitter_act) + ", monday=" + monday + ", tuesday=" + tuesday + ", wednesday="
-				+ wednesday + ", thursday=" + thursday + ", friday=" + friday + ", saturday=" + saturday + ", sunday="
-				+ sunday + ", monday_start=" + monday_start + ", tuesday_start=" + tuesday_start + ", wednesday_start="
-				+ wednesday_start + ", thursday_start=" + thursday_start + ", friday_start=" + friday_start
-				+ ", saturday_start=" + saturday_start + ", sunday_start=" + sunday_start + ", monday_end=" + monday_end
-				+ ", tuesday_end=" + tuesday_end + ", wednesday_end=" + wednesday_end + ", thursday_end=" + thursday_end
-				+ ", friday_end=" + friday_end + ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end
-				+ ", mm=" + mm + "]";
+	public PetDTO(String ps_id, String ps_file, MultipartFile ps_Rfile, String ps_confirm, String ps_confirm_answer,
+			String ps_cctv, String ps_term, String ps_day, String ps_hour, String ps_location1, String ps_location2,
+			String ps_location3, String ps_extra, String ps_exp, int ps_pay, int ps_point, int ps_count,
+			String ps_can_do, String ps_can_type, String ps_notice, Date ps_ticket_start, Date ps_ticket_end,
+			Date ps_write_date, int[] ps_type, int[] petsitter_act, String monday, String tuesday, String wednesday,
+			String thursday, String friday, String saturday, String sunday, int monday_start, int tuesday_start,
+			int wednesday_start, int thursday_start, int friday_start, int saturday_start, int sunday_start,
+			int monday_end, int tuesday_end, int wednesday_end, int thursday_end, int friday_end, int saturday_end,
+			int sunday_end, MemberDTO mm) {
+		super();
+		this.ps_id = ps_id;
+		this.ps_file = ps_file;
+		this.ps_Rfile = ps_Rfile;
+		this.ps_confirm = ps_confirm;
+		this.ps_confirm_answer = ps_confirm_answer;
+		this.ps_cctv = ps_cctv;
+		this.ps_term = ps_term;
+		this.ps_day = ps_day;
+		this.ps_hour = ps_hour;
+		this.ps_location1 = ps_location1;
+		this.ps_location2 = ps_location2;
+		this.ps_location3 = ps_location3;
+		this.ps_extra = ps_extra;
+		this.ps_exp = ps_exp;
+		this.ps_pay = ps_pay;
+		this.ps_point = ps_point;
+		this.ps_count = ps_count;
+		this.ps_can_do = ps_can_do;
+		this.ps_can_type = ps_can_type;
+		this.ps_notice = ps_notice;
+		this.ps_ticket_start = ps_ticket_start;
+		this.ps_ticket_end = ps_ticket_end;
+		this.ps_write_date = ps_write_date;
+		this.ps_type = ps_type;
+		this.petsitter_act = petsitter_act;
+		this.monday = monday;
+		this.tuesday = tuesday;
+		this.wednesday = wednesday;
+		this.thursday = thursday;
+		this.friday = friday;
+		this.saturday = saturday;
+		this.sunday = sunday;
+		this.monday_start = monday_start;
+		this.tuesday_start = tuesday_start;
+		this.wednesday_start = wednesday_start;
+		this.thursday_start = thursday_start;
+		this.friday_start = friday_start;
+		this.saturday_start = saturday_start;
+		this.sunday_start = sunday_start;
+		this.monday_end = monday_end;
+		this.tuesday_end = tuesday_end;
+		this.wednesday_end = wednesday_end;
+		this.thursday_end = thursday_end;
+		this.friday_end = friday_end;
+		this.saturday_end = saturday_end;
+		this.sunday_end = sunday_end;
+		this.mm = mm;
 	}
 
 	public String getPs_id() {
@@ -457,4 +501,26 @@ public class PetDTO {
 		this.mm = mm;
 	}
 
-}
+	@Override
+	public String toString() {
+		return "PetDTO [ps_id=" + ps_id + ", ps_file=" + ps_file + ", ps_Rfile=" + ps_Rfile + ", ps_confirm="
+				+ ps_confirm + ", ps_confirm_answer=" + ps_confirm_answer + ", ps_cctv=" + ps_cctv + ", ps_term="
+				+ ps_term + ", ps_day=" + ps_day + ", ps_hour=" + ps_hour + ", ps_location1=" + ps_location1
+				+ ", ps_location2=" + ps_location2 + ", ps_location3=" + ps_location3 + ", ps_extra=" + ps_extra
+				+ ", ps_exp=" + ps_exp + ", ps_pay=" + ps_pay + ", ps_point=" + ps_point + ", ps_count=" + ps_count
+				+ ", ps_can_do=" + ps_can_do + ", ps_can_type=" + ps_can_type + ", ps_notice=" + ps_notice
+				+ ", ps_ticket_start=" + ps_ticket_start + ", ps_ticket_end=" + ps_ticket_end + ", ps_write_date="
+				+ ps_write_date + ", ps_type=" + Arrays.toString(ps_type) + ", petsitter_act="
+				+ Arrays.toString(petsitter_act) + ", monday=" + monday + ", tuesday=" + tuesday + ", wednesday="
+				+ wednesday + ", thursday=" + thursday + ", friday=" + friday + ", saturday=" + saturday + ", sunday="
+				+ sunday + ", monday_start=" + monday_start + ", tuesday_start=" + tuesday_start + ", wednesday_start="
+				+ wednesday_start + ", thursday_start=" + thursday_start + ", friday_start=" + friday_start
+				+ ", saturday_start=" + saturday_start + ", sunday_start=" + sunday_start + ", monday_end=" + monday_end
+				+ ", tuesday_end=" + tuesday_end + ", wednesday_end=" + wednesday_end + ", thursday_end=" + thursday_end
+				+ ", friday_end=" + friday_end + ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end
+				+ ", mm=" + mm + "]";
+	}
+	
+	
+	
+	}

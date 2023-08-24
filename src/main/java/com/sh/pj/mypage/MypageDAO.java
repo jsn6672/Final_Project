@@ -379,40 +379,98 @@ public class MypageDAO {
 
 		int mm_no = Integer.parseInt(req.getParameter("mm_no"));
 		String mm_state = req.getParameter("mm_state");
+		String mm_id = req.getParameter("mm_id");
+	
 		System.out.println("이밑으로 컨펌티켓");
 		System.out.println(mm_no);
 		System.out.println(mm_state);
+		System.out.println(mm_id);
+
 		mm.setMm_no(mm_no);
 		mm.setMm_state(mm_state);
+		mm.setMm_id(mm_id);
 		
-		    if (ss.getMapper(MypageMapper.class).confirmdate(mm) == 1) {
-		        System.out.println("사용날짜 정보 업데이트 완료");
-		        if (ss.getMapper(MypageMapper.class).confirmticket(mm) == 1) {
-		            System.out.println("결제 정보 업데이트 완료");
+		/*
+		 * if ("1개월".equals(mm_ticket)) { if
+		 * (ss.getMapper(MypageMapper.class).confirmdate1(mm) == 1) {
+		 * System.out.println("날짜 수정 완료"); if
+		 * (ss.getMapper(MypageMapper.class).confirmticket(mm) == 1) {
+		 * System.out.println("결제상태 수정 완료"); } else { System.out.println("결제상태 수정 실패");
+		 * } } else { System.out.println("날짜 수정 실패"); } }
+		 */
+		String mm_date = req.getParameter("mm_date");
+
+		if (mm_date != null) {
+		    int months = Integer.parseInt(mm_date);
+
+		    int confirmResult = -1;
+		    int ticketResult = -1;
+		    
+		    int confirmResultPet = -1;
+		    int ticketResultPet = -1;
+		    
+		    int confirmResultCare = -1;
+		    int ticketResultCare = -1;
+		    
+		    
+
+		    switch (months) {
+		        case 1:
+		            confirmResult = ss.getMapper(MypageMapper.class).confirmdate1(mm);
+		            confirmResultPet = ss.getMapper(MypageMapper.class).confirmdatePet1(mm);
+		            confirmResultCare = ss.getMapper(MypageMapper.class).confirmdateCare1(mm);
+		            break;
+		        case 3:
+		            confirmResult = ss.getMapper(MypageMapper.class).confirmdate3(mm);
+		            confirmResultPet = ss.getMapper(MypageMapper.class).confirmdatePet3(mm);
+		            confirmResultCare = ss.getMapper(MypageMapper.class).confirmdateCare3(mm);
+		            break;
+		        case 6:
+		            confirmResult = ss.getMapper(MypageMapper.class).confirmdate6(mm);
+		            confirmResultPet = ss.getMapper(MypageMapper.class).confirmdatePet6(mm);
+		            confirmResultCare = ss.getMapper(MypageMapper.class).confirmdateCare6(mm);
+		            break;
+		        case 12:
+		            confirmResult = ss.getMapper(MypageMapper.class).confirmdate12(mm);
+		            confirmResultPet = ss.getMapper(MypageMapper.class).confirmdatePet12(mm);
+		            confirmResultCare = ss.getMapper(MypageMapper.class).confirmdateCare12(mm);
+		            break;
+		        default:
+		            break;
+		    }
+
+		    if (confirmResult == 3) {
+		        System.out.println("이용기간 수정 완료");
+		        ticketResult = ss.getMapper(MypageMapper.class).confirmticket(mm);
+		        if (ticketResult == 1) {
+		            System.out.println("결제상태 수정 완료");
 		        } else {
-		            System.out.println("결제정보 업데이트 실패");
+		            System.out.println("결제상태 수정 실패");
 		        }
 		    } else {
-		        System.out.println("사용날짜 정보 업데이트 실패");
+		        System.out.println("이용기간 수정 실패");
 		    }
 		}
 		
 		/*
-		 * DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy",
-		 * Locale.US);
-		 * 
-		 * try { Date date = dateFormat.parse(mm_start_date); mm.setMm_start_date(date);
-		 * } catch (Exception e) { e.printStackTrace(); }
+		 * String mm_start_date = req.getParameter("mm_start_date");
+		 * System.out.println(mm_start_date);
 		 */
-	/*
-	 * // 이후 코드는 동일하게 유지 if (ss.getMapper(MypageMapper.class).confirmdate(mm) == 1)
-	 * { System.out.println("사용날짜 정보 업데이트 완료"); if
-	 * (ss.getMapper(MypageMapper.class).confirmticket(mm) == 1) {
-	 * System.out.println("결제 정보 업데이트 완료"); } else {
-	 * System.out.println("결제정보 업데이트 실패"); } } else {
-	 * System.out.println("사용날짜 정보 업데이트 실패"); }
-	 */
-	
+		
+		/*
+		 * if(ss.getMapper(MypageMapper.class).startSitter(mm) == 1) {
+		 * System.out.println("시터 수정 완"); }
+		 */
+		
+		
+		
+		
+		
+		
+		
+	}
+		
+		
 
 	public void getListOfPetDolbom(HttpServletRequest req) {
 		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
@@ -503,6 +561,15 @@ public class MypageDAO {
 		if (ss.getMapper(MypageMapper.class).updateCntDolbomNope(cntDTO) == 1) {
 			System.out.println("번호 바뀜0");
 		}
+	}
+
+	public void getcertiflist(HttpServletRequest req, MoneyDTO mm) {
+		List<MoneyDTO> certifList = ss.getMapper(MypageMapper.class).getcertiflist();
+		req.setAttribute("certifList", certifList);
+		System.out.println("이밑에 인증 리스트");
+		System.out.println(certifList);
+		System.out.println();
+		
 	}
 
 }

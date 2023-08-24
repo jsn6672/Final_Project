@@ -6,10 +6,21 @@
 	<select id="getAll" resultType="com.sh.pj.pet.PetDTO">
 		select*from petsitter_tbl where ps_notice = '0'
 	</select>
+	
+	<select id="getAllTaker" resultType="com.sh.pj.account.DolbomDTO">
+		select*from dolbom_tbl where d_category=3
+	</select>
+	
 
 	<select id="detail" resultType="com.sh.pj.pet.PetDTO">
 		select*from petsitter_tbl where ps_id = #{ps_id}
 	</select>
+
+	<select id="detailtaker" resultType="com.sh.pj.account.DolbomDTO">
+		select*from dolbom_tbl where d_no = #{d_no}
+	</select>
+
+
 
 	<insert id="regDolbom">
 		insert into dolbom_tbl values (dolbom_tbl_seq.nextval, #{d_id}, #{d_name}, #{d_category}, #{d_year}, #{d_month}, #{d_day}, #{d_hour}, #{d_check}, #{d_location}, #{d_gender}, #{d_personality}, #{d_pay}, #{d_cctv}, #{d_can_do}, #{d_sitterage}, #{d_need}, #{d_title}, #{d_term}, null, null, null)
@@ -26,6 +37,10 @@
 
 	<select id="detailUser" resultType="com.sh.pj.account.MemberDTO">
 		select * from jsn_user_tbl where user_id = #{ps_id}
+	</select>
+		
+	<select id="detailUser2" resultType="com.sh.pj.account.MemberDTO">
+		select * from jsn_user_tbl where user_id = #{d_id}
 	</select>
 	
 	<delete id="deletePetsitter">
@@ -47,6 +62,19 @@
 	<update id="updatePetSitter">
 		update petsitter_tbl set ps_file = #{ps_file}, ps_confirm = #{ps_confirm}, ps_confirm_answer = #{ps_confirm_answer}, ps_cctv = #{ps_cctv}, ps_term = #{ps_term}, ps_day = #{ps_day}, ps_hour = #{ps_hour}, ps_location1 = #{ps_location1}, ps_location2 = #{ps_location2}, ps_location3 = #{ps_location3}, ps_extra = #{ps_extra}, ps_exp = #{ps_exp}, ps_pay = #{ps_pay}, ps_can_do = #{ps_can_do}, ps_can_type = #{ps_can_type} where ps_id = #{ps_id}
 	</update>
+	
+	<select id="getMsg" resultType="com.sh.pj.pet.PetDTO">
+		SELECT * fROM (SELECT ROWNUM AS rn, it.* FROM petsitter_tbl it WHERE
+		(it.ps_location1 LIKE '%' || #{ps_search} || '%' OR it.ps_location2 LIKE '%' || #{ps_search} || '%' OR it.ps_location3 LIKE '%' || #{ps_search} || '%')
+		<!-- AND it.inquiry_category = #{category} -->
+		ORDER BY it.ps_write_date DESC)
+		WHERE rn &gt;= #{ps_start} and rn &lt;= #{ps_end}
+	</select>
+	
+	<select id="getMsgCount" resultType="int"
+		parameterType="com.sh.pj.pet.PetSelector">
+		select count(*) from petsitter_tbl where ps_location1 like '%'||#{ps_search}||'%' or ps_location2 like '%'||#{ps_search}||'%' or ps_location3 like '%'||#{ps_search}||'%'
+	</select>
 
 
 </mapper>

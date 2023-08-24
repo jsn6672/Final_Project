@@ -99,9 +99,10 @@
 </head>
 <body>
 
-<div>
-    이용권확인
-    <div>신청대기 총 ${moneyList.size() }건</div>
+<div class="ticketCheckContainer">
+    <div>이용권확인</div>
+    <div class="ticketCheckList">신청대기 총 <span id="span-moneyList">${moneyList.size() }</span>건</div>
+    <div class="List-wrap">
     <c:forEach var="ml" items="${moneyList}">
         <div class="moneyList-1">
             <div>주문번호 : ${ml.mm_no }</div>
@@ -114,12 +115,14 @@
             	<input name="mm_no" type="hidden" value="${ml.mm_no }">
             	<input name="mm_state" type="hidden" value="${ml.mm_state }" >
             	<input name="mm_id" type="hidden" value="${ml.mm_id }" >
-            	<input name="mm_start_date" type="hidden" value="${ml.mm_start_date }">
-                <button>입금확인</button>
+            	<input name="mm_date" type="hidden" value="${ml.mm_date }">
+                <button class="ticketCheck-btn">입금확인</button>
             </form>
             <br>
         </div>
     </c:forEach>
+    <!-- List-wrap 끝 -->
+    </div>
 </div>
 </body>
 </html>
