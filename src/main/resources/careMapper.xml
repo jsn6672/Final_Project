@@ -22,5 +22,7 @@
 		update jsn_user_tbl set user_cs_status = 1 where user_id = #{user_id}
 	</update>
 
-
+	
+	
+	
 </mapper>

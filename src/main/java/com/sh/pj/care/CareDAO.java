@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
+import com.sh.pj.account.MemberMapper;
 import com.sh.pj.mom.MomMapper;
 import com.sh.pj.pet.PetMapper;
 
@@ -79,6 +80,7 @@ public class CareDAO {
 
 		if (ss.getMapper(CareMapper.class).regDolbom(dDTO) == 1) {
 			System.out.println("돌보미 등록 완료");
+			ss.getMapper(MemberMapper.class).upDCount();
 		}
 
 	}
@@ -137,6 +139,7 @@ public class CareDAO {
 				ss.getMapper(CareMapper.class).changecsstatus(mDTO);
 				mDTO.setUser_cs_status(1);
 				req.getSession().setAttribute("userInfo", mDTO);
+				ss.getMapper(MemberMapper.class).upSCount();
 				
 			}
 

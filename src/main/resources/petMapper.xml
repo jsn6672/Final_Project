@@ -38,9 +38,15 @@
 	
 	<update id="updateDolbom">
 		update dolbom_tbl set d_name = #{d_name}, d_year = #{d_year}, d_month = #{d_month}, d_day = #{d_day}, d_hour = #{d_hour}, d_check = #{d_check}, d_location = #{d_location}, d_gender = #{d_gender}, d_personality = #{d_personality}, d_pay = #{d_pay}, d_cctv = #{d_cctv}, d_can_do = #{d_can_do}, d_sitterage = #{d_sitterage}, d_need = #{d_need}, d_title = #{d_title}, d_term = #{d_term} where d_no = #{d_no}
-	
 	</update>
 
+	<select id="getPetSitterInfo" resultType="com.sh.pj.pet.PetDTO">
+		select * from petsitter_tbl where ps_id = #{user_id}
+	</select>
+	
+	<update id="updatePetSitter">
+		update petsitter_tbl set ps_file = #{ps_file}, ps_confirm = #{ps_confirm}, ps_confirm_answer = #{ps_confirm_answer}, ps_cctv = #{ps_cctv}, ps_term = #{ps_term}, ps_day = #{ps_day}, ps_hour = #{ps_hour}, ps_location1 = #{ps_location1}, ps_location2 = #{ps_location2}, ps_location3 = #{ps_location3}, ps_extra = #{ps_extra}, ps_exp = #{ps_exp}, ps_pay = #{ps_pay}, ps_can_do = #{ps_can_do}, ps_can_type = #{ps_can_type} where ps_id = #{ps_id}
+	</update>
 
 
 </mapper>

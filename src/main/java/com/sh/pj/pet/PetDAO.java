@@ -14,8 +14,9 @@ import org.springframework.ui.Model;
 import com.sh.pj.ReviewDTO;
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
-
+import com.sh.pj.account.MemberMapper;
 import com.sh.pj.mom.MomMapper;
+import com.sh.pj.mypage.MypageMapper;
 
 
 @Service
@@ -70,6 +71,7 @@ public class PetDAO {
 
 		if (ss.getMapper(PetMapper.class).regDolbom(dDTO) == 1) {
 			System.out.println("돌보미 등록 완료");
+			ss.getMapper(MemberMapper.class).upDCount();
 		}
 
 	}
@@ -177,6 +179,7 @@ public class PetDAO {
 				ss.getMapper(PetMapper.class).changemsstatus(mDTO);
 				mDTO.setUser_ps_status(1);
 				req.getSession().setAttribute("userInfo", mDTO);
+				ss.getMapper(MemberMapper.class).upSCount();
 				
 			}
 
@@ -236,6 +239,106 @@ public class PetDAO {
 		if (ss.getMapper(PetMapper.class).updateDolbom(dDTO) == 1) {
 			System.out.println("돌보미 수정 완료");
 		}
+	}
+
+	public void getPetSitterInfo(HttpServletRequest req) {
+		MemberDTO mDTO = (MemberDTO)req.getSession().getAttribute("userInfo");
+		
+		PetDTO pDTO = ss.getMapper(PetMapper.class).getPetSitterInfo(mDTO);
+
+		String[] petsitter_hour = pDTO.getPs_hour().split("!");
+
+		pDTO.setMonday_start(Integer.parseInt(petsitter_hour[0]));
+		pDTO.setMonday_end(Integer.parseInt(petsitter_hour[1]));
+		pDTO.setTuesday_start(Integer.parseInt(petsitter_hour[2]));
+		pDTO.setTuesday_end(Integer.parseInt(petsitter_hour[3]));
+		pDTO.setWednesday_start(Integer.parseInt(petsitter_hour[4]));
+		pDTO.setWednesday_end(Integer.parseInt(petsitter_hour[5]));
+		pDTO.setThursday_start(Integer.parseInt(petsitter_hour[6]));
+		pDTO.setThursday_end(Integer.parseInt(petsitter_hour[7]));
+		pDTO.setFriday_start(Integer.parseInt(petsitter_hour[8]));
+		pDTO.setFriday_end(Integer.parseInt(petsitter_hour[9]));
+		pDTO.setSaturday_start(Integer.parseInt(petsitter_hour[10]));
+		pDTO.setSaturday_end(Integer.parseInt(petsitter_hour[11]));
+		pDTO.setSunday_start(Integer.parseInt(petsitter_hour[12]));
+		pDTO.setSunday_end(Integer.parseInt(petsitter_hour[13]));
+
+		String[] petsitter_day = pDTO.getPs_day().split("!");
+
+		pDTO.setMonday(petsitter_day[0]);
+		pDTO.setTuesday(petsitter_day[1]);
+		pDTO.setWednesday(petsitter_day[2]);
+		pDTO.setThursday(petsitter_day[3]);
+		pDTO.setFriday(petsitter_day[4]);
+		pDTO.setSaturday(petsitter_day[5]);
+		pDTO.setSunday(petsitter_day[6]);
+
+
+		req.setAttribute("psInfo", pDTO);
+		
+		
+		
+	}
+
+	public void updatePetSitter(HttpServletRequest req, PetDTO pDTO) {
+		try {
+			String imgOrgName = pDTO.getPs_Rfile().getOriginalFilename();
+			long imgSize = pDTO.getPs_Rfile().getSize();
+			if (imgSize != 0) {
+				String extension = imgOrgName.substring(imgOrgName.lastIndexOf("."), imgOrgName.length());
+				
+				String newName = UUID.randomUUID().toString().split("-")[0];
+				
+				String path = sc.getRealPath("resources/img");
+				
+				File saveImg = new File(path + "//" + newName + extension);
+				
+				pDTO.getPs_Rfile().transferTo(saveImg);
+				pDTO.setPs_file(newName + extension);
+				pDTO.setPs_confirm("0");
+				pDTO.setPs_confirm_answer("ndy");
+			}
+
+			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+			pDTO.setPs_id(mDTO.getUser_id());
+			
+			int j = 1;
+			for (int i = 0; i < pDTO.getPetsitter_act().length; i++) {
+				j *= pDTO.getPetsitter_act()[i];
+			}
+
+			pDTO.setPs_can_do(Integer.toString(j));
+
+			String ps_day = pDTO.getMonday() + "!" + pDTO.getTuesday() + "!" + pDTO.getWednesday() + "!"
+					+ pDTO.getThursday() + "!" + pDTO.getFriday() + "!" + pDTO.getSaturday() + "!" + pDTO.getSunday();
+
+			pDTO.setPs_day(ps_day);
+
+			String d_hour = pDTO.getMonday_start() + "!" + pDTO.getMonday_end() + "!" + pDTO.getTuesday_start() + "!"
+					+ pDTO.getTuesday_end() + "!" + pDTO.getWednesday_start() + "!" + pDTO.getWednesday_end() + "!"
+					+ pDTO.getThursday_start() + "!" + pDTO.getThursday_end() + "!" + pDTO.getFriday_start() + "!"
+					+ pDTO.getFriday_end() + "!" + pDTO.getSaturday_start() + "!" + pDTO.getSaturday_end() + "!"
+					+ pDTO.getSunday_start() + "!" + pDTO.getSunday_end();
+			pDTO.setPs_hour(d_hour);
+
+			int j1 = 1;
+			for (int i1 = 0; i1 < pDTO.getPs_type().length; i1++) {
+				j1 *= pDTO.getPs_type()[i1];
+			}
+			pDTO.setPs_can_type(Integer.toString(j1));
+
+			System.out.println(pDTO);
+
+			if (ss.getMapper(PetMapper.class).updatePetSitter(pDTO) == 1) {
+
+				System.out.println("수정 완료");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		
 	}
 
 	

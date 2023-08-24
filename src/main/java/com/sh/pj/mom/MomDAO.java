@@ -109,6 +109,7 @@ public class MomDAO {
 
 		if (ss.getMapper(MomMapper.class).regDolbom(dDTO) == 1) {
 			System.out.println("돌보미 등록 완료");
+			ss.getMapper(MemberMapper.class).upDCount();
 		}
 
 	}
@@ -172,6 +173,7 @@ public class MomDAO {
 				ss.getMapper(MomMapper.class).changemsstatus(mDTO);
 				mDTO.setUser_ms_status(1);
 				req.getSession().setAttribute("userInfo", mDTO);
+				ss.getMapper(MemberMapper.class).upSCount();
 				
 			}
 

@@ -27,6 +27,10 @@ public interface PetMapper {
 	
 	public List<ReviewDTO> review(PetDTO petDTO);
 
+	public PetDTO getPetSitterInfo(MemberDTO mDTO);
+
+	public int updatePetSitter(PetDTO pDTO);
+
 
 
 }
