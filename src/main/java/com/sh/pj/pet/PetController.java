@@ -7,9 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MembertDAO;
+import com.sh.pj.ask.AskSelector;
 
 @Controller
 public class PetController {
@@ -25,6 +27,8 @@ public class PetController {
 		mDAO.logincheck(req);
 		mDAO.countAll(req);
 		pDAO.getAll(req, petDTO, m);
+		req.getSession().removeAttribute("searchSession");
+		pDAO.getMsg(1, req);
 		req.setAttribute("contentPage", "pet/petsitter.jsp");
 		return "home";
 	}
@@ -85,6 +89,31 @@ public class PetController {
 
 		return "redirect:/mypage.takerRegPet.go";
 	}
+	
+
+	@RequestMapping(value = "/page.change2", method = RequestMethod.GET)
+    public String paging(HttpServletRequest req, @RequestParam int p, Model model, PetSelector ps) {
+//		aDAO.getAllAsk(model);
+	    // 검색어가 입력되었다면, 검색어를 AskSelector 객체에 설정하고 세션에 저장합니다.
+		System.out.println(ps.getPs_search());
+		String petSearch = ps.getPs_search();
+	    if (petSearch != null && !petSearch.isEmpty()) {
+	        ps.setPs_search(petSearch);
+	        req.getSession().setAttribute("searchSession", ps);
+	    } else {
+	        // 검색어가 입력되지 않았다면 세션에서 검색어 정보를 제거합니다.
+	        req.getSession().removeAttribute("searchSession");
+	        System.out.println("여기오면 세션값 죽음 ㄹㅇ");
+	    }
+//	    req.getSession().setAttribute("asksearch", askSearch);
+	    pDAO.getMsg(p, req);
+	    mDAO.logincheck(req);
+	    
+	    req.setAttribute("contentPage", "pet/petsitter.jsp");	
+	    
+        return "home";
+    }
+	
 
 	/*
 	 * @RequestMapping(value = "/petsitter.delete.go", method = RequestMethod.POST)

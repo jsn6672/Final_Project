@@ -287,15 +287,14 @@
 					<div class="body-content-detail-cover">
 						<div class="body-content-detail">
 							<c:choose>
-								<c:when test="${reviews ne null }">
-									<c:forEach var="r" items="${reviews }">
+								<c:when test="${review ne 'none' }">
+									<c:forEach var="r" items="${review }">
 										<div>
-											
 										</div>
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
-									<div>
+									<div style="margin: auto;">
 										아직 작성된 리뷰가 없습니다.
 									</div>
 								</c:otherwise>
