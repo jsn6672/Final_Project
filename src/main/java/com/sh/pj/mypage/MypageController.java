@@ -129,7 +129,14 @@ public class MypageController {
 	public String mypageSitterRegMom(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		mDAO.logincheck(req);
-		req.setAttribute("mypageContentPage", "sitter/mypageSitterRegMom.jsp");
+
+		MemberDTO mDTO = (MemberDTO)req.getSession().getAttribute("userInfo");
+		if (mDTO.getUser_ms_status() == 0) {
+			req.setAttribute("mypageContentPage", "sitter/mypageSitterRegMom.jsp");
+		}else {
+			momDAO.getMomSitterInfo(req);
+			req.setAttribute("mypageContentPage", "sitter/mypageSitterUpdateMom.jsp");			
+		}
 
 		return "home";
 	}
@@ -139,7 +146,13 @@ public class MypageController {
 	public String mypageSitterRegCare(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		mDAO.logincheck(req);
+		MemberDTO mDTO = (MemberDTO)req.getSession().getAttribute("userInfo");
+		if (mDTO.getUser_cs_status() == 0) {
 		req.setAttribute("mypageContentPage", "sitter/mypageSitterRegCare.jsp");
+		}else {
+			cDAO.getCareSitterInfo(req);
+			req.setAttribute("mypageContentPage", "sitter/mypageSitterUpdateCare.jsp");			
+		}
 
 		return "home";
 	}
@@ -164,9 +177,9 @@ public class MypageController {
 			
 		} else {
 			//해야할 것 > 새로운 돌보미 등록 or 기존 돌보미 수정?
-			mpDAO.getListOfDolbom(req);
+			mpDAO.getListOfPetDolbom(req);
 			req.setAttribute("contentPage", "mypage/mypage.jsp");
-			req.setAttribute("mypageContentPage", "taker/mypageTakerRegAnotherDolbom.jsp");
+			req.setAttribute("mypageContentPage", "taker/mypageTakerRegAnotherPetDolbom.jsp");
 		}
 		return "home";
 	}
@@ -283,7 +296,7 @@ public class MypageController {
 		return "home";
 	}
 
-	@RequestMapping(value = "/mypage.takerRegAnotherDolbom.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage.takerRegAnotherPetDolbom.go", method = RequestMethod.GET)
 	public String ticketCheck(HttpServletRequest req) {
 		mDAO.logincheck(req);
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
@@ -291,7 +304,7 @@ public class MypageController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/mypage.takerUpdateAnotherDolbom.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage.takerUpdateAnotherPetDolbom.go", method = RequestMethod.GET)
 	public String updateDolbom(HttpServletRequest req, DolbomDTO dDTO) {
 		mDAO.logincheck(req);
 		mpDAO.getDolbomInfo(req, dDTO);

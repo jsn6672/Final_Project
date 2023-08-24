@@ -83,6 +83,16 @@ public class MomController {
 		
 		return "home";
 	}
+	@RequestMapping(value = "/momsitter.update", method = RequestMethod.POST)
+	public String momsitter_update(HttpServletRequest req, MomDTO mDTO) {
+		mDAO.logincheck(req);	
+		
+		momDAO.updateMomSitter(req, mDTO);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
+		
+		return "home";
+	}
 	@RequestMapping(value = "/momsitter.delete.go", method = RequestMethod.POST)
 	public String momsitter_delete(HttpServletRequest req, MomDTO mDTO, Model model) {
 		mDAO.logincheck(req);	

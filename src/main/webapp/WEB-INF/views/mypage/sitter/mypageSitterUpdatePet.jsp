@@ -27,9 +27,6 @@
 		});
 	}
 	$(function() {
-		
-		
-		
 
 		const addr = '${userInfo.user_location}';
 		console.log(addr);
@@ -51,7 +48,7 @@
 
 		})
 		connectAddrSearchEvent();
-		
+
 		const ps_monday = '${psInfo.monday}';
 		const ps_tuesday = '${psInfo.tuesday}';
 		const ps_wednesday = '${psInfo.wednesday}';
@@ -59,7 +56,7 @@
 		const ps_friday = '${psInfo.friday}';
 		const ps_saturday = '${psInfo.saturday}';
 		const ps_sunday = '${psInfo.sunday}';
-		
+
 		if (ps_monday === 'monday') {
 			$("#monday").attr('checked', true);
 			document.getElementById('monday_start').disabled = false;
@@ -180,7 +177,6 @@
 			}
 
 		})
-		
 
 		const ps_cctv = '${psInfo.ps_cctv}';
 		if (ps_cctv === '1') {
@@ -195,7 +191,7 @@
 		} else {
 			$("#ps_term_short").attr('checked', true);
 		}
-		
+
 		const ps_act = '${psInfo.ps_can_do}';
 		if (ps_act % 2 === 0) {
 			$("#ps_act_1st").attr('checked', true);
@@ -221,7 +217,7 @@
 		if (ps_act % 19 === 0) {
 			$("#ps_act_8th").attr('checked', true);
 		}
-		
+
 		const ps_type = '${psInfo.ps_can_type}';
 		if (ps_type % 2 === 0) {
 			$("#ps_type_1st").attr('checked', true);
@@ -263,7 +259,8 @@ body {
 </head>
 <body>
 
-	<form action="petsitter.update" method="post" enctype="multipart/form-data">
+	<form action="petsitter.update" method="post"
+		enctype="multipart/form-data">
 
 		<!-- 전체 컨테이너 -->
 		<div class="mpS-pet">
@@ -275,12 +272,15 @@ body {
 				</div>
 
 				<div>${userInfo.user_name}님의 정보를 수정해주세요</div>
-				<div>필요하시다면 서류를 다시 등록해주세요 ※인증이 완료되신 경우에도 서류를 다시 제출하시면 다시 인증절차를 밟게 됩니다 참고바랍니다</div>
+				<div>필요하시다면 서류를 다시 등록해주세요 ※인증이 완료되신 경우에도 서류를 다시 제출하시면 다시 인증절차를
+					밟게 됩니다 참고바랍니다</div>
 				<div>
-					<input type="file" name="ps_Rfile"  style="background-color: #D9D9D9; color: black; border: none; border-radius: 5px; padding: 5px; width: 225px;">
+					<input type="file" name="ps_Rfile"
+						style="background-color: #D9D9D9; color: black; border: none; border-radius: 5px; padding: 5px; width: 225px;">
 					<input hidden="hidden" name="ps_file" value="${psInfo.ps_file }">
-					<input hidden="hidden" name="ps_confirm" value="${psInfo.ps_confirm }">
-					<input hidden="hidden" name="ps_confirm_answer" value="${psInfo.ps_confirm_answer }">
+					<input hidden="hidden" name="ps_confirm"
+						value="${psInfo.ps_confirm }"> <input hidden="hidden"
+						name="ps_confirm_answer" value="${psInfo.ps_confirm_answer }">
 				</div>
 
 				<!-- 정보입력 -->
@@ -288,62 +288,73 @@ body {
 				<div style="text-align: center;">
 					희망 지역1은 필수입력입니다
 					<div>
-						희망지역 1 <input name="ps_location1" value="${psInfo.ps_location1 }" style="width: 300px;border: none; border-radius: 10px;">
+						희망지역 1 <input name="ps_location1" value="${psInfo.ps_location1 }"
+							style="width: 300px; border: none; border-radius: 10px;">
 					</div>
 					<div>
-						희망지역 2 <input name="ps_location2" value="${psInfo.ps_location2 }" style="width: 300px;border: none; border-radius: 10px;">
+						희망지역 2 <input name="ps_location2" value="${psInfo.ps_location2 }"
+							style="width: 300px; border: none; border-radius: 10px;">
 					</div>
 					<div>
-						희망지역 3 <input name="ps_location3" value="${psInfo.ps_location3 }" style="width: 300px;border: none; border-radius: 10px;">
+						희망지역 3 <input name="ps_location3" value="${psInfo.ps_location3 }"
+							style="width: 300px; border: none; border-radius: 10px;">
 					</div>
 				</div>
 				<div>
 					<input type="radio" name="ps_cctv" value="1" id="ps_cctv_on">
-					cctv촬영도 괜찮아요 <input type="radio" name="ps_cctv" value="2" id="ps_cctv_off">
-					cctv촬영 없는 곳을 원해요
+					cctv촬영도 괜찮아요 <input type="radio" name="ps_cctv" value="2"
+						id="ps_cctv_off"> cctv촬영 없는 곳을 원해요
 				</div>
 				<div>
 					<input type="radio" name="ps_term" value="1" id="ps_term_long">
-					정기적 계약을 원해요 <input type="radio" name="ps_term" value="2" id="ps_term_short">
-					단발성 계약을 원해요
+					정기적 계약을 원해요 <input type="radio" name="ps_term" value="2"
+						id="ps_term_short"> 단발성 계약을 원해요
 				</div>
 				<div>원하시는 시급을 입력해주세요</div>
 				<div>
-					<input name="ps_pay" value="${psInfo.ps_pay }" style="width: 200px;border: none; border-radius: 10px;">
+					<input name="ps_pay" value="${psInfo.ps_pay }"
+						style="width: 200px; border: none; border-radius: 10px;">
 				</div>
 
 				<div>
-					<textarea rows="" cols="" name="ps_exp" placeholder="관련 경험을 적어주세요" style="width: 620px; height: 300px; border: none; border-radius: 10px;">
-					${psInfo.ps_exp}
-					</textarea>
+					<textarea rows="" cols="" name="ps_exp" placeholder="관련 경험을 적어주세요"
+						style="width: 620px; height: 300px; border: none; border-radius: 10px;">${psInfo.ps_exp}</textarea>
 				</div>
 
 				<div class="mpS-pet-inform1">이런 반려동물에게 도움을 줄 수 있어요!</div>
 				<div class="mpS-pet-act">
 					<div class="mpS-pet-act-bottom">
 						<div class="mpS-pet-act-detail">
-						<img alt="" src="resources/img/logo/강아지.png" style="width: 70px; height: 80px;">
-						<div>
-							<input type="checkbox" name="ps_type" value="2" id="ps_type_1st"> 강아지
-						</div>
-						</div>
-						<div class="mpS-pet-act-detail">
-						<img alt="" src="resources/img/logo/고양이.png" style="width: 70px; height: 80px;">
-						<div>
-							<input type="checkbox" name="ps_type" value="3" id="ps_type_2nd"> 고양이
-						</div>	
+							<img alt="" src="resources/img/logo/강아지.png"
+								style="width: 70px; height: 80px;">
+							<div>
+								<input type="checkbox" name="ps_type" value="2" id="ps_type_1st">
+								강아지
+							</div>
 						</div>
 						<div class="mpS-pet-act-detail">
-						<img alt="" src="resources/img/logo/조류.png" style="width: 70px; height: 80px;">
-						<div>
-							<input type="checkbox" name="ps_type" value="5" id="ps_type_3rd"> 조류
-						</div>	
+							<img alt="" src="resources/img/logo/고양이.png"
+								style="width: 70px; height: 80px;">
+							<div>
+								<input type="checkbox" name="ps_type" value="3" id="ps_type_2nd">
+								고양이
+							</div>
 						</div>
 						<div class="mpS-pet-act-detail">
-						<img alt="" src="resources/img/logo/기타2.png" style="width: 70px; height: 80px;">
-						<div>
-							<input type="checkbox" name="ps_type" value="7" id="ps_type_4th"> 기타
-						</div>	
+							<img alt="" src="resources/img/logo/조류.png"
+								style="width: 70px; height: 80px;">
+							<div>
+								<input type="checkbox" name="ps_type" value="5" id="ps_type_3rd">
+								조류
+							</div>
+						</div>
+						<div class="mpS-pet-act-detail">
+							<img alt="" src="resources/img/logo/기타2.png"
+								style="width: 70px; height: 80px;">
+							<div>
+								<input type="checkbox" name="ps_type" value="7" id="ps_type_4th">
+								기타
+							</div>
 						</div>
 					</div>
 				</div>
@@ -355,58 +366,70 @@ body {
 						<div class="mpS-pet-act-detail">
 							<img alt="" src="resources/img/logo/산책.png" style="width: 70px;">
 							<div>
-							<input type="checkbox" name="petsitter_act" value="2" id="ps_act_1st"> 산책
+								<input type="checkbox" name="petsitter_act" value="2"
+									id="ps_act_1st"> 산책
 							</div>
-						</div>				
-						<div class="mpS-pet-act-detail">
-						<img alt="" src="resources/img/logo/목욕.png" style="width: 70px;">
-						<div>
-							<input type="checkbox" name="petsitter_act" value="3" id="ps_act_2nd"> 목욕
-						</div>	
 						</div>
 						<div class="mpS-pet-act-detail">
-						<img alt="" src="resources/img/logo/사료.png" style="width: 70px;">
-						<div>
-							<input type="checkbox" name="petsitter_act" value="5" id="ps_act_3rd"> 밥챙겨주기
-						</div>
+							<img alt="" src="resources/img/logo/목욕.png" style="width: 70px;">
+							<div>
+								<input type="checkbox" name="petsitter_act" value="3"
+									id="ps_act_2nd"> 목욕
+							</div>
 						</div>
 						<div class="mpS-pet-act-detail">
-						<img alt="" src="resources/img/logo/호텔.png" style="width: 70px;">
-						<div>
-							<input type="checkbox" name="petsitter_act" value="7" id="ps_act_4th"> 호텔링
-						</div>	
+							<img alt="" src="resources/img/logo/사료.png" style="width: 70px;">
+							<div>
+								<input type="checkbox" name="petsitter_act" value="5"
+									id="ps_act_3rd"> 밥챙겨주기
+							</div>
+						</div>
+						<div class="mpS-pet-act-detail">
+							<img alt="" src="resources/img/logo/호텔.png" style="width: 70px;">
+							<div>
+								<input type="checkbox" name="petsitter_act" value="7"
+									id="ps_act_4th"> 호텔링
+							</div>
 						</div>
 					</div>
 					<div class="mpS-pet-act-bottom">
 						<div class="mpS-pet-act-detail">
-						<img alt="" src="resources/img/logo/배변훈련.png" style="width: 70px;">
-						<div>
-							<input type="checkbox" name="petsitter_act" value="11" id="ps_act_5th"> 배변훈련
-						</div>	
+							<img alt="" src="resources/img/logo/배변훈련.png"
+								style="width: 70px;">
+							<div>
+								<input type="checkbox" name="petsitter_act" value="11"
+									id="ps_act_5th"> 배변훈련
+							</div>
 						</div>
 						<div class="mpS-pet-act-detail">
-						<img alt="" src="resources/img/logo/배변훈련.png" style="width: 70px;">
-						<div>
-							<input type="checkbox" name="petsitter_act" value="13" id="ps_act_6th"> 놀이훈련
-						</div>	
+							<img alt="" src="resources/img/logo/배변훈련.png"
+								style="width: 70px;">
+							<div>
+								<input type="checkbox" name="petsitter_act" value="13"
+									id="ps_act_6th"> 놀이훈련
+							</div>
 						</div>
 						<div class="mpS-pet-act-detail">
-						<img alt="" src="resources/img/logo/놀이훈련.png" style="width: 70px;">
-						<div>
-							<input type="checkbox" name="petsitter_act" value="17" id="ps_act_7th"> 사회화훈련
-						</div>	
+							<img alt="" src="resources/img/logo/놀이훈련.png"
+								style="width: 70px;">
+							<div>
+								<input type="checkbox" name="petsitter_act" value="17"
+									id="ps_act_7th"> 사회화훈련
+							</div>
 						</div>
 						<div class="mpS-pet-act-detail">
-						<img alt="" src="resources/img/logo/기타.png" style="width: 70px;">
-						<div>
-							<input type="checkbox" name="petsitter_act" value="19" id="ps_act_8th"> 기타활동
-						</div>	
+							<img alt="" src="resources/img/logo/기타.png" style="width: 70px;">
+							<div>
+								<input type="checkbox" name="petsitter_act" value="19"
+									id="ps_act_8th"> 기타활동
+							</div>
 						</div>
 					</div>
 				</div>
 				<div>
 					<textarea rows="10" cols="50" placeholder="추가사항이 있다면 이곳에 적어주세요!"
-						name="ps_extra" style="width: 620px; border: none; border-radius: 10px;">${psInfo.ps_extra }</textarea>
+						name="ps_extra"
+						style="width: 620px; border: none; border-radius: 10px;">${psInfo.ps_extra }</textarea>
 				</div>
 
 				<div style="width: 75%;">

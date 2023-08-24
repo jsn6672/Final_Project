@@ -88,5 +88,15 @@ public class CareController {
         System.out.println(cDTO);
         return "home";
     }
+    
+    @RequestMapping(value = "/caresitter.update", method = RequestMethod.POST)
+    public String caresitter_update(HttpServletRequest req, CareDTO cDTO) {
+    	mDAO.logincheck(req);    
+    	cDAO.updatecareSitter(req, cDTO);
+    	req.setAttribute("contentPage", "mypage/mypage.jsp");
+    	req.setAttribute("mypageContentPage", "mypageProfile.jsp");
+    	System.out.println(cDTO);
+    	return "home";
+    }
 	
 }
