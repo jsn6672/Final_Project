@@ -117,11 +117,88 @@
 	</update>
 
 
-	<update id="confirmdate" parameterType="com.sh.pj.mypage.MoneyDTO">
-		update momsitter_tbl
-		set ms_ticket_start = #{mm_start_date},
-		ms_ticket_end = ADD_MONTHS(#{mm_start_date, jdbcType=DATE}, 3)
-		where ms_id = #{mm_id}
+	<update id="confirmdate1">
+		UPDATE momsitter_tbl
+		SET ms_ticket_start = sysdate,
+		ms_ticket_end = ADD_MONTHS(sysdate, 1)
+		WHERE ms_id = #{mm_id }
+	</update>
+
+	<update id="confirmdate3">
+		UPDATE momsitter_tbl
+		SET ms_ticket_start = sysdate,
+		ms_ticket_end = ADD_MONTHS(sysdate, 3)
+		WHERE ms_id = #{mm_id }
+	</update>
+
+	<update id="confirmdate6">
+		UPDATE momsitter_tbl
+		SET ms_ticket_start = sysdate,
+		ms_ticket_end = ADD_MONTHS(sysdate, 6)
+		WHERE ms_id = #{mm_id }
+	</update>
+
+	<update id="confirmdate12">
+		UPDATE momsitter_tbl
+		SET ms_ticket_start = sysdate,
+		ms_ticket_end = ADD_MONTHS(sysdate, 12)
+		WHERE ms_id = #{mm_id }
+	</update>
+	
+	<update id="confirmdatePet1">
+		UPDATE petsitter_tbl
+		SET ps_ticket_start = sysdate,
+		ps_ticket_end = ADD_MONTHS(sysdate, 1)
+		WHERE ps_id = #{mm_id }
+	</update>
+
+	<update id="confirmdatePet3">
+		UPDATE petsitter_tbl
+		SET ps_ticket_start = sysdate,
+		ps_ticket_emd = ADD_MONTHS(sysdate, 3)
+		WHERE ps_id = #{mm_id }
+	</update>
+
+	<update id="confirmdatePet6">
+		UPDATE petsitter_tbl
+		SET ps_ticket_start = sysdate,
+		ps_ticket_end = ADD_MONTHS(sysdate, 6)
+		WHERE ps_id = #{mm_id }
+	</update>
+
+	<update id="confirmdatePet12">
+		UPDATE petsitter_tbl
+		SET ps_ticket_start = sysdate,
+		ps_ticket_end = ADD_MONTHS(sysdate, 12)
+		WHERE ps_id = #{mm_id }
+	</update>
+	
+		<update id="confirmdateCare1">
+		UPDATE caresitter_tbl
+		SET cs_ticket_start = sysdate,
+		cs_ticket_end = ADD_MONTHS(sysdate, 1)
+		WHERE cs_id = #{mm_id }
+	</update>
+
+	<update id="confirmdateCare3">
+		UPDATE caresitter_tbl
+		SET cs_ticket_start = sysdate,
+		cs_ticket_end = ADD_MONTHS(sysdate, 3)
+		WHERE cs_id = #{mm_id }
+	</update>
+
+	<update id="confirmdateCare6">
+		UPDATE caresitter_tbl
+		SET cs_ticket_start = sysdate,
+		cs_ticket_end = ADD_MONTHS(sysdate, 6)
+		WHERE cs_id = #{mm_id }
+	</update>
+
+	<update id="confirmdateCare12">
+		UPDATE caresitter_tbl
+		SET cs_ticket_start = sysdate,
+		cs_ticket_end = ADD_MONTHS(sysdate, 12)
+		WHERE cs_id = #{mm_id }
 	</update>
 
 	<select id="getPetSitter" resultType="com.sh.pj.pet.PetDTO">
@@ -154,4 +231,8 @@
 		cnt_no = #{cnt_no}
 	</update>
 
+	<select id="getcertiflist">
+		select * from momsitter_tbl
+		where cs_confirm = 0
+	</select>
 </mapper>

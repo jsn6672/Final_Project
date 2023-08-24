@@ -1,5 +1,7 @@
 package com.sh.pj.mypage;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -248,10 +250,20 @@ public class MypageController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "mypage.certif.check", method = RequestMethod.GET)
+	public String certificationCheck(HttpServletRequest req, MoneyDTO mm) {
+		mDAO.logincheck(req);
+		mpDAO.getcertiflist(req, mm);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageCertification.jsp");
+		return "home";
+	}
+	
 
 	@RequestMapping(value = "/mypage.ticket.confirm", method = RequestMethod.POST)
 	public String ticketConfirm(HttpServletRequest req, MoneyDTO mm) {
 		mDAO.logincheck(req);
+	
 		mpDAO.confirmticket(req, mm);
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageTicket3Check.jsp");
