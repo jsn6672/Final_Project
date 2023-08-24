@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MemberMapper;
+import com.sh.pj.mom.MomDTO;
 import com.sh.pj.mom.MomMapper;
 import com.sh.pj.pet.PetMapper;
 
@@ -148,5 +149,105 @@ public class CareDAO {
 
 		}
 
+	}
+	public void getCareSitterInfo(HttpServletRequest req) {
+		
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+
+		CareDTO cDTO = ss.getMapper(CareMapper.class).getCareSitterInfo(mDTO);
+
+		String[] petsitter_hour = cDTO.getCs_hour().split("!");
+
+		cDTO.setMonday_start(Integer.parseInt(petsitter_hour[0]));
+		cDTO.setMonday_end(Integer.parseInt(petsitter_hour[1]));
+		cDTO.setTuesday_start(Integer.parseInt(petsitter_hour[2]));
+		cDTO.setTuesday_end(Integer.parseInt(petsitter_hour[3]));
+		cDTO.setWednesday_start(Integer.parseInt(petsitter_hour[4]));
+		cDTO.setWednesday_end(Integer.parseInt(petsitter_hour[5]));
+		cDTO.setThursday_start(Integer.parseInt(petsitter_hour[6]));
+		cDTO.setThursday_end(Integer.parseInt(petsitter_hour[7]));
+		cDTO.setFriday_start(Integer.parseInt(petsitter_hour[8]));
+		cDTO.setFriday_end(Integer.parseInt(petsitter_hour[9]));
+		cDTO.setSaturday_start(Integer.parseInt(petsitter_hour[10]));
+		cDTO.setSaturday_end(Integer.parseInt(petsitter_hour[11]));
+		cDTO.setSunday_start(Integer.parseInt(petsitter_hour[12]));
+		cDTO.setSunday_end(Integer.parseInt(petsitter_hour[13]));
+
+		String[] petsitter_day = cDTO.getCs_day().split("!");
+
+		cDTO.setMonday(petsitter_day[0]);
+		cDTO.setTuesday(petsitter_day[1]);
+		cDTO.setWednesday(petsitter_day[2]);
+		cDTO.setThursday(petsitter_day[3]);
+		cDTO.setFriday(petsitter_day[4]);
+		cDTO.setSaturday(petsitter_day[5]);
+		cDTO.setSunday(petsitter_day[6]);
+
+		req.setAttribute("csInfo", cDTO);
+		
+	}
+	public void updatecareSitter(HttpServletRequest req, CareDTO cDTO) {
+		try {
+			String imgOrgName = cDTO.getCs_Rfile().getOriginalFilename();
+			long imgSize = cDTO.getCs_Rfile().getSize();
+			
+			if (imgSize != 0) {
+				String extension = imgOrgName.substring(imgOrgName.lastIndexOf("."), imgOrgName.length());
+				
+				String newName = UUID.randomUUID().toString().split("-")[0];
+				
+				String path = sc.getRealPath("resources/img");
+				
+				File saveImg = new File(path + "//" + newName + extension);
+				
+				cDTO.getCs_Rfile().transferTo(saveImg);
+				cDTO.setCs_file(newName + extension);
+				cDTO.setCs_confirm("0");
+				cDTO.setCs_confirm_answer("ndy");				
+			}
+			
+
+			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+			cDTO.setCs_id(mDTO.getUser_id());
+
+
+			int j = 1;
+			for (int i = 0; i < cDTO.getCaresitter_act().length; i++) {
+				j *= cDTO.getCaresitter_act()[i];
+			}
+
+			cDTO.setCs_can_do(Integer.toString(j));
+
+			String cs_day = cDTO.getMonday() + "!" + cDTO.getTuesday() + "!" + cDTO.getWednesday() + "!"
+					+ cDTO.getThursday() + "!" + cDTO.getFriday() + "!" + cDTO.getSaturday() + "!" + cDTO.getSunday();
+
+			cDTO.setCs_day(cs_day);
+
+			String d_hour = cDTO.getMonday_start() + "!" + cDTO.getMonday_end() + "!" + cDTO.getTuesday_start() + "!"
+					+ cDTO.getTuesday_end() + "!" + cDTO.getWednesday_start() + "!" + cDTO.getWednesday_end() + "!"
+					+ cDTO.getThursday_start() + "!" + cDTO.getThursday_end() + "!" + cDTO.getFriday_start() + "!"
+					+ cDTO.getFriday_end() + "!" + cDTO.getSaturday_start() + "!" + cDTO.getSaturday_end() + "!"
+					+ cDTO.getSunday_start() + "!" + cDTO.getSunday_end();
+			cDTO.setCs_hour(d_hour);
+			
+			/*
+			 * int j1 = 1; for (int i1 = 0; i1 < cDTO.getCs_type().length; i1++) { j1 *=
+			 * cDTO.getCs_type()[i1]; } cDTO.setCs_can_type(Integer.toString(j1));
+			 */
+		
+
+			System.out.println(cDTO);
+
+			if (ss.getMapper(CareMapper.class).updateCareSitter(cDTO) == 1 ){
+
+				System.out.println("수정 완료");
+				
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		
 	}
 }

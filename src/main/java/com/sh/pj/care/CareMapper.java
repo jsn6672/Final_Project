@@ -17,5 +17,9 @@ public interface CareMapper {
 
 	int changecsstatus(MemberDTO mDTO);
 
+	CareDTO getCareSitterInfo(MemberDTO mDTO);
+
+	int updateCareSitter(CareDTO cDTO);
+
 
 }

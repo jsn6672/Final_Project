@@ -414,7 +414,7 @@ public class MypageDAO {
 	 */
 	
 
-	public void getListOfDolbom(HttpServletRequest req) {
+	public void getListOfPetDolbom(HttpServletRequest req) {
 		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 		// 현재 날짜 구하기 (시스템 시계, 시스템 타임존)
 		LocalDate now = LocalDate.now();
@@ -423,7 +423,7 @@ public class MypageDAO {
 		int nowyear = now.getYear();
 		int nowmonthValue = now.getMonthValue();
 
-		List<DolbomDTO> dDTOs = ss.getMapper(MypageMapper.class).getDolbomList(mDTO);
+		List<DolbomDTO> dDTOs = ss.getMapper(MypageMapper.class).getPetDolbomList(mDTO);
 		for (DolbomDTO dolbomDTO : dDTOs) {
 
 			int year = nowyear - dolbomDTO.getD_year();

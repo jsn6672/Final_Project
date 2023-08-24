@@ -39,6 +39,9 @@ public interface MypageMapper {
 	public int countTakerCont(MemberDTO mDTO);
 
 	public List<DolbomDTO> getDolbomList(MemberDTO mDTO);
+	public List<DolbomDTO> getPetDolbomList(MemberDTO mDTO);
+	public List<DolbomDTO> getMomDolbomList(MemberDTO mDTO);
+	public List<DolbomDTO> getCareDolbomList(MemberDTO mDTO);
 
 	public MemberDTO getUserID(ContractDTO cntDTO2);
 
@@ -58,7 +61,6 @@ public interface MypageMapper {
 	public int updateCntDolbom(ContractDTO cntDTO);
 	
 	public int updateCntDolbomNope(ContractDTO cntDTO);
-
 
 
 }

@@ -103,6 +103,18 @@
 		resultType="com.sh.pj.account.DolbomDTO">
 		select * from dolbom_tbl where d_id = #{user_id}
 	</select>
+	<select id="getPetDolbomList"
+		resultType="com.sh.pj.account.DolbomDTO">
+		select * from dolbom_tbl where d_id = #{user_id} and d_category = 3
+	</select>
+	<select id="getCareDolbomList"
+		resultType="com.sh.pj.account.DolbomDTO">
+		select * from dolbom_tbl where d_id = #{user_id} and d_category = 1
+	</select>
+	<select id="getMomDolbomList"
+		resultType="com.sh.pj.account.DolbomDTO">
+		select * from dolbom_tbl where d_id = #{user_id} and d_category = 2
+	</select>
 
 	<select id="getUserID" resultType="com.sh.pj.account.MemberDTO">
 		select * from jsn_user_tbl
