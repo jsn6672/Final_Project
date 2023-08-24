@@ -50,52 +50,6 @@ https://templatemo.com/tm-580-woox-travel
 
 								<div class="row gy-4">
 
-									<div class="col-lg-3 col-md-6">
-										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #FCE4EC">
-											<i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
-											<div>
-												<span class="purecounter" data-count="180">0</span>
-												<p>행복한 돌보미들</p>
-											</div>
-										</div>
-									</div>
-									<!-- End Stats Item -->
-
-									<div class="col-lg-3 col-md-6">
-										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #FCE4EC">
-											<i class="bi bi-journal-richtext color-orange flex-shrink-0"></i>
-											<div>
-												<span class="purecounter" data-count="250">0</span>
-												<p>돌보미가 필요한 가족들</p>
-											</div>
-										</div>
-									</div>
-									<!-- End Stats Item -->
-
-									<div class="col-lg-3 col-md-6">
-										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #FCE4EC">
-											<i class="bi bi-headset color-green flex-shrink-0"></i>
-											<div>
-												<span class="purecounter" data-count="1500">0</span>
-												<p>총 운영 시간</p>
-											</div>
-										</div>
-									</div>
-									<!-- End Stats Item -->
-
-									<div class="col-lg-3 col-md-6">
-										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #FCE4EC">
-											<i class="bi bi-people color-pink flex-shrink-0"></i>
-											<div>
-												<span class="purecounter" data-count="666">0</span>
-												<p>계약완료갯수</p>
-											</div>
-										</div>
-									</div>
 									<!-- End Stats Item -->
 									<h3 class="category-title"
 										style="display: flex; justify-content: center">
@@ -112,7 +66,7 @@ https://templatemo.com/tm-580-woox-travel
 													<span>${c.cs_write_date }</span>
 												</div>
 												<div>
-													<a href="caresitter.detail.go?cs_no=${c.cs_no }">케어시터: ${c.cs_id }(이름)</a>
+													<a href="caresitter.detail.go?cs_no=${c.cs_id }">케어시터: ${c.cs_id }(이름)</a>
 													<span>나이</span>
 													<span>성별</span>
 													<span>cctv촬영 - ${c.cs_cctv }</span>
@@ -378,7 +332,44 @@ https://templatemo.com/tm-580-woox-travel
 							</div>
 						</div>
 
-						<div class="aside-block">
+									<div style="width: 40vw;">
+									<div class="col-lg-3 col-md-6">
+										<div class="stats-item d-flex align-items-center w-100 h-100"
+											style="background-color: #FCE4EC">
+											<i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
+											<div>
+												<span class="purecounter" data-count="180">0</span>
+												<p>행복한 돌보미들</p>
+											</div>
+										</div>
+									</div>
+									<!-- End Stats Item -->
+
+									<div class="col-lg-3 col-md-6">
+										<div class="stats-item d-flex align-items-center w-100 h-100"
+											style="background-color: #FCE4EC">
+											<i class="bi bi-journal-richtext color-orange flex-shrink-0"></i>
+											<div>
+												<span class="purecounter" data-count="250">0</span>
+												<p>돌보미가 필요한 가족들</p>
+											</div>
+										</div>
+									</div>
+									<!-- End Stats Item -->
+
+
+									<div class="col-lg-3 col-md-6">
+										<div class="stats-item d-flex align-items-center w-100 h-100"
+											style="background-color: #FCE4EC">
+											<i class="bi bi-people color-pink flex-shrink-0"></i>
+											<div>
+												<span class="purecounter" data-count="666">0</span>
+												<p>계약완료갯수</p>
+											</div>
+										</div>
+									</div>
+									</div>
+	<!-- 					<div class="aside-block">
 							<h3 class="aside-title">Video</h3>
 							<div class="video-post">
 								<a href="https://www.youtube.com/watch?v=AiFfDjmd0jU"
@@ -388,7 +379,7 @@ https://templatemo.com/tm-580-woox-travel
 								</a>
 							</div>
 						</div>
-						<!-- End Video -->
+						End Video
 
 						<div class="aside-block">
 							<h3 class="aside-title">Tags</h3>
@@ -402,7 +393,7 @@ https://templatemo.com/tm-580-woox-travel
 								<li><a href="category.html">Startups</a></li>
 								<li><a href="category.html">Travel</a></li>
 							</ul>
-						</div>
+						</div> -->
 						<!-- End Tags -->
 
 					</div>

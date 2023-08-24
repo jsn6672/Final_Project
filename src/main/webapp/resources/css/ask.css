@@ -12,7 +12,6 @@
 .QnA-content{
     display: flex;
     justify-content: center;
-    margin-top: 50px;
     height: 800px;
 }
 
@@ -119,6 +118,9 @@
    	display: flex;
    	justify-content: center;
    	align-items: center;
+   	border: 1px solid #AAA8A8;
+   	border-radius: 80px;
+   	padding: 3px 20px;
 }
 
 .QnA-list-title3{
@@ -360,7 +362,7 @@
   transform: translate(0, -50%);
 }
   .highlight {
-    background-color: #FFB4FF; /* 변경하고자 하는 색깔 */
+    background-color: #f15d30; /* 변경하고자 하는 색깔 */
     /*게시판 색상*/
   }
 
