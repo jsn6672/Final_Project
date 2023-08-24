@@ -34,9 +34,10 @@ public class PetController {
 	}
 
 	@RequestMapping(value = "/pettaker.go", method = RequestMethod.GET)
-	public String pettaker(HttpServletRequest req) {
+	public String pettaker(HttpServletRequest req, DolbomDTO dolbomDTO, Model m) {
 		mDAO.logincheck(req);
 		mDAO.countAll(req);
+		pDAO.getAllTaker(req, dolbomDTO, m);
 		req.setAttribute("contentPage", "pet/pettaker.jsp");
 
 		return "home";
@@ -50,6 +51,16 @@ public class PetController {
 
 		return "home";
 	}
+	
+	@RequestMapping(value = "/pettaker.detail.go", method = RequestMethod.GET)
+	public String pettakerDetail(HttpServletRequest req, DolbomDTO dolbomDTO, Model m) {
+		mDAO.logincheck(req);
+		pDAO.detailtaker(req, dolbomDTO, m);
+		req.setAttribute("contentPage", "detail/pettaker.jsp");
+
+		return "home";
+	}
+
 
 	@RequestMapping(value = "/pettaker.be", method = RequestMethod.POST)
 	public String pettaker_be(HttpServletRequest req, PetTakerDTO ptDTO, DolbomDTO dDTO) {

@@ -63,114 +63,13 @@ public class DolbomDTO {
 	private String m_addr1;
 	private String m_addr2;
 	private String m_addr3;
+	
+	private MemberDTO mm;
 
-	@Override
-	public String toString() {
-		return "DolbomDTO [d_no=" + d_no + ", d_id=" + d_id + ", d_name=" + d_name + ", d_category=" + d_category
-				+ ", d_year=" + d_year + ", d_month=" + d_month + ", d_day=" + d_day + ", d_hour=" + d_hour
-				+ ", d_check=" + d_check + ", d_location=" + d_location + ", d_gender=" + d_gender + ", d_personality="
-				+ d_personality + ", d_pay=" + d_pay + ", d_cctv=" + d_cctv + ", d_can_do=" + d_can_do + ", dolbom_act="
-				+ Arrays.toString(dolbom_act) + ", monday=" + monday + ", tuesday=" + tuesday + ", wednesday="
-				+ wednesday + ", thursday=" + thursday + ", friday=" + friday + ", saturday=" + saturday + ", sunday="
-				+ sunday + ", monday_start=" + monday_start + ", tuesday_start=" + tuesday_start + ", wednesday_start="
-				+ wednesday_start + ", thursday_start=" + thursday_start + ", friday_start=" + friday_start
-				+ ", saturday_start=" + saturday_start + ", sunday_start=" + sunday_start + ", monday_end=" + monday_end
-				+ ", tuesday_end=" + tuesday_end + ", wednesday_end=" + wednesday_end + ", thursday_end=" + thursday_end
-				+ ", friday_end=" + friday_end + ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end
-				+ ", d_sitterage=" + d_sitterage + ", d_need=" + d_need + ", d_title=" + d_title + ", d_term=" + d_term
-				+ ", d_startdate=" + d_startdate + ", d_writedate=" + d_writedate + ", d_enddate=" + d_enddate
-				+ ", cntDTOs=" + cntDTOs + ", cntDTOMessage=" + cntDTOMessage + ", age=" + age + ", agetype=" + agetype
-				+ ", m_addr1=" + m_addr1 + ", m_addr2=" + m_addr2 + ", m_addr3=" + m_addr3 + "]";
+	public DolbomDTO() {
+		// TODO Auto-generated constructor stub
 	}
-
-	public String getM_addr1() {
-		return m_addr1;
-	}
-
-	public void setM_addr1(String m_addr1) {
-		this.m_addr1 = m_addr1;
-	}
-
-	public String getM_addr2() {
-		return m_addr2;
-	}
-
-	public void setM_addr2(String m_addr2) {
-		this.m_addr2 = m_addr2;
-	}
-
-	public String getM_addr3() {
-		return m_addr3;
-	}
-
-	public void setM_addr3(String m_addr3) {
-		this.m_addr3 = m_addr3;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public String getAgetype() {
-		return agetype;
-	}
-
-	public void setAgetype(String agetype) {
-		this.agetype = agetype;
-	}
-
-	public String getCntDTOMessage() {
-		return cntDTOMessage;
-	}
-
-	public void setCntDTOMessage(String cntDTOMessage) {
-		this.cntDTOMessage = cntDTOMessage;
-	}
-
-	public List<ContractDTO> getCntDTOs() {
-		return cntDTOs;
-	}
-
-	public void setCntDTOs(List<ContractDTO> cntDTOs) {
-		this.cntDTOs = cntDTOs;
-	}
-
-	public Date getD_enddate() {
-		return d_enddate;
-	}
-
-	public void setD_enddate(Date d_enddate) {
-		this.d_enddate = d_enddate;
-	}
-
-	public String getD_can_do() {
-		return d_can_do;
-	}
-
-	public void setD_can_do(String d_can_do) {
-		this.d_can_do = d_can_do;
-	}
-
-	public int[] getDolbom_act() {
-		return dolbom_act;
-	}
-
-	public void setDolbom_act(int[] dolbom_act) {
-		this.dolbom_act = dolbom_act;
-	}
-
-	public String getD_check() {
-		return d_check;
-	}
-
-	public void setD_check(String d_check) {
-		this.d_check = d_check;
-	}
-
+	
 	public int getD_no() {
 		return d_no;
 	}
@@ -219,6 +118,30 @@ public class DolbomDTO {
 		this.d_month = d_month;
 	}
 
+	public String getD_day() {
+		return d_day;
+	}
+
+	public void setD_day(String d_day) {
+		this.d_day = d_day;
+	}
+
+	public String getD_hour() {
+		return d_hour;
+	}
+
+	public void setD_hour(String d_hour) {
+		this.d_hour = d_hour;
+	}
+
+	public String getD_check() {
+		return d_check;
+	}
+
+	public void setD_check(String d_check) {
+		this.d_check = d_check;
+	}
+
 	public String getD_location() {
 		return d_location;
 	}
@@ -259,12 +182,20 @@ public class DolbomDTO {
 		this.d_cctv = d_cctv;
 	}
 
-	public String getD_day() {
-		return d_day;
+	public String getD_can_do() {
+		return d_can_do;
 	}
 
-	public void setD_day(String d_day) {
-		this.d_day = d_day;
+	public void setD_can_do(String d_can_do) {
+		this.d_can_do = d_can_do;
+	}
+
+	public int[] getDolbom_act() {
+		return dolbom_act;
+	}
+
+	public void setDolbom_act(int[] dolbom_act) {
+		this.dolbom_act = dolbom_act;
 	}
 
 	public String getMonday() {
@@ -483,12 +414,161 @@ public class DolbomDTO {
 		this.d_writedate = d_writedate;
 	}
 
-	public String getD_hour() {
-		return d_hour;
+	public Date getD_enddate() {
+		return d_enddate;
 	}
 
-	public void setD_hour(String d_hour) {
+	public void setD_enddate(Date d_enddate) {
+		this.d_enddate = d_enddate;
+	}
+
+	public List<ContractDTO> getCntDTOs() {
+		return cntDTOs;
+	}
+
+	public void setCntDTOs(List<ContractDTO> cntDTOs) {
+		this.cntDTOs = cntDTOs;
+	}
+
+	public String getCntDTOMessage() {
+		return cntDTOMessage;
+	}
+
+	public void setCntDTOMessage(String cntDTOMessage) {
+		this.cntDTOMessage = cntDTOMessage;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getAgetype() {
+		return agetype;
+	}
+
+	public void setAgetype(String agetype) {
+		this.agetype = agetype;
+	}
+
+	public String getM_addr1() {
+		return m_addr1;
+	}
+
+	public void setM_addr1(String m_addr1) {
+		this.m_addr1 = m_addr1;
+	}
+
+	public String getM_addr2() {
+		return m_addr2;
+	}
+
+	public void setM_addr2(String m_addr2) {
+		this.m_addr2 = m_addr2;
+	}
+
+	public String getM_addr3() {
+		return m_addr3;
+	}
+
+	public void setM_addr3(String m_addr3) {
+		this.m_addr3 = m_addr3;
+	}
+
+	public MemberDTO getMm() {
+		return mm;
+	}
+
+	public void setMm(MemberDTO mm) {
+		this.mm = mm;
+	}
+
+	@Override
+	public String toString() {
+		return "DolbomDTO [d_no=" + d_no + ", d_id=" + d_id + ", d_name=" + d_name + ", d_category=" + d_category
+				+ ", d_year=" + d_year + ", d_month=" + d_month + ", d_day=" + d_day + ", d_hour=" + d_hour
+				+ ", d_check=" + d_check + ", d_location=" + d_location + ", d_gender=" + d_gender + ", d_personality="
+				+ d_personality + ", d_pay=" + d_pay + ", d_cctv=" + d_cctv + ", d_can_do=" + d_can_do + ", dolbom_act="
+				+ Arrays.toString(dolbom_act) + ", monday=" + monday + ", tuesday=" + tuesday + ", wednesday="
+				+ wednesday + ", thursday=" + thursday + ", friday=" + friday + ", saturday=" + saturday + ", sunday="
+				+ sunday + ", monday_start=" + monday_start + ", tuesday_start=" + tuesday_start + ", wednesday_start="
+				+ wednesday_start + ", thursday_start=" + thursday_start + ", friday_start=" + friday_start
+				+ ", saturday_start=" + saturday_start + ", sunday_start=" + sunday_start + ", monday_end=" + monday_end
+				+ ", tuesday_end=" + tuesday_end + ", wednesday_end=" + wednesday_end + ", thursday_end=" + thursday_end
+				+ ", friday_end=" + friday_end + ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end
+				+ ", d_sitterage=" + d_sitterage + ", d_need=" + d_need + ", d_title=" + d_title + ", d_term=" + d_term
+				+ ", d_startdate=" + d_startdate + ", d_writedate=" + d_writedate + ", d_enddate=" + d_enddate
+				+ ", cntDTOs=" + cntDTOs + ", cntDTOMessage=" + cntDTOMessage + ", age=" + age + ", agetype=" + agetype
+				+ ", m_addr1=" + m_addr1 + ", m_addr2=" + m_addr2 + ", m_addr3=" + m_addr3 + ", mm=" + mm + "]";
+	}
+
+	public DolbomDTO(int d_no, String d_id, String d_name, int d_category, int d_year, int d_month, String d_day,
+			String d_hour, String d_check, String d_location, String d_gender, String d_personality, int d_pay,
+			String d_cctv, String d_can_do, int[] dolbom_act, String monday, String tuesday, String wednesday,
+			String thursday, String friday, String saturday, String sunday, int monday_start, int tuesday_start,
+			int wednesday_start, int thursday_start, int friday_start, int saturday_start, int sunday_start,
+			int monday_end, int tuesday_end, int wednesday_end, int thursday_end, int friday_end, int saturday_end,
+			int sunday_end, String d_sitterage, String d_need, String d_title, String d_term, Date d_startdate,
+			Date d_writedate, Date d_enddate, List<ContractDTO> cntDTOs, String cntDTOMessage, int age, String agetype,
+			String m_addr1, String m_addr2, String m_addr3, MemberDTO mm) {
+		super();
+		this.d_no = d_no;
+		this.d_id = d_id;
+		this.d_name = d_name;
+		this.d_category = d_category;
+		this.d_year = d_year;
+		this.d_month = d_month;
+		this.d_day = d_day;
 		this.d_hour = d_hour;
+		this.d_check = d_check;
+		this.d_location = d_location;
+		this.d_gender = d_gender;
+		this.d_personality = d_personality;
+		this.d_pay = d_pay;
+		this.d_cctv = d_cctv;
+		this.d_can_do = d_can_do;
+		this.dolbom_act = dolbom_act;
+		this.monday = monday;
+		this.tuesday = tuesday;
+		this.wednesday = wednesday;
+		this.thursday = thursday;
+		this.friday = friday;
+		this.saturday = saturday;
+		this.sunday = sunday;
+		this.monday_start = monday_start;
+		this.tuesday_start = tuesday_start;
+		this.wednesday_start = wednesday_start;
+		this.thursday_start = thursday_start;
+		this.friday_start = friday_start;
+		this.saturday_start = saturday_start;
+		this.sunday_start = sunday_start;
+		this.monday_end = monday_end;
+		this.tuesday_end = tuesday_end;
+		this.wednesday_end = wednesday_end;
+		this.thursday_end = thursday_end;
+		this.friday_end = friday_end;
+		this.saturday_end = saturday_end;
+		this.sunday_end = sunday_end;
+		this.d_sitterage = d_sitterage;
+		this.d_need = d_need;
+		this.d_title = d_title;
+		this.d_term = d_term;
+		this.d_startdate = d_startdate;
+		this.d_writedate = d_writedate;
+		this.d_enddate = d_enddate;
+		this.cntDTOs = cntDTOs;
+		this.cntDTOMessage = cntDTOMessage;
+		this.age = age;
+		this.agetype = agetype;
+		this.m_addr1 = m_addr1;
+		this.m_addr2 = m_addr2;
+		this.m_addr3 = m_addr3;
+		this.mm = mm;
 	}
 
+
+	
 }

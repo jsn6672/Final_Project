@@ -125,17 +125,15 @@
 								src="resources/img/baby2.jpg" alt="">
 						</div>
 						<div class="col-sm-8">
-							<h5>돌보미를 원하는 분들에게 니즈에 맞는 돌보미를...</h5>
-							<p class="mb-0">난 알아요 이밤이 흐르고 흐르면 누군가가 나를 떠나야 한다는 그사실을 그이유를
-								이제는</p>
+							<h5>돌보미를 원하는 분들에게 니즈에 맞는 돌보미를</h5>
+							<p class="mb-0">돌보미를 원하시는 분들에게는 항상 니즈에 맞는 최상의 돌보미를 제공합니다.</p>
 						</div>
 					</div>
 					<div class="border-top mb-4"></div>
 					<div class="row g-3">
 						<div class="col-sm-8">
-							<h5>돌보미가 되고 싶은 분들에게 니즈에 맞는 가족을...</h5>
-							<p class="mb-0">나도 알수가 알수가 있어요 사랑을 한다는 말을 못했어 어쨌거나 지금은
-								너무늦어버렸어</p>
+							<h5>돌보미가 되고 싶은 분들에게 니즈에 맞는 가족을</h5>
+							<p class="mb-0">돌보미가 되고 싶은 분들에게는 니즈에 완벽히 부합하는 가족을 선사해드립니다.</p>
 						</div>
 						<div class="col-sm-4">
 							<img class="img-fluid bg-white w-100"
