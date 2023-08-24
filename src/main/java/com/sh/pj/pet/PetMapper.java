@@ -4,6 +4,12 @@ import com.sh.pj.ReviewDTO;
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 
+import com.sh.pj.ask.AskDTO;
+import com.sh.pj.ask.AskSelector;
+import com.sh.pj.care.CareDTO;
+
+
+
 import java.util.List;
 
 public interface PetMapper {
@@ -30,11 +36,21 @@ public interface PetMapper {
 
 	public int updatePetSitter(PetDTO pDTO);
 
+
+	public int getMsgCount(PetSelector sSel);
+
+	public List<PetDTO> getMsg(PetSelector petSearch);
+
+
+
+
+
 	public List<DolbomDTO> getAllTaker(DolbomDTO dolbomDTO);
 
 	public MemberDTO detailUser2(DolbomDTO pp);
 
 	public DolbomDTO detailtaker(DolbomDTO dolbomDTO);
+
 
 
 }
