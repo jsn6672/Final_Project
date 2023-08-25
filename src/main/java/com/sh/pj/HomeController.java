@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sh.pj.account.MembertDAO;
 import com.sh.pj.ask.AskDAO;
+import com.sh.pj.mypage.ContractDTO;
 import com.sh.pj.pet.PetDAO;
 import com.sh.pj.account.MemberDTO;
 
@@ -177,6 +178,13 @@ public class HomeController {
 		
 		mDAO.countTBL();
 		return "redirect:/go.home";
+	}
+	
+	@RequestMapping(value = "endCnt", method = RequestMethod.GET)
+	public String endCnt(HttpServletRequest req, ContractDTO cntDTO) {
+		
+		mDAO.EndCnt(req, cntDTO);
+		return "redirect:/mypage.go";
 	}
 	
 	

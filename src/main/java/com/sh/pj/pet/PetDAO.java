@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sh.pj.ReviewDTO;
 import com.sh.pj.account.DolbomDTO;
@@ -86,10 +87,6 @@ public class PetDAO {
 
 	}
 
-	public void getAll(HttpServletRequest req, PetDTO petDTO, Model m) {
-		m.addAttribute("petsitter", ss.getMapper(PetMapper.class).getAll(petDTO));
-	}
-
 	public void detail(HttpServletRequest req, PetDTO petDTO, Model m) {
 
 		PetDTO pp = ss.getMapper(PetMapper.class).detail(petDTO);
@@ -145,11 +142,19 @@ public class PetDAO {
 			String newName = UUID.randomUUID().toString().split("-")[0];
 
 			String path = sc.getRealPath("resources/img");
-
+  
 			File saveImg = new File(path + "//" + newName + extension);
 
 			pDTO.getPs_Rfile().transferTo(saveImg);
 			pDTO.setPs_file(newName + extension);
+			
+			String extra = pDTO.getPs_extra();
+			extra.replaceAll("\r\n", "<br>");
+			pDTO.setPs_extra(extra);
+			
+			String exp = pDTO.getPs_exp();
+			exp.replace("\r\n", "<br>");
+			pDTO.setPs_exp(exp);
 
 			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 			pDTO.setPs_id(mDTO.getUser_id());
@@ -187,8 +192,8 @@ public class PetDAO {
 			if (ss.getMapper(PetMapper.class).regPetSitter(pDTO) == 1) {
 
 				System.out.println("등록 완료");
-				ss.getMapper(PetMapper.class).changemsstatus(mDTO);
 				mDTO.setUser_ps_status(1);
+				ss.getMapper(PetMapper.class).changePsStatus(mDTO);
 				req.getSession().setAttribute("userInfo", mDTO);
 				ss.getMapper(MemberMapper.class).upSCount();
 				
@@ -309,6 +314,14 @@ public class PetDAO {
 				pDTO.setPs_confirm("0");
 				pDTO.setPs_confirm_answer("ndy");
 			}
+			
+			String extra = pDTO.getPs_extra();
+			extra.replaceAll("<br>", "\r\n");
+			pDTO.setPs_extra(extra);
+			
+			String exp = pDTO.getPs_exp();
+			exp.replace("<br>", "\r\n");
+			pDTO.setPs_exp(exp);
 
 			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 			pDTO.setPs_id(mDTO.getUser_id());
@@ -385,6 +398,11 @@ public class PetDAO {
 		System.out.println("asksearch = " + petSearch);
 		try {
 			List<PetDTO> resultList = ss.getMapper(PetMapper.class).getMsg(petSearch);
+			
+			for (PetDTO p : resultList) {
+				p.setMm(ss.getMapper(PetMapper.class).detailUser(p));
+			}
+			
 			req.setAttribute("s", resultList);
 
 		} catch (Exception e) {
@@ -450,6 +468,10 @@ public class PetDAO {
 		m.addAttribute("dolbom", pp);
 	}
 
+	public void regBr(HttpServletRequest req, PetDTO pDTO) {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 	
