@@ -86,7 +86,7 @@
 	<select id="countSitterCont" resultType="int">
 		select count(*) from
 		contract_tbl where cnt_sitter_id = #{cnt_sitter_id}
-		and cnt_dolbom_ok >= 1 and cnt_sitter_ok >=1
+		and cnt_dolbom_ok >= 1 and cnt_sitter_ok >=1 and cnt_dolbom_ok &lt;= 2 and cnt_sitter_ok &lt;=2
 	</select>
 
 	<select id="countTakerCont" resultType="int">
@@ -96,7 +96,7 @@
 	<select id="countDolbomCont" resultType="int">
 		select count(*) from
 		contract_tbl where cnt_dolbom_no = #{cnt_dolbom_no}		
-		and cnt_dolbom_ok >= 1 and cnt_sitter_ok >=1
+		and cnt_dolbom_ok >= 1 and cnt_sitter_ok >=1 and cnt_dolbom_ok &lt;= 2 and cnt_sitter_ok &lt;=2
 	</select>
 
 	<select id="getDolbomList"

@@ -147,7 +147,7 @@ body {
 </head>
 <body>
 
-	<form action="caretaker.be" method="post" enctype="multipart/form-data">
+	<form action="regCareDolbom.do" method="post" enctype="multipart/form-data">
 
 		<!-- 전체 컨테이너 -->
 		<div class="mpS-pet">
@@ -158,18 +158,10 @@ body {
 					<img id="mpS-logo" alt="" src="resources/img/mypage/MOSI-logo.png">
 				</div>
 
-				<div>
-				<span style="font-weight: bold;"> ${userInfo.user_name}</span>
-				님의정보를입력해주세요</div>
-				<div>필요한 서류를 등록해주세요</div>
-				<div>
-					<input type="file" name="ct_Rfile"  style="background-color: #D9D9D9; color: black; border: none; border-radius: 5px; padding: 5px; width: 225px;">
-				</div>
 
 				<!-- 정보입력 -->
 				<div class="mpS-pet-inform2" style="margin: 10px; text-align: center;">
-					돌보아야할 대상의 정보를 넣어주세요! <br> 만약 적으셔야 하는 돌봄이 필요한 분이 한분이상이 먼저
-					한분의 정보를 넣어주시고 나머지 분의 정보는  마이페이지에서 등록해주세요
+					돌보아야할 대상의 정보를 넣어주세요!
 				</div>
 				<div>돌봄대상자의 이름을 입력해주세요</div>
 				<div>

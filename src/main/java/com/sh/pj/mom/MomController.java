@@ -93,6 +93,14 @@ public class MomController {
 		
 		return "home";
 	}
+	
+	@RequestMapping(value = "/updateMomDolbom.do", method = RequestMethod.POST)
+	public String updateMomDolbom(HttpServletRequest req, DolbomDTO dDTO) {
+		momDAO.updateMomDolbom(req, dDTO);
+
+		return "redirect:/mypage.takerRegMom.go";
+	}
+	
 	@RequestMapping(value = "/momsitter.delete.go", method = RequestMethod.POST)
 	public String momsitter_delete(HttpServletRequest req, MomDTO mDTO, Model model) {
 		mDAO.logincheck(req);	

@@ -26,7 +26,7 @@ public interface PetMapper {
 
 	public int regDolbom(DolbomDTO dDTO);
 
-	public int changemsstatus(MemberDTO mDTO);
+	public int changePsStatus(MemberDTO mDTO);
 
 	public int updateDolbom(DolbomDTO dDTO);
 	
