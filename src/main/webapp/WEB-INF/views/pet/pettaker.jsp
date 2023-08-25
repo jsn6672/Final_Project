@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,66 +47,46 @@ https://templatemo.com/tm-580-woox-travel
 							<div class="container">
 
 								<div class="row gy-4">
-
-									<div class="col-lg-3 col-md-6">
-										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #FCE4EC">
-											<i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
-											<div>
-												<span class="purecounter" data-count="${countAll.count_sitter }">0</span>
-												<p>행복한 돌보미들</p>
-											</div>
-										</div>
-									</div>
-									<!-- End Stats Item -->
-
-									<div class="col-lg-3 col-md-6">
-										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #FCE4EC">
-											<i class="bi bi-journal-richtext color-orange flex-shrink-0"></i>
-											<div>
-												<span class="purecounter" data-count="${countAll.count_dolbom }">0</span>
-												<p>돌보미가 필요한 가족들</p>
-											</div>
-										</div>
-									</div>
-									<!-- End Stats Item -->
-
-									<div class="col-lg-3 col-md-6">
-										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #FCE4EC">
-											<i class="bi bi-headset color-green flex-shrink-0"></i>
-											<div>
-												<span class="purecounter" data-count="${countAll.count_time }">0</span>
-												<p>총 운영 시간</p>
-											</div>
-										</div>
-									</div>
-									<!-- End Stats Item -->
-
-									<div class="col-lg-3 col-md-6">
-										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #FCE4EC">
-											<i class="bi bi-people color-pink flex-shrink-0"></i>
-											<div>
-												<span class="purecounter" data-count="${countAll.count_cont }">0</span>
-												<p>계약완료갯수</p>
-											</div>
-										</div>
-									</div>
 									<!-- End Stats Item -->
 									<h3 class="category-title"
-										style="display: flex; justify-content: center">
+										style="display: flex; justify-content: center; padding-top: 30px;">
 										<input id="searchBar" placeholder="검색을 해주세요">
 									</h3>
 									<c:forEach var="p" items="${pettaker }">
 										<div class="d-md-flex post-entry-2 half">
-											<div class="mom-select-img">
-												<div>사진</div>
-											</div>
-											<div>
-												<div>
-													<a href="pettaker.detail.go?d_no=${p.d_no }">펫시터: ${p.d_id }(이름)</a>
+											<div class="d-md-flex post-entry-2 half"
+												style="border-bottom: 1px solid #dee2e6 !important;">
+												<div class="mom-select-img">
+													<div>사진</div>
+												</div>
+												<div style="display: flex; gap:10px;">
+													<div class="post-meta">
+														<span class="date">00전 작성 </span> <span>${p.d_writedate }</span>
+													</div>
+													<div>
+														<a href="pettaker.detail.go?d_no=${p.d_no }">대상:
+															${p.d_name }</a>
+														<div>
+															나이: <span id="age"></span>살
+														</div>
+														<div>
+															<span>성별 : ${p.d_gender }</span>
+														</div>
+														<span>cctv촬영 -<c:choose>
+																<c:when test="${p.d_cctv == 1}">
+   									   가능
+        							</c:when>
+																<c:otherwise>
+           							불가능
+        							</c:otherwise>
+															</c:choose></span>
+													</div>
+													<div>
+														<div>시급: ${p.d_pay }원</div>
+														<div>활동 가능 지역:</div>
+														<div>${p.m_addr1 }${p.m_addr2 }</div>
+														<div>${p.m_addr3 }	</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -132,14 +112,13 @@ https://templatemo.com/tm-580-woox-travel
 					<div class="col-md-3">
 						<!-- ======= Sidebar ======= -->
 						<div class="aside-block">
-
 							<ul class="nav nav-pills custom-tab-nav mb-4" id="pills-tab"
 								role="tablist">
 								<li class="nav-item" role="presentation">
 									<button class="nav-link active" id="pills-popular-tab"
 										data-bs-toggle="pill" data-bs-target="#pills-popular"
 										type="button" role="tab" aria-controls="pills-popular"
-										aria-selected="true">Popular</button>
+										aria-selected="true" onclick="">Popular</button>
 								</li>
 								<li class="nav-item" role="presentation">
 									<button class="nav-link" id="pills-trending-tab"
@@ -156,208 +135,61 @@ https://templatemo.com/tm-580-woox-travel
 							</ul>
 
 							<div class="tab-content" id="pills-tabContent">
-
 								<!-- Popular -->
-								<div class="tab-pane fade show active" id="pills-popular"
-									role="tabpanel" aria-labelledby="pills-popular-tab">
-									<div class="post-entry-1 border-bottom">
-										<div class="post-meta">
-											<span class="date">Sport</span> <span class="mx-1">&bullet;</span>
-											<span>Jul 5th '22</span>
+								<c:forEach var="p" items="${pettaker }">
+
+									<div class="tab-pane fade show active" id="pills-popular"
+										role="tabpanel" aria-labelledby="pills-popular-tab">
+										<div class="post-entry-1 border-bottom">
+											<div class="post-meta">
+												<span class="mx-1">&bullet;</span> <span>OO전 작성</span>
+											</div>
+											<span class="author mb-3 d-block"> <a
+												href="pettaker.detail.go?d_no=${p.d_no }">대상: ${p.d_name }</a>
+											</span> <span class="author mb-3 d-block">시급: ${p.d_pay }원</span> <span
+												class="author mb-3 d-block">지역: ${p.m_addr1 }${p.m_addr2 }${p.m_addr3 }</span>
 										</div>
-										<h2 class="mb-2">
-											<a href="#">How to Avoid Distraction and Stay Focused
-												During Video Calls?</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span>
 									</div>
-
-
-									<div class="post-entry-1 border-bottom">
-										<div class="post-meta">
-											<span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span>
-											<span>Jul 5th '22</span>
-										</div>
-										<h2 class="mb-2">
-											<a href="#">Life Insurance And Pregnancy: A Working Mom’s
-												Guide</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span>
-									</div>
-
-
-									<div class="post-entry-1 border-bottom">
-										<div class="post-meta">
-											<span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span>
-											<span>Jul 5th '22</span>
-										</div>
-										<h2 class="mb-2">
-											<a href="#">10 Life-Changing Hacks Every Working Mom
-												Should Know</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span>
-									</div>
-								</div>
-								<!-- End Popular -->
-
-								<!-- Trending -->
-								<div class="tab-pane fade" id="pills-trending" role="tabpanel"
-									aria-labelledby="pills-trending-tab">
-									<div class="post-entry-1 border-bottom">
-										<div class="post-meta">
-											<span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span>
-											<span>Jul 5th '22</span>
-										</div>
-										<h2 class="mb-2">
-											<a href="#">17 Pictures of Medium Length Hair in Layers
-												That Will Inspire Your New Haircut</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span>
-									</div>
-
-									<div class="post-entry-1 border-bottom">
-										<div class="post-meta">
-											<span class="date">Culture</span> <span class="mx-1">&bullet;</span>
-											<span>Jul 5th '22</span>
-										</div>
-										<h2 class="mb-2">
-											<a href="#">9 Half-up/half-down Hairstyles for Long and
-												Medium Hair</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span>
-									</div>
-
-									<div class="post-entry-1 border-bottom">
-										<div class="post-meta">
-											<span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span>
-											<span>Jul 5th '22</span>
-										</div>
-										<h2 class="mb-2">
-											<a href="#">Life Insurance And Pregnancy: A Working Mom’s
-												Guide</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span>
-									</div>
-
-									<div class="post-entry-1 border-bottom">
-										<div class="post-meta">
-											<span class="date">Sport</span> <span class="mx-1">&bullet;</span>
-											<span>Jul 5th '22</span>
-										</div>
-										<h2 class="mb-2">
-											<a href="#">How to Avoid Distraction and Stay Focused
-												During Video Calls?</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span>
-									</div>
-									<div class="post-entry-1 border-bottom">
-										<div class="post-meta">
-											<span class="date">Business</span> <span class="mx-1">&bullet;</span>
-											<span>Jul 5th '22</span>
-										</div>
-										<h2 class="mb-2">
-											<a href="#">The Best Homemade Masks for Face (keep the
-												Pimples Away)</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span>
-									</div>
-
-									<div class="post-entry-1 border-bottom">
-										<div class="post-meta">
-											<span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span>
-											<span>Jul 5th '22</span>
-										</div>
-										<h2 class="mb-2">
-											<a href="#">10 Life-Changing Hacks Every Working Mom
-												Should Know</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span>
-									</div>
-								</div>
-								<!-- End Trending -->
-
-								<!-- Latest -->
-								<div class="tab-pane fade" id="pills-latest" role="tabpanel"
-									aria-labelledby="pills-latest-tab">
-									<div class="post-entry-1 border-bottom">
-										<div class="post-meta">
-											<span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span>
-											<span>Jul 5th '22</span>
-										</div>
-										<h2 class="mb-2">
-											<a href="#">Life Insurance And Pregnancy: A Working Mom’s
-												Guide</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span>
-									</div>
-
-									<div class="post-entry-1 border-bottom">
-										<div class="post-meta">
-											<span class="date">Business</span> <span class="mx-1">&bullet;</span>
-											<span>Jul 5th '22</span>
-										</div>
-										<h2 class="mb-2">
-											<a href="#">The Best Homemade Masks for Face (keep the
-												Pimples Away)</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span>
-									</div>
-
-									<div class="post-entry-1 border-bottom">
-										<div class="post-meta">
-											<span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span>
-											<span>Jul 5th '22</span>
-										</div>
-										<h2 class="mb-2">
-											<a href="#">10 Life-Changing Hacks Every Working Mom
-												Should Know</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span>
-									</div>
-
-									<div class="post-entry-1 border-bottom">
-										<div class="post-meta">
-											<span class="date">Sport</span> <span class="mx-1">&bullet;</span>
-											<span>Jul 5th '22</span>
-										</div>
-										<h2 class="mb-2">
-											<a href="#">How to Avoid Distraction and Stay Focused
-												During Video Calls?</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span>
-									</div>
-
-									<div class="post-entry-1 border-bottom">
-										<div class="post-meta">
-											<span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span>
-											<span>Jul 5th '22</span>
-										</div>
-										<h2 class="mb-2">
-											<a href="#">17 Pictures of Medium Length Hair in Layers
-												That Will Inspire Your New Haircut</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span>
-									</div>
-
-									<div class="post-entry-1 border-bottom">
-										<div class="post-meta">
-											<span class="date">Culture</span> <span class="mx-1">&bullet;</span>
-											<span>Jul 5th '22</span>
-										</div>
-										<h2 class="mb-2">
-											<a href="#">9 Half-up/half-down Hairstyles for Long and
-												Medium Hair</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span>
-									</div>
-
-								</div>
-								<!-- End Latest -->
+									<!-- End Popular -->
+								</c:forEach>
 
 							</div>
 						</div>
+						<div style="width: 40vw">
+							<div class="col-lg-3 col-md-6">
+								<div class="stats-items">
+									<i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
+									<div>
+										<span class="purecounter" data-count="180">0</span>
+										<p>행복한 돌보미들</p>
+									</div>
+								</div>
+							</div>
+							<!-- End Stats Item -->
 
-						<div class="aside-block">
+							<div class="col-lg-3 col-md-6">
+								<div class="stats-items">
+									<i class="bi bi-journal-richtext color-orange flex-shrink-0"></i>
+									<div>
+										<span class="purecounter" data-count="250">0</span>
+										<p>돌보미가 필요한 가족들</p>
+									</div>
+								</div>
+							</div>
+							<!-- End Stats Item -->
+
+							<div class="col-lg-3 col-md-6">
+								<div class="stats-items">
+									<i class="bi bi-people color-pink flex-shrink-0"></i>
+									<div>
+										<span class="purecounter" data-count="666">0</span>
+										<p>계약완료갯수</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- 						<div class="aside-block">
 							<h3 class="aside-title">Video</h3>
 							<div class="video-post">
 								<a href="https://www.youtube.com/watch?v=AiFfDjmd0jU"
@@ -367,7 +199,7 @@ https://templatemo.com/tm-580-woox-travel
 								</a>
 							</div>
 						</div>
-						<!-- End Video -->
+						End Video
 
 						<div class="aside-block">
 							<h3 class="aside-title">Tags</h3>
@@ -382,7 +214,7 @@ https://templatemo.com/tm-580-woox-travel
 								<li><a href="category.html">Travel</a></li>
 							</ul>
 						</div>
-						<!-- End Tags -->
+						End Tags -->
 
 					</div>
 
@@ -444,6 +276,22 @@ https://templatemo.com/tm-580-woox-travel
 				}
 			});
 		});
+	</script>
+	<script>
+		const birthYear = $
+		{
+			p.d_year
+		};
+
+		// 현재 연도 구하기
+		const currentYear = new Date().getFullYear();
+
+		// 나이 계산
+		const age = currentYear - birthYear + 1;
+
+		// 결과를 화면에 표시
+		const ageElement = document.getElementById("age");
+		ageElement.textContent = age;
 	</script>
 </body>
 

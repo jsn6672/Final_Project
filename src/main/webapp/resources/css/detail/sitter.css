@@ -80,7 +80,6 @@
 	height: 200px;
 	background-color: white;
 	border-radius: 10px;
-	display: flex;
 }
 
 .body-content-detail-cover {
@@ -111,6 +110,7 @@
 	display: flex;
 	justify-content: space-evenly;
 	padding-top: 10px;
+	width: 280px;
 }
 
 .body-times {
@@ -142,4 +142,8 @@
 
 .can-do-text{
 	margin-top: 10px;
+}
+
+#d-md-flex{
+	border-bottom: 1px solid #dee2e6 !important;
 }

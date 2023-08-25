@@ -35,10 +35,10 @@ public class MomController {
 	}
 	
 	@RequestMapping(value = "/momtaker.go", method = RequestMethod.GET)
-	public String momtaker(HttpServletRequest req, MomDTO momDTO, Model m) {
+	public String momtaker(HttpServletRequest req, DolbomDTO dolbomDTO, Model m) {
 		mDAO.logincheck(req);	
 		mDAO.countAll(req);
-		momDAO.getAll(req, momDTO, m);
+		momDAO.getAlltaker(req, dolbomDTO, m);
 		req.setAttribute("contentPage", "mom/momtaker.jsp");
 
 		return "home";
@@ -54,13 +54,15 @@ public class MomController {
 	}
 	
 	@RequestMapping(value = "/momtaker.detail.go", method = RequestMethod.GET)
-	public String momtakerDetail(HttpServletRequest req, MomDTO momDTO, Model m) {
+	public String momtakerDetail(HttpServletRequest req, DolbomDTO dolbomDTO, Model m) {
 		mDAO.logincheck(req);	
-		momDAO.detail(req, momDTO, m);
+		momDAO.detailtaker(req, dolbomDTO, m);
 		req.setAttribute("contentPage", "detail/taker.jsp");
 		
 		return "home";
 	}
+	
+	
 	
 	@RequestMapping(value = "/momtaker.be", method = RequestMethod.POST)
 	public String momtaker_be(HttpServletRequest req, MomTakerDTO mtDTO, DolbomDTO dDTO) {

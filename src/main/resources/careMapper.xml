@@ -23,6 +23,23 @@
 	</update>
 
 	
+	<select id="getAllTaker" resultType="com.sh.pj.account.DolbomDTO">
+		select*from dolbom_tbl where d_category=1
+	</select>
+
+	<select id="detailtaker" resultType="com.sh.pj.account.DolbomDTO">
+		select*from dolbom_tbl where d_no = #{d_no}
+	</select>
 	
+	<select id="detailUser" resultType="com.sh.pj.account.MemberDTO">
+		select * from jsn_user_tbl where user_id = #{cs_id}
+	</select>
+		
+	<select id="detailUser2" resultType="com.sh.pj.account.MemberDTO">
+		select * from jsn_user_tbl where user_id = #{d_id}
+	</select>
 	
+	<select id="review" resultType="com.sh.pj.ReviewDTO">
+		select * from review_tbl where review_sitter_id = #{ps_id}
+	</select>
 </mapper>

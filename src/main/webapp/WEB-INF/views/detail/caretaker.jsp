@@ -62,7 +62,6 @@
 					<div class="body-title-detail">아이성격</div>
 					<div class="body-content-detail-cover">
 						<div class="body-content-detail">
-
 							<div style="width: 70%; margin-top: auto; margin-bottom: auto;">${dolbom.d_personality }</div>
 						</div>
 					</div>

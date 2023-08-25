@@ -1,6 +1,7 @@
 package com.sh.pj.care;
 
 import java.io.File;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
@@ -15,6 +16,7 @@ import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MemberMapper;
 import com.sh.pj.mom.MomMapper;
+import com.sh.pj.pet.PetDTO;
 import com.sh.pj.pet.PetMapper;
 
 
@@ -34,7 +36,47 @@ public class CareDAO {
 	
 	}
 	public void detail(HttpServletRequest req, CareDTO cDTO, Model m) {
-		m.addAttribute("caretaker",ss.getMapper(CareMapper.class).detail(cDTO));
+
+
+		CareDTO pp = ss.getMapper(CareMapper.class).detail(cDTO);
+
+		String[] ps_hour = pp.getCs_hour().split("!");
+
+		pp.setMonday_start(Integer.parseInt(ps_hour[0]));
+		pp.setMonday_end(Integer.parseInt(ps_hour[1]));
+		pp.setTuesday_start(Integer.parseInt(ps_hour[2]));
+		pp.setTuesday_end(Integer.parseInt(ps_hour[3]));
+		pp.setWednesday_start(Integer.parseInt(ps_hour[4]));
+		pp.setWednesday_end(Integer.parseInt(ps_hour[5]));
+		pp.setThursday_start(Integer.parseInt(ps_hour[6]));
+		pp.setThursday_end(Integer.parseInt(ps_hour[7]));
+		pp.setFriday_start(Integer.parseInt(ps_hour[8]));
+		pp.setFriday_end(Integer.parseInt(ps_hour[9]));
+		pp.setSaturday_start(Integer.parseInt(ps_hour[10]));
+		pp.setSaturday_end(Integer.parseInt(ps_hour[11]));
+		pp.setSunday_start(Integer.parseInt(ps_hour[12]));
+		pp.setSunday_end(Integer.parseInt(ps_hour[13]));
+
+		String[] ps_day = pp.getCs_day().split("!");
+
+		pp.setMonday(ps_day[0]);
+		pp.setTuesday(ps_day[1]);
+		pp.setWednesday(ps_day[2]);
+		pp.setThursday(ps_day[3]);
+		pp.setFriday(ps_day[4]);
+		pp.setSaturday(ps_day[5]);
+		pp.setSunday(ps_day[6]);
+
+		pp.setMm(ss.getMapper(CareMapper.class).detailUser(pp));
+
+		
+		  m.addAttribute("reviews", ss.getMapper(CareMapper.class).review(cDTO));
+		  System.out.println(ss.getMapper(CareMapper.class).review(cDTO));
+	
+
+		m.addAttribute("caresitter", pp);
+
+		
 		
 	}
 	public void regcareDolbom(HttpServletRequest req, DolbomDTO dDTO) {
@@ -148,5 +190,64 @@ public class CareDAO {
 
 		}
 
+	}
+	public void getAlltaker(HttpServletRequest req, DolbomDTO dolbomDTO, Model m) {
+		List<DolbomDTO>dDTOs = ss.getMapper(CareMapper.class).getAllTaker(dolbomDTO);
+		
+		for (DolbomDTO d : dDTOs) {
+			String location[] = d.getD_location().split("!");
+			d.setM_addr1(location[0]);
+			d.setM_addr2(location[1]);
+			d.setM_addr3(location[2]);
+			System.out.println(location[0]);
+		}
+		
+		
+		m.addAttribute("dolbom",dDTOs);
+	}
+	public void detailtaker(HttpServletRequest req, DolbomDTO dolbomDTO, Model m) {
+		DolbomDTO pp = ss.getMapper(CareMapper.class).detailtaker(dolbomDTO);
+
+		String[] ps_location = pp.getD_location().split("!");
+
+		pp.setLocation1(ps_location[0]);
+		pp.setLocation2(ps_location[1]);
+		pp.setLocation3(ps_location[2]);
+
+		String[] ps_hour = pp.getD_hour().split("!");
+
+		pp.setMonday_start(Integer.parseInt(ps_hour[0]));
+		pp.setMonday_end(Integer.parseInt(ps_hour[1]));
+		pp.setTuesday_start(Integer.parseInt(ps_hour[2]));
+		pp.setTuesday_end(Integer.parseInt(ps_hour[3]));
+		pp.setWednesday_start(Integer.parseInt(ps_hour[4]));
+		pp.setWednesday_end(Integer.parseInt(ps_hour[5]));
+		pp.setThursday_start(Integer.parseInt(ps_hour[6]));
+		pp.setThursday_end(Integer.parseInt(ps_hour[7]));
+		pp.setFriday_start(Integer.parseInt(ps_hour[8]));
+		pp.setFriday_end(Integer.parseInt(ps_hour[9]));
+		pp.setSaturday_start(Integer.parseInt(ps_hour[10]));
+		pp.setSaturday_end(Integer.parseInt(ps_hour[11]));
+		pp.setSunday_start(Integer.parseInt(ps_hour[12]));
+		pp.setSunday_end(Integer.parseInt(ps_hour[13]));
+
+		String[] ps_day = pp.getD_day().split("!");
+
+		pp.setMonday(ps_day[0]);
+		pp.setTuesday(ps_day[1]);
+		pp.setWednesday(ps_day[2]);
+		pp.setThursday(ps_day[3]);
+		pp.setFriday(ps_day[4]);
+		pp.setSaturday(ps_day[5]);
+		pp.setSunday(ps_day[6]);
+
+		pp.setMm(ss.getMapper(CareMapper.class).detailUser2(pp));
+
+		/*
+		 * m.addAttribute("reviews", ss.getMapper(PetMapper.class).review(dolbomDTO));
+		 * System.out.println(ss.getMapper(PetMapper.class).review(dolbomDTO));
+		 */
+
+		m.addAttribute("dolbom", pp);
 	}
 }
