@@ -247,4 +247,9 @@
 		select * from momsitter_tbl
 		where cs_confirm = 0
 	</select>
+	
+	<select id="getperiod">
+		SELECT ms_ticket_start, ms_ticket_end FROM momsitter_tbl 
+		where ms_id = #{user_id}
+	</select>
 </mapper>

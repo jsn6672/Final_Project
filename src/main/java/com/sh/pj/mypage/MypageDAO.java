@@ -572,4 +572,11 @@ public class MypageDAO {
 		
 	}
 
+	public void ticketthatihave(HttpServletRequest req, MoneyDTO mm, MomDTO mDTO) {
+		List<MoneyDTO> moneyList = ss.getMapper(MypageMapper.class).getbuylist();
+		req.setAttribute("moneyList", moneyList);
+		int ticketPeriod = ss.getMapper(MypageMapper.class).getperiod(mm, mDTO);
+		req.setAttribute("ticketPeriod", ticketPeriod);
+	}
+
 }

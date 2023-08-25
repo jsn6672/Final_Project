@@ -84,13 +84,8 @@ init();
 						<span>이용권</span>
 					</c:otherwise>				
 				</c:choose>
+				
 			</div>
-			<div class="mpMenu-part" id="mpMenu-part6"
-			onmouseover="changeColor('mpMenu-part6')"
-			onmouseout="restoreColor('mpMenu-part6')">
-			<a href="targetPage.jsp?mm_id=${sessionScope.userInfo.user_id}">이용권확인</a>	
-			</div>
-			
 		</div>
 	</div>
 	<div>

@@ -284,6 +284,17 @@ public class MypageController {
 		return ticketCheck(req, mm);
 	}
 
+	@RequestMapping(value = "/mypage.ticketthatihave.go")
+	public String ticketThatIHave(HttpServletRequest req, MoneyDTO mm) {
+		mDAO.logincheck(req);
+		
+		mpDAO.ticketthatihave(req, mm);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageTicket3Check.jsp");
+		
+		return ticketCheck(req, mm);
+	}
+
 	
 
 	@RequestMapping(value = "/contract.get", method = RequestMethod.GET)

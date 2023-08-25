@@ -78,6 +78,8 @@ public interface MypageMapper {
 
 	public List<MoneyDTO> getcertiflist();
 
+	public int getperiod(MoneyDTO mm, MomDTO mDTO);
+
 	
 
 
