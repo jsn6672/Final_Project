@@ -199,7 +199,6 @@ public class MypageDAO {
 			int can_do = Integer.parseInt(dDTO.getD_can_do());
 			contractDTO.setCnt_can_do("");
 			if (contractDTO.getCnt_type() == 3) {
-
 				if (can_do % 2 == 0) {
 					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 산책");
 				}
@@ -220,6 +219,56 @@ public class MypageDAO {
 				}
 				if (can_do % 17 == 0) {
 					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 사회화훈련");
+				}
+				if (can_do % 19 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 기타활동");
+				}
+			}else if (contractDTO.getCnt_type() == 2) {
+				if (can_do % 2 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 실내놀이");
+				}
+				if (can_do % 3 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 야외놀이");
+				}
+				if (can_do % 5 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 밥챙겨주기");
+				}
+				if (can_do % 7 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 등하원돕기");
+				}
+				if (can_do % 11 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 영어공부");
+				}
+				if (can_do % 13 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 한글공부");
+				}
+				if (can_do % 17 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 대소변");
+				}
+				if (can_do % 19 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 기타활동");
+				}
+			} else {
+				if (can_do % 2 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 가사활동");
+				}
+				if (can_do % 3 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 신체활동");
+				}
+				if (can_do % 5 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 인지활동");
+				}
+				if (can_do % 7 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 식사");
+				}
+				if (can_do % 11 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 기저귀케어");
+				}
+				if (can_do % 13 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 샤워");
+				}
+				if (can_do % 17 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 말벗");
 				}
 				if (can_do % 19 == 0) {
 					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 기타활동");
@@ -327,7 +376,7 @@ public class MypageDAO {
 
 					cntDTO2.setCnt_memberDTO(sitterDTO);
 
-					int age = nowyear - (Integer.parseInt(sitterDTO.getUser_age()) / 10000);
+					int age = nowyear - (Integer.parseInt(sitterDTO.getUser_age()) / 10000)+1;
 					cntDTO2.setAge(age);
 
 					cntDTO2.setCnt_petdto(ss.getMapper(MypageMapper.class).getPetSitter(sitterDTO));
@@ -360,8 +409,58 @@ public class MypageDAO {
 						if (can_do % 19 == 0) {
 							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 기타활동");
 						}
+					}else if (cntDTO2.getCnt_type() == 2) {
+						if (can_do % 2 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 실내놀이");
+						}
+						if (can_do % 3 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 야외놀이");
+						}
+						if (can_do % 5 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 밥챙겨주기");
+						}
+						if (can_do % 7 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 등하원돕기");
+						}
+						if (can_do % 11 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 영어공부");
+						}
+						if (can_do % 13 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 한글공부");
+						}
+						if (can_do % 17 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 대소변");
+						}
+						if (can_do % 19 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 기타활동");
+						}
+					} else {
+						if (can_do % 2 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 가사활동");
+						}
+						if (can_do % 3 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 신체활동");
+						}
+						if (can_do % 5 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 인지활동");
+						}
+						if (can_do % 7 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 식사");
+						}
+						if (can_do % 11 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 기저귀케어");
+						}
+						if (can_do % 13 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 샤워");
+						}
+						if (can_do % 17 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 말벗");
+						}
+						if (can_do % 19 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 기타활동");
+						}
 					}
-
+					
 					cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do().substring(3));
 
 				}

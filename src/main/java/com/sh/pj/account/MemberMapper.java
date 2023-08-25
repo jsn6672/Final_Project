@@ -1,5 +1,7 @@
 package com.sh.pj.account;
 
+import java.util.List;
+
 import com.sh.pj.care.CareTakerDTO;
 import com.sh.pj.mom.MomTakerDTO;
 import com.sh.pj.mypage.ContractDTO;
@@ -40,6 +42,8 @@ public interface MemberMapper {
 
 	int endCnt(ContractDTO cntDTO);
 	
+	List<ContractDTO> getAllNotRegReview(DolbomDTO d);
+	
 //	최초 카운트 계산용 메소드 / 계산 후 주석처리해도 상관 없음
 	int countPetSitter();
 	int countMomSitter();
@@ -50,6 +54,9 @@ public interface MemberMapper {
 	int countCont();
 
 	int regDefaultcount(countDTO cntDTO);
+
+	int countMustReviewCnt(DolbomDTO d);
+
 
 
 	

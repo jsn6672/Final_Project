@@ -236,6 +236,7 @@ public class MypageController {
 		req.setAttribute("mypageContentPage", "mypageUsageDetail.jsp");
 		return "home";
 	}
+	
 	@RequestMapping(value = "/mypage.regReview.go", method = RequestMethod.GET)
 	public String mypageReview_go(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
@@ -425,7 +426,6 @@ public class MypageController {
 		
 		return "redirect:/mypage.usage.go";
 	}
-	
 	
 	
 }

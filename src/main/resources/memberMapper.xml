@@ -71,6 +71,15 @@
 		update contract_tbl set cnt_sitter_ok = 3 where cnt_no = #{cnt_no}
 	</update>
 	
+	<select id="getAllNotRegReview" resultType="com.sh.pj.mypage.ContractDTO">
+		select * from contract_tbl where cnt_sitter_ok = 3 and cnt_dolbom_ok = 2
+	</select>
+	
+	<select id="countMustReviewCnt" resultType="int">
+		select count(*) from contract_tbl where cnt_dolbom_no = #{d_no}		
+		and cnt_sitter_ok = 3 and cnt_dolbom_ok = 2
+	</select>
+	
 	
 	<!-- 최초 카운트 계산용 메소드 / 계산 후 주석처리해도 상관 없음 -->
 	<select id="countPetSitter" resultType="int">
