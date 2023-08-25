@@ -1,5 +1,7 @@
 package com.sh.pj.mypage;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -127,7 +129,14 @@ public class MypageController {
 	public String mypageSitterRegMom(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		mDAO.logincheck(req);
-		req.setAttribute("mypageContentPage", "sitter/mypageSitterRegMom.jsp");
+
+		MemberDTO mDTO = (MemberDTO)req.getSession().getAttribute("userInfo");
+		if (mDTO.getUser_ms_status() == 0) {
+			req.setAttribute("mypageContentPage", "sitter/mypageSitterRegMom.jsp");
+		}else {
+			momDAO.getMomSitterInfo(req);
+			req.setAttribute("mypageContentPage", "sitter/mypageSitterUpdateMom.jsp");			
+		}
 
 		return "home";
 	}
@@ -137,7 +146,13 @@ public class MypageController {
 	public String mypageSitterRegCare(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		mDAO.logincheck(req);
+		MemberDTO mDTO = (MemberDTO)req.getSession().getAttribute("userInfo");
+		if (mDTO.getUser_cs_status() == 0) {
 		req.setAttribute("mypageContentPage", "sitter/mypageSitterRegCare.jsp");
+		}else {
+			cDAO.getCareSitterInfo(req);
+			req.setAttribute("mypageContentPage", "sitter/mypageSitterUpdateCare.jsp");			
+		}
 
 		return "home";
 	}
@@ -162,9 +177,9 @@ public class MypageController {
 			
 		} else {
 			//해야할 것 > 새로운 돌보미 등록 or 기존 돌보미 수정?
-			mpDAO.getListOfDolbom(req);
+			mpDAO.getListOfPetDolbom(req);
 			req.setAttribute("contentPage", "mypage/mypage.jsp");
-			req.setAttribute("mypageContentPage", "taker/mypageTakerRegAnotherDolbom.jsp");
+			req.setAttribute("mypageContentPage", "taker/mypageTakerRegAnotherPetDolbom.jsp");
 		}
 		return "home";
 	}
@@ -173,8 +188,16 @@ public class MypageController {
 	@RequestMapping(value = "/mypage.takerRegMom.go", method = RequestMethod.GET)
 	public String mypageTakerRegMom(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
-		mDAO.logincheck(req);
-		req.setAttribute("mypageContentPage", "taker/mypageTakerRegMom.jsp");
+		mDAO.logincheck(req);		
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");		
+		if (mDTO.getUser_mt_status()==0) {
+			req.setAttribute("mypageContentPage", "taker/mypageTakerRegMom.jsp");
+		}else {
+			mpDAO.getListOfMomDolbom(req);
+			req.setAttribute("mypageContentPage", "taker/mypageTakerRegAnotherMomDolbom.jsp");
+		}
+		
+		
 		return "home";
 	}
 
@@ -183,7 +206,13 @@ public class MypageController {
 	public String mypageTakerRegCare(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		mDAO.logincheck(req);
-		req.setAttribute("mypageContentPage", "taker/mypageTakerRegCare.jsp");
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");		
+		if (mDTO.getUser_mt_status()==0) {
+			req.setAttribute("mypageContentPage", "taker/mypageTakerRegCare.jsp");
+		}else {
+			mpDAO.getListOfCareDolbom(req);
+			req.setAttribute("mypageContentPage", "taker/mypageTakerRegAnotherCareDolbom.jsp");
+		}
 		return "home";
 	}
 
@@ -205,6 +234,15 @@ public class MypageController {
 		mpDAO.getTakerAllCont(req);
 		
 		req.setAttribute("mypageContentPage", "mypageUsageDetail.jsp");
+		return "home";
+	}
+	@RequestMapping(value = "/mypage.regReview.go", method = RequestMethod.GET)
+	public String mypageReview_go(HttpServletRequest req) {
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		mDAO.logincheck(req);
+		mDAO.getAllReview(req);
+		
+		req.setAttribute("mypageContentPage", "mypageReview.jsp");
 		return "home";
 	}
 
@@ -248,14 +286,35 @@ public class MypageController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "mypage.certif.check", method = RequestMethod.GET)
+	public String certificationCheck(HttpServletRequest req, MoneyDTO mm) {
+		mDAO.logincheck(req);
+		mpDAO.getcertiflist(req, mm);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageCertification.jsp");
+		return "home";
+	}
+	
 
 	@RequestMapping(value = "/mypage.ticket.confirm", method = RequestMethod.POST)
 	public String ticketConfirm(HttpServletRequest req, MoneyDTO mm) {
 		mDAO.logincheck(req);
+	
 		mpDAO.confirmticket(req, mm);
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageTicket3Check.jsp");
 
+		return ticketCheck(req, mm);
+	}
+
+	@RequestMapping(value = "/mypage.ticketthatihave.go")
+	public String ticketThatIHave(HttpServletRequest req, MoneyDTO mm) {
+		mDAO.logincheck(req);
+		
+		mpDAO.ticketthatihave(req, mm);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageTicket3Check.jsp");
+		
 		return ticketCheck(req, mm);
 	}
 
@@ -271,16 +330,16 @@ public class MypageController {
 		return "home";
 	}
 
-	@RequestMapping(value = "/mypage.takerRegAnotherDolbom.go", method = RequestMethod.GET)
-	public String ticketCheck(HttpServletRequest req) {
+	@RequestMapping(value = "/mypage.takerRegAnotherPetDolbom.go", method = RequestMethod.GET)
+	public String regAnotherPet(HttpServletRequest req) {
 		mDAO.logincheck(req);
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "taker/mypageTakerRegAnotherPet.jsp");
 		return "home";
 	}
 	
-	@RequestMapping(value = "/mypage.takerUpdateAnotherDolbom.go", method = RequestMethod.GET)
-	public String updateDolbom(HttpServletRequest req, DolbomDTO dDTO) {
+	@RequestMapping(value = "/mypage.takerUpdateAnotherPetDolbom.go", method = RequestMethod.GET)
+	public String updatePetDolbom(HttpServletRequest req, DolbomDTO dDTO) {
 		mDAO.logincheck(req);
 		mpDAO.getDolbomInfo(req, dDTO);
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
@@ -288,11 +347,58 @@ public class MypageController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/mypage.takerRegAnotherMomDolbom.go", method = RequestMethod.GET)
+	public String regAnotherMom(HttpServletRequest req) {
+		mDAO.logincheck(req);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "taker/mypageTakerRegAnotherMom.jsp");
+		return "home";
+	}
+	
+	@RequestMapping(value = "/mypage.takerUpdateAnotherMomDolbom.go", method = RequestMethod.GET)
+	public String updateMomDolbom(HttpServletRequest req, DolbomDTO dDTO) {
+		mDAO.logincheck(req);
+		mpDAO.getDolbomInfo(req, dDTO);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "taker/mypageTakerUpdateMomDolbom.jsp");
+		return "home";
+	}
+	@RequestMapping(value = "/mypage.takerRegAnotherCareDolbom.go", method = RequestMethod.GET)
+	public String regAnotherCare(HttpServletRequest req) {
+		mDAO.logincheck(req);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "taker/mypageTakerRegAnotherCare.jsp");
+		return "home";
+	}
+	
+	@RequestMapping(value = "/mypage.takerUpdateAnotherCareDolbom.go", method = RequestMethod.GET)
+	public String updateCareDolbom(HttpServletRequest req, DolbomDTO dDTO) {
+		mDAO.logincheck(req);
+		mpDAO.getDolbomInfo(req, dDTO);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "taker/mypageTakerUpdateCareDolbom.jsp");
+		return "home";
+	}
+	
 	@RequestMapping(value = "/regPetDolbom.do", method = RequestMethod.POST)
-	public String regdolbom_do(HttpServletRequest req, PetTakerDTO ptDTO, DolbomDTO dDTO) {
+	public String regPetdolbom_do(HttpServletRequest req, PetTakerDTO ptDTO, DolbomDTO dDTO) {
 		pDAO.regPetDolbom(req, dDTO);
 		
 		return "redirect:/mypage.takerRegPet.go";
+	}
+	
+	@RequestMapping(value = "/regMomDolbom.do", method = RequestMethod.POST)
+	public String regMomdolbom_do(HttpServletRequest req, PetTakerDTO ptDTO, DolbomDTO dDTO) {
+		momDAO.regMomDolbom(req, dDTO);
+		
+		return "redirect:/mypage.takerRegMom.go";
+	}
+	
+	@RequestMapping(value = "/regCareDolbom.do", method = RequestMethod.POST)
+	public String regCaredolbom_do(HttpServletRequest req, PetTakerDTO ptDTO, DolbomDTO dDTO) {
+		cDAO.regCareDolbom(req, dDTO);
+		
+		return "redirect:/mypage.takerRegCare.go";
 	}
 	
 	@RequestMapping(value = "/cntSitterUpdate.do", method = RequestMethod.GET)

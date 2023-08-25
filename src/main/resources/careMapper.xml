@@ -22,7 +22,11 @@
 		update jsn_user_tbl set user_cs_status = 1 where user_id = #{user_id}
 	</update>
 
+	<select id="getCareSitterInfo" resultType="com.sh.pj.care.CareDTO">
+		select * from caresitter_tbl where cs_id = #{user_id}
+	</select>
 	
+
 	<select id="getAllTaker" resultType="com.sh.pj.account.DolbomDTO">
 		select*from dolbom_tbl where d_category=1
 	</select>
@@ -38,6 +42,11 @@
 	<select id="detailUser2" resultType="com.sh.pj.account.MemberDTO">
 		select * from jsn_user_tbl where user_id = #{d_id}
 	</select>
+
+	<update id="updateCareSitter">
+		update caresitter_tbl set cs_file = #{cs_file}, cs_confirm = #{cs_confirm}, cs_confirm_answer = #{cs_confirm_answer}, cs_cctv = #{cs_cctv}, cs_term = #{cs_term}, cs_day = #{cs_day}, cs_hour = #{cs_hour}, cs_location1 = #{cs_location1}, cs_location2 = #{cs_location2}, cs_location3 = #{cs_location3}, cs_extra = #{cs_extra}, cs_exp = #{cs_exp}, cs_pay = #{cs_pay}, cs_can_do = #{cs_can_do} where cs_id = #{cs_id}
+	</update>
+
 	
 	<select id="review" resultType="com.sh.pj.ReviewDTO">
 		select * from review_tbl where review_sitter_id = #{ps_id}

@@ -1,6 +1,9 @@
 package com.sh.pj.pet;
 
 import java.io.File;
+
+import java.math.BigDecimal;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -11,13 +14,15 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sh.pj.ReviewDTO;
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MemberMapper;
-import com.sh.pj.mom.MomMapper;
-import com.sh.pj.mypage.MypageMapper;
+
+import com.sh.pj.ask.SiteOption;
+
 
 @Service
 public class PetDAO {
@@ -27,7 +32,14 @@ public class PetDAO {
 
 	@Autowired
 	private ServletContext sc;
-
+	
+	@Autowired
+	private SiteOption su; // 한페이지에 몇개씩 보여줄지.
+	
+	private int allMsgCountPetSitter; 
+	
+	
+	
 	public void regPetDolbom(HttpServletRequest req, DolbomDTO dDTO) {
 
 //		사진 넣는거 오늘 회의때 회의하기
@@ -76,10 +88,6 @@ public class PetDAO {
 
 	}
 
-	public void getAll(HttpServletRequest req, PetDTO petDTO, Model m) {
-		m.addAttribute("petsitter", ss.getMapper(PetMapper.class).getAll(petDTO));
-	}
-
 	public void detail(HttpServletRequest req, PetDTO petDTO, Model m) {
 
 		PetDTO pp = ss.getMapper(PetMapper.class).detail(petDTO);
@@ -113,7 +121,12 @@ public class PetDAO {
 
 		pp.setMm(ss.getMapper(PetMapper.class).detailUser(pp));
 
-		m.addAttribute("reviews", ss.getMapper(PetMapper.class).review(petDTO));
+		List<ReviewDTO> rDTO = ss.getMapper(PetMapper.class).review(petDTO);
+		m.addAttribute("review", rDTO);
+		if (rDTO == null || rDTO.isEmpty()) {
+			m.addAttribute("review", "none");
+        }
+		
 		System.out.println(ss.getMapper(PetMapper.class).review(petDTO));
 
 		m.addAttribute("petsitter", pp);
@@ -130,11 +143,19 @@ public class PetDAO {
 			String newName = UUID.randomUUID().toString().split("-")[0];
 
 			String path = sc.getRealPath("resources/img");
-
+  
 			File saveImg = new File(path + "//" + newName + extension);
 
 			pDTO.getPs_Rfile().transferTo(saveImg);
 			pDTO.setPs_file(newName + extension);
+			
+			String extra = pDTO.getPs_extra();
+			extra.replaceAll("\r\n", "<br>");
+			pDTO.setPs_extra(extra);
+			
+			String exp = pDTO.getPs_exp();
+			exp.replace("\r\n", "<br>");
+			pDTO.setPs_exp(exp);
 
 			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 			pDTO.setPs_id(mDTO.getUser_id());
@@ -172,8 +193,8 @@ public class PetDAO {
 			if (ss.getMapper(PetMapper.class).regPetSitter(pDTO) == 1) {
 
 				System.out.println("등록 완료");
-				ss.getMapper(PetMapper.class).changemsstatus(mDTO);
 				mDTO.setUser_ps_status(1);
+				ss.getMapper(PetMapper.class).changePsStatus(mDTO);
 				req.getSession().setAttribute("userInfo", mDTO);
 				ss.getMapper(MemberMapper.class).upSCount();
 
@@ -291,6 +312,14 @@ public class PetDAO {
 				pDTO.setPs_confirm("0");
 				pDTO.setPs_confirm_answer("ndy");
 			}
+			
+			String extra = pDTO.getPs_extra();
+			extra.replaceAll("<br>", "\r\n");
+			pDTO.setPs_extra(extra);
+			
+			String exp = pDTO.getPs_exp();
+			exp.replace("<br>", "\r\n");
+			pDTO.setPs_exp(exp);
 
 			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 			pDTO.setPs_id(mDTO.getUser_id());
@@ -332,6 +361,65 @@ public class PetDAO {
 
 		}
 
+	}
+	
+	public void calcAllMsgCountPetSitter() {
+		PetSelector sSel = new PetSelector("", null, null);
+		allMsgCountPetSitter = ss.getMapper(PetMapper.class).getMsgCount(sSel);
+		System.out.println(allMsgCountPetSitter);
+	}
+
+	public void getMsg(int pageNo, HttpServletRequest req) {
+		int count = 3;
+		int start = (pageNo - 1) * count + 1;
+		int end = start + (count - 1);
+
+		PetSelector petSearch = (PetSelector) req.getSession().getAttribute("searchSession");
+		int msgCount = 1;
+		System.out.println("세션 petsearch = " + petSearch);
+
+		if (petSearch != null) {
+			petSearch.setPs_start(new BigDecimal(start));
+			petSearch.setPs_end(new BigDecimal(end));
+			msgCount = ss.getMapper(PetMapper.class).getMsgCount(petSearch);
+		} else {
+			// 검색 조건이 없는 경우에 전체 데이터 수를 가져오도록 변경
+			petSearch = new PetSelector("", new BigDecimal(start), new BigDecimal(end));
+			
+			msgCount = allMsgCountPetSitter;
+			System.out.println("앙 공주띠");	
+			System.out.println(allMsgCountPetSitter);
+			
+		}
+
+//		aDTO.setInquiry_category(req.getParameter("inquiry_category"));
+		System.out.println("asksearch = " + petSearch);
+		try {
+			List<PetDTO> resultList = ss.getMapper(PetMapper.class).getMsg(petSearch);
+			
+			for (PetDTO p : resultList) {
+				p.setMm(ss.getMapper(PetMapper.class).detailUser(p));
+			}
+			
+			req.setAttribute("s", resultList);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("여기까지 나오나 쳌");
+
+		int pageCount = (int) Math.ceil(msgCount / (double) count);
+		req.setAttribute("pageCount", pageCount);
+		req.setAttribute("curPage", pageNo);
+
+		int numPagesToShow = 5;
+		int startPage = Math.max(1, pageNo - numPagesToShow / 2);
+		int endPage = Math.min(pageCount, startPage + numPagesToShow - 1);
+		req.setAttribute("startPage", startPage);
+		req.setAttribute("endPage", endPage);
+		System.out.println(endPage);
+		
 	}
 
 	public void getAllTaker(HttpServletRequest req, DolbomDTO dolbomDTO, Model m) {
@@ -395,5 +483,6 @@ public class PetDAO {
 
 		m.addAttribute("dolbom", pp);
 	}
+
 
 }

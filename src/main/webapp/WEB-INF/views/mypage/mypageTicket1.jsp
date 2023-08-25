@@ -37,14 +37,12 @@
 				<div>6개월 이용권<input name="monthTicket" type="hidden" value="6개월이용권"> </div>
 				<div>59900원 <input name="monthTicketPrice" type="hidden" value="59900"></div>
 				<input name="ticketMonth" type="hidden" value="6">
-	
-				
 				<button>구매하기</button>
 				</form>
 			</div>
 			<div>
 				<form action="mypage.ticket.buy" method="post">
-				<div>12개월 이용권<input name="monthTicket" type="hidden" value="6개월이용권"> </div>
+				<div>12개월 이용권<input name="monthTicket" type="hidden" value="12개월이용권"> </div>
 				<div>89900원 <input name="monthTicketPrice" type="hidden" value="89900"></div>
 				<input name="ticketMonth" type="hidden" value="12">
 			

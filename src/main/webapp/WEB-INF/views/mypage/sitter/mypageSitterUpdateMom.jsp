@@ -48,66 +48,65 @@
 
 		})
 		connectAddrSearchEvent();
-		
-		const d_monday = '${dolbomInfo.monday}';
-		const d_tuesday = '${dolbomInfo.tuesday}';
-		const d_wednesday = '${dolbomInfo.wednesday}';
-		const d_thursday = '${dolbomInfo.thursday}';
-		const d_friday = '${dolbomInfo.friday}';
-		const d_saturday = '${dolbomInfo.saturday}';
-		const d_sunday = '${dolbomInfo.sunday}';
-		
-		if (d_monday === 'monday') {
+
+		const ms_monday = '${msInfo.monday}';
+		const ms_tuesday = '${msInfo.tuesday}';
+		const ms_wednesday = '${msInfo.wednesday}';
+		const ms_thursday = '${msInfo.thursday}';
+		const ms_friday = '${msInfo.friday}';
+		const ms_saturday = '${msInfo.saturday}';
+		const ms_sunday = '${msInfo.sunday}';
+
+		if (ms_monday === 'monday') {
 			$("#monday").attr('checked', true);
 			document.getElementById('monday_start').disabled = false;
 			document.getElementById('monday_end').disabled = false;
-			$('#monday_start').val('${dolbomInfo.monday_start}');
-			$('#monday_end').val('${dolbomInfo.monday_end}');
+			$('#monday_start').val('${msInfo.monday_start}');
+			$('#monday_end').val('${msInfo.monday_end}');
 		}
-		if (d_tuesday === 'tuesday') {
+		if (ms_tuesday === 'tuesday') {
 			$("#tuesday").attr('checked', true);
 			document.getElementById('tuesday_start').disabled = false;
 			document.getElementById('tuesday_end').disabled = false;
-			$('#tuesday_start').val('${dolbomInfo.tuesday_start}');
-			$('#tuesday_end').val('${dolbomInfo.tuesday_end}');
+			$('#tuesday_start').val('${msInfo.tuesday_start}');
+			$('#tuesday_end').val('${msInfo.tuesday_end}');
 		}
-		if (d_wednesday === 'wednesday') {
+		if (ms_wednesday === 'wednesday') {
 			$("#wednesday").attr('checked', true);
 			document.getElementById('wednesday_start').disabled = false;
 			document.getElementById('wednesday_end').disabled = false;
-			$('#wednesday_start').val('${dolbomInfo.wednesday_start}');
-			$('#wednesday_end').val('${dolbomInfo.wednesday_end}');
+			$('#wednesday_start').val('${msInfo.wednesday_start}');
+			$('#wednesday_end').val('${msInfo.wednesday_end}');
 		}
-		if (d_thursday === 'thursday') {
+		if (ms_thursday === 'thursday') {
 			$("#thursday").attr('checked', true);
 			document.getElementById('thursday_start').disabled = false;
 			document.getElementById('thursday_end').disabled = false;
-			$('#thursday_start').val('${dolbomInfo.thursday_start}');
-			$('#thursday_end').val('${dolbomInfo.thursday_end}');
+			$('#thursday_start').val('${msInfo.thursday_start}');
+			$('#thursday_end').val('${msInfo.thursday_end}');
 		}
-		if (d_friday === 'friday') {
+		if (ms_friday === 'friday') {
 			$("#friday").attr('checked', true);
 			document.getElementById('friday_start').disabled = false;
 			document.getElementById('friday_end').disabled = false;
-			$('#friday_start').val('${dolbomInfo.friday_start}');
-			$('#friday_end').val('${dolbomInfo.friday_end}');
+			$('#friday_start').val('${msInfo.friday_start}');
+			$('#friday_end').val('${msInfo.friday_end}');
 		}
-		if (d_saturday === 'saturday') {
+		if (ms_saturday === 'saturday') {
 			$("#saturday").attr('checked', true);
 			document.getElementById('saturday_start').disabled = false;
 			document.getElementById('saturday_end').disabled = false;
-			$('#saturday_start').val('${dolbomInfo.saturday_start}');
-			$('#saturday_end').val('${dolbomInfo.saturday_end}');
+			$('#saturday_start').val('${msInfo.saturday_start}');
+			$('#saturday_end').val('${msInfo.saturday_end}');
 		}
-		if (d_sunday === 'sunday') {
+		if (ms_sunday === 'sunday') {
 			$("#sunday").attr('checked', true);
 			document.getElementById('sunday_start').disabled = false;
 			document.getElementById('sunday_end').disabled = false;
-			$('#sunday_start').val('${dolbomInfo.sunday_start}');
-			$('#sunday_end').val('${dolbomInfo.sunday_end}');
+			$('#sunday_start').val('${msInfo.sunday_start}');
+			$('#sunday_end').val('${msInfo.sunday_end}');
 		}
-		
-		
+
 		$("#monday").on("change", function() {
 			if (this.checked) {
 				document.getElementById('monday_start').disabled = false;
@@ -179,65 +178,60 @@
 
 		})
 
-		const gender = '${dolbomInfo.d_gender}';
-
-		console.log(gender);
-		if (gender === 'male') {
-			$("#gender_male").attr('checked', true);
-		} else if (gender === 'female') {
-			$("#gender_female").attr('checked', true);
+		const ms_cctv = '${msInfo.ms_cctv}';
+		if (ms_cctv === '1') {
+			$("#ms_cctv_on").attr('checked', true);
 		} else {
-			$("#gender_neut").attr('checked', true);
+			$("#ms_cctv_off").attr('checked', true);
 		}
 
-		const d_check = '${dolbomInfo.d_check}';
-		if (d_check === '1') {
-			$("#d_check").attr('checked', true);
-		}
-
-		const d_cctv = '${dolbomInfo.d_cctv}';
-		if (d_cctv === '1') {
-			$("#d_cctv_on").attr('checked', true);
+		const ms_term = '${msInfo.ms_term}';
+		if (ms_term === '1') {
+			$("#ms_term_long").attr('checked', true);
 		} else {
-			$("#d_cctv_off").attr('checked', true);
+			$("#ms_term_short").attr('checked', true);
 		}
 
-		const d_term = '${dolbomInfo.d_term}';
-		if (d_term === '1') {
-			$("#d_term_long").attr('checked', true);
-		} else {
-			$("#d_term_short").attr('checked', true);
+		const ms_act = '${msInfo.ms_can_do}';
+		if (ms_act % 2 === 0) {
+			$("#ms_act_1st").attr('checked', true);
 		}
-		
-		const d_act = '${dolbomInfo.d_can_do}';
-		if (d_act % 2 === 0) {
-			$("#d_act_1st").attr('checked', true);
+		if (ms_act % 3 === 0) {
+			$("#ms_act_2nd").attr('checked', true);
 		}
-		if (d_act % 3 === 0) {
-			$("#d_act_2nd").attr('checked', true);
+		if (ms_act % 5 === 0) {
+			$("#ms_act_3rd").attr('checked', true);
 		}
-		if (d_act % 5 === 0) {
-			$("#d_act_3rd").attr('checked', true);
+		if (ms_act % 7 === 0) {
+			$("#ms_act_4th").attr('checked', true);
 		}
-		if (d_act % 7 === 0) {
-			$("#d_act_4th").attr('checked', true);
+		if (ms_act % 11 === 0) {
+			$("#ms_act_5th").attr('checked', true);
 		}
-		if (d_act % 11 === 0) {
-			$("#d_act_5th").attr('checked', true);
+		if (ms_act % 13 === 0) {
+			$("#ms_act_6th").attr('checked', true);
 		}
-		if (d_act % 13 === 0) {
-			$("#d_act_6th").attr('checked', true);
+		if (ms_act % 17 === 0) {
+			$("#ms_act_7th").attr('checked', true);
 		}
-		if (d_act % 17 === 0) {
-			$("#d_act_7th").attr('checked', true);
-		}
-		if (d_act % 19 === 0) {
-			$("#d_act_8th").attr('checked', true);
+		if (ms_act % 19 === 0) {
+			$("#ms_act_8th").attr('checked', true);
 		}
 
-		
-		
-		
+		const ms_type = '${msInfo.ms_can_type}';
+		if (ms_type % 2 === 0) {
+			$("#ms_type_1st").attr('checked', true);
+		}
+		if (ms_type % 3 === 0) {
+			$("#ms_type_2nd").attr('checked', true);
+		}
+		if (ms_type % 5 === 0) {
+			$("#ms_type_3rd").attr('checked', true);
+		}
+		if (ms_type % 7 === 0) {
+			$("#ms_type_4th").attr('checked', true);
+		}
+
 	}) // 레디펑션
 </script>
 
@@ -265,8 +259,7 @@ body {
 </head>
 <body>
 
-	<form action="updatePetDolbom.do" method="post"
-		enctype="multipart/form-data">
+	<form action="momsitter.update" method="post" enctype="multipart/form-data">
 
 		<!-- 전체 컨테이너 -->
 		<div class="mpS-pet">
@@ -277,143 +270,162 @@ body {
 					<img id="mpS-logo" alt="" src="resources/img/mypage/MOSI-logo.png">
 				</div>
 
-				<!-- 정보입력 -->
-				<div class="mpS-pet-inform2"
-					style="margin: 10px; text-align: center;">반려동물의 정보를 수정해주세요!</div>
-				<div>반려동물의 이름을 입력해주세요</div>
-				<input hidden="hidden" name="d_no" value="${dolbomInfo.d_no }">
+				<div>${userInfo.user_name}님의 정보를 수정해주세요</div>
+				<div>필요한 서류를 등록해주세요</div>
+				<div>필요하시다면 서류를 다시 등록해주세요 ※인증이 완료되신 경우에도 서류를 다시 제출하시면 다시 인증절차를
+					밟게 됩니다 참고바랍니다</div>
 				<div>
-					<input placeholder="이름을 입력해주세요" name="d_name"
-						value="${dolbomInfo.d_name }"
-						style="border: none; border-radius: 10px;">
-				</div>
-				<input hidden="hidden" name="d_category" value="3">
-				<div class="mpS-pet-birth">아이의 생년 / 월</div>
-				<div>
-					<input placeholder="아이가 태어난 해를 입력해주세요 (YYYY)" class="birth_input"
-						value="${dolbomInfo.d_year}" name="d_year"> <input
-						placeholder="아이가 태어난 달을 입력해주세요" class="birth_input" name="d_month"
-						value="${dolbomInfo.d_month }">
-				</div>
-				<div class="mpS-pet-gender">
-					<input type="radio" name="d_gender" value="male" id="gender_male">남아
-					<input type="radio" name="d_gender" value="female"
-						id="gender_female">여아 <input type="radio" name="d_gender"
-						value="neut" id="gender_neut">중성화 완료
+					<input type="file" name="ms_Rfile"
+						style="background-color: #D9D9D9; color: black; border: none; border-radius: 5px; padding: 5px; width: 225px;">
+					<input hidden="hidden" name="ms_file" value="${msInfo.ms_file }">
+					<input hidden="hidden" name="ms_confirm"
+						value="${msInfo.ms_confirm }"> <input hidden="hidden"
+						name="ms_confirm_answer" value="${msInfo.ms_confirm_answer }">
 				</div>
 
-				<div>
-					<div style="display: flex;">
-						<div class="join_column">주소</div>
-						<div>
-							<input type="checkbox" id="sameaddr"> 보호자의 주소와 같습니다
-						</div>
+				<!-- 정보입력 -->
+				<div class="mpS-pet-inform2">할 수 있는 케어 종류를 선택해주세요</div>
+				<div style="text-align: center;">
+					희망 지역1은 필수입력입니다
+					<div>
+						희망지역 1 <input name="ms_location1"
+							style="width: 300px; border: none; border-radius: 10px;" value="${msInfo.ms_location1 }">
 					</div>
 					<div>
-						<input id="jm_addr3Input" readonly="readonly" name="m_addr3"
-							class="normal_input" maxlength="5" autocomplete="off"
-							value="${dolbomInfo.m_addr3 }" placeholder="우편번호"> <span
-							id="addrSearchBtn">[검색]</span><br> <br> <input
-							id="jm_addr1Input" readonly="readonly"
-							value="${dolbomInfo.m_addr1 }" name="m_addr1" maxlength="30"
-							autocomplete="off" placeholder="주소" class="normal_input"><br>
-						<br> <input name="m_addr2" maxlength="30" autocomplete="off"
-							class="normal_input" placeholder="상세주소" id="jm_addr2Input"
-							value="${dolbomInfo.m_addr2 }">
+						희망지역 2 <input name="ms_location2"
+							style="width: 300px; border: none; border-radius: 10px;" value="${msInfo.ms_location2 }">
+					</div>
+					<div>
+						희망지역 3 <input name="ms_location3"
+							style="width: 300px; border: none; border-radius: 10px;" value="${msInfo.ms_location3 }">
 					</div>
 				</div>
 				<div>
-					<input type="checkbox" name="d_check" value="1" id="d_check">
-					알러지 또는 주의할 점이 있어요!
+					<input type="radio" name="ms_cctv" value="1" id="ms_cctv_on">
+					cctv촬영도 괜찮아요 <input type="radio" name="ps_cctv" value="2" id="ms_cctv_off">
+					cctv촬영 없는 곳을 원해요
 				</div>
 				<div>
-					<input type="radio" name="d_cctv" value="1" id="d_cctv_on">
-					cctv촬영이 필요해요 <input type="radio" name="d_cctv" value="2"
-						id="d_cctv_off"> cctv촬영은 안할거에요
+					<input type="radio" name="ms_term" value="1" id="ms_term_long" >
+					정기적 계약을 원해요 <input type="radio" name="ps_term" value="2" id="ms_term_short">
+					단발성 계약을 원해요
 				</div>
+				<div>원하시는 시급을 입력해주세요</div>
 				<div>
-					<input type="radio" name="d_term" value="1" id="d_term_long">
-					정기적 계약을 원해요 <input type="radio" name="d_term" value="2"
-						id="d_term_short"> 단발성 계약을 원해요
-				</div>
-				<div>반려동물의 성격은 다음과 같아요</div>
-				<div>
-					<textarea rows="10" cols="50" name="d_personality"
-						placeholder="성격을 간단히 입력해주세요(ex)사나움, 온순함, 사람을 무서워함, 사람을 너무 좋아함 등등)"
-						style="width: 670px; border-radius: 10px; border: none"> ${dolbomInfo.d_personality}</textarea>
+					<input name="ms_pay" value="${msInfo.ms_pay }"
+						style="width: 200px; border: none; border-radius: 10px;">
 				</div>
 
-				<div class="mpS-pet-inform1">반려동물에게 이런 활동이 필요해요!</div>
+				<div>
+					<textarea rows="" cols="" name="ms_exp" placeholder="관련 경험을 적어주세요"
+						style="width: 620px; height: 300px; border: none; border-radius: 10px;">${msInfo.ms_exp}</textarea>
+				</div>
 
+				<div class="mpS-pet-inform1">이런 아이에게 도움을 줄 수 있어요!</div>
 				<div class="mpS-pet-act">
 					<div class="mpS-pet-act-bottom">
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/산책.png" style="width: 70px;">
+							<img alt="" src="resources/img/logo/신생아.png"
+								style="width: 70px; height: 80px;">
 							<div>
-								<input type="checkbox" name="dolbom_act" value="2"
-									id="d_act_1st">산책
+								<input type="checkbox" name="ms_type" value="2" id="ms_type_1st"> 신생아
 							</div>
 						</div>
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/목욕.png" style="width: 70px;">
+							<img alt="" src="resources/img/logo/영아.png"
+								style="width: 70px; height: 80px;">
 							<div>
-								<input type="checkbox" name="dolbom_act" value="3"
-									id="d_act_2nd"> 목욕
+								<input type="checkbox" name="ms_type" value="3"id="ms_type_2nd"> 영아
 							</div>
 						</div>
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/사료.png" style="width: 70px;">
+							<img alt="" src="resources/img/logo/유아.png"
+								style="width: 70px; height: 80px;">
 							<div>
-								<input type="checkbox" name="dolbom_act" value="5"
-									id="d_act_3rd"> 밥챙겨주기
+								<input type="checkbox" name="ms_type" value="5"id="ms_type_3rd"> 유아
 							</div>
 						</div>
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/호텔.png" style="width: 70px;">
+							<img alt="" src="resources/img/logo/초등학생.png"
+								style="width: 70px; height: 80px;">
 							<div>
-								<input type="checkbox" name="dolbom_act" value="7"
-									id="d_act_4th"> 호텔링
+								<input type="checkbox" name="ms_type" value="7" id="ms_type_4th"> 초등학생
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="mpS-pet-inform1">아이에게 이런 활동을 시켜줄 수 있어요!</div>
+				<div class="mpS-pet-act">
+					<div class="mpS-pet-act-bottom">
+						<div class="mpS-pet-act-detail">
+							<img alt="" src="resources/img/logo/실내놀이.png"
+								style="width: 70px;">
+							<div>
+								<input type="checkbox" name="momsitter_act" value="2" id="ms_act_1st">
+								실내놀이
+							</div>
+						</div>
+						<div class="mpS-pet-act-detail">
+							<img alt="" src="resources/img/logo/야외놀이.png"
+								style="width: 70px;">
+							<div>
+								<input type="checkbox" name="momsitter_act" value="3" id="ms_act_2nd">
+								야외놀이
+							</div>
+						</div>
+						<div class="mpS-pet-act-detail">
+							<img alt="" src="resources/img/logo/밥챙겨주기.png"
+								style="width: 70px;">
+							<div>
+								<input type="checkbox" name="momsitter_act" value="5" id="ms_act_3rd">
+								밥챙겨주기
+							</div>
+						</div>
+						<div class="mpS-pet-act-detail">
+							<img alt="" src="resources/img/logo/등하원.png" style="width: 70px;">
+							<div>
+								<input type="checkbox" name="momsitter_act" value="7" id="ms_act_4th">
+								등하원돕기
 							</div>
 						</div>
 					</div>
 					<div class="mpS-pet-act-bottom">
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/배변훈련.png"
-								style="width: 70px;">
+							<img alt="" src="resources/img/logo/영어.png" style="width: 70px;">
 							<div>
-								<input type="checkbox" name="dolbom_act" value="11"
-									id="d_act_5th"> 배변훈련
+								<input type="checkbox" name="momsitter_act" value="11" id="ms_act_5th">
+								영어공부
 							</div>
 						</div>
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/배변훈련.png"
-								style="width: 70px;">
+							<img alt="" src="resources/img/logo/독서.png" style="width: 70px;">
 							<div>
-								<input type="checkbox" name="dolbom_act" value="13"
-									id="d_act_6th"> 놀이훈련
+								<input type="checkbox" name="momsitter_act" value="13" id="ms_act_6th">
+								한글공부
 							</div>
 						</div>
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/놀이훈련.png"
-								style="width: 70px;">
+							<img alt="" src="resources/img/logo/똥.png" style="width: 70px;">
 							<div>
-								<input type="checkbox" name="dolbom_act" value="17"
-									id="d_act_7th"> 사회화훈련
+								<input type="checkbox" name="momsitter_act" value="17" id="ms_act_7th">
+								대소변
 							</div>
 						</div>
 						<div class="mpS-pet-act-detail">
 							<img alt="" src="resources/img/logo/기타.png" style="width: 70px;">
 							<div>
-								<input type="checkbox" name="dolbom_act" value="19"
-									id="d_act_8th"> 기타활동
+								<input type="checkbox" name="momsitter_act" value="19" id="ms_act_8th">
+								기타활동
 							</div>
 						</div>
 					</div>
 				</div>
 				<div>
 					<textarea rows="10" cols="50" placeholder="추가사항이 있다면 이곳에 적어주세요!"
-						name="d_need"
-						style="width: 670px; border-radius: 10px; border: none">${dolbomInfo.d_need}</textarea>
+						name="ms_extra"
+						style="width: 620px; border: none; border-radius: 10px;">${msInfo.ms_extra}</textarea>
 				</div>
 
 				<div style="width: 75%;">
@@ -578,7 +590,7 @@ body {
 						</div>
 					</div>
 				</div>
-				<button style="margin: 20px;">수정 완료</button>
+				<button>수정 완료</button>
 			</div>
 
 
@@ -587,8 +599,6 @@ body {
 
 
 	</form>
-
-
 
 </body>
 </html>

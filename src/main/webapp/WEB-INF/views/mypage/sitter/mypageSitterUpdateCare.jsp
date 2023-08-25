@@ -49,65 +49,66 @@
 		})
 		connectAddrSearchEvent();
 		
-		const d_monday = '${dolbomInfo.monday}';
-		const d_tuesday = '${dolbomInfo.tuesday}';
-		const d_wednesday = '${dolbomInfo.wednesday}';
-		const d_thursday = '${dolbomInfo.thursday}';
-		const d_friday = '${dolbomInfo.friday}';
-		const d_saturday = '${dolbomInfo.saturday}';
-		const d_sunday = '${dolbomInfo.sunday}';
-		
-		if (d_monday === 'monday') {
+		const cs_monday = '${csInfo.monday}';
+		const cs_tuesday = '${csInfo.tuesday}';
+		const cs_wednesday = '${csInfo.wednesday}';
+		const cs_thursday = '${csInfo.thursday}';
+		const cs_friday = '${csInfo.friday}';
+		const cs_saturday = '${csInfo.saturday}';
+		const cs_sunday = '${csInfo.sunday}';
+
+		if (cs_monday === 'monday') {
 			$("#monday").attr('checked', true);
 			document.getElementById('monday_start').disabled = false;
 			document.getElementById('monday_end').disabled = false;
-			$('#monday_start').val('${dolbomInfo.monday_start}');
-			$('#monday_end').val('${dolbomInfo.monday_end}');
+			$('#monday_start').val('${csInfo.monday_start}');
+			$('#monday_end').val('${csInfo.monday_end}');
 		}
-		if (d_tuesday === 'tuesday') {
+		if (cs_tuesday === 'tuesday') {
 			$("#tuesday").attr('checked', true);
 			document.getElementById('tuesday_start').disabled = false;
 			document.getElementById('tuesday_end').disabled = false;
-			$('#tuesday_start').val('${dolbomInfo.tuesday_start}');
-			$('#tuesday_end').val('${dolbomInfo.tuesday_end}');
+			$('#tuesday_start').val('${csInfo.tuesday_start}');
+			$('#tuesday_end').val('${csInfo.tuesday_end}');
 		}
-		if (d_wednesday === 'wednesday') {
+		if (cs_wednesday === 'wednesday') {
 			$("#wednesday").attr('checked', true);
 			document.getElementById('wednesday_start').disabled = false;
 			document.getElementById('wednesday_end').disabled = false;
-			$('#wednesday_start').val('${dolbomInfo.wednesday_start}');
-			$('#wednesday_end').val('${dolbomInfo.wednesday_end}');
+			$('#wednesday_start').val('${csInfo.wednesday_start}');
+			$('#wednesday_end').val('${csInfo.wednesday_end}');
 		}
-		if (d_thursday === 'thursday') {
+		if (cs_thursday === 'thursday') {
 			$("#thursday").attr('checked', true);
 			document.getElementById('thursday_start').disabled = false;
 			document.getElementById('thursday_end').disabled = false;
-			$('#thursday_start').val('${dolbomInfo.thursday_start}');
-			$('#thursday_end').val('${dolbomInfo.thursday_end}');
+			$('#thursday_start').val('${csInfo.thursday_start}');
+			$('#thursday_end').val('${csInfo.thursday_end}');
 		}
-		if (d_friday === 'friday') {
+		if (cs_friday === 'friday') {
 			$("#friday").attr('checked', true);
 			document.getElementById('friday_start').disabled = false;
 			document.getElementById('friday_end').disabled = false;
-			$('#friday_start').val('${dolbomInfo.friday_start}');
-			$('#friday_end').val('${dolbomInfo.friday_end}');
+			$('#friday_start').val('${csInfo.friday_start}');
+			$('#friday_end').val('${csInfo.friday_end}');
 		}
-		if (d_saturday === 'saturday') {
+		if (cs_saturday === 'saturday') {
 			$("#saturday").attr('checked', true);
 			document.getElementById('saturday_start').disabled = false;
 			document.getElementById('saturday_end').disabled = false;
-			$('#saturday_start').val('${dolbomInfo.saturday_start}');
-			$('#saturday_end').val('${dolbomInfo.saturday_end}');
+			$('#saturday_start').val('${csInfo.saturday_start}');
+			$('#saturday_end').val('${csInfo.saturday_end}');
 		}
-		if (d_sunday === 'sunday') {
+		if (cs_sunday === 'sunday') {
 			$("#sunday").attr('checked', true);
 			document.getElementById('sunday_start').disabled = false;
 			document.getElementById('sunday_end').disabled = false;
-			$('#sunday_start').val('${dolbomInfo.sunday_start}');
-			$('#sunday_end').val('${dolbomInfo.sunday_end}');
+			$('#sunday_start').val('${csInfo.sunday_start}');
+			$('#sunday_end').val('${csInfo.sunday_end}');
 		}
 		
 		
+
 		$("#monday").on("change", function() {
 			if (this.checked) {
 				document.getElementById('monday_start').disabled = false;
@@ -178,66 +179,49 @@
 			}
 
 		})
-
-		const gender = '${dolbomInfo.d_gender}';
-
-		console.log(gender);
-		if (gender === 'male') {
-			$("#gender_male").attr('checked', true);
-		} else if (gender === 'female') {
-			$("#gender_female").attr('checked', true);
+		
+		
+		const cs_cctv = '${csInfo.cs_cctv}';
+		if (cs_cctv === '1') {
+			$("#cs_cctv_on").attr('checked', true);
 		} else {
-			$("#gender_neut").attr('checked', true);
+			$("#cs_cctv_off").attr('checked', true);
 		}
 
-		const d_check = '${dolbomInfo.d_check}';
-		if (d_check === '1') {
-			$("#d_check").attr('checked', true);
-		}
-
-		const d_cctv = '${dolbomInfo.d_cctv}';
-		if (d_cctv === '1') {
-			$("#d_cctv_on").attr('checked', true);
+		const cs_term = '${csInfo.cs_term}';
+		if (cs_term === '1') {
+			$("#cs_term_long").attr('checked', true);
 		} else {
-			$("#d_cctv_off").attr('checked', true);
+			$("#cs_term_short").attr('checked', true);
 		}
 
-		const d_term = '${dolbomInfo.d_term}';
-		if (d_term === '1') {
-			$("#d_term_long").attr('checked', true);
-		} else {
-			$("#d_term_short").attr('checked', true);
+		const cs_act = '${csInfo.cs_can_do}';
+		if (cs_act % 2 === 0) {
+			$("#cs_act_1st").attr('checked', true);
 		}
-		
-		const d_act = '${dolbomInfo.d_can_do}';
-		if (d_act % 2 === 0) {
-			$("#d_act_1st").attr('checked', true);
+		if (cs_act % 3 === 0) {
+			$("#cs_act_2nd").attr('checked', true);
 		}
-		if (d_act % 3 === 0) {
-			$("#d_act_2nd").attr('checked', true);
+		if (cs_act % 5 === 0) {
+			$("#cs_act_3rd").attr('checked', true);
 		}
-		if (d_act % 5 === 0) {
-			$("#d_act_3rd").attr('checked', true);
+		if (cs_act % 7 === 0) {
+			$("#cs_act_4th").attr('checked', true);
 		}
-		if (d_act % 7 === 0) {
-			$("#d_act_4th").attr('checked', true);
+		if (cs_act % 11 === 0) {
+			$("#cs_act_5th").attr('checked', true);
 		}
-		if (d_act % 11 === 0) {
-			$("#d_act_5th").attr('checked', true);
+		if (cs_act % 13 === 0) {
+			$("#cs_act_6th").attr('checked', true);
 		}
-		if (d_act % 13 === 0) {
-			$("#d_act_6th").attr('checked', true);
+		if (cs_act % 17 === 0) {
+			$("#cs_act_7th").attr('checked', true);
 		}
-		if (d_act % 17 === 0) {
-			$("#d_act_7th").attr('checked', true);
-		}
-		if (d_act % 19 === 0) {
-			$("#d_act_8th").attr('checked', true);
+		if (cs_act % 19 === 0) {
+			$("#cs_act_8th").attr('checked', true);
 		}
 
-		
-		
-		
+
 	}) // 레디펑션
 </script>
 
@@ -265,8 +249,7 @@ body {
 </head>
 <body>
 
-	<form action="updatePetDolbom.do" method="post"
-		enctype="multipart/form-data">
+	<form action="caresitter.update" method="post" enctype="multipart/form-data">
 
 		<!-- 전체 컨테이너 -->
 		<div class="mpS-pet">
@@ -277,143 +260,108 @@ body {
 					<img id="mpS-logo" alt="" src="resources/img/mypage/MOSI-logo.png">
 				</div>
 
-				<!-- 정보입력 -->
-				<div class="mpS-pet-inform2"
-					style="margin: 10px; text-align: center;">반려동물의 정보를 수정해주세요!</div>
-				<div>반려동물의 이름을 입력해주세요</div>
-				<input hidden="hidden" name="d_no" value="${dolbomInfo.d_no }">
+				<div>${userInfo.user_name}님의 정보를 수정해주세요</div>
+				<div>필요하시다면 서류를 다시 등록해주세요 ※인증이 완료되신 경우에도 서류를 다시 제출하시면 다시 인증절차를
+					밟게 됩니다 참고바랍니다</div>
 				<div>
-					<input placeholder="이름을 입력해주세요" name="d_name"
-						value="${dolbomInfo.d_name }"
-						style="border: none; border-radius: 10px;">
-				</div>
-				<input hidden="hidden" name="d_category" value="3">
-				<div class="mpS-pet-birth">아이의 생년 / 월</div>
-				<div>
-					<input placeholder="아이가 태어난 해를 입력해주세요 (YYYY)" class="birth_input"
-						value="${dolbomInfo.d_year}" name="d_year"> <input
-						placeholder="아이가 태어난 달을 입력해주세요" class="birth_input" name="d_month"
-						value="${dolbomInfo.d_month }">
-				</div>
-				<div class="mpS-pet-gender">
-					<input type="radio" name="d_gender" value="male" id="gender_male">남아
-					<input type="radio" name="d_gender" value="female"
-						id="gender_female">여아 <input type="radio" name="d_gender"
-						value="neut" id="gender_neut">중성화 완료
+					<input type="file" name="cs_Rfile"  style="background-color: #D9D9D9; color: black; border: none; border-radius: 5px; padding: 5px; width: 225px;">
+					<input hidden="hidden" name="cs_file" value="${csInfo.cs_file }">
+					<input hidden="hidden" name="cs_confirm"
+						value="${csInfo.cs_confirm }"> <input hidden="hidden"
+						name="cs_confirm_answer" value="${csInfo.cs_confirm_answer }">
 				</div>
 
-				<div>
-					<div style="display: flex;">
-						<div class="join_column">주소</div>
-						<div>
-							<input type="checkbox" id="sameaddr"> 보호자의 주소와 같습니다
-						</div>
+				<!-- 정보입력 -->
+				<div class="mpS-pet-inform2">할 수 있는 케어 종류를 선택해주세요</div>
+				<div style="text-align: center;">
+					희망 지역1은 필수입력입니다
+					<div>
+						희망지역 1 <input name="cs_location1" style="width: 300px;border: none; border-radius: 10px;" value="${csInfo.cs_location1 }">
 					</div>
 					<div>
-						<input id="jm_addr3Input" readonly="readonly" name="m_addr3"
-							class="normal_input" maxlength="5" autocomplete="off"
-							value="${dolbomInfo.m_addr3 }" placeholder="우편번호"> <span
-							id="addrSearchBtn">[검색]</span><br> <br> <input
-							id="jm_addr1Input" readonly="readonly"
-							value="${dolbomInfo.m_addr1 }" name="m_addr1" maxlength="30"
-							autocomplete="off" placeholder="주소" class="normal_input"><br>
-						<br> <input name="m_addr2" maxlength="30" autocomplete="off"
-							class="normal_input" placeholder="상세주소" id="jm_addr2Input"
-							value="${dolbomInfo.m_addr2 }">
+						희망지역 2 <input name="cs_location2" style="width: 300px;border: none; border-radius: 10px;" value="${csInfo.cs_location2 }">
+					</div>
+					<div>
+						희망지역 3 <input name="cs_location3" style="width: 300px;border: none; border-radius: 10px;" value="${csInfo.cs_location3 }">
 					</div>
 				</div>
 				<div>
-					<input type="checkbox" name="d_check" value="1" id="d_check">
-					알러지 또는 주의할 점이 있어요!
+					<input type="radio" name="cs_cctv" value="1" id="cs_cctv_on">
+					cctv촬영도 괜찮아요 <input type="radio" name="ps_cctv" value="2" id="cs_cctv_off">
+					cctv촬영 없는 곳을 원해요
 				</div>
 				<div>
-					<input type="radio" name="d_cctv" value="1" id="d_cctv_on">
-					cctv촬영이 필요해요 <input type="radio" name="d_cctv" value="2"
-						id="d_cctv_off"> cctv촬영은 안할거에요
+					<input type="radio" name="cs_term" value="1" id="cs_term_long">
+					정기적 계약을 원해요 <input type="radio" name="cs_term" value="2" id="cs_term_short">
+					단발성 계약을 원해요
 				</div>
+				<div>원하시는 시급을 입력해주세요</div>
 				<div>
-					<input type="radio" name="d_term" value="1" id="d_term_long">
-					정기적 계약을 원해요 <input type="radio" name="d_term" value="2"
-						id="d_term_short"> 단발성 계약을 원해요
-				</div>
-				<div>반려동물의 성격은 다음과 같아요</div>
-				<div>
-					<textarea rows="10" cols="50" name="d_personality"
-						placeholder="성격을 간단히 입력해주세요(ex)사나움, 온순함, 사람을 무서워함, 사람을 너무 좋아함 등등)"
-						style="width: 670px; border-radius: 10px; border: none"> ${dolbomInfo.d_personality}</textarea>
+					<input name="cs_pay" style="width: 200px;border: none; border-radius: 10px;" value="${csInfo.cs_pay}">
 				</div>
 
-				<div class="mpS-pet-inform1">반려동물에게 이런 활동이 필요해요!</div>
+				<div>
+					<textarea rows="" cols="" name="cs_exp" placeholder="관련 경험을 적어주세요" style="width: 620px; height: 300px; border: none; border-radius: 10px;">${csInfo.cs_exp }</textarea>
+				</div>
 
+				<div class="mpS-pet-inform1">돌봄대상자에게 이런 활동을 시켜줄 수 있어요!</div>
 				<div class="mpS-pet-act">
 					<div class="mpS-pet-act-bottom">
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/산책.png" style="width: 70px;">
+							<img alt="" src="resources/img/logo/설거지.png" style="width: 70px;">
 							<div>
-								<input type="checkbox" name="dolbom_act" value="2"
-									id="d_act_1st">산책
+							<input type="checkbox" name="caresitter_act" value="2" id="cs_act_1st"> 가사활동
 							</div>
+						</div>				
+						<div class="mpS-pet-act-detail">
+						<img alt="" src="resources/img/logo/신체활동.png" style="width: 70px;">
+						<div>
+							<input type="checkbox" name="caresitter_act" value="3" id="cs_act_2nd"> 신체활동
+						</div>	
 						</div>
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/목욕.png" style="width: 70px;">
-							<div>
-								<input type="checkbox" name="dolbom_act" value="3"
-									id="d_act_2nd"> 목욕
-							</div>
+						<img alt="" src="resources/img/logo/인지활동.png" style="width: 70px;">
+						<div>
+							<input type="checkbox" name="caresitter_act" value="5" id="cs_act_3rd"> 인지활동
+						</div>
 						</div>
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/사료.png" style="width: 70px;">
-							<div>
-								<input type="checkbox" name="dolbom_act" value="5"
-									id="d_act_3rd"> 밥챙겨주기
-							</div>
-						</div>
-						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/호텔.png" style="width: 70px;">
-							<div>
-								<input type="checkbox" name="dolbom_act" value="7"
-									id="d_act_4th"> 호텔링
-							</div>
+						<img alt="" src="resources/img/logo/식사활동.png" style="width: 70px;">
+						<div>
+							<input type="checkbox" name="caresitter_act" value="7" id="cs_act_4th"> 식사
+						</div>	
 						</div>
 					</div>
 					<div class="mpS-pet-act-bottom">
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/배변훈련.png"
-								style="width: 70px;">
-							<div>
-								<input type="checkbox" name="dolbom_act" value="11"
-									id="d_act_5th"> 배변훈련
-							</div>
+						<img alt="" src="resources/img/logo/기저귀.png" style="width: 70px;">
+						<div>
+							<input type="checkbox" name="caresitter_act" value="11" id="cs_act_5th"> 기저귀케어
+						</div>	
 						</div>
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/배변훈련.png"
-								style="width: 70px;">
-							<div>
-								<input type="checkbox" name="dolbom_act" value="13"
-									id="d_act_6th"> 놀이훈련
-							</div>
+						<img alt="" src="resources/img/logo/목욕2.png" style="width: 70px;">
+						<div>
+							<input type="checkbox" name="caresitter_act" value="13" id="cs_act_6th"> 샤워
+						</div>	
 						</div>
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/놀이훈련.png"
-								style="width: 70px;">
-							<div>
-								<input type="checkbox" name="dolbom_act" value="17"
-									id="d_act_7th"> 사회화훈련
-							</div>
+						<img alt="" src="resources/img/logo/말벗.png" style="width: 70px;">
+						<div>
+							<input type="checkbox" name="caresitter_act" value="17" id="cs_act_7th"> 말벗
+						</div>	
 						</div>
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/기타.png" style="width: 70px;">
-							<div>
-								<input type="checkbox" name="dolbom_act" value="19"
-									id="d_act_8th"> 기타활동
-							</div>
+						<img alt="" src="resources/img/logo/기타.png" style="width: 70px;">
+						<div>
+							<input type="checkbox" name="caresitter_act" value="19" id="cs_act_8th"> 기타활동
+						</div>	
 						</div>
 					</div>
 				</div>
 				<div>
 					<textarea rows="10" cols="50" placeholder="추가사항이 있다면 이곳에 적어주세요!"
-						name="d_need"
-						style="width: 670px; border-radius: 10px; border: none">${dolbomInfo.d_need}</textarea>
+						name="cs_extra" style="width: 620px; border: none; border-radius: 10px;">${csInfo.cs_extra }</textarea>
 				</div>
 
 				<div style="width: 75%;">
@@ -578,7 +526,7 @@ body {
 						</div>
 					</div>
 				</div>
-				<button style="margin: 20px;">수정 완료</button>
+				<button>수정 완료</button>
 			</div>
 
 
@@ -587,8 +535,6 @@ body {
 
 
 	</form>
-
-
 
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.sh.pj.account;
 
 import com.sh.pj.care.CareTakerDTO;
 import com.sh.pj.mom.MomTakerDTO;
+import com.sh.pj.mypage.ContractDTO;
 import com.sh.pj.pet.PetTakerDTO;
 
 public interface MemberMapper {
@@ -37,6 +38,7 @@ public interface MemberMapper {
 	int upSCount();
 	int upDCount();
 
+	int endCnt(ContractDTO cntDTO);
 	
 //	최초 카운트 계산용 메소드 / 계산 후 주석처리해도 상관 없음
 	int countPetSitter();
@@ -48,6 +50,7 @@ public interface MemberMapper {
 	int countCont();
 
 	int regDefaultcount(countDTO cntDTO);
+
 
 	
 	

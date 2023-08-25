@@ -10,9 +10,9 @@
 <body>
 	<div>
 		<c:forEach items="${DolbomList }" var="s">
-			<div><span onclick="location.href='mypage.takerUpdateAnotherDolbom.go?d_no=${s.d_no}'">${s.d_name }, ${s.age }${s.agetype }</span></div>
+			<div><span onclick="location.href='mypage.takerUpdateAnotherCareDolbom.go?d_no=${s.d_no}'">${s.d_name }, ${s.age }${s.agetype }</span></div>
 		</c:forEach>
-	<div><span onclick="location.href='mypage.takerRegAnotherDolbom.go'"> + 새로운 돌보미를 입력해주세요</span></div>
+	<div><span onclick="location.href='mypage.takerRegAnotherCareDolbom.go'"> + 새로운 돌보미를 입력해주세요</span></div>
 	</div>
 </body>
 </html>

@@ -30,7 +30,7 @@
 		insert into petsitter_tbl values (#{ps_id}, #{ps_file}, #{ps_confirm}, #{ps_confirm_answer}, #{ps_cctv}, #{ps_term}, #{ps_day}, #{ps_hour}, #{ps_location1}, #{ps_location2}, #{ps_location3}, #{ps_extra}, #{ps_exp}, #{ps_pay}, #{ps_point}, #{ps_count}, #{ps_can_do}, #{ps_can_type}, 0, null, null, null)
 	</insert>
 
-	<update id="changemsstatus">
+	<update id="changePsStatus">
 		update jsn_user_tbl set user_ps_status = 1 where user_id = #{user_id}
 	</update>
 
@@ -62,6 +62,19 @@
 	<update id="updatePetSitter">
 		update petsitter_tbl set ps_file = #{ps_file}, ps_confirm = #{ps_confirm}, ps_confirm_answer = #{ps_confirm_answer}, ps_cctv = #{ps_cctv}, ps_term = #{ps_term}, ps_day = #{ps_day}, ps_hour = #{ps_hour}, ps_location1 = #{ps_location1}, ps_location2 = #{ps_location2}, ps_location3 = #{ps_location3}, ps_extra = #{ps_extra}, ps_exp = #{ps_exp}, ps_pay = #{ps_pay}, ps_can_do = #{ps_can_do}, ps_can_type = #{ps_can_type} where ps_id = #{ps_id}
 	</update>
+	
+	<select id="getMsg" resultType="com.sh.pj.pet.PetDTO">
+		SELECT * fROM (SELECT ROWNUM AS rn, it.* FROM petsitter_tbl it WHERE
+		(it.ps_location1 LIKE '%' || #{ps_search} || '%' OR it.ps_location2 LIKE '%' || #{ps_search} || '%' OR it.ps_location3 LIKE '%' || #{ps_search} || '%')
+		<!-- AND it.inquiry_category = #{category} -->
+		ORDER BY it.ps_write_date DESC)
+		WHERE rn &gt;= #{ps_start} and rn &lt;= #{ps_end}
+	</select>
+	
+	<select id="getMsgCount" resultType="int"
+		parameterType="com.sh.pj.pet.PetSelector">
+		select count(*) from petsitter_tbl where ps_location1 like '%'||#{ps_search}||'%' or ps_location2 like '%'||#{ps_search}||'%' or ps_location3 like '%'||#{ps_search}||'%'
+	</select>
 
 
 </mapper>

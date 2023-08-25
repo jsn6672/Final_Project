@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sh.pj.account.MembertDAO;
 import com.sh.pj.ask.AskDAO;
+import com.sh.pj.mypage.ContractDTO;
+import com.sh.pj.pet.PetDAO;
 import com.sh.pj.account.MemberDTO;
 
 @Controller
@@ -28,10 +30,16 @@ public class HomeController {
 	@Autowired
 	private AskDAO aDAO;
 	
+	@Autowired
+	private PetDAO pDAO;
+	
 	private boolean firstReq;
+	
+	private boolean firstReq2;
 	
 	public HomeController() {
 		firstReq = true;
+		firstReq2 = true;
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -46,9 +54,15 @@ public class HomeController {
 			firstReq=false;
 		}
 		
+		if (firstReq2) {
+			pDAO.calcAllMsgCountPetSitter();
+			firstReq2=false;
+		}
+		
 		req.setAttribute("contentPage", "index.jsp");
 		return "home";
 	}
+	
 
 	@RequestMapping(value = "go.home", method = RequestMethod.GET)
 	public String home2(HttpServletRequest req) {
@@ -164,6 +178,13 @@ public class HomeController {
 		
 		mDAO.countTBL();
 		return "redirect:/go.home";
+	}
+	
+	@RequestMapping(value = "endCnt", method = RequestMethod.GET)
+	public String endCnt(HttpServletRequest req, ContractDTO cntDTO) {
+		
+		mDAO.EndCnt(req, cntDTO);
+		return "redirect:/mypage.go";
 	}
 	
 	

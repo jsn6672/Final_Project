@@ -9,12 +9,20 @@ public class MoneyDTO {
 	private int mm_date;
 	private String mm_ticket;
 	private int mm_price;
-	private String mm_state;
-	private Date mm_start_date;
-	private Date mm_end_date;
+	private String mm_state; 
+    private Date mm_start_date;
+
+    private Date mm_end_date;
 	
 	public MoneyDTO() {
 		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "MoneyDTO [mm_no=" + mm_no + ", mm_id=" + mm_id + ", mm_name=" + mm_name + ", mm_date=" + mm_date
+				+ ", mm_ticket=" + mm_ticket + ", mm_price=" + mm_price + ", mm_state=" + mm_state + ", mm_start_date="
+				+ mm_start_date + ", mm_end_date=" + mm_end_date + "]";
 	}
 
 	public int getMm_no() {
@@ -88,28 +96,8 @@ public class MoneyDTO {
 	public void setMm_end_date(Date mm_end_date) {
 		this.mm_end_date = mm_end_date;
 	}
-
-	public MoneyDTO(int mm_no, String mm_id, String mm_name, int mm_date, String mm_ticket, int mm_price,
-			String mm_state, Date mm_start_date, Date mm_end_date) {
-		super();
-		this.mm_no = mm_no;
-		this.mm_id = mm_id;
-		this.mm_name = mm_name;
-		this.mm_date = mm_date;
-		this.mm_ticket = mm_ticket;
-		this.mm_price = mm_price;
-		this.mm_state = mm_state;
-		this.mm_start_date = mm_start_date;
-		this.mm_end_date = mm_end_date;
-	}
-
-	@Override
-	public String toString() {
-		return "MoneyDTO [mm_no=" + mm_no + ", mm_id=" + mm_id + ", mm_name=" + mm_name + ", mm_date=" + mm_date
-				+ ", mm_ticket=" + mm_ticket + ", mm_price=" + mm_price + ", mm_state=" + mm_state + ", mm_start_date="
-				+ mm_start_date + ", mm_end_date=" + mm_end_date + "]";
-	}
-
+	
+	
 	
 	
 }

@@ -496,3 +496,53 @@ button {
 	display: flex;
 	
 } */
+
+.ticketCheckContainer {
+	width: 80vw;
+	height: 100%;
+	background-color: #FFEBE4;
+}
+
+#span-moneyList {
+	font-weight: bold;
+}
+
+.List-wrap   {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start; /* 행들을 시작점으로 정렬 */
+	padding: 3%;
+	margin: 0 -1.5%; /* 추가 */
+}
+
+.moneyList-1 {
+	width: calc(30% - 10px);
+	height: 30%;
+	margin: 2%;
+	padding: 1%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+	background-color: rgba(255, 255, 255, 0.5);
+	border: 3px solid gray;
+	border-radius: 5%;
+}
+
+.ticket-check-btn {
+	width: 100%;
+	margin: auto;
+	transition: all 0.3s ease;
+	background-color: #E7B5AC;
+	border: none;
+	border-radius: 5%;
+	cursor: pointer;
+}
+
+.ticket-check-btn:hover {
+	box-shadow: -7px -7px 20px 0px #fff9, 
+				-4px -4px 5px 0px #fff9, 
+				7px 7px 20px #0002, 
+				4px 4px 5px 0px #0001;
+}

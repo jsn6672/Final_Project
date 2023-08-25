@@ -39,13 +39,30 @@ public interface MypageMapper {
 	public int countTakerCont(MemberDTO mDTO);
 
 	public List<DolbomDTO> getDolbomList(MemberDTO mDTO);
+	public List<DolbomDTO> getPetDolbomList(MemberDTO mDTO);
+	public List<DolbomDTO> getMomDolbomList(MemberDTO mDTO);
+	public List<DolbomDTO> getCareDolbomList(MemberDTO mDTO);
 
 	public MemberDTO getUserID(ContractDTO cntDTO2);
 
 	public int confirmticket(MoneyDTO mm);
 
 
-	public int confirmdate(MoneyDTO mm); 
+	public int confirmdate1(MoneyDTO mm); 
+	public int confirmdate3(MoneyDTO mm); 	
+	public int confirmdate6(MoneyDTO mm); 
+	public int confirmdate12(MoneyDTO mm); 
+
+	public int confirmdatePet1(MoneyDTO mm); 
+	public int confirmdatePet3(MoneyDTO mm); 	
+	public int confirmdatePet6(MoneyDTO mm); 
+	public int confirmdatePet12(MoneyDTO mm); 
+
+	public int confirmdateCare1(MoneyDTO mm); 
+	public int confirmdateCare3(MoneyDTO mm); 	
+	public int confirmdateCare6(MoneyDTO mm); 
+	public int confirmdateCare12(MoneyDTO mm); 
+	
 
 	public PetDTO getPetSitter(MemberDTO sitterDTO);
 
@@ -58,6 +75,13 @@ public interface MypageMapper {
 	public int updateCntDolbom(ContractDTO cntDTO);
 	
 	public int updateCntDolbomNope(ContractDTO cntDTO);
+
+	public List<MoneyDTO> getcertiflist();
+
+	public int getperiod(MoneyDTO mm, MomDTO mDTO);
+
+	
+
 
 
 

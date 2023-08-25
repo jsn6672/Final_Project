@@ -48,7 +48,7 @@
 
 		})
 		connectAddrSearchEvent();
-		
+
 		const d_monday = '${dolbomInfo.monday}';
 		const d_tuesday = '${dolbomInfo.tuesday}';
 		const d_wednesday = '${dolbomInfo.wednesday}';
@@ -56,7 +56,7 @@
 		const d_friday = '${dolbomInfo.friday}';
 		const d_saturday = '${dolbomInfo.saturday}';
 		const d_sunday = '${dolbomInfo.sunday}';
-		
+
 		if (d_monday === 'monday') {
 			$("#monday").attr('checked', true);
 			document.getElementById('monday_start').disabled = false;
@@ -106,8 +106,7 @@
 			$('#sunday_start').val('${dolbomInfo.sunday_start}');
 			$('#sunday_end').val('${dolbomInfo.sunday_end}');
 		}
-		
-		
+
 		$("#monday").on("change", function() {
 			if (this.checked) {
 				document.getElementById('monday_start').disabled = false;
@@ -186,8 +185,6 @@
 			$("#gender_male").attr('checked', true);
 		} else if (gender === 'female') {
 			$("#gender_female").attr('checked', true);
-		} else {
-			$("#gender_neut").attr('checked', true);
 		}
 
 		const d_check = '${dolbomInfo.d_check}';
@@ -208,7 +205,7 @@
 		} else {
 			$("#d_term_short").attr('checked', true);
 		}
-		
+
 		const d_act = '${dolbomInfo.d_can_do}';
 		if (d_act % 2 === 0) {
 			$("#d_act_1st").attr('checked', true);
@@ -235,9 +232,6 @@
 			$("#d_act_8th").attr('checked', true);
 		}
 
-		
-		
-		
 	}) // 레디펑션
 </script>
 
@@ -265,7 +259,7 @@ body {
 </head>
 <body>
 
-	<form action="updatePetDolbom.do" method="post"
+	<form action="updateMomDolbom.do" method="post"
 		enctype="multipart/form-data">
 
 		<!-- 전체 컨테이너 -->
@@ -279,27 +273,26 @@ body {
 
 				<!-- 정보입력 -->
 				<div class="mpS-pet-inform2"
-					style="margin: 10px; text-align: center;">반려동물의 정보를 수정해주세요!</div>
-				<div>반려동물의 이름을 입력해주세요</div>
+					style="margin: 10px; text-align: center;">아이의 정보를 수정해 주세요!</div>
+				<div>아이의 이름을 알려주세요</div>
 				<input hidden="hidden" name="d_no" value="${dolbomInfo.d_no }">
 				<div>
 					<input placeholder="이름을 입력해주세요" name="d_name"
 						value="${dolbomInfo.d_name }"
 						style="border: none; border-radius: 10px;">
 				</div>
-				<input hidden="hidden" name="d_category" value="3">
+				<input hidden="hidden" name="d_category" value="2">
 				<div class="mpS-pet-birth">아이의 생년 / 월</div>
 				<div>
 					<input placeholder="아이가 태어난 해를 입력해주세요 (YYYY)" class="birth_input"
-						value="${dolbomInfo.d_year}" name="d_year"> <input
+						name="d_year" value="${dolbomInfo.d_year }"> <input
 						placeholder="아이가 태어난 달을 입력해주세요" class="birth_input" name="d_month"
 						value="${dolbomInfo.d_month }">
 				</div>
 				<div class="mpS-pet-gender">
 					<input type="radio" name="d_gender" value="male" id="gender_male">남아
 					<input type="radio" name="d_gender" value="female"
-						id="gender_female">여아 <input type="radio" name="d_gender"
-						value="neut" id="gender_neut">중성화 완료
+						id="gender_female">여아
 				</div>
 
 				<div>
@@ -336,76 +329,76 @@ body {
 					정기적 계약을 원해요 <input type="radio" name="d_term" value="2"
 						id="d_term_short"> 단발성 계약을 원해요
 				</div>
-				<div>반려동물의 성격은 다음과 같아요</div>
+				<div>아이의 성격은 다음과 같아요</div>
 				<div>
 					<textarea rows="10" cols="50" name="d_personality"
-						placeholder="성격을 간단히 입력해주세요(ex)사나움, 온순함, 사람을 무서워함, 사람을 너무 좋아함 등등)"
-						style="width: 670px; border-radius: 10px; border: none"> ${dolbomInfo.d_personality}</textarea>
+						placeholder="성격을 간단히 입력해주세요"
+						style="width: 670px; border-radius: 10px; border: none">${dolbomInfo.d_personality}</textarea>
 				</div>
 
-				<div class="mpS-pet-inform1">반려동물에게 이런 활동이 필요해요!</div>
+				<div class="mpS-pet-inform1">아이에게 이런 활동이 필요해요!</div>
 
 				<div class="mpS-pet-act">
 					<div class="mpS-pet-act-bottom">
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/산책.png" style="width: 70px;">
+							<img alt="" src="resources/img/logo/실내놀이.png"
+								style="width: 70px;">
 							<div>
 								<input type="checkbox" name="dolbom_act" value="2"
-									id="d_act_1st">산책
+									id="d_act_1st">실내놀이
 							</div>
 						</div>
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/목욕.png" style="width: 70px;">
+							<img alt="" src="resources/img/logo/야외놀이.png"
+								style="width: 70px;">
 							<div>
 								<input type="checkbox" name="dolbom_act" value="3"
-									id="d_act_2nd"> 목욕
+									id="d_act_2nd">야외놀이
 							</div>
 						</div>
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/사료.png" style="width: 70px;">
+							<img alt="" src="resources/img/logo/밥챙겨주기.png"
+								style="width: 70px;">
 							<div>
 								<input type="checkbox" name="dolbom_act" value="5"
 									id="d_act_3rd"> 밥챙겨주기
 							</div>
 						</div>
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/호텔.png" style="width: 70px;">
+							<img alt="" src="resources/img/logo/등하원.png" style="width: 70px;">
 							<div>
 								<input type="checkbox" name="dolbom_act" value="7"
-									id="d_act_4th"> 호텔링
+									id="d_act_4th">등하원돕기
 							</div>
 						</div>
 					</div>
 					<div class="mpS-pet-act-bottom">
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/배변훈련.png"
-								style="width: 70px;">
+							<img alt="" src="resources/img/logo/영어.png" style="width: 70px;">
 							<div>
 								<input type="checkbox" name="dolbom_act" value="11"
-									id="d_act_5th"> 배변훈련
+									id="d_act_5th">영어공부
 							</div>
 						</div>
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/배변훈련.png"
-								style="width: 70px;">
+							<img alt="" src="resources/img/logo/독서.png" style="width: 70px;">
 							<div>
 								<input type="checkbox" name="dolbom_act" value="13"
-									id="d_act_6th"> 놀이훈련
+									id="d_act_6th">한글공부
 							</div>
 						</div>
 						<div class="mpS-pet-act-detail">
-							<img alt="" src="resources/img/logo/놀이훈련.png"
-								style="width: 70px;">
+							<img alt="" src="resources/img/logo/똥.png" style="width: 70px;">
 							<div>
 								<input type="checkbox" name="dolbom_act" value="17"
-									id="d_act_7th"> 사회화훈련
+									id="d_act_7th">대소변
 							</div>
 						</div>
 						<div class="mpS-pet-act-detail">
 							<img alt="" src="resources/img/logo/기타.png" style="width: 70px;">
 							<div>
 								<input type="checkbox" name="dolbom_act" value="19"
-									id="d_act_8th"> 기타활동
+									id="d_act_8th">기타활동
 							</div>
 						</div>
 					</div>

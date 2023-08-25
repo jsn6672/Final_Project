@@ -5,12 +5,14 @@ import java.util.List;
 import com.sh.pj.ReviewDTO;
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
+import com.sh.pj.care.CareDTO;
 
 public interface MomMapper {
 
 	public List<MomDTO> getAll(MomDTO momDTO);
 
 	public MomDTO detail(MomDTO momDTO);
+
 
 	public int regDolbom(DolbomDTO dDTO);
 
@@ -29,5 +31,6 @@ public interface MomMapper {
 	public MemberDTO detailUser2(DolbomDTO pp);
 
 	public List<DolbomDTO> getAllTaker(DolbomDTO dolbomDTO);
+
 
 }

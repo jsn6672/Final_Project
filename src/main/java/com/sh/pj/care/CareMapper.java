@@ -28,5 +28,9 @@ public interface CareMapper {
 
 	public MemberDTO detailUser2(DolbomDTO pp);
 
+	CareDTO getCareSitterInfo(MemberDTO mDTO);
+
+	int updateCareSitter(CareDTO cDTO);
+
 
 }

@@ -87,9 +87,9 @@ public class MomDAO {
 				+ dDTO.getSunday_start() + "!" + dDTO.getSunday_end();
 		dDTO.setD_hour(d_hour);
 
-		if (dDTO.getD_check()==null) {
+		if (dDTO.getD_check() == null) {
 			dDTO.setD_check("0");
-		}else {
+		} else {
 			dDTO.setD_check("1");
 		}
 
@@ -139,7 +139,6 @@ public class MomDAO {
 
 			momDTO.setMs_id(mDTO.getUser_id());
 
-
 			momDTO.setMs_confirm("0");
 			momDTO.setMs_confirm_answer("ndy");
 
@@ -152,8 +151,8 @@ public class MomDAO {
 
 			String ms_day = momDTO.getMonday() + "!" + momDTO.getTuesday() + "!" + momDTO.getWednesday() + "!"
 
-					+ momDTO.getThursday() + "!" + momDTO.getFriday() + "!" + momDTO.getSaturday() + "!" + momDTO.getSunday();
-
+					+ momDTO.getThursday() + "!" + momDTO.getFriday() + "!" + momDTO.getSaturday() + "!"
+					+ momDTO.getSunday();
 
 			momDTO.setMs_day(ms_day);
 
@@ -175,11 +174,11 @@ public class MomDAO {
 			if (ss.getMapper(MomMapper.class).regMomSitter(momDTO) == 1) {
 
 				System.out.println("등록 완료");
-				ss.getMapper(MomMapper.class).changemsstatus(mDTO);
 				mDTO.setUser_ms_status(1);
+				ss.getMapper(MomMapper.class).changemsstatus(mDTO);
 				req.getSession().setAttribute("userInfo", mDTO);
 				ss.getMapper(MemberMapper.class).upSCount();
-				
+
 			}
 
 		} catch (Exception e) {
@@ -190,12 +189,13 @@ public class MomDAO {
 	}
 
 	public void deteteMomsitter(HttpServletRequest req, MomDTO mDTO, Model model) {
-		if(ss.getMapper(MomMapper.class).deleteMomsitter(mDTO) == 1) {
+		if (ss.getMapper(MomMapper.class).deleteMomsitter(mDTO) == 1) {
 			System.out.println("삭제 성공!");
 			req.setAttribute("deletecheck", "1");
 		}
-		
+
 	}
+
 
 	public void detailtaker(HttpServletRequest req, DolbomDTO dolbomDTO, Model m) {
 		DolbomDTO pp = ss.getMapper(MomMapper.class).detailtaker(dolbomDTO);
@@ -259,3 +259,149 @@ public class MomDAO {
 	}
 }
 
+	public void getMomSitterInfo(HttpServletRequest req) {
+
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+
+		MomDTO momDTO = ss.getMapper(MomMapper.class).getMomSitterInfo(mDTO);
+
+		String[] petsitter_hour = momDTO.getMs_hour().split("!");
+
+		momDTO.setMonday_start(Integer.parseInt(petsitter_hour[0]));
+		momDTO.setMonday_end(Integer.parseInt(petsitter_hour[1]));
+		momDTO.setTuesday_start(Integer.parseInt(petsitter_hour[2]));
+		momDTO.setTuesday_end(Integer.parseInt(petsitter_hour[3]));
+		momDTO.setWednesday_start(Integer.parseInt(petsitter_hour[4]));
+		momDTO.setWednesday_end(Integer.parseInt(petsitter_hour[5]));
+		momDTO.setThursday_start(Integer.parseInt(petsitter_hour[6]));
+		momDTO.setThursday_end(Integer.parseInt(petsitter_hour[7]));
+		momDTO.setFriday_start(Integer.parseInt(petsitter_hour[8]));
+		momDTO.setFriday_end(Integer.parseInt(petsitter_hour[9]));
+		momDTO.setSaturday_start(Integer.parseInt(petsitter_hour[10]));
+		momDTO.setSaturday_end(Integer.parseInt(petsitter_hour[11]));
+		momDTO.setSunday_start(Integer.parseInt(petsitter_hour[12]));
+		momDTO.setSunday_end(Integer.parseInt(petsitter_hour[13]));
+
+		String[] petsitter_day = momDTO.getMs_day().split("!");
+
+		momDTO.setMonday(petsitter_day[0]);
+		momDTO.setTuesday(petsitter_day[1]);
+		momDTO.setWednesday(petsitter_day[2]);
+		momDTO.setThursday(petsitter_day[3]);
+		momDTO.setFriday(petsitter_day[4]);
+		momDTO.setSaturday(petsitter_day[5]);
+		momDTO.setSunday(petsitter_day[6]);
+
+		req.setAttribute("msInfo", momDTO);
+
+	}
+
+	public void updateMomSitter(HttpServletRequest req, MomDTO momDTO) {
+
+		try {
+			String imgOrgName = momDTO.getMs_Rfile().getOriginalFilename();
+			long imgSize = momDTO.getMs_Rfile().getSize();
+			if (imgSize != 0) {
+				String extension = imgOrgName.substring(imgOrgName.lastIndexOf("."), imgOrgName.length());
+
+				String newName = UUID.randomUUID().toString().split("-")[0];
+
+				String path = sc.getRealPath("resources/img");
+
+				File saveImg = new File(path + "//" + newName + extension);
+
+				momDTO.getMs_Rfile().transferTo(saveImg);
+				momDTO.setMs_file(newName + extension);
+				momDTO.setMs_confirm("0");
+				momDTO.setMs_confirm_answer("ndy");
+			}
+
+			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+
+			momDTO.setMs_id(mDTO.getUser_id());
+
+			int j = 1;
+			for (int i = 0; i < momDTO.getMomsitter_act().length; i++) {
+				j *= momDTO.getMomsitter_act()[i];
+			}
+
+			momDTO.setMs_can_do(Integer.toString(j));
+
+			String ms_day = momDTO.getMonday() + "!" + momDTO.getTuesday() + "!" + momDTO.getWednesday() + "!"
+
+					+ momDTO.getThursday() + "!" + momDTO.getFriday() + "!" + momDTO.getSaturday() + "!"
+					+ momDTO.getSunday();
+
+			momDTO.setMs_day(ms_day);
+
+			String d_hour = momDTO.getMonday_start() + "!" + momDTO.getMonday_end() + "!" + momDTO.getTuesday_start()
+					+ "!" + momDTO.getTuesday_end() + "!" + momDTO.getWednesday_start() + "!"
+					+ momDTO.getWednesday_end() + "!" + momDTO.getThursday_start() + "!" + momDTO.getThursday_end()
+					+ "!" + momDTO.getFriday_start() + "!" + momDTO.getFriday_end() + "!" + momDTO.getSaturday_start()
+					+ "!" + momDTO.getSaturday_end() + "!" + momDTO.getSunday_start() + "!" + momDTO.getSunday_end();
+			momDTO.setMs_hour(d_hour);
+
+			int j1 = 1;
+			for (int i1 = 0; i1 < momDTO.getMs_type().length; i1++) {
+				j1 *= momDTO.getMs_type()[i1];
+			}
+			momDTO.setMs_can_type(Integer.toString(j1));
+
+
+			System.out.println(momDTO);
+
+			if (ss.getMapper(MomMapper.class).updateMomSitter(momDTO) == 1) {
+
+				System.out.println("수정 완료");
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+	}
+
+	public void updateMomDolbom(HttpServletRequest req, DolbomDTO dDTO) {
+		String d_day = dDTO.getMonday() + "!" + dDTO.getTuesday() + "!" + dDTO.getWednesday() + "!" + dDTO.getThursday()
+				+ "!" + dDTO.getFriday() + "!" + dDTO.getSaturday() + "!" + dDTO.getSunday();
+
+		dDTO.setD_day(d_day);
+
+		String d_hour = dDTO.getMonday_start() + "!" + dDTO.getMonday_end() + "!" + dDTO.getTuesday_start() + "!"
+				+ dDTO.getTuesday_end() + "!" + dDTO.getWednesday_start() + "!" + dDTO.getWednesday_end() + "!"
+				+ dDTO.getThursday_start() + "!" + dDTO.getThursday_end() + "!" + dDTO.getFriday_start() + "!"
+				+ dDTO.getFriday_end() + "!" + dDTO.getSaturday_start() + "!" + dDTO.getSaturday_end() + "!"
+				+ dDTO.getSunday_start() + "!" + dDTO.getSunday_end();
+		dDTO.setD_hour(d_hour);
+
+		if (!dDTO.getD_check().equals("1")) {
+			dDTO.setD_check("0");
+		}
+
+		int i = 1;
+
+		for (int j = 0; j < dDTO.getDolbom_act().length; j++) {
+			i *= dDTO.getDolbom_act()[j];
+		}
+
+		dDTO.setD_can_do(Integer.toString(i));
+
+		dDTO.setD_location(
+				req.getParameter("m_addr1") + "!" + req.getParameter("m_addr2") + "!" + req.getParameter("m_addr3"));
+
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		dDTO.setD_id(mDTO.getUser_id());
+
+		dDTO.setD_sitterage("ndy");
+		dDTO.setD_title("ndy");
+
+		System.out.println(dDTO);
+		
+//		따로 만드는게 맞지만 다른게 없어서 그냥 하나로 통일...(petmapper에 있는건 좀 안타깝긴 함)
+		if (ss.getMapper(PetMapper.class).updateDolbom(dDTO) == 1) {
+			System.out.println("돌보미 수정 완료");
+		}
+
+	}
+}

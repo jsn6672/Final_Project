@@ -65,7 +65,12 @@
 					</c:if>
 					<c:if test="${s.cnt_sitter_ok eq 2 and s.cnt_dolbom_ok eq 2}">
 						<div style="display: flex; justify-content: flex-end; gap: 10px;">
-							계약이 체결되었습니다 체결되지 않은 나머지 신청은 거절을 눌러주세요</div>
+							계약이 체결되었습니다 체결되지 않은 나머지 신청은 거절을 눌러주세요 <br> 계약이 끝나셨다면 완료 버튼을
+							눌러 리뷰를 받아주세요 <br>
+							<button style="height: 50px; width: 130px;"
+								onclick="location.href='endCnt?cnt_no=${s.cnt_no}'">계약
+								완료</button>
+						</div>
 					</c:if>
 				</div>
 
@@ -121,8 +126,7 @@
 									<c:if test="${ss.cnt_dolbom_ok eq 2 and ss.cnt_sitter_ok eq 2}">
 										<div
 											style="display: flex; justify-content: flex-end; gap: 10px;">
-											계약이 체결되었습니다 체결되지 않은 나머지 신청은 거절을 눌러주세요
-											 </div>
+											계약이 체결되었습니다 체결되지 않은 나머지 신청은 거절을 눌러주세요</div>
 									</c:if>
 								</div>
 							</c:forEach>
