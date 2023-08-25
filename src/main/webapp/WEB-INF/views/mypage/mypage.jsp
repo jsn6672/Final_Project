@@ -83,6 +83,11 @@
 					onmouseout="restoreColor('mpMenu-part5')">
 					<a href="mypage.regReview.go">리뷰작성</a>
 				</div>
+				<div class="mpMenu-part" id="mpMenu-part7"
+					onmouseover="changeColor('mpMenu-part7')"
+					onmouseout="restoreColor('mpMenu-part7')">
+					<a href="targetPage.jsp?mm_id=${sessionScope.userInfo.user_id}">이용권확인</a>
+				</div>
 				<div class="mpMenu-part" id="mpMenu-part6"
 					onmouseover="changeColor('mpMenu-part6')"
 					onmouseout="restoreColor('mpMenu-part6')">
@@ -92,12 +97,7 @@
 				</div>
 
 			</div>
-			<div class="mpMenu-part" id="mpMenu-part7"
-			onmouseover="changeColor('mpMenu-part7')"
-			onmouseout="restoreColor('mpMenu-part7')">
-			<a href="targetPage.jsp?mm_id=${sessionScope.userInfo.user_id}">이용권확인</a>	
-			</div>
-			
+
 		</div>
 		<div>
 			<jsp:include page="${mypageContentPage }"></jsp:include>

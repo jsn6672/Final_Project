@@ -311,7 +311,7 @@ public class MypageController {
 	public String ticketThatIHave(HttpServletRequest req, MoneyDTO mm) {
 		mDAO.logincheck(req);
 		
-		mpDAO.ticketthatihave(req, mm);
+//		mpDAO.ticketthatihave(req, mm);
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageTicket3Check.jsp");
 		

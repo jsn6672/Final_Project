@@ -380,7 +380,7 @@ public class MypageDAO {
 		int mm_no = Integer.parseInt(req.getParameter("mm_no"));
 		String mm_state = req.getParameter("mm_state");
 		String mm_id = req.getParameter("mm_id");
-	
+
 		System.out.println("이밑으로 컨펌티켓");
 		System.out.println(mm_no);
 		System.out.println(mm_state);
@@ -389,7 +389,7 @@ public class MypageDAO {
 		mm.setMm_no(mm_no);
 		mm.setMm_state(mm_state);
 		mm.setMm_id(mm_id);
-		
+
 		/*
 		 * if ("1개월".equals(mm_ticket)) { if
 		 * (ss.getMapper(MypageMapper.class).confirmdate1(mm) == 1) {
@@ -401,76 +401,66 @@ public class MypageDAO {
 		String mm_date = req.getParameter("mm_date");
 
 		if (mm_date != null) {
-		    int months = Integer.parseInt(mm_date);
+			int months = Integer.parseInt(mm_date);
 
-		    int confirmResult = -1;
-		    int ticketResult = -1;
-		    
-		    int confirmResultPet = -1;
-		    int ticketResultPet = -1;
-		    
-		    int confirmResultCare = -1;
-		    int ticketResultCare = -1;
-		    
-		    
+			int confirmResult = -1;
+			int ticketResult = -1;
 
-		    switch (months) {
-		        case 1:
-		            confirmResult = ss.getMapper(MypageMapper.class).confirmdate1(mm);
-		            confirmResultPet = ss.getMapper(MypageMapper.class).confirmdatePet1(mm);
-		            confirmResultCare = ss.getMapper(MypageMapper.class).confirmdateCare1(mm);
-		            break;
-		        case 3:
-		            confirmResult = ss.getMapper(MypageMapper.class).confirmdate3(mm);
-		            confirmResultPet = ss.getMapper(MypageMapper.class).confirmdatePet3(mm);
-		            confirmResultCare = ss.getMapper(MypageMapper.class).confirmdateCare3(mm);
-		            break;
-		        case 6:
-		            confirmResult = ss.getMapper(MypageMapper.class).confirmdate6(mm);
-		            confirmResultPet = ss.getMapper(MypageMapper.class).confirmdatePet6(mm);
-		            confirmResultCare = ss.getMapper(MypageMapper.class).confirmdateCare6(mm);
-		            break;
-		        case 12:
-		            confirmResult = ss.getMapper(MypageMapper.class).confirmdate12(mm);
-		            confirmResultPet = ss.getMapper(MypageMapper.class).confirmdatePet12(mm);
-		            confirmResultCare = ss.getMapper(MypageMapper.class).confirmdateCare12(mm);
-		            break;
-		        default:
-		            break;
-		    }
+			int confirmResultPet = -1;
+			int ticketResultPet = -1;
 
-		    if (confirmResult == 1) {
-		        System.out.println("이용기간 수정 완료");
-		        ticketResult = ss.getMapper(MypageMapper.class).confirmticket(mm);
-		        if (ticketResult == 1) {
-		            System.out.println("결제상태 수정 완료");
-		        } else {
-		            System.out.println("결제상태 수정 실패");
-		        }
-		    } else {
-		        System.out.println("이용기간 수정 실패");
-		    }
+			int confirmResultCare = -1;
+			int ticketResultCare = -1;
+
+			switch (months) {
+			case 1:
+				confirmResult = ss.getMapper(MypageMapper.class).confirmdate1(mm);
+				confirmResultPet = ss.getMapper(MypageMapper.class).confirmdatePet1(mm);
+				confirmResultCare = ss.getMapper(MypageMapper.class).confirmdateCare1(mm);
+				break;
+			case 3:
+				confirmResult = ss.getMapper(MypageMapper.class).confirmdate3(mm);
+				confirmResultPet = ss.getMapper(MypageMapper.class).confirmdatePet3(mm);
+				confirmResultCare = ss.getMapper(MypageMapper.class).confirmdateCare3(mm);
+				break;
+			case 6:
+				confirmResult = ss.getMapper(MypageMapper.class).confirmdate6(mm);
+				confirmResultPet = ss.getMapper(MypageMapper.class).confirmdatePet6(mm);
+				confirmResultCare = ss.getMapper(MypageMapper.class).confirmdateCare6(mm);
+				break;
+			case 12:
+				confirmResult = ss.getMapper(MypageMapper.class).confirmdate12(mm);
+				confirmResultPet = ss.getMapper(MypageMapper.class).confirmdatePet12(mm);
+				confirmResultCare = ss.getMapper(MypageMapper.class).confirmdateCare12(mm);
+				break;
+			default:
+				break;
+			}
+
+			if (confirmResult == 1) {
+				System.out.println("이용기간 수정 완료");
+				ticketResult = ss.getMapper(MypageMapper.class).confirmticket(mm);
+				if (ticketResult == 1) {
+					System.out.println("결제상태 수정 완료");
+				} else {
+					System.out.println("결제상태 수정 실패");
+				}
+			} else {
+				System.out.println("이용기간 수정 실패");
+			}
 		}
-		
+
 		/*
 		 * String mm_start_date = req.getParameter("mm_start_date");
 		 * System.out.println(mm_start_date);
 		 */
-		
+
 		/*
 		 * if(ss.getMapper(MypageMapper.class).startSitter(mm) == 1) {
 		 * System.out.println("시터 수정 완"); }
 		 */
-		
-		
-		
-		
-		
-		
-		
+
 	}
-		
-		
 
 	public void getListOfPetDolbom(HttpServletRequest req) {
 		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
@@ -569,15 +559,15 @@ public class MypageDAO {
 		System.out.println("이밑에 인증 리스트");
 		System.out.println(certifList);
 		System.out.println();
-		
-	}
 
+	}
 
 	public void ticketthatihave(HttpServletRequest req, MoneyDTO mm, MomDTO mDTO) {
 		List<MoneyDTO> moneyList = ss.getMapper(MypageMapper.class).getbuylist();
 		req.setAttribute("moneyList", moneyList);
 		int ticketPeriod = ss.getMapper(MypageMapper.class).getperiod(mm, mDTO);
 		req.setAttribute("ticketPeriod", ticketPeriod);
+	}
 
 	public void getListOfMomDolbom(HttpServletRequest req) {
 		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
@@ -604,10 +594,34 @@ public class MypageDAO {
 		}
 
 		req.setAttribute("DolbomList", dDTOs);
-		
+
 	}
 
-	
+	public void getListOfCareDolbom(HttpServletRequest req) {
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		// 현재 날짜 구하기 (시스템 시계, 시스템 타임존)
+		LocalDate now = LocalDate.now();
+
+		// 연도, 월(문자열, 숫자), 일, 일(year 기준), 요일(문자열, 숫자)
+		int nowyear = now.getYear();
+		int nowmonthValue = now.getMonthValue();
+
+		List<DolbomDTO> dDTOs = ss.getMapper(MypageMapper.class).getCareDolbomList(mDTO);
+		for (DolbomDTO dolbomDTO : dDTOs) {
+
+			int year = nowyear - dolbomDTO.getD_year();
+			int month = nowmonthValue - dolbomDTO.getD_month();
+
+			if ((year * 12) + month >= 36) {
+				dolbomDTO.setAge(year + 1);
+				dolbomDTO.setAgetype("살");
+			} else {
+				dolbomDTO.setAge((year * 12) + month + 1);
+				dolbomDTO.setAgetype("개월");
+			}
+		}
+
+		req.setAttribute("DolbomList", dDTOs);
 
 	}
 

@@ -32,5 +32,9 @@ public interface MomMapper {
 
 	public List<DolbomDTO> getAllTaker(DolbomDTO dolbomDTO);
 
+	public int updateMomSitter(MomDTO momDTO);
+
+	public MomDTO getMomSitterInfo(MemberDTO mDTO);
+
 
 }
