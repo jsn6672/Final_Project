@@ -439,7 +439,7 @@ public class MypageDAO {
 		            break;
 		    }
 
-		    if (confirmResult == 3) {
+		    if (confirmResult == 1) {
 		        System.out.println("이용기간 수정 완료");
 		        ticketResult = ss.getMapper(MypageMapper.class).confirmticket(mm);
 		        if (ticketResult == 1) {
@@ -572,6 +572,13 @@ public class MypageDAO {
 		
 	}
 
+
+	public void ticketthatihave(HttpServletRequest req, MoneyDTO mm, MomDTO mDTO) {
+		List<MoneyDTO> moneyList = ss.getMapper(MypageMapper.class).getbuylist();
+		req.setAttribute("moneyList", moneyList);
+		int ticketPeriod = ss.getMapper(MypageMapper.class).getperiod(mm, mDTO);
+		req.setAttribute("ticketPeriod", ticketPeriod);
+
 	public void getListOfMomDolbom(HttpServletRequest req) {
 		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 		// 현재 날짜 구하기 (시스템 시계, 시스템 타임존)
@@ -600,32 +607,8 @@ public class MypageDAO {
 		
 	}
 
-	public void getListOfCareDolbom(HttpServletRequest req) {
-		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
-		// 현재 날짜 구하기 (시스템 시계, 시스템 타임존)
-		LocalDate now = LocalDate.now();
+	
 
-		// 연도, 월(문자열, 숫자), 일, 일(year 기준), 요일(문자열, 숫자)
-		int nowyear = now.getYear();
-		int nowmonthValue = now.getMonthValue();
-
-		List<DolbomDTO> dDTOs = ss.getMapper(MypageMapper.class).getCareDolbomList(mDTO);
-		for (DolbomDTO dolbomDTO : dDTOs) {
-
-			int year = nowyear - dolbomDTO.getD_year();
-			int month = nowmonthValue - dolbomDTO.getD_month();
-
-			if ((year * 12) + month >= 36) {
-				dolbomDTO.setAge(year + 1);
-				dolbomDTO.setAgetype("살");
-			} else {
-				dolbomDTO.setAge((year * 12) + month + 1);
-				dolbomDTO.setAgetype("개월");
-			}
-		}
-
-		req.setAttribute("DolbomList", dDTOs);
-		
 	}
 
 }

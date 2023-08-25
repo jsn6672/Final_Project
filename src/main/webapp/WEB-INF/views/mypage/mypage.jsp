@@ -46,6 +46,7 @@
 			<div id="mpName">
 				<a href="mypage.go">마이페이지</a>
 			</div>
+
 			<!-- 메뉴 컨테이너 -->
 			<div class="mpMenu">
 				<div class="mpMenu-part" id="mpMenu-part1"
@@ -89,7 +90,14 @@
 						<a href="mypage.certif.check">관리자 페이지</a>
 					</c:if>
 				</div>
+
 			</div>
+			<div class="mpMenu-part" id="mpMenu-part7"
+			onmouseover="changeColor('mpMenu-part7')"
+			onmouseout="restoreColor('mpMenu-part7')">
+			<a href="targetPage.jsp?mm_id=${sessionScope.userInfo.user_id}">이용권확인</a>	
+			</div>
+			
 		</div>
 		<div>
 			<jsp:include page="${mypageContentPage }"></jsp:include>

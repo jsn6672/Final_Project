@@ -105,20 +105,19 @@
     <div class="List-wrap">
     <c:forEach var="ml" items="${moneyList}">
         <div class="moneyList-1">
-            <div>주문번호 : ${ml.mm_no }</div>
-            <div>입금자명 : ${ml.mm_name }</div>
-            <div>금액 : ${ml.mm_price }</div>
-            <div>내역 : ${ml.mm_state }</div>
-            <div>이용권 : ${ml.mm_ticket }</div>
-            <div>이용ID : ${ml.mm_id }</div>
+            <div>주문번호&#9;:&#9;${ml.mm_no }</div>
+            <div>입금자명&#9;:&#9;${ml.mm_name }</div>
+            <div>금액&#9;:&#9;${ml.mm_price }</div>
+            <div>내역&#9;:&#9;${ml.mm_state }</div>
+            <div>이용권&#9;:&#9;${ml.mm_ticket }</div>
+            <div>이용ID&#9;:&#9;${ml.mm_id }</div>
             <form action="mypage.ticket.confirm" method="post">
             	<input name="mm_no" type="hidden" value="${ml.mm_no }">
             	<input name="mm_state" type="hidden" value="${ml.mm_state }" >
             	<input name="mm_id" type="hidden" value="${ml.mm_id }" >
             	<input name="mm_date" type="hidden" value="${ml.mm_date }">
-                <button class="ticketCheck-btn">입금확인</button>
+                <button class="ticket-check-btn">입금확인</button>
             </form>
-            <br>
         </div>
     </c:forEach>
     <!-- List-wrap 끝 -->
