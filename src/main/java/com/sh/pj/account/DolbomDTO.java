@@ -24,6 +24,11 @@ public class DolbomDTO {
 	private String d_can_do;
 	private int[] dolbom_act;
 
+	private String location1;
+	private String location2;
+	private String location3;
+	
+	
 	private String monday;
 	private String tuesday;
 	private String wednesday;
@@ -196,6 +201,30 @@ public class DolbomDTO {
 
 	public void setDolbom_act(int[] dolbom_act) {
 		this.dolbom_act = dolbom_act;
+	}
+
+	public String getLocation1() {
+		return location1;
+	}
+
+	public void setLocation1(String location1) {
+		this.location1 = location1;
+	}
+
+	public String getLocation2() {
+		return location2;
+	}
+
+	public void setLocation2(String location2) {
+		this.location2 = location2;
+	}
+
+	public String getLocation3() {
+		return location3;
+	}
+
+	public void setLocation3(String location3) {
+		this.location3 = location3;
 	}
 
 	public String getMonday() {
@@ -492,28 +521,30 @@ public class DolbomDTO {
 				+ ", d_year=" + d_year + ", d_month=" + d_month + ", d_day=" + d_day + ", d_hour=" + d_hour
 				+ ", d_check=" + d_check + ", d_location=" + d_location + ", d_gender=" + d_gender + ", d_personality="
 				+ d_personality + ", d_pay=" + d_pay + ", d_cctv=" + d_cctv + ", d_can_do=" + d_can_do + ", dolbom_act="
-				+ Arrays.toString(dolbom_act) + ", monday=" + monday + ", tuesday=" + tuesday + ", wednesday="
-				+ wednesday + ", thursday=" + thursday + ", friday=" + friday + ", saturday=" + saturday + ", sunday="
-				+ sunday + ", monday_start=" + monday_start + ", tuesday_start=" + tuesday_start + ", wednesday_start="
-				+ wednesday_start + ", thursday_start=" + thursday_start + ", friday_start=" + friday_start
-				+ ", saturday_start=" + saturday_start + ", sunday_start=" + sunday_start + ", monday_end=" + monday_end
-				+ ", tuesday_end=" + tuesday_end + ", wednesday_end=" + wednesday_end + ", thursday_end=" + thursday_end
-				+ ", friday_end=" + friday_end + ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end
-				+ ", d_sitterage=" + d_sitterage + ", d_need=" + d_need + ", d_title=" + d_title + ", d_term=" + d_term
-				+ ", d_startdate=" + d_startdate + ", d_writedate=" + d_writedate + ", d_enddate=" + d_enddate
-				+ ", cntDTOs=" + cntDTOs + ", cntDTOMessage=" + cntDTOMessage + ", age=" + age + ", agetype=" + agetype
-				+ ", m_addr1=" + m_addr1 + ", m_addr2=" + m_addr2 + ", m_addr3=" + m_addr3 + ", mm=" + mm + "]";
+				+ Arrays.toString(dolbom_act) + ", location1=" + location1 + ", location2=" + location2 + ", location3="
+				+ location3 + ", monday=" + monday + ", tuesday=" + tuesday + ", wednesday=" + wednesday + ", thursday="
+				+ thursday + ", friday=" + friday + ", saturday=" + saturday + ", sunday=" + sunday + ", monday_start="
+				+ monday_start + ", tuesday_start=" + tuesday_start + ", wednesday_start=" + wednesday_start
+				+ ", thursday_start=" + thursday_start + ", friday_start=" + friday_start + ", saturday_start="
+				+ saturday_start + ", sunday_start=" + sunday_start + ", monday_end=" + monday_end + ", tuesday_end="
+				+ tuesday_end + ", wednesday_end=" + wednesday_end + ", thursday_end=" + thursday_end + ", friday_end="
+				+ friday_end + ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end + ", d_sitterage="
+				+ d_sitterage + ", d_need=" + d_need + ", d_title=" + d_title + ", d_term=" + d_term + ", d_startdate="
+				+ d_startdate + ", d_writedate=" + d_writedate + ", d_enddate=" + d_enddate + ", cntDTOs=" + cntDTOs
+				+ ", cntDTOMessage=" + cntDTOMessage + ", age=" + age + ", agetype=" + agetype + ", m_addr1=" + m_addr1
+				+ ", m_addr2=" + m_addr2 + ", m_addr3=" + m_addr3 + ", mm=" + mm + "]";
 	}
 
 	public DolbomDTO(int d_no, String d_id, String d_name, int d_category, int d_year, int d_month, String d_day,
 			String d_hour, String d_check, String d_location, String d_gender, String d_personality, int d_pay,
-			String d_cctv, String d_can_do, int[] dolbom_act, String monday, String tuesday, String wednesday,
-			String thursday, String friday, String saturday, String sunday, int monday_start, int tuesday_start,
-			int wednesday_start, int thursday_start, int friday_start, int saturday_start, int sunday_start,
-			int monday_end, int tuesday_end, int wednesday_end, int thursday_end, int friday_end, int saturday_end,
-			int sunday_end, String d_sitterage, String d_need, String d_title, String d_term, Date d_startdate,
-			Date d_writedate, Date d_enddate, List<ContractDTO> cntDTOs, String cntDTOMessage, int age, String agetype,
-			String m_addr1, String m_addr2, String m_addr3, MemberDTO mm) {
+			String d_cctv, String d_can_do, int[] dolbom_act, String location1, String location2, String location3,
+			String monday, String tuesday, String wednesday, String thursday, String friday, String saturday,
+			String sunday, int monday_start, int tuesday_start, int wednesday_start, int thursday_start,
+			int friday_start, int saturday_start, int sunday_start, int monday_end, int tuesday_end, int wednesday_end,
+			int thursday_end, int friday_end, int saturday_end, int sunday_end, String d_sitterage, String d_need,
+			String d_title, String d_term, Date d_startdate, Date d_writedate, Date d_enddate,
+			List<ContractDTO> cntDTOs, String cntDTOMessage, int age, String agetype, String m_addr1, String m_addr2,
+			String m_addr3, MemberDTO mm) {
 		super();
 		this.d_no = d_no;
 		this.d_id = d_id;
@@ -531,6 +562,9 @@ public class DolbomDTO {
 		this.d_cctv = d_cctv;
 		this.d_can_do = d_can_do;
 		this.dolbom_act = dolbom_act;
+		this.location1 = location1;
+		this.location2 = location2;
+		this.location3 = location3;
 		this.monday = monday;
 		this.tuesday = tuesday;
 		this.wednesday = wednesday;
@@ -568,7 +602,6 @@ public class DolbomDTO {
 		this.m_addr3 = m_addr3;
 		this.mm = mm;
 	}
-
 
 	
 }

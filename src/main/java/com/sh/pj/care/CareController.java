@@ -36,17 +36,17 @@ public class CareController {
 	}
 	
 	@RequestMapping(value = "/caretaker.go", method = RequestMethod.GET)
-	public String caretaker(HttpServletRequest req,Model m, CareDTO cDTO) {
+	public String caretaker(HttpServletRequest req,Model m, DolbomDTO dolbomDTO) {
 		req.setAttribute("contentPage", "care/caretaker.jsp");
 		mDAO.logincheck(req);
 		mDAO.countAll(req);
-		cDAO.getAll(req,m,cDTO);
+		cDAO.getAlltaker(req,dolbomDTO,m);
 		req.setAttribute("background_color", "#FBE9E7");
 		return "home";
 	}
 	
 	
-	@RequestMapping(value = "/caresitter.detail", method = RequestMethod.GET)
+	@RequestMapping(value = "/caresitter.detail.go", method = RequestMethod.GET)
 	public String momtakerDetail(HttpServletRequest req, CareDTO cDTO, Model m) {
 		mDAO.logincheck(req);	
 		cDAO.detail(req, cDTO, m);
@@ -55,10 +55,10 @@ public class CareController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/caretaker.detail", method = RequestMethod.GET)
-	public String caretakerdetail(HttpServletRequest req, CareDTO cDTO, Model m) {
+	@RequestMapping(value = "/caretaker.detail.go", method = RequestMethod.GET)
+	public String caretakerdetail(HttpServletRequest req, DolbomDTO dolbomDTO, Model m) {
 		mDAO.logincheck(req);
-		cDAO.detail(req, cDTO, m);
+		cDAO.detailtaker(req, dolbomDTO, m);
 		req.setAttribute("contentPage", "detail/caretaker.jsp");
 		req.setAttribute("background_color", "#FBE9E7");
 		return "home";

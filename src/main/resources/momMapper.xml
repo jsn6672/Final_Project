@@ -23,6 +23,23 @@
 		update jsn_user_tbl set user_ms_status = 1 where user_id = #{user_id}
 	</update>
 	
+
+	<select id="getAllTaker" resultType="com.sh.pj.account.DolbomDTO">
+		select*from dolbom_tbl where d_category=2
+	</select>
+
+	<select id="detailtaker" resultType="com.sh.pj.account.DolbomDTO">
+		select*from dolbom_tbl where d_no = #{d_no}
+	</select>
+	
+	<select id="detailUser" resultType="com.sh.pj.account.MemberDTO">
+		select * from jsn_user_tbl where user_id = #{ms_id}
+	</select>
+		
+	<select id="detailUser2" resultType="com.sh.pj.account.MemberDTO">
+		select * from jsn_user_tbl where user_id = #{d_id}
+	</select>
+
 	<select id="getMomSitterInfo" resultType="com.sh.pj.mom.MomDTO">
 		select * from momsitter_tbl where ms_id = #{user_id}
 	</select>
@@ -30,5 +47,6 @@
 	<update id="updateMomSitter">
 		update momsitter_tbl set ms_file = #{ms_file}, ms_confirm = #{ms_confirm}, ms_confirm_answer = #{ms_confirm_answer}, ms_cctv = #{ms_cctv}, ms_term = #{ms_term}, ms_day = #{ms_day}, ms_hour = #{ms_hour}, ms_location1 = #{ms_location1}, ms_location2 = #{ms_location2}, ms_location3 = #{ms_location3}, ms_extra = #{ms_extra}, ms_exp = #{ms_exp}, ms_pay = #{ms_pay}, ms_can_do = #{ms_can_do}, ms_can_type = #{ms_can_type} where ms_id = #{ms_id}
 	</update>
+
 
 </mapper>

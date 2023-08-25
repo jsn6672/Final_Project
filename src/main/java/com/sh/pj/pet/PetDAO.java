@@ -1,7 +1,9 @@
 package com.sh.pj.pet;
 
 import java.io.File;
+
 import java.math.BigDecimal;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -20,7 +22,6 @@ import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MemberMapper;
 
 import com.sh.pj.ask.SiteOption;
-
 
 
 @Service
@@ -55,9 +56,9 @@ public class PetDAO {
 				+ dDTO.getSunday_start() + "!" + dDTO.getSunday_end();
 		dDTO.setD_hour(d_hour);
 
-		if (dDTO.getD_check()==null) {
+		if (dDTO.getD_check() == null) {
 			dDTO.setD_check("0");
-		}else {
+		} else {
 			dDTO.setD_check("1");
 		}
 
@@ -196,7 +197,7 @@ public class PetDAO {
 				ss.getMapper(PetMapper.class).changePsStatus(mDTO);
 				req.getSession().setAttribute("userInfo", mDTO);
 				ss.getMapper(MemberMapper.class).upSCount();
-				
+
 			}
 
 		} catch (Exception e) {
@@ -258,8 +259,8 @@ public class PetDAO {
 	}
 
 	public void getPetSitterInfo(HttpServletRequest req) {
-		MemberDTO mDTO = (MemberDTO)req.getSession().getAttribute("userInfo");
-		
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+
 		PetDTO pDTO = ss.getMapper(PetMapper.class).getPetSitterInfo(mDTO);
 
 		String[] petsitter_hour = pDTO.getPs_hour().split("!");
@@ -289,11 +290,8 @@ public class PetDAO {
 		pDTO.setSaturday(petsitter_day[5]);
 		pDTO.setSunday(petsitter_day[6]);
 
-
 		req.setAttribute("psInfo", pDTO);
-		
-		
-		
+
 	}
 
 	public void updatePetSitter(HttpServletRequest req, PetDTO pDTO) {
@@ -302,13 +300,13 @@ public class PetDAO {
 			long imgSize = pDTO.getPs_Rfile().getSize();
 			if (imgSize != 0) {
 				String extension = imgOrgName.substring(imgOrgName.lastIndexOf("."), imgOrgName.length());
-				
+
 				String newName = UUID.randomUUID().toString().split("-")[0];
-				
+
 				String path = sc.getRealPath("resources/img");
-				
+
 				File saveImg = new File(path + "//" + newName + extension);
-				
+
 				pDTO.getPs_Rfile().transferTo(saveImg);
 				pDTO.setPs_file(newName + extension);
 				pDTO.setPs_confirm("0");
@@ -325,7 +323,7 @@ public class PetDAO {
 
 			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 			pDTO.setPs_id(mDTO.getUser_id());
-			
+
 			int j = 1;
 			for (int i = 0; i < pDTO.getPetsitter_act().length; i++) {
 				j *= pDTO.getPetsitter_act()[i];
@@ -362,7 +360,7 @@ public class PetDAO {
 			e.printStackTrace();
 
 		}
-		
+
 	}
 	
 	public void calcAllMsgCountPetSitter() {
@@ -425,12 +423,30 @@ public class PetDAO {
 	}
 
 	public void getAllTaker(HttpServletRequest req, DolbomDTO dolbomDTO, Model m) {
-		m.addAttribute("pettaker", ss.getMapper(PetMapper.class).getAllTaker(dolbomDTO));
+		
+		List<DolbomDTO>dDTOs = ss.getMapper(PetMapper.class).getAllTaker(dolbomDTO);
+		
+		for (DolbomDTO d : dDTOs) {
+			String location[] = d.getD_location().split("!");
+			d.setM_addr1(location[0]);
+			d.setM_addr2(location[1]);
+			d.setM_addr3(location[2]);
+			System.out.println(location[0]);
+		}
+		
+		
+		m.addAttribute("pettaker",dDTOs);
 	}
 
 	public void detailtaker(HttpServletRequest req, DolbomDTO dolbomDTO, Model m) {
 		DolbomDTO pp = ss.getMapper(PetMapper.class).detailtaker(dolbomDTO);
-		
+
+		String[] ps_location = pp.getD_location().split("!");
+
+		pp.setLocation1(ps_location[0]);
+		pp.setLocation2(ps_location[1]);
+		pp.setLocation3(ps_location[2]);
+
 		String[] ps_hour = pp.getD_hour().split("!");
 
 		pp.setMonday_start(Integer.parseInt(ps_hour[0]));
@@ -468,12 +484,5 @@ public class PetDAO {
 		m.addAttribute("dolbom", pp);
 	}
 
-	public void regBr(HttpServletRequest req, PetDTO pDTO) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	
 
 }

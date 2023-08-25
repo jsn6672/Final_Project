@@ -34,6 +34,7 @@ public interface PetMapper {
 
 	public PetDTO getPetSitterInfo(MemberDTO mDTO);
 
+	
 	public int updatePetSitter(PetDTO pDTO);
 
 
