@@ -439,7 +439,7 @@ public class MypageDAO {
 		            break;
 		    }
 
-		    if (confirmResult == 3) {
+		    if (confirmResult == 1) {
 		        System.out.println("이용기간 수정 완료");
 		        ticketResult = ss.getMapper(MypageMapper.class).confirmticket(mm);
 		        if (ticketResult == 1) {

@@ -160,7 +160,7 @@
 	<update id="confirmdatePet1">
 		UPDATE petsitter_tbl
 		SET ps_ticket_start = sysdate,
-		ps_ticket_end = ADD_MONTHS(sysdate, 1)
+		ps_ticket_emd = ADD_MONTHS(sysdate, 1)
 		WHERE ps_id = #{mm_id }
 	</update>
 
@@ -174,14 +174,14 @@
 	<update id="confirmdatePet6">
 		UPDATE petsitter_tbl
 		SET ps_ticket_start = sysdate,
-		ps_ticket_end = ADD_MONTHS(sysdate, 6)
+		ps_ticket_emd = ADD_MONTHS(sysdate, 6)
 		WHERE ps_id = #{mm_id }
 	</update>
 
 	<update id="confirmdatePet12">
 		UPDATE petsitter_tbl
 		SET ps_ticket_start = sysdate,
-		ps_ticket_end = ADD_MONTHS(sysdate, 12)
+		ps_ticket_emd = ADD_MONTHS(sysdate, 12)
 		WHERE ps_id = #{mm_id }
 	</update>
 	
