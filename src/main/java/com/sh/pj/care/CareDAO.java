@@ -350,6 +350,7 @@ public class CareDAO {
 		 */
 
 		m.addAttribute("dolbom", pp);
+	}	
 
 	public void regCareDolbom(HttpServletRequest req, DolbomDTO dDTO) {
 		String d_day = dDTO.getMonday() + "!" + dDTO.getTuesday() + "!" + dDTO.getWednesday() + "!" + dDTO.getThursday()
