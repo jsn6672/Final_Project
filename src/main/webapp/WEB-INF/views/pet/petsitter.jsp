@@ -111,16 +111,18 @@ https://templatemo.com/tm-580-woox-travel
 									</form>
 									<c:forEach var="p" items="${s }">
 										<div class="d-md-flex post-entry-2 half">
+										<div style="background-color: white; border: 2px solid white; width: 20%; border-radius: 10px;">
 											<div class="mom-select-img">
-												<div> <img alt="" src="reesources/img/${p.ps_ }"> </div>
+												<div> <img alt="" src="resources/img/${p.mm.user_pic }"> </div>
 											</div>
-											<div>
+										</div>
+											<div style="padding-left: 25px;">
 												<div class="post-meta">
 													<span class="date">00전 작성 </span> <span>${p.ps_write_date }</span>
 												</div>
 												<div>
 													<a href="petsitter.detail.go?ps_id=${p.ps_id }">펫시터:
-														${p.ps_id }(이름)</a> <span>나이</span> <span>성별</span> <span>cctv촬영
+														${p.mm.user_name }(이름)</a> <span>나이</span> <span>성별</span> <span>cctv촬영
 														- ${p.ps_cctv }</span>
 												</div>
 												<div style="display: flex;">

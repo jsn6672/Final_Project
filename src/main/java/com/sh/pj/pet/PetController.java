@@ -26,7 +26,6 @@ public class PetController {
 	public String petsitter(HttpServletRequest req, PetDTO petDTO, Model m) {
 		mDAO.logincheck(req);
 		mDAO.countAll(req);
-		pDAO.getAll(req, petDTO, m);
 		req.getSession().removeAttribute("searchSession");
 		pDAO.getMsg(1, req);
 		req.setAttribute("contentPage", "pet/petsitter.jsp");
@@ -77,6 +76,7 @@ public class PetController {
 	public String petsitter_be(HttpServletRequest req, PetDTO pDTO) {
 		mDAO.logincheck(req);
 		pDAO.regPetSitter(req, pDTO);
+
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
 

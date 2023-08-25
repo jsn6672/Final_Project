@@ -14,7 +14,9 @@
 		<div class="content-detail">
 			<div class="header-detail">
 				<div class="body-content-detail-cover" style="width: 40%">
-					<div class="header-img-detail">사진</div>
+					<div class="header-img-detail"> 
+						<img alt="" src="resources/img/${petsitter.mm.user_pic }" style="width: 100%; margin: auto; height: 100%;"> 
+					</div>
 				</div>
 				<div class="header-data-detail">
 					<div class="header-data1">
@@ -134,8 +136,8 @@
 					<div class="body-content-detail-cover">
 						<div class="body-time">
 							<div class="body-time-title">
-								<div>평일</div>
-								<div>주말</div>
+								<div style="font-weight: 600; font-size: 15pt;">평일</div>
+								<div style="font-weight: 600; font-size: 15pt;">주말</div>
 							</div>
 							<div class="body-time-body">
 								<div class="body-times">
@@ -149,7 +151,7 @@
 												</div>
 											</c:when>
 											<c:otherwise>
-												<div class="body-time-day" style="color: gray;">월요일</div>
+												<div class="body-time-day" style="color: #8080805c;">월요일</div>
 												<div class="body-time-day"></div>
 											</c:otherwise>
 										</c:choose>
@@ -164,7 +166,7 @@
 												</div>
 											</c:when>
 											<c:otherwise>
-												<div class="body-time-day" style="color: gray;">화요일</div>
+												<div class="body-time-day" style="color: #8080805c;">화요일</div>
 												<div class="body-time-day"></div>
 											</c:otherwise>
 										</c:choose>
@@ -179,7 +181,7 @@
 												</div>
 											</c:when>
 											<c:otherwise>
-												<div class="body-time-day" style="color: gray;">수요일</div>
+												<div class="body-time-day" style="color: #8080805c;">수요일</div>
 												<div class="body-time-day"></div>
 											</c:otherwise>
 										</c:choose>
@@ -194,7 +196,7 @@
 												</div>
 											</c:when>
 											<c:otherwise>
-												<div class="body-time-day" style="color: gray;">목요일</div>
+												<div class="body-time-day" style="color: #8080805c;">목요일</div>
 												<div class="body-time-day"></div>
 											</c:otherwise>
 										</c:choose>
@@ -209,7 +211,7 @@
 												</div>
 											</c:when>
 											<c:otherwise>
-												<div class="body-time-day" style="color: gray;">금요일</div>
+												<div class="body-time-day" style="color: #8080805c;">금요일</div>
 												<div class="body-time-day"></div>
 											</c:otherwise>
 										</c:choose>
@@ -226,7 +228,7 @@
 												</div>
 											</c:when>
 											<c:otherwise>
-												<div class="body-time-day" style="color: gray;">토요일</div>
+												<div class="body-time-day" style="color: #8080805c;">토요일</div>
 												<div class="body-time-day"></div>
 											</c:otherwise>
 										</c:choose>
@@ -241,7 +243,7 @@
 												</div>
 											</c:when>
 											<c:otherwise>
-												<div class="body-time-day" style="color: gray;">일요일</div>
+												<div class="body-time-day" style="color: #8080805c;">일요일</div>
 												<div class="body-time-day"></div>
 											</c:otherwise>
 										</c:choose>
