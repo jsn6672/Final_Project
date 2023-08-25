@@ -1,7 +1,9 @@
+
 @charset "UTF-8";
 
 .mom-select-img{
-	width: 20%;
+	width: 90%;
+	margin: auto;
 }
 
 .mom-select-locations{
