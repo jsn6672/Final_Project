@@ -98,5 +98,12 @@ public class CareController {
     	System.out.println(cDTO);
     	return "home";
     }
+    
+    @RequestMapping(value = "/updateCareDolbom.do", method = RequestMethod.POST)
+	public String updateCareDolbom(HttpServletRequest req, DolbomDTO dDTO) {
+		cDAO.updateCareDolbom(req, dDTO);
+
+		return "redirect:/mypage.takerRegCare.go";
+	}
 	
 }

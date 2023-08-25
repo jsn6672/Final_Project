@@ -175,7 +175,7 @@ body {
 				<div>
 					<input placeholder="이름을 입력해주세요" name="d_name" style="border: none;border-radius: 10px;">
 				</div>
-				<input hidden="hidden" name="d_category" value="3">
+				<input hidden="hidden" name="d_category" value="2">
 				<div class="mpS-pet-birth">아이의 생년 / 월</div>
 				<div>
 					<input placeholder="아이가 태어난 해를 입력해주세요 (YYYY)" class="birth_input"

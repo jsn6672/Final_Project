@@ -95,7 +95,6 @@ public class PetController {
 
 	@RequestMapping(value = "/updatePetDolbom.do", method = RequestMethod.POST)
 	public String updatePetDolbom(HttpServletRequest req, DolbomDTO dDTO) {
-		mDAO.logincheck(req);
 		pDAO.updatePetDolbom(req, dDTO);
 
 		return "redirect:/mypage.takerRegPet.go";

@@ -19,6 +19,7 @@ import com.sh.pj.care.CareDTO;
 import com.sh.pj.care.CareTakerDTO;
 import com.sh.pj.mom.MomMapper;
 import com.sh.pj.mom.MomTakerDTO;
+import com.sh.pj.mypage.ContractDTO;
 import com.sh.pj.pet.PetDTO;
 import com.sh.pj.pet.PetTakerDTO;
 
@@ -207,8 +208,8 @@ public class MembertDAO {
 			if (ss.getMapper(MemberMapper.class).regPTAccount(ptDTO) == 1) {
 
 				System.out.println("등록 완료");
-				ss.getMapper(MemberMapper.class).changeptstatus(mDTO);
 				mDTO.setUser_pt_status(1);
+				ss.getMapper(MemberMapper.class).changeptstatus(mDTO);
 				req.getSession().setAttribute("userInfo", mDTO);
 			}
 
@@ -242,8 +243,8 @@ public class MembertDAO {
 			if (ss.getMapper(MemberMapper.class).regMTAccount(mtDTO) == 1) {
 
 				System.out.println("등록 완료");
-				ss.getMapper(MemberMapper.class).changemtstatus(mDTO);
 				mDTO.setUser_mt_status(1);
+				ss.getMapper(MemberMapper.class).changemtstatus(mDTO);
 				req.getSession().setAttribute("userInfo", mDTO);
 			}
 
@@ -275,8 +276,8 @@ public class MembertDAO {
 			if (ss.getMapper(MemberMapper.class).regCTAccount(ctDTO) == 1) {
 
 				System.out.println("등록 완료");
-				ss.getMapper(MemberMapper.class).changectstatus(mDTO);
 				mDTO.setUser_ct_status(1);
+				ss.getMapper(MemberMapper.class).changectstatus(mDTO);
 				req.getSession().setAttribute("userInfo", mDTO);
 			}
 
@@ -306,6 +307,19 @@ public class MembertDAO {
 	public void countAll(HttpServletRequest req) {
 		
 		req.setAttribute("countAll", ss.getMapper(MemberMapper.class).countAll());
+		
+	}
+
+	public void EndCnt(HttpServletRequest req, ContractDTO cntDTO) {
+		
+		if(ss.getMapper(MemberMapper.class).endCnt(cntDTO)==1) {
+			System.out.println("계약 종료");
+		}
+		
+	}
+
+	public void getAllReview(HttpServletRequest req) {
+		// TODO Auto-generated method stub
 		
 	}
 

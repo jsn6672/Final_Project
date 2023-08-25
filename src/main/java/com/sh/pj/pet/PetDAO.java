@@ -187,8 +187,8 @@ public class PetDAO {
 			if (ss.getMapper(PetMapper.class).regPetSitter(pDTO) == 1) {
 
 				System.out.println("등록 완료");
-				ss.getMapper(PetMapper.class).changemsstatus(mDTO);
 				mDTO.setUser_ps_status(1);
+				ss.getMapper(PetMapper.class).changePsStatus(mDTO);
 				req.getSession().setAttribute("userInfo", mDTO);
 				ss.getMapper(MemberMapper.class).upSCount();
 				
