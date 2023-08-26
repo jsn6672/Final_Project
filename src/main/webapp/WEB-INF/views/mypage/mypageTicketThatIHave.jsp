@@ -14,10 +14,14 @@
 	<div>
 		<!-- 현재 가지고 있는 티켓에 대한 정보 -->
 		<div>
-			<div>현재 이용중</div>	
-			<div>티켓이름</div>	
-			<div>결제일</div>	
-			<div>유효기간</div>	
+			<div>현재 이용중</div>
+			<c:forEach items="${moneyList2}" var="money">
+				<div>티켓이름 ${money.mm_ticket}</div>
+				<div>결제일 ${money.mm_start_date}</div>
+			</c:forEach>
+			<c:forEach var="tp" items="${ticketPeriod }">
+				<div>유효기간 ${tp.ms_ticket_start }~${tp.ms_ticket_end }</div>				
+			</c:forEach>
 		
 		
 		<!-- 현재 가지고 있는 티켓에 대한 정보 끝 -->
@@ -28,8 +32,8 @@
 					<td>이용내역</td>
 				</tr>
 				<tr>
-					<td></td>
-					<td>이용내역</td>
+					<td>2023.08.25</td>
+					<td>1개월 구매 </td>
 				</tr>
 			</table>
 		<!-- 과거 티켓 관련 이력에 대한 정보 -->

@@ -86,7 +86,7 @@
 				<div class="mpMenu-part" id="mpMenu-part7"
 					onmouseover="changeColor('mpMenu-part7')"
 					onmouseout="restoreColor('mpMenu-part7')">
-					<a href="targetPage.jsp?mm_id=${sessionScope.userInfo.user_id}">이용권확인</a>
+					<a href="mypage.ticketthatihave.go?user_id=${sessionScope.userInfo.user_id}">이용권확인</a>
 				</div>
 				<div class="mpMenu-part" id="mpMenu-part6"
 					onmouseover="changeColor('mpMenu-part6')"
