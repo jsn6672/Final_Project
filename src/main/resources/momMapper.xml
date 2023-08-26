@@ -7,7 +7,7 @@
 	</select>
 
 	<select id="detail" resultType="com.sh.pj.mom.MomDTO">
-		select*from momsitter_tbl where ms_id = #{ps_id}
+		select*from momsitter_tbl where ms_id = #{ms_id}
 	</select>
 
 	<insert id="regDolbom">
@@ -47,6 +47,23 @@
 	<update id="updateMomSitter">
 		update momsitter_tbl set ms_file = #{ms_file}, ms_confirm = #{ms_confirm}, ms_confirm_answer = #{ms_confirm_answer}, ms_cctv = #{ms_cctv}, ms_term = #{ms_term}, ms_day = #{ms_day}, ms_hour = #{ms_hour}, ms_location1 = #{ms_location1}, ms_location2 = #{ms_location2}, ms_location3 = #{ms_location3}, ms_extra = #{ms_extra}, ms_exp = #{ms_exp}, ms_pay = #{ms_pay}, ms_can_do = #{ms_can_do}, ms_can_type = #{ms_can_type} where ms_id = #{ms_id}
 	</update>
+	
+	<select id="review" resultType="com.sh.pj.ReviewDTO">
+		select * from review_tbl where review_sitter_id = #{ms_id}
+	</select>
+	
+	<select id="getMsg" resultType="com.sh.pj.mom.MomDTO">
+		SELECT * fROM (SELECT ROWNUM AS rn, it.* FROM momsitter_tbl it WHERE
+		(it.ms_location1 LIKE '%' || #{ms_search} || '%' OR it.ms_location2 LIKE '%' || #{ms_search} || '%' OR it.ms_location3 LIKE '%' || #{ms_search} || '%')
+		<!-- AND it.inquiry_category = #{category} -->
+		ORDER BY it.ms_write_date DESC)
+		WHERE rn &gt;= #{ms_start} and rn &lt;= #{ms_end}
+	</select>
+	
+	<select id="getMsgCount" resultType="int"
+		parameterType="com.sh.pj.mom.MomSelector">
+		select count(*) from momsitter_tbl where ms_location1 like '%'||#{ms_search}||'%' or ms_location2 like '%'||#{ms_search}||'%' or ms_location3 like '%'||#{ms_search}||'%'
+	</select>
 
 	<select id="getMsg2" resultType="com.sh.pj.account.DolbomDTO">
 		SELECT * FROM (

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MembertDAO;
-import com.sh.pj.ask.AskSelector;
 
 @Controller
 public class PetController {

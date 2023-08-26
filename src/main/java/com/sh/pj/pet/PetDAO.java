@@ -123,14 +123,6 @@ public class PetDAO {
 
 		pp.setMm(ss.getMapper(PetMapper.class).detailUser(pp));
 
-		List<ReviewDTO> rDTO = ss.getMapper(PetMapper.class).review(petDTO);
-		m.addAttribute("review", rDTO);
-		if (rDTO == null || rDTO.isEmpty()) {
-			m.addAttribute("review", "none");
-        }
-		
-		System.out.println(ss.getMapper(PetMapper.class).review(petDTO));
-
 		m.addAttribute("petsitter", pp);
 
 	}

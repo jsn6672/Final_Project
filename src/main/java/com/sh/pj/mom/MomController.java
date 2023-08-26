@@ -30,7 +30,8 @@ public class MomController {
 	public String momsitter(HttpServletRequest req, MomDTO momDTO, Model m) {
 		mDAO.logincheck(req);	
 		mDAO.countAll(req);
-		momDAO.getAll(req, momDTO, m);
+		req.getSession().removeAttribute("searchSession");
+		momDAO.getMsg(1, req);
 		req.setAttribute("contentPage", "mom/momsitter.jsp");
 
 		return "home";
@@ -116,7 +117,7 @@ public class MomController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/page.change4", method = RequestMethod.GET)
+  	@RequestMapping(value = "/page.change4", method = RequestMethod.GET)
     public String paging3(HttpServletRequest req, @RequestParam int p, Model model, MomSelector ms) {
 //		aDAO.getAllAsk(model);
 	    // 검색어가 입력되었다면, 검색어를 AskSelector 객체에 설정하고 세션에 저장합니다.
@@ -135,6 +136,33 @@ public class MomController {
 	    mDAO.logincheck(req);
 	    
 	    req.setAttribute("contentPage", "mom/momtaker.jsp");	
+	    
+        return "home";
+    }
+  
+
+	@RequestMapping(value = "/page.change.momsitter", method = RequestMethod.GET)
+    public String pagingMomsitter(HttpServletRequest req, @RequestParam int p, Model model, MomSelector ms) {
+//		aDAO.getAllAsk(model);
+	    // 검색어가 입력되었다면, 검색어를 AskSelector 객체에 설정하고 세션에 저장합니다.
+		System.out.println(ms.getMs_search());
+		String petSearch = ms.getMs_search();
+	    if (petSearch != null && !petSearch.isEmpty()) {
+	       ms.setMs_search(petSearch);
+
+	        req.getSession().setAttribute("searchSession", ms);
+	    } else {
+	        // 검색어가 입력되지 않았다면 세션에서 검색어 정보를 제거합니다.
+	        req.getSession().removeAttribute("searchSession");
+	        System.out.println("여기오면 세션값 죽음 ㄹㅇ");
+	    }
+//	    req.getSession().setAttribute("asksearch", askSearch);
+
+	    momDAO.getMsg(p, req);
+	    mDAO.logincheck(req);
+	    
+	    req.setAttribute("contentPage", "mom/momsitter.jsp");	
+
 	    
         return "home";
     }

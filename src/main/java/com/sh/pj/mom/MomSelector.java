@@ -3,12 +3,21 @@ package com.sh.pj.mom;
 import java.math.BigDecimal;
 
 public class MomSelector {
+
 	private String ms_search;
 	private BigDecimal ms_start;
 	private BigDecimal ms_end;
 	
 	public MomSelector() {
 		// TODO Auto-generated constructor stub
+	}
+
+
+	public MomSelector(String ms_search, BigDecimal ms_start, BigDecimal ms_end) {
+		super();
+		this.ms_search = ms_search;
+		this.ms_start = ms_start;
+		this.ms_end = ms_end;
 	}
 
 	public String getMs_search() {
@@ -40,6 +49,7 @@ public class MomSelector {
 		return "MomSelector [ms_search=" + ms_search + ", ms_start=" + ms_start + ", ms_end=" + ms_end + "]";
 	}
 
+
 	public MomSelector(String ms_search, BigDecimal ms_start, BigDecimal ms_end) {
 		super();
 		this.ms_search = ms_search;
@@ -47,5 +57,8 @@ public class MomSelector {
 		this.ms_end = ms_end;
 	}
 	
+
 	
+
+
 }
