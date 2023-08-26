@@ -32,5 +32,10 @@ public interface CareMapper {
 
 	int updateCareSitter(CareDTO cDTO);
 
+	public int getMsgCount(CareSelector sSel);
+
+	public List<CareDTO> getMsg(CareSelector careSearch);
+
+
 
 }

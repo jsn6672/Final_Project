@@ -156,25 +156,32 @@ https://templatemo.com/tm-580-woox-travel
 										</div>
 									</div>
 									<!-- End Stats Item -->
-									<h3 class="category-title"
+									<form action="page.change.momsitter">
+									<div class="category-title"
 										style="display: flex; justify-content: center">
-										<input id="searchBar" placeholder="검색을 해주세요">
-									</h3>
-									<c:forEach var="m" items="${momsitter }">
+										<input id="searchBar" type="text" name="ms_search"
+											value="${param.ms_search}" placeholder="검색어를 입력해주세요.">
+											<button class="QnA-searchbutton" type="submit" name="p" value="1">검색</button>
+									</div>
+									</form>
+									<c:forEach var="m" items="${s }">
 										<div class="d-md-flex post-entry-2 half">
-											<div class="mom-select-img">
-												<div>사진</div>
+											<div style="background-color: white; border: 2px solid white; width: 20%; border-radius: 10px;">
+												<div class="mom-select-img">
+													<div>
+														<img alt="" src="resources/img/${m.mm.user_pic }">
+													</div>
+												</div>
 											</div>
-											<div>
+											<div style="padding-left: 25px;">
 												<div class="post-meta">
-													<span class="date">00전 작성 </span> 
+													<span class="date">00전 작성 </span>
 													<span>${m.ms_write_date }</span>
 												</div>
 												<div>
-													<a href="petsitter.detail.go?ps_id=${m.ms_id }">맘시터: ${m.ms_id }(이름)</a>
-													<span>나이</span>
-													<span>성별</span>
-													<span>cctv촬영 - ${m.ms_cctv }</span>
+													<a href="momsitter.detail.go?ms_id=${m.ms_id }">맘시터:
+														${m.mm.user_name }(이름)</a> <span>나이</span> <span>성별</span> <span>cctv촬영
+														- ${m.ms_cctv }</span>
 												</div>
 												<div style="display: flex;">
 													<div>시급: ${m.ms_pay }</div>
@@ -193,13 +200,36 @@ https://templatemo.com/tm-580-woox-travel
 											</div>
 										</div>
 									</c:forEach>
-									<div class="text-start py-4"
-										style="display: flex; justify-content: center;">
-										<div class="custom-pagination">
-											<a href="#" class="prev">Prevous</a> <a href="#"
-												class="active">1</a> <a href="#">2</a> <a href="#">3</a> <a
-												href="#">4</a> <a href="#">5</a> <a href="#" class="next">Next</a>
+									<div class="row mt-5">
+										<div class="col text-center">
+											<div class="text-start py-4"
+												style="display: flex; justify-content: center;">
+												<div class="custom-pagination">
+													<c:if test="${curPage != 1 }">
+														<a href="page.change.momsitter?p=${curPage - 1}&ms_search=${searchSession.ms_search}" class="prev">Previous</a>
+													</c:if>
+													<c:forEach begin="${startPage}" end="${endPage}" varStatus="loop">
+														<c:choose>
+															<c:when test="${curPage == loop.index}">
+																<a
+																	href="page.change.momsitterp=${loop.index}&ms_search=${searchSession.ms_search}"
+																	class="active">${loop.index}</a>
+															</c:when>
+															<c:otherwise>
+																<a
+																	href="page.change.momsitterp=${loop.index}&ms_search=${searchSession.ms_search}">${loop.index}</a>
+															</c:otherwise>
+														</c:choose>
+													</c:forEach>
+													<c:if test="${curPage != pageCount }">
+														<a
+															href="page.change.momsitter?p=${curPage + 1}&ms_search=${searchSession.ms_search}"
+															class="prev">Next</a>
+													</c:if>
+												</div>
+											</div>
 										</div>
+
 									</div>
 
 								</div>
