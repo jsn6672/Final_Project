@@ -64,4 +64,17 @@
 	<select id="review" resultType="com.sh.pj.ReviewDTO">
 		select * from review_tbl where review_sitter_id = #{cs_id}
 	</select>
+	
+	<select id="getMsg2" resultType="com.sh.pj.account.DolbomDTO">
+		SELECT * FROM (
+		SELECT ROWNUM AS rn, it.* FROM dolbom_tbl it
+		WHERE (it.d_location LIKE '%' || #{cs_search} || '%') and d_category = 1
+		)
+		WHERE rn &gt;= #{cs_start} and rn &lt;= #{cs_end}
+	</select>
+
+	<select id="getMsgCount2" resultType="int"
+		parameterType="com.sh.pj.account.DolbomDTO">
+		SELECT count(*) FROM dolbom_tbl WHERE d_location LIKE '%'||#{cs_search}||'%' and d_category = 1
+	</select>
 </mapper>

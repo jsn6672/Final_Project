@@ -37,7 +37,7 @@ https://templatemo.com/tm-580-woox-travel
 
 <body>
 	<main id="main">
-		<section style="background-color: #EDE7F6;">
+		<section style="background-color: #EDE7F6; padding-bottom: 30px;">
 			<div class="container">
 				<div class="row">
 
@@ -47,45 +47,52 @@ https://templatemo.com/tm-580-woox-travel
 							<div class="container">
 
 								<div class="row gy-4">
-									<!-- End Stats Item -->
-									<h3 class="category-title"
-										style="display: flex; justify-content: center; padding-top: 30px;">
-										<input id="searchBar" placeholder="검색을 해주세요">
-									</h3>
-									<c:forEach var="p" items="${pettaker }">
+									<form action="page.change3">
+										<div class="category-title"
+											style="display: flex; justify-content: center">
+											<input id="searchBar" type="text" name="ps_search"
+												value="${param.ps_search}" placeholder="검색어를 입력해주세요.">
+											<button class="QnA-searchbutton" type="submit" name="p"
+												value="1">검색</button>
+										</div>
+									</form>
+
+									<c:forEach var="p" items="${s }">
 										<div class="d-md-flex post-entry-2 half">
 											<div class="d-md-flex post-entry-2 half"
 												style="border-bottom: 1px solid #dee2e6 !important;">
-												<div class="mom-select-img">
-													<div>사진</div>
-												</div>
-												<div style="display: flex; gap:10px;">
-													<div class="post-meta">
-														<span class="date">00전 작성 </span> <span>${p.d_writedate }</span>
-													</div>
+												<div style="display: flex; gap: 30px;">
 													<div>
+														<div class="post-meta">
+															<span class="date">00전 작성 </span> <span>${p.d_writedate }</span>
+														</div>
 														<a href="pettaker.detail.go?d_no=${p.d_no }">대상:
 															${p.d_name }</a>
+													</div>
+													<div>
 														<div>
-															나이: <span id="age"></span>살
+															<span>나이: <c:set var="currentYear"
+																	value="<%=java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)%>" />${currentYear - p.d_year + 1}살</span>
 														</div>
 														<div>
 															<span>성별 : ${p.d_gender }</span>
 														</div>
+													</div>
+
+													<div style="padding-top: 3px;">
 														<span>cctv촬영 -<c:choose>
 																<c:when test="${p.d_cctv == 1}">
-   									   가능
-        							</c:when>
+						   									   가능
+						        							</c:when>
 																<c:otherwise>
-           							불가능
-        							</c:otherwise>
+						           							불가능
+						        							</c:otherwise>
 															</c:choose></span>
+														<div>시급: ${p.d_pay }원</div>
 													</div>
 													<div>
-														<div>시급: ${p.d_pay }원</div>
 														<div>활동 가능 지역:</div>
-														<div>${p.m_addr1 }${p.m_addr2 }</div>
-														<div>${p.m_addr3 }	</div>
+														<div>${p.m_addr1 }</div>
 													</div>
 												</div>
 											</div>
@@ -94,13 +101,40 @@ https://templatemo.com/tm-580-woox-travel
 
 
 
-									<div class="text-start py-4"
-										style="display: flex; justify-content: center;">
-										<div class="custom-pagination">
-											<a href="#" class="prev">Prevous</a> <a href="#"
-												class="active">1</a> <a href="#">2</a> <a href="#">3</a> <a
-												href="#">4</a> <a href="#">5</a> <a href="#" class="next">Next</a>
+									<div class="row mt-5">
+										<div class="col text-center">
+											<div class="text-start py-4"
+												style="display: flex; justify-content: center;">
+												<div class="custom-pagination">
+													<c:if test="${curPage != 1 }">
+														<a
+															href="page.change3?p=${curPage - 1}&ps_search=${searchSession.ps_search}"
+															class="prev">Previous</a>
+													</c:if>
+													<c:forEach begin="${startPage}" end="${endPage}"
+														varStatus="loop">
+														<c:choose>
+															<c:when test="${curPage == loop.index}">
+																<a
+																	href="page.change3?p=${loop.index}&ps_search=${searchSession.ps_search}"
+																	class="active">${loop.index}</a>
+															</c:when>
+															<c:otherwise>
+																<a
+																	href="page.change3?p=${loop.index}&ps_search=${searchSession.ps_search}">${loop.index}</a>
+															</c:otherwise>
+														</c:choose>
+													</c:forEach>
+													<c:if test="${curPage != pageCount }">
+														<a
+															href="page.change3?p=${curPage + 1}&ps_search==${searchSession.ps_search}"
+															class="prev">Next</a>
+													</c:if>
+												</div>
+											</div>
+
 										</div>
+
 									</div>
 
 								</div>
@@ -136,7 +170,7 @@ https://templatemo.com/tm-580-woox-travel
 
 							<div class="tab-content" id="pills-tabContent">
 								<!-- Popular -->
-								<c:forEach var="p" items="${pettaker }">
+								<c:forEach var="p" items="${s }">
 
 									<div class="tab-pane fade show active" id="pills-popular"
 										role="tabpanel" aria-labelledby="pills-popular-tab">
@@ -146,8 +180,8 @@ https://templatemo.com/tm-580-woox-travel
 											</div>
 											<span class="author mb-3 d-block"> <a
 												href="pettaker.detail.go?d_no=${p.d_no }">대상: ${p.d_name }</a>
-											</span> <span class="author mb-3 d-block">시급: ${p.d_pay }원</span> <span
-												class="author mb-3 d-block">지역: ${p.m_addr1 }${p.m_addr2 }${p.m_addr3 }</span>
+												시급: ${p.d_pay }원
+											</span> <span class="author mb-3 d-block">지역: ${p.m_addr1 }</span>
 										</div>
 									</div>
 									<!-- End Popular -->
@@ -277,22 +311,7 @@ https://templatemo.com/tm-580-woox-travel
 			});
 		});
 	</script>
-	<script>
-		const birthYear = $
-		{
-			p.d_year
-		};
 
-		// 현재 연도 구하기
-		const currentYear = new Date().getFullYear();
-
-		// 나이 계산
-		const age = currentYear - birthYear + 1;
-
-		// 결과를 화면에 표시
-		const ageElement = document.getElementById("age");
-		ageElement.textContent = age;
-	</script>
 </body>
 
 </html>

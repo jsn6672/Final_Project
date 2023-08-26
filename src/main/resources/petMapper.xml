@@ -4,73 +4,122 @@
 
 
 	<select id="getAll" resultType="com.sh.pj.pet.PetDTO">
-		select*from petsitter_tbl where ps_notice = '0'
+		select*from petsitter_tbl where
+		ps_notice = '0'
 	</select>
-	
-	<select id="getAllTaker" resultType="com.sh.pj.account.DolbomDTO">
+
+	<select id="getAllTaker"
+		resultType="com.sh.pj.account.DolbomDTO">
 		select*from dolbom_tbl where d_category=3
 	</select>
 
+
 	<select id="detail" resultType="com.sh.pj.pet.PetDTO">
-		select*from petsitter_tbl where ps_id = #{ps_id}
+		select*from petsitter_tbl where
+		ps_id = #{ps_id}
 	</select>
 
-	<select id="detailtaker" resultType="com.sh.pj.account.DolbomDTO">
+	<select id="detailtaker"
+		resultType="com.sh.pj.account.DolbomDTO">
 		select*from dolbom_tbl where d_no = #{d_no}
 	</select>
 
 	<insert id="regDolbom">
-		insert into dolbom_tbl values (dolbom_tbl_seq.nextval, #{d_id}, #{d_name}, #{d_category}, #{d_year}, #{d_month}, #{d_day}, #{d_hour}, #{d_check}, #{d_location}, #{d_gender}, #{d_personality}, #{d_pay}, #{d_cctv}, #{d_can_do}, #{d_sitterage}, #{d_need}, #{d_title}, #{d_term}, null, null, null)
+		insert into dolbom_tbl values
+		(dolbom_tbl_seq.nextval, #{d_id}, #{d_name}, #{d_category}, #{d_year},
+		#{d_month}, #{d_day}, #{d_hour}, #{d_check}, #{d_location},
+		#{d_gender}, #{d_personality}, #{d_pay}, #{d_cctv}, #{d_can_do},
+		#{d_sitterage}, #{d_need}, #{d_title}, #{d_term}, null, null, null)
 	</insert>
-	
+
 	<insert id="regPetSitter">
-		insert into petsitter_tbl values (#{ps_id}, #{ps_file}, #{ps_confirm}, #{ps_confirm_answer}, #{ps_cctv}, #{ps_term}, #{ps_day}, #{ps_hour}, #{ps_location1}, #{ps_location2}, #{ps_location3}, #{ps_extra}, #{ps_exp}, #{ps_pay}, #{ps_point}, #{ps_count}, #{ps_can_do}, #{ps_can_type}, 0, null, null, null)
+		insert into petsitter_tbl values (#{ps_id},
+		#{ps_file}, #{ps_confirm}, #{ps_confirm_answer}, #{ps_cctv},
+		#{ps_term}, #{ps_day}, #{ps_hour}, #{ps_location1}, #{ps_location2},
+		#{ps_location3}, #{ps_extra}, #{ps_exp}, #{ps_pay}, #{ps_point},
+		#{ps_count}, #{ps_can_do}, #{ps_can_type}, 0, null, null, null)
 	</insert>
 
 	<update id="changePsStatus">
-		update jsn_user_tbl set user_ps_status = 1 where user_id = #{user_id}
+		update jsn_user_tbl set user_ps_status = 1 where
+		user_id = #{user_id}
 	</update>
 
 	<select id="detailUser" resultType="com.sh.pj.account.MemberDTO">
-		select * from jsn_user_tbl where user_id = #{ps_id}
+		select * from jsn_user_tbl
+		where user_id = #{ps_id}
 	</select>
-		
-	<select id="detailUser2" resultType="com.sh.pj.account.MemberDTO">
+
+	<select id="detailUser2"
+		resultType="com.sh.pj.account.MemberDTO">
 		select * from jsn_user_tbl where user_id = #{d_id}
 	</select>
-	
+
 	<delete id="deletePetsitter">
 		delete from petsitter_tbl where ps_id = #{ps_id}
 	</delete>
-	
+
 	<select id="review" resultType="com.sh.pj.ReviewDTO">
-		select * from review_tbl where review_sitter_id = #{ps_id}
+		select * from review_tbl where
+		review_sitter_id = #{ps_id}
 	</select>
-	
+
 	<update id="updateDolbom">
-		update dolbom_tbl set d_name = #{d_name}, d_year = #{d_year}, d_month = #{d_month}, d_day = #{d_day}, d_hour = #{d_hour}, d_check = #{d_check}, d_location = #{d_location}, d_gender = #{d_gender}, d_personality = #{d_personality}, d_pay = #{d_pay}, d_cctv = #{d_cctv}, d_can_do = #{d_can_do}, d_sitterage = #{d_sitterage}, d_need = #{d_need}, d_title = #{d_title}, d_term = #{d_term} where d_no = #{d_no}
+		update dolbom_tbl set d_name = #{d_name}, d_year =
+		#{d_year}, d_month = #{d_month}, d_day = #{d_day}, d_hour = #{d_hour},
+		d_check = #{d_check}, d_location = #{d_location}, d_gender =
+		#{d_gender}, d_personality = #{d_personality}, d_pay = #{d_pay},
+		d_cctv = #{d_cctv}, d_can_do = #{d_can_do}, d_sitterage =
+		#{d_sitterage}, d_need = #{d_need}, d_title = #{d_title}, d_term =
+		#{d_term} where d_no = #{d_no}
 	</update>
 
 	<select id="getPetSitterInfo" resultType="com.sh.pj.pet.PetDTO">
-		select * from petsitter_tbl where ps_id = #{user_id}
+		select * from
+		petsitter_tbl where ps_id = #{user_id}
 	</select>
-	
+
 	<update id="updatePetSitter">
-		update petsitter_tbl set ps_file = #{ps_file}, ps_confirm = #{ps_confirm}, ps_confirm_answer = #{ps_confirm_answer}, ps_cctv = #{ps_cctv}, ps_term = #{ps_term}, ps_day = #{ps_day}, ps_hour = #{ps_hour}, ps_location1 = #{ps_location1}, ps_location2 = #{ps_location2}, ps_location3 = #{ps_location3}, ps_extra = #{ps_extra}, ps_exp = #{ps_exp}, ps_pay = #{ps_pay}, ps_can_do = #{ps_can_do}, ps_can_type = #{ps_can_type} where ps_id = #{ps_id}
+		update petsitter_tbl set ps_file = #{ps_file},
+		ps_confirm = #{ps_confirm}, ps_confirm_answer = #{ps_confirm_answer},
+		ps_cctv = #{ps_cctv}, ps_term = #{ps_term}, ps_day = #{ps_day},
+		ps_hour = #{ps_hour}, ps_location1 = #{ps_location1}, ps_location2 =
+		#{ps_location2}, ps_location3 = #{ps_location3}, ps_extra =
+		#{ps_extra}, ps_exp = #{ps_exp}, ps_pay = #{ps_pay}, ps_can_do =
+		#{ps_can_do}, ps_can_type = #{ps_can_type} where ps_id = #{ps_id}
 	</update>
-	
+
 	<select id="getMsg" resultType="com.sh.pj.pet.PetDTO">
 		SELECT * fROM (SELECT ROWNUM AS rn, it.* FROM petsitter_tbl it WHERE
-		(it.ps_location1 LIKE '%' || #{ps_search} || '%' OR it.ps_location2 LIKE '%' || #{ps_search} || '%' OR it.ps_location3 LIKE '%' || #{ps_search} || '%')
+		(it.ps_location1 LIKE '%' || #{ps_search} || '%' OR it.ps_location2
+		LIKE '%' || #{ps_search} || '%' OR it.ps_location3 LIKE '%' ||
+		#{ps_search} || '%')
 		<!-- AND it.inquiry_category = #{category} -->
 		ORDER BY it.ps_write_date DESC)
-		WHERE rn &gt;= #{ps_start} and rn &lt;= #{ps_end}
+		WHERE rn &gt;= #{ps_start} and rn &lt;=
+		#{ps_end}
 	</select>
-	
+
 	<select id="getMsgCount" resultType="int"
 		parameterType="com.sh.pj.pet.PetSelector">
-		select count(*) from petsitter_tbl where ps_location1 like '%'||#{ps_search}||'%' or ps_location2 like '%'||#{ps_search}||'%' or ps_location3 like '%'||#{ps_search}||'%'
+		select count(*) from petsitter_tbl where ps_location1
+		like '%'||#{ps_search}||'%' or ps_location2 like
+		'%'||#{ps_search}||'%' or ps_location3 like '%'||#{ps_search}||'%'
 	</select>
+
+	<select id="getMsg2" resultType="com.sh.pj.account.DolbomDTO">
+		SELECT * FROM (
+		SELECT ROWNUM AS rn, it.* FROM dolbom_tbl it
+		WHERE (it.d_location LIKE '%' || #{ps_search} || '%') and d_category = 3
+		)
+		WHERE rn &gt;= #{ps_start} and rn &lt;= #{ps_end}
+	</select>
+
+	<select id="getMsgCount2" resultType="int"
+		parameterType="com.sh.pj.account.DolbomDTO">
+		SELECT count(*) FROM dolbom_tbl WHERE d_location LIKE '%'||#{ps_search}||'%' and d_category = 3
+	</select>
+
 
 
 </mapper>

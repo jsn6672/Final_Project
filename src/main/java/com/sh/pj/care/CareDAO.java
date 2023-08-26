@@ -20,6 +20,7 @@ import com.sh.pj.account.MemberMapper;
 import com.sh.pj.ask.SiteOption;
 import com.sh.pj.mom.MomDTO;
 import com.sh.pj.mom.MomMapper;
+import com.sh.pj.mom.MomSelector;
 import com.sh.pj.pet.PetDTO;
 import com.sh.pj.pet.PetMapper;
 import com.sh.pj.pet.PetSelector;
@@ -32,11 +33,17 @@ public class CareDAO {
 
 	@Autowired
 	private ServletContext sc;
+
+
+	private int allMsgCountCareDolbom;
+
+
 	
 	@Autowired
 	private SiteOption su;
 	
 	private int allMsgCountCareSitter;
+
 
 	public void detail(HttpServletRequest req, CareDTO cDTO, Model m) {
 
@@ -445,14 +452,15 @@ public class CareDAO {
 
 	}
 
-	public void calcAllMsgCountCareSitter() {
-		CareSelector sSel = new CareSelector("", null, null);
-		allMsgCountCareSitter = ss.getMapper(CareMapper.class).getMsgCount(sSel);
-		System.out.println(allMsgCountCareSitter);
-	}
 	
-	public void getMsg(int pageNo, HttpServletRequest req) {
-		int count = 3;
+	public void calcAllMsgCountCareDolbom() {
+		MomSelector mSel = new MomSelector("", null, null);
+		allMsgCountCareDolbom = ss.getMapper(MomMapper.class).getMsgCount2(mSel);
+		System.out.println(allMsgCountCareDolbom);
+	}
+
+	public void getMsg2(int pageNo, HttpServletRequest req) {
+		int count = 5;
 		int start = (pageNo - 1) * count + 1;
 		int end = start + (count - 1);
 
@@ -463,27 +471,31 @@ public class CareDAO {
 		if (careSearch != null) {
 			careSearch.setCs_start(new BigDecimal(start));
 			careSearch.setCs_end(new BigDecimal(end));
-			msgCount = ss.getMapper(CareMapper.class).getMsgCount(careSearch);
+			msgCount = ss.getMapper(CareMapper.class).getMsgCount2(careSearch);
 		} else {
 			// 검색 조건이 없는 경우에 전체 데이터 수를 가져오도록 변경
 			careSearch = new CareSelector("", new BigDecimal(start), new BigDecimal(end));
 			
-			msgCount = allMsgCountCareSitter;
+			msgCount = allMsgCountCareDolbom;
 			System.out.println("앙 공주띠");	
-			System.out.println(allMsgCountCareSitter);
+			System.out.println(allMsgCountCareDolbom);
 			
 		}
 
 //		aDTO.setInquiry_category(req.getParameter("inquiry_category"));
 		System.out.println("asksearch = " + careSearch);
 		try {
-			List<CareDTO> resultList = ss.getMapper(CareMapper.class).getMsg(careSearch);
+			List<DolbomDTO> resultList = ss.getMapper(CareMapper.class).getMsg2(careSearch);
 			
-			for (CareDTO c : resultList) {
-				c.setMm(ss.getMapper(CareMapper.class).detailUser(c));
+			for (DolbomDTO p : resultList) {
+				p.setMm(ss.getMapper(CareMapper.class).detailUser2(p));
+				String location[] = p.getD_location().split("!");
+				p.setM_addr1(location[0]);
+				p.setM_addr2(location[1]);
+				p.setM_addr3(location[2]);
 			}
 			
-			req.setAttribute("c", resultList);
+			req.setAttribute("s", resultList);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -500,6 +512,75 @@ public class CareDAO {
 		int endPage = Math.min(pageCount, startPage + numPagesToShow - 1);
 		req.setAttribute("startPage", startPage);
 		req.setAttribute("endPage", endPage);
+		System.out.println("너 맞지?" + endPage);
+		
+	}
+
+
+	public void calcAllMsgCountCareSitter() {
+		CareSelector sSel = new CareSelector("", null, null);
+		allMsgCountCareSitter = ss.getMapper(CareMapper.class).getMsgCount(sSel);
+		System.out.println(allMsgCountCareSitter);
+	}
+	
+	public void getMsg(int pageNo, HttpServletRequest req) {
+		int count = 3;
+
+		int start = (pageNo - 1) * count + 1;
+		int end = start + (count - 1);
+
+		CareSelector careSearch = (CareSelector) req.getSession().getAttribute("searchSession");
+		int msgCount = 1;
+		System.out.println("세션 petsearch = " + careSearch);
+
+		if (careSearch != null) {
+			careSearch.setCs_start(new BigDecimal(start));
+			careSearch.setCs_end(new BigDecimal(end));
+
+			msgCount = ss.getMapper(CareMapper.class).getMsgCount(careSearch);
+
+		} else {
+			// 검색 조건이 없는 경우에 전체 데이터 수를 가져오도록 변경
+			careSearch = new CareSelector("", new BigDecimal(start), new BigDecimal(end));
+			
+
+			msgCount = allMsgCountCareSitter;
+			System.out.println("앙 공주띠");	
+			System.out.println(allMsgCountCareSitter);
+
+			
+		}
+
+//		aDTO.setInquiry_category(req.getParameter("inquiry_category"));
+		System.out.println("asksearch = " + careSearch);
+		try {
+
+			List<CareDTO> resultList = ss.getMapper(CareMapper.class).getMsg(careSearch);
+			
+			for (CareDTO c : resultList) {
+				c.setMm(ss.getMapper(CareMapper.class).detailUser(c));
+			}
+			
+			req.setAttribute("c", resultList);
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("여기까지 나오나 쳌");
+
+		int pageCount = (int) Math.ceil(msgCount / (double) count);
+		req.setAttribute("pageCount", pageCount);
+		req.setAttribute("curPage", pageNo);
+
+		int numPagesToShow = 5;
+		int startPage = Math.max(1, pageNo - numPagesToShow / 2);
+		int endPage = Math.min(pageCount, startPage + numPagesToShow - 1);
+		req.setAttribute("startPage", startPage);
+		req.setAttribute("endPage", endPage);
+
 		System.out.println(endPage);		
 	}
+
 }

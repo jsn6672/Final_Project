@@ -37,7 +37,7 @@ https://templatemo.com/tm-580-woox-travel
 
 <body>
 	<main id="main">
-		<section style="background-color: #EDE7F6;">
+		<section style="background-color: #EDE7F6; padding-bottom: 30px;">
 			<div class="container">
 				<div class="row">
 
@@ -46,27 +46,28 @@ https://templatemo.com/tm-580-woox-travel
 						<section id="stats-counter" class="stats-counter section-bg">
 							<div class="container">
 
-								<div class="row gy-4">
-									<!-- End Stats Item -->
-									<h3 class="category-title"
-										style="display: flex; justify-content: center; padding-top: 30px;">
-										<input id="searchBar" placeholder="검색을 해주세요">
-									</h3>
-									<c:forEach var="d" items="${dolbom }">
-										<div class="d-md-flex post-entry-2 half"
-											>
-											<div class="d-md-flex post-entry-2 half" style="border-bottom: 1px solid #dee2e6 !important;">
-												<div class="mom-select-img">
-													<div>사진</div>
-												</div>
-												<div style="display: flex; gap: 10px;">
-
-													<div class="post-meta">
-														<span class="date">00전 작성 </span> <span>${d.d_writedate }</span>
-													</div>
+						<div class="row gy-4">
+									<form action="page.change4">
+									<div class="category-title"
+										style="display: flex; justify-content: center">
+										<input id="searchBar" type="text" name="cs_search"
+											value="${param.cs_search}" placeholder="검색어를 입력해주세요.">
+											<button class="QnA-searchbutton" type="submit" name="p" value="1">검색</button>
+									</div>
+									</form>
+			<c:forEach var="d" items="${s }">
+										<div class="d-md-flex post-entry-2 half">
+											<div class="d-md-flex post-entry-2 half"
+												style="border-bottom: 1px solid #dee2e6 !important;">
+												<div style="display: flex; gap: 30px;">
 													<div>
+														<div class="post-meta">
+															<span class="date">00전 작성 </span> <span>${d.d_writedate }</span>
+														</div>
 														<a href="caretaker.detail.go?d_no=${d.d_no }">대상:
 															${d.d_name }</a>
+														</div>	
+														<div>
 														<div>
 															<span>나이: <c:set var="currentYear"
 																	value="<%=java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)%>" />${currentYear - d.d_year + 1}살</span>
@@ -74,35 +75,63 @@ https://templatemo.com/tm-580-woox-travel
 														<div>
 															<span>성별 : ${d.d_gender }</span>
 														</div>
+														</div>
+													
+													<div style="padding-top: 3px;">
 														<span>cctv촬영 -<c:choose>
 																<c:when test="${d.d_cctv == 1}">
-   									   가능
-        							</c:when>
+						   									   가능
+						        							</c:when>
 																<c:otherwise>
-           							불가능
-        							</c:otherwise>
+						           							불가능
+						        							</c:otherwise>
 															</c:choose></span>
-													</div>
-													<div>
 														<div>시급: ${d.d_pay }원</div>
-														<div>활동 가능 지역:</div>
-														<div>${d.m_addr1 }${d.m_addr2 }</div>
-														<div>${d.m_addr3 }</div>
 													</div>
+														<div>
+														<div>활동 가능 지역:</div>
+														<div>${d.m_addr1 }</div>
+														</div>
 												</div>
 											</div>
 										</div>
 									</c:forEach>
 
 
+									<div class="row mt-5">
+										<div class="col text-center">
+											<div class="text-start py-4"
+												style="display: flex; justify-content: center;">
+												<div class="custom-pagination">
+													<c:if test="${curPage != 1 }">
+														<a
+															href="page.change5?p=${curPage - 1}&ms_search=${searchSession.ms_search}"
+															class="prev">Previous</a>
+													</c:if>
+													<c:forEach begin="${startPage}" end="${endPage}"
+														varStatus="loop">
+														<c:choose>
+															<c:when test="${curPage == loop.index}">
+																<a
+																	href="page.change5?p=${loop.index}&ms_search=${searchSession.ms_search}"
+																	class="active">${loop.index}</a>
+															</c:when>
+															<c:otherwise>
+																<a
+																	href="page.change5?p=${loop.index}&ms_search=${searchSession.ms_search}">${loop.index}</a>
+															</c:otherwise>
+														</c:choose>
+													</c:forEach>
+													<c:if test="${curPage != pageCount }">
+														<a
+															href="page.change5?p=${curPage + 1}&ms_search==${searchSession.ms_search}"
+															class="prev">Next</a>
+													</c:if>
+												</div>
+											</div>
 
-									<div class="text-start py-4"
-										style="display: flex; justify-content: center;">
-										<div class="custom-pagination">
-											<a href="#" class="prev">Prevous</a> <a href="#"
-												class="active">1</a> <a href="#">2</a> <a href="#">3</a> <a
-												href="#">4</a> <a href="#">5</a> <a href="#" class="next">Next</a>
 										</div>
+
 									</div>
 
 								</div>
@@ -138,7 +167,7 @@ https://templatemo.com/tm-580-woox-travel
 
 							<div class="tab-content" id="pills-tabContent">
 								<!-- Popular -->
-								<c:forEach var="d" items="${dolbom }">
+								<c:forEach var="d" items="${s }">
 
 									<div class="tab-pane fade show active" id="pills-popular"
 										role="tabpanel" aria-labelledby="pills-popular-tab">
@@ -148,9 +177,9 @@ https://templatemo.com/tm-580-woox-travel
 											</div>
 											<span class="author mb-3 d-block"> <a
 												href="caretaker.detail.go?d_no=${d.d_no }">대상:
-													${d.d_name }</a>
-											</span> <span class="author mb-3 d-block">시급: ${d.d_pay }원</span> <span
-												class="author mb-3 d-block">지역: ${d.m_addr1 }${d.m_addr2 }${d.m_addr3 }</span>
+													${d.d_name }</a> 시급: ${d.d_pay }원
+											</span><span
+												class="author mb-3 d-block">지역: ${d.m_addr1 }</span>
 										</div>
 									</div>
 									<!-- End Popular -->

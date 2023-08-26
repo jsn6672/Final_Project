@@ -50,6 +50,10 @@ public interface PetMapper {
 
 	public DolbomDTO detailtaker(DolbomDTO dolbomDTO);
 
+	public int getMsgCount2(PetSelector petSearch);
+
+	public List<DolbomDTO> getMsg2(PetSelector petSearch);
+
 
 
 }

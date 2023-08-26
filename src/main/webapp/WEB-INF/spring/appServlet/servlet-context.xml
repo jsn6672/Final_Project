@@ -42,7 +42,7 @@
 
 
 
-			value="jdbc:oracle:thin:@DB202204301707_high?TNS_ADMIN=C:/SBT/Wallet_DB202204301707" />
+			value="jdbc:oracle:thin:@DB202204301707_high?TNS_ADMIN=C:/oracleDB/Wallet_DB202204301707" />
 
 
 

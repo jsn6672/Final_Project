@@ -13,10 +13,6 @@
 		<div class="container-side"></div>
 		<div class="content-detail">
 			<div class="header-detail">
-				<div class="body-content-detail-cover" style="width: 40%">
-					<div class="header-img-detail">사진</div>
-				</div>
-
 				<div class="header-data-detail">
 					<div class="header-data1">
 						<div style="margin: 5px;">
@@ -59,7 +55,7 @@
 			</div>
 			<div class="body-detail">
 				<div>
-					<div class="body-title-detail">아이성격</div>
+					<div class="body-title-detail">어르신의 개성</div>
 					<div class="body-content-detail-cover">
 						<div class="body-content-detail">
 							<div style="width: 70%; margin-top: auto; margin-bottom: auto;">${dolbom.d_personality }</div>
@@ -72,50 +68,50 @@
 						<div class="body-content-detail-center">
 							<c:if test="${dolbom.d_can_do %2 == 0 }">
 								<div class="can-do-img">
-									<img alt="" src="resources/img/logo/산책.png">
-									<div class="can-do-text">산책</div>
+									<img alt="" src="resources/img/logo/설거지.png">
+									<div class="can-do-text">가사활동</div>
 								</div>
 							</c:if>
 							<c:if test="${dolbom.d_can_do %3 == 0 }">
 								<div class="can-do-img">
-									<img alt="" src="resources/img/logo/목욕.png">
-									<div class="can-do-text">목욕</div>
+									<img alt="" src="resources/img/logo/신체활동.png">
+									<div class="can-do-text">신체활동</div>
 								</div>
 							</c:if>
 							<c:if test="${dolbom.d_can_do %5 == 0 }">
 								<div class="can-do-img">
-									<img alt="" src="resources/img/logo/사료.png">
-									<div class="can-do-text">밥챙겨주기</div>
+									<img alt="" src="resources/img/logo/인지활동.png">
+									<div class="can-do-text">인지활동</div>
 								</div>
 							</c:if>
 							<c:if test="${dolbom.d_can_do %19 == 0 }">
 								<div class="can-do-img">
-									<img alt="" src="resources/img/logo/호텔.png">
-									<div class="can-do-text">호텔링</div>
+									<img alt="" src="resources/img/logo/기타.png">
+									<div class="can-do-text">기타활동</div>
 								</div>
 							</c:if>
 							<c:if test="${dolbom.d_can_do %7 == 0 }">
 								<div class="can-do-img">
-									<img alt="" src="resources/img/logo/배변훈련.png">
-									<div class="can-do-text">배변훈련</div>
+									<img alt="" src="resources/img/logo/식사활동.png">
+									<div class="can-do-text">식사</div>
 								</div>
 							</c:if>
 							<c:if test="${dolbom.d_can_do %11 == 0 }">
 								<div class="can-do-img">
-									<img alt="" src="resources/img/logo/놀이훈련.png">
-									<div class="can-do-text">놀이훈련</div>
+									<img alt="" src="resources/img/logo/기저귀.png">
+									<div class="can-do-text">기저귀케어</div>
 								</div>
 							</c:if>
 							<c:if test="${dolbom.d_can_do %13 == 0 }">
 								<div class="can-do-img">
-									<img alt="" src="resources/img/logo/.png">
-									<div class="can-do-text">사회화훈련</div>
+									<img alt="" src="resources/img/logo/목욕2.png">
+									<div class="can-do-text">샤워</div>
 								</div>
 							</c:if>
 							<c:if test="${dolbom.d_can_do %17 == 0 }">
 								<div class="can-do-img">
-									<img alt="" src="resources/img/logo/기타.png">
-									<div class="can-do-text">기타활동</div>
+									<img alt="" src="resources/img/logo/말벗.png">
+									<div class="can-do-text">말벗</div>
 								</div>
 							</c:if>
 						</div>
