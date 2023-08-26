@@ -83,6 +83,11 @@
 		mm_state='신청완료'
 	</select>
 
+	<select id="getbuypersonallist" resultType="com.sh.pj.mypage.MoneyDTO">
+		select * from money 
+		 where mm_id= #{user_id}
+	</select>
+
 	<select id="countSitterCont" resultType="int">
 		select count(*) from
 		contract_tbl where cnt_sitter_id = #{cnt_sitter_id}
@@ -248,7 +253,7 @@
 		where cs_confirm = 0
 	</select>
 	
-	<select id="getperiod">
+	<select id="getperiod" resultType="com.sh.pj.mom.MomDTO">
 		SELECT ms_ticket_start, ms_ticket_end FROM momsitter_tbl 
 		where ms_id = #{user_id}
 	</select>
