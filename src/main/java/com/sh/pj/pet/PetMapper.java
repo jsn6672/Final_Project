@@ -37,6 +37,9 @@ public interface PetMapper {
 	
 	public int updatePetSitter(PetDTO pDTO);
 
+	public PetDTO getPetSitterPoint(ReviewDTO rDTO);
+	
+	public int updatePetSitterPoint(PetDTO c);
 
 	public int getMsgCount(PetSelector sSel);
 
@@ -53,6 +56,7 @@ public interface PetMapper {
 	public int getMsgCount2(PetSelector petSearch);
 
 	public List<DolbomDTO> getMsg2(PetSelector petSearch);
+
 
 
 

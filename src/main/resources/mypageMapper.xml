@@ -68,14 +68,14 @@
 		resultType="com.sh.pj.mypage.ContractDTO">
 		select * from contract_tbl where cnt_sitter_id =
 		#{cnt_sitter_id} and
-		cnt_dolbom_ok >= 1 and cnt_sitter_ok >=1
+		cnt_dolbom_ok >= 1 and cnt_sitter_ok >=1 and cnt_dolbom_ok &lt;= 2 and cnt_sitter_ok &lt;=2
 	</select>
 
 	<select id="getAllDolbomCont"
 		resultType="com.sh.pj.mypage.ContractDTO">
 		select * from contract_tbl where cnt_dolbom_no =
 		#{cnt_dolbom_no} and
-		cnt_dolbom_ok >= 1 and cnt_sitter_ok >=1
+		cnt_dolbom_ok >= 1 and cnt_sitter_ok >=1 and cnt_dolbom_ok &lt;= 2 and cnt_sitter_ok &lt;=2
 	</select>
 
 	<select id="getbuylist" resultType="com.sh.pj.mypage.MoneyDTO">
@@ -257,4 +257,8 @@
 		SELECT ms_ticket_start, ms_ticket_end FROM momsitter_tbl 
 		where ms_id = #{user_id}
 	</select>
+	
+	<insert id="regReview">
+		insert into review_tbl values(review_tbl_seq.nextval, #{review_taker_id}, #{review_sitter_id}, #{review_dolbom_no}, #{review_txt}, sysdate, #{review_point}, #{review_cont_no})
+	</insert>
 </mapper>

@@ -2,6 +2,8 @@ package com.sh.pj.mypage;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.channels.Selector;
@@ -30,11 +32,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.sh.pj.ReviewDTO;
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MemberMapper;
+import com.sh.pj.care.CareDTO;
+import com.sh.pj.care.CareMapper;
 import com.sh.pj.mom.MomDTO;
+import com.sh.pj.mom.MomMapper;
 import com.sh.pj.pet.PetDTO;
+import com.sh.pj.pet.PetMapper;
 
 @Service
 public class MypageDAO {
@@ -199,7 +206,6 @@ public class MypageDAO {
 			int can_do = Integer.parseInt(dDTO.getD_can_do());
 			contractDTO.setCnt_can_do("");
 			if (contractDTO.getCnt_type() == 3) {
-
 				if (can_do % 2 == 0) {
 					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 산책");
 				}
@@ -220,6 +226,56 @@ public class MypageDAO {
 				}
 				if (can_do % 17 == 0) {
 					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 사회화훈련");
+				}
+				if (can_do % 19 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 기타활동");
+				}
+			}else if (contractDTO.getCnt_type() == 2) {
+				if (can_do % 2 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 실내놀이");
+				}
+				if (can_do % 3 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 야외놀이");
+				}
+				if (can_do % 5 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 밥챙겨주기");
+				}
+				if (can_do % 7 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 등하원돕기");
+				}
+				if (can_do % 11 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 영어공부");
+				}
+				if (can_do % 13 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 한글공부");
+				}
+				if (can_do % 17 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 대소변");
+				}
+				if (can_do % 19 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 기타활동");
+				}
+			} else {
+				if (can_do % 2 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 가사활동");
+				}
+				if (can_do % 3 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 신체활동");
+				}
+				if (can_do % 5 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 인지활동");
+				}
+				if (can_do % 7 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 식사");
+				}
+				if (can_do % 11 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 기저귀케어");
+				}
+				if (can_do % 13 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 샤워");
+				}
+				if (can_do % 17 == 0) {
+					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 말벗");
 				}
 				if (can_do % 19 == 0) {
 					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 기타활동");
@@ -327,7 +383,7 @@ public class MypageDAO {
 
 					cntDTO2.setCnt_memberDTO(sitterDTO);
 
-					int age = nowyear - (Integer.parseInt(sitterDTO.getUser_age()) / 10000);
+					int age = nowyear - (Integer.parseInt(sitterDTO.getUser_age()) / 10000)+1;
 					cntDTO2.setAge(age);
 
 					cntDTO2.setCnt_petdto(ss.getMapper(MypageMapper.class).getPetSitter(sitterDTO));
@@ -360,8 +416,58 @@ public class MypageDAO {
 						if (can_do % 19 == 0) {
 							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 기타활동");
 						}
+					}else if (cntDTO2.getCnt_type() == 2) {
+						if (can_do % 2 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 실내놀이");
+						}
+						if (can_do % 3 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 야외놀이");
+						}
+						if (can_do % 5 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 밥챙겨주기");
+						}
+						if (can_do % 7 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 등하원돕기");
+						}
+						if (can_do % 11 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 영어공부");
+						}
+						if (can_do % 13 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 한글공부");
+						}
+						if (can_do % 17 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 대소변");
+						}
+						if (can_do % 19 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 기타활동");
+						}
+					} else {
+						if (can_do % 2 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 가사활동");
+						}
+						if (can_do % 3 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 신체활동");
+						}
+						if (can_do % 5 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 인지활동");
+						}
+						if (can_do % 7 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 식사");
+						}
+						if (can_do % 11 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 기저귀케어");
+						}
+						if (can_do % 13 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 샤워");
+						}
+						if (can_do % 17 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 말벗");
+						}
+						if (can_do % 19 == 0) {
+							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 기타활동");
+						}
 					}
-
+					
 					cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do().substring(3));
 
 				}
@@ -625,6 +731,58 @@ public class MypageDAO {
 
 		req.setAttribute("DolbomList", dDTOs);
 
+	}
+
+	public void regReview(HttpServletRequest req, ReviewDTO rDTO) {
+		System.out.println("REVIEWDTO임" + rDTO);
+		if(ss.getMapper(MypageMapper.class).regReview(rDTO) == 1) {
+			int a = ss.getMapper(MemberMapper.class).updateReviewStatus(rDTO);
+			int category = Integer.parseInt(rDTO.getReview_category());
+			if (category == 1) {
+				CareDTO c = ss.getMapper(CareMapper.class).getCareSitterPoint(rDTO);
+//				기존 평균점수
+				BigDecimal point = c.getCs_point();
+//				기존 카운트
+				int count = c.getCs_count();
+//				기존 토탈점수
+				BigDecimal totalpoint = point.multiply(BigDecimal.valueOf(count));
+//				이번에 리뷰에서 받은 점수
+				int newpoint = rDTO.getReview_point();
+//				저장해야할 평균점수
+				BigDecimal newtotalpoint = totalpoint.add(BigDecimal.valueOf(newpoint)).divide(BigDecimal.valueOf(count + 1), 2, RoundingMode.HALF_UP);
+				c.setCs_point(newtotalpoint);
+				int b = ss.getMapper(CareMapper.class).updateCareSitterPoint(c);
+			}else if (category == 2) {
+				MomDTO c = ss.getMapper(MomMapper.class).getMomSitterPoint(rDTO);
+//				기존 평균점수
+				BigDecimal point = c.getMs_point();
+//				기존 카운트
+				int count = c.getMs_count();
+//				기존 토탈점수
+				BigDecimal totalpoint = point.multiply(BigDecimal.valueOf(count));
+//				이번에 리뷰에서 받은 점수
+				int newpoint = rDTO.getReview_point();
+//				저장해야할 평균점수
+				BigDecimal newtotalpoint = totalpoint.add(BigDecimal.valueOf(newpoint)).divide(BigDecimal.valueOf(count + 1), 2, RoundingMode.HALF_UP);
+				c.setMs_point(newtotalpoint);
+				int b = ss.getMapper(MomMapper.class).updateMomSitterPoint(c);			
+			}else {
+				PetDTO c = ss.getMapper(PetMapper.class).getPetSitterPoint(rDTO);
+//				기존 평균점수
+				BigDecimal point = c.getPs_point();
+//				기존 카운트
+				int count = c.getPs_count();
+//				기존 토탈점수
+				BigDecimal totalpoint = point.multiply(BigDecimal.valueOf(count));
+//				이번에 리뷰에서 받은 점수
+				int newpoint = rDTO.getReview_point();
+//				저장해야할 평균점수
+				BigDecimal newtotalpoint = totalpoint.add(BigDecimal.valueOf(newpoint)).divide(BigDecimal.valueOf(count + 1), 2, RoundingMode.HALF_UP);
+				c.setPs_point(newtotalpoint);
+				int b = ss.getMapper(PetMapper.class).updatePetSitterPoint(c);							
+			}
+		}
+		
 	}
 
 }

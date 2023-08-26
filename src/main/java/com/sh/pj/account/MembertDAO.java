@@ -2,6 +2,8 @@ package com.sh.pj.account;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -20,6 +22,7 @@ import com.sh.pj.care.CareTakerDTO;
 import com.sh.pj.mom.MomMapper;
 import com.sh.pj.mom.MomTakerDTO;
 import com.sh.pj.mypage.ContractDTO;
+import com.sh.pj.mypage.MypageMapper;
 import com.sh.pj.pet.PetDTO;
 import com.sh.pj.pet.PetTakerDTO;
 
@@ -73,22 +76,24 @@ public class MembertDAO {
 	public void regAccount(HttpServletRequest req, MemberDTO mDTO) {
 		try {
 			String imgOrgName = mDTO.getPic().getOriginalFilename(); // 이미지 원래 이름
-			long imgSize = mDTO.getPic().getSize(); //이미지 사이즈
+			long imgSize = mDTO.getPic().getSize(); // 이미지 사이즈
 
 			if (imgSize == 0) {
 //				mDTO.setUser_pic(req.getParameter("org_pic"));
 				mDTO.setUser_pic("anonymousicon.png");
 			} else {
-				String extension = imgOrgName.substring(imgOrgName.lastIndexOf("."), imgOrgName.length()); //원래 이름에서 확장자만 따오기
+				String extension = imgOrgName.substring(imgOrgName.lastIndexOf("."), imgOrgName.length()); // 원래 이름에서
+																											// 확장자만 따오기
 
-				String newName = UUID.randomUUID().toString().split("-")[0]; //새로운 이름 만들기
+				String newName = UUID.randomUUID().toString().split("-")[0]; // 새로운 이름 만들기
 
 				String path = sc.getRealPath("resources/img"); // 이미지 저장할 루트
 
-				File saveImg = new File(path + "//" + newName + extension); //그래서 java에서 file 인식시키게 하기 (루트 + 새 이름 + 기존에 따온 확장자)
+				File saveImg = new File(path + "//" + newName + extension); // 그래서 java에서 file 인식시키게 하기 (루트 + 새 이름 + 기존에
+																			// 따온 확장자)
 
 				mDTO.getPic().transferTo(saveImg); // 실제 업로드 코드
-				mDTO.setUser_pic(newName + extension); //db에 넣는 이름
+				mDTO.setUser_pic(newName + extension); // db에 넣는 이름
 			}
 
 			mDTO.setUser_email_auth("1");
@@ -98,14 +103,13 @@ public class MembertDAO {
 
 			mDTO.setUser_location(req.getParameter("m_addr1") + "!" + req.getParameter("m_addr2") + "!"
 					+ req.getParameter("m_addr3"));
-			
+
 			mDTO.setUser_cs_status(0);
 			mDTO.setUser_ps_status(0);
 			mDTO.setUser_ms_status(0);
 			mDTO.setUser_ct_status(0);
 			mDTO.setUser_pt_status(0);
 			mDTO.setUser_mt_status(0);
-			
 
 			System.out.println(mDTO);
 
@@ -200,7 +204,7 @@ public class MembertDAO {
 
 			ptDTO.getPt_Rfile().transferTo(saveImg);
 			ptDTO.setPt_file(newName + extension);
-			
+
 			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 			ptDTO.setPt_id(mDTO.getUser_id());
 			System.out.println(ptDTO);
@@ -235,7 +239,7 @@ public class MembertDAO {
 
 			mtDTO.getMt_Rfile().transferTo(saveImg);
 			mtDTO.setMt_file(newName + extension);
-			
+
 			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 			mtDTO.setMt_id(mDTO.getUser_id());
 			System.out.println(mtDTO);
@@ -268,7 +272,7 @@ public class MembertDAO {
 
 			ctDTO.getCt_Rfile().transferTo(saveImg);
 			ctDTO.setCt_file(newName + extension);
-			
+
 			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 			ctDTO.setCt_id(mDTO.getUser_id());
 			System.out.println(ctDTO);
@@ -284,46 +288,75 @@ public class MembertDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public void countTBL() {
-		
+
 		int ps = ss.getMapper(MemberMapper.class).countPetSitter();
 		int cs = ss.getMapper(MemberMapper.class).countCareSitter();
 		int ms = ss.getMapper(MemberMapper.class).countMomSitter();
 		int db = ss.getMapper(MemberMapper.class).countDolbom();
 		int cnt = ss.getMapper(MemberMapper.class).countCont();
-		
+
 		countDTO cntDTO = new countDTO();
-		cntDTO.setCount_sitter(ps+cs+ms);
+		cntDTO.setCount_sitter(ps + cs + ms);
 		cntDTO.setCount_dolbom(db);
 		cntDTO.setCount_cont(cnt);
-		
+
 		int a = ss.getMapper(MemberMapper.class).regDefaultcount(cntDTO);
-		
+
 	}
 
 	public void countAll(HttpServletRequest req) {
-		
+
 		req.setAttribute("countAll", ss.getMapper(MemberMapper.class).countAll());
-		
+
 	}
 
 	public void EndCnt(HttpServletRequest req, ContractDTO cntDTO) {
-		
-		if(ss.getMapper(MemberMapper.class).endCnt(cntDTO)==1) {
+
+		if (ss.getMapper(MemberMapper.class).endCnt(cntDTO) == 1) {
 			System.out.println("계약 종료");
 		}
-		
+
 	}
 
 	public void getAllReview(HttpServletRequest req) {
-		// TODO Auto-generated method stub
-		
+		// 현재 날짜 구하기 (시스템 시계, 시스템 타임존)
+		LocalDate now = LocalDate.now();
+
+		// 연도, 월(문자열, 숫자), 일, 일(year 기준), 요일(문자열, 숫자)
+		int nowyear = now.getYear();
+
+		MemberDTO ui = (MemberDTO) req.getSession().getAttribute("userInfo");
+
+		List<DolbomDTO> dDTOs = ss.getMapper(MypageMapper.class).getDolbomList(ui);
+
+
+		for (DolbomDTO d : dDTOs) {
+			System.out.println(dDTOs);
+			if (ss.getMapper(MemberMapper.class).countMustReviewCnt(d) == 0) {
+				d.setCntDTOMessage("이 돌보미에게 돌보아주기를 끝낸 시터가 아직 없습니다");
+			} else {
+
+				List<ContractDTO> cDTOs = ss.getMapper(MemberMapper.class).getAllNotRegReview(d);
+
+				for (ContractDTO c : cDTOs) {
+
+					MemberDTO sitterDTO = ss.getMapper(MypageMapper.class).getUserID(c);
+					int age = nowyear - (Integer.parseInt(sitterDTO.getUser_age()) / 10000) + 1;
+					c.setAge(age);
+					c.setCnt_memberDTO(sitterDTO);
+
+				}
+				d.setCntDTOs(cDTOs);
+				d.setCntDTOMessage("1");
+			}
+
+		}
+		req.setAttribute("NotReview", dDTOs);
+
 	}
-
-
-	
 
 }

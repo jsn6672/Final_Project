@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sh.pj.ReviewDTO;
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MembertDAO;
@@ -236,6 +237,7 @@ public class MypageController {
 		req.setAttribute("mypageContentPage", "mypageUsageDetail.jsp");
 		return "home";
 	}
+	
 	@RequestMapping(value = "/mypage.regReview.go", method = RequestMethod.GET)
 	public String mypageReview_go(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
@@ -427,6 +429,12 @@ public class MypageController {
 		return "redirect:/mypage.usage.go";
 	}
 	
+	@RequestMapping(value = "/regReview", method = RequestMethod.GET)
+	public String regReview(HttpServletRequest req, ReviewDTO rDTO) {
+		mpDAO.regReview(req, rDTO);
+		
+		return "redirect:/mypage.go";
+	}
 	
 	
 }

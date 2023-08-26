@@ -88,6 +88,15 @@
 		#{ps_extra}, ps_exp = #{ps_exp}, ps_pay = #{ps_pay}, ps_can_do =
 		#{ps_can_do}, ps_can_type = #{ps_can_type} where ps_id = #{ps_id}
 	</update>
+	
+	<select id="getPetSitterPoint" resultType="com.sh.pj.pet.PetDTO">
+		select * from petsitter_tbl where ps_id = #{review_sitter_id}
+	</select>
+	
+	<update id="updatePetSitterPoint">
+		update petsitter_tbl set ps_point = #{ps_point}, ps_count = ps_count + 1 where ps_id = #{ps_id}
+	</update>
+	
 
 	<select id="getMsg" resultType="com.sh.pj.pet.PetDTO">
 		SELECT * fROM (SELECT ROWNUM AS rn, it.* FROM petsitter_tbl it WHERE
@@ -119,6 +128,7 @@
 		parameterType="com.sh.pj.account.DolbomDTO">
 		SELECT count(*) FROM dolbom_tbl WHERE d_location LIKE '%'||#{ps_search}||'%' and d_category = 3
 	</select>
+
 
 
 

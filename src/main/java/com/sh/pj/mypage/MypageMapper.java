@@ -2,6 +2,7 @@ package com.sh.pj.mypage;
 
 import java.util.List;
 
+import com.sh.pj.ReviewDTO;
 import javax.servlet.http.HttpServletRequest;
 
 import com.sh.pj.account.DolbomDTO;
@@ -84,6 +85,8 @@ public interface MypageMapper {
 	public List<MomDTO> getperiod(String user_id);
 
 	public List<MoneyDTO> getbuypersonallist(String user_id);
+
+	public int regReview(ReviewDTO rDTO);
 
 	
 
