@@ -445,7 +445,7 @@ public class CareDAO {
 
 	}
 
-	public void calcAllMsgCountMomSitter() {
+	public void calcAllMsgCountCareSitter() {
 		CareSelector sSel = new CareSelector("", null, null);
 		allMsgCountCareSitter = ss.getMapper(CareMapper.class).getMsgCount(sSel);
 		System.out.println(allMsgCountCareSitter);

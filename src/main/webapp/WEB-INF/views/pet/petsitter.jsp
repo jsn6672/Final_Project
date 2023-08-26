@@ -181,9 +181,20 @@ https://templatemo.com/tm-580-woox-travel
 													<span>${p.ps_write_date }</span>
 												</div>
 												<div>
-													<a href="petsitter.detail.go?ps_id=${p.ps_id }">펫시터:
-														${p.mm.user_name }(이름)</a> <span>나이</span> <span>성별</span> <span>cctv촬영
-														- ${p.ps_cctv }</span>
+													<a href="petsitter.detail.go?ps_id=${p.ps_id }">펫시터:${p.mm.user_name }(이름)</a>
+													<span>나이: 
+														<c:set var="currentYear" value="<%=java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)%>" />
+														${currentYear - p.mm.user_age + 1}살
+													</span>
+													<c:choose>
+														<c:when test="${p.mm.user_gender eq 'female'}">
+															<span>여</span>
+														</c:when>
+														<c:otherwise>
+															<span>남</span>
+														</c:otherwise>
+													</c:choose>
+													<span>cctv촬영 - ${p.ps_cctv }</span>
 												</div>
 												<div style="display: flex;">
 													<div>시급: ${p.ps_pay }</div>
