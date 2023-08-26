@@ -3,6 +3,8 @@ package com.sh.pj.mypage;
 import java.util.List;
 
 import com.sh.pj.ReviewDTO;
+import javax.servlet.http.HttpServletRequest;
+
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.mom.MomDTO;
@@ -30,6 +32,7 @@ public interface MypageMapper {
 	public int insertmoney(MoneyDTO mmDTO);
 
 	public List<MoneyDTO> getbuylist();
+	
 	
 	
 	//시터로서 들어온 계약 갯수 확인용
@@ -79,7 +82,9 @@ public interface MypageMapper {
 
 	public List<MoneyDTO> getcertiflist();
 
-	public int getperiod(MoneyDTO mm, MomDTO mDTO);
+	public List<MomDTO> getperiod(String user_id);
+
+	public List<MoneyDTO> getbuypersonallist(String user_id);
 
 	public int regReview(ReviewDTO rDTO);
 

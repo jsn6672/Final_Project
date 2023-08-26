@@ -47,13 +47,15 @@ public interface PetMapper {
 
 
 
-
-
 	public List<DolbomDTO> getAllTaker(DolbomDTO dolbomDTO);
 
 	public MemberDTO detailUser2(DolbomDTO pp);
 
 	public DolbomDTO detailtaker(DolbomDTO dolbomDTO);
+
+	public int getMsgCount2(PetSelector petSearch);
+
+	public List<DolbomDTO> getMsg2(PetSelector petSearch);
 
 
 

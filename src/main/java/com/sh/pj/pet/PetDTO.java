@@ -22,8 +22,8 @@ public class PetDTO {
 	private String ps_hour;
 	private String ps_location1;
 	private String ps_location2;
-	private String ps_location3;
 	private String ps_extra;
+	private String ps_location3;
 	private String ps_exp;
 	private int ps_pay;
 	private BigDecimal ps_point;

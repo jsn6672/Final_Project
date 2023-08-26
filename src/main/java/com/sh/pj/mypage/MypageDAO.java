@@ -668,10 +668,12 @@ public class MypageDAO {
 
 	}
 
-	public void ticketthatihave(HttpServletRequest req, MoneyDTO mm, MomDTO mDTO) {
-		List<MoneyDTO> moneyList = ss.getMapper(MypageMapper.class).getbuylist();
-		req.setAttribute("moneyList", moneyList);
-		int ticketPeriod = ss.getMapper(MypageMapper.class).getperiod(mm, mDTO);
+	public void ticketthatihave(HttpServletRequest req, String user_id, MoneyDTO mm, MomDTO mDTO) {
+		System.out.println("아이디 확인2222222222");
+		System.out.println(user_id);
+		List<MoneyDTO> moneyList2 = ss.getMapper(MypageMapper.class).getbuypersonallist(user_id);
+		req.setAttribute("moneyList2", moneyList2);
+		List<MomDTO> ticketPeriod = ss.getMapper(MypageMapper.class).getperiod(user_id);
 		req.setAttribute("ticketPeriod", ticketPeriod);
 	}
 

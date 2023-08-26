@@ -37,4 +37,15 @@ public interface CareMapper {
 	public int updateCareSitterPoint(CareDTO c);
 
 
+	public int getMsgCount2(CareSelector careSearch);
+
+	public List<DolbomDTO> getMsg2(CareSelector careSearch);
+
+	public int getMsgCount(CareSelector sSel);
+
+	public List<CareDTO> getMsg(CareSelector careSearch);
+
+
+
+
 }

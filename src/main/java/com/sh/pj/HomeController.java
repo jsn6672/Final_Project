@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sh.pj.account.MembertDAO;
 import com.sh.pj.ask.AskDAO;
+import com.sh.pj.care.CareDAO;
+import com.sh.pj.mom.MomDAO;
 import com.sh.pj.mypage.ContractDTO;
 import com.sh.pj.pet.PetDAO;
 import com.sh.pj.account.MemberDTO;
@@ -32,6 +34,12 @@ public class HomeController {
 	
 	@Autowired
 	private PetDAO pDAO;
+
+	@Autowired
+	private CareDAO cDAO;
+	
+	@Autowired
+	private MomDAO momDAO;
 	
 	private boolean firstReq;
 	
@@ -56,7 +64,12 @@ public class HomeController {
 		
 		if (firstReq2) {
 			pDAO.calcAllMsgCountPetSitter();
-			firstReq2=false;
+
+			pDAO.calcAllMsgCountPetDolbom();
+
+			cDAO.calcAllMsgCountCareSitter();
+			momDAO.calcAllMsgCountMomSitter();
+
 		}
 		
 		req.setAttribute("contentPage", "index.jsp");
