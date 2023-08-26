@@ -1,6 +1,7 @@
 package com.sh.pj.care;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,13 +13,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.sh.pj.ReviewDTO;
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MemberMapper;
+import com.sh.pj.ask.SiteOption;
 import com.sh.pj.mom.MomDTO;
 import com.sh.pj.mom.MomMapper;
 import com.sh.pj.pet.PetDTO;
 import com.sh.pj.pet.PetMapper;
+import com.sh.pj.pet.PetSelector;
 
 @Service
 public class CareDAO {
@@ -28,51 +32,53 @@ public class CareDAO {
 
 	@Autowired
 	private ServletContext sc;
-
-	public void getAll(HttpServletRequest req, Model m, CareDTO cDTO) {
-		m.addAttribute("caresitter", ss.getMapper(CareMapper.class).getAll(cDTO));
-		System.out.println(cDTO);
-
-	}
+	
+	@Autowired
+	private SiteOption su;
+	
+	private int allMsgCountCareSitter;
 
 	public void detail(HttpServletRequest req, CareDTO cDTO, Model m) {
 
-
-
 		CareDTO pp = ss.getMapper(CareMapper.class).detail(cDTO);
 
-		String[] ps_hour = pp.getCs_hour().split("!");
+		String[] cs_hour = pp.getCs_hour().split("!");
 
-		pp.setMonday_start(Integer.parseInt(ps_hour[0]));
-		pp.setMonday_end(Integer.parseInt(ps_hour[1]));
-		pp.setTuesday_start(Integer.parseInt(ps_hour[2]));
-		pp.setTuesday_end(Integer.parseInt(ps_hour[3]));
-		pp.setWednesday_start(Integer.parseInt(ps_hour[4]));
-		pp.setWednesday_end(Integer.parseInt(ps_hour[5]));
-		pp.setThursday_start(Integer.parseInt(ps_hour[6]));
-		pp.setThursday_end(Integer.parseInt(ps_hour[7]));
-		pp.setFriday_start(Integer.parseInt(ps_hour[8]));
-		pp.setFriday_end(Integer.parseInt(ps_hour[9]));
-		pp.setSaturday_start(Integer.parseInt(ps_hour[10]));
-		pp.setSaturday_end(Integer.parseInt(ps_hour[11]));
-		pp.setSunday_start(Integer.parseInt(ps_hour[12]));
-		pp.setSunday_end(Integer.parseInt(ps_hour[13]));
+		pp.setMonday_start(Integer.parseInt(cs_hour[0]));
+		pp.setMonday_end(Integer.parseInt(cs_hour[1]));
+		pp.setTuesday_start(Integer.parseInt(cs_hour[2]));
+		pp.setTuesday_end(Integer.parseInt(cs_hour[3]));
+		pp.setWednesday_start(Integer.parseInt(cs_hour[4]));
+		pp.setWednesday_end(Integer.parseInt(cs_hour[5]));
+		pp.setThursday_start(Integer.parseInt(cs_hour[6]));
+		pp.setThursday_end(Integer.parseInt(cs_hour[7]));
+		pp.setFriday_start(Integer.parseInt(cs_hour[8]));
+		pp.setFriday_end(Integer.parseInt(cs_hour[9]));
+		pp.setSaturday_start(Integer.parseInt(cs_hour[10]));
+		pp.setSaturday_end(Integer.parseInt(cs_hour[11]));
+		pp.setSunday_start(Integer.parseInt(cs_hour[12]));
+		pp.setSunday_end(Integer.parseInt(cs_hour[13]));
 
-		String[] ps_day = pp.getCs_day().split("!");
+		String[] cs_day = pp.getCs_day().split("!");
 
-		pp.setMonday(ps_day[0]);
-		pp.setTuesday(ps_day[1]);
-		pp.setWednesday(ps_day[2]);
-		pp.setThursday(ps_day[3]);
-		pp.setFriday(ps_day[4]);
-		pp.setSaturday(ps_day[5]);
-		pp.setSunday(ps_day[6]);
+		pp.setMonday(cs_day[0]);
+		pp.setTuesday(cs_day[1]);
+		pp.setWednesday(cs_day[2]);
+		pp.setThursday(cs_day[3]);
+		pp.setFriday(cs_day[4]);
+		pp.setSaturday(cs_day[5]);
+		pp.setSunday(cs_day[6]);
 
 		pp.setMm(ss.getMapper(CareMapper.class).detailUser(pp));
 
 		
-		  m.addAttribute("reviews", ss.getMapper(CareMapper.class).review(cDTO));
-		  System.out.println(ss.getMapper(CareMapper.class).review(cDTO));
+		List<ReviewDTO> rDTO = ss.getMapper(CareMapper.class).review(cDTO);
+		m.addAttribute("review", rDTO);
+		if (rDTO == null || rDTO.isEmpty()) {
+			m.addAttribute("review", "none");
+        }
+		
+		System.out.println(ss.getMapper(CareMapper.class).review(cDTO));
 	
 
 		m.addAttribute("caresitter", pp);
@@ -437,5 +443,63 @@ public class CareDAO {
 			System.out.println("돌보미 수정 완료");
 		}
 
+	}
+
+	public void calcAllMsgCountCareSitter() {
+		CareSelector sSel = new CareSelector("", null, null);
+		allMsgCountCareSitter = ss.getMapper(CareMapper.class).getMsgCount(sSel);
+		System.out.println(allMsgCountCareSitter);
+	}
+	
+	public void getMsg(int pageNo, HttpServletRequest req) {
+		int count = 3;
+		int start = (pageNo - 1) * count + 1;
+		int end = start + (count - 1);
+
+		CareSelector careSearch = (CareSelector) req.getSession().getAttribute("searchSession");
+		int msgCount = 1;
+		System.out.println("세션 petsearch = " + careSearch);
+
+		if (careSearch != null) {
+			careSearch.setCs_start(new BigDecimal(start));
+			careSearch.setCs_end(new BigDecimal(end));
+			msgCount = ss.getMapper(CareMapper.class).getMsgCount(careSearch);
+		} else {
+			// 검색 조건이 없는 경우에 전체 데이터 수를 가져오도록 변경
+			careSearch = new CareSelector("", new BigDecimal(start), new BigDecimal(end));
+			
+			msgCount = allMsgCountCareSitter;
+			System.out.println("앙 공주띠");	
+			System.out.println(allMsgCountCareSitter);
+			
+		}
+
+//		aDTO.setInquiry_category(req.getParameter("inquiry_category"));
+		System.out.println("asksearch = " + careSearch);
+		try {
+			List<CareDTO> resultList = ss.getMapper(CareMapper.class).getMsg(careSearch);
+			
+			for (CareDTO c : resultList) {
+				c.setMm(ss.getMapper(CareMapper.class).detailUser(c));
+			}
+			
+			req.setAttribute("c", resultList);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("여기까지 나오나 쳌");
+
+		int pageCount = (int) Math.ceil(msgCount / (double) count);
+		req.setAttribute("pageCount", pageCount);
+		req.setAttribute("curPage", pageNo);
+
+		int numPagesToShow = 5;
+		int startPage = Math.max(1, pageNo - numPagesToShow / 2);
+		int endPage = Math.min(pageCount, startPage + numPagesToShow - 1);
+		req.setAttribute("startPage", startPage);
+		req.setAttribute("endPage", endPage);
+		System.out.println(endPage);		
 	}
 }

@@ -8,10 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MembertDAO;
 import com.sh.pj.pet.PetDTO;
+import com.sh.pj.pet.PetSelector;
 import com.sh.pj.pet.PetTakerDTO;
 
 @Controller
@@ -28,10 +30,9 @@ public class CareController {
 		req.setAttribute("contentPage", "care/caresitter.jsp");
 		mDAO.logincheck(req);
 		mDAO.countAll(req);
-		cDAO.getAll(req,m,cDTO);
-		System.out.println(m);
-		System.out.println(cDTO);
-		req.setAttribute("background_color", "#FBE9E7");
+		req.getSession().removeAttribute("searchSession");
+		cDAO.getMsg(1, req);
+		req.setAttribute("contentPage", "care/caresitter.jsp");
 		return "home";
 	}
 	
@@ -105,5 +106,28 @@ public class CareController {
 
 		return "redirect:/mypage.takerRegCare.go";
 	}
+    
+    @RequestMapping(value = "/page.change.caresitter", method = RequestMethod.GET)
+    public String paging(HttpServletRequest req, @RequestParam int p, Model model, CareSelector cs) {
+//		aDAO.getAllAsk(model);
+	    // 검색어가 입력되었다면, 검색어를 AskSelector 객체에 설정하고 세션에 저장합니다.
+		System.out.println(cs.getCs_search());
+		String careSearch = cs.getCs_search();
+	    if (careSearch != null && !careSearch.isEmpty()) {
+	        cs.setCs_search(careSearch);
+	        req.getSession().setAttribute("searchSession", cs);
+	    } else {
+	        // 검색어가 입력되지 않았다면 세션에서 검색어 정보를 제거합니다.
+	        req.getSession().removeAttribute("searchSession");
+	        System.out.println("여기오면 세션값 죽음 ㄹㅇ");
+	    }
+//	    req.getSession().setAttribute("asksearch", askSearch);
+	    cDAO.getMsg(p, req);
+	    mDAO.logincheck(req);
+	    
+	    req.setAttribute("contentPage", "care/caresitter.jsp");	
+	    
+        return "home";
+    }
 	
 }
