@@ -56,6 +56,7 @@ public class HomeController {
 		
 		if (firstReq2) {
 			pDAO.calcAllMsgCountPetSitter();
+			pDAO.calcAllMsgCountPetDolbom();
 			firstReq2=false;
 		}
 		

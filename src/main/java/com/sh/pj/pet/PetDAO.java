@@ -37,6 +37,8 @@ public class PetDAO {
 	private SiteOption su; // 한페이지에 몇개씩 보여줄지.
 	
 	private int allMsgCountPetSitter; 
+
+	private int allMsgCountPetDolbom; 
 	
 	
 	
@@ -368,6 +370,12 @@ public class PetDAO {
 		allMsgCountPetSitter = ss.getMapper(PetMapper.class).getMsgCount(sSel);
 		System.out.println(allMsgCountPetSitter);
 	}
+	public void calcAllMsgCountPetDolbom() {
+		PetSelector sSel = new PetSelector("", null, null);
+		allMsgCountPetDolbom = ss.getMapper(PetMapper.class).getMsgCount2(sSel);
+		System.out.println(allMsgCountPetDolbom);
+	}
+	
 
 	public void getMsg(int pageNo, HttpServletRequest req) {
 		int count = 3;
@@ -419,6 +427,63 @@ public class PetDAO {
 		req.setAttribute("startPage", startPage);
 		req.setAttribute("endPage", endPage);
 		System.out.println(endPage);
+		
+	}
+	
+	public void getMsg2(int pageNo, HttpServletRequest req) {
+		int count = 5;
+		int start = (pageNo - 1) * count + 1;
+		int end = start + (count - 1);
+
+		PetSelector petSearch = (PetSelector) req.getSession().getAttribute("searchSession");
+		int msgCount = 1;
+		System.out.println("세션 petsearch = " + petSearch);
+
+		if (petSearch != null) {
+			petSearch.setPs_start(new BigDecimal(start));
+			petSearch.setPs_end(new BigDecimal(end));
+			msgCount = ss.getMapper(PetMapper.class).getMsgCount2(petSearch);
+		} else {
+			// 검색 조건이 없는 경우에 전체 데이터 수를 가져오도록 변경
+			petSearch = new PetSelector("", new BigDecimal(start), new BigDecimal(end));
+			
+			msgCount = allMsgCountPetDolbom;
+			System.out.println("앙 공주띠");	
+			System.out.println(allMsgCountPetDolbom);
+			
+		}
+
+//		aDTO.setInquiry_category(req.getParameter("inquiry_category"));
+		System.out.println("asksearch = " + petSearch);
+		try {
+			List<DolbomDTO> resultList = ss.getMapper(PetMapper.class).getMsg2(petSearch);
+			
+			for (DolbomDTO p : resultList) {
+				p.setMm(ss.getMapper(PetMapper.class).detailUser2(p));
+				String location[] = p.getD_location().split("!");
+				p.setM_addr1(location[0]);
+				p.setM_addr2(location[1]);
+				p.setM_addr3(location[2]);
+			}
+			
+			req.setAttribute("s", resultList);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("여기까지 나오나 쳌");
+
+		int pageCount = (int) Math.ceil(msgCount / (double) count);
+		req.setAttribute("pageCount", pageCount);
+		req.setAttribute("curPage", pageNo);
+
+		int numPagesToShow = 5;
+		int startPage = Math.max(1, pageNo - numPagesToShow / 2);
+		int endPage = Math.min(pageCount, startPage + numPagesToShow - 1);
+		req.setAttribute("startPage", startPage);
+		req.setAttribute("endPage", endPage);
+		System.out.println("너 맞지?" + endPage);
 		
 	}
 

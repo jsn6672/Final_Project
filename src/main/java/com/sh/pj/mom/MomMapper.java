@@ -6,6 +6,8 @@ import com.sh.pj.ReviewDTO;
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.care.CareDTO;
+import com.sh.pj.care.CareSelector;
+import com.sh.pj.pet.PetSelector;
 
 public interface MomMapper {
 
@@ -35,6 +37,17 @@ public interface MomMapper {
 	public int updateMomSitter(MomDTO momDTO);
 
 	public MomDTO getMomSitterInfo(MemberDTO mDTO);
+
+	public int getMsgCount(MomSelector momSearch);
+
+	public int getMsgCount2(MomSelector mSel);
+
+	public List<DolbomDTO> getMsg2(MomSelector momSearch);
+
+	public int updateDolbom(DolbomDTO dDTO);
+
+
+
 
 
 }
