@@ -80,6 +80,10 @@
 		and cnt_sitter_ok = 3 and cnt_dolbom_ok = 2
 	</select>
 	
+	<update id="updateReviewStatus">
+		update contract_tbl set cnt_dolbom_ok = 3 where cnt_no = #{review_cont_no}
+	</update>
+	
 	
 	<!-- 최초 카운트 계산용 메소드 / 계산 후 주석처리해도 상관 없음 -->
 	<select id="countPetSitter" resultType="int">

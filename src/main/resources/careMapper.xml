@@ -51,4 +51,14 @@
 	<select id="review" resultType="com.sh.pj.ReviewDTO">
 		select * from review_tbl where review_sitter_id = #{ps_id}
 	</select>
+	
+	<select id="getCareSitterPoint" resultType="com.sh.pj.care.CareDTO">
+		select * from caresitter_tbl where cs_id = #{review_sitter_id}
+	</select>
+	
+	<update id="updateCareSitterPoint">
+		update caresitter_tbl set cs_point = #{cs_point}, cs_count = cs_count + 1 where cs_id = #{cs_id}
+	</update>
+	
+	
 </mapper>

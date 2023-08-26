@@ -32,5 +32,9 @@ public interface CareMapper {
 
 	int updateCareSitter(CareDTO cDTO);
 
+	public CareDTO getCareSitterPoint(ReviewDTO rDTO);
+
+	public int updateCareSitterPoint(CareDTO c);
+
 
 }

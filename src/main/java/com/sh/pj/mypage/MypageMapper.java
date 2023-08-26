@@ -2,6 +2,7 @@ package com.sh.pj.mypage;
 
 import java.util.List;
 
+import com.sh.pj.ReviewDTO;
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.mom.MomDTO;
@@ -79,6 +80,8 @@ public interface MypageMapper {
 	public List<MoneyDTO> getcertiflist();
 
 	public int getperiod(MoneyDTO mm, MomDTO mDTO);
+
+	public int regReview(ReviewDTO rDTO);
 
 	
 

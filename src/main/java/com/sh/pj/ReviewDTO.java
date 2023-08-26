@@ -6,29 +6,48 @@ import com.sh.pj.account.MemberDTO;
 
 public class ReviewDTO {
 
-	 private int review_no; 
-	 private String review_taker_id; 
-	 private String review_sitter_id; 
-	 private int review_dolbom_no; 
-	 private String review_txt; 
-	 private Date review_create_at; 
-	 
-	 private MemberDTO memberDTO;
-	 
-	 public ReviewDTO() {
-		// TODO Auto-generated constructor stub
+	private int review_no;
+	private String review_taker_id;
+	private String review_sitter_id;
+	private int review_dolbom_no;
+	private String review_txt;
+	private Date review_create_at;
+	private int review_point;
+	private int review_cont_no;
+
+	private MemberDTO memberDTO;
+	private String review_category;
+
+	@Override
+	public String toString() {
+		return "ReviewDTO [review_no=" + review_no + ", review_taker_id=" + review_taker_id + ", review_sitter_id="
+				+ review_sitter_id + ", review_dolbom_no=" + review_dolbom_no + ", review_txt=" + review_txt
+				+ ", review_create_at=" + review_create_at + ", review_point=" + review_point + ", review_cont_no="
+				+ review_cont_no + ", memberDTO=" + memberDTO + ", review_category=" + review_category + "]";
 	}
 
-	public ReviewDTO(int review_no, String review_taker_id, String review_sitter_id, int review_dolbom_no,
-			String review_txt, Date review_create_at, MemberDTO memberDTO) {
-		super();
-		this.review_no = review_no;
-		this.review_taker_id = review_taker_id;
-		this.review_sitter_id = review_sitter_id;
-		this.review_dolbom_no = review_dolbom_no;
-		this.review_txt = review_txt;
-		this.review_create_at = review_create_at;
-		this.memberDTO = memberDTO;
+	public String getReview_category() {
+		return review_category;
+	}
+
+	public void setReview_category(String review_category) {
+		this.review_category = review_category;
+	}
+
+	public int getReview_point() {
+		return review_point;
+	}
+
+	public void setReview_point(int review_point) {
+		this.review_point = review_point;
+	}
+
+	public int getReview_cont_no() {
+		return review_cont_no;
+	}
+
+	public void setReview_cont_no(int review_cont_no) {
+		this.review_cont_no = review_cont_no;
 	}
 
 	public int getReview_no() {
@@ -87,17 +106,4 @@ public class ReviewDTO {
 		this.memberDTO = memberDTO;
 	}
 
-	@Override
-	public String toString() {
-		return "ReviewDTO [review_no=" + review_no + ", review_taker_id=" + review_taker_id + ", review_sitter_id="
-				+ review_sitter_id + ", review_dolbom_no=" + review_dolbom_no + ", review_txt=" + review_txt
-				+ ", review_create_at=" + review_create_at + ", memberDTO=" + memberDTO + "]";
-	}
-	 
-	 
-	 
-	 
-	 
-	
-	
 }
