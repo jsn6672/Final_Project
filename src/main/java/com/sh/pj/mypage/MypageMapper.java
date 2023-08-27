@@ -88,6 +88,8 @@ public interface MypageMapper {
 
 	public int regReview(ReviewDTO rDTO);
 
+	public List<CouponDTO> couponlist(String user_id);
+
 	
 
 

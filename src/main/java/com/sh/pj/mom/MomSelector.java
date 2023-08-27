@@ -13,12 +13,6 @@ public class MomSelector {
 	}
 
 
-	public MomSelector(String ms_search, BigDecimal ms_start, BigDecimal ms_end) {
-		super();
-		this.ms_search = ms_search;
-		this.ms_start = ms_start;
-		this.ms_end = ms_end;
-	}
 
 	public String getMs_search() {
 		return ms_search;

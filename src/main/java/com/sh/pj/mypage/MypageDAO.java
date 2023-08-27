@@ -785,4 +785,9 @@ public class MypageDAO {
 		
 	}
 
+	public void couponCheck(HttpServletRequest req, String user_id, CouponDTO cp, MomDTO mDTO) {
+		List<CouponDTO> couponList = ss.getMapper(MypageMapper.class).couponlist(user_id);
+		req.setAttribute("couponList", couponList);
+	}
+
 }
