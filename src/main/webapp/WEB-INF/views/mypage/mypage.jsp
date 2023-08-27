@@ -81,7 +81,7 @@
 				<div class="mpMenu-part" id="mpMenu-part5"
 					onmouseover="changeColor('mpMenu-part5')"
 					onmouseout="restoreColor('mpMenu-part5')">
-					<a href="mypage.regReview.go">리뷰작성</a>
+					<a href="mypage.regReview.go">리뷰작성 및 확인</a>
 				</div>
 				<div class="mpMenu-part" id="mpMenu-part7"
 					onmouseover="changeColor('mpMenu-part7')"

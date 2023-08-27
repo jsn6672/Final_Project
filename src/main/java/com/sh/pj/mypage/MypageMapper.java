@@ -88,6 +88,10 @@ public interface MypageMapper {
 
 	public int regReview(ReviewDTO rDTO);
 
+	public List<ReviewDTO> getAllReview(MemberDTO mDTO);
+
+	public DolbomDTO getDolbomReviewInfo(ReviewDTO rr);
+
 	
 
 

@@ -242,6 +242,7 @@ public class MypageController {
 	public String mypageReview_go(HttpServletRequest req) {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		mDAO.logincheck(req);
+		mpDAO.getAllReview_take(req);
 		mDAO.getAllReview(req);
 		
 		req.setAttribute("mypageContentPage", "mypageReview.jsp");
