@@ -49,6 +49,7 @@ prefix="c"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
                   <!-- 시터사용자 <br> -->
                   <div class="mpPSitter-part">
                     <div class="mpPSitter-part-name">맘시터</div>
+                    <c:if test=""></c:if>
                     <div class="mpPSitter-part-state">이용상황</div>
                   </div>
                   <div class="mpPSitter-part">
