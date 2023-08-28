@@ -93,6 +93,8 @@ public interface MypageMapper {
 	public DolbomDTO getDolbomReviewInfo(ReviewDTO rr);
 	public List<CouponDTO> couponlist(String user_id);
 
+	public int usecoupon(CouponDTO cp);
+
 	
 
 
