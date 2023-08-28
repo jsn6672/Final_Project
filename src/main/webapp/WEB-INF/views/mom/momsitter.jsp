@@ -175,8 +175,9 @@ https://templatemo.com/tm-580-woox-travel
 											</div>
 											<div style="padding-left: 25px;">
 												<div class="post-meta">
-													<span class="date">00전 작성 </span>
-													<span>${m.ms_write_date }</span>
+													<span id="write_date">
+													<fmt:formatDate	value="${m.ms_write_date}" type="date" pattern="yyyy. MM. dd. HH:mm" />
+													</span> <span class="date" id="write-date-placeholder"></span>${m.ms_write_date }
 												</div>
 												<div>
 													<a href="momsitter.detail.go?ms_id=${m.ms_id }">맘시터:

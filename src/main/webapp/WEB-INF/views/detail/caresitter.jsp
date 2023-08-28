@@ -7,6 +7,67 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.7.0.js"
+	integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+	crossorigin="anonymous"></script>
+<script type="text/javascript">
+      $(function() {
+
+    	const review_create_at = $('#review_create_at').text();
+    	
+    	console.log(review_create_at);
+    	console.log(new Date(review_create_at));
+        
+        
+      	const test = $(".date").text(elapsedTime(review_create_at));
+		console.log(test);
+
+
+      }) //레디펑션
+
+      const TIME_ZONE = 3240 * 10000;
+
+      function elapsedTime(date) {
+    	  console.log(date);
+        const start = new Date(date);
+        console.log(start);
+        console.log('-----------')
+        const end = new Date(new Date().getTime() + TIME_ZONE); // 현재 날짜
+
+        const diff = (end - start) / 1000; // 경과 시간
+        console.log(start);
+        console.log(end);
+        console.log(diff);
+
+        const times = [
+          { name: '년', milliSeconds: 60 * 60 * 24 * 365 },
+          { name: '개월', milliSeconds: 60 * 60 * 24 * 30 },
+          { name: '일', milliSeconds: 60 * 60 * 24 },
+          { name: '시간', milliSeconds: 60 * 60 },
+          { name: '분', milliSeconds: 60 },
+        ];
+
+        // 년 단위부터 알맞는 단위 찾기
+        for (const value of times) {
+          const betweenTime = Math.floor(diff / value.milliSeconds);
+
+          console.log(betweenTime);
+          const namevalue = value.name;
+          console.log(namevalue);
+
+          // 큰 단위는 0보다 작은 소수 단위 나옴
+          if (betweenTime > 0) {
+          	console.log(namevalue);
+          	return betweenTime + namevalue + "전";
+          }
+        }
+
+        // 모든 단위가 맞지 않을 시
+        return "방금 전";
+      }
+    </script>
+    
+
 </head>
 <body>
 	<div class="containar-detail-pet">
@@ -256,11 +317,28 @@
 				<div>
 					<div class="body-title-detail">리뷰</div>
 					<div class="body-content-detail-cover">
-						<div class="body-content-detail">
+						<div class="body-content-detail-review">
 							<c:choose>
-								<c:when test="${review ne 'none' }">
+								<c:when test="${review ne 'none'}">
 									<c:forEach var="r" items="${review }">
 										<div>
+											<div style="display: flex;">
+												<div>
+													<span style="font-size: 15pt; font-weight: 500;">${r.memberDTO.user_id }님</span>
+													<span id="review_create_at" hidden="hidden">
+													<fmt:formatDate	value="${r.review_create_at}" type="date" pattern="yyyy. MM. dd. HH:mm" />
+													</span> <span class="date" id="write-date-placeholder"></span>
+												</div>
+												<div style="margin-left: 30px;">
+													<span class="review_star"> ★★★★★ <span>★★★★★</span>
+														<input type="range" class="s" step="1" min="0" max="10">
+														<input type="text" class="star_value" name="star_value"	value="${r.review_point}">
+													</span>
+												</div>
+											</div>
+											<div class="balloon">
+												${r.review_txt }
+											</div>
 										</div>
 									</c:forEach>
 								</c:when>
@@ -273,22 +351,27 @@
 						</div>
 					</div>
 				</div>
-				<c:if test="${caresitter.cs_id eq sessionScope.userInfo.user_id }">
 					<div class="detail-btn">
 						<c:choose>
-							<c:when test="${caresitter.cs_notice == '1' }">
-								<button onclick="location.href='caresitter.update.go?cs_id=${caresitter.cs_id}'">수정</button>
-								<button onclick="location.href='caresitter.notice.up?cs_id=${caresitter.cs_id}'" style="margin-left: 10px;">공고 올리기</button>
-								<button onclick="caresitterDelete(${caresitter.cs_id})" style="margin-left: 10px;">삭제</button>
+							<c:when test="${caresitter.cs_id eq sessionScope.userInfo.user_id }">
+								<c:choose>
+									<c:when test="${sessionScope.userInfo.user_cs_status == 3 }">
+										<button onclick="location.href='mypage.sitterRegCare.go?user_id=${sessionScope.userInfo.user_id}''">수정</button>
+										<button onclick="caresitterNoticeUP('${caresitter.cs_id}')" style="margin-left: 10px;">공고 올리기</button>
+										<button onclick="caresitterDelete('${caresitter.cs_id}')" style="margin-left: 10px;">삭제</button>
+									</c:when>
+									<c:when test="${sessionScope.userInfo.user_cs_status == 4 }">
+										<button onclick="location.href='mypage.sitterRegCare.go?user_id=${sessionScope.userInfo.user_id}'">수정</button>
+										<button onclick="caresitterNoticeDOWN('${caresitter.cs_id}')" style="margin-left: 10px;">공고 내리기</button>
+										<button onclick="caresitterDelete('${caresitter.cs_id}')" style="margin-left: 10px;">삭제</button>
+									</c:when>
+								</c:choose>
 							</c:when>
 							<c:otherwise>
-								<button onclick="location.href='caresitter.update.go?cs_id=${caresitter.cs_id}'">수정</button>
-								<button onclick="location.href='caresitter.notice.up?cs_id=${caresitter.cs_id}'" style="margin-left: 10px;">공고 올리기</button>
-								<button onclick="caresitterDelete(${caresitter.cs_id})" style="margin-left: 10px;">삭제</button>
+								<button>신청하기</button>
 							</c:otherwise>
 						</c:choose>
 					</div>
-				</c:if>
 			</div>
 		</div>
 		<div class="container-side"></div>

@@ -57,7 +57,7 @@
 	</update>
 
 	<select id="review" resultType="com.sh.pj.ReviewDTO">
-		select * from review_tbl where review_sitter_id = #{ms_id}
+		select * from review_tbl where review_sitter_id = #{ms_id} and review_category = 2
 	</select>
 	
 	<select id="getMsg" resultType="com.sh.pj.mom.MomDTO">
@@ -85,4 +85,25 @@
 		parameterType="com.sh.pj.account.DolbomDTO">
 		SELECT count(*) FROM dolbom_tbl WHERE d_location LIKE '%'||#{ms_search}||'%' and d_category = 2
 	</select>
+	
+	<select id="detailReview" resultType="com.sh.pj.account.MemberDTO">
+		select * from jsn_user_tbl where user_id = #{review_taker_id}
+	</select>
+	
+	<delete id="deleteMomsitter">
+		delete from momsitter_tbl where ms_id = #{ms_id}
+	</delete>
+	
+	<update id="noticeUP">
+		update jsn_user_tbl set user_ms_status = 4 where user_id = #{ms_id}
+	</update>
+	
+	<update id="noticeUpdate">
+		update momsitter_tbl set ms_write_date = sysdate where ps_id = #{ms_id}
+	</update>
+	
+	<update id="noticeDOWN">
+		update jsn_user_tbl set user_ms_status = 3 where user_id = #{ms_id}
+	</update>
+	
 </mapper>
