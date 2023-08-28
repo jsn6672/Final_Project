@@ -50,7 +50,6 @@ public class CareController {
 		return "home";
 	}
 	
-	
 	@RequestMapping(value = "/caresitter.detail.go", method = RequestMethod.GET)
 	public String momtakerDetail(HttpServletRequest req, CareDTO cDTO, Model m) {
 		mDAO.logincheck(req);	

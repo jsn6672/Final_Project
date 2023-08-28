@@ -20,7 +20,7 @@ public class ReviewDTO {
 	private String review_category;
 	private DolbomDTO r_dolbomDTO;
 	private int r_count;
-
+	
 	@Override
 	public String toString() {
 		return "ReviewDTO [review_no=" + review_no + ", review_taker_id=" + review_taker_id + ", review_sitter_id="

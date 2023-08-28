@@ -550,5 +550,36 @@ public class PetDAO {
 		m.addAttribute("dolbom", pp);
 	}
 
+	public void delete(HttpServletRequest req, PetDTO petDTO, Model m) {
+
+		if(ss.getMapper(PetMapper.class).deletePetsitter(petDTO) == 1) {
+			System.out.println("삭제 성공");
+		}
+		
+	}
+
+	public void noticeUP(HttpServletRequest req, PetDTO petDTO, Model m) {
+		
+		if(ss.getMapper(PetMapper.class).noticeUP(petDTO) == 1) {
+			System.out.println("공고 성공");
+		}
+		
+	}
+
+	public void noticeDOWN(HttpServletRequest req, PetDTO petDTO, Model m) {
+		
+		if (ss.getMapper(PetMapper.class).noticeDOWN(petDTO) == 1) {
+			System.out.println("내리기 성공");
+		}
+		
+	}
+
+	public void noticeUpdate(HttpServletRequest req, PetDTO petDTO, Model m) {
+		if (ss.getMapper(PetMapper.class).noticeUpdate(petDTO) == 1) {
+			System.out.println("날짜 최신화");
+		}
+		
+	}
+
 
 }
