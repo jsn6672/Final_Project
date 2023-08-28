@@ -18,7 +18,6 @@ public interface MomMapper {
 
 	public MomDTO detail(MomDTO momDTO);
 
-
 	public int regDolbom(DolbomDTO dDTO);
 
 	public int regMomSitter(MomDTO momDTO);
@@ -53,6 +52,15 @@ public interface MomMapper {
 	public int updateDolbom(DolbomDTO dDTO);
 
 	public List<MomDTO> getMsg(MomSelector momSearch);
+
+	public MemberDTO detailReview(ReviewDTO reviewDTO);
+
+	public int noticeUP(MomDTO momDTO);
+
+	public int noticeUpdate(MomDTO momDTO);
+
+	public int noticeDOWN(MomDTO momDTO);
+
 
 
 

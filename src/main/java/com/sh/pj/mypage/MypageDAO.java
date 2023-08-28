@@ -794,6 +794,7 @@ public class MypageDAO {
 			rr.setR_dolbomDTO(ss.getMapper(MypageMapper.class).getDolbomReviewInfo(rr));
 		}
 		req.setAttribute("review", rDTO);
+	}
 		
 	}
 	

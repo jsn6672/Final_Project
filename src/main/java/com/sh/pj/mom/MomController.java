@@ -66,6 +66,31 @@ public class MomController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/momsitter.delete.go", method = RequestMethod.GET)
+	public String momsitterDelete(HttpServletRequest req, MomDTO momDTO, Model m) {
+		mDAO.logincheck(req);
+		momDAO.deleteMomsitter(req, momDTO, m);
+		
+		return "redirect:/mypage.go";
+	}
+	
+	@RequestMapping(value = "/momsitter.notice.up", method = RequestMethod.GET)
+	public String petsitterNoticeUP(HttpServletRequest req, MomDTO momDTO, Model m) {
+		mDAO.logincheck(req);
+		momDAO.noticeUP(req, momDTO, m);
+		momDAO.noticeUpdate(req, momDTO, m);
+		
+		return "redirect:/mypage.go";
+	}
+	
+	@RequestMapping(value = "/momsitter.notice.down", method = RequestMethod.GET)
+	public String petsitterNoticeDOWN(HttpServletRequest req, MomDTO momDTO, Model m) {
+		mDAO.logincheck(req);
+		momDAO.noticeDOWN(req, momDTO, m);
+		
+		return "redirect:/mypage.go";
+	}
+	
 	
 	
 	@RequestMapping(value = "/momtaker.be", method = RequestMethod.POST)
@@ -107,15 +132,6 @@ public class MomController {
 		return "redirect:/mypage.takerRegMom.go";
 	}
 	
-	@RequestMapping(value = "/momsitter.delete.go", method = RequestMethod.POST)
-	public String momsitter_delete(HttpServletRequest req, MomDTO mDTO, Model model) {
-		mDAO.logincheck(req);	
-		momDAO.deteteMomsitter(req, mDTO, model);
-		req.setAttribute("contentPage", "mypage/mypage.jsp");
-		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
-		
-		return "home";
-	}
 	
   	@RequestMapping(value = "/page.change4", method = RequestMethod.GET)
     public String paging3(HttpServletRequest req, @RequestParam int p, Model model, MomSelector ms) {

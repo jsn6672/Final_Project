@@ -77,17 +77,20 @@ public class CareDAO {
 		pp.setSunday(cs_day[6]);
 
 		pp.setMm(ss.getMapper(CareMapper.class).detailUser(pp));
-
 		
 		List<ReviewDTO> rDTO = ss.getMapper(CareMapper.class).review(cDTO);
-		m.addAttribute("review", rDTO);
+		
 		if (rDTO == null || rDTO.isEmpty()) {
 			m.addAttribute("review", "none");
-        }
+        } else {
+        	for (ReviewDTO reviewDTO : rDTO) {
+        		reviewDTO.setMemberDTO(ss.getMapper(CareMapper.class).detailReview(reviewDTO));
+        	}
+        	m.addAttribute("review", rDTO);
+		}
 		
-		System.out.println(ss.getMapper(CareMapper.class).review(cDTO));
+		System.out.println(rDTO);
 	
-
 		m.addAttribute("caresitter", pp);
 
 
