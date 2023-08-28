@@ -101,59 +101,7 @@ https://templatemo.com/tm-580-woox-travel
 						<!-- ======= Stats Counter Section ======= -->
 						<section id="stats-counter" class="stats-counter section-bg">
 							<div class="container">
-
 								<div class="row gy-4">
-
-									<div class="col-lg-3 col-md-6">
-										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #FCE4EC">
-											<i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
-											<div>
-												<span class="purecounter"
-													data-count="${countAll.count_sitter }">0</span>
-												<p>행복한 돌보미들</p>
-											</div>
-										</div>
-									</div>
-									<!-- End Stats Item -->
-
-									<div class="col-lg-3 col-md-6">
-										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #FCE4EC">
-											<i class="bi bi-journal-richtext color-orange flex-shrink-0"></i>
-											<div>
-												<span class="purecounter"
-													data-count="${countAll.count_dolbom }">0</span>
-												<p>돌보미가 필요한 가족들</p>
-											</div>
-										</div>
-									</div>
-									<!-- End Stats Item -->
-
-									<div class="col-lg-3 col-md-6">
-										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #FCE4EC">
-											<i class="bi bi-headset color-green flex-shrink-0"></i>
-											<div>
-												<span class="purecounter"
-													data-count="${countAll.count_time }">0</span>
-												<p>총 운영 시간</p>
-											</div>
-										</div>
-									</div>
-									<!-- End Stats Item -->
-
-									<div class="col-lg-3 col-md-6">
-										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #FCE4EC">
-											<i class="bi bi-people color-pink flex-shrink-0"></i>
-											<div>
-												<span class="purecounter"
-													data-count="${countAll.count_cont }">0</span>
-												<p>계약완료갯수</p>
-											</div>
-										</div>
-									</div>
 									<!-- End Stats Item -->
 									<form action="page.change.caresitter">
 									<div class="category-title"
@@ -265,19 +213,20 @@ https://templatemo.com/tm-580-woox-travel
 
 							<div class="tab-content" id="pills-tabContent">
 								<!-- Popular -->
-								<c:forEach var="c" items="${caresitter }">
+								<c:forEach var="c" items="${c }">
 
 									<div class="tab-pane fade show active" id="pills-popular"
 										role="tabpanel" aria-labelledby="pills-popular-tab">
 										<div class="post-entry-1 border-bottom">
 											<div class="post-meta">
-												<span class="mx-1">&bullet;</span> <span>OO전 작성</span>
+												<span class="mx-1">&bullet;</span> <span>${c.cs_write_date }전
+													작성</span>
 											</div>
-											<span class="author mb-3 d-block">
-												<a href="caresitter.detail.go?cs_id=${c.cs_id }">작성자:${c.cs_id }</a>
-											</span>
-											<span class="author mb-3 d-block">시급: ${c.cs_pay }</span>
-											<span class="author mb-3 d-block">지역: ${c.cs_location1 }/${c.cs_location2 }/${c.cs_location3 }</span>
+											<span class="author mb-3 d-block"> <a
+												href="pettaker.detail.go?d_no=${c.cs_id }">대상:
+													${c.mm.user_name }</a> 시급: ${c.cs_pay }원
+											</span> <span class="author mb-3 d-block">지역:
+												${c.cs_location1  }</span>
 										</div>
 									</div>
 									<!-- End Popular -->

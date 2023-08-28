@@ -45,17 +45,17 @@ https://templatemo.com/tm-580-woox-travel
 						<!-- ======= Stats Counter Section ======= -->
 						<section id="stats-counter" class="stats-counter section-bg">
 							<div class="container">
-
-						<div class="row gy-4">
+								<div class="row gy-4">
 									<form action="page.change4">
-									<div class="category-title"
-										style="display: flex; justify-content: center">
-										<input id="searchBar" type="text" name="cs_search"
-											value="${param.cs_search}" placeholder="검색어를 입력해주세요.">
-											<button class="QnA-searchbutton" type="submit" name="p" value="1">검색</button>
-									</div>
+										<div class="category-title"
+											style="display: flex; justify-content: center">
+											<input id="searchBar" type="text" name="cs_search"
+												value="${param.cs_search}" placeholder="검색어를 입력해주세요.">
+											<button class="QnA-searchbutton" type="submit" name="p"
+												value="1">검색</button>
+										</div>
 									</form>
-			<c:forEach var="d" items="${s }">
+									<c:forEach var="d" items="${s }">
 										<div class="d-md-flex post-entry-2 half">
 											<div class="d-md-flex post-entry-2 half"
 												style="border-bottom: 1px solid #dee2e6 !important;">
@@ -66,8 +66,8 @@ https://templatemo.com/tm-580-woox-travel
 														</div>
 														<a href="caretaker.detail.go?d_no=${d.d_no }">대상:
 															${d.d_name }</a>
-														</div>	
-														<div>
+													</div>
+													<div>
 														<div>
 															<span>나이: <c:set var="currentYear"
 																	value="<%=java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)%>" />${currentYear - d.d_year + 1}살</span>
@@ -75,8 +75,8 @@ https://templatemo.com/tm-580-woox-travel
 														<div>
 															<span>성별 : ${d.d_gender }</span>
 														</div>
-														</div>
-													
+													</div>
+
 													<div style="padding-top: 3px;">
 														<span>cctv촬영 -<c:choose>
 																<c:when test="${d.d_cctv == 1}">
@@ -88,10 +88,10 @@ https://templatemo.com/tm-580-woox-travel
 															</c:choose></span>
 														<div>시급: ${d.d_pay }원</div>
 													</div>
-														<div>
+													<div>
 														<div>활동 가능 지역:</div>
 														<div>${d.m_addr1 }</div>
-														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -178,8 +178,7 @@ https://templatemo.com/tm-580-woox-travel
 											<span class="author mb-3 d-block"> <a
 												href="caretaker.detail.go?d_no=${d.d_no }">대상:
 													${d.d_name }</a> 시급: ${d.d_pay }원
-											</span><span
-												class="author mb-3 d-block">지역: ${d.m_addr1 }</span>
+											</span><span class="author mb-3 d-block">지역: ${d.m_addr1 }</span>
 										</div>
 									</div>
 									<!-- End Popular -->
