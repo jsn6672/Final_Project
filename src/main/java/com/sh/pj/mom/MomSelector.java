@@ -7,11 +7,10 @@ public class MomSelector {
 	private String ms_search;
 	private BigDecimal ms_start;
 	private BigDecimal ms_end;
-	
+
 	public MomSelector() {
 		// TODO Auto-generated constructor stub
 	}
-
 
 	public MomSelector(String ms_search, BigDecimal ms_start, BigDecimal ms_end) {
 		super();
@@ -49,9 +48,5 @@ public class MomSelector {
 	public String toString() {
 		return "MomSelector [ms_search=" + ms_search + ", ms_start=" + ms_start + ", ms_end=" + ms_end + "]";
 	}
-
-
-	
-
 
 }

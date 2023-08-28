@@ -39,7 +39,13 @@
 <body>
 	<div style="display: flex; width: 250%;" class="babo_container">
 		<div class="babo" style="width: 50%; background-color: skyblue;">
-			내가 받은 리뷰</div>
+			<div>내가 받은 리뷰</div>
+			<c:forEach items="${review }" var="rw">
+				<div>${rw.r_dolbomDTO.d_name }님께서남기신 댓글입니다</div>
+				<div>평점 : ${rw.review_point }</div>
+				<div>내용 : ${rw.review_txt }</div>
+			</c:forEach>
+		</div>
 		<div>
 			<h1>내가 써야 할 리뷰</h1>
 			<c:forEach items="${NotReview}" var="r">
@@ -61,14 +67,15 @@
 												hidden="hidden"> <input name="review_sitter_id"
 												value="${rr.cnt_memberDTO.user_id }" hidden="hidden">
 											<input name="review_dolbom_no" value="${rr.cnt_dolbom_no }"
+												hidden="hidden"> <input name="review_cont_no"
+												value="${rr.cnt_no }" hidden="hidden"> <input
+												name="review_category" value="${r.d_category }"
 												hidden="hidden">
-											<input name="review_cont_no" value="${rr.cnt_no }" hidden="hidden">
-											<input name="review_category" value="${r.d_category }" hidden="hidden">
 										</div>
 										<div>
-											<span class="star"> ★★★★★ <span>★★★★★</span> <input name="review_point"
-												type="range" oninput="drawStar(this)" value="1" step="1"
-												min="0" max="10">
+											<span class="star"> ★★★★★ <span>★★★★★</span> <input
+												name="review_point" type="range" oninput="drawStar(this)"
+												value="1" step="1" min="0" max="10">
 											</span>
 										</div>
 										<div>

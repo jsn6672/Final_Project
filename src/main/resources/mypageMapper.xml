@@ -262,6 +262,12 @@
 		insert into review_tbl values(review_tbl_seq.nextval, #{review_taker_id}, #{review_sitter_id}, #{review_dolbom_no}, #{review_txt}, sysdate, #{review_point}, #{review_cont_no})
 	</insert>
 	
+	<select id="getAllReview" resultType="com.sh.pj.ReviewDTO">
+		select * from review_tbl where review_sitter_id = #{user_id} order by review_create_at desc
+	</select>
+	
+	<select id="getDolbomReviewInfo" resultType="com.sh.pj.account.DolbomDTO">
+		select * from dolbom_tbl where d_no = #{review_dolbom_no}
 	<select id="couponlist" resultType="com.sh.pj.mypage.CouponDTO">
 		select * from coupon
 		where cp_id = #{user_id}
