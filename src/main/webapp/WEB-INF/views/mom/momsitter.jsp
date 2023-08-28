@@ -99,74 +99,27 @@ https://templatemo.com/tm-580-woox-travel
 
 <body>
 	<main id="main">
-			<section style="background-color: #EDE7F6;">
+		<section style="background-color: #EDE7F6;">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-9" data-aos="fade-up">
 						<!-- ======= Stats Counter Section ======= -->
 						<section id="stats-counter" class="stats-counter section-bg">
 							<div class="container">
-
 								<div class="row gy-4">
-
-									<div class="col-lg-3 col-md-6">
-										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #FCE4EC">
-											<i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
-											<div>
-												<span class="purecounter" data-count="${countAll.count_sitter }">0</span>
-												<p>행복한 돌보미들</p>
-											</div>
-										</div>
-									</div>
-									<!-- End Stats Item -->
-
-									<div class="col-lg-3 col-md-6">
-										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #FCE4EC">
-											<i class="bi bi-journal-richtext color-orange flex-shrink-0"></i>
-											<div>
-												<span class="purecounter" data-count="${countAll.count_dolbom }">0</span>
-												<p>돌보미가 필요한 가족들</p>
-											</div>
-										</div>
-									</div>
-									<!-- End Stats Item -->
-
-									<div class="col-lg-3 col-md-6">
-										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #FCE4EC">
-											<i class="bi bi-headset color-green flex-shrink-0"></i>
-											<div>
-												<span class="purecounter" data-count="${countAll.count_time }">0</span>
-												<p>총 운영 시간</p>
-											</div>
-										</div>
-									</div>
-									<!-- End Stats Item -->
-
-									<div class="col-lg-3 col-md-6">
-										<div class="stats-item d-flex align-items-center w-100 h-100"
-											style="background-color: #FCE4EC">
-											<i class="bi bi-people color-pink flex-shrink-0"></i>
-											<div>
-												<span class="purecounter" data-count="${countAll.count_cont }">0</span>
-												<p>계약완료갯수</p>
-											</div>
-										</div>
-									</div>
-									<!-- End Stats Item -->
 									<form action="page.change.momsitter">
-									<div class="category-title"
-										style="display: flex; justify-content: center">
-										<input id="searchBar" type="text" name="ms_search"
-											value="${param.ms_search}" placeholder="검색어를 입력해주세요.">
-											<button class="QnA-searchbutton" type="submit" name="p" value="1">검색</button>
-									</div>
+										<div class="category-title"
+											style="display: flex; justify-content: center">
+											<input id="searchBar" type="text" name="ms_search"
+												value="${param.ms_search}" placeholder="검색어를 입력해주세요.">
+											<button class="QnA-searchbutton" type="submit" name="p"
+												value="1">검색</button>
+										</div>
 									</form>
 									<c:forEach var="m" items="${s }">
 										<div class="d-md-flex post-entry-2 half">
-											<div style="background-color: white; border: 2px solid white; width: 20%; border-radius: 10px;">
+											<div
+												style="background-color: white; border: 2px solid white; width: 20%; border-radius: 10px;">
 												<div class="mom-select-img">
 													<div>
 														<img alt="" src="resources/img/${m.mm.user_pic }">
@@ -175,9 +128,11 @@ https://templatemo.com/tm-580-woox-travel
 											</div>
 											<div style="padding-left: 25px;">
 												<div class="post-meta">
+
 													<span id="write_date">
 													<fmt:formatDate	value="${m.ms_write_date}" type="date" pattern="yyyy. MM. dd. HH:mm" />
 													</span> <span class="date" id="write-date-placeholder"></span>${m.ms_write_date }
+
 												</div>
 												<div>
 													<a href="momsitter.detail.go?ms_id=${m.ms_id }">맘시터:
@@ -207,9 +162,12 @@ https://templatemo.com/tm-580-woox-travel
 												style="display: flex; justify-content: center;">
 												<div class="custom-pagination">
 													<c:if test="${curPage != 1 }">
-														<a href="page.change.momsitter?p=${curPage - 1}&ms_search=${searchSession.ms_search}" class="prev">Previous</a>
+														<a
+															href="page.change.momsitter?p=${curPage - 1}&ms_search=${searchSession.ms_search}"
+															class="prev">Previous</a>
 													</c:if>
-													<c:forEach begin="${startPage}" end="${endPage}" varStatus="loop">
+													<c:forEach begin="${startPage}" end="${endPage}"
+														varStatus="loop">
 														<c:choose>
 															<c:when test="${curPage == loop.index}">
 																<a
@@ -267,51 +225,27 @@ https://templatemo.com/tm-580-woox-travel
 							</ul>
 
 							<div class="tab-content" id="pills-tabContent">
-
 								<!-- Popular -->
-								<div class="tab-pane fade show active" id="pills-popular"
-									role="tabpanel" aria-labelledby="pills-popular-tab">
-									<div class="post-entry-1 border-bottom">
-										<div class="post-meta">
-											<span class="date">Sport</span> <span class="mx-1">&bullet;</span>
-											<span>Jul 5th '22</span>
+								<c:forEach var="m" items="${s }">
+
+									<div class="tab-pane fade show active" id="pills-popular"
+										role="tabpanel" aria-labelledby="pills-popular-tab">
+										<div class="post-entry-1 border-bottom">
+											<div class="post-meta">
+												<span class="mx-1">&bullet;</span> <span>${m.ms_write_date }전
+													작성</span>
+											</div>
+											<span class="author mb-3 d-block"> <a
+												href="pettaker.detail.go?d_no=${m.ms_id }">대상:
+													${m.mm.user_name }</a> 시급: ${m.ms_pay }원
+											</span> <span class="author mb-3 d-block">지역:
+												${m.ms_location1  }</span>
 										</div>
-										<h2 class="mb-2">
-											<a href="#">How to Avoid Distraction and Stay Focused
-												During Video Calls?</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span>
 									</div>
+									<!-- End Popular -->
+								</c:forEach>
 
-
-									<div class="post-entry-1 border-bottom">
-										<div class="post-meta">
-											<span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span>
-											<span>Jul 5th '22</span>
-										</div>
-										<h2 class="mb-2">
-											<a href="#">Life Insurance And Pregnancy: A Working Mom’s
-												Guide</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span>
-									</div>
-
-
-									<div class="post-entry-1 border-bottom">
-										<div class="post-meta">
-											<span class="date">Lifestyle</span> <span class="mx-1">&bullet;</span>
-											<span>Jul 5th '22</span>
-										</div>
-										<h2 class="mb-2">
-											<a href="#">10 Life-Changing Hacks Every Working Mom
-												Should Know</a>
-										</h2>
-										<span class="author mb-3 d-block">Jenny Wilson</span>
-									</div>
-								</div>
-								<!-- End Popular -->
-
-								<!-- Trending -->
+								<!-- 						Trending
 								<div class="tab-pane fade" id="pills-trending" role="tabpanel"
 									aria-labelledby="pills-trending-tab">
 									<div class="post-entry-1 border-bottom">
@@ -385,9 +319,9 @@ https://templatemo.com/tm-580-woox-travel
 										<span class="author mb-3 d-block">Jenny Wilson</span>
 									</div>
 								</div>
-								<!-- End Trending -->
+								End Trending
 
-								<!-- Latest -->
+								Latest
 								<div class="tab-pane fade" id="pills-latest" role="tabpanel"
 									aria-labelledby="pills-latest-tab">
 									<div class="post-entry-1 border-bottom">
@@ -463,7 +397,7 @@ https://templatemo.com/tm-580-woox-travel
 									</div>
 
 								</div>
-								<!-- End Latest -->
+								End Latest
 
 							</div>
 						</div>
@@ -478,7 +412,7 @@ https://templatemo.com/tm-580-woox-travel
 								</a>
 							</div>
 						</div>
-						<!-- End Video -->
+						End Video
 
 						<div class="aside-block">
 							<h3 class="aside-title">Tags</h3>
@@ -493,12 +427,46 @@ https://templatemo.com/tm-580-woox-travel
 								<li><a href="category.html">Travel</a></li>
 							</ul>
 						</div>
-						<!-- End Tags -->
+						End Tags
 
-					</div>
+					</div> -->
 
-				</div>
-			</div>
+								<div style="width: 40vw">
+									<div class="col-lg-3 col-md-6">
+										<div class="stats-items">
+											<i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
+											<div>
+												<span class="purecounter" data-count="180">0</span>
+												<p>행복한 돌보미들</p>
+											</div>
+										</div>
+									</div>
+									<!-- End Stats Item -->
+
+									<div class="col-lg-3 col-md-6">
+										<div class="stats-items">
+											<i class="bi bi-journal-richtext color-orange flex-shrink-0"></i>
+											<div>
+												<span class="purecounter" data-count="250">0</span>
+												<p>돌보미가 필요한 가족들</p>
+											</div>
+										</div>
+									</div>
+									<!-- End Stats Item -->
+
+									<div class="col-lg-3 col-md-6">
+										<div class="stats-items">
+											<i class="bi bi-people color-pink flex-shrink-0"></i>
+											<div>
+												<span class="purecounter" data-count="666">0</span>
+												<p>계약완료갯수</p>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
 		</section>
 	</main>
 	<!-- End #main -->

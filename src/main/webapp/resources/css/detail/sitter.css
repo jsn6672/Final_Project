@@ -120,6 +120,50 @@
 	border-radius: 10px;
 }
 
+.body-content-another {
+    width: 300px;
+    border: 5px solid white;
+    height: auto;
+    /* background-color: white; */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column; /* 세로로 정렬 */
+    padding: 10px;
+    justify-content: center;
+    margin: 14px;
+    align-items: center;
+        height: 100px;
+}
+
+.body-content-another2 {
+    border: 5px solid white;
+    height: auto;
+    /* background-color: white; */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column; /* 세로로 정렬 */
+    padding: 10px;
+    justify-content: center;
+    margin: 14px;
+    align-items: center;
+}
+
+.body-content-another3 {
+border: 5px solid white;
+    height: auto;
+    /* background-color: white; */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: center;
+    margin: 14px;
+    align-items: center;
+    width: 30%;
+}
+
+
+
 /* 활동 가능 시간 */
 .body-time {
 	border: 2px solid white;

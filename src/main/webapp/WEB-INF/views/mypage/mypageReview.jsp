@@ -37,69 +37,76 @@
 </style>
 </head>
 <body>
-	<div style="display: flex; width: 250%;" class="babo_container">
-		<div class="babo" style="width: 50%; background-color: skyblue;">
-			<div>내가 받은 리뷰</div>
-			<c:forEach items="${review }" var="rw">
-				<div>${rw.r_dolbomDTO.d_name }님께서남기신 댓글입니다</div>
-				<div>평점 : ${rw.review_point }</div>
-				<div>내용 : ${rw.review_txt }</div>
-			</c:forEach>
+	<div class="mpS-pet-5">
+		<div class="babo_container">
+			<div class="babo" style="padding-top: 10px;" >
+				<div class="body-content-another3">
+					<div>내가 받은 리뷰</div>
+					<br>
+					<c:forEach items="${review }" var="rw">
+						<div>${rw.r_dolbomDTO.d_name }님께서남기신댓글입니다</div>
+						<div>평점 : ${rw.review_point }</div>
+						<div>내용 : ${rw.review_txt }</div>
+						<hr>
+					</c:forEach>
+				</div>
+			</div>
+
 		</div>
-		<div>
-			<h1>내가 써야 할 리뷰</h1>
-			<c:forEach items="${NotReview}" var="r">
-				<div>${r.d_name }
-					<c:if test="${r.cntDTOMessage eq '1' }">
-						<span style="color: red"> ● </span>
-					</c:if>
-				</div>
-				<div>
-					<c:choose>
-						<c:when test="${r.cntDTOMessage eq '1' }">
-							<c:forEach items="${r.cntDTOs }" var="rr">
-								<div>시터 이름 : ${rr.cnt_memberDTO.user_name }</div>
-								<div>시터 나이 : ${rr.age }</div>
-								<div style="display: flex;">
-									<form action="regReview">
-										<div>
-											<input name="review_taker_id" value="${userInfo.user_id }"
-												hidden="hidden"> <input name="review_sitter_id"
-												value="${rr.cnt_memberDTO.user_id }" hidden="hidden">
-											<input name="review_dolbom_no" value="${rr.cnt_dolbom_no }"
-												hidden="hidden"> <input name="review_cont_no"
-												value="${rr.cnt_no }" hidden="hidden"> <input
-												name="review_category" value="${r.d_category }"
-												hidden="hidden">
-										</div>
-										<div>
-											<span class="star"> ★★★★★ <span>★★★★★</span> <input
-												name="review_point" type="range" oninput="drawStar(this)"
-												value="1" step="1" min="0" max="10">
-											</span>
-										</div>
-										<div>
-											<input name="review_txt">
-										</div>
-										<div>
-											<button>등록</button>
-										</div>
-									</form>
-								</div>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<div>${r.cntDTOMessage }</div>
-						</c:otherwise>
-					</c:choose>
-				</div>
+
+			<div class="body-content-another3">
+				<div>내가 써야 할 리뷰</div>
 				<hr>
-			</c:forEach>
+				<c:forEach items="${NotReview}" var="r">
+					<div>
+						유저명: ${r.d_name }
+						<c:if test="${r.cntDTOMessage eq '1' }">
+							<span style="color: red"> ● </span>
+						</c:if>
+					</div>
+					<div>
+						<c:choose>
+							<c:when test="${r.cntDTOMessage eq '1' }">
+								<c:forEach items="${r.cntDTOs }" var="rr">
+									<div>시터 이름 : ${rr.cnt_memberDTO.user_name }</div>
+									<div>시터 나이 : ${rr.age }</div>
+									<div style="display: flex;">
+										<form action="regReview">
+											<div>
+												<input name="review_taker_id" value="${userInfo.user_id }"
+													hidden="hidden"> <input name="review_sitter_id"
+													value="${rr.cnt_memberDTO.user_id }" hidden="hidden">
+												<input name="review_dolbom_no" value="${rr.cnt_dolbom_no }"
+													hidden="hidden"> <input name="review_cont_no"
+													value="${rr.cnt_no }" hidden="hidden"> <input
+													name="review_category" value="${r.d_category }"
+													hidden="hidden">
+											</div>
+											<div>
+												<span class="star"> ★★★★★ <span>★★★★★</span> <input
+													name="review_point" type="range" oninput="drawStar(this)"
+													value="1" step="1" min="0" max="10">
+												</span>
+											</div>
+											<div>
+												<input name="review_txt">
+											</div>
+											<div>
+												<button>등록</button>
+											</div>
+										</form>
+									</div>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<div style="border-bottom: 1px solid black">${r.cntDTOMessage }</div>
+							</c:otherwise>
+						</c:choose>
+					</div>
+					<hr>
+				</c:forEach>
+			</div>
 		</div>
-
-
-	</div>
-	※ 내가 쓴 리뷰는 시간 남으면 ^^
 
 </body>
 
