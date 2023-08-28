@@ -58,6 +58,11 @@ public interface MemberMapper {
 
 	int regDefaultcount(countDTO cntDTO);
 
+	DolbomDTO getDolbomInfo(DolbomDTO dDTO);
+
+	int updateOnDolbomInfo(DolbomDTO dd);
+	int updateOffDolbomInfo(DolbomDTO dd);
+
 
 
 

@@ -133,7 +133,7 @@ public class CareDAO {
 		dDTO.setD_id(mDTO.getUser_id());
 
 		dDTO.setD_sitterage("ndy");
-		dDTO.setD_title("ndy");
+		dDTO.setd_onoff("off");
 
 		System.out.println(dDTO);
 
@@ -402,7 +402,7 @@ public class CareDAO {
 		dDTO.setD_id(mDTO.getUser_id());
 
 		dDTO.setD_sitterage("ndy");
-		dDTO.setD_title("ndy");
+		dDTO.setd_onoff("off");
 
 		System.out.println(dDTO);
 
@@ -444,7 +444,7 @@ public class CareDAO {
 		dDTO.setD_id(mDTO.getUser_id());
 
 		dDTO.setD_sitterage("ndy");
-		dDTO.setD_title("ndy");
+		dDTO.setd_onoff("off");
 
 		System.out.println(dDTO);
 		

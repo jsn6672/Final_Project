@@ -268,9 +268,8 @@
 	
 	<select id="getDolbomReviewInfo" resultType="com.sh.pj.account.DolbomDTO">
 		select * from dolbom_tbl where d_no = #{review_dolbom_no}
-
 	</select>
-
+	
 	<select id="couponlist" resultType="com.sh.pj.mypage.CouponDTO">
 		select * from coupon
 		where cp_id = #{user_id}
