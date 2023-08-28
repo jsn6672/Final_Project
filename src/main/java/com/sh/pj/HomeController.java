@@ -64,11 +64,11 @@ public class HomeController {
 		
 		if (firstReq2) {
 			pDAO.calcAllMsgCountPetSitter();
-
 			pDAO.calcAllMsgCountPetDolbom();
-
+			cDAO.calcAllMsgCountCareDolbom();
 			cDAO.calcAllMsgCountCareSitter();
 			momDAO.calcAllMsgCountMomSitter();
+			momDAO.calcAllMsgCountMomDolbom();
 
 		}
 		
