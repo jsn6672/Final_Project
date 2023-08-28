@@ -64,12 +64,9 @@ public class HomeController {
 		
 		if (firstReq2) {
 			pDAO.calcAllMsgCountPetSitter();
-
 			pDAO.calcAllMsgCountPetDolbom();
-
 			cDAO.calcAllMsgCountCareSitter();
 			momDAO.calcAllMsgCountMomSitter();
-
 		}
 		
 		req.setAttribute("contentPage", "index.jsp");
