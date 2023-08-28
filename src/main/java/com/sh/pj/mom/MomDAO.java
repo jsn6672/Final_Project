@@ -88,15 +88,17 @@ public class MomDAO {
 		mm.setMm(ss.getMapper(MomMapper.class).detailUser(mm));
 
 		List<ReviewDTO> rDTO = ss.getMapper(MomMapper.class).review(momDTO);
-		m.addAttribute("review", rDTO);
+
 		if (rDTO == null || rDTO.isEmpty()) {
 			m.addAttribute("review", "none");
-        }
-		
-
+        } else {
+        	for (ReviewDTO reviewDTO : rDTO) {
+        		reviewDTO.setMemberDTO(ss.getMapper(MomMapper.class).detailReview(reviewDTO));
+        	}
+        	m.addAttribute("review", rDTO);
+		}
 
 		System.out.println(ss.getMapper(MomMapper.class).review(momDTO));
-
 
 		m.addAttribute("momsitter", mm);
 
@@ -215,15 +217,6 @@ public class MomDAO {
 		}
 
 	}
-
-	public void deteteMomsitter(HttpServletRequest req, MomDTO mDTO, Model model) {
-		if (ss.getMapper(MomMapper.class).deleteMomsitter(mDTO) == 1) {
-			System.out.println("삭제 성공!");
-			req.setAttribute("deletecheck", "1");
-		}
-
-	}
-
 
 	public void detailtaker(HttpServletRequest req, DolbomDTO dolbomDTO, Model m) {
 		DolbomDTO pp = ss.getMapper(MomMapper.class).detailtaker(dolbomDTO);
@@ -560,6 +553,34 @@ public class MomDAO {
 		req.setAttribute("endPage", endPage);
 
 		System.out.println(endPage);
+		
+	}
+
+	public void deleteMomsitter(HttpServletRequest req, MomDTO momDTO, Model m) {
+		
+		if (ss.getMapper(MomMapper.class).deleteMomsitter(momDTO) == 1) {
+			System.out.println("삭제 성공");
+		}
+		
+	}
+
+	public void noticeUP(HttpServletRequest req, MomDTO momDTO, Model m) {
+		if(ss.getMapper(MomMapper.class).noticeUP(momDTO) == 1) {
+			System.out.println("공고 성공");
+		}
+	}
+
+	public void noticeUpdate(HttpServletRequest req, MomDTO momDTO, Model m) {
+		if (ss.getMapper(MomMapper.class).noticeUpdate(momDTO) == 1) {
+			System.out.println("날짜 최신화");
+		}
+		
+	}
+
+	public void noticeDOWN(HttpServletRequest req, MomDTO momDTO, Model m) {
+		if (ss.getMapper(MomMapper.class).noticeDOWN(momDTO) == 1) {
+			System.out.println("내리기 성공");
+		}
 		
 	}
 

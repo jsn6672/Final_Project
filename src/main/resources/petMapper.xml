@@ -102,7 +102,7 @@
 		SELECT * fROM (SELECT ROWNUM AS rn, it.* FROM petsitter_tbl it WHERE
 		(it.ps_location1 LIKE '%' || #{ps_search} || '%' OR it.ps_location2
 		LIKE '%' || #{ps_search} || '%' OR it.ps_location3 LIKE '%' ||
-		#{ps_search} || '%')
+		#{ps_search} || '%')  <!-- and user_ps_status = 4 -->
 		<!-- AND it.inquiry_category = #{category} -->
 		ORDER BY it.ps_write_date DESC)
 		WHERE rn &gt;= #{ps_start} and rn &lt;=
@@ -128,7 +128,17 @@
 		parameterType="com.sh.pj.account.DolbomDTO">
 		SELECT count(*) FROM dolbom_tbl WHERE d_location LIKE '%'||#{ps_search}||'%' and d_category = 3
 	</select>
-
-
+	
+	<update id="noticeUP">
+		update jsn_user_tbl set user_ps_status = 4 where user_id = #{ps_id}
+	</update>
+	
+	<update id="noticeUpdate">
+		update petsitter_tbl set ps_write_date = sysdate where ps_id = #{ps_id}
+	</update>
+	
+	<update id="noticeDOWN">
+		update jsn_user_tbl set user_ps_status = 3 where user_id = #{ps_id}
+	</update>
 
 </mapper>

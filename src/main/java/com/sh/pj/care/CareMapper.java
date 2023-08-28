@@ -45,6 +45,8 @@ public interface CareMapper {
 
 	public List<CareDTO> getMsg(CareSelector careSearch);
 
+	public MemberDTO detailReview(ReviewDTO reviewDTO);
+
 
 
 

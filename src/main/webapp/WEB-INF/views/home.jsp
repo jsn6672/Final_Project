@@ -225,5 +225,6 @@
 	<!-- Template Javascript -->
 	<script src="resources/js/main.js"></script>
 	<script src="resources/js/ask.js"></script>
+	<script src="resources/js/sitter.js"></script>
 </body>
 </html>
