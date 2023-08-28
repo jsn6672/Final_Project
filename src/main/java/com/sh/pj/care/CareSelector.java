@@ -14,6 +14,12 @@ public class CareSelector {
 
 
 
+	public CareSelector(String cs_search, BigDecimal cs_start, BigDecimal cs_end) {
+		super();
+		this.cs_search = cs_search;
+		this.cs_start = cs_start;
+		this.cs_end = cs_end;
+	}
 
 
 
@@ -41,20 +47,12 @@ public class CareSelector {
 		this.cs_end = cs_end;
 	}
 
-
-	public CareSelector(String cs_search, BigDecimal cs_start, BigDecimal cs_end) {
-		super();
-		this.cs_search = cs_search;
-		this.cs_start = cs_start;
-		this.cs_end = cs_end;
-	}
-
-
 	@Override
 	public String toString() {
 		return "CareSelector [cs_search=" + cs_search + ", cs_start=" + cs_start + ", cs_end=" + cs_end + "]";
 	}
-
+	
+	
 	
 	
 	
