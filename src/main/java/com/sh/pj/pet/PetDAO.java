@@ -22,6 +22,7 @@ import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MemberMapper;
 
 import com.sh.pj.ask.SiteOption;
+import com.sh.pj.care.CareMapper;
 
 
 @Service
@@ -122,6 +123,14 @@ public class PetDAO {
 		pp.setSunday(ps_day[6]);
 
 		pp.setMm(ss.getMapper(PetMapper.class).detailUser(pp));
+		
+		List<ReviewDTO> rDTO = ss.getMapper(PetMapper.class).review(petDTO);
+		m.addAttribute("review", rDTO);
+		if (rDTO == null || rDTO.isEmpty()) {
+			m.addAttribute("review", "none");
+        }
+		
+		System.out.println(ss.getMapper(PetMapper.class).review(petDTO));
 
 		m.addAttribute("petsitter", pp);
 
