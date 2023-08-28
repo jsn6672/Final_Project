@@ -155,6 +155,15 @@ public class MypageDAO {
 		mDTO.setPhone_third(phoneNum[2]);
 
 		req.setAttribute("memberProfile", mDTO);
+		
+		List<DolbomDTO> momDTOs = ss.getMapper(MypageMapper.class).getMomDolbomList(mDTO) ;
+		List<DolbomDTO> careDTOs = ss.getMapper(MypageMapper.class).getCareDolbomList(mDTO) ;
+		List<DolbomDTO> petDTOs = ss.getMapper(MypageMapper.class).getPetDolbomList(mDTO) ;
+		
+		req.setAttribute("momDTO", momDTOs);
+		req.setAttribute("careDTO", careDTOs);
+		req.setAttribute("petDTO", petDTOs);
+		
 
 	}
 
@@ -794,6 +803,7 @@ public class MypageDAO {
 			rr.setR_dolbomDTO(ss.getMapper(MypageMapper.class).getDolbomReviewInfo(rr));
 		}
 		req.setAttribute("review", rDTO);
+	}
 		
 	public void couponCheck(HttpServletRequest req, String user_id, CouponDTO cp, MomDTO mDTO) {
 		List<CouponDTO> couponList = ss.getMapper(MypageMapper.class).couponlist(user_id);

@@ -84,6 +84,17 @@
 		update contract_tbl set cnt_dolbom_ok = 3 where cnt_no = #{review_cont_no}
 	</update>
 	
+	<select id="getDolbomInfo" resultType="com.sh.pj.account.DolbomDTO">
+		select * from dolbom_tbl where d_no = #{d_no}
+	</select>
+	
+	<update id="updateOnDolbomInfo">
+		update dolbom_tbl set d_onoff = 'on' where d_no = #{d_no}
+	</update>
+	<update id="updateOffDolbomInfo">
+		update dolbom_tbl set d_onoff = 'off' where d_no = #{d_no}
+	</update>
+	
 	
 	<!-- 최초 카운트 계산용 메소드 / 계산 후 주석처리해도 상관 없음 -->
 	<select id="countPetSitter" resultType="int">

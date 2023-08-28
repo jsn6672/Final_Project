@@ -54,7 +54,7 @@ public class DolbomDTO {
 
 	private String d_sitterage;
 	private String d_need;
-	private String d_title;
+	private String d_onoff;
 	private String d_term;
 	private Date d_startdate;
 	private Date d_writedate;
@@ -411,12 +411,12 @@ public class DolbomDTO {
 		this.d_need = d_need;
 	}
 
-	public String getD_title() {
-		return d_title;
+	public String getd_onoff() {
+		return d_onoff;
 	}
 
-	public void setD_title(String d_title) {
-		this.d_title = d_title;
+	public void setd_onoff(String d_onoff) {
+		this.d_onoff = d_onoff;
 	}
 
 	public String getD_term() {
@@ -529,7 +529,7 @@ public class DolbomDTO {
 				+ saturday_start + ", sunday_start=" + sunday_start + ", monday_end=" + monday_end + ", tuesday_end="
 				+ tuesday_end + ", wednesday_end=" + wednesday_end + ", thursday_end=" + thursday_end + ", friday_end="
 				+ friday_end + ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end + ", d_sitterage="
-				+ d_sitterage + ", d_need=" + d_need + ", d_title=" + d_title + ", d_term=" + d_term + ", d_startdate="
+				+ d_sitterage + ", d_need=" + d_need + ", d_onoff=" + d_onoff + ", d_term=" + d_term + ", d_startdate="
 				+ d_startdate + ", d_writedate=" + d_writedate + ", d_enddate=" + d_enddate + ", cntDTOs=" + cntDTOs
 				+ ", cntDTOMessage=" + cntDTOMessage + ", age=" + age + ", agetype=" + agetype + ", m_addr1=" + m_addr1
 				+ ", m_addr2=" + m_addr2 + ", m_addr3=" + m_addr3 + ", mm=" + mm + "]";
@@ -542,7 +542,7 @@ public class DolbomDTO {
 			String sunday, int monday_start, int tuesday_start, int wednesday_start, int thursday_start,
 			int friday_start, int saturday_start, int sunday_start, int monday_end, int tuesday_end, int wednesday_end,
 			int thursday_end, int friday_end, int saturday_end, int sunday_end, String d_sitterage, String d_need,
-			String d_title, String d_term, Date d_startdate, Date d_writedate, Date d_enddate,
+			String d_onoff, String d_term, Date d_startdate, Date d_writedate, Date d_enddate,
 			List<ContractDTO> cntDTOs, String cntDTOMessage, int age, String agetype, String m_addr1, String m_addr2,
 			String m_addr3, MemberDTO mm) {
 		super();
@@ -588,7 +588,7 @@ public class DolbomDTO {
 		this.sunday_end = sunday_end;
 		this.d_sitterage = d_sitterage;
 		this.d_need = d_need;
-		this.d_title = d_title;
+		this.d_onoff = d_onoff;
 		this.d_term = d_term;
 		this.d_startdate = d_startdate;
 		this.d_writedate = d_writedate;

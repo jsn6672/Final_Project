@@ -359,4 +359,16 @@ public class MembertDAO {
 
 	}
 
+	public void Dolbom_status_update(HttpServletRequest req, DolbomDTO dDTO) {
+		DolbomDTO dd = ss.getMapper(MemberMapper.class).getDolbomInfo(dDTO);
+		
+		String status = dd.getd_onoff();
+		if (status.equals("off")) {
+			ss.getMapper(MemberMapper.class).updateOnDolbomInfo(dd);
+		}else {
+			ss.getMapper(MemberMapper.class).updateOffDolbomInfo(dd);			
+		}
+		
+	}
+
 }

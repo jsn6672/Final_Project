@@ -21,6 +21,7 @@ import com.sh.pj.care.CareDAO;
 import com.sh.pj.mom.MomDAO;
 import com.sh.pj.mypage.ContractDTO;
 import com.sh.pj.pet.PetDAO;
+import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 
 @Controller
@@ -201,6 +202,15 @@ public class HomeController {
 		mDAO.EndCnt(req, cntDTO);
 		return "redirect:/mypage.go";
 	}
+
+	@RequestMapping(value = "notice.update", method = RequestMethod.GET)
+	public String noticeUpdate(HttpServletRequest req, DolbomDTO dDTO) {
+		System.out.println(dDTO);
+		mDAO.Dolbom_status_update(req, dDTO);
+		return "redirect:/mypage.go";
+	}
+	
+	
 	
 	
 	
