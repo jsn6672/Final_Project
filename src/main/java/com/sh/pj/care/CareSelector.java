@@ -47,5 +47,4 @@ public class CareSelector {
 	public String toString() {
 		return "CareSelector [cs_search=" + cs_search + ", cs_start=" + cs_start + ", cs_end=" + cs_end + "]";
 	}
-
 }

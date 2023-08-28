@@ -91,6 +91,7 @@ public interface MypageMapper {
 	public List<ReviewDTO> getAllReview(MemberDTO mDTO);
 
 	public DolbomDTO getDolbomReviewInfo(ReviewDTO rr);
+	public List<CouponDTO> couponlist(String user_id);
 
 	
 

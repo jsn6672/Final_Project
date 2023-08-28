@@ -311,14 +311,13 @@ public class MypageController {
 	}
 
 	@RequestMapping(value = "/mypage.ticketthatihave.go")
-	public String ticketThatIHave(HttpServletRequest req, @RequestParam("user_id") String user_id, MoneyDTO mm, MomDTO mDTO) {
+	public String ticketThatIHave(HttpServletRequest req, @RequestParam("user_id") String user_id, MoneyDTO mm, MomDTO mDTO, CouponDTO cp) {
 		mDAO.logincheck(req);
-		System.out.println("아이디 확인용------------");
-		System.out.println(user_id);
 		mpDAO.ticketthatihave(req, user_id, mm, mDTO);
+		mpDAO.couponCheck(req, user_id, cp, mDTO);
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageTicketThatIHave.jsp");
-		
+	
 		return "home";
 	}
 
