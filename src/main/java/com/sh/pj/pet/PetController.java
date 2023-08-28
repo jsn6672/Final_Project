@@ -51,6 +51,31 @@ public class PetController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/petsitter.delete.go", method = RequestMethod.GET)
+	public String petsitterDelete(HttpServletRequest req, PetDTO petDTO, Model m) {
+		mDAO.logincheck(req);
+		pDAO.delete(req, petDTO, m);
+		
+		return "redirect:/mypage.go";
+	}
+	
+	@RequestMapping(value = "/petsitter.notice.up", method = RequestMethod.GET)
+	public String petsitterNoticeUP(HttpServletRequest req, PetDTO petDTO, Model m) {
+		mDAO.logincheck(req);
+		pDAO.noticeUP(req, petDTO, m);
+		pDAO.noticeUpdate(req, petDTO, m);
+		
+		return "redirect:/mypage.go";
+	}
+	
+	@RequestMapping(value = "/petsitter.notice.down", method = RequestMethod.GET)
+	public String petsitterNoticeDOWN(HttpServletRequest req, PetDTO petDTO, Model m) {
+		mDAO.logincheck(req);
+		pDAO.noticeDOWN(req, petDTO, m);
+		
+		return "redirect:/mypage.go";
+	}
+	
 	@RequestMapping(value = "/pettaker.detail.go", method = RequestMethod.GET)
 	public String pettakerDetail(HttpServletRequest req, DolbomDTO dolbomDTO, Model m) {
 		mDAO.logincheck(req);
@@ -59,6 +84,7 @@ public class PetController {
 
 		return "home";
 	}
+	
 
 
 	@RequestMapping(value = "/pettaker.be", method = RequestMethod.POST)
