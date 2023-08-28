@@ -1,5 +1,6 @@
 package com.sh.pj.mypage;
 
+import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -318,6 +320,14 @@ public class MypageController {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageTicketThatIHave.jsp");
 	
+		return "home";
+	}
+	
+	@RequestMapping(value = "/mypage.couponreg.go", method = RequestMethod.POST)
+	public String couponReg(HttpServletRequest req, CouponDTO cp) {
+		mDAO.logincheck(req);
+		mpDAO.regcoupon(req, cp);
+		
 		return "home";
 	}
 

@@ -794,10 +794,30 @@ public class MypageDAO {
 			rr.setR_dolbomDTO(ss.getMapper(MypageMapper.class).getDolbomReviewInfo(rr));
 		}
 		req.setAttribute("review", rDTO);
-		
+	}
 	public void couponCheck(HttpServletRequest req, String user_id, CouponDTO cp, MomDTO mDTO) {
 		List<CouponDTO> couponList = ss.getMapper(MypageMapper.class).couponlist(user_id);
 		req.setAttribute("couponList", couponList);
 	}
+
+	public void regcoupon(HttpServletRequest req, CouponDTO cp) {
+		String cp_date_string = req.getParameter("cp_date");
+		int cp_date = Integer.parseInt(cp_date_string);
+		int cp_no = Integer.parseInt(req.getParameter("cp_no"));
+		String cp_id = req.getParameter("cp_id");
+		int cp_used = Integer.parseInt(req.getParameter("cp_used"));
+	
+		System.out.println("쿠폰확인용");
+		System.out.println(cp_date);
+		System.out.println(cp_no);
+		System.out.println(cp_id);	
+		System.out.println(cp_used);	
+		
+	
+		if (ss.getMapper(MypageMapper.class).usecoupon(cp) == 1) {
+			System.out.println("쿠폰 등록 성공"); 
+		
+		} else { System.out.println("쿠폰 등록 실패"); }
+		}
 
 }

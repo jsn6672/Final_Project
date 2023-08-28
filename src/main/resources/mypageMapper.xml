@@ -268,8 +268,19 @@
 	
 	<select id="getDolbomReviewInfo" resultType="com.sh.pj.account.DolbomDTO">
 		select * from dolbom_tbl where d_no = #{review_dolbom_no}
+	</select>
+		
+	
 	<select id="couponlist" resultType="com.sh.pj.mypage.CouponDTO">
 		select * from coupon
 		where cp_id = #{user_id}
 	</select>
+
+	<update id="usecoupon">
+		update momsitter_tbl
+		set ms_ticket_end = ms_ticket_end + #{cp_date, jdbcType=NUMERIC}
+		where ms_id = #{cp_id, jdbcType=INTEGER}
+	</update>
+
+
 </mapper>
