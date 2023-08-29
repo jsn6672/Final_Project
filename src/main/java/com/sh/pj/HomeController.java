@@ -74,7 +74,7 @@ public class HomeController {
 
 
 		}
-		
+		mDAO.reviewall(req);
 		req.setAttribute("contentPage", "index.jsp");
 		return "home";
 	}

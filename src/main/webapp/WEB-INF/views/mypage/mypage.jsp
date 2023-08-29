@@ -92,7 +92,7 @@
 					onmouseover="changeColor('mpMenu-part6')"
 					onmouseout="restoreColor('mpMenu-part6')">
 					<c:if test="${userInfo.user_id == 'admin' }">
-						<a href="mypage.certif.check">관리자 페이지</a>
+						<a href="mypage.certif.confirm">관리자 페이지</a>
 					</c:if>
 				</div>
 
