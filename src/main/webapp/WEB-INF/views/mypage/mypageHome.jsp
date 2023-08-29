@@ -56,7 +56,8 @@
 					});
 				});
 				// 여기서부터 아래 코드를 추가합니다.
-				var Carebuttons = document.querySelectorAll(".careDolbomButton");
+				var Carebuttons = document
+						.querySelectorAll(".careDolbomButton");
 				Carebuttons.forEach(function(button) {
 					var statusInput = button.closest(".care-info")
 							.querySelector(".careDolbomStatus");
@@ -87,9 +88,6 @@
 						toggleStatus(statusInput, button);
 					});
 				});
-				
-				
-				
 
 				function toggleStatus(statusInput, button) {
 					var buttonText = button.innerHTML; // 현재 버튼의 내용
@@ -111,7 +109,8 @@
 <style type="text/css">
 #dolbomPetModalContents {
 	width: 400px;
-	height: 600px; background : #fff;
+	height: 600px;
+	background: #fff;
 	border-radius: 10px;
 	position: relative;
 	top: 20%;
@@ -125,9 +124,11 @@
 	cursor: pointer;
 	background: #fff;
 }
+
 #dolbomCareModalContents {
 	width: 400px;
-	height: 600px; background : #fff;
+	height: 600px;
+	background: #fff;
 	border-radius: 10px;
 	position: relative;
 	top: 20%;
@@ -141,9 +142,11 @@
 	cursor: pointer;
 	background: #fff;
 }
+
 #dolbomMomModalContents {
 	width: 400px;
-	height: 600px; background : #fff;
+	height: 600px;
+	background: #fff;
 	border-radius: 10px;
 	position: relative;
 	top: 20%;
@@ -183,9 +186,42 @@
 								<!-- 모시 사용자 <br> -->
 								<div class="mpPSitter-part">
 									<div class="mpPSitter-part-name">맘시터&nbsp</div>
-									<div class="mpPSitter-part-state">
-										<a href="mypage.ticket.do">이용상황</a>
-									</div>
+									<c:if test="${userInfo.user_ms_status eq 0 }">
+										<div class="mpPSitter-part-state"
+											style="background-color: #EEEEEE">
+											<span onclick="location.href='mypage.sitterRegMom.go'">&nbsp&nbsp미등록&nbsp&nbsp</span>
+										</div>
+									</c:if>
+									<c:if test="${userInfo.user_ms_status eq 1 }">
+										<div class="mpPSitter-part-state"
+											style="background-color: #EEEEEE">
+											<span onclick="location.href='mypage.ticket.do'">이용권구매필요</span>
+										</div>
+									</c:if>
+									<c:if test="${userInfo.user_ms_status eq 2 }">
+										<div class="mpPSitter-part-state"
+											style="background-color: #D9D9D9">
+											<span>인증대기</span>
+										</div>
+									</c:if>
+									<c:if test="${userInfo.user_ms_status eq 3 }">
+										<div class="mpPSitter-part-state"
+											style="background-color: #D9D9D9">
+											<span onclick="location.href='ms.start.work'">인증완료(공고x)</span>
+										</div>
+									</c:if>
+									<c:if test="${userInfo.user_ms_status eq 4 }">
+										<div class="mpPSitter-part-state"
+											style="background-color: #EEEEEE">
+											<span onclick="location.href='ms.end.work'">공고중</span>
+										</div>
+									</c:if>
+									<c:if test="${userInfo.user_ms_status eq 5 }">
+										<div class="mpPSitter-part-state"
+											style="background-color: #EEEEEE">
+											<span>구직완료</span>
+										</div>
+									</c:if>
 								</div>
 								<div class="mpPSitter-part">
 									<div class="mpPSitter-part-name">케어시터</div>
@@ -212,7 +248,9 @@
 											style="background-color: #D9D9D9;">인증대기</div>
 									</c:if>
 									<c:if test="${userInfo.user_mt_status eq 2 }">
-										<div class="mpPSitter-part-state"><span id="dolbomMom">구인상황확인</span></div>
+										<div class="mpPSitter-part-state">
+											<span id="dolbomMom">구인상황확인</span>
+										</div>
 									</c:if>
 								</div>
 								<div class="mpPSitter-part">
@@ -228,7 +266,9 @@
 											style="background-color: #D9D9D9;">인증대기</div>
 									</c:if>
 									<c:if test="${userInfo.user_ct_status eq 2 }">
-										<div class="mpPSitter-part-state"><span id="dolbomCare">구인상황확인</span></div>
+										<div class="mpPSitter-part-state">
+											<span id="dolbomCare">구인상황확인</span>
+										</div>
 									</c:if>
 								</div>
 								<div class="mpPSitter-part">
@@ -282,7 +322,10 @@
 	<div id="dolbomPetModal"
 		style="display: none; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); position: absolute; top: 0; left: 0">
 		<div id="dolbomPetModalContents">
-			<div>공고를 하시려면 on버튼을 눌러주세요 <br> 공고를 내리시려면 off버튼을 눌러주세요 <br> 내가 불쌍해보인다면 돈을 주세요 </div>
+			<div>
+				공고를 하시려면 on버튼을 눌러주세요 <br> 공고를 내리시려면 off버튼을 눌러주세요 <br> 내가
+				불쌍해보인다면 돈을 주세요
+			</div>
 			<c:forEach items="${petDTO }" var="p">
 				<div class="pet-info" style="display: flex;">
 					<div>${p.d_name }</div>
@@ -301,7 +344,10 @@
 	<div id="dolbomCareModal"
 		style="display: none; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); position: absolute; top: 0; left: 0">
 		<div id="dolbomCareModalContents">
-			<div>공고를 하시려면 on버튼을 눌러주세요 <br> 공고를 내리시려면 off버튼을 눌러주세요 <br> 내가 불쌍해보인다면 돈을 주세요 </div>
+			<div>
+				공고를 하시려면 on버튼을 눌러주세요 <br> 공고를 내리시려면 off버튼을 눌러주세요 <br> 내가
+				불쌍해보인다면 돈을 주세요
+			</div>
 			<c:forEach items="${careDTO }" var="p">
 				<div class="care-info" style="display: flex;">
 					<div>${p.d_name }</div>
@@ -309,7 +355,8 @@
 						<form action="notice.update">
 							<input type="hidden" value="${p.d_onoff }"
 								class="careDolbomStatus" name="d_onoff"> <input
-								type="hidden" value="${p.d_no }" class="careDolbomNo" name="d_no">
+								type="hidden" value="${p.d_no }" class="careDolbomNo"
+								name="d_no">
 							<button class="careDolbomButton"></button>
 						</form>
 					</div>
@@ -320,7 +367,10 @@
 	<div id="dolbomMomModal"
 		style="display: none; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); position: absolute; top: 0; left: 0">
 		<div id="dolbomMomModalContents">
-			<div>공고를 하시려면 on버튼을 눌러주세요 <br> 공고를 내리시려면 off버튼을 눌러주세요 <br> 내가 불쌍해보인다면 돈을 주세요 </div>
+			<div>
+				공고를 하시려면 on버튼을 눌러주세요 <br> 공고를 내리시려면 off버튼을 눌러주세요 <br> 내가
+				불쌍해보인다면 돈을 주세요
+			</div>
 			<c:forEach items="${momDTO }" var="p">
 				<div class="mom-info" style="display: flex;">
 					<div>${p.d_name }</div>
