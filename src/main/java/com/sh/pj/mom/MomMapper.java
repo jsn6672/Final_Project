@@ -61,8 +61,9 @@ public interface MomMapper {
 
 	public int noticeDOWN(MomDTO momDTO);
 
-	public List<MomDTO> test();
-	public List<MomDTO> getMsConfirm();
+	public int msAccept(MomDTO momDTO);
+	
+	public int msReject(MomDTO momDTO);
 
 
 

@@ -60,6 +60,10 @@ public interface PetMapper {
 
 	public int noticeUpdate(PetDTO petDTO);
 
+	public int psAccept(PetDTO pDTO);
+
+	public int psReject(PetDTO pDTO);
+
 
 
 

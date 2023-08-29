@@ -26,7 +26,8 @@
 		#{ms_file}, #{ms_confirm}, #{ms_confirm_answer}, #{ms_cctv},
 		#{ms_term}, #{ms_day}, #{ms_hour}, #{ms_location1}, #{ms_location2},
 		#{ms_location3}, #{ms_extra}, #{ms_exp}, #{ms_pay}, 0,
-		0, #{ms_can_do}, #{ms_can_type}, null, null, null,0)
+		0, #{ms_can_do},
+		#{ms_can_type}, null, null, null,0)
 	</insert>
 
 	<update id="changemsstatus">
@@ -145,12 +146,14 @@
 		user_id = #{ms_id}
 	</update>
 	
-	<select id="test" resultType="com.sh.pj.mom.MomDTO">
-		select * from momsitter_tbl where ms_confirm = 0
-	</select>
-
-	<select id="getMsConfirm" resultType="com.sh.pj.mom.MomDTO">
-		select * from momsitter_tbl where ms_confirm = 0
-	</select>
+	<update id="msAccept">
+		update momsitter_tbl set ms_confirm = 1 where ms_id = #{ms_id}
+	</update>
 	
+	<update id="msReject">
+		update momsitter_tbl set ms_confirm_answer = 'reject' where ms_id = #{ms_id}
+	</update>
+
+
+
 </mapper>

@@ -111,12 +111,12 @@ public interface MypageMapper {
 	public List<PetDTO> getpsconfirm();
 	
 	public List<CareDTO> getcsconfirm();
-
+	
 	public MemberDTO getMSuserinfo(MomDTO mmm);
 
-	public MemberDTO getpsuserinfo();
-
-	public MemberDTO getcsuserinfo();
+	public MemberDTO getPSuserinfo(PetDTO mmm);
+	
+	public MemberDTO getCSuserinfo(CareDTO mmm);
 
 
 

@@ -584,5 +584,19 @@ public class MomDAO {
 		
 	}
 
+	public void msAccept(HttpServletRequest req, MomDTO momDTO) {
+		if(ss.getMapper(MomMapper.class).msAccept(momDTO)==1) {
+			System.out.println("당신을 맘시터로 인정합니다");
+		}
+		
+	}
+
+	public void msReject(HttpServletRequest req, MomDTO momDTO) {
+		
+		if(ss.getMapper(MomMapper.class).msReject(momDTO)==1) {
+			System.out.println("넌 못지나간다");
+		}
+	}
+
 }
 
