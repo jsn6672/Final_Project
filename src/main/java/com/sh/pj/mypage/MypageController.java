@@ -437,15 +437,21 @@ public class MypageController {
 		
 		return "redirect:/mypage.go";
 	}
-	
-	@RequestMapping(value = "/mypage.certif.confirm", method = RequestMethod.GET)
-	public String certificationConfirm(HttpServletRequest req, MypageDAO mpDAO) {
+
+	@RequestMapping(value = "/mypage.coupon.reg", method = RequestMethod.GET)
+	public String regCoupon(HttpServletRequest req) {
 		mDAO.logincheck(req);
-		mpDAO.getMSConfirm(req);
-//		mpDAO.getPSConfirm(req);
-//		mpDAO.getCSConfirm(req);
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
-		req.setAttribute("mypageContentPage", "mypageCertification.jsp");
+		req.setAttribute("mypageContentPage", "mypageGiveCoupon.jsp");
+		return "home";
+	}
+
+	@RequestMapping(value = "/mypage.coupon.give", method = RequestMethod.GET)
+	public String giveCoupon(HttpServletRequest req, CouponDTO cp) {
+		mDAO.logincheck(req);
+		mpDAO.giveCoupon(req, cp);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageGiveCoupon.jsp");
 		return "home";
 	}
 

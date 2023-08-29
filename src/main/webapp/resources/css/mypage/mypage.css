@@ -621,5 +621,9 @@ button {
 /* 이용권 구매페이지 */
 .mpT {
 	width: 100vw;
+	height: 1600px;
+	background-color: #FFEBE4;
 }
+
+
 

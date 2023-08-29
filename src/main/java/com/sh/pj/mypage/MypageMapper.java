@@ -108,6 +108,8 @@ public interface MypageMapper {
 
 	public MemberDTO getcsuserinfo();
 
+	public int givecoupon(CouponDTO cp);
+
 
 	
 

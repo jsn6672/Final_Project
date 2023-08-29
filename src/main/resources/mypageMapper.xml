@@ -261,6 +261,7 @@
 	<insert id="regReview">
 		insert into review_tbl values(review_tbl_seq.nextval, #{review_taker_id}, #{review_sitter_id}, #{review_dolbom_no}, #{review_txt}, sysdate, #{review_point}, #{review_cont_no})
 	</insert>
+
 	
 	<select id="getAllReview" resultType="com.sh.pj.ReviewDTO">
 		select * from review_tbl where review_sitter_id = #{user_id} order by review_create_at desc
@@ -310,5 +311,8 @@
 		where ms_id = #{cp_id, jdbcType=INTEGER}
 	</update>
 
+	<insert id="givecoupon">
+		insert into coupon values(coupon_seq.nextval, #{cp_id}, #{cp_date}, 0, #{cp_txt})
+	</insert>
 
 </mapper>
