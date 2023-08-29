@@ -78,7 +78,7 @@ public class CareController {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
 		
-		return "home";
+		return "redirect:/mypage.go";
 	}
 	
 
@@ -90,7 +90,7 @@ public class CareController {
         req.setAttribute("contentPage", "mypage/mypage.jsp");
         req.setAttribute("mypageContentPage", "mypageProfile.jsp");
         System.out.println(cDTO);
-        return "home";
+        return "redirect:/mypage.go";
     }
     
     @RequestMapping(value = "/caresitter.update", method = RequestMethod.POST)
@@ -100,7 +100,7 @@ public class CareController {
     	req.setAttribute("contentPage", "mypage/mypage.jsp");
     	req.setAttribute("mypageContentPage", "mypageProfile.jsp");
     	System.out.println(cDTO);
-    	return "home";
+    	return "redirect:/mypage.go";
     }
     
     @RequestMapping(value = "/updateCareDolbom.do", method = RequestMethod.POST)

@@ -294,7 +294,8 @@ public class MypageController {
 	@RequestMapping(value = "mypage.certif.check", method = RequestMethod.GET)
 	public String certificationCheck(HttpServletRequest req, MoneyDTO mm) {
 		mDAO.logincheck(req);
-		mpDAO.getcertiflist(req, mm);
+		mpDAO.checkcheck(req);
+//		mpDAO.getcertiflist(req, mm);
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageCertification.jsp");
 		return "home";
@@ -438,8 +439,15 @@ public class MypageController {
 		return "redirect:/mypage.go";
 	}
 
+
 	@RequestMapping(value = "/mypage.coupon.reg", method = RequestMethod.GET)
 	public String regCoupon(HttpServletRequest req) {
+
+	
+
+	@RequestMapping(value = "/mypage.certif.confirm", method = RequestMethod.GET)
+	public String certificationConfirm(HttpServletRequest req, MypageDAO mpDAO) {
+
 		mDAO.logincheck(req);
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageGiveCoupon.jsp");
@@ -455,4 +463,44 @@ public class MypageController {
 		return "home";
 	}
 
+}
+
+	@RequestMapping(value = "/ms.start.work", method = RequestMethod.GET)
+	public String startMsWork(HttpServletRequest req) {
+		mpDAO.msStartToWork(req);
+		
+		return "redirect:/mypage.go";
+	}
+	@RequestMapping(value = "/ms.end.work", method = RequestMethod.GET)
+	public String endMsWork(HttpServletRequest req) {
+		mpDAO.msEndToWork(req);
+		
+		return "redirect:/mypage.go";
+	}
+	@RequestMapping(value = "/cs.start.work", method = RequestMethod.GET)
+	public String startCsWork(HttpServletRequest req) {
+		mpDAO.csStartToWork(req);
+		
+		return "redirect:/mypage.go";
+	}
+	@RequestMapping(value = "/cs.end.work", method = RequestMethod.GET)
+	public String endCsWork(HttpServletRequest req) {
+		mpDAO.csEndToWork(req);
+		
+		return "redirect:/mypage.go";
+	}
+	@RequestMapping(value = "/ps.start.work", method = RequestMethod.GET)
+	public String startPsWork(HttpServletRequest req) {
+		mpDAO.psStartToWork(req);
+		
+		return "redirect:/mypage.go";
+	}
+	@RequestMapping(value = "/ps.end.work", method = RequestMethod.GET)
+	public String endPsWork(HttpServletRequest req) {
+		mpDAO.psEndToWork(req);
+		
+		return "redirect:/mypage.go";
+	}
+	
+	
 }

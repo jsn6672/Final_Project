@@ -96,6 +96,16 @@ public interface MypageMapper {
 
 	public int usecoupon(CouponDTO cp);
 
+	public int updateMsStatusUp(MemberDTO mDTO);
+	public int updateMsStatusDown(MemberDTO mDTO);
+	public int updateCsStatusUp(MemberDTO mDTO);
+	public int updateCsStatusDown(MemberDTO mDTO);
+	public int updatePsStatusUp(MemberDTO mDTO);
+	public int updatePsStatusDown(MemberDTO mDTO);
+
+	public List<ReviewDTO> review();
+
+
 	public List<MomDTO> getmsconfirm();
 
 	public List<PetDTO> getpsconfirm();
@@ -111,7 +121,7 @@ public interface MypageMapper {
 	public int givecoupon(CouponDTO cp);
 
 
-	
+
 
 
 
