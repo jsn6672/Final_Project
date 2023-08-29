@@ -299,18 +299,10 @@ public class MypageController {
 		req.setAttribute("mypageContentPage", "mypageCertification.jsp");
 		return "home";
 	}
+
+
 	
 
-	@RequestMapping(value = "/mypage.ticket.confirm", method = RequestMethod.POST)
-	public String ticketConfirm(HttpServletRequest req, MoneyDTO mm) {
-		mDAO.logincheck(req);
-	
-		mpDAO.confirmticket(req, mm);
-		req.setAttribute("contentPage", "mypage/mypage.jsp");
-		req.setAttribute("mypageContentPage", "mypageTicket3Check.jsp");
-
-		return ticketCheck(req, mm);
-	}
 
 	@RequestMapping(value = "/mypage.ticketthatihave.go")
 	public String ticketThatIHave(HttpServletRequest req, @RequestParam("user_id") String user_id, MoneyDTO mm, MomDTO mDTO, CouponDTO cp) {
@@ -446,6 +438,20 @@ public class MypageController {
 		return "redirect:/mypage.go";
 	}
 	
+
+	@RequestMapping(value = "/mypage.certif.confirm", method = RequestMethod.GET)
+	public String certificationConfirm(HttpServletRequest req, MypageDAO mpDAO) {
+		mDAO.logincheck(req);
+		mpDAO.getMSConfirm(req);
+//		mpDAO.getPSConfirm(req);
+//		mpDAO.getCSConfirm(req);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageCertification.jsp");
+		return "home";
+	}
+
+}
+
 	@RequestMapping(value = "/ms.start.work", method = RequestMethod.GET)
 	public String startMsWork(HttpServletRequest req) {
 		mpDAO.msStartToWork(req);

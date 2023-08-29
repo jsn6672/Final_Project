@@ -106,4 +106,8 @@
 		update jsn_user_tbl set user_ms_status = 3 where user_id = #{ms_id}
 	</update>
 	
+	<select id="getMsConfirm" resultType="com.sh.pj.mom.MomDTO">
+		select * from momsitter_tbl where ms_confirm = 0
+	</select>
+	
 </mapper>

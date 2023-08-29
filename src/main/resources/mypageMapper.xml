@@ -275,6 +275,35 @@
 		where cp_id = #{user_id}
 	</select>
 
+	<select id="getmsconfirm" resultType="com.sh.pj.mom.MomDTO">
+		select * from momsitter_tbl where ms_confirm = 0
+	</select>
+
+	<select id="getpsconfirm" resultType="com.sh.pj.pet.PetDTO">
+		select ps_file, ps_id from petsitter_tbl
+		where ps_confirm = 0 
+	</select>
+
+	<select id="getcsconfirm" resultType="com.sh.pj.care.CareDTO">
+		select cs_file, cs_id from caresitter_tbl
+		where cs_confirm = 0
+	</select>
+
+	<select id="getMSuserinfo" resultType="com.sh.pj.account.MemberDTO">
+		select user_name from user_tbl
+		where user_id = #{ms_id}
+	</select>
+
+	<select id="getPSuserinfo" resultType="com.sh.pj.account.MemberDTO">
+		select user_name from user_tbl
+		where user_id = #{ps_id}
+	</select>
+
+	<select id="getCSuserinfo" resultType="com.sh.pj.account.MemberDTO">
+		select user_name from user_tbl
+		where user_id = #{cs_id}
+	</select>
+
 	<update id="usecoupon">
 		update momsitter_tbl
 		set ms_ticket_end = ms_ticket_end + #{cp_date, jdbcType=NUMERIC}
