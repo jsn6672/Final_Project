@@ -438,6 +438,7 @@ public class MypageController {
 		return "redirect:/mypage.go";
 	}
 	
+
 	@RequestMapping(value = "/mypage.certif.confirm", method = RequestMethod.GET)
 	public String certificationConfirm(HttpServletRequest req, MypageDAO mpDAO) {
 		mDAO.logincheck(req);
@@ -449,4 +450,20 @@ public class MypageController {
 		return "home";
 	}
 
+}
+
+	@RequestMapping(value = "/ms.start.work", method = RequestMethod.GET)
+	public String startMsWork(HttpServletRequest req) {
+		mpDAO.msStartToWork(req);
+		
+		return "redirect:/mypage.go";
+	}
+	@RequestMapping(value = "/ms.end.work", method = RequestMethod.GET)
+	public String endMsWork(HttpServletRequest req) {
+		mpDAO.msEndToWork(req);
+		
+		return "redirect:/mypage.go";
+	}
+	
+	
 }

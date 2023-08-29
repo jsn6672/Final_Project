@@ -309,6 +309,14 @@
 		set ms_ticket_end = ms_ticket_end + #{cp_date, jdbcType=NUMERIC}
 		where ms_id = #{cp_id, jdbcType=INTEGER}
 	</update>
+	
+	<update id="updateMsStatusUp">
+		update jsn_user_tbl set user_ms_status = 4 where user_id = #{user_id}
+	</update>
+	
+	<update id="updateMsStatusDown">
+		update jsn_user_tbl set user_ms_status = 3 where user_id = #{user_id}
+	</update>
 
 
 </mapper>
