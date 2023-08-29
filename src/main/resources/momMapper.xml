@@ -106,4 +106,8 @@
 		update jsn_user_tbl set user_ms_status = 3 where user_id = #{ms_id}
 	</update>
 	
+	<select id="getUserDolbomData" resultType="com.sh.pj.account.DolbomDTO">
+		select * from dolbom_tbl where d_id = #{user_id}
+	</select>
+	
 </mapper>

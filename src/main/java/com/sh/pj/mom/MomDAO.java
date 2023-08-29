@@ -584,5 +584,13 @@ public class MomDAO {
 		
 	}
 
+	public List<DolbomDTO> getUserDolbomData(HttpServletRequest req, DolbomDTO dDTO) {
+		
+		MemberDTO memberDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		
+		return ss.getMapper(MomMapper.class).getUserDolbomData(memberDTO);
+		
+	}
+
 }
 
