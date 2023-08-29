@@ -40,8 +40,7 @@ public class PetDAO {
 	private int allMsgCountPetSitter; 
 
 	private int allMsgCountPetDolbom; 
-	
-	
+		
 	
 	public void regPetDolbom(HttpServletRequest req, DolbomDTO dDTO) {
 

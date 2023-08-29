@@ -446,5 +446,18 @@ public class MypageController {
 		return "redirect:/mypage.go";
 	}
 	
+	@RequestMapping(value = "/ms.start.work", method = RequestMethod.GET)
+	public String startMsWork(HttpServletRequest req) {
+		mpDAO.msStartToWork(req);
+		
+		return "redirect:/mypage.go";
+	}
+	@RequestMapping(value = "/ms.end.work", method = RequestMethod.GET)
+	public String endMsWork(HttpServletRequest req) {
+		mpDAO.msEndToWork(req);
+		
+		return "redirect:/mypage.go";
+	}
+	
 	
 }

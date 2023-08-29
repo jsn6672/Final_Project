@@ -95,6 +95,9 @@ public interface MypageMapper {
 
 	public int usecoupon(CouponDTO cp);
 
+	public int updateMsStatusUp(MemberDTO mDTO);
+	public int updateMsStatusDown(MemberDTO mDTO);
+
 	
 
 
