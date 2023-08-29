@@ -95,7 +95,7 @@ public interface MypageMapper {
 
 	public int usecoupon(CouponDTO cp);
 
-	
+	public List<ReviewDTO> review();
 
 
 

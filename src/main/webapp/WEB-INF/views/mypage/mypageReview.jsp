@@ -37,9 +37,7 @@
 </style>
 </head>
 <body>
-	<div class="mpS-pet-5">
-		<div class="babo_container">
-			<div class="babo" style="padding-top: 10px;" >
+	<div class="mpS-pet-5" style="display: flex;align-items: center;justify-content: center;">
 				<div class="body-content-another3">
 					<div>내가 받은 리뷰</div>
 					<br>
@@ -50,16 +48,14 @@
 						<hr>
 					</c:forEach>
 				</div>
-			</div>
 
-		</div>
-
-			<div class="body-content-another3">
+						<div class="body-content-another3">
+						    <div style="text-align: center;">
+						
 				<div>내가 써야 할 리뷰</div>
 				<hr>
 				<c:forEach items="${NotReview}" var="r">
-					<div>
-						유저명: ${r.d_name }
+					<div>유저명:${r.d_name }
 						<c:if test="${r.cntDTOMessage eq '1' }">
 							<span style="color: red"> ● </span>
 						</c:if>
@@ -70,7 +66,7 @@
 								<c:forEach items="${r.cntDTOs }" var="rr">
 									<div>시터 이름 : ${rr.cnt_memberDTO.user_name }</div>
 									<div>시터 나이 : ${rr.age }</div>
-									<div style="display: flex;">
+									<div>
 										<form action="regReview">
 											<div>
 												<input name="review_taker_id" value="${userInfo.user_id }"
@@ -99,14 +95,15 @@
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
-								<div style="border-bottom: 1px solid black">${r.cntDTOMessage }</div>
+								<div>${r.cntDTOMessage }</div>
 							</c:otherwise>
 						</c:choose>
 					</div>
 					<hr>
 				</c:forEach>
 			</div>
-		</div>
+			</div>
+			</div>
 
 </body>
 
