@@ -3,109 +3,152 @@
 <mapper namespace="com.sh.pj.mom.MomMapper">
 
 	<select id="getAll" resultType="com.sh.pj.mom.MomDTO">
-		select*from momsitter_tbl where ms_notice = '0'
+		select*from momsitter_tbl where
+		ms_notice = '0'
 	</select>
 
 	<select id="detail" resultType="com.sh.pj.mom.MomDTO">
-		select*from momsitter_tbl where ms_id = #{ms_id}
+		select*from momsitter_tbl where
+		ms_id = #{ms_id}
 	</select>
 
 	<insert id="regDolbom">
-		insert into dolbom_tbl values (dolbom_tbl_seq.nextval, #{d_id}, #{d_name}, #{d_category}, #{d_year}, #{d_month}, #{d_day}, #{d_hour}, #{d_check}, #{d_location}, #{d_gender}, #{d_personality}, #{d_pay}, #{d_cctv}, #{d_can_do}, #{d_sitterage}, #{d_need}, #{d_title}, #{d_term}, null, null, null)
+		insert into dolbom_tbl values
+		(dolbom_tbl_seq.nextval, #{d_id}, #{d_name}, #{d_category}, #{d_year},
+		#{d_month}, #{d_day}, #{d_hour}, #{d_check}, #{d_location},
+		#{d_gender}, #{d_personality}, #{d_pay}, #{d_cctv}, #{d_can_do},
+		#{d_sitterage}, #{d_need}, #{d_title}, #{d_term}, null, null, null)
 	</insert>
-	
+
 	<insert id="regMomSitter">
 
-		insert into momsitter_tbl values (#{ms_id}, #{ms_file}, #{ms_confirm}, #{ms_confirm_answer}, #{ms_cctv}, #{ms_term}, #{ms_day}, #{ms_hour}, #{ms_location1}, #{ms_location2}, #{ms_location3}, #{ms_extra}, #{ms_exp}, #{ms_pay}, #{ms_point}, #{ms_count}, #{ms_can_do}, #{ms_can_type}, null, null, null,0)
+		insert into momsitter_tbl values (#{ms_id},
+		#{ms_file}, #{ms_confirm}, #{ms_confirm_answer}, #{ms_cctv},
+		#{ms_term}, #{ms_day}, #{ms_hour}, #{ms_location1}, #{ms_location2},
+		#{ms_location3}, #{ms_extra}, #{ms_exp}, #{ms_pay}, 0,
+		0, #{ms_can_do}, #{ms_can_type}, null, null, null,0)
 	</insert>
-	
-	<update id="changemsstatus">
-		update jsn_user_tbl set user_ms_status = 1 where user_id = #{user_id}
-	</update>
-	
 
-	<select id="getAllTaker" resultType="com.sh.pj.account.DolbomDTO">
+	<update id="changemsstatus">
+		update jsn_user_tbl set user_ms_status = 1 where
+		user_id = #{user_id}
+	</update>
+
+
+	<select id="getAllTaker"
+		resultType="com.sh.pj.account.DolbomDTO">
 		select*from dolbom_tbl where d_category=2
 	</select>
 
-	<select id="detailtaker" resultType="com.sh.pj.account.DolbomDTO">
+	<select id="detailtaker"
+		resultType="com.sh.pj.account.DolbomDTO">
 		select*from dolbom_tbl where d_no = #{d_no}
 	</select>
-	
+
 	<select id="detailUser" resultType="com.sh.pj.account.MemberDTO">
-		select * from jsn_user_tbl where user_id = #{ms_id}
+		select * from jsn_user_tbl
+		where user_id = #{ms_id}
 	</select>
-		
-	<select id="detailUser2" resultType="com.sh.pj.account.MemberDTO">
+
+	<select id="detailUser2"
+		resultType="com.sh.pj.account.MemberDTO">
 		select * from jsn_user_tbl where user_id = #{d_id}
 	</select>
 
 	<select id="getMomSitterInfo" resultType="com.sh.pj.mom.MomDTO">
-		select * from momsitter_tbl where ms_id = #{user_id}
+		select * from
+		momsitter_tbl where ms_id = #{user_id}
 	</select>
-	
+
 	<update id="updateMomSitter">
-		update momsitter_tbl set ms_file = #{ms_file}, ms_confirm = #{ms_confirm}, ms_confirm_answer = #{ms_confirm_answer}, ms_cctv = #{ms_cctv}, ms_term = #{ms_term}, ms_day = #{ms_day}, ms_hour = #{ms_hour}, ms_location1 = #{ms_location1}, ms_location2 = #{ms_location2}, ms_location3 = #{ms_location3}, ms_extra = #{ms_extra}, ms_exp = #{ms_exp}, ms_pay = #{ms_pay}, ms_can_do = #{ms_can_do}, ms_can_type = #{ms_can_type} where ms_id = #{ms_id}
+		update momsitter_tbl set ms_file = #{ms_file},
+		ms_confirm = #{ms_confirm}, ms_confirm_answer = #{ms_confirm_answer},
+		ms_cctv = #{ms_cctv}, ms_term = #{ms_term}, ms_day = #{ms_day},
+		ms_hour = #{ms_hour}, ms_location1 = #{ms_location1}, ms_location2 =
+		#{ms_location2}, ms_location3 = #{ms_location3}, ms_extra =
+		#{ms_extra}, ms_exp = #{ms_exp}, ms_pay = #{ms_pay}, ms_can_do =
+		#{ms_can_do}, ms_can_type = #{ms_can_type} where ms_id = #{ms_id}
 	</update>
-	
+
 	<select id="getMomSitterPoint" resultType="com.sh.pj.mom.MomDTO">
-		select * from momsitter_tbl where ms_id = #{review_sitter_id}
+		select * from
+		momsitter_tbl where ms_id = #{review_sitter_id}
 	</select>
-	
+
 	<update id="updateMomSitterPoint">
-		update momsitter_tbl set ms_point = #{ms_point}, ms_count = ms_count + 1 where ms_id = #{ms_id}
+		update momsitter_tbl set ms_point = #{ms_point},
+		ms_count = ms_count + 1 where ms_id = #{ms_id}
 	</update>
 
 	<select id="review" resultType="com.sh.pj.ReviewDTO">
-		select * from review_tbl where review_sitter_id = #{ms_id} and review_category = 2
+		select * from review_tbl where
+		review_sitter_id = #{ms_id} and review_category = 2
 	</select>
-	
+
 	<select id="getMsg" resultType="com.sh.pj.mom.MomDTO">
 		SELECT * fROM (SELECT ROWNUM AS rn, it.* FROM momsitter_tbl it WHERE
-		(it.ms_location1 LIKE '%' || #{ms_search} || '%' OR it.ms_location2 LIKE '%' || #{ms_search} || '%' OR it.ms_location3 LIKE '%' || #{ms_search} || '%')
+		(it.ms_location1 LIKE '%' || #{ms_search} || '%' OR it.ms_location2
+		LIKE '%' || #{ms_search} || '%' OR it.ms_location3 LIKE '%' ||
+		#{ms_search} || '%')
 		<!-- AND it.inquiry_category = #{category} -->
 		ORDER BY it.ms_write_date DESC)
-		WHERE rn &gt;= #{ms_start} and rn &lt;= #{ms_end}
+		WHERE rn &gt;= #{ms_start} and rn &lt;=
+		#{ms_end}
 	</select>
-	
+
 	<select id="getMsgCount" resultType="int"
 		parameterType="com.sh.pj.mom.MomSelector">
-		select count(*) from momsitter_tbl where ms_location1 like '%'||#{ms_search}||'%' or ms_location2 like '%'||#{ms_search}||'%' or ms_location3 like '%'||#{ms_search}||'%'
+		select count(*) from momsitter_tbl where ms_location1
+		like '%'||#{ms_search}||'%' or ms_location2 like
+		'%'||#{ms_search}||'%' or ms_location3 like '%'||#{ms_search}||'%'
 	</select>
 
 	<select id="getMsg2" resultType="com.sh.pj.account.DolbomDTO">
 		SELECT * FROM (
-		SELECT ROWNUM AS rn, it.* FROM dolbom_tbl it
-		WHERE (it.d_location LIKE '%' || #{ms_search} || '%') and d_category = 2
+		SELECT ROWNUM AS
+		rn, it.* FROM dolbom_tbl it
+		WHERE (it.d_location LIKE '%' ||
+		#{ms_search} || '%') and d_category = 2
 		)
-		WHERE rn &gt;= #{ms_start} and rn &lt;= #{ms_end}
+		WHERE rn &gt;= #{ms_start} and
+		rn &lt;= #{ms_end}
 	</select>
 
 	<select id="getMsgCount2" resultType="int"
 		parameterType="com.sh.pj.account.DolbomDTO">
-		SELECT count(*) FROM dolbom_tbl WHERE d_location LIKE '%'||#{ms_search}||'%' and d_category = 2
+		SELECT count(*) FROM dolbom_tbl WHERE d_location LIKE
+		'%'||#{ms_search}||'%' and d_category = 2
 	</select>
-	
-	<select id="detailReview" resultType="com.sh.pj.account.MemberDTO">
-		select * from jsn_user_tbl where user_id = #{review_taker_id}
+
+	<select id="detailReview"
+		resultType="com.sh.pj.account.MemberDTO">
+		select * from jsn_user_tbl where user_id =
+		#{review_taker_id}
 	</select>
-	
+
 	<delete id="deleteMomsitter">
 		delete from momsitter_tbl where ms_id = #{ms_id}
 	</delete>
-	
+
 	<update id="noticeUP">
-		update jsn_user_tbl set user_ms_status = 4 where user_id = #{ms_id}
+		update jsn_user_tbl set user_ms_status = 4 where
+		user_id = #{ms_id}
 	</update>
-	
+
 	<update id="noticeUpdate">
-		update momsitter_tbl set ms_write_date = sysdate where ps_id = #{ms_id}
+		update momsitter_tbl set ms_write_date = sysdate
+		where ps_id = #{ms_id}
 	</update>
-	
+
 	<update id="noticeDOWN">
-		update jsn_user_tbl set user_ms_status = 3 where user_id = #{ms_id}
+		update jsn_user_tbl set user_ms_status = 3 where
+		user_id = #{ms_id}
 	</update>
 	
+	<select id="test" resultType="com.sh.pj.mom.MomDTO">
+		select * from momsitter_tbl where ms_confirm = 0
+	</select>
+
 	<select id="getMsConfirm" resultType="com.sh.pj.mom.MomDTO">
 		select * from momsitter_tbl where ms_confirm = 0
 	</select>

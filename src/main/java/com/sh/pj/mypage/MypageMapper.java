@@ -96,6 +96,12 @@ public interface MypageMapper {
 
 	public int usecoupon(CouponDTO cp);
 
+	public int updateMsStatusUp(MemberDTO mDTO);
+	public int updateMsStatusDown(MemberDTO mDTO);
+	public int updateCsStatusUp(MemberDTO mDTO);
+	public int updateCsStatusDown(MemberDTO mDTO);
+	public int updatePsStatusUp(MemberDTO mDTO);
+	public int updatePsStatusDown(MemberDTO mDTO);
 
 	public List<ReviewDTO> review();
 
@@ -112,9 +118,6 @@ public interface MypageMapper {
 
 	public MemberDTO getcsuserinfo();
 
-
-	public int updateMsStatusUp(MemberDTO mDTO);
-	public int updateMsStatusDown(MemberDTO mDTO)
 
 
 

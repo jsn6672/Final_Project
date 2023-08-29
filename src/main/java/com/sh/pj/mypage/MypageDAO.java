@@ -776,8 +776,10 @@ public class MypageDAO {
 						.divide(BigDecimal.valueOf(count + 1), 2, RoundingMode.HALF_UP);
 				c.setMs_point(newtotalpoint);
 				int b = ss.getMapper(MomMapper.class).updateMomSitterPoint(c);
-			} else {
+			} else if(category == 3) {
+				System.out.println("여기서는 잘들어왔나 확인용" + rDTO);
 				PetDTO c = ss.getMapper(PetMapper.class).getPetSitterPoint(rDTO);
+				System.out.println(c);
 //				기존 평균점수
 				BigDecimal point = c.getPs_point();
 //				기존 카운트
@@ -846,6 +848,45 @@ public class MypageDAO {
 			mDTO.setUser_ms_status(3);
 			req.getSession().setAttribute("userInfo", mDTO);
 		}
+	}
+	public void csStartToWork(HttpServletRequest req) {
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		if (ss.getMapper(MypageMapper.class).updateCsStatusUp(mDTO) == 1) {
+			mDTO.setUser_cs_status(4);
+			req.getSession().setAttribute("userInfo", mDTO);
+		}
+	}
+	public void csEndToWork(HttpServletRequest req) {
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		if (ss.getMapper(MypageMapper.class).updateCsStatusDown(mDTO) == 1) {
+			mDTO.setUser_cs_status(3);
+			req.getSession().setAttribute("userInfo", mDTO);
+		}
+	}
+	public void psStartToWork(HttpServletRequest req) {
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		if (ss.getMapper(MypageMapper.class).updatePsStatusUp(mDTO) == 1) {
+			mDTO.setUser_ps_status(4);
+			req.getSession().setAttribute("userInfo", mDTO);
+		}
+	}
+	public void psEndToWork(HttpServletRequest req) {
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		if (ss.getMapper(MypageMapper.class).updatePsStatusDown(mDTO) == 1) {
+			mDTO.setUser_ps_status(3);
+			req.getSession().setAttribute("userInfo", mDTO);
+		}
+	}
+
+	public void checkcheck(HttpServletRequest req) {
+		
+		List<MomDTO> ssa = ss.getMapper(MomMapper.class).test();
+		for (MomDTO te : ssa) {
+			System.out.println(te);
+		}
+
+		req.setAttribute("test", ssa);
+		
 	}
 
 	public void getMSConfirm(HttpServletRequest req) {
