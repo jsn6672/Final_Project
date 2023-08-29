@@ -61,7 +61,7 @@
 
 	<select id="review" resultType="com.sh.pj.ReviewDTO">
 		select * from review_tbl where
-		review_sitter_id = #{ps_id}
+		review_sitter_id = #{ps_id} and review_category = 3
 	</select>
 
 	<update id="updateDolbom">

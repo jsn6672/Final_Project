@@ -127,11 +127,11 @@ public class MomController {
 	
 	@RequestMapping(value = "/updateMomDolbom.do", method = RequestMethod.POST)
 	public String updateMomDolbom(HttpServletRequest req, DolbomDTO dDTO) {
+		mDAO.logincheck(req);	
 		momDAO.updateMomDolbom(req, dDTO);
 
 		return "redirect:/mypage.takerRegMom.go";
 	}
-	
 	
   	@RequestMapping(value = "/page.change4", method = RequestMethod.GET)
     public String paging3(HttpServletRequest req, @RequestParam int p, Model model, MomSelector ms) {

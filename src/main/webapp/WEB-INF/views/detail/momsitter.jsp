@@ -395,7 +395,7 @@
 								</c:choose>
 							</c:when>
 							<c:otherwise>
-								<button>신청하기</button>
+								<button onclick="momsitterCaontract('${momsitter.ms_id}')">신청하기</button>
 							</c:otherwise>
 						</c:choose>
 					</div>
