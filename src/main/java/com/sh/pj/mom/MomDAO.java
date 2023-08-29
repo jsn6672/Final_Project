@@ -584,5 +584,17 @@ public class MomDAO {
 		
 	}
 
+	public void getallpoint(HttpServletRequest req, MomDTO momDTO) {
+		List<MomDTO> resultList = ss.getMapper(MomMapper.class).getAllPoint(momDTO);
+		
+		for (MomDTO m : resultList) {
+			m.setMm(ss.getMapper(MomMapper.class).detailUser(m));
+		}
+		
+		req.setAttribute("ss", resultList);
+	
+	}		
+	
+
 }
 

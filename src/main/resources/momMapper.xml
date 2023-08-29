@@ -153,4 +153,11 @@
 		select * from momsitter_tbl where ms_confirm = 0
 	</select>
 	
+	<select id="getAllPoint" resultType="com.sh.pj.mom.MomDTO">
+		SELECT * FROM (
+		SELECT ROWNUM AS rn, it.* FROM momsitter_tbl it ORDER BY ms_point DESC
+		)
+		WHERE rn &gt;= 1 and rn &lt;= 3
+	</select>
+	
 </mapper>

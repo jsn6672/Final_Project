@@ -451,7 +451,7 @@ body {
 						</div>
 					</div>
 				</div>
-				<button style="margin: 20px;">등록 완료</button>
+				<button style="margin: 20px; width: 120px;">등록 완료</button>
 			</div>
 
 

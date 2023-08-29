@@ -105,7 +105,6 @@ public interface MypageMapper {
 
 	public List<ReviewDTO> review();
 
-
 	public List<MomDTO> getmsconfirm();
 
 	public List<PetDTO> getpsconfirm();

@@ -47,6 +47,8 @@ public interface CareMapper {
 
 	public MemberDTO detailReview(ReviewDTO reviewDTO);
 
+	public List<CareDTO> getAllPoint(CareDTO cDTO);
+
 
 
 
