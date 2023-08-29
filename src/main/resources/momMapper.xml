@@ -160,4 +160,8 @@
 		WHERE rn &gt;= 1 and rn &lt;= 3
 	</select>
 	
+	<select id="getUserDolbomData" resultType="com.sh.pj.account.DolbomDTO">
+		select * from dolbom_tbl where d_id = #{user_id}
+	</select>
+	
 </mapper>

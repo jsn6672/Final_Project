@@ -1,6 +1,8 @@
 package com.sh.pj.mom;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MembertDAO;
@@ -105,6 +108,15 @@ public class MomController {
 		
 		return "redirect:/mypage.go";
 	}
+	
+	
+	@RequestMapping(value = "/getUserDolbomData", method = RequestMethod.GET)
+	public @ResponseBody List<DolbomDTO> getuserDolbomData(HttpServletRequest req, DolbomDTO dDTO) {
+		mDAO.logincheck(req);	
+		System.out.println(dDTO);
+		return momDAO.getUserDolbomData(req, dDTO);
+	}
+	
 	@RequestMapping(value = "/momsitter.be", method = RequestMethod.POST)
 	public String momsitter_be(HttpServletRequest req, MomDTO mDTO) {
 		mDAO.logincheck(req);	
@@ -128,11 +140,11 @@ public class MomController {
 	
 	@RequestMapping(value = "/updateMomDolbom.do", method = RequestMethod.POST)
 	public String updateMomDolbom(HttpServletRequest req, DolbomDTO dDTO) {
+		mDAO.logincheck(req);	
 		momDAO.updateMomDolbom(req, dDTO);
 
 		return "redirect:/mypage.takerRegMom.go";
 	}
-	
 	
   	@RequestMapping(value = "/page.change4", method = RequestMethod.GET)
     public String paging3(HttpServletRequest req, @RequestParam int p, Model model, MomSelector ms) {

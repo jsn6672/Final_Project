@@ -373,10 +373,12 @@ public class MembertDAO {
 		
 	}
 
+
 	public void reviewall(HttpServletRequest req) {
 		
 		req.setAttribute("review", ss.getMapper(MypageMapper.class).review());
 	}
+
 
 
 
