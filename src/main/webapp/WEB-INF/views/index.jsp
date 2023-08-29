@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -226,7 +227,7 @@
 
 					<p class="mb-4">자녀, 반려동물, 어르신 - 모든 소중한 동반자들을 위한 모두의 시터로 더 많은
 						행복을 만끽해보세요!</p>
-					<a href="" class="btn btn-primary rounded-pill py-3 px-5">이용권
+					<a href="mypage.ticket.do" class="btn btn-primary rounded-pill py-3 px-5">이용권
 						구매</a>
 				</div>
 			</div>
@@ -446,45 +447,14 @@
 			</div>
 			<div class="owl-carousel testimonial-carousel wow fadeInUp"
 				data-wow-delay="0.5s">
+				<c:forEach var="r" items="${review }">
 				<div class="testimonial-item p-4 p-lg-5">
-					<p class="mb-4">Diam dolor diam ipsum sit. Aliqu diam amet diam
-						et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita
-						duo justo</p>
+					 <h5> ${r.review_txt} </h5>
+							테이커:${r.review_taker_id }
 					<div class="d-flex align-items-center justify-content-center">
-						<img class="img-fluid flex-shrink-0"
-							src="resources/img/testimonial-1.jpg" alt="">
-						<div class="text-start ms-3">
-							<h5>Client Name</h5>
-							<span class="text-primary">Profession</span>
-						</div>
 					</div>
 				</div>
-				<div class="testimonial-item p-4 p-lg-5">
-					<p class="mb-4">Diam dolor diam ipsum sit. Aliqu diam amet diam
-						et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita
-						duo justo</p>
-					<div class="d-flex align-items-center justify-content-center">
-						<img class="img-fluid flex-shrink-0"
-							src="resources/img/testimonial-2.jpg" alt="">
-						<div class="text-start ms-3">
-							<h5>Client Name</h5>
-							<span class="text-primary">Profession</span>
-						</div>
-					</div>
-				</div>
-				<div class="testimonial-item p-4 p-lg-5">
-					<p class="mb-4">Diam dolor diam ipsum sit. Aliqu diam amet diam
-						et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita
-						duo justo</p>
-					<div class="d-flex align-items-center justify-content-center">
-						<img class="img-fluid flex-shrink-0"
-							src="resources/img/testimonial-3.jpg" alt="">
-						<div class="text-start ms-3">
-							<h5>Client Name</h5>
-							<span class="text-primary">Profession</span>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>

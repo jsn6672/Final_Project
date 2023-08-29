@@ -10,25 +10,23 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"
 	integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
 	crossorigin="anonymous"></script>
-	
-<script type="text/javascript">
-$(function() {
-	
-	let deletecheck = $("#deletecheck").text();
-	console.log(deletecheck);
-	if (deletecheck === 1) {
-		alert('삭제가 완료되었습니다');
-	}
-	
-	
-})
 
+<script type="text/javascript">
+	$(function() {
+
+		let deletecheck = $("#deletecheck").text();
+		console.log(deletecheck);
+		if (deletecheck === 1) {
+			alert('삭제가 완료되었습니다');
+		}
+
+	})
 </script>
 </head>
 <body>
 	<!-- 프로필 수정의 전체 컨테이너 -->
 	<div class="mpP">
-	<span id="deletecheck" hidden="hidden">${deletecheck }</span>
+		<span id="deletecheck" hidden="hidden">${deletecheck }</span>
 		<form action="mypage.profile.do" method="post"
 			enctype="multipart/form-data">
 			<!-- 내용 부분 컨테이너 -->
@@ -44,9 +42,9 @@ $(function() {
 					<div class="mpPPicAndServ">
 						<div class="mpPPicture">
 							<img id="mpPPicture" alt=""
-								src="resources/img/${sessionScope.userInfo.user_pic  } " />
-							<input type="file" name="pic" /> <input hidden="hidden"
-								name="org_pic" value="${memberProfile.user_pic }" />
+								src="resources/img/${sessionScope.userInfo.user_pic  } " /> <input
+								type="file" name="pic" /> <input hidden="hidden" name="org_pic"
+								value="${memberProfile.user_pic }" />
 						</div>
 						<div class="mpPService">
 							<span>현재 모두의 시터를 이렇게 이용하고 계세요!</span> <br />
@@ -98,7 +96,8 @@ $(function() {
 						</div>
 					</div> -->
 
-						<button id="openModalBtn" type="button">비밀번호 수정</button>
+						<button id="openModalBtn" type="button" style="width: 150px;">비밀번호
+							수정</button>
 
 						<input name="user_id" type="hidden"
 							value="${sessionScope.userInfo.user_id}" />
@@ -109,13 +108,13 @@ $(function() {
 							주소 <br /> <input id="jm_addr3Input" readonly="readonly"
 								name="m_addr3" class="normal_input" maxlength="5"
 								autocomplete="off" style="width: 620px" placeholder="우편번호"
-								value="${memberProfile.m_addr3 }" /> <span
-								id="addrSearchBtn">[검색]</span><br /> <br /> <input
-								id="jm_addr1Input" readonly="readonly" name="m_addr1"
-								maxlength="30" autocomplete="off" placeholder="주소"
-								value="${memberProfile.m_addr1 }" class="normal_input" /><br />
-							<br /> <input name="m_addr2" maxlength="30" autocomplete="off"
-								class="normal_input" placeholder="상세주소" id="jm_addr2Input"
+								value="${memberProfile.m_addr3 }" /> <span id="addrSearchBtn">[검색]</span><br />
+							<br /> <input id="jm_addr1Input" readonly="readonly"
+								name="m_addr1" maxlength="30" autocomplete="off"
+								placeholder="주소" value="${memberProfile.m_addr1 }"
+								class="normal_input" /><br /> <br /> <input name="m_addr2"
+								maxlength="30" autocomplete="off" class="normal_input"
+								placeholder="상세주소" id="jm_addr2Input"
 								value="${memberProfile.m_addr2 }" />
 						</div>
 						<div class="mpPAddr">
@@ -131,7 +130,7 @@ $(function() {
 						</div>
 						<br />
 						<div>
-							<button id="mpP-btn">수정하기</button>
+							<button id="mpP-btn" style="width: 110px;">수정하기</button>
 						</div>
 						<!-- 프로필 부분 컨테이너 끝 -->
 					</div>

@@ -36,8 +36,8 @@
 		insert into petsitter_tbl values (#{ps_id},
 		#{ps_file}, #{ps_confirm}, #{ps_confirm_answer}, #{ps_cctv},
 		#{ps_term}, #{ps_day}, #{ps_hour}, #{ps_location1}, #{ps_location2},
-		#{ps_location3}, #{ps_extra}, #{ps_exp}, #{ps_pay}, #{ps_point},
-		#{ps_count}, #{ps_can_do}, #{ps_can_type}, 0, null, null, null)
+		#{ps_location3}, #{ps_extra}, #{ps_exp}, #{ps_pay}, 0,
+		0, #{ps_can_do}, #{ps_can_type}, 0, null, null, null)
 	</insert>
 
 	<update id="changePsStatus">
@@ -60,8 +60,7 @@
 	</delete>
 
 	<select id="review" resultType="com.sh.pj.ReviewDTO">
-		select * from review_tbl where
-		review_sitter_id = #{ps_id}
+		select * from review_tbl where review_sitter_id = #{ps_id} and review_category = 3
 	</select>
 
 	<update id="updateDolbom">
@@ -140,5 +139,20 @@
 	<update id="noticeDOWN">
 		update jsn_user_tbl set user_ps_status = 3 where user_id = #{ps_id}
 	</update>
+	
+	<update id="psAccept">
+		update petsitter_tbl set ps_confirm = 1 where ps_id = #{ps_id}
+	</update>
+	
+	<update id="psReject">
+		update petsitter_tbl set ps_confirm_answer = 'reject' where ps_id = #{ps_id}
+	</update>
+	<select id="getAllPoint" resultType="com.sh.pj.pet.PetDTO">
+		SELECT * FROM (
+		SELECT ROWNUM AS rn, it.* FROM petsitter_tbl it ORDER BY ps_point DESC
+		)
+		WHERE rn &gt;= 1 and rn &lt;= 3
+	</select>
+	
 
 </mapper>

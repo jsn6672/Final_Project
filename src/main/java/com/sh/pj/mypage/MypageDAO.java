@@ -155,15 +155,14 @@ public class MypageDAO {
 		mDTO.setPhone_third(phoneNum[2]);
 
 		req.setAttribute("memberProfile", mDTO);
-		
-		List<DolbomDTO> momDTOs = ss.getMapper(MypageMapper.class).getMomDolbomList(mDTO) ;
-		List<DolbomDTO> careDTOs = ss.getMapper(MypageMapper.class).getCareDolbomList(mDTO) ;
-		List<DolbomDTO> petDTOs = ss.getMapper(MypageMapper.class).getPetDolbomList(mDTO) ;
-		
+
+		List<DolbomDTO> momDTOs = ss.getMapper(MypageMapper.class).getMomDolbomList(mDTO);
+		List<DolbomDTO> careDTOs = ss.getMapper(MypageMapper.class).getCareDolbomList(mDTO);
+		List<DolbomDTO> petDTOs = ss.getMapper(MypageMapper.class).getPetDolbomList(mDTO);
+
 		req.setAttribute("momDTO", momDTOs);
 		req.setAttribute("careDTO", careDTOs);
 		req.setAttribute("petDTO", petDTOs);
-		
 
 	}
 
@@ -239,7 +238,7 @@ public class MypageDAO {
 				if (can_do % 19 == 0) {
 					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 기타활동");
 				}
-			}else if (contractDTO.getCnt_type() == 2) {
+			} else if (contractDTO.getCnt_type() == 2) {
 				if (can_do % 2 == 0) {
 					contractDTO.setCnt_can_do(contractDTO.getCnt_can_do() + " , 실내놀이");
 				}
@@ -302,7 +301,6 @@ public class MypageDAO {
 	public void insertmoney(HttpServletRequest req, MoneyDTO mm) {
 
 		String mm_id = req.getParameter("mm_id");
-		System.out.println(mm_id);
 		String mm_name = req.getParameter("mm_name");
 		int mm_date = Integer.parseInt(req.getParameter("mm_date"));
 		String mm_ticket = req.getParameter("mm_ticket");
@@ -316,8 +314,6 @@ public class MypageDAO {
 		mm.setMm_ticket(mm_ticket);
 		mm.setMm_price(mm_price);
 		mm.setMm_state(mm_state);
-		System.out.println("---*---*---*");
-		System.out.println(mm.toString());
 		req.setAttribute("money", mm);
 
 		if (ss.getMapper(MypageMapper.class).insertmoney(mm) == 1) {
@@ -392,7 +388,7 @@ public class MypageDAO {
 
 					cntDTO2.setCnt_memberDTO(sitterDTO);
 
-					int age = nowyear - (Integer.parseInt(sitterDTO.getUser_age()) / 10000)+1;
+					int age = nowyear - (Integer.parseInt(sitterDTO.getUser_age()) / 10000) + 1;
 					cntDTO2.setAge(age);
 
 					cntDTO2.setCnt_petdto(ss.getMapper(MypageMapper.class).getPetSitter(sitterDTO));
@@ -425,7 +421,7 @@ public class MypageDAO {
 						if (can_do % 19 == 0) {
 							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 기타활동");
 						}
-					}else if (cntDTO2.getCnt_type() == 2) {
+					} else if (cntDTO2.getCnt_type() == 2) {
 						if (can_do % 2 == 0) {
 							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 실내놀이");
 						}
@@ -476,7 +472,7 @@ public class MypageDAO {
 							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 기타활동");
 						}
 					}
-					
+
 					cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do().substring(3));
 
 				}
@@ -744,7 +740,7 @@ public class MypageDAO {
 
 	public void regReview(HttpServletRequest req, ReviewDTO rDTO) {
 		System.out.println("REVIEWDTO임" + rDTO);
-		if(ss.getMapper(MypageMapper.class).regReview(rDTO) == 1) {
+		if (ss.getMapper(MypageMapper.class).regReview(rDTO) == 1) {
 			int a = ss.getMapper(MemberMapper.class).updateReviewStatus(rDTO);
 			int category = Integer.parseInt(rDTO.getReview_category());
 			if (category == 1) {
@@ -758,10 +754,11 @@ public class MypageDAO {
 //				이번에 리뷰에서 받은 점수
 				int newpoint = rDTO.getReview_point();
 //				저장해야할 평균점수
-				BigDecimal newtotalpoint = totalpoint.add(BigDecimal.valueOf(newpoint)).divide(BigDecimal.valueOf(count + 1), 2, RoundingMode.HALF_UP);
+				BigDecimal newtotalpoint = totalpoint.add(BigDecimal.valueOf(newpoint))
+						.divide(BigDecimal.valueOf(count + 1), 2, RoundingMode.HALF_UP);
 				c.setCs_point(newtotalpoint);
 				int b = ss.getMapper(CareMapper.class).updateCareSitterPoint(c);
-			}else if (category == 2) {
+			} else if (category == 2) {
 				MomDTO c = ss.getMapper(MomMapper.class).getMomSitterPoint(rDTO);
 //				기존 평균점수
 				BigDecimal point = c.getMs_point();
@@ -772,11 +769,14 @@ public class MypageDAO {
 //				이번에 리뷰에서 받은 점수
 				int newpoint = rDTO.getReview_point();
 //				저장해야할 평균점수
-				BigDecimal newtotalpoint = totalpoint.add(BigDecimal.valueOf(newpoint)).divide(BigDecimal.valueOf(count + 1), 2, RoundingMode.HALF_UP);
+				BigDecimal newtotalpoint = totalpoint.add(BigDecimal.valueOf(newpoint))
+						.divide(BigDecimal.valueOf(count + 1), 2, RoundingMode.HALF_UP);
 				c.setMs_point(newtotalpoint);
-				int b = ss.getMapper(MomMapper.class).updateMomSitterPoint(c);			
-			}else {
+				int b = ss.getMapper(MomMapper.class).updateMomSitterPoint(c);
+			} else if(category == 3) {
+				System.out.println("여기서는 잘들어왔나 확인용" + rDTO);
 				PetDTO c = ss.getMapper(PetMapper.class).getPetSitterPoint(rDTO);
+				System.out.println(c);
 //				기존 평균점수
 				BigDecimal point = c.getPs_point();
 //				기존 카운트
@@ -786,27 +786,25 @@ public class MypageDAO {
 //				이번에 리뷰에서 받은 점수
 				int newpoint = rDTO.getReview_point();
 //				저장해야할 평균점수
-				BigDecimal newtotalpoint = totalpoint.add(BigDecimal.valueOf(newpoint)).divide(BigDecimal.valueOf(count + 1), 2, RoundingMode.HALF_UP);
+				BigDecimal newtotalpoint = totalpoint.add(BigDecimal.valueOf(newpoint))
+						.divide(BigDecimal.valueOf(count + 1), 2, RoundingMode.HALF_UP);
 				c.setPs_point(newtotalpoint);
-				int b = ss.getMapper(PetMapper.class).updatePetSitterPoint(c);							
+				int b = ss.getMapper(PetMapper.class).updatePetSitterPoint(c);
 			}
 		}
-		
+
 	}
 
 	public void getAllReview_take(HttpServletRequest req) {
-		MemberDTO mDTO = (MemberDTO)req.getSession().getAttribute("userInfo");
-		
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+
 		List<ReviewDTO> rDTO = ss.getMapper(MypageMapper.class).getAllReview(mDTO);
-		
+
 		for (ReviewDTO rr : rDTO) {
 			rr.setR_dolbomDTO(ss.getMapper(MypageMapper.class).getDolbomReviewInfo(rr));
 		}
 		req.setAttribute("review", rDTO);
 	}
-		
- 
-	
 
 	public void couponCheck(HttpServletRequest req, String user_id, CouponDTO cp, MomDTO mDTO) {
 		List<CouponDTO> couponList = ss.getMapper(MypageMapper.class).couponlist(user_id);
@@ -819,18 +817,117 @@ public class MypageDAO {
 		int cp_no = Integer.parseInt(req.getParameter("cp_no"));
 		String cp_id = req.getParameter("cp_id");
 		int cp_used = Integer.parseInt(req.getParameter("cp_used"));
-	
+
 		System.out.println("쿠폰확인용");
 		System.out.println(cp_date);
 		System.out.println(cp_no);
-		System.out.println(cp_id);	
-		System.out.println(cp_used);	
-		
-	
+		System.out.println(cp_id);
+		System.out.println(cp_used);
+
 		if (ss.getMapper(MypageMapper.class).usecoupon(cp) == 1) {
-			System.out.println("쿠폰 등록 성공"); 
-		
-		} else { System.out.println("쿠폰 등록 실패"); }
+			System.out.println("쿠폰 등록 성공");
+
+		} else {
+			System.out.println("쿠폰 등록 실패");
 		}
+	}
+
+	public void msStartToWork(HttpServletRequest req) {
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		if (ss.getMapper(MypageMapper.class).updateMsStatusUp(mDTO) == 1) {
+			mDTO.setUser_ms_status(4);
+			req.getSession().setAttribute("userInfo", mDTO);
+		}
+	}
+	public void msEndToWork(HttpServletRequest req) {
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		if (ss.getMapper(MypageMapper.class).updateMsStatusDown(mDTO) == 1) {
+			mDTO.setUser_ms_status(3);
+			req.getSession().setAttribute("userInfo", mDTO);
+		}
+	}
+	public void csStartToWork(HttpServletRequest req) {
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		if (ss.getMapper(MypageMapper.class).updateCsStatusUp(mDTO) == 1) {
+			mDTO.setUser_cs_status(4);
+			req.getSession().setAttribute("userInfo", mDTO);
+		}
+	}
+	public void csEndToWork(HttpServletRequest req) {
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		if (ss.getMapper(MypageMapper.class).updateCsStatusDown(mDTO) == 1) {
+			mDTO.setUser_cs_status(3);
+			req.getSession().setAttribute("userInfo", mDTO);
+		}
+	}
+	public void psStartToWork(HttpServletRequest req) {
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		if (ss.getMapper(MypageMapper.class).updatePsStatusUp(mDTO) == 1) {
+			mDTO.setUser_ps_status(4);
+			req.getSession().setAttribute("userInfo", mDTO);
+		}
+	}
+	public void psEndToWork(HttpServletRequest req) {
+		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		if (ss.getMapper(MypageMapper.class).updatePsStatusDown(mDTO) == 1) {
+			mDTO.setUser_ps_status(3);
+			req.getSession().setAttribute("userInfo", mDTO);
+		}
+	}
+
+
+	public void getMSConfirm(HttpServletRequest req) {
+		List<MomDTO> msconfirm = ss.getMapper(MypageMapper.class).getmsconfirm();
+		
+		for (MomDTO mmm : msconfirm) {
+			mmm.setMm(ss.getMapper(MypageMapper.class).getMSuserinfo(mmm));
+		}
+		
+		req.setAttribute("msconfirm", msconfirm);
+		
+	}
+
+	public void giveCoupon(HttpServletRequest req, CouponDTO cp) {
+		String cp_id = req.getParameter("cp_id");
+		int cp_date = Integer.parseInt(req.getParameter("cp_date"));
+		String cp_txt = req.getParameter("cp_txt");
+		System.out.println(cp_id);
+		System.out.println(cp_date);
+		System.out.println(cp_txt);
+		cp.setCp_id(cp_id);
+		cp.setCp_date(cp_date);
+		cp.setCp_txt(cp_txt);
+		
+		if (ss.getMapper(MypageMapper.class).givecoupon(cp) == 1) {
+			System.out.println("쿠폰 등록 완료");
+			req.setAttribute("couponResult", "성공");
+		} else {
+			req.setAttribute("couponResult", "실패");
+			System.out.println("쿠폰 등록 실패");
+		}
+	}
+	
+	public void getPSConfirm(HttpServletRequest req) {
+		List<PetDTO> psconfirm = ss.getMapper(MypageMapper.class).getpsconfirm();
+		
+		for (PetDTO mmm : psconfirm) {
+			mmm.setMm(ss.getMapper(MypageMapper.class).getPSuserinfo(mmm));
+		}
+		req.setAttribute("psconfirm", psconfirm);
+	
+		
+		
+	}
+
+	public void getCSConfirm(HttpServletRequest req) {
+		List<CareDTO> csconfirm = ss.getMapper(MypageMapper.class).getcsconfirm();
+		for (CareDTO mmm : csconfirm) {
+			mmm.setMm(ss.getMapper(MypageMapper.class).getCSuserinfo(mmm));
+		}
+		req.setAttribute("csconfirm", csconfirm);
+
+		
+		
+	}
 
 }

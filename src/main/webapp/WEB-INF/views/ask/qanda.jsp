@@ -93,7 +93,7 @@
 				<div class="QnA-body-list">
 					<div class="QnA-list-titles">
 						<div class="QnA-list-title1">유형</div>
-						<div class="QnA-list-title2" style="background-color: #E8F5E9">제목</div>
+						<div class="QnA-list-title2" style="background-color: #E8F5E9; border: none">제목</div>
 						<div class="QnA-list-title3">아이디</div>
 						<div class="QnA-list-title4">날짜</div>
 						<div class="QnA-list-title5">답변여부</div>

@@ -584,5 +584,40 @@ public class MomDAO {
 		
 	}
 
+	public void msAccept(HttpServletRequest req, MomDTO momDTO) {
+		if(ss.getMapper(MomMapper.class).msAccept(momDTO)==1) {
+			System.out.println("당신을 맘시터로 인정합니다");
+		}
+		
+	}
+
+	public void msReject(HttpServletRequest req, MomDTO momDTO) {
+		
+		if(ss.getMapper(MomMapper.class).msReject(momDTO)==1) {
+			System.out.println("넌 못지나간다");
+		}
+	}
+
+	public List<DolbomDTO> getUserDolbomData(HttpServletRequest req, DolbomDTO dDTO) {
+		
+		MemberDTO memberDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		
+		return ss.getMapper(MomMapper.class).getUserDolbomData(memberDTO);
+		
+	}
+
+	public void getallpoint(HttpServletRequest req, MomDTO momDTO) {
+		List<MomDTO> resultList = ss.getMapper(MomMapper.class).getAllPoint(momDTO);
+		
+		for (MomDTO m : resultList) {
+			m.setMm(ss.getMapper(MomMapper.class).detailUser(m));
+		}
+		
+		req.setAttribute("ss", resultList);
+	
+	}		
+	
+
+
 }
 

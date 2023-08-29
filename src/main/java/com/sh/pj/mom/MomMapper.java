@@ -61,6 +61,18 @@ public interface MomMapper {
 
 	public int noticeDOWN(MomDTO momDTO);
 
+	public int msAccept(MomDTO momDTO);
+	
+	public int msReject(MomDTO momDTO);
+
+	public List<DolbomDTO> getUserDolbomData(MemberDTO memberDTO);
+
+	public List<MomDTO> test();
+	public List<MomDTO> getMsConfirm();
+
+	public List<MomDTO> getAllPoint(MomDTO momDTO);
+
+
 
 
 
