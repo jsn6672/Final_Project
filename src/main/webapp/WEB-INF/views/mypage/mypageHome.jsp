@@ -211,25 +211,89 @@
 										</div>
 									</c:if>
 									<c:if test="${userInfo.user_ms_status eq 4 }">
-										<div class="mpPSitter-part-state"
-											style="background-color: #EEEEEE">
+										<div class="mpPSitter-part-state">
 											<span onclick="location.href='ms.end.work'">공고중</span>
 										</div>
 									</c:if>
 									<c:if test="${userInfo.user_ms_status eq 5 }">
-										<div class="mpPSitter-part-state"
-											style="background-color: #EEEEEE">
+										<div class="mpPSitter-part-state">
 											<span>구직완료</span>
 										</div>
 									</c:if>
 								</div>
 								<div class="mpPSitter-part">
 									<div class="mpPSitter-part-name">케어시터</div>
-									<div class="mpPSitter-part-state">이용상황</div>
+									<c:if test="${userInfo.user_cs_status eq 0 }">
+										<div class="mpPSitter-part-state"
+											style="background-color: #EEEEEE">
+											<span onclick="location.href='mypage.sitterRegCare.go'">&nbsp&nbsp미등록&nbsp&nbsp</span>
+										</div>
+									</c:if>
+									<c:if test="${userInfo.user_cs_status eq 1 }">
+										<div class="mpPSitter-part-state"
+											style="background-color: #EEEEEE">
+											<span onclick="location.href='mypage.ticket.do'">이용권구매필요</span>
+										</div>
+									</c:if>
+									<c:if test="${userInfo.user_cs_status eq 2 }">
+										<div class="mpPSitter-part-state"
+											style="background-color: #D9D9D9">
+											<span>인증대기</span>
+										</div>
+									</c:if>
+									<c:if test="${userInfo.user_cs_status eq 3 }">
+										<div class="mpPSitter-part-state"
+											style="background-color: #D9D9D9">
+											<span onclick="location.href='cs.start.work'">인증완료(공고x)</span>
+										</div>
+									</c:if>
+									<c:if test="${userInfo.user_cs_status eq 4 }">
+										<div class="mpPSitter-part-state">
+											<span onclick="location.href='cs.end.work'">공고중</span>
+										</div>
+									</c:if>
+									<c:if test="${userInfo.user_cs_status eq 5 }">
+										<div class="mpPSitter-part-state">
+											<span>구직완료</span>
+										</div>
+									</c:if>
 								</div>
 								<div class="mpPSitter-part">
 									<div class="mpPSitter-part-name">펫시터&nbsp</div>
-									<div class="mpPSitter-part-state">이용상황</div>
+									<c:if test="${userInfo.user_ps_status eq 0 }">
+										<div class="mpPSitter-part-state"
+											style="background-color: #EEEEEE">
+											<span onclick="location.href='mypage.sitterRegPet.go'">&nbsp&nbsp미등록&nbsp&nbsp</span>
+										</div>
+									</c:if>
+									<c:if test="${userInfo.user_ps_status eq 1 }">
+										<div class="mpPSitter-part-state"
+											style="background-color: #EEEEEE">
+											<span onclick="location.href='mypage.ticket.do'">이용권구매필요</span>
+										</div>
+									</c:if>
+									<c:if test="${userInfo.user_ps_status eq 2 }">
+										<div class="mpPSitter-part-state"
+											style="background-color: #D9D9D9">
+											<span>인증대기</span>
+										</div>
+									</c:if>
+									<c:if test="${userInfo.user_ps_status eq 3 }">
+										<div class="mpPSitter-part-state"
+											style="background-color: #D9D9D9">
+											<span onclick="location.href='ps.start.work'">인증완료(공고x)</span>
+										</div>
+									</c:if>
+									<c:if test="${userInfo.user_ps_status eq 4 }">
+										<div class="mpPSitter-part-state">
+											<span onclick="location.href='ps.end.work'">공고중</span>
+										</div>
+									</c:if>
+									<c:if test="${userInfo.user_ps_status eq 5 }">
+										<div class="mpPSitter-part-state">
+											<span>구직완료</span>
+										</div>
+									</c:if>
 								</div>
 							</div>
 							<div class="mpPSitterSpace"></div>
@@ -330,7 +394,7 @@
 				<div class="pet-info" style="display: flex;">
 					<div>${p.d_name }</div>
 					<div>
-						<form action="P.notice.update">
+						<form action="notice.update">
 							<input type="hidden" value="${p.d_onoff }"
 								class="petDolbomStatus" name="d_onoff"> <input
 								type="hidden" value="${p.d_no }" class="petDolbomNo" name="d_no">

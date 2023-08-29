@@ -259,7 +259,7 @@
 	</select>
 	
 	<insert id="regReview">
-		insert into review_tbl values(review_tbl_seq.nextval, #{review_taker_id}, #{review_sitter_id}, #{review_dolbom_no}, #{review_txt}, sysdate, #{review_point}, #{review_cont_no})
+		insert into review_tbl values(review_tbl_seq.nextval, #{review_taker_id}, #{review_sitter_id}, #{review_dolbom_no}, #{review_txt}, sysdate, #{review_point}, #{review_cont_no}, #{review_category})
 	</insert>
 	
 	<select id="getAllReview" resultType="com.sh.pj.ReviewDTO">
@@ -287,6 +287,20 @@
 	
 	<update id="updateMsStatusDown">
 		update jsn_user_tbl set user_ms_status = 3 where user_id = #{user_id}
+	</update>
+	<update id="updateCsStatusUp">
+		update jsn_user_tbl set user_cs_status = 4 where user_id = #{user_id}
+	</update>
+	
+	<update id="updateCsStatusDown">
+		update jsn_user_tbl set user_cs_status = 3 where user_id = #{user_id}
+	</update>
+	<update id="updatePsStatusUp">
+		update jsn_user_tbl set user_ps_status = 4 where user_id = #{user_id}
+	</update>
+	
+	<update id="updatePsStatusDown">
+		update jsn_user_tbl set user_ps_status = 3 where user_id = #{user_id}
 	</update>
 
 

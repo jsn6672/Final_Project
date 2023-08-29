@@ -97,6 +97,10 @@ public interface MypageMapper {
 
 	public int updateMsStatusUp(MemberDTO mDTO);
 	public int updateMsStatusDown(MemberDTO mDTO);
+	public int updateCsStatusUp(MemberDTO mDTO);
+	public int updateCsStatusDown(MemberDTO mDTO);
+	public int updatePsStatusUp(MemberDTO mDTO);
+	public int updatePsStatusDown(MemberDTO mDTO);
 
 	
 

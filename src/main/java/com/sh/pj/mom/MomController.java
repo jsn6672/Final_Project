@@ -102,7 +102,7 @@ public class MomController {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
 		
-		return "home";
+		return "redirect:/mypage.go";
 	}
 	@RequestMapping(value = "/momsitter.be", method = RequestMethod.POST)
 	public String momsitter_be(HttpServletRequest req, MomDTO mDTO) {
@@ -112,7 +112,7 @@ public class MomController {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
 		
-		return "home";
+		return "redirect:/mypage.go";
 	}
 	@RequestMapping(value = "/momsitter.update", method = RequestMethod.POST)
 	public String momsitter_update(HttpServletRequest req, MomDTO mDTO) {
@@ -122,7 +122,7 @@ public class MomController {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
 		
-		return "home";
+		return "redirect:/mypage.go";
 	}
 	
 	@RequestMapping(value = "/updateMomDolbom.do", method = RequestMethod.POST)
