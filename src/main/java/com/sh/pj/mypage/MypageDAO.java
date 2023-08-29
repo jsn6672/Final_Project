@@ -833,4 +833,39 @@ public class MypageDAO {
 		} else { System.out.println("쿠폰 등록 실패"); }
 		}
 
+	public void getMSConfirm(HttpServletRequest req) {
+		System.out.println("일단 넌 문제가 아니야 맞지?");
+		
+		List<MomDTO> msccc = ss.getMapper(MomMapper.class).getMsConfirm();
+//		List<MomDTO> msconfirm = ss.getMapper(MypageMapper.class).getmsconfirm();
+		
+		System.out.println("여기서 터지는 거지");
+		for (MomDTO mmm : msccc) {
+			mmm.setMm(ss.getMapper(MypageMapper.class).getMSuserinfo(mmm));
+		}
+		
+		req.setAttribute("msconfirm", msccc);
+		
+	}
+	
+//	public void getPSConfirm(HttpServletRequest req) {
+//		List<PetDTO> psconfirm = ss.getMapper(MypageMapper.class).getpsconfirm();
+//		req.setAttribute("psconfirm", psconfirm);
+//	
+//		List<MemberDTO> userconfirm = ss.getMapper(MypageMapper.class).getpsuserinfo();		
+//		req.setAttribute("psuserconfirm", psconfirm);
+//		
+//		
+//	}
+//
+//	public void getCSConfirm(HttpServletRequest req) {
+//		List<CareDTO> csconfirm = ss.getMapper(MypageMapper.class).getcsconfirm();
+//		req.setAttribute("csconfirm", csconfirm);
+//
+//		List<MemberDTO> userconfirm = ss.getMapper(MypageMapper.class).getcsuserinfo();
+//		req.setAttribute("csuserconfirm", csconfirm);
+//		
+//		
+//	}
+
 }

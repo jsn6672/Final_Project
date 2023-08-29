@@ -1,4 +1,4 @@
-@charset "UTF-8";
+ @charset "UTF-8";
 
 /* body {
 	 overflow-y: scroll;
@@ -616,5 +616,10 @@ button {
 				-4px -4px 5px 0px #fff9, 
 				7px 7px 20px #0002, 
 				4px 4px 5px 0px #0001;
+}
+
+/* 이용권 구매페이지 */
+.mpT {
+	width: 100vw;
 }
 

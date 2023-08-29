@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
+import com.sh.pj.care.CareDTO;
 import com.sh.pj.mom.MomDTO;
 import com.sh.pj.pet.PetDTO;
 
@@ -94,6 +95,19 @@ public interface MypageMapper {
 	public List<CouponDTO> couponlist(String user_id);
 
 	public int usecoupon(CouponDTO cp);
+
+	public List<MomDTO> getmsconfirm();
+
+	public List<PetDTO> getpsconfirm();
+	
+	public List<CareDTO> getcsconfirm();
+
+	public MemberDTO getMSuserinfo(MomDTO mmm);
+
+	public MemberDTO getpsuserinfo();
+
+	public MemberDTO getcsuserinfo();
+
 
 	
 
