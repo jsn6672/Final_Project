@@ -278,6 +278,7 @@
 		#{review_category})
 	</insert>
 
+	
 	<select id="getAllReview" resultType="com.sh.pj.ReviewDTO">
 		select * from review_tbl
 		where review_sitter_id = #{user_id} order by review_create_at desc
@@ -373,8 +374,13 @@
 		user_id = #{user_id}
 	</update>
 
+	<insert id="givecoupon">
+		insert into coupon values(coupon_seq.nextval, #{cp_id}, #{cp_date}, 0, #{cp_txt})
+	</insert>
+
 	<select id="review" resultType="com.sh.pj.ReviewDTO">
 		select * from review_tbl
 	</select>
+
 
 </mapper>

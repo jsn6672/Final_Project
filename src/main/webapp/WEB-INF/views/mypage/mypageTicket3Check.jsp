@@ -99,7 +99,7 @@
 </head>
 <body>
 
-<div class="ticketCheckContainer">
+<div class="ticketCheckContainer" style="height: 50vw">
     <div>이용권확인</div>
     <div class="ticketCheckList">신청대기 총 <span id="span-moneyList">${moneyList.size() }</span>건</div>
     <div class="List-wrap">

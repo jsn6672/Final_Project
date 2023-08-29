@@ -105,7 +105,6 @@ public interface MypageMapper {
 
 	public List<ReviewDTO> review();
 
-
 	public List<MomDTO> getmsconfirm();
 
 	public List<PetDTO> getpsconfirm();
@@ -117,6 +116,8 @@ public interface MypageMapper {
 	public MemberDTO getPSuserinfo(PetDTO mmm);
 	
 	public MemberDTO getCSuserinfo(CareDTO mmm);
+
+	public int givecoupon(CouponDTO cp);
 
 
 

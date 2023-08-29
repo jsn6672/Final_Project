@@ -95,6 +95,13 @@
 						<a href="mypage.certif.confirm">관리자 페이지</a>
 					</c:if>
 				</div>
+				<div class="mpMenu-part" id="mpMenu-part7"
+					onmouseover="changeColor('mpMenu-part7')"
+					onmouseout="restoreColor('mpMenu-part7')">
+					<c:if test="${userInfo.user_id == 'admin' }">
+						<a href="mypage.coupon.reg">쿠폰등록</a>
+					</c:if>
+				</div>
 
 			</div>
 

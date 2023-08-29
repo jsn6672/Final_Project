@@ -89,8 +89,12 @@
 
 
 	<select id="review" resultType="com.sh.pj.ReviewDTO">
+
+		select * from review_tbl where review_sitter_id = #{cs_id} and review_category = 1
+
 		select * from review_tbl where
 		review_sitter_id = #{cs_id} and review_category = 3
+
 	</select>
 
 	<select id="getMsg2" resultType="com.sh.pj.account.DolbomDTO">
@@ -135,5 +139,12 @@
 		update caresitter_tbl set cs_confirm_answer = 'reject' where cs_id = #{cs_id}
 	</update>
 
+	<select id="getAllPoint" resultType="com.sh.pj.care.CareDTO">
+		SELECT * FROM (
+		SELECT ROWNUM AS rn, it.* FROM caresitter_tbl it ORDER BY cs_point DESC
+		)
+		WHERE rn &gt;= 1 and rn &lt;= 3
+	</select>
+	
 
 </mapper>

@@ -60,8 +60,7 @@
 	</delete>
 
 	<select id="review" resultType="com.sh.pj.ReviewDTO">
-		select * from review_tbl where
-		review_sitter_id = #{ps_id}
+		select * from review_tbl where review_sitter_id = #{ps_id} and review_category = 3
 	</select>
 
 	<update id="updateDolbom">
@@ -148,5 +147,12 @@
 	<update id="psReject">
 		update petsitter_tbl set ps_confirm_answer = 'reject' where ps_id = #{ps_id}
 	</update>
+	<select id="getAllPoint" resultType="com.sh.pj.pet.PetDTO">
+		SELECT * FROM (
+		SELECT ROWNUM AS rn, it.* FROM petsitter_tbl it ORDER BY ps_point DESC
+		)
+		WHERE rn &gt;= 1 and rn &lt;= 3
+	</select>
+	
 
 </mapper>

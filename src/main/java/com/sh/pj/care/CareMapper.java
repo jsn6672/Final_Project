@@ -50,6 +50,8 @@ public interface CareMapper {
 	public int csAccept(CareDTO cDTO);
 
 	public int csReject(CareDTO cDTO);
+	
+	public List<CareDTO> getAllPoint(CareDTO cDTO);
 
 
 

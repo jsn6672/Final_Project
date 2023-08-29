@@ -591,6 +591,17 @@ public class PetDAO {
 			System.out.println("넌 못지나간다");
 		}			
 	}
+	public void getallpoint(HttpServletRequest req,PetDTO petDTO) {
+		List<PetDTO> resultList = ss.getMapper(PetMapper.class).getAllPoint(petDTO);
+		
+		for (PetDTO p : resultList) {
+			p.setMm(ss.getMapper(PetMapper.class).detailUser(p));
+		}
+		
+		req.setAttribute("ss", resultList);
+	
+	}
+
 
 
 }

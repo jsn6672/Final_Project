@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,7 +63,7 @@
         return "방금 전";
       }
     </script>
-    
+
 </head>
 <body>
 	<div class="containar-detail-pet">
@@ -71,27 +71,30 @@
 		<div class="content-detail">
 			<div class="header-detail">
 				<div class="body-content-detail-cover" style="width: 40%">
-					<div class="header-img-detail"> 
-						<img alt="" src="resources/img/${momsitter.mm.user_pic }" style="width: 100%; margin: auto; height: 100%;"> 
+					<div class="header-img-detail">
+						<img alt="" src="resources/img/${momsitter.mm.user_pic }"
+							style="width: 100%; margin: auto; height: 100%;">
 					</div>
 				</div>
 				<div class="header-data-detail">
 					<div class="header-data1">
 						<div style="margin: 5px;">
-							<span style="font-size: 14pt;">맘시터 ${momsitter.mm.user_name }</span>
+							<span style="font-size: 14pt;">맘시터
+								${momsitter.mm.user_name }</span>
 							<c:choose>
 								<c:when test="${momsitter.mm.user_gender eq 'female'}">
-									<span style="font-size: 10pt;;">여</span>
+									<span style="font-size: 10pt;">여</span>
 								</c:when>
 								<c:otherwise>
 									<span style="font-size: 10pt;">남</span>
 								</c:otherwise>
 							</c:choose>
-							<span style="font-size: 10pt;">cctv촬영 - ${momsitter.ms_cctv }</span>
+							<span style="font-size: 10pt;">cctv촬영 -
+								${momsitter.ms_cctv }</span>
 							<div style="display: flex;">
 								<div>희망 시급: ${momsitter.ms_pay }</div>
 								<div style="margin-left: 10px;">(${momsitter.ms_term })</div>
-							</div>							
+							</div>
 							<div style="display: flex;">
 								<div>활동 가능 지역:</div>
 								<div class="header-location">
@@ -110,10 +113,13 @@
 					<div class="body-title-detail">인증</div>
 					<div class="body-content-detail-cover">
 						<div class="body-content-detail">
-							<div style="width: 30%; margin-top: auto; margin-bottom: auto; text-align: center;">
-								<img alt="" src="resources/img/logo/인증.png" style="width: 100px; height: 100px;">
+							<div
+								style="width: 30%; margin-top: auto; margin-bottom: auto; text-align: center;">
+								<img alt="" src="resources/img/logo/인증.png"
+									style="width: 100px; height: 100px;">
 							</div>
-							<div style="width: 70%; margin-top: auto; margin-bottom: auto;">주민등록등본이 인증된 회원입니다.</div>
+							<div style="width: 70%; margin-top: auto; margin-bottom: auto;">주민등록등본이
+								인증된 회원입니다.</div>
 						</div>
 					</div>
 				</div>
@@ -121,7 +127,7 @@
 					<div class="body-title-detail">간단 자기소개</div>
 					<div class="body-content-detail-cover">
 						<div class="body-content-detail">
-							<div style="margin: 5px;">	${momsitter.ms_extra }</div>
+							<div style="margin: 5px;">${momsitter.ms_extra }</div>
 						</div>
 					</div>
 				</div>
@@ -129,7 +135,7 @@
 					<div class="body-title-detail">관련 경험</div>
 					<div class="body-content-detail-cover">
 						<div class="body-content-detail">
-							<div style="margin: 5px;">${momsitter.ms_exp }</div>	
+							<div style="margin: 5px;">${momsitter.ms_exp }</div>
 						</div>
 					</div>
 				</div>
@@ -203,8 +209,12 @@
 											<c:when test="${momsitter.monday ne 'null' }">
 												<div class="body-time-day">월요일</div>
 												<div class="body-time-day">
-													<fmt:formatNumber value="${momsitter.monday_start }" pattern="00"/>:00 ~ 
-													<fmt:formatNumber value="${momsitter.monday_end }" pattern="00"/>:00
+													<fmt:formatNumber value="${momsitter.monday_start }"
+														pattern="00" />
+													:00 ~
+													<fmt:formatNumber value="${momsitter.monday_end }"
+														pattern="00" />
+													:00
 												</div>
 											</c:when>
 											<c:otherwise>
@@ -218,8 +228,12 @@
 											<c:when test="${momsitter.tuesday ne 'null' }">
 												<div class="body-time-day">화요일</div>
 												<div class="body-time-day">
-													<fmt:formatNumber value="${momsitter.tuesday_start }" pattern="00"/>:00 ~ 
-													<fmt:formatNumber value="${momsitter.tuesday_end }" pattern="00"/>:00
+													<fmt:formatNumber value="${momsitter.tuesday_start }"
+														pattern="00" />
+													:00 ~
+													<fmt:formatNumber value="${momsitter.tuesday_end }"
+														pattern="00" />
+													:00
 												</div>
 											</c:when>
 											<c:otherwise>
@@ -233,8 +247,12 @@
 											<c:when test="${momsitter.wednesday ne 'null' }">
 												<div class="body-time-day">수요일</div>
 												<div class="body-time-day">
-													<fmt:formatNumber value="${momsitter.wednesday_start }" pattern="00"/>:00 ~ 
-													<fmt:formatNumber value="${momsitter.wednesday_end }" pattern="00"/>:00
+													<fmt:formatNumber value="${momsitter.wednesday_start }"
+														pattern="00" />
+													:00 ~
+													<fmt:formatNumber value="${momsitter.wednesday_end }"
+														pattern="00" />
+													:00
 												</div>
 											</c:when>
 											<c:otherwise>
@@ -248,8 +266,12 @@
 											<c:when test="${momsitter.thursday ne 'null' }">
 												<div class="body-time-day">목요일</div>
 												<div class="body-time-day">
-													<fmt:formatNumber value="${momsitter.thursday_start }" pattern="00"/>:00 ~ 
-													<fmt:formatNumber value="${momsitter.thursday_end }" pattern="00"/>:00
+													<fmt:formatNumber value="${momsitter.thursday_start }"
+														pattern="00" />
+													:00 ~
+													<fmt:formatNumber value="${momsitter.thursday_end }"
+														pattern="00" />
+													:00
 												</div>
 											</c:when>
 											<c:otherwise>
@@ -263,8 +285,12 @@
 											<c:when test="${momsitter.friday ne 'null' }">
 												<div class="body-time-day">금요일</div>
 												<div class="body-time-day">
-													<fmt:formatNumber value="${momsitter.friday_start }" pattern="00"/>:00 ~ 
-													<fmt:formatNumber value="${momsitter.friday_end }" pattern="00"/>:00 
+													<fmt:formatNumber value="${momsitter.friday_start }"
+														pattern="00" />
+													:00 ~
+													<fmt:formatNumber value="${momsitter.friday_end }"
+														pattern="00" />
+													:00
 												</div>
 											</c:when>
 											<c:otherwise>
@@ -280,8 +306,12 @@
 											<c:when test="${momsitter.saturday ne 'null' }">
 												<div class="body-time-day">토요일</div>
 												<div class="body-time-day">
-													<fmt:formatNumber value="${momsitter.saturday_start }" pattern="00"/>:00 ~ 
-													<fmt:formatNumber value="${momsitter.saturday_end }" pattern="00"/>:00
+													<fmt:formatNumber value="${momsitter.saturday_start }"
+														pattern="00" />
+													:00 ~
+													<fmt:formatNumber value="${momsitter.saturday_end }"
+														pattern="00" />
+													:00
 												</div>
 											</c:when>
 											<c:otherwise>
@@ -295,8 +325,12 @@
 											<c:when test="${momsitter.sunday ne 'null' }">
 												<div class="body-time-day">일요일</div>
 												<div class="body-time-day">
-													<fmt:formatNumber value="${momsitter.sunday_start }" pattern="00"/>:00 ~ 
-													<fmt:formatNumber value="${momsitter.sunday_end }" pattern="00"/>:00
+													<fmt:formatNumber value="${momsitter.sunday_start }"
+														pattern="00" />
+													:00 ~
+													<fmt:formatNumber value="${momsitter.sunday_end }"
+														pattern="00" />
+													:00
 												</div>
 											</c:when>
 											<c:otherwise>
@@ -352,54 +386,59 @@
 											<div style="display: flex;">
 												<div>
 													<span style="font-size: 15pt; font-weight: 500;">${r.memberDTO.user_id }님</span>
-													<span id="review_create_at" hidden="hidden">
-													<fmt:formatDate	value="${r.review_create_at}" type="date" pattern="yyyy. MM. dd. HH:mm" />
+													<span id="review_create_at" hidden="hidden"> <fmt:formatDate
+															value="${r.review_create_at}" type="date"
+															pattern="yyyy. MM. dd. HH:mm" />
 													</span> <span class="date" id="write-date-placeholder"></span>
 												</div>
 												<div style="margin-left: 30px;">
 													<span class="review_star"> ★★★★★ <span>★★★★★</span>
 														<input type="range" class="s" step="1" min="0" max="10">
-														<input type="text" class="star_value" name="star_value"	value="${r.review_point}">
+														<input type="text" class="star_value" name="star_value"
+														value="${r.review_point}">
 													</span>
 												</div>
 											</div>
-											<div class="balloon">
-												${r.review_txt }
-											</div>
+											<div class="balloon">${r.review_txt }</div>
 										</div>
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
-									<div style="margin: auto;">
-										아직 작성된 리뷰가 없습니다.
-									</div>
+									<div style="margin: auto;">아직 작성된 리뷰가 없습니다.</div>
 								</c:otherwise>
 							</c:choose>
 						</div>
 					</div>
 				</div>
-					<div class="detail-btn">
-						<c:choose>
-							<c:when test="${momsitter.ms_id eq sessionScope.userInfo.user_id }">
-								<c:choose>
-									<c:when test="${sessionScope.userInfo.user_ms_status == 3 }">
-										<button onclick="location.href='mypage.sitterRegMom.go?user_id=${sessionScope.userInfo.user_id}''">수정</button>
-										<button onclick="momsitterNoticeUP('${momsitter.ms_id}')" style="margin-left: 10px;">공고 올리기</button>
-										<button onclick="momsitterDelete('${momsitter.ms_id}')" style="margin-left: 10px;">삭제</button>
-									</c:when>
-									<c:when test="${sessionScope.userInfo.user_ms_status == 4 }">
-										<button onclick="location.href='mypage.sitterRegMom.go?user_id=${sessionScope.userInfo.user_id}'">수정</button>
-										<button onclick="momsitterNoticeDOWN('${momsitter.ms_id}')" style="margin-left: 10px;">공고 내리기</button>
-										<button onclick="momsitterDelete('${momsitter.ms_id}')" style="margin-left: 10px;">삭제</button>
-									</c:when>
-								</c:choose>
-							</c:when>
-							<c:otherwise>
-								<button>신청하기</button>
-							</c:otherwise>
-						</c:choose>
-					</div>
+				<div class="detail-btn">
+					<c:choose>
+						<c:when
+							test="${momsitter.ms_id eq sessionScope.userInfo.user_id }">
+							<c:choose>
+								<c:when test="${sessionScope.userInfo.user_ms_status == 3 }">
+									<button
+										onclick="location.href='mypage.sitterRegMom.go?user_id=${sessionScope.userInfo.user_id}''">수정</button>
+									<button onclick="momsitterNoticeUP('${momsitter.ms_id}')"
+										style="margin-left: 10px;">공고 올리기</button>
+									<button onclick="momsitterDelete('${momsitter.ms_id}')"
+										style="margin-left: 10px;">삭제</button>
+								</c:when>
+								<c:when test="${sessionScope.userInfo.user_ms_status == 4 }">
+									<button
+										onclick="location.href='mypage.sitterRegMom.go?user_id=${sessionScope.userInfo.user_id}'">수정</button>
+									<button onclick="momsitterNoticeDOWN('${momsitter.ms_id}')"
+										style="margin-left: 10px;">공고 내리기</button>
+									<button onclick="momsitterDelete('${momsitter.ms_id}')"
+										style="margin-left: 10px;">삭제</button>
+								</c:when>
+							</c:choose>
+						</c:when>
+						<c:otherwise>
+							<button onclick="momsitterContract('${momsitter.ms_id}')">신청하기</button>
+						</c:otherwise>
+					</c:choose>
 				</div>
+			</div>
 		</div>
 		<div class="container-side"></div>
 	</div>

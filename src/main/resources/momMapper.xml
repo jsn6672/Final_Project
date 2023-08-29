@@ -156,4 +156,15 @@
 
 
 
+	<select id="getAllPoint" resultType="com.sh.pj.mom.MomDTO">
+		SELECT * FROM (
+		SELECT ROWNUM AS rn, it.* FROM momsitter_tbl it ORDER BY ms_point DESC
+		)
+		WHERE rn &gt;= 1 and rn &lt;= 3
+	</select>
+	
+	<select id="getUserDolbomData" resultType="com.sh.pj.account.DolbomDTO">
+		select * from dolbom_tbl where d_id = #{user_id}
+	</select>
+	
 </mapper>
