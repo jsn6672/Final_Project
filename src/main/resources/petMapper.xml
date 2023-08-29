@@ -140,6 +140,13 @@
 		update jsn_user_tbl set user_ps_status = 3 where user_id = #{ps_id}
 	</update>
 	
+	<update id="psAccept">
+		update petsitter_tbl set ps_confirm = 1 where ps_id = #{ps_id}
+	</update>
+	
+	<update id="psReject">
+		update petsitter_tbl set ps_confirm_answer = 'reject' where ps_id = #{ps_id}
+	</update>
 	<select id="getAllPoint" resultType="com.sh.pj.pet.PetDTO">
 		SELECT * FROM (
 		SELECT ROWNUM AS rn, it.* FROM petsitter_tbl it ORDER BY ps_point DESC

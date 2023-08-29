@@ -586,6 +586,18 @@ public class CareDAO {
 		System.out.println(endPage);		
 	}
 
+	public void csAccept(HttpServletRequest req, CareDTO cDTO) {
+		if(ss.getMapper(CareMapper.class).csAccept(cDTO)==1) {
+			System.out.println("당신을 맘시터로 인정합니다");
+		}		
+	}
+
+	public void csReject(HttpServletRequest req, CareDTO cDTO) {
+		if(ss.getMapper(CareMapper.class).csReject(cDTO)==1) {
+			System.out.println("넌 못지나간다");
+		}		
+	}
+
 	public void getallpoint(HttpServletRequest req, CareDTO cDTO) {
 		List<CareDTO> resultList = ss.getMapper(CareMapper.class).getAllPoint(cDTO);
 		

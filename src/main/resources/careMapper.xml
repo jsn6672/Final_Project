@@ -131,6 +131,14 @@
 		#{review_taker_id}
 	</select>
 	
+	<update id="csAccept">
+		update caresitter_tbl set cs_confirm = 1 where cs_id = #{cs_id}
+	</update>
+	
+	<update id="csReject">
+		update caresitter_tbl set cs_confirm_answer = 'reject' where cs_id = #{cs_id}
+	</update>
+
 	<select id="getAllPoint" resultType="com.sh.pj.care.CareDTO">
 		SELECT * FROM (
 		SELECT ROWNUM AS rn, it.* FROM caresitter_tbl it ORDER BY cs_point DESC

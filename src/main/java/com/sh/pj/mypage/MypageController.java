@@ -1,5 +1,6 @@
 package com.sh.pj.mypage;
 
+import java.io.File;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,11 +9,14 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.naming.spi.DirStateFactory.Result;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,6 +53,9 @@ public class MypageController {
 	
 	@Autowired
 	private CareDAO cDAO;
+	
+	@Autowired
+	private ServletContext sc;
 
 	@RequestMapping(value = "/mypage.go", method = RequestMethod.GET)
 	public String petsitter(HttpServletRequest req) {
@@ -294,7 +301,8 @@ public class MypageController {
 	@RequestMapping(value = "mypage.certif.check", method = RequestMethod.GET)
 	public String certificationCheck(HttpServletRequest req, MoneyDTO mm) {
 		mDAO.logincheck(req);
-		mpDAO.checkcheck(req);
+		mpDAO.getMSConfirm(req);
+//		mpDAO.checkcheck(req);
 //		mpDAO.getcertiflist(req, mm);
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageCertification.jsp");
@@ -445,10 +453,12 @@ public class MypageController {
 
 	
 
-	@RequestMapping(value = "/mypage.certif.confirm", method = RequestMethod.GET)
-	public String certificationConfirm(HttpServletRequest req, MypageDAO mpDAO) {
-
+	@RequestMapping(value = "mypage.certif.confirm", method = RequestMethod.GET)
+	public String certificationConfirm(HttpServletRequest req) {
 		mDAO.logincheck(req);
+		mpDAO.getMSConfirm(req);
+		mpDAO.getPSConfirm(req);
+		mpDAO.getCSConfirm(req);
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageGiveCoupon.jsp");
 		return "home";
@@ -501,6 +511,67 @@ public class MypageController {
 		
 		return "redirect:/mypage.go";
 	}
+	
+	@ResponseBody
+	@RequestMapping("/download")
+	public byte[] fileDownload(HttpServletRequest request, HttpServletResponse response, String name) {
+			
+		byte[] down = null;
+		
+		try {
+			String path = sc.getRealPath("resources/img");
+			File file = new File(path + "/" + name);
+			
+			down = FileCopyUtils.copyToByteArray(file);
+			String filename = new String(file.getName().getBytes(), "8859_1");
+			
+			response.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
+			response.setContentLength(down.length);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return down;
+	}
+	
+	@RequestMapping(value = "/mypage.MsAccept.go", method = RequestMethod.GET)
+	public String msAccept(HttpServletRequest req, MomDTO momDTO) {
+		momDAO.msAccept(req, momDTO);
+		
+		return "redirect:/mypage.certif.confirm";
+	}
+	@RequestMapping(value = "/mypage.MsReject.go", method = RequestMethod.GET)
+	public String msReject(HttpServletRequest req, MomDTO momDTO) {
+		momDAO.msReject(req, momDTO);
+		
+		return "redirect:/mypage.certif.confirm";
+	}
+	@RequestMapping(value = "/mypage.CsAccept.go", method = RequestMethod.GET)
+	public String csAccept(HttpServletRequest req, CareDTO cDTO) {
+		cDAO.csAccept(req, cDTO);
+		
+		return "redirect:/mypage.certif.confirm";
+	}
+	@RequestMapping(value = "/mypage.CsReject.go", method = RequestMethod.GET)
+	public String csReject(HttpServletRequest req, CareDTO cDTO) {
+		cDAO.csReject(req, cDTO);
+		
+		return "redirect:/mypage.certif.confirm";
+	}
+	@RequestMapping(value = "/mypage.PsAccept.go", method = RequestMethod.GET)
+	public String psAccept(HttpServletRequest req, PetDTO pDTO) {
+		pDAO.psAccept(req, pDTO);
+		
+		return "redirect:/mypage.certif.confirm";
+	}
+	@RequestMapping(value = "/mypage.PsReject.go", method = RequestMethod.GET)
+	public String psReject(HttpServletRequest req, PetDTO pDTO) {
+		pDAO.psReject(req, pDTO);
+		
+		return "redirect:/mypage.certif.confirm";
+	}
+	
 	
 	
 }

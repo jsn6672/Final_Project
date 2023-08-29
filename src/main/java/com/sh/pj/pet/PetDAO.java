@@ -580,6 +580,17 @@ public class PetDAO {
 		
 	}
 
+	public void psAccept(HttpServletRequest req, PetDTO pDTO) {
+		if(ss.getMapper(PetMapper.class).psAccept(pDTO)==1) {
+			System.out.println("당신을 맘시터로 인정합니다");
+		}			
+	}
+
+	public void psReject(HttpServletRequest req, PetDTO pDTO) {
+		if(ss.getMapper(PetMapper.class).psReject(pDTO)==1) {
+			System.out.println("넌 못지나간다");
+		}			
+	}
 	public void getallpoint(HttpServletRequest req,PetDTO petDTO) {
 		List<PetDTO> resultList = ss.getMapper(PetMapper.class).getAllPoint(petDTO);
 		

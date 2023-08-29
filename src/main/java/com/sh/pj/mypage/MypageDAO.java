@@ -875,29 +875,15 @@ public class MypageDAO {
 		}
 	}
 
-	public void checkcheck(HttpServletRequest req) {
-		
-		List<MomDTO> ssa = ss.getMapper(MomMapper.class).test();
-		for (MomDTO te : ssa) {
-			System.out.println(te);
-		}
-
-		req.setAttribute("test", ssa);
-		
-	}
 
 	public void getMSConfirm(HttpServletRequest req) {
-		System.out.println("일단 넌 문제가 아니야 맞지?");
+		List<MomDTO> msconfirm = ss.getMapper(MypageMapper.class).getmsconfirm();
 		
-		List<MomDTO> msccc = ss.getMapper(MomMapper.class).getMsConfirm();
-//		List<MomDTO> msconfirm = ss.getMapper(MypageMapper.class).getmsconfirm();
-		
-		System.out.println("여기서 터지는 거지");
-		for (MomDTO mmm : msccc) {
+		for (MomDTO mmm : msconfirm) {
 			mmm.setMm(ss.getMapper(MypageMapper.class).getMSuserinfo(mmm));
 		}
 		
-		req.setAttribute("msconfirm", msccc);
+		req.setAttribute("msconfirm", msconfirm);
 		
 	}
 
@@ -921,6 +907,27 @@ public class MypageDAO {
 		}
 	}
 	
+	public void getPSConfirm(HttpServletRequest req) {
+		List<PetDTO> psconfirm = ss.getMapper(MypageMapper.class).getpsconfirm();
+		
+		for (PetDTO mmm : psconfirm) {
+			mmm.setMm(ss.getMapper(MypageMapper.class).getPSuserinfo(mmm));
+		}
+		req.setAttribute("psconfirm", psconfirm);
+	
+		
+		
+	}
 
+	public void getCSConfirm(HttpServletRequest req) {
+		List<CareDTO> csconfirm = ss.getMapper(MypageMapper.class).getcsconfirm();
+		for (CareDTO mmm : csconfirm) {
+			mmm.setMm(ss.getMapper(MypageMapper.class).getCSuserinfo(mmm));
+		}
+		req.setAttribute("csconfirm", csconfirm);
+
+		
+		
+	}
 
 }
