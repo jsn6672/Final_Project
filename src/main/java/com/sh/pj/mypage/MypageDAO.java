@@ -301,7 +301,6 @@ public class MypageDAO {
 	public void insertmoney(HttpServletRequest req, MoneyDTO mm) {
 
 		String mm_id = req.getParameter("mm_id");
-		System.out.println(mm_id);
 		String mm_name = req.getParameter("mm_name");
 		int mm_date = Integer.parseInt(req.getParameter("mm_date"));
 		String mm_ticket = req.getParameter("mm_ticket");
@@ -315,8 +314,6 @@ public class MypageDAO {
 		mm.setMm_ticket(mm_ticket);
 		mm.setMm_price(mm_price);
 		mm.setMm_state(mm_state);
-		System.out.println("---*---*---*");
-		System.out.println(mm.toString());
 		req.setAttribute("money", mm);
 
 		if (ss.getMapper(MypageMapper.class).insertmoney(mm) == 1) {
@@ -903,25 +900,27 @@ public class MypageDAO {
 		req.setAttribute("msconfirm", msccc);
 		
 	}
+
+	public void giveCoupon(HttpServletRequest req, CouponDTO cp) {
+		String cp_id = req.getParameter("cp_id");
+		int cp_date = Integer.parseInt(req.getParameter("cp_date"));
+		String cp_txt = req.getParameter("cp_txt");
+		System.out.println(cp_id);
+		System.out.println(cp_date);
+		System.out.println(cp_txt);
+		cp.setCp_id(cp_id);
+		cp.setCp_date(cp_date);
+		cp.setCp_txt(cp_txt);
+		
+		if (ss.getMapper(MypageMapper.class).givecoupon(cp) == 1) {
+			System.out.println("쿠폰 등록 완료");
+			req.setAttribute("couponResult", "성공");
+		} else {
+			req.setAttribute("couponResult", "실패");
+			System.out.println("쿠폰 등록 실패");
+		}
+	}
 	
-//	public void getPSConfirm(HttpServletRequest req) {
-//		List<PetDTO> psconfirm = ss.getMapper(MypageMapper.class).getpsconfirm();
-//		req.setAttribute("psconfirm", psconfirm);
-//	
-//		List<MemberDTO> userconfirm = ss.getMapper(MypageMapper.class).getpsuserinfo();		
-//		req.setAttribute("psuserconfirm", psconfirm);
-//		
-//		
-//	}
-//
-//	public void getCSConfirm(HttpServletRequest req) {
-//		List<CareDTO> csconfirm = ss.getMapper(MypageMapper.class).getcsconfirm();
-//		req.setAttribute("csconfirm", csconfirm);
-//
-//		List<MemberDTO> userconfirm = ss.getMapper(MypageMapper.class).getcsuserinfo();
-//		req.setAttribute("csuserconfirm", csconfirm);
-//		
-//		
-//	}
+
 
 }
