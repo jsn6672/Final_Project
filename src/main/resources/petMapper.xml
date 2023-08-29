@@ -140,5 +140,13 @@
 	<update id="noticeDOWN">
 		update jsn_user_tbl set user_ps_status = 3 where user_id = #{ps_id}
 	</update>
+	
+	<select id="getAllPoint" resultType="com.sh.pj.pet.PetDTO">
+		SELECT * FROM (
+		SELECT ROWNUM AS rn, it.* FROM petsitter_tbl it ORDER BY ps_point DESC
+		)
+		WHERE rn &gt;= 1 and rn &lt;= 3
+	</select>
+	
 
 </mapper>

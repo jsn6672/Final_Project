@@ -27,6 +27,7 @@ public class PetController {
 		mDAO.countAll(req);
 		req.getSession().removeAttribute("searchSession");
 		pDAO.getMsg(1, req);
+		pDAO.getallpoint(req,petDTO);
 		req.setAttribute("contentPage", "pet/petsitter.jsp");
 		return "home";
 	}
@@ -37,6 +38,7 @@ public class PetController {
 		mDAO.countAll(req);
 //		pDAO.getAllTaker(req, dolbomDTO, m);
 		pDAO.getMsg2(1, req);
+
 		req.setAttribute("contentPage", "pet/pettaker.jsp");
 
 		return "home";
@@ -125,7 +127,7 @@ public class PetController {
 	
 
 	@RequestMapping(value = "/page.change2", method = RequestMethod.GET)
-    public String paging(HttpServletRequest req, @RequestParam int p, Model model, PetSelector ps) {
+    public String paging(HttpServletRequest req, @RequestParam int p, Model model, PetSelector ps,PetDTO petDTO) {
 //		aDAO.getAllAsk(model);
 	    // 검색어가 입력되었다면, 검색어를 AskSelector 객체에 설정하고 세션에 저장합니다.
 		System.out.println(ps.getPs_search());
@@ -141,9 +143,10 @@ public class PetController {
 //	    req.getSession().setAttribute("asksearch", askSearch);
 	    pDAO.getMsg(p, req);
 	    mDAO.logincheck(req);
+	    pDAO.getallpoint(req,petDTO);
 	    
 	    req.setAttribute("contentPage", "pet/petsitter.jsp");	
-	    
+	   
         return "home";
     }
 	@RequestMapping(value = "/page.change3", method = RequestMethod.GET)

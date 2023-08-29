@@ -586,4 +586,16 @@ public class CareDAO {
 		System.out.println(endPage);		
 	}
 
+	public void getallpoint(HttpServletRequest req, CareDTO cDTO) {
+		List<CareDTO> resultList = ss.getMapper(CareMapper.class).getAllPoint(cDTO);
+		
+		for (CareDTO c : resultList) {
+			c.setMm(ss.getMapper(CareMapper.class).detailUser(c));
+		}
+		
+		req.setAttribute("cc", resultList);
+	
+
+}
+	
 }

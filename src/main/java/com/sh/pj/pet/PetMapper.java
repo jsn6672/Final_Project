@@ -60,6 +60,10 @@ public interface PetMapper {
 
 	public int noticeUpdate(PetDTO petDTO);
 
+	public List<PetDTO> getAllPoint(PetDTO petDTO);
+
+
+
 
 
 

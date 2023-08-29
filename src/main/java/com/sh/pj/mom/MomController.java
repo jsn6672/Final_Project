@@ -32,6 +32,7 @@ public class MomController {
 		mDAO.countAll(req);
 		req.getSession().removeAttribute("searchSession");
 		momDAO.getMsg(1, req);
+		momDAO.getallpoint(req,momDTO);
 		req.setAttribute("contentPage", "mom/momsitter.jsp");
 
 		return "home";

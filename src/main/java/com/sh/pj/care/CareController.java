@@ -33,6 +33,7 @@ public class CareController {
 		mDAO.countAll(req);
 		req.getSession().removeAttribute("searchSession");
 		cDAO.getMsg(1, req);
+		cDAO.getallpoint(req,cDTO);
 		req.setAttribute("contentPage", "care/caresitter.jsp");
 		return "home";
 	}

@@ -580,5 +580,17 @@ public class PetDAO {
 		
 	}
 
+	public void getallpoint(HttpServletRequest req,PetDTO petDTO) {
+		List<PetDTO> resultList = ss.getMapper(PetMapper.class).getAllPoint(petDTO);
+		
+		for (PetDTO p : resultList) {
+			p.setMm(ss.getMapper(PetMapper.class).detailUser(p));
+		}
+		
+		req.setAttribute("ss", resultList);
+	
+	}
+
+
 
 }

@@ -126,6 +126,13 @@
 		select * from jsn_user_tbl where user_id =
 		#{review_taker_id}
 	</select>
-
+	
+	<select id="getAllPoint" resultType="com.sh.pj.care.CareDTO">
+		SELECT * FROM (
+		SELECT ROWNUM AS rn, it.* FROM caresitter_tbl it ORDER BY cs_point DESC
+		)
+		WHERE rn &gt;= 1 and rn &lt;= 3
+	</select>
+	
 
 </mapper>

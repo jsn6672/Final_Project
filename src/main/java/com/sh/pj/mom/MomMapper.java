@@ -64,6 +64,8 @@ public interface MomMapper {
 	public List<MomDTO> test();
 	public List<MomDTO> getMsConfirm();
 
+	public List<MomDTO> getAllPoint(MomDTO momDTO);
+
 
 
 
