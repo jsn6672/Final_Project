@@ -330,7 +330,7 @@
 				<div class="pet-info" style="display: flex;">
 					<div>${p.d_name }</div>
 					<div>
-						<form action="P.notice.update">
+						<form action="notice.update">
 							<input type="hidden" value="${p.d_onoff }"
 								class="petDolbomStatus" name="d_onoff"> <input
 								type="hidden" value="${p.d_no }" class="petDolbomNo" name="d_no">
