@@ -152,7 +152,7 @@ https://templatemo.com/tm-580-woox-travel
 										type="button" role="tab" aria-controls="pills-popular"
 										aria-selected="true" onclick="">Popular</button>
 								</li>
-								<li class="nav-item" role="presentation">
+<!-- 								<li class="nav-item" role="presentation">
 									<button class="nav-link" id="pills-trending-tab"
 										data-bs-toggle="pill" data-bs-target="#pills-trending"
 										type="button" role="tab" aria-controls="pills-trending"
@@ -163,7 +163,7 @@ https://templatemo.com/tm-580-woox-travel
 										data-bs-toggle="pill" data-bs-target="#pills-latest"
 										type="button" role="tab" aria-controls="pills-latest"
 										aria-selected="false">Latest</button>
-								</li>
+								</li> -->
 							</ul>
 
 								<div class="tab-content" id="pills-tabContent">

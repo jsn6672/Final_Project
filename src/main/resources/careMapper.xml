@@ -3,92 +3,140 @@
 <mapper namespace="com.sh.pj.care.CareMapper">
 
 	<select id="getAll" resultType="com.sh.pj.care.CareDTO">
-		select * from caresitter_tbl where cs_notice = '0'
-	</select>
-		
-	<select id="detail" resultType="com.sh.pj.care.CareDTO">
-		select * from caresitter_tbl where cs_id = #{cs_id}
+		select * from caresitter_tbl
+		where cs_notice = '0'
 	</select>
 
-	
+	<select id="detail" resultType="com.sh.pj.care.CareDTO">
+		select * from caresitter_tbl
+		where cs_id = #{cs_id}
+	</select>
+
+
 	<insert id="regCareSitter">
-		insert into caresitter_tbl values (#{cs_id}, #{cs_file}, #{cs_confirm}, #{cs_confirm_answer}, #{cs_cctv}, #{cs_term}, #{cs_day}, #{cs_hour}, #{cs_location1}, #{cs_location2}, #{cs_location3}, #{cs_extra}, #{cs_exp}, #{cs_pay}, #{cs_point}, #{cs_count}, #{cs_can_do},0,null, null, null,0)
+		insert into caresitter_tbl values (#{cs_id},
+		#{cs_file}, #{cs_confirm}, #{cs_confirm_answer}, #{cs_cctv},
+		#{cs_term}, #{cs_day}, #{cs_hour}, #{cs_location1}, #{cs_location2},
+		#{cs_location3}, #{cs_extra}, #{cs_exp}, #{cs_pay}, 0,
+		0, #{cs_can_do},0,null, null, null,0)
 	</insert>
 
 	<insert id="regDolbom">
-		insert into dolbom_tbl values (dolbom_tbl_seq.nextval, #{d_id}, #{d_name}, #{d_category}, #{d_year}, #{d_month}, #{d_day}, #{d_hour}, #{d_check}, #{d_location}, #{d_gender}, #{d_personality}, #{d_pay}, #{d_cctv}, #{d_can_do}, #{d_sitterage}, #{d_need}, #{d_title}, #{d_term}, null, null, null)
+		insert into dolbom_tbl values
+		(dolbom_tbl_seq.nextval, #{d_id}, #{d_name}, #{d_category}, #{d_year},
+		#{d_month}, #{d_day}, #{d_hour}, #{d_check}, #{d_location},
+		#{d_gender}, #{d_personality}, #{d_pay}, #{d_cctv}, #{d_can_do},
+		#{d_sitterage}, #{d_need}, #{d_title}, #{d_term}, null, null, null)
 	</insert>
 	<update id="changecsstatus">
-		update jsn_user_tbl set user_cs_status = 1 where user_id = #{user_id}
+		update jsn_user_tbl set user_cs_status = 1 where
+		user_id = #{user_id}
 	</update>
 
-	<select id="getCareSitterInfo" resultType="com.sh.pj.care.CareDTO">
+	<select id="getCareSitterInfo"
+		resultType="com.sh.pj.care.CareDTO">
 		select * from caresitter_tbl where cs_id = #{user_id}
 	</select>
-	
 
-	<select id="getAllTaker" resultType="com.sh.pj.account.DolbomDTO">
+
+	<select id="getAllTaker"
+		resultType="com.sh.pj.account.DolbomDTO">
 		select*from dolbom_tbl where d_category=1
 	</select>
 
-	<select id="detailtaker" resultType="com.sh.pj.account.DolbomDTO">
+	<select id="detailtaker"
+		resultType="com.sh.pj.account.DolbomDTO">
 		select*from dolbom_tbl where d_no = #{d_no}
 	</select>
-	
+
 	<select id="detailUser" resultType="com.sh.pj.account.MemberDTO">
-		select * from jsn_user_tbl where user_id = #{cs_id}
+		select * from jsn_user_tbl
+		where user_id = #{cs_id}
 	</select>
-		
-	<select id="detailUser2" resultType="com.sh.pj.account.MemberDTO">
+
+	<select id="detailUser2"
+		resultType="com.sh.pj.account.MemberDTO">
 		select * from jsn_user_tbl where user_id = #{d_id}
 	</select>
 
 	<update id="updateCareSitter">
-		update caresitter_tbl set cs_file = #{cs_file}, cs_confirm = #{cs_confirm}, cs_confirm_answer = #{cs_confirm_answer}, cs_cctv = #{cs_cctv}, cs_term = #{cs_term}, cs_day = #{cs_day}, cs_hour = #{cs_hour}, cs_location1 = #{cs_location1}, cs_location2 = #{cs_location2}, cs_location3 = #{cs_location3}, cs_extra = #{cs_extra}, cs_exp = #{cs_exp}, cs_pay = #{cs_pay}, cs_can_do = #{cs_can_do} where cs_id = #{cs_id}
+		update caresitter_tbl set cs_file = #{cs_file},
+		cs_confirm = #{cs_confirm}, cs_confirm_answer = #{cs_confirm_answer},
+		cs_cctv = #{cs_cctv}, cs_term = #{cs_term}, cs_day = #{cs_day},
+		cs_hour = #{cs_hour}, cs_location1 = #{cs_location1}, cs_location2 =
+		#{cs_location2}, cs_location3 = #{cs_location3}, cs_extra =
+		#{cs_extra}, cs_exp = #{cs_exp}, cs_pay = #{cs_pay}, cs_can_do =
+		#{cs_can_do} where cs_id = #{cs_id}
 	</update>
-	
+
 	<select id="getMsgCount" resultType="int"
 		parameterType="com.sh.pj.care.CareSelector">
-		select count(*) from caresitter_tbl where cs_location1 like '%'||#{cs_search}||'%' or cs_location2 like '%'||#{cs_search}||'%' or cs_location3 like '%'||#{cs_search}||'%'
-	</select>
-	
-	<select id="getMsg" resultType="com.sh.pj.care.CareDTO">
-		SELECT * fROM (SELECT ROWNUM AS rn, it.* FROM caresitter_tbl it WHERE
-		(it.cs_location1 LIKE '%' || #{cs_search} || '%' OR it.cs_location2 LIKE '%' || #{cs_search} || '%' OR it.cs_location3 LIKE '%' || #{cs_search} || '%')
-		<!-- AND it.inquiry_category = #{category} -->
-		ORDER BY it.cs_write_date DESC)
-		WHERE rn &gt;= #{cs_start} and rn &lt;= #{cs_end}
+		select count(*) from caresitter_tbl where cs_location1
+		like '%'||#{cs_search}||'%' or cs_location2 like
+		'%'||#{cs_search}||'%' or cs_location3 like '%'||#{cs_search}||'%'
 	</select>
 
-	
-	<select id="review" resultType="com.sh.pj.ReviewDTO">
-		select * from review_tbl where review_sitter_id = #{cs_id} and review_category = 1
+	<select id="getMsg" resultType="com.sh.pj.care.CareDTO">
+		SELECT * fROM (SELECT ROWNUM AS rn, it.* FROM caresitter_tbl it WHERE
+		(it.cs_location1 LIKE '%' || #{cs_search} || '%' OR it.cs_location2
+		LIKE '%' || #{cs_search} || '%' OR it.cs_location3 LIKE '%' ||
+		#{cs_search} || '%')
+		<!-- AND it.inquiry_category = #{category} -->
+		ORDER BY it.cs_write_date DESC)
+		WHERE rn &gt;= #{cs_start} and rn &lt;=
+		#{cs_end}
 	</select>
-	
+
+
+	<select id="review" resultType="com.sh.pj.ReviewDTO">
+
+		select * from review_tbl where review_sitter_id = #{cs_id} and review_category = 1
+
+		select * from review_tbl where
+		review_sitter_id = #{cs_id} and review_category = 3
+
+	</select>
+
 	<select id="getMsg2" resultType="com.sh.pj.account.DolbomDTO">
 		SELECT * FROM (
-		SELECT ROWNUM AS rn, it.* FROM dolbom_tbl it
-		WHERE (it.d_location LIKE '%' || #{cs_search} || '%') and d_category = 1
+		SELECT ROWNUM AS
+		rn, it.* FROM dolbom_tbl it
+		WHERE (it.d_location LIKE '%' ||
+		#{cs_search} || '%') and d_category = 1
 		)
-		WHERE rn &gt;= #{cs_start} and rn &lt;= #{cs_end}
+		WHERE rn &gt;= #{cs_start} and
+		rn &lt;= #{cs_end}
 	</select>
 
 	<select id="getMsgCount2" resultType="int"
 		parameterType="com.sh.pj.account.DolbomDTO">
-		SELECT count(*) FROM dolbom_tbl WHERE d_location LIKE '%'||#{cs_search}||'%' and d_category = 1
+		SELECT count(*) FROM dolbom_tbl WHERE d_location LIKE
+		'%'||#{cs_search}||'%' and d_category = 1
 	</select>
-	
-	<select id="getCareSitterPoint" resultType="com.sh.pj.care.CareDTO">
-		select * from caresitter_tbl where cs_id = #{review_sitter_id}
+
+	<select id="getCareSitterPoint"
+		resultType="com.sh.pj.care.CareDTO">
+		select * from caresitter_tbl where cs_id =
+		#{review_sitter_id}
 	</select>
-	
+
 	<update id="updateCareSitterPoint">
-		update caresitter_tbl set cs_point = #{cs_point}, cs_count = cs_count + 1 where cs_id = #{cs_id}
+		update caresitter_tbl set cs_point = #{cs_point},
+		cs_count = cs_count + 1 where cs_id = #{cs_id}
 	</update>
-	
-	<select id="detailReview" resultType="com.sh.pj.account.MemberDTO">
-		select * from jsn_user_tbl where user_id = #{review_taker_id}
+
+	<select id="detailReview"
+		resultType="com.sh.pj.account.MemberDTO">
+		select * from jsn_user_tbl where user_id =
+		#{review_taker_id}
 	</select>
 	
+	<select id="getAllPoint" resultType="com.sh.pj.care.CareDTO">
+		SELECT * FROM (
+		SELECT ROWNUM AS rn, it.* FROM caresitter_tbl it ORDER BY cs_point DESC
+		)
+		WHERE rn &gt;= 1 and rn &lt;= 3
+	</select>
 	
+
 </mapper>

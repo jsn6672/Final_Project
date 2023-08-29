@@ -35,6 +35,7 @@ public class MomController {
 		mDAO.countAll(req);
 		req.getSession().removeAttribute("searchSession");
 		momDAO.getMsg(1, req);
+		momDAO.getallpoint(req,momDTO);
 		req.setAttribute("contentPage", "mom/momsitter.jsp");
 
 		return "home";
@@ -105,7 +106,7 @@ public class MomController {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
 		
-		return "home";
+		return "redirect:/mypage.go";
 	}
 	
 	
@@ -124,7 +125,7 @@ public class MomController {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
 		
-		return "home";
+		return "redirect:/mypage.go";
 	}
 	@RequestMapping(value = "/momsitter.update", method = RequestMethod.POST)
 	public String momsitter_update(HttpServletRequest req, MomDTO mDTO) {
@@ -134,7 +135,7 @@ public class MomController {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
 		
-		return "home";
+		return "redirect:/mypage.go";
 	}
 	
 	@RequestMapping(value = "/updateMomDolbom.do", method = RequestMethod.POST)

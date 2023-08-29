@@ -584,6 +584,7 @@ public class MomDAO {
 		
 	}
 
+
 	public List<DolbomDTO> getUserDolbomData(HttpServletRequest req, DolbomDTO dDTO) {
 		
 		MemberDTO memberDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
@@ -591,6 +592,19 @@ public class MomDAO {
 		return ss.getMapper(MomMapper.class).getUserDolbomData(memberDTO);
 		
 	}
+
+	public void getallpoint(HttpServletRequest req, MomDTO momDTO) {
+		List<MomDTO> resultList = ss.getMapper(MomMapper.class).getAllPoint(momDTO);
+		
+		for (MomDTO m : resultList) {
+			m.setMm(ss.getMapper(MomMapper.class).detailUser(m));
+		}
+		
+		req.setAttribute("ss", resultList);
+	
+	}		
+	
+
 
 }
 

@@ -259,8 +259,9 @@
 	</select>
 	
 	<insert id="regReview">
-		insert into review_tbl values(review_tbl_seq.nextval, #{review_taker_id}, #{review_sitter_id}, #{review_dolbom_no}, #{review_txt}, sysdate, #{review_point}, #{review_cont_no})
+		insert into review_tbl values(review_tbl_seq.nextval, #{review_taker_id}, #{review_sitter_id}, #{review_dolbom_no}, #{review_txt}, sysdate, #{review_point}, #{review_cont_no}, #{review_category})
 	</insert>
+
 	
 	<select id="getAllReview" resultType="com.sh.pj.ReviewDTO">
 		select * from review_tbl where review_sitter_id = #{user_id} order by review_create_at desc
@@ -271,8 +272,36 @@
 	</select>
 	
 	<select id="couponlist" resultType="com.sh.pj.mypage.CouponDTO">
-		select * from coupon
-		where cp_id = #{user_id}
+		select * from coupon where cp_id = #{user_id}
+	</select>
+
+	<select id="getmsconfirm" resultType="com.sh.pj.mom.MomDTO">
+		select * from momsitter_tbl where ms_confirm = 0
+	</select>
+
+	<select id="getpsconfirm" resultType="com.sh.pj.pet.PetDTO">
+		select ps_file, ps_id from petsitter_tbl
+		where ps_confirm = 0 
+	</select>
+
+	<select id="getcsconfirm" resultType="com.sh.pj.care.CareDTO">
+		select cs_file, cs_id from caresitter_tbl
+		where cs_confirm = 0
+	</select>
+
+	<select id="getMSuserinfo" resultType="com.sh.pj.account.MemberDTO">
+		select user_name from user_tbl
+		where user_id = #{ms_id}
+	</select>
+
+	<select id="getPSuserinfo" resultType="com.sh.pj.account.MemberDTO">
+		select user_name from user_tbl
+		where user_id = #{ps_id}
+	</select>
+
+	<select id="getCSuserinfo" resultType="com.sh.pj.account.MemberDTO">
+		select user_name from user_tbl
+		where user_id = #{cs_id}
 	</select>
 
 	<update id="usecoupon">
@@ -280,6 +309,36 @@
 		set ms_ticket_end = ms_ticket_end + #{cp_date, jdbcType=NUMERIC}
 		where ms_id = #{cp_id, jdbcType=INTEGER}
 	</update>
+	
+	<update id="updateMsStatusUp">
+		update jsn_user_tbl set user_ms_status = 4 where user_id = #{user_id}
+	</update>
+	
+	<update id="updateMsStatusDown">
+		update jsn_user_tbl set user_ms_status = 3 where user_id = #{user_id}
+	</update>
+	<update id="updateCsStatusUp">
+		update jsn_user_tbl set user_cs_status = 4 where user_id = #{user_id}
+	</update>
+	
+	<update id="updateCsStatusDown">
+		update jsn_user_tbl set user_cs_status = 3 where user_id = #{user_id}
+	</update>
+	<update id="updatePsStatusUp">
+		update jsn_user_tbl set user_ps_status = 4 where user_id = #{user_id}
+	</update>
+	
+	<update id="updatePsStatusDown">
+		update jsn_user_tbl set user_ps_status = 3 where user_id = #{user_id}
+	</update>
+
+	<insert id="givecoupon">
+		insert into coupon values(coupon_seq.nextval, #{cp_id}, #{cp_date}, 0, #{cp_txt})
+	</insert>
+
+	<select id="review" resultType="com.sh.pj.ReviewDTO">
+		select * from review_tbl 
+	</select>
 
 
 </mapper>
