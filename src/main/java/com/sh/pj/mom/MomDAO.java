@@ -2,6 +2,7 @@ package com.sh.pj.mom;
 
 import java.io.File;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -599,10 +600,30 @@ public class MomDAO {
 	}
 
 	public List<DolbomDTO> getUserDolbomData(HttpServletRequest req, DolbomDTO dDTO) {
-		
+		// 현재 날짜 구하기 (시스템 시계, 시스템 타임존)
+		LocalDate now = LocalDate.now();
+
+		// 연도, 월(문자열, 숫자), 일, 일(year 기준), 요일(문자열, 숫자)
+		int nowyear = now.getYear();
+		int nowmonthValue = now.getMonthValue();
+		System.out.println("지금 여기까지 오긴 ㅎㅏ는거임?	");
 		MemberDTO memberDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 		
-		return ss.getMapper(MomMapper.class).getUserDolbomData(memberDTO);
+		List<DolbomDTO>dDTOs = ss.getMapper(MomMapper.class).getUserDolbomData(memberDTO);
+		for (DolbomDTO d : dDTOs) {
+			int year = nowyear - d.getD_year();
+			int month = nowmonthValue - d.getD_month();
+			if ((year * 12) + month >= 36) {
+				d.setAge(year + 1);
+				d.setAgetype("살");
+			} else {
+				d.setAge((year * 12) + month + 1);
+				d.setAgetype("개월");
+			}
+			
+		}
+		
+		return dDTOs;
 		
 	}
 
@@ -615,6 +636,18 @@ public class MomDAO {
 		
 		req.setAttribute("ss", resultList);
 	
+	}
+
+	public void updateMomContract(HttpServletRequest req, DolbomDTO dDTO) {
+		MomDTO momDTO = new MomDTO();
+		momDTO.setMs_id(req.getParameter("ms_id"));
+		momDTO.setMs_pay(Integer.parseInt(req.getParameter("d_no")));
+		
+		if(ss.getMapper(MomMapper.class).updateMomContract(momDTO) == 1) {
+			System.out.println("contract 성공!");
+		}
+		
+				
 	}		
 	
 
