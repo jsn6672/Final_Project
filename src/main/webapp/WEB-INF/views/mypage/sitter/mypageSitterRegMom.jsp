@@ -119,6 +119,36 @@
 			}
 
 		})
+		
+		 // 하나 이상의 체크박스가 선택되었는지 확인하는 함수
+	    function isAtLeastOneCheckboxChecked(checkboxes) {
+	        for (let i = 0; i < checkboxes.length; i++) {
+	            if (checkboxes[i].checked) {
+	                return true;
+	            }
+	        }
+	        return false;
+	    }
+
+	    // 폼 제출 전 유효성을 검사하는 함수
+	    function validateForm() {
+	    	console.log("일단 여기 오는지 확인");
+	        const momTypeCheckboxes = document.querySelectorAll('input[name="ms_type"]');
+	        const momActivityCheckboxes = document.querySelectorAll('input[name="momsitter_act"]');
+	        
+	        const isMomTypeChecked = isAtLeastOneCheckboxChecked(momTypeCheckboxes);
+	        const isMomActivityChecked = isAtLeastOneCheckboxChecked(momActivityCheckboxes);
+
+	        if (!isMomTypeChecked || !isMomActivityChecked) {
+	            alert("폼을 제출하기 전에 최소한 하나의 반려동물 종류와 활동을 선택해주세요.");
+	            return false; // 폼 제출 방지
+	        }
+
+	        return true; // 폼 제출 허용
+	    }
+
+	    // 폼 제출 이벤트에 유효성 검사 함수를 연결합니다.
+	    $('form').on('submit', validateForm);
 
 	}) // 레디펑션
 </script>
@@ -167,7 +197,10 @@ body {
 				<!-- 정보입력 -->
 				<div class="mpS-pet-inform2">할 수 있는 케어 종류를 선택해주세요</div>
 				<div style="text-align: center;">
-					희망 지역1은 필수입력입니다
+					희망 지역1은 필수입력입니다 
+					<div>
+						입력 예시 ) <input style="width: 300px;border: none; border-radius: 10px;" readonly="readonly" placeholder="서울특별시 영등포구 여의도동">
+					</div>
 					<div>
 						희망지역 1 <input name="ms_location1" style="width: 300px;border: none; border-radius: 10px;">
 					</div>

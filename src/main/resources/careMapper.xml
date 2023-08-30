@@ -26,7 +26,7 @@
 		(dolbom_tbl_seq.nextval, #{d_id}, #{d_name}, #{d_category}, #{d_year},
 		#{d_month}, #{d_day}, #{d_hour}, #{d_check}, #{d_location},
 		#{d_gender}, #{d_personality}, #{d_pay}, #{d_cctv}, #{d_can_do},
-		#{d_sitterage}, #{d_need}, #{d_title}, #{d_term}, null, null, null)
+		#{d_sitterage}, #{d_need}, #{d_onoff}, #{d_term}, null, null, null)
 	</insert>
 	<update id="changecsstatus">
 		update jsn_user_tbl set user_cs_status = 1 where
@@ -91,9 +91,6 @@
 	<select id="review" resultType="com.sh.pj.ReviewDTO">
 
 		select * from review_tbl where review_sitter_id = #{cs_id} and review_category = 1
-
-		select * from review_tbl where
-		review_sitter_id = #{cs_id} and review_category = 3
 
 	</select>
 

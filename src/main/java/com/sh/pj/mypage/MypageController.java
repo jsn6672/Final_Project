@@ -454,7 +454,8 @@ public class MypageController {
 		mpDAO.getPSConfirm(req);
 		mpDAO.getCSConfirm(req);
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
-		req.setAttribute("mypageContentPage", "mypageGiveCoupon.jsp");
+		req.setAttribute("mypageContentPage", "mypageCertification.jsp");
+//		req.setAttribute("mypageContentPage", "mypageGiveCoupon.jsp");
 		return "home";
 	}
 
