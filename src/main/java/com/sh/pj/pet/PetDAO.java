@@ -582,7 +582,9 @@ public class PetDAO {
 
 	public void psAccept(HttpServletRequest req, PetDTO pDTO) {
 		if(ss.getMapper(PetMapper.class).psAccept(pDTO)==1) {
-			System.out.println("당신을 맘시터로 인정합니다");
+			if(ss.getMapper(MemberMapper.class).psUpdate(pDTO) == 1) {
+				System.out.println("당신을 펫시터로 인정합니다");				
+			}
 		}			
 	}
 

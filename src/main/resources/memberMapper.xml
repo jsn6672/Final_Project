@@ -117,5 +117,17 @@
 		insert into count_tbl values (1, #{count_sitter}, #{count_dolbom}, 1557, #{count_cont})
 	</insert>
 	
+	<update id="msUpdate">
+		update jsn_user_tbl set user_ms_status = 3 where user_id = #{ms_id}
+	</update>
+	
+	<update id="csUpdate">
+		update jsn_user_tbl set user_cs_status = 3 where user_id = #{cs_id}
+	</update>
+	
+	<update id="psUpdate">
+		update jsn_user_tbl set user_ps_status = 3 where user_id = #{ps_id}
+	</update>
+	
 	
 </mapper>
