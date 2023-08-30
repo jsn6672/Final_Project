@@ -146,6 +146,14 @@ public class MomController {
 		return "redirect:/mypage.takerRegMom.go";
 	}
 	
+	@RequestMapping(value = "/momsitter.contract.do", method = RequestMethod.POST)
+	public String contractDo(HttpServletRequest req, DolbomDTO dDTO) {
+		mDAO.logincheck(req);
+		momDAO.updateMomContract(req, dDTO);
+		
+		return "redirect:/mypage.takerRegMom.go";
+	}
+	
   	@RequestMapping(value = "/page.change4", method = RequestMethod.GET)
     public String paging3(HttpServletRequest req, @RequestParam int p, Model model, MomSelector ms) {
 //		aDAO.getAllAsk(model);

@@ -164,7 +164,11 @@
 	</select>
 	
 	<select id="getUserDolbomData" resultType="com.sh.pj.account.DolbomDTO">
-		select * from dolbom_tbl where d_id = #{user_id}
+		select * from dolbom_tbl where d_id = #{user_id} and d_category = 2
 	</select>
+	
+	<insert id="updateMomContract">
+		insert into contract_tbl values(contract_tbl_seq, 2, #{ms_id}, #{ms_pay}, 1, 1)
+	</insert>
 	
 </mapper>

@@ -447,12 +447,6 @@ public class MypageController {
 		return "redirect:/mypage.go";
 	}
 
-
-	@RequestMapping(value = "/mypage.coupon.reg", method = RequestMethod.GET)
-	public String regCoupon(HttpServletRequest req) {
-
-	
-
 	@RequestMapping(value = "mypage.certif.confirm", method = RequestMethod.GET)
 	public String certificationConfirm(HttpServletRequest req) {
 		mDAO.logincheck(req);
