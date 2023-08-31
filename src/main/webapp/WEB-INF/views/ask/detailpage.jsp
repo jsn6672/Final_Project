@@ -18,7 +18,7 @@
 					<div class="QnA-left-list highlightable" id="notice1"
 						onmouseover="changeColorOnMouseOver('notice1')"
 						onmouseout="changeColorOnMouseOut('notice1')"
-						onclick="location.href='mainask.go?category=1'">공지사항</div>
+						onclick="location.href='mainask.go?categor	y=1'">공지사항</div>
 
 					<div class="QnA-left-list highlightable" id="notice3"
 						onmouseover="changeColorOnMouseOver('notice3')"
@@ -86,7 +86,7 @@
 				</div>
 				<div class="QnA-list-titles">
 					<div class="QnA-list-title1">내용</div>
-					<div class="QnA-list-title2">
+					<div class="QnA-list-title2" style="height: 400px;">
 						<div>${s.inquiry_body }</div>
 					</div>
 				</div>

@@ -19,7 +19,6 @@
     </div>
     <div>
     <span onclick="location.href='mypage.takerUpdateAnotherPetDolbom.go?d_no=${s.d_no}'">수정하기</span>
-    	
     </div>
 </div>
 
