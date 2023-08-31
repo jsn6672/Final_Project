@@ -18,7 +18,8 @@
 		#{cs_file}, #{cs_confirm}, #{cs_confirm_answer}, #{cs_cctv},
 		#{cs_term}, #{cs_day}, #{cs_hour}, #{cs_location1}, #{cs_location2},
 		#{cs_location3}, #{cs_extra}, #{cs_exp}, #{cs_pay}, 0,
-		0, #{cs_can_do},0,null, null, null,0)
+		0,
+		#{cs_can_do},0,null, null, null,0)
 	</insert>
 	
 	<insert id="regDolbom">
@@ -88,7 +89,8 @@
 
 
 	<select id="review" resultType="com.sh.pj.ReviewDTO">
-		select * from review_tbl where review_sitter_id = #{cs_id} and review_category = 1
+		select * from review_tbl where
+		review_sitter_id = #{cs_id} and review_category = 1
 	</select>
 
 	<select id="getMsg2" resultType="com.sh.pj.account.DolbomDTO">
@@ -124,21 +126,48 @@
 		select * from jsn_user_tbl where user_id =
 		#{review_taker_id}
 	</select>
-	
+
 	<update id="csAccept">
-		update caresitter_tbl set cs_confirm = 1 where cs_id = #{cs_id}
+		update caresitter_tbl set cs_confirm = 1 where cs_id
+		= #{cs_id}
 	</update>
-	
+
 	<update id="csReject">
-		update caresitter_tbl set cs_confirm_answer = 'reject' where cs_id = #{cs_id}
+		update caresitter_tbl set cs_confirm_answer =
+		'reject' where cs_id = #{cs_id}
+	</update>
+
+	<update id="ctAccept">
+		update caretaker_tbl set ct_confirm = 1 where ct_id =
+		#{ct_id}
+	</update>
+
+	<update id="ctReject">
+		update caretaker_tbl set ct_confirm_answer = 'reject'
+		where ct_id = #{ct_id}
 	</update>
 
 	<select id="getAllPoint" resultType="com.sh.pj.care.CareDTO">
 		SELECT * FROM (
-		SELECT ROWNUM AS rn, it.* FROM caresitter_tbl it ORDER BY cs_point DESC
+		SELECT ROWNUM
+		AS rn, it.* FROM caresitter_tbl it ORDER BY cs_point DESC
 		)
-		WHERE rn &gt;= 1 and rn &lt;= 3
+		WHERE rn
+		&gt;= 1 and rn &lt;= 3
 	</select>
+
+	<select id="getCsConMessage" resultType="int">
+		select count(*) from
+		caresitter_tbl where cs_id = #{user_id} and cs_confirm_answer =
+		'reject'
+	</select>
+
+	<select id="getCtConMessage" resultType="int">
+		select count(*) from
+		caretaker_tbl where ct_id = #{user_id} and ct_confirm_answer =
+		'reject'
+	</select>
+
 	
 	<select id="getUserDolbomDataCare" resultType="com.sh.pj.account.DolbomDTO">
 		select * from dolbom_tbl where d_id = #{user_id} and d_category = 1

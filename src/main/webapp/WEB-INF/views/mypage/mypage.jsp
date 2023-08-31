@@ -49,48 +49,70 @@
 
 			<!-- 메뉴 컨테이너 -->
 			<div class="mpMenu">
-				<div class="mpMenu-part" id="mpMenu-part1"
-					onmouseover="changeColor('mpMenu-part1')"
-					onmouseout="restoreColor('mpMenu-part1')">
-					<a href="mypage.profile.go">프로필 수정</a>
-				</div>
-				<div class="mpMenu-part" id="mpMenu-part2"
-					onmouseover="changeColor('mpMenu-part2')"
-					onmouseout="restoreColor('mpMenu-part2')">
-					<a href="mypage.sitterReg.go">시터 등록 및 수정</a>
-				</div>
-				<div class="mpMenu-part" id="mpMenu-part3"
-					onmouseover="changeColor('mpMenu-part3')"
-					onmouseout="restoreColor('mpMenu-part3')">
-					<a href="mypage.usage.go">이용내역</a>
-				</div>
-				<div class="mpMenu-part" id="mpMenu-part4"
-					onmouseover="changeColor('mpMenu-part4')"
-					onmouseout="restoreColor('mpMenu-part4')">
+				<c:choose>
+					<c:when test="${userInfo.user_email_auth ne 2 }">
+						<div class="mpMenu-part" id="mpMenu-part1"
+							onmouseover="changeColor('mpMenu-part1')"
+							onmouseout="restoreColor('mpMenu-part1')">
+							<a href="mypage.profile.go">프로필 수정</a>
+						</div>
+						<div class="mpMenu-part" id="mpMenu-part2"
+							onmouseover="changeColor('mpMenu-part2')"
+							onmouseout="restoreColor('mpMenu-part2')">
+							<a href="mypage.sitterReg.go">시터 등록 및 수정</a>
+						</div>
+						<div class="mpMenu-part" id="mpMenu-part3"
+							onmouseover="changeColor('mpMenu-part3')"
+							onmouseout="restoreColor('mpMenu-part3')">
+							<a href="mypage.usage.go">메세지함</a>
+						</div>
+						<div class="mpMenu-part" id="mpMenu-part4"
+							onmouseover="changeColor('mpMenu-part4')"
+							onmouseout="restoreColor('mpMenu-part4')">
+							<a href="mypage.regReview.go">리뷰작성 및 확인</a>
+						</div>
+						<div class="mpMenu-part" id="mpMenu-part5"
+							onmouseover="changeColor('mpMenu-part5')"
+							onmouseout="restoreColor('mpMenu-part5')">
+							<a
+								href="mypage.ticketthatihave.go?user_id=${sessionScope.userInfo.user_id}">이용권확인</a>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="mpMenu-part" id="mpMenu-part1"
+							onmouseover="changeColor('mpMenu-part1')"
+							onmouseout="restoreColor('mpMenu-part1')">
+							<a href="mypage.certif.confirm">인증 확인 및 거절</a>
+						</div>
+						<div class="mpMenu-part" id="mpMenu-part2"
+							onmouseover="changeColor('mpMenu-part2')"
+							onmouseout="restoreColor('mpMenu-part2')">
+							<a href="mypage.ticket.check">이용권</a>
+						</div>
+						<div class="mpMenu-part" id="mpMenu-part3"
+							onmouseover="changeColor('mpMenu-part3')"
+							onmouseout="restoreColor('mpMenu-part3')">
+							<a href="mypage.usage.go">혹시 몰라서 남겨둔 칸1</a>
+						</div>
+						<div class="mpMenu-part" id="mpMenu-part4"
+							onmouseover="changeColor('mpMenu-part4')"
+							onmouseout="restoreColor('mpMenu-part4')">
+							<a href="mypage.regReview.go">혹시 몰라서 남겨둔 칸2</a>
+						</div>
+						<div class="mpMenu-part" id="mpMenu-part5"
+							onmouseover="changeColor('mpMenu-part5')"
+							onmouseout="restoreColor('mpMenu-part5')">
+							<a
+								href="mypage.ticketthatihave.go?user_id=${sessionScope.userInfo.user_id}">혹시 몰라서 남겨둔 칸3</a>
+						</div>
 
-					<a href="mypage.usage.go">메세지함</a>
-
-					<a href="mypage.regReview.go">리뷰작성 및 확인</a>
-
-				</div>
-				<div class="mpMenu-part" id="mpMenu-part5"
-					onmouseover="changeColor('mpMenu-part5')"
-					onmouseout="restoreColor('mpMenu-part5')">
-					<a href="mypage.ticketthatihave.go?user_id=${sessionScope.userInfo.user_id}">이용권확인</a>
-				</div>
-
-				<div class="mpMenu-part" id="mpMenu-part6"
-					onmouseover="changeColor('mpMenu-part6')"
-					onmouseout="restoreColor('mpMenu-part6')">
-					<c:if test="${userInfo.user_id == 'admin' }">
-						<a href="mypage.ticket.check">이용권</a>
-					</c:if>
-				</div>
-
- 
-				
-			
-
+						<div class="mpMenu-part" id="mpMenu-part6"
+							onmouseover="changeColor('mpMenu-part6')"
+							onmouseout="restoreColor('mpMenu-part6')">
+							<a href="mypage.regReview.go">혹시 몰라서 남겨둔 칸4</a>
+						</div>
+					</c:otherwise>
+				</c:choose>
 			</div>
 
 		</div>

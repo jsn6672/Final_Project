@@ -947,7 +947,7 @@ public class MypageDAO {
 			mmm.setMm(ss.getMapper(MypageMapper.class).getMTuserinfo(mmm));
 		}
 		
-		req.setAttribute("msconfirm", mtconfirm);
+		req.setAttribute("mtconfirm", mtconfirm);
 		
 	}
 	
@@ -959,7 +959,7 @@ public class MypageDAO {
 			System.out.println(mmm);
 		}
 		
-		req.setAttribute("psconfirm", ptconfirm);
+		req.setAttribute("ptconfirm", ptconfirm);
 		
 	}
 	
@@ -968,7 +968,7 @@ public class MypageDAO {
 		for (CareTakerDTO mmm : ctconfirm) {
 			mmm.setMm(ss.getMapper(MypageMapper.class).getCTuserinfo(mmm));
 		}
-		req.setAttribute("csconfirm", ctconfirm);
+		req.setAttribute("ctconfirm", ctconfirm);
 		
 	}
 
@@ -983,6 +983,34 @@ public class MypageDAO {
 		req.setAttribute("momP", momP);
 		req.setAttribute("petP", petP);
 		req.setAttribute("careP", careP);
+	}
+
+	public void getAdminMessage(HttpServletRequest req) {
+		MemberDTO mDTO = (MemberDTO)req.getSession().getAttribute("userInfo");
+		
+		int a = 1;
+		if (ss.getMapper(MomMapper.class).getMsConMessage(mDTO) == 1) {
+			a *= 5;
+		}
+		if (ss.getMapper(MomMapper.class).getMtConMessage(mDTO) == 1) {
+			a *= 7;
+		}
+		if (ss.getMapper(CareMapper.class).getCsConMessage(mDTO) == 1) {
+			a *= 2;
+		}
+		if (ss.getMapper(CareMapper.class).getCtConMessage(mDTO) == 1) {
+			a *= 3;
+		}
+		if (ss.getMapper(PetMapper.class).getPsConMessage(mDTO) == 1) {
+			a *= 11;
+		}
+		if (ss.getMapper(PetMapper.class).getPtConMessage(mDTO) == 1) {
+			a *= 13;
+		}
+		
+		req.setAttribute("CertiFale", a);
+		
+//		mtconfirm, msconfirm, ctconfirm, csconfirm, psconfirm, ptconfirm
 	}
 
 }

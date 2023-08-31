@@ -58,7 +58,7 @@ input {
 			<div style="display: flex; justify-content: center;">
 				<div>
 					<input name="user_id" placeholder="아이디를 입력하세요"> <br><br>
-					<input name="user_pw" placeholder="비밀번호를 입력하세요">
+					<input name="user_pw" placeholder="비밀번호를 입력하세요" type="password">
 				</div>
 				<div class="blank-area"></div>
 				<div>

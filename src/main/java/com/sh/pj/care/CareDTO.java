@@ -6,6 +6,7 @@ import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sh.pj.ReviewDTO;
 import com.sh.pj.account.MemberDTO;
 
 public class CareDTO {
@@ -62,6 +63,8 @@ public class CareDTO {
 
 	private MemberDTO mm;
 
+	private ReviewDTO review;
+
 	public CareDTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -82,7 +85,16 @@ public class CareDTO {
 				+ ", thursday_start=" + thursday_start + ", friday_start=" + friday_start + ", saturday_start="
 				+ saturday_start + ", sunday_start=" + sunday_start + ", monday_end=" + monday_end + ", tuesday_end="
 				+ tuesday_end + ", wednesday_end=" + wednesday_end + ", thursday_end=" + thursday_end + ", friday_end="
-				+ friday_end + ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end + ", mm=" + mm + "]";
+				+ friday_end + ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end + ", mm=" + mm
+				+ ", review=" + review + "]";
+	}
+
+	public ReviewDTO getReview() {
+		return review;
+	}
+
+	public void setReview(ReviewDTO review) {
+		this.review = review;
 	}
 
 	public BigDecimal getCs_point() {

@@ -160,15 +160,38 @@
 			</div>
 			<div class="owl-carousel product-carousel wow fadeInUp"
 				data-wow-delay="0.5s">
+				<c:forEach items="${GoodCareSitter }" var="c">
 				<a href="" class="d-block product-item rounded"> <img
-					src="resources/img/product-1.jpg" alt="">
+					src="resources/img/mainPage/caresitter.png" alt="" style="width: 420px; height: 260px;">
 					<div
 						class="bg-white shadow-sm text-center p-4 position-relative mt-n5 mx-4">
-						<h4 class="text-primary">Green Tea</h4>
-						<span class="text-body">Diam dolor diam ipsum sit diam amet
-							diam et eos. Clita erat ipsum</span>
+						<h4 class="text-primary">${c.mm.user_name }</h4>
+						<span class="text-body">${c.review.review_txt }</span>
 					</div>
-				</a> <a href="" class="d-block product-item rounded"> <img
+				</a> 
+				</c:forEach>
+				<c:forEach items="${GoodMomSitter }" var="m">
+				<a href="" class="d-block product-item rounded"> <img
+					src="resources/img/mainPage/momsitter.png" alt="" style="width: 420px; height: 260px;">
+					<div
+						class="bg-white shadow-sm text-center p-4 position-relative mt-n5 mx-4">
+						<h4 class="text-primary">${m.mm.user_name }</h4>
+						<span class="text-body">${m.review.review_txt }</span>
+					</div>
+				</a> 
+				</c:forEach>
+				<c:forEach items="${GoodPetSitter }" var="p">
+				<a href="" class="d-block product-item rounded"> <img
+					src="resources/img/mainPage/petsitter.png" alt="" style="width: 420px; height: 260px;">
+					<div
+						class="bg-white shadow-sm text-center p-4 position-relative mt-n5 mx-4">
+						<h4 class="text-primary">${p.mm.user_name }</h4>
+						<span class="text-body">${p.review.review_txt }</span>
+					</div>
+				</a> 
+				</c:forEach>
+				
+				<!--  <a href="" class="d-block product-item rounded"> <img
 					src="resources/img/product-2.jpg" alt="">
 					<div
 						class="bg-white shadow-sm text-center p-4 position-relative mt-n5 mx-4">
@@ -192,7 +215,7 @@
 						<span class="text-body">Diam dolor diam ipsum sit diam amet
 							diam et eos. Clita erat ipsum</span>
 					</div>
-				</a>
+				</a>-->
 			</div>
 		</div>
 	</div>

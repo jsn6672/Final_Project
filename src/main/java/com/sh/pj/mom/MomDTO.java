@@ -6,9 +6,10 @@ import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sh.pj.ReviewDTO;
 import com.sh.pj.account.MemberDTO;
 
-public class MomDTO  {
+public class MomDTO {
 
 	private String ms_id;
 	private String ms_file;
@@ -59,14 +60,14 @@ public class MomDTO  {
 	private int friday_end;
 	private int saturday_end;
 	private int sunday_end;
-	
+
 	private MemberDTO mm;
-	
+
+	private ReviewDTO review;
+
 	public MomDTO() {
 		// TODO Auto-generated constructor stub
 	}
-
-	
 
 	@Override
 	public String toString() {
@@ -85,22 +86,24 @@ public class MomDTO  {
 				+ ", saturday_start=" + saturday_start + ", sunday_start=" + sunday_start + ", monday_end=" + monday_end
 				+ ", tuesday_end=" + tuesday_end + ", wednesday_end=" + wednesday_end + ", thursday_end=" + thursday_end
 				+ ", friday_end=" + friday_end + ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end
-				+ ", mm=" + mm + "]";
+				+ ", mm=" + mm + ", review=" + review + "]";
 	}
 
+	public ReviewDTO getReview() {
+		return review;
+	}
 
+	public void setReview(ReviewDTO review) {
+		this.review = review;
+	}
 
 	public BigDecimal getMs_point() {
 		return ms_point;
 	}
 
-
-
 	public void setMs_point(BigDecimal ms_point) {
 		this.ms_point = ms_point;
 	}
-
-
 
 	public String getMs_id() {
 		return ms_id;
@@ -221,8 +224,6 @@ public class MomDTO  {
 	public void setMs_pay(int ms_pay) {
 		this.ms_pay = ms_pay;
 	}
-
-
 
 	public int getMs_count() {
 		return ms_count;
@@ -471,10 +472,5 @@ public class MomDTO  {
 	public void setMm(MemberDTO mm) {
 		this.mm = mm;
 	}
-
-	
-
-	
-	
 
 }

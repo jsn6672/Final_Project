@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sh.pj.ReviewDTO;
 import com.sh.pj.account.MemberDTO;
 
 public class PetDTO {
@@ -63,6 +64,8 @@ public class PetDTO {
 
 	private MemberDTO mm;
 
+	private ReviewDTO review;
+
 	public PetDTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -72,7 +75,7 @@ public class PetDTO {
 		return "PetDTO [ps_id=" + ps_id + ", ps_file=" + ps_file + ", ps_Rfile=" + ps_Rfile + ", ps_confirm="
 				+ ps_confirm + ", ps_confirm_answer=" + ps_confirm_answer + ", ps_cctv=" + ps_cctv + ", ps_term="
 				+ ps_term + ", ps_day=" + ps_day + ", ps_hour=" + ps_hour + ", ps_location1=" + ps_location1
-				+ ", ps_location2=" + ps_location2 + ", ps_location3=" + ps_location3 + ", ps_extra=" + ps_extra
+				+ ", ps_location2=" + ps_location2 + ", ps_extra=" + ps_extra + ", ps_location3=" + ps_location3
 				+ ", ps_exp=" + ps_exp + ", ps_pay=" + ps_pay + ", ps_point=" + ps_point + ", ps_count=" + ps_count
 				+ ", ps_can_do=" + ps_can_do + ", ps_can_type=" + ps_can_type + ", ps_notice=" + ps_notice
 				+ ", ps_ticket_start=" + ps_ticket_start + ", ps_ticket_end=" + ps_ticket_end + ", ps_write_date="
@@ -84,7 +87,15 @@ public class PetDTO {
 				+ ", saturday_start=" + saturday_start + ", sunday_start=" + sunday_start + ", monday_end=" + monday_end
 				+ ", tuesday_end=" + tuesday_end + ", wednesday_end=" + wednesday_end + ", thursday_end=" + thursday_end
 				+ ", friday_end=" + friday_end + ", saturday_end=" + saturday_end + ", sunday_end=" + sunday_end
-				+ ", mm=" + mm + "]";
+				+ ", mm=" + mm + ", review=" + review + "]";
+	}
+
+	public ReviewDTO getReview() {
+		return review;
+	}
+
+	public void setReview(ReviewDTO review) {
+		this.review = review;
 	}
 
 	public BigDecimal getPs_point() {

@@ -300,7 +300,7 @@
 							<div class="mpPSitter">
 								<!-- 시터사용자 <br> -->
 								<div class="mpPSitter-part">
-									<div class="mpPSitter-part-name">맘시터</div>
+									<div class="mpPSitter-part-name">맘테이커</div>
 									<c:if test="${userInfo.user_mt_status eq 0 }">
 										<div class="mpPSitter-part-state"
 											style="background-color: #EEEEEE">
@@ -318,7 +318,7 @@
 									</c:if>
 								</div>
 								<div class="mpPSitter-part">
-									<div class="mpPSitter-part-name">케어시터</div>
+									<div class="mpPSitter-part-name">케어테이커</div>
 									<c:if test="${userInfo.user_ct_status eq 0 }">
 										<div class="mpPSitter-part-state"
 											style="background-color: #EEEEEE">
@@ -336,7 +336,7 @@
 									</c:if>
 								</div>
 								<div class="mpPSitter-part">
-									<div class="mpPSitter-part-name">펫시터</div>
+									<div class="mpPSitter-part-name">펫테이커</div>
 									<c:if test="${userInfo.user_pt_status eq 0 }">
 										<div class="mpPSitter-part-state"
 											style="background-color: #EEEEEE">
@@ -370,7 +370,8 @@
 					<div class="mpPAddr-detail">주소</div>
 					<div class="mpPAddr-detail-answer">
 						우편번호 : ${memberProfile.m_addr3} / 주소 : ${memberProfile.m_addr1 }
-						${memberProfile.m_addr2 } <a href="count.tbl">testetst</a>
+						${memberProfile.m_addr2 } 
+						<!--  <a href="count.tbl">testetst</a>-->
 					</div>
 				</div>
 				<div class="mpPAddr">

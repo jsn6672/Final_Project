@@ -122,6 +122,13 @@ public class PetController {
 
 		return "redirect:/mypage.go";
 	}
+	@RequestMapping(value = "/pettaker.update", method = RequestMethod.POST)
+	public String pettaker_update(HttpServletRequest req, PetTakerDTO ptDTO, DolbomDTO dDTO) {
+		mDAO.logincheck(req);
+		mDAO.updatePetTaker(req, ptDTO);
+		
+		return "redirect:/mypage.go";
+	}
 	
 	@RequestMapping(value = "/petsitter.be", method = RequestMethod.POST)
 	public String petsitter_be(HttpServletRequest req, PetDTO pDTO) {

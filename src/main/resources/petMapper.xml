@@ -29,7 +29,7 @@
 		(dolbom_tbl_seq.nextval, #{d_id}, #{d_name}, #{d_category}, #{d_year},
 		#{d_month}, #{d_day}, #{d_hour}, #{d_check}, #{d_location},
 		#{d_gender}, #{d_personality}, #{d_pay}, #{d_cctv}, #{d_can_do},
-		#{d_sitterage}, #{d_need}, #{d_title}, #{d_term}, null, null, null)
+		#{d_sitterage}, #{d_need}, 'off', #{d_term}, null, null, null)
 	</insert>
 
 	<insert id="regPetSitter">
@@ -149,6 +149,14 @@
 	<update id="psReject">
 		update petsitter_tbl set ps_confirm_answer = 'reject' where ps_id = #{ps_id}
 	</update>
+	
+	<update id="ptAccept">
+		update pettaker_tbl set pt_confirm = 1 where pt_id = #{pt_id}
+	</update>
+	
+	<update id="ptReject">
+		update pettaker_tbl set pt_confirm_answer = 'reject' where pt_id = #{pt_id}
+	</update>
 	<select id="getAllPoint" resultType="com.sh.pj.pet.PetDTO">
 		SELECT * FROM (
 		SELECT ROWNUM AS rn, it.* FROM petsitter_tbl it ORDER BY ps_point DESC
@@ -156,6 +164,19 @@
 		WHERE rn &gt;= 1 and rn &lt;= 3
 	</select>
 	
+	<select id="getPsConMessage" resultType="int">
+		select count(*) from petsitter_tbl where ps_id = #{user_id} and ps_confirm_answer = 'reject'
+	</select>
+	
+	<select id="getPtConMessage" resultType="int">
+		select count(*) from pettaker_tbl where pt_id = #{user_id} and pt_confirm_answer = 'reject'
+	</select>
+	
+	<update id="updatePetTaker">
+		update pettaker_tbl set pt_file = #{pt_file}, pt_confirm = 0, pt_confirm_answer = 'ndy'
+	</update>
+	
+
 	<select id="getUserDolbomDataPet" resultType="com.sh.pj.account.DolbomDTO">
 		select * from dolbom_tbl where d_id = #{user_id} and d_category = 3
 	</select>

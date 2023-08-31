@@ -673,6 +673,21 @@ public class MomDAO {
 				
 	}
 
+	public void mtAccept(HttpServletRequest req, MomTakerDTO momDTO) {
+		if(ss.getMapper(MomMapper.class).mtAccept(momDTO)==1) {
+			if(ss.getMapper(MemberMapper.class).mtUpdate(momDTO) == 1) {
+				System.out.println("당신을 맘시터로 인정합니다");				
+			}
+		}
+		
+	}
+
+	public void mtReject(HttpServletRequest req, MomTakerDTO momDTO) {
+		
+		if(ss.getMapper(MomMapper.class).mtReject(momDTO)==1) {
+			System.out.println("넌 못지나간다");
+		}
+	}
 	public void updateMomtakerContract(HttpServletRequest req, DolbomDTO dDTO) {
 		MemberDTO memberDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 		dDTO.setLocation3(memberDTO.getUser_id());

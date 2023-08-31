@@ -133,5 +133,52 @@
 		update jsn_user_tbl set user_ps_status = 3 where user_id = #{ps_id}
 	</update>
 	
+	<update id="mtUpdate">
+		update jsn_user_tbl set user_mt_status = 2 where user_id = #{mt_id}
+	</update>
+	
+	<update id="ctUpdate">
+		update jsn_user_tbl set user_ct_status = 2 where user_id = #{ct_id}
+	</update>
+	
+	<update id="ptUpdate">
+		update jsn_user_tbl set user_pt_status = 2 where user_id = #{pt_id}
+	</update>
+	
+	<select id="goodCs" resultType="com.sh.pj.care.CareDTO">
+		select * from (select rownum as rn, it.* from caresitter_tbl it 
+		order by it.cs_point desc)
+		where rn &gt;= 1 and rn &lt;= 2
+	</select>
+	<select id="goodMs" resultType="com.sh.pj.mom.MomDTO">
+		select * from (select rownum as rn, it.* from momsitter_tbl it 
+		order by it.ms_point desc)
+		where rn &gt;= 1 and rn &lt;= 2
+	</select>
+	<select id="goodPs" resultType="com.sh.pj.pet.PetDTO">
+		select * from (select rownum as rn, it.* from petsitter_tbl it 
+		order by it.ps_point desc)
+		where rn &gt;= 1 and rn &lt;= 2
+	</select>
+	
+	<select id="getCareUserInfo" resultType="com.sh.pj.account.MemberDTO">
+		select * from jsn_user_tbl where user_id = #{cs_id}
+	</select>
+	<select id="getMomUserInfo" resultType="com.sh.pj.account.MemberDTO">
+		select * from jsn_user_tbl where user_id = #{ms_id}
+	</select>
+	<select id="getPetUserInfo" resultType="com.sh.pj.account.MemberDTO">
+		select * from jsn_user_tbl where user_id = #{ps_id}
+	</select>
+	
+	<select id="getCareUserReview" resultType="com.sh.pj.ReviewDTO">
+		select * from (select * from review_tbl where review_sitter_id = #{cs_id} and review_category = 1 order by review_point desc) where rownum = 1
+	</select>
+	<select id="getMomUserReview" resultType="com.sh.pj.ReviewDTO">
+		select * from (select * from review_tbl where review_sitter_id = #{ms_id} and review_category = 2  order by review_point desc) where rownum = 1
+	</select>
+	<select id="getPetUserReview" resultType="com.sh.pj.ReviewDTO">
+		select * from (select * from review_tbl where review_sitter_id = #{ps_id} and review_category = 3  order by review_point desc) where rownum = 1
+	</select>
 	
 </mapper>
