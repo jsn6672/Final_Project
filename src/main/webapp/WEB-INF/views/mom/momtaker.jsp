@@ -37,7 +37,7 @@ https://templatemo.com/tm-580-woox-travel
 
 <body>
 	<main id="main">
-		<section style="background-color: #EDE7F6;padding-bottom: 30px;">
+		<section style="background-color: #FFF5B8;padding-bottom: 30px;">
 			<div class="container">
 				<div class="row">
 

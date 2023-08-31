@@ -97,7 +97,7 @@
 						<div class="QnA-list-title2">
 							<div style="display: flex; justify-content: flex-end;">
 								<textarea rows="" cols="" name="inquiry_encodingbody"
-									style="border: none; height: 30px; width: 100%;"></textarea>
+									style="border: none; height: 27px; width: 100%;"></textarea>
 							</div>
 						</div>
 					</div>
