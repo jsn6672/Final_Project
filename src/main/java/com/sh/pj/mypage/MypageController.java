@@ -448,8 +448,6 @@ public class MypageController {
 	}
 
 
-	@RequestMapping(value = "/mypage.coupon.reg", method = RequestMethod.GET)
-	public String regCoupon(HttpServletRequest req) {
 
 	
 

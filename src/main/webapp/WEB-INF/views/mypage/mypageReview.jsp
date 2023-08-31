@@ -34,28 +34,41 @@
 	overflow: hidden;
 	pointer-events: none;
 }
+
 </style>
 </head>
 <body>
-	<div class="mpS-pet-5" style="display: flex;align-items: center;justify-content: center;">
-				<div class="body-content-another3">
-					<div>내가 받은 리뷰</div>
-					<br>
-					<c:forEach items="${review }" var="rw">
-						<div>${rw.r_dolbomDTO.d_name }님께서남기신댓글입니다</div>
-						<div>평점 : ${rw.review_point }</div>
-						<div>내용 : ${rw.review_txt }</div>
-						<hr>
-					</c:forEach>
-				</div>
 
-						<div class="body-content-another3">
-						    <div style="text-align: center;">
-						
+	<div class="mpS-pet-5"
+		style="display: flex; align-items: center; justify-content: center;">
+		<div class="body-content-another3">
+
+
+			<div>내가 받은 리뷰</div>
+			<br>
+			<c:forEach items="${review }" var="rw">
+				<div>${rw.r_dolbomDTO.d_name }님께서남기신 리뷰입니다</div>
+				<div>평점 : ${rw.review_point }</div>
+				<div>내용 : ${rw.review_txt }</div>
+				<div style="margin-left: 30px;">
+					<span class="review_star"> ★★★★★ <span>★★★★★</span> <input
+						type="range" class="s" step="1" min="0" max="10"> <input
+						type="text" class="star_value" name="star_value"
+						value="${rw.review_point}">
+					</span>
+				</div>
+				<hr>
+			</c:forEach>
+		</div>
+
+		<div class="body-content-another3">
+			<div style="text-align: center;">
+
 				<div>내가 써야 할 리뷰</div>
 				<hr>
 				<c:forEach items="${NotReview}" var="r">
-					<div>유저명:${r.d_name }
+					<div>
+						유저명:${r.d_name }
 						<c:if test="${r.cntDTOMessage eq '1' }">
 							<span style="color: red"> ● </span>
 						</c:if>
@@ -102,10 +115,11 @@
 					<hr>
 				</c:forEach>
 			</div>
-			</div>
-			</div>
+		</div>
+	</div>
 
 </body>
+<script src="resources/js/sitter.js"></script>
 
 
 </html>

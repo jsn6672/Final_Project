@@ -152,12 +152,12 @@
 							placeholder="변경하실 비밀번호를 입력해 주세요" />
 					</div>
 					<div id="mpPPWSpace"></div>
-					<div class="mpPPW">
+					<div class="mpPPW" style="width: 35%">
 						비밀번호 확인 <br /> <input name="mpPPWInputCheck"
 							class="mpPPWInputCheck" placeholder="다시 한 번 입력해 주세요." />
 					</div>
 				</div>
-				<button id="mpP-btn">수정하기</button>
+				<button id="mpP-btn" style="width: 120px;">수정하기</button>
 			</form>
 		</div>
 	</div>
