@@ -935,10 +935,10 @@ public class MypageDAO {
 		List<MomTakerDTO> mtconfirm = ss.getMapper(MypageMapper.class).getmtconfirm();
 		
 		for (MomTakerDTO mmm : mtconfirm) {
-			mmm.setMm(ss.getMapper(MypageMapper.class).getMSuserinfo(mmm));
+			mmm.setMm(ss.getMapper(MypageMapper.class).getMTuserinfo(mmm));
 		}
 		
-		req.setAttribute("msconfirm", msconfirm);
+		req.setAttribute("msconfirm", mtconfirm);
 		
 	}
 	
@@ -946,20 +946,20 @@ public class MypageDAO {
 		List<PetTakerDTO> ptconfirm = ss.getMapper(MypageMapper.class).getptconfirm();
 		
 		for (PetTakerDTO mmm : ptconfirm) {
-			mmm.setMm(ss.getMapper(MypageMapper.class).getPSuserinfo(mmm));
+			mmm.setMm(ss.getMapper(MypageMapper.class).getPTuserinfo(mmm));
 			System.out.println(mmm);
 		}
 		
-		req.setAttribute("psconfirm", psconfirm);
+		req.setAttribute("psconfirm", ptconfirm);
 		
 	}
 	
 	public void getCTConfirm(HttpServletRequest req) {
 		List<CareTakerDTO> ctconfirm = ss.getMapper(MypageMapper.class).getctconfirm();
 		for (CareTakerDTO mmm : ctconfirm) {
-			mmm.setMm(ss.getMapper(MypageMapper.class).getCSuserinfo(mmm));
+			mmm.setMm(ss.getMapper(MypageMapper.class).getCTuserinfo(mmm));
 		}
-		req.setAttribute("csconfirm", csconfirm);
+		req.setAttribute("csconfirm", ctconfirm);
 		
 	}
 
