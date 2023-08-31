@@ -62,46 +62,30 @@
 				<div class="mpMenu-part" id="mpMenu-part3"
 					onmouseover="changeColor('mpMenu-part3')"
 					onmouseout="restoreColor('mpMenu-part3')">
-					<c:choose>
-						<c:when test="${userInfo.user_id == 'admin' }">
-							<a href="mypage.ticket.check">이용권</a>
-						</c:when>
-						<c:otherwise>
-							<span>이용권</span>
-						</c:otherwise>
-					</c:choose>
-
-
+					<a href="mypage.usage.go">이용내역</a>
 				</div>
 				<div class="mpMenu-part" id="mpMenu-part4"
 					onmouseover="changeColor('mpMenu-part4')"
 					onmouseout="restoreColor('mpMenu-part4')">
-					<a href="mypage.usage.go">이용내역</a>
+					<a href="mypage.regReview.go">리뷰작성 및 확인</a>
 				</div>
 				<div class="mpMenu-part" id="mpMenu-part5"
 					onmouseover="changeColor('mpMenu-part5')"
 					onmouseout="restoreColor('mpMenu-part5')">
-					<a href="mypage.regReview.go">리뷰작성 및 확인</a>
-				</div>
-				<div class="mpMenu-part" id="mpMenu-part7"
-					onmouseover="changeColor('mpMenu-part7')"
-					onmouseout="restoreColor('mpMenu-part7')">
 					<a href="mypage.ticketthatihave.go?user_id=${sessionScope.userInfo.user_id}">이용권확인</a>
 				</div>
+
 				<div class="mpMenu-part" id="mpMenu-part6"
 					onmouseover="changeColor('mpMenu-part6')"
 					onmouseout="restoreColor('mpMenu-part6')">
 					<c:if test="${userInfo.user_id == 'admin' }">
-						<a href="mypage.certif.confirm">관리자 페이지</a>
+						<a href="mypage.ticket.check">이용권</a>
 					</c:if>
 				</div>
-				<div class="mpMenu-part" id="mpMenu-part7"
-					onmouseover="changeColor('mpMenu-part7')"
-					onmouseout="restoreColor('mpMenu-part7')">
-					<c:if test="${userInfo.user_id == 'admin' }">
-						<a href="mypage.coupon.reg">쿠폰등록</a>
-					</c:if>
-				</div>
+
+ 
+				
+			
 
 			</div>
 

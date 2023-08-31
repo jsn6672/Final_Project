@@ -291,7 +291,7 @@
 
 	<select id="couponlist" resultType="com.sh.pj.mypage.CouponDTO">
 		select * from coupon where
-		cp_id = #{user_id}
+		cp_id = #{user_id} and cp_used = 0
 	</select>
 
 	<select id="getmsconfirm" resultType="com.sh.pj.mom.MomDTO">
@@ -378,9 +378,29 @@
 		insert into coupon values(coupon_seq.nextval, #{cp_id}, #{cp_date}, 0, #{cp_txt})
 	</insert>
 
+
+
 	<select id="review" resultType="com.sh.pj.ReviewDTO">
 		select * from review_tbl
 	</select>
 
+	<update id="userstatus">
+		update jsn_user_tbl
+		set user_ticket_status = 1
+		where user_id = #{mm_id }
+	</update>
 
+	<select id="getpointsMS" resultType="com.sh.pj.mom.MomDTO">
+		select * from momsitter_tbl where ms_point >= 50
+	</select>
+	
+	<select id="getpointsPS" resultType="com.sh.pj.pet.PetDTO">
+		select * from petsitter_tbl where ps_point >= 100 
+	</select>
+	
+	<select id="getpointsCS" resultType="com.sh.pj.care.CareDTO">
+		select * from caresitter_tbl where cs_point >= 100 
+	</select>
+	
+	
 </mapper>
