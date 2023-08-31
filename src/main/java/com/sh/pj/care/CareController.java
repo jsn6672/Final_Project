@@ -1,6 +1,8 @@
 package com.sh.pj.care;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MembertDAO;
@@ -110,6 +113,29 @@ public class CareController {
 
 		return "redirect:/mypage.takerRegCare.go";
 	}
+    
+    @RequestMapping(value = "/getUserDolbomDataCare", method = RequestMethod.GET)
+	public @ResponseBody List<DolbomDTO> getuserDolbomData(HttpServletRequest req, DolbomDTO dDTO) {
+		mDAO.logincheck(req);	
+		System.out.println(dDTO);
+		return cDAO.getUserDolbomDataCare(req, dDTO);
+	}
+    
+    @RequestMapping(value = "/caresitter.contract.do", method = RequestMethod.GET)
+	public String contractDo(HttpServletRequest req, DolbomDTO dDTO) {
+		mDAO.logincheck(req);
+		cDAO.updateMomContract(req, dDTO);
+		
+		return "redirect:/mypage.usage.go";
+	}
+    
+    @RequestMapping(value = "/caretaker.contract.do", method = RequestMethod.GET)
+    public String caretakerContractDo(HttpServletRequest req, DolbomDTO dDTO) {
+    	mDAO.logincheck(req);
+    	cDAO.updateCaretakerContract(req, dDTO);
+    	
+    	return "redirect:/mypage.usage.go";
+    }
     
     @RequestMapping(value = "/page.change.caresitter", method = RequestMethod.GET)
     public String paging(HttpServletRequest req, @RequestParam int p, Model model, CareSelector cs) {

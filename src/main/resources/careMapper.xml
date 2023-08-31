@@ -20,7 +20,7 @@
 		#{cs_location3}, #{cs_extra}, #{cs_exp}, #{cs_pay}, 0,
 		0, #{cs_can_do},0,null, null, null,0)
 	</insert>
-
+	
 	<insert id="regDolbom">
 		insert into dolbom_tbl values
 		(dolbom_tbl_seq.nextval, #{d_id}, #{d_name}, #{d_category}, #{d_year},
@@ -50,8 +50,7 @@
 	</select>
 
 	<select id="detailUser" resultType="com.sh.pj.account.MemberDTO">
-		select * from jsn_user_tbl
-		where user_id = #{cs_id}
+		select * from jsn_user_tbl where user_id = #{cs_id}
 	</select>
 
 	<select id="detailUser2"
@@ -141,5 +140,16 @@
 		WHERE rn &gt;= 1 and rn &lt;= 3
 	</select>
 	
+	<select id="getUserDolbomDataCare" resultType="com.sh.pj.account.DolbomDTO">
+		select * from dolbom_tbl where d_id = #{user_id} and d_category = 1
+	</select>
+	
+	<insert id="updateCareContract">
+		insert into contract_tbl values(contract_tbl_seq.nextval, 1, #{cs_id}, #{cs_pay}, 1, 1)
+	</insert>
+	
+	<insert id="updateCaretakerContract">
+		insert into contract_tbl values(contract_tbl_seq.nextval, 1, #{location3}, #{d_no}, 1, 1)	
+	</insert>
 
 </mapper>

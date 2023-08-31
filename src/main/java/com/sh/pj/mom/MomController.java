@@ -1,6 +1,7 @@
 package com.sh.pj.mom;
 
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,6 +42,7 @@ public class MomController {
 		return "home";
 	}
 	
+
 	@RequestMapping(value = "/momtaker.go", method = RequestMethod.GET)
 	public String momtaker(HttpServletRequest req, DolbomDTO dolbomDTO, Model m) {
 		mDAO.logincheck(req);	
@@ -146,12 +148,21 @@ public class MomController {
 		return "redirect:/mypage.takerRegMom.go";
 	}
 	
-	@RequestMapping(value = "/momsitter.contract.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/momsitter.contract.do", method = RequestMethod.GET)
 	public String contractDo(HttpServletRequest req, DolbomDTO dDTO) {
 		mDAO.logincheck(req);
 		momDAO.updateMomContract(req, dDTO);
 		
-		return "redirect:/mypage.takerRegMom.go";
+		return "redirect:/mypage.usage.go";
+		
+	}
+	
+	@RequestMapping(value = "/momtaker.contract.do", method = RequestMethod.GET)
+    public String caretakerContractDo(HttpServletRequest req, DolbomDTO dDTO) {
+    	mDAO.logincheck(req);
+    	momDAO.updateMomtakerContract(req, dDTO);
+    	
+    	return "redirect:/mypage.usage.go";
 	}
 	
   	@RequestMapping(value = "/page.change4", method = RequestMethod.GET)

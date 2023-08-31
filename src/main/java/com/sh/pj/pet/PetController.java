@@ -1,5 +1,7 @@
 package com.sh.pj.pet;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MembertDAO;
@@ -87,8 +90,30 @@ public class PetController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/getUserDolbomDataPet", method = RequestMethod.GET)
+	public @ResponseBody List<DolbomDTO> getuserDolbomData(HttpServletRequest req, DolbomDTO dDTO) {
+		mDAO.logincheck(req);	
+		System.out.println(dDTO);
+		return pDAO.getUserDolbomDataPet(req, dDTO);
+	}
+	
 
+	@RequestMapping(value = "/petsitter.contract.do", method = RequestMethod.GET)
+	public String contractDo(HttpServletRequest req, DolbomDTO dDTO) {
+		mDAO.logincheck(req);
+		pDAO.updatePetContract(req, dDTO);
+		
+		return "redirect:/mypage.usage.go";
+	}
 
+	@RequestMapping(value = "/pettaker.contract.do", method = RequestMethod.GET)
+    public String caretakerContractDo(HttpServletRequest req, DolbomDTO dDTO) {
+    	mDAO.logincheck(req);
+    	pDAO.updatePettakerContract(req, dDTO);
+    	
+    	return "redirect:/mypage.usage.go";
+	}
+	
 	@RequestMapping(value = "/pettaker.be", method = RequestMethod.POST)
 	public String pettaker_be(HttpServletRequest req, PetTakerDTO ptDTO, DolbomDTO dDTO) {
 		mDAO.logincheck(req);
