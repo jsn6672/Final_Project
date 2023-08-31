@@ -1,4 +1,12 @@
- @charset "UTF-8";
+@charset "UTF-8";
+@font-face {
+    font-family: 'CustomFont';
+    src: url('resources/css/sur.ttf') format('truetype');
+}
+
+body {
+    font-family: 'CustomFont', sans-serif;
+}
 
 /* body {
 	 overflow-y: scroll;
@@ -533,7 +541,6 @@ display: flex;
 	margin: 0 5px;
 }
 
-
 button {
 	padding: 10px 20px;
 	font-size: 16px;
@@ -638,8 +645,98 @@ button {
 /* 이용권 구매페이지 */
 .mpT {
 	width: 100vw;
-	height: 1600px;
+	height: 100%;
 	background-color: #FFEBE4;
+}
+
+.mpT-mention1 {
+	width: 100vw;
+	height: 150px;
+	/* margin-top: px; */
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.mpT-mention1-1 {
+	width: 100%;
+	padding-left: 35%;
+	/* text-align: left;  */
+	font-size: 15pt;
+}
+
+
+.mpT-mention1-2 {
+	width: 100%;
+	padding-left: 50%;
+/* 	text-align: right;  */
+	font-size: 30pt;
+}
+
+.mpT-mention2 {
+	margin-top: 1%;
+	margin-left: 1%;
+}
+
+.mpT-mention2-1 {
+	font-size:  15pt;
+}
+
+
+.mpT-mention2-2 { 
+	font-size: 10pt;
+}
+
+#mention1-2span {
+	font-weight: bold;
+}
+.mpT-mention3 {
+	width: 50%;
+	height: 150px;
+	margin-top: 1%;
+	margin-left: 1%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: gray;
+	border-radius: 1%;
+	font: 30pt;
+}
+
+.buy1month {
+	width: 50%;
+	height: 200px;
+	margin-top: 1%;
+	margin-left: 1%;
+	padding-right: 30px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 2%;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.soupRice {
+	width: 100px;
+}
+
+.month-name {
+	whi
+	margin-left: 10px;
+	font-size: 30px;
+}
+
+.ticketImg12 {
+	width: 460px;
+}
+
+.buyTicket-btn {
+	width: 140px;
+	height: 50px;
+	background-color: #E7B5AC;
 }
 
 /* 쿠폰 등록페이지 */
