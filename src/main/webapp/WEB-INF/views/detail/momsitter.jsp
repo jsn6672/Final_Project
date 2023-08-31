@@ -434,7 +434,8 @@
 							</c:choose>
 						</c:when>
 						<c:otherwise>
-							<button onclick="momsitterContract('${momsitter.ms_id}')">신청하기</button>
+							<button class="open-btn" onclick="momsitterContract('${momsitter.ms_id}')">신청하기</button>
+							<!-- <button class="open-btn">모달 테스트</button> -->
 						</c:otherwise>
 					</c:choose>
 				</div>
@@ -442,5 +443,54 @@
 		</div>
 		<div class="container-side"></div>
 	</div>
+	<dialog class="mymodal w-25 h-25 bg-white border-0">
+		<!-- 모달 전체 div -->
+		<div class="container-fluid d-flex justify-content-center align-items-center w-100 h-100 bg-transparent ">
+		
+		<!-- 유저 정보 및 돌보미 담는 곳 -->
+		<div class="d-flex flex-column bg-white w-100 h-100">
+			
+			<!-- 안내멘트 담는 div -->
+			<div class="d-flex justify-content-center align-items-center w-100 h-25 bg-blue">
+				<span>돌보미를 선택해주세요</span>
+				<form method="dialog">
+					<button>close</button>
+				</form>
+			</div>
+			
+			<!-- 유저의 돌봄정보 전체를 담는 div -->
+		<!--  	<div class="dolbom-box d-flex flex-column justify-content-center align-items-center w-100 h-75 bg-light">-->
+		<div class="dolbom-box h-75">
+				
+				<!-- 유저의 돌봄정보를 각각 담는 div  -->
+				
+				<!-- <div class="d-flex justify-contents-start align-items-center w-100 h-25 bg-red">
+					<div class="d-flex flex-column justify-contents-center alignt-items-center w-25 h-100">
+						<span>돌보미 이름</span>
+						<span>돌보미 나이</span>
+					</div>
+					<div class="d-flex justify-contents-center alignt-items-center w-75 h-100 bg-green">
+						<span>돌보미 상세설명</span>
+					</div>
+				</div>		 -->		
+
+			</div>
+		</div>
+		</div>
+		
+		
+	</dialog>
 </body>
+
+<script type="text/javascript">
+let open_btn = document.querySelector('.open-btn');
+let modal = document.querySelector('.mymodal');
+
+open_btn.addEventListener('click', function(){
+	console.log(111);
+	modal.showModal();
+	
+});
+
+</script>
 </html>

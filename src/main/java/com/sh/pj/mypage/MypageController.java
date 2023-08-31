@@ -297,15 +297,24 @@ public class MypageController {
 		req.setAttribute("mypageContentPage", "mypageTicket3Check.jsp");
 		return "home";
 	}
+
+	@RequestMapping(value = "/mypage.ticket.confirm", method = RequestMethod.POST)
+	public String ticketConfirm(HttpServletRequest req, MoneyDTO mm) {
+		mDAO.logincheck(req);
+	
+		mpDAO.confirmticket(req, mm);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageTicket3Check.jsp");
+
+		return ticketCheck(req, mm);
+	}
 	
 	@RequestMapping(value = "mypage.certif.check", method = RequestMethod.GET)
-	public String certificationCheck(HttpServletRequest req, MoneyDTO mm) {
+	public String certificationCheck(HttpServletRequest req, MoneyDTO mm ) {
 		mDAO.logincheck(req);
-		mpDAO.getMSConfirm(req);
-//		mpDAO.checkcheck(req);
-//		mpDAO.getcertiflist(req, mm);
+		mpDAO.confirmticket(req, mm);
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
-		req.setAttribute("mypageContentPage", "mypageCertification.jsp");
+		req.setAttribute("mypageContentPage", "mypageTicket3Check.jsp");
 		return "home";
 	}
 
@@ -456,6 +465,15 @@ public class MypageController {
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageCertification.jsp");
 //		req.setAttribute("mypageContentPage", "mypageGiveCoupon.jsp");
+		return "home";
+	}
+
+	@RequestMapping(value = "mypage.coupon.reg", method = RequestMethod.GET)
+	public String rmegCoupon(HttpServletRequest req) {
+		mDAO.logincheck(req);
+		mpDAO.getPoints(req);
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageGiveCoupon.jsp");
 		return "home";
 	}
 

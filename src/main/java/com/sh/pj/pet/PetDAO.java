@@ -152,11 +152,11 @@ public class PetDAO {
 			pDTO.setPs_file(newName + extension);
 			
 			String extra = pDTO.getPs_extra();
-			extra.replaceAll("\r\n", "<br>");
+			extra = extra.replaceAll("\r\n", "<br>");
 			pDTO.setPs_extra(extra);
 			
 			String exp = pDTO.getPs_exp();
-			exp.replace("\r\n", "<br>");
+			exp = exp.replace("\r\n", "<br>");
 			pDTO.setPs_exp(exp);
 
 			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");

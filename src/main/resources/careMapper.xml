@@ -89,9 +89,7 @@
 
 
 	<select id="review" resultType="com.sh.pj.ReviewDTO">
-
 		select * from review_tbl where review_sitter_id = #{cs_id} and review_category = 1
-
 	</select>
 
 	<select id="getMsg2" resultType="com.sh.pj.account.DolbomDTO">

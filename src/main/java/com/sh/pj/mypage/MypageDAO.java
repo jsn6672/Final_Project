@@ -519,12 +519,15 @@ public class MypageDAO {
 
 			int confirmResult = -1;
 			int ticketResult = -1;
+			int statusResult = -1;
 
 			int confirmResultPet = -1;
 			int ticketResultPet = -1;
+			int statusResultPet = -1;
 
 			int confirmResultCare = -1;
 			int ticketResultCare = -1;
+			int statusResultCare = -1;
 
 			switch (months) {
 			case 1:
@@ -556,6 +559,12 @@ public class MypageDAO {
 				ticketResult = ss.getMapper(MypageMapper.class).confirmticket(mm);
 				if (ticketResult == 1) {
 					System.out.println("결제상태 수정 완료");
+					statusResult = ss.getMapper(MypageMapper.class).userstatus(mm);
+					if (statusResult == 1) {
+						System.out.println("유저상태 수정 완료");
+					} else {
+						System.out.println("유저상태 수정 실패");
+					}
 				} else {
 					System.out.println("결제상태 수정 실패");
 				}
@@ -961,6 +970,19 @@ public class MypageDAO {
 		}
 		req.setAttribute("csconfirm", ctconfirm);
 		
+	}
+
+	public void getPoints(HttpServletRequest req) {
+		List<MomDTO> momP = ss.getMapper(MypageMapper.class).getpointsMS();
+		List<PetDTO> petP = ss.getMapper(MypageMapper.class).getpointsPS();
+		List<PetDTO> careP = ss.getMapper(MypageMapper.class).getpointsCS();
+		
+		System.out.println("쿠폰 확인용");
+		System.out.println(momP);
+		
+		req.setAttribute("momP", momP);
+		req.setAttribute("petP", petP);
+		req.setAttribute("careP", careP);
 	}
 
 }

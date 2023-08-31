@@ -133,6 +133,13 @@ public interface MypageMapper {
 	public MemberDTO getPTuserinfo(PetTakerDTO mmm);
 
 	public MemberDTO getCTuserinfo(CareTakerDTO mmm);
+	public int userstatus(MoneyDTO mm);
+
+	public List<MomDTO> getpointsMS();
+
+	public List<PetDTO> getpointsPS();
+
+	public List<PetDTO> getpointsCS();
 
 
 

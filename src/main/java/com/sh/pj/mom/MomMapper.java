@@ -72,6 +72,8 @@ public interface MomMapper {
 
 	public List<MomDTO> getAllPoint(MomDTO momDTO);
 
+	public int updateMomContract(MomDTO momDTO);
+
 
 
 
