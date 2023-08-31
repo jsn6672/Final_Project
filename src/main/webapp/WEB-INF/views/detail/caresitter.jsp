@@ -83,6 +83,7 @@
 					<div class="header-data1">
 						<div style="margin: 5px;">
 							<span style="font-size: 14pt;">간병인 ${caresitter.mm.user_name }</span>
+							<span>${caresitter.mm.user_age }세</span>
 							<c:choose>
 								<c:when test="${caresitter.mm.user_gender eq 'female'}">
 									<span style="font-size: 10pt;;">여</span>
@@ -91,7 +92,14 @@
 									<span style="font-size: 10pt;">남</span>
 								</c:otherwise>
 							</c:choose>
-							<span style="font-size: 10pt;">cctv촬영 - ${caresitter.cs_cctv }</span>
+							<c:choose>
+								<c:when test="${momsitter.ms_cctv == 1 }">
+									<span style="font-size: 10pt;">CCTV촬영 - 가능</span>
+								</c:when>
+								<c:otherwise>
+									<span style="font-size: 10pt;">CCTV촬영 - 불가능</span>
+								</c:otherwise>
+							</c:choose>
 							<div style="display: flex;">
 								<div>희망 시급: ${caresitter.cs_pay }</div>
 								<div style="margin-left: 10px;">(${caresitter.cs_term })</div>
@@ -324,12 +332,12 @@
 										<div>
 											<div style="display: flex;">
 												<div>
-													<span style="font-size: 15pt; font-weight: 500;">${r.memberDTO.user_id }님</span>
-													<span id="review_create_at" hidden="hidden">
-													<fmt:formatDate	value="${r.review_create_at}" type="date" pattern="yyyy. MM. dd. HH:mm" />
+													<span style="font-size: 15pt; font-weight: 500;">${r.memberDTO.user_name }님</span>
+													<span id="review_create_at">
+													<fmt:formatDate	value="${r.review_create_at}" type="date" pattern="yyyy. MM. dd" />
 													</span> <span class="date" id="write-date-placeholder"></span>
 												</div>
-												<div style="margin-left: 30px;">
+												<div style="margin-left: 30px; margin-top: -11px; ">
 													<span class="review_star"> ★★★★★ <span>★★★★★</span>
 														<input type="range" class="s" step="1" min="0" max="10">
 														<input type="text" class="star_value" name="star_value"	value="${r.review_point}">
@@ -368,13 +376,63 @@
 								</c:choose>
 							</c:when>
 							<c:otherwise>
-								<button>신청하기</button>
-							</c:otherwise>
-						</c:choose>
-					</div>
+							<button class="open-btn" onclick="caresitterContract('${caresitter.cs_id}')">신청하기</button>
+							<!-- <button class="open-btn">모달 테스트</button> -->
+						</c:otherwise>
+					</c:choose>
+				</div>
 			</div>
 		</div>
 		<div class="container-side"></div>
 	</div>
+	<dialog class="mymodal w-25 h-25 bg-white border-0">
+		<!-- 모달 전체 div -->
+		<div class="container-fluid d-flex justify-content-center align-items-center w-100 h-100 bg-transparent ">
+		
+		<!-- 유저 정보 및 돌보미 담는 곳 -->
+		<div class="d-flex flex-column bg-white w-100 h-100">
+			
+			<!-- 안내멘트 담는 div -->
+			<div class="d-flex justify-content-center align-items-center w-100 h-25 bg-blue">
+				<span>돌보미를 선택해주세요</span>
+				<form method="dialog">
+					<button>close</button>
+				</form>
+			</div>
+			
+			<!-- 유저의 돌봄정보 전체를 담는 div -->
+		<!--  	<div class="dolbom-box d-flex flex-column justify-content-center align-items-center w-100 h-75 bg-light">-->
+		<div class="dolbom-box h-75">
+				
+				<!-- 유저의 돌봄정보를 각각 담는 div  -->
+				
+				<!-- <div class="d-flex justify-contents-start align-items-center w-100 h-25 bg-red">
+					<div class="d-flex flex-column justify-contents-center alignt-items-center w-25 h-100">
+						<span>돌보미 이름</span>
+						<span>돌보미 나이</span>
+					</div>
+					<div class="d-flex justify-contents-center alignt-items-center w-75 h-100 bg-green">
+						<span>돌보미 상세설명</span>
+					</div>
+				</div>		 -->		
+
+			</div>
+		</div>
+		</div>
+		
+		
+	</dialog>
 </body>
+
+<script type="text/javascript">
+let open_btn = document.querySelector('.open-btn');
+let modal = document.querySelector('.mymodal');
+
+open_btn.addEventListener('click', function(){
+	modal.showModal();
+	console.log(111);
+	
+});
+
+</script>
 </html>

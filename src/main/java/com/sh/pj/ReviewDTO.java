@@ -1,6 +1,7 @@
 package com.sh.pj;
 
 import java.util.Date;
+import java.util.List;
 
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
@@ -20,7 +21,8 @@ public class ReviewDTO {
 	private String review_category;
 	private DolbomDTO r_dolbomDTO;
 	private int r_count;
-	
+
+
 	@Override
 	public String toString() {
 		return "ReviewDTO [review_no=" + review_no + ", review_taker_id=" + review_taker_id + ", review_sitter_id="
@@ -29,6 +31,7 @@ public class ReviewDTO {
 				+ review_cont_no + ", memberDTO=" + memberDTO + ", review_category=" + review_category
 				+ ", r_dolbomDTO=" + r_dolbomDTO + ", r_count=" + r_count + "]";
 	}
+
 
 	public int getR_count() {
 		return r_count;

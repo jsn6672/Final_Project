@@ -280,30 +280,9 @@
 						<div class="body-content-detail">${dolbom.d_need }</div>
 					</div>
 				</div>
-				<c:if test="${dolbom.d_id eq sessionScope.userInfo.user_id }">
-					<div class="detail-btn">
-						<%-- 					<c:choose>
-							<c:when test="${dolbom.d_notice == '1' }">
-								<button
-									onclick="location.href='pettaker.update.go?d_id=${dolbom.d_id}'">수정</button>
-								<button
-									onclick="location.href='pettaker.notice.up?d_id=${dolbom.d_id}'"
-									style="margin-left: 10px;">공고 올리기</button>
-								<button onclick="pettakerDelete(${dolbom.d_id})"
-									style="margin-left: 10px;">삭제</button>
-							</c:when>
-							<c:otherwise>
-								<button
-									onclick="location.href='pettaker.update.go?d_id=${dolbom.d_id}'">수정</button>
-								<button
-									onclick="location.href='pettaker.notice.up?d_id=${dolbom.d_id}'"
-									style="margin-left: 10px;">공고 올리기</button>
-								<button onclick="pettakerDelete(${dolbom.d_id})"
-									style="margin-left: 10px;">삭제</button>
-							</c:otherwise>
-						</c:choose> --%>
-					</div>
-				</c:if>
+				<div class="detail-btn">
+					<button onclick="pettakerContract('${dolbom.d_no}', '${sessionScope.userInfo.user_id }', '${userInfo.user_ps_status }')">신청하기</button>
+				</div>
 			</div>
 		</div>
 		<div class="container-side"></div>
@@ -322,5 +301,27 @@
 	// 결과를 화면에 표시
 	const ageElement = document.getElementById("age");
 	ageElement.textContent = age;
+</script>
+<script type="text/javascript">
+function pettakerContract(d_no, user_id, user_status){
+	// 시터쪽 구분자 = 미등록(이용권 구매x) 0/  이용권구매필요(등록o, 이용권 구매x, 인증x) 1/ 인증 대기(이용권 구매o, 인증x) 2/ 인증완료(공고off , 인증o) 3/ 구직중(공고 on) 4/ 구인완료 5/  기한 만료 ?/
+	console.log("thisisno" + d_no);
+	console.log(user_id);
+	console.log(user_status);
+	if (user_id == '') {
+		alert('로그인 후 신청해주세요');
+		location.href = 'login.go';
+	}else if(user_status == 1){
+		alert('시터 정보를 입력한 후 신청해주세요');
+	}else if(user_status == 2){
+		slert('이용권 구매와 필요서류를 등록 후 신청해주세요');
+	}else{
+		let ok = confirm('신청하시겠습니까?');
+		if(ok){
+			location.href = 'pettaker.contract.do?d_no=' + d_no;
+		}
+		
+	}
+}
 </script>
 </html>

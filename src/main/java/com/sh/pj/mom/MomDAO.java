@@ -3,6 +3,8 @@ package com.sh.pj.mom;
 import java.io.File;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
 
@@ -87,6 +89,16 @@ public class MomDAO {
 		mm.setSunday(ps_day[6]);
 
 		mm.setMm(ss.getMapper(MomMapper.class).detailUser(mm));
+		
+		LocalDate now = LocalDate.now();
+		int nowyear = now.getYear();
+		MemberDTO mbd = ss.getMapper(MomMapper.class).detailUser(mm);
+		int birthyear = Integer.parseInt(mbd.getUser_age())/10000;	
+		
+		mbd.setUser_age(Integer.toString(nowyear - birthyear + 1));
+		
+		mm.setMm(mbd);
+
 
 		List<ReviewDTO> rDTO = ss.getMapper(MomMapper.class).review(momDTO);
 
@@ -498,6 +510,12 @@ public class MomDAO {
 	}
 
 	public void getMsg(int pageNo, HttpServletRequest req) {
+		
+		LocalDate now = LocalDate.now();
+
+		// 연도, 월(문자열, 숫자), 일, 일(year 기준), 요일(문자열, 숫자)
+		int nowyear = now.getYear();
+			
 		int count = 3;
 		int start = (pageNo - 1) * count + 1;
 		int end = start + (count - 1);
@@ -520,18 +538,21 @@ public class MomDAO {
 			msgCount = allMsgCountMomSitter;
 			System.out.println("앙 공주띠");	
 			System.out.println(allMsgCountMomSitter);
-
 			
 		}
-
-//		aDTO.setInquiry_category(req.getParameter("inquiry_category"));
-		System.out.println("asksearch = " + momSearch);
+		
 		try {
 
 			List<MomDTO> resultList = ss.getMapper(MomMapper.class).getMsg(momSearch);
 			
 			for (MomDTO m : resultList) {
-				m.setMm(ss.getMapper(MomMapper.class).detailUser(m));
+				
+				MemberDTO mbd = ss.getMapper(MomMapper.class).detailUser(m);
+				int birthyear = Integer.parseInt(mbd.getUser_age())/10000;	
+				
+				mbd.setUser_age(Integer.toString(nowyear - birthyear + 1));
+				
+				m.setMm(mbd);
 
 			}
 			
@@ -540,7 +561,7 @@ public class MomDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
 		System.out.println("여기까지 나오나 쳌");
 
 		int pageCount = (int) Math.ceil(msgCount / (double) count);
@@ -611,7 +632,7 @@ public class MomDAO {
 		System.out.println("지금 여기까지 오긴 ㅎㅏ는거임?	");
 		MemberDTO memberDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 		
-		List<DolbomDTO>dDTOs = ss.getMapper(MomMapper.class).getUserDolbomData(memberDTO);
+		List<DolbomDTO> dDTOs = ss.getMapper(MomMapper.class).getUserDolbomData(memberDTO);
 		for (DolbomDTO d : dDTOs) {
 			int year = nowyear - d.getD_year();
 			int month = nowmonthValue - d.getD_month();
@@ -650,6 +671,12 @@ public class MomDAO {
 		}
 		
 				
+	}
+
+	public void updateMomtakerContract(HttpServletRequest req, DolbomDTO dDTO) {
+		MemberDTO memberDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		dDTO.setLocation3(memberDTO.getUser_id());
+		ss.getMapper(MomMapper.class).updateCaretakerContract(dDTO);		
 	}		
 	
 

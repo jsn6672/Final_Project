@@ -53,6 +53,12 @@ public interface CareMapper {
 	
 	public List<CareDTO> getAllPoint(CareDTO cDTO);
 
+	public List<DolbomDTO> getUserDolbomDataCare(MemberDTO memberDTO);
+
+	public int updateCareContract(CareDTO careDTO);
+
+	public void updateCaretakerContract(DolbomDTO dDTO);
+
 
 
 

@@ -65,6 +65,14 @@ public interface PetMapper {
 	public int psReject(PetDTO pDTO);
 	public List<PetDTO> getAllPoint(PetDTO petDTO);
 
+	public List<DolbomDTO> getUserDolbomDataPet(MemberDTO memberDTO);
+
+	public int updatePetContract(PetDTO petDTO);
+
+	public MemberDTO detailReview(ReviewDTO reviewDTO);
+
+	public void updatePettakerContract(DolbomDTO dDTO);
+
 
 
 

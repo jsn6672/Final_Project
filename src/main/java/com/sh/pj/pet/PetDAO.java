@@ -3,7 +3,7 @@ package com.sh.pj.pet;
 import java.io.File;
 
 import java.math.BigDecimal;
-
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,6 +23,8 @@ import com.sh.pj.account.MemberMapper;
 
 import com.sh.pj.ask.SiteOption;
 import com.sh.pj.care.CareMapper;
+import com.sh.pj.mom.MomDTO;
+import com.sh.pj.mom.MomMapper;
 
 
 @Service
@@ -123,10 +125,24 @@ public class PetDAO {
 
 		pp.setMm(ss.getMapper(PetMapper.class).detailUser(pp));
 		
+		LocalDate now = LocalDate.now();
+		int nowyear = now.getYear();
+		MemberDTO mbd = ss.getMapper(PetMapper.class).detailUser(pp);
+		int birthyear = Integer.parseInt(mbd.getUser_age())/10000;	
+		
+		mbd.setUser_age(Integer.toString(nowyear - birthyear + 1));
+		
+		pp.setMm(mbd);
+		
 		List<ReviewDTO> rDTO = ss.getMapper(PetMapper.class).review(petDTO);
 		m.addAttribute("review", rDTO);
 		if (rDTO == null || rDTO.isEmpty()) {
 			m.addAttribute("review", "none");
+        }else {
+        	for (ReviewDTO reviewDTO : rDTO) {
+        		reviewDTO.setMemberDTO(ss.getMapper(PetMapper.class).detailReview(reviewDTO));
+        	}
+        	m.addAttribute("review", rDTO);
         }
 		
 		System.out.println(ss.getMapper(PetMapper.class).review(petDTO));
@@ -378,6 +394,11 @@ public class PetDAO {
 	
 
 	public void getMsg(int pageNo, HttpServletRequest req) {
+		
+		LocalDate now = LocalDate.now();
+		// 연도, 월(문자열, 숫자), 일, 일(year 기준), 요일(문자열, 숫자)
+		int nowyear = now.getYear();
+		
 		int count = 3;
 		int start = (pageNo - 1) * count + 1;
 		int end = start + (count - 1);
@@ -406,7 +427,13 @@ public class PetDAO {
 			List<PetDTO> resultList = ss.getMapper(PetMapper.class).getMsg(petSearch);
 			
 			for (PetDTO p : resultList) {
-				p.setMm(ss.getMapper(PetMapper.class).detailUser(p));
+				
+				MemberDTO mbd = ss.getMapper(PetMapper.class).detailUser(p);
+				int birthyear = Integer.parseInt(mbd.getUser_age())/10000;	
+				
+				mbd.setUser_age(Integer.toString(nowyear - birthyear + 1));
+				
+				p.setMm(mbd);
 			}
 			
 			req.setAttribute("s", resultList);
@@ -602,6 +629,52 @@ public class PetDAO {
 		
 		req.setAttribute("ss", resultList);
 	
+	}
+
+	public List<DolbomDTO> getUserDolbomDataPet(HttpServletRequest req, DolbomDTO dDTO) {
+		// 현재 날짜 구하기 (시스템 시계, 시스템 타임존)
+				LocalDate now = LocalDate.now();
+
+				// 연도, 월(문자열, 숫자), 일, 일(year 기준), 요일(문자열, 숫자)
+				int nowyear = now.getYear();
+				int nowmonthValue = now.getMonthValue();
+				System.out.println("지금 여기까지 오긴 ㅎㅏ는거임?	");
+				MemberDTO memberDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+				
+				List<DolbomDTO> dDTOs = ss.getMapper(PetMapper.class).getUserDolbomDataPet(memberDTO);
+				for (DolbomDTO d : dDTOs) {
+					int year = nowyear - d.getD_year();
+					int month = nowmonthValue - d.getD_month();
+					if ((year * 12) + month >= 36) {
+						d.setAge(year + 1);
+						d.setAgetype("살");
+					} else {
+						d.setAge((year * 12) + month + 1);
+						d.setAgetype("개월");
+					}
+					
+				}
+				
+				return dDTOs;
+				
+			
+	}
+
+	public void updatePetContract(HttpServletRequest req, DolbomDTO dDTO) {
+		PetDTO petDTO = new PetDTO();
+		petDTO.setPs_id(req.getParameter("ps_id"));
+		petDTO.setPs_pay(Integer.parseInt(req.getParameter("d_no")));
+		
+		if(ss.getMapper(PetMapper.class).updatePetContract(petDTO) == 1) {
+			System.out.println("contract 성공!");
+		}
+		
+	}
+
+	public void updatePettakerContract(HttpServletRequest req, DolbomDTO dDTO) {
+		MemberDTO memberDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		dDTO.setLocation3(memberDTO.getUser_id());
+		ss.getMapper(PetMapper.class).updatePettakerContract(dDTO);		
 	}
 
 

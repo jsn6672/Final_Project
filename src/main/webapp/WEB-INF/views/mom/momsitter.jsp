@@ -136,8 +136,23 @@ https://templatemo.com/tm-580-woox-travel
 												</div>
 												<div>
 													<a href="momsitter.detail.go?ms_id=${m.ms_id }">맘시터:
-														${m.mm.user_name }(이름)</a> <span>나이</span> <span>성별</span> <span>cctv촬영
-														- ${m.ms_cctv }</span>
+														${m.mm.user_name }</a> <span>${m.mm.user_age }세</span>
+													<c:choose>
+														<c:when test="${m.mm.user_gender eq 'female'}">
+															<span>여</span>
+														</c:when>
+														<c:otherwise>
+															<span>남</span>
+														</c:otherwise>
+													</c:choose>				
+													<c:choose>
+														<c:when test="${m.ms_cctv == 1 }">
+															<span>CCTV촬영 - 가능</span>
+														</c:when>
+														<c:otherwise>
+															<span>CCTV촬영 - 불가능</span>
+														</c:otherwise>
+													</c:choose>
 												</div>
 												<div style="display: flex;">
 													<div>시급: ${m.ms_pay }</div>
@@ -162,21 +177,15 @@ https://templatemo.com/tm-580-woox-travel
 												style="display: flex; justify-content: center;">
 												<div class="custom-pagination">
 													<c:if test="${curPage != 1 }">
-														<a
-															href="page.change.momsitter?p=${curPage - 1}&ms_search=${searchSession.ms_search}"
-															class="prev">Previous</a>
+														<a href="page.change.momsitter?p=${curPage - 1}&ms_search=${searchSession.ms_search}" class="prev">Previous</a>
 													</c:if>
-													<c:forEach begin="${startPage}" end="${endPage}"
-														varStatus="loop">
+													<c:forEach begin="${startPage}" end="${endPage}" varStatus="loop">
 														<c:choose>
 															<c:when test="${curPage == loop.index}">
-																<a
-																	href="page.change.momsitterp=${loop.index}&ms_search=${searchSession.ms_search}"
-																	class="active">${loop.index}</a>
+																<a href="page.change.momsitterp=${loop.index}&ms_search=${searchSession.ms_search}"	class="active">${loop.index}</a>
 															</c:when>
 															<c:otherwise>
-																<a
-																	href="page.change.momsitterp=${loop.index}&ms_search=${searchSession.ms_search}">${loop.index}</a>
+																<a href="page.change.momsitterp=${loop.index}&ms_search=${searchSession.ms_search}">${loop.index}</a>
 															</c:otherwise>
 														</c:choose>
 													</c:forEach>
@@ -467,6 +476,10 @@ https://templatemo.com/tm-580-woox-travel
 
 							</div>
 						</div>
+						</div>
+						</div>
+						</div>
+						
 		</section>
 	</main>
 	<!-- End #main -->

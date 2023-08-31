@@ -74,6 +74,8 @@ public interface MomMapper {
 
 	public int updateMomContract(MomDTO momDTO);
 
+	public void updateCaretakerContract(DolbomDTO dDTO);
+
 
 
 
