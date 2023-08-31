@@ -74,6 +74,13 @@ public interface MomMapper {
 
 	public int updateMomContract(MomDTO momDTO);
 
+	public int mtAccept(MomTakerDTO momDTO);
+
+	public int mtReject(MomTakerDTO momDTO);
+
+	public int getMtConMessage(MemberDTO mDTO);
+	public int getMsConMessage(MemberDTO mDTO);
+
 
 
 

@@ -231,6 +231,61 @@
 		if (d_act % 19 === 0) {
 			$("#d_act_8th").attr('checked', true);
 		}
+		
+		 // 하나 이상의 체크박스가 선택되었는지 확인하는 함수
+	    function isAtLeastOneCheckboxChecked(checkboxes) {
+	        for (let i = 0; i < checkboxes.length; i++) {
+	            if (checkboxes[i].checked) {
+	                return true;
+	            }
+	        }
+	        return false;
+	    }
+
+	    // 폼 제출 전 유효성을 검사하는 함수
+	    function validateForm() {
+	    	console.log("일단 여기 오는지 확인");
+	        const careActivityCheckboxes = document.querySelectorAll('input[name="dolbom_act"]');
+	        
+	        const isCareActivityChecked = isAtLeastOneCheckboxChecked(careActivityCheckboxes);
+
+	        if (!isCareActivityChecked) {
+	            alert("폼을 제출하기 전에 최소한 하나 이상의 활동을 선택해주세요.");
+	            return false; // 폼 제출 방지
+	        }
+
+	        return true; // 폼 제출 허용
+	    }
+
+	    // 폼 제출 이벤트에 유효성 검사 함수를 연결합니다.
+	    $('form').on('submit', validateForm);
+	    
+	    function validateActivityTime() {
+	        const activityCheckboxes = document.querySelectorAll(
+	            'input[name^="monday"], ' +
+	            'input[name^="tuesday"], ' +
+	            'input[name^="wednesday"], ' +
+	            'input[name^="thursday"], ' +
+	            'input[name^="friday"], ' +
+	            'input[name^="saturday"], ' +
+	            'input[name^="sunday"]'
+	        );
+
+	        for (let i = 0; i < activityCheckboxes.length; i++) {
+	            if (activityCheckboxes[i].checked) {
+	                return true;
+	            }
+	        }
+
+	        return false;
+	    }
+
+	    $('form').on('submit', function(event) {
+	        if (!validateActivityTime()) {
+	            event.preventDefault();
+	            alert('하나 이상의 요일을 선택해주세요');
+	        }
+	    });
 
 	}) // 레디펑션
 </script>

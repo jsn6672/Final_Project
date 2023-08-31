@@ -149,6 +149,33 @@
 
 	    // 폼 제출 이벤트에 유효성 검사 함수를 연결합니다.
 	    $('form').on('submit', validateForm);
+	    
+	    function validateActivityTime() {
+	        const activityCheckboxes = document.querySelectorAll(
+	            'input[name^="monday"], ' +
+	            'input[name^="tuesday"], ' +
+	            'input[name^="wednesday"], ' +
+	            'input[name^="thursday"], ' +
+	            'input[name^="friday"], ' +
+	            'input[name^="saturday"], ' +
+	            'input[name^="sunday"]'
+	        );
+
+	        for (let i = 0; i < activityCheckboxes.length; i++) {
+	            if (activityCheckboxes[i].checked) {
+	                return true;
+	            }
+	        }
+
+	        return false;
+	    }
+
+	    $('form').on('submit', function(event) {
+	        if (!validateActivityTime()) {
+	            event.preventDefault();
+	            alert('하나 이상의 요일을 선택해주세요');
+	        }
+	    });
 
 	}) // 레디펑션
 </script>

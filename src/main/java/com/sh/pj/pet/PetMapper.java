@@ -63,8 +63,16 @@ public interface PetMapper {
 	public int psAccept(PetDTO pDTO);
 
 	public int psReject(PetDTO pDTO);
+	
+	public int ptAccept(PetTakerDTO pDTO);
+	
+	public int ptReject(PetTakerDTO pDTO);
+	
 	public List<PetDTO> getAllPoint(PetDTO petDTO);
 
+
+	public int getPtConMessage(MemberDTO mDTO);
+	public int getPsConMessage(MemberDTO mDTO);
 
 
 

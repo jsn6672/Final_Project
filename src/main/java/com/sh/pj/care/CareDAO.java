@@ -611,5 +611,19 @@ public class CareDAO {
 	
 
 }
+
+	public void ctAccept(HttpServletRequest req, CareTakerDTO cDTO) {
+		if(ss.getMapper(CareMapper.class).ctAccept(cDTO)==1) {
+			if(ss.getMapper(MemberMapper.class).ctUpdate(cDTO) == 1) {
+				System.out.println("당신을 케어맘시터로 인정합니다");				
+			}
+		}		
+	}
+
+	public void ctReject(HttpServletRequest req, CareTakerDTO cDTO) {
+		if(ss.getMapper(CareMapper.class).ctReject(cDTO)==1) {
+			System.out.println("넌 못지나간다");
+		}		
+	}
 	
 }

@@ -133,5 +133,16 @@
 		update jsn_user_tbl set user_ps_status = 3 where user_id = #{ps_id}
 	</update>
 	
+	<update id="mtUpdate">
+		update jsn_user_tbl set user_mt_status = 2 where user_id = #{mt_id}
+	</update>
+	
+	<update id="ctUpdate">
+		update jsn_user_tbl set user_ct_status = 2 where user_id = #{ct_id}
+	</update>
+	
+	<update id="ptUpdate">
+		update jsn_user_tbl set user_pt_status = 2 where user_id = #{pt_id}
+	</update>
 	
 </mapper>

@@ -320,6 +320,32 @@
 		where user_cs_status = 2)
 		and cs_confirm = 0 and cs_confirm_answer = 'ndy'
 	</select>
+	<select id="getmtconfirm" resultType="com.sh.pj.mom.MomTakerDTO">
+		select * from momtaker_tbl
+		where mt_id in
+		(select user_id
+		from jsn_user_tbl
+		where user_mt_status = 1)
+		and mt_confirm = 0 and mt_confirm_answer = 'ndy'
+	</select>
+
+	<select id="getptconfirm" resultType="com.sh.pj.pet.PetTakerDTO">
+		select * from pettaker_tbl
+		where pt_id in
+		(select user_id
+		from jsn_user_tbl
+		where user_pt_status = 1)
+		and pt_confirm = 0 and pt_confirm_answer = 'ndy'
+	</select>
+
+	<select id="getctconfirm" resultType="com.sh.pj.care.CareTakerDTO">
+		select * from
+		caretaker_tbl where ct_id in
+		(select user_id
+		from jsn_user_tbl
+		where user_ct_status = 1)
+		and ct_confirm = 0 and ct_confirm_answer = 'ndy'
+	</select>
 
 	<select id="getMSuserinfo"
 		resultType="com.sh.pj.account.MemberDTO">
@@ -337,6 +363,23 @@
 		resultType="com.sh.pj.account.MemberDTO">
 		select * from jsn_user_tbl
 		where user_id = #{cs_id}
+	</select>
+	<select id="getMTuserinfo"
+		resultType="com.sh.pj.account.MemberDTO">
+		select * from jsn_user_tbl
+		where user_id = #{mt_id}
+	</select>
+
+	<select id="getPTuserinfo"
+		resultType="com.sh.pj.account.MemberDTO">
+		select * from jsn_user_tbl
+		where user_id = #{pt_id}
+	</select>
+
+	<select id="getCTuserinfo"
+		resultType="com.sh.pj.account.MemberDTO">
+		select * from jsn_user_tbl
+		where user_id = #{ct_id}
 	</select>
 
 	<update id="usecoupon">

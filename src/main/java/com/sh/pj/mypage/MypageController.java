@@ -30,8 +30,10 @@ import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MembertDAO;
 import com.sh.pj.care.CareDAO;
 import com.sh.pj.care.CareDTO;
+import com.sh.pj.care.CareTakerDTO;
 import com.sh.pj.mom.MomDAO;
 import com.sh.pj.mom.MomDTO;
+import com.sh.pj.mom.MomTakerDTO;
 import com.sh.pj.pet.PetDAO;
 import com.sh.pj.pet.PetDTO;
 import com.sh.pj.pet.PetTakerDTO;
@@ -242,6 +244,7 @@ public class MypageController {
 		mpDAO.getSitterAllCont(req, cntDTO);
 		mpDAO.countTakerCont(req, cntDTO);
 		mpDAO.getTakerAllCont(req);
+		mpDAO.getAdminMessage(req);
 		
 		req.setAttribute("mypageContentPage", "mypageUsageDetail.jsp");
 		return "home";
@@ -462,6 +465,9 @@ public class MypageController {
 		mpDAO.getMSConfirm(req);
 		mpDAO.getPSConfirm(req);
 		mpDAO.getCSConfirm(req);
+		mpDAO.getMTConfirm(req);
+		mpDAO.getPTConfirm(req);
+		mpDAO.getCTConfirm(req);
 		req.setAttribute("contentPage", "mypage/mypage.jsp");
 		req.setAttribute("mypageContentPage", "mypageCertification.jsp");
 //		req.setAttribute("mypageContentPage", "mypageGiveCoupon.jsp");
@@ -581,6 +587,42 @@ public class MypageController {
 	@RequestMapping(value = "/mypage.PsReject.go", method = RequestMethod.GET)
 	public String psReject(HttpServletRequest req, PetDTO pDTO) {
 		pDAO.psReject(req, pDTO);
+		
+		return "redirect:/mypage.certif.confirm";
+	}
+	@RequestMapping(value = "/mypage.MtAccept.go", method = RequestMethod.GET)
+	public String mtAccept(HttpServletRequest req, MomTakerDTO mtDTO) {
+		momDAO.mtAccept(req, mtDTO);
+		
+		return "redirect:/mypage.certif.confirm";
+	}
+	@RequestMapping(value = "/mypage.MtReject.go", method = RequestMethod.GET)
+	public String mtReject(HttpServletRequest req, MomTakerDTO mtDTO) {
+		momDAO.mtReject(req, mtDTO);
+		
+		return "redirect:/mypage.certif.confirm";
+	}
+	@RequestMapping(value = "/mypage.CtAccept.go", method = RequestMethod.GET)
+	public String ctAccept(HttpServletRequest req, CareTakerDTO ctDTO) {
+		cDAO.ctAccept(req, ctDTO);
+		
+		return "redirect:/mypage.certif.confirm";
+	}
+	@RequestMapping(value = "/mypage.CtReject.go", method = RequestMethod.GET)
+	public String ctReject(HttpServletRequest req, CareTakerDTO ctDTO) {
+		cDAO.ctReject(req, ctDTO);
+		
+		return "redirect:/mypage.certif.confirm";
+	}
+	@RequestMapping(value = "/mypage.PtAccept.go", method = RequestMethod.GET)
+	public String ptAccept(HttpServletRequest req, PetTakerDTO ptDTO) {
+		pDAO.ptAccept(req, ptDTO);
+		
+		return "redirect:/mypage.certif.confirm";
+	}
+	@RequestMapping(value = "/mypage.PtReject.go", method = RequestMethod.GET)
+	public String ptReject(HttpServletRequest req, PetTakerDTO ptDTO) {
+		pDAO.ptReject(req, ptDTO);
 		
 		return "redirect:/mypage.certif.confirm";
 	}

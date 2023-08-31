@@ -17,7 +17,7 @@
 		(dolbom_tbl_seq.nextval, #{d_id}, #{d_name}, #{d_category}, #{d_year},
 		#{d_month}, #{d_day}, #{d_hour}, #{d_check}, #{d_location},
 		#{d_gender}, #{d_personality}, #{d_pay}, #{d_cctv}, #{d_can_do},
-		#{d_sitterage}, #{d_need}, #{d_title}, #{d_term}, null, null, null)
+		#{d_sitterage}, #{d_need}, 'off', #{d_term}, null, null, null)
 	</insert>
 
 	<insert id="regMomSitter">
@@ -153,7 +153,13 @@
 	<update id="msReject">
 		update momsitter_tbl set ms_confirm_answer = 'reject' where ms_id = #{ms_id}
 	</update>
-
+	<update id="mtAccept">
+		update momtaker_tbl set mt_confirm = 1 where mt_id = #{mt_id}
+	</update>
+	
+	<update id="mtReject">
+		update momtaker_tbl set mt_confirm_answer = 'reject' where mt_id = #{mt_id}
+	</update>
 
 
 	<select id="getAllPoint" resultType="com.sh.pj.mom.MomDTO">
@@ -170,5 +176,13 @@
 	<insert id="updateMomContract">
 		insert into contract_tbl values(contract_tbl_seq, 2, #{ms_id}, #{ms_pay}, 1, 1)
 	</insert>
+	
+	<select id="getMsConMessage" resultType="int">
+		select count(*) from momsitter_tbl where ms_id = #{user_id} and ms_confirm_answer = 'reject'
+	</select>
+	
+	<select id="getMtConMessage" resultType="int">
+		select count(*) from momtaker_tbl where mt_id = #{user_id} and mt_confirm_answer = 'reject'
+	</select>
 	
 </mapper>

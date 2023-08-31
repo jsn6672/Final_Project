@@ -593,6 +593,19 @@ public class PetDAO {
 			System.out.println("넌 못지나간다");
 		}			
 	}
+	public void ptAccept(HttpServletRequest req, PetTakerDTO pDTO) {
+		if(ss.getMapper(PetMapper.class).ptAccept(pDTO)==1) {
+			if(ss.getMapper(MemberMapper.class).ptUpdate(pDTO) == 1) {
+				System.out.println("당신을 펫시터로 인정합니다");				
+			}
+		}			
+	}
+	
+	public void ptReject(HttpServletRequest req, PetTakerDTO pDTO) {
+		if(ss.getMapper(PetMapper.class).ptReject(pDTO)==1) {
+			System.out.println("넌 못지나간다");
+		}			
+	}
 	public void getallpoint(HttpServletRequest req,PetDTO petDTO) {
 		List<PetDTO> resultList = ss.getMapper(PetMapper.class).getAllPoint(petDTO);
 		
@@ -603,6 +616,7 @@ public class PetDAO {
 		req.setAttribute("ss", resultList);
 	
 	}
+
 
 
 

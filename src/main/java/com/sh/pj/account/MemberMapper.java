@@ -70,6 +70,10 @@ public interface MemberMapper {
 	int csUpdate(CareDTO cDTO);
 	int psUpdate(PetDTO pDTO);
 
+	int mtUpdate(MomTakerDTO momDTO);
+	int ctUpdate(CareTakerDTO cDTO);
+	int ptUpdate(PetTakerDTO pDTO);
+
 
 
 

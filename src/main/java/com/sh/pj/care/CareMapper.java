@@ -51,9 +51,14 @@ public interface CareMapper {
 
 	public int csReject(CareDTO cDTO);
 	
+	public int ctAccept(CareTakerDTO cDTO);
+	
+	public int ctReject(CareTakerDTO cDTO);
+	
 	public List<CareDTO> getAllPoint(CareDTO cDTO);
 
-
+	public int getCtConMessage(MemberDTO mDTO);
+	public int getCsConMessage(MemberDTO mDTO);
 
 
 }
