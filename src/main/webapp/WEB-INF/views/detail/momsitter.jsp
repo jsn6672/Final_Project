@@ -81,6 +81,7 @@
 						<div style="margin: 5px;">
 							<span style="font-size: 14pt;">맘시터
 								${momsitter.mm.user_name }</span>
+								<span>${momsitter.mm.user_age }세</span>
 							<c:choose>
 								<c:when test="${momsitter.mm.user_gender eq 'female'}">
 									<span style="font-size: 10pt;">여</span>
@@ -89,8 +90,14 @@
 									<span style="font-size: 10pt;">남</span>
 								</c:otherwise>
 							</c:choose>
-							<span style="font-size: 10pt;">cctv촬영 -
-								${momsitter.ms_cctv }</span>
+							<c:choose>
+								<c:when test="${momsitter.ms_cctv == 1 }">
+									<span style="font-size: 10pt;">CCTV촬영 - 가능</span>
+								</c:when>
+								<c:otherwise>
+									<span style="font-size: 10pt;">CCTV촬영 - 불가능</span>
+								</c:otherwise>
+							</c:choose>
 							<div style="display: flex;">
 								<div>희망 시급: ${momsitter.ms_pay }</div>
 								<div style="margin-left: 10px;">(${momsitter.ms_term })</div>
@@ -385,21 +392,21 @@
 										<div>
 											<div style="display: flex;">
 												<div>
-													<span style="font-size: 15pt; font-weight: 500;">${r.memberDTO.user_id }님</span>
-													<span id="review_create_at" hidden="hidden"> <fmt:formatDate
-															value="${r.review_create_at}" type="date"
-															pattern="yyyy. MM. dd. HH:mm" />
+													<span style="font-size: 15pt; font-weight: 500;">${r.memberDTO.user_name }님</span>
+													<span id="review_create_at">
+													<fmt:formatDate	value="${r.review_create_at}" type="date" pattern="yyyy. MM. dd" />
 													</span> <span class="date" id="write-date-placeholder"></span>
 												</div>
-												<div style="margin-left: 30px;">
+												<div style="margin-left: 30px; margin-top: -11px;">
 													<span class="review_star"> ★★★★★ <span>★★★★★</span>
 														<input type="range" class="s" step="1" min="0" max="10">
-														<input type="text" class="star_value" name="star_value"
-														value="${r.review_point}">
+														<input type="text" class="star_value" name="star_value"	value="${r.review_point}">
 													</span>
 												</div>
 											</div>
-											<div class="balloon">${r.review_txt }</div>
+											<div class="balloon">
+												${r.review_txt }
+											</div>
 										</div>
 									</c:forEach>
 								</c:when>
@@ -432,7 +439,7 @@
 										style="margin-left: 10px;">삭제</button>
 								</c:when>
 							</c:choose>
-						</c:when>
+						</c:when>      
 						<c:otherwise>
 							<button class="open-btn" onclick="momsitterContract('${momsitter.ms_id}')">신청하기</button>
 							<!-- <button class="open-btn">모달 테스트</button> -->
@@ -487,8 +494,8 @@ let open_btn = document.querySelector('.open-btn');
 let modal = document.querySelector('.mymodal');
 
 open_btn.addEventListener('click', function(){
-	console.log(111);
 	modal.showModal();
+	console.log(111);
 	
 });
 

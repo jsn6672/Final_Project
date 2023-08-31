@@ -12,7 +12,7 @@
 .QnA-content{
     display: flex;
     justify-content: center;
-    height: 800px;
+    height: 50vw;
 }
 
 .QnA-header{
@@ -361,10 +361,6 @@
   top:50%; right: 10px;
   transform: translate(0, -50%);
 }
-  .highlight {
-    background-color: #f15d30; /* 변경하고자 하는 색깔 */
-    /*게시판 색상*/
-  }
 
 /* 화살표
 .que .arrow-top {

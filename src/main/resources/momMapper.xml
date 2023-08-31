@@ -47,8 +47,7 @@
 	</select>
 
 	<select id="detailUser" resultType="com.sh.pj.account.MemberDTO">
-		select * from jsn_user_tbl
-		where user_id = #{ms_id}
+		select * from jsn_user_tbl where user_id = #{ms_id}
 	</select>
 
 	<select id="detailUser2"
@@ -121,10 +120,8 @@
 		'%'||#{ms_search}||'%' and d_category = 2
 	</select>
 
-	<select id="detailReview"
-		resultType="com.sh.pj.account.MemberDTO">
-		select * from jsn_user_tbl where user_id =
-		#{review_taker_id}
+	<select id="detailReview" resultType="com.sh.pj.account.MemberDTO">
+		select * from jsn_user_tbl where user_id = #{review_taker_id}
 	</select>
 
 	<delete id="deleteMomsitter">
@@ -174,7 +171,11 @@
 	</select>
 	
 	<insert id="updateMomContract">
-		insert into contract_tbl values(contract_tbl_seq, 2, #{ms_id}, #{ms_pay}, 1, 1)
+		insert into contract_tbl values(contract_tbl_seq.nextval, 2, #{ms_id}, #{ms_pay}, 1, 1)
+	</insert>
+	
+	<insert id="updateCaretakerContract">
+		insert into contract_tbl values(contract_tbl_seq.nextval, 2, #{location3}, #{d_no}, 1, 1)
 	</insert>
 	
 	<select id="getMsConMessage" resultType="int">

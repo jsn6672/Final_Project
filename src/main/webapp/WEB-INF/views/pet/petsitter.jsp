@@ -129,11 +129,8 @@ https://templatemo.com/tm-580-woox-travel
 													<span class="date">00전 작성 </span> <span>${p.ps_write_date }</span>
 												</div>
 												<div>
-													<a href="petsitter.detail.go?ps_id=${p.ps_id }">펫시터:${p.mm.user_name }(이름)</a>
-													<span>나이: <c:set var="currentYear"
-															value="<%=java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)%>" />
-														${currentYear - p.mm.user_age + 1}살
-													</span>
+													<a href="petsitter.detail.go?ps_id=${p.ps_id }">펫시터:${p.mm.user_name }</a>
+													<span>${p.mm.user_age }세</span>
 													<c:choose>
 														<c:when test="${p.mm.user_gender eq 'female'}">
 															<span>여</span>
@@ -142,7 +139,14 @@ https://templatemo.com/tm-580-woox-travel
 															<span>남</span>
 														</c:otherwise>
 													</c:choose>
-													<span>cctv촬영 - ${p.ps_cctv }</span>
+													<c:choose>
+														<c:when test="${p.ps_cctv == 1 }">
+															<span>CCTV촬영 - 가능</span>
+														</c:when>
+														<c:otherwise>
+															<span>CCTV촬영 - 불가능</span>
+														</c:otherwise>
+													</c:choose>
 												</div>
 												<div style="display: flex;">
 													<div>시급: ${p.ps_pay }</div>

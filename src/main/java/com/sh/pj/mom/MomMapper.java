@@ -80,6 +80,7 @@ public interface MomMapper {
 
 	public int getMtConMessage(MemberDTO mDTO);
 	public int getMsConMessage(MemberDTO mDTO);
+	public void updateCaretakerContract(DolbomDTO dDTO);
 
 
 

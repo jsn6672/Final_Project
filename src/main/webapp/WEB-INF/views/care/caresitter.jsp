@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -122,13 +123,30 @@ https://templatemo.com/tm-580-woox-travel
 											</div>
 											<div style="padding-left: 25px;">
 												<div class="post-meta">
-													<span class="date">00전 작성 </span>
-													<span>${c.cs_write_date }</span>
+													<span id="write_date">
+													<fmt:formatDate	value="${c.cs_write_date}" type="date" pattern="yyyy. MM. dd. HH:mm" />
+													</span> <span class="date" id="write-date-placeholder"></span>${c.cs_write_date }
 												</div>
 												<div>
 													<a href="caresitter.detail.go?cs_id=${c.cs_id }">간병인:
-														${c.mm.user_name }(이름)</a> <span>나이</span> <span>성별</span> <span>cctv촬영
-														- ${c.cs_cctv }</span>
+														${c.mm.user_name }</a> 
+														<span>${c.mm.user_age }세</span>
+													<c:choose>
+														<c:when test="${c.mm.user_gender eq 'female'}">
+															<span>여</span>
+														</c:when>
+														<c:otherwise>
+															<span>남</span>
+													</c:otherwise>
+													</c:choose>
+														<c:choose>
+														<c:when test="${c.cs_cctv == 1 }">
+															<span>CCTV촬영 - 가능</span>
+														</c:when>
+														<c:otherwise>
+															<span>CCTV촬영 - 불가능</span>
+														</c:otherwise>
+													</c:choose>
 												</div>
 												<div style="display: flex;">
 													<div>시급: ${c.cs_pay }</div>

@@ -59,6 +59,13 @@ public interface CareMapper {
 
 	public int getCtConMessage(MemberDTO mDTO);
 	public int getCsConMessage(MemberDTO mDTO);
+	public List<DolbomDTO> getUserDolbomDataCare(MemberDTO memberDTO);
+
+	public int updateCareContract(CareDTO careDTO);
+
+	public void updateCaretakerContract(DolbomDTO dDTO);
+
+
 
 
 }

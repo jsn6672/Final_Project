@@ -2,6 +2,7 @@ package com.sh.pj.care;
 
 import java.io.File;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -77,6 +78,15 @@ public class CareDAO {
 		pp.setSunday(cs_day[6]);
 
 		pp.setMm(ss.getMapper(CareMapper.class).detailUser(pp));
+		
+		LocalDate now = LocalDate.now();
+		int nowyear = now.getYear();
+		MemberDTO mbd = ss.getMapper(CareMapper.class).detailUser(pp);
+		int birthyear = Integer.parseInt(mbd.getUser_age())/10000;	
+		
+		mbd.setUser_age(Integer.toString(nowyear - birthyear + 1));
+		
+		pp.setMm(mbd);
 		
 		List<ReviewDTO> rDTO = ss.getMapper(CareMapper.class).review(cDTO);
 		
@@ -527,6 +537,12 @@ public class CareDAO {
 	}
 	
 	public void getMsg(int pageNo, HttpServletRequest req) {
+		
+		LocalDate now = LocalDate.now();
+
+		// 연도, 월(문자열, 숫자), 일, 일(year 기준), 요일(문자열, 숫자)
+		int nowyear = now.getYear();
+		
 		int count = 3;
 
 		int start = (pageNo - 1) * count + 1;
@@ -561,7 +577,13 @@ public class CareDAO {
 			List<CareDTO> resultList = ss.getMapper(CareMapper.class).getMsg(careSearch);
 			
 			for (CareDTO c : resultList) {
-				c.setMm(ss.getMapper(CareMapper.class).detailUser(c));
+				
+				MemberDTO mbd = ss.getMapper(CareMapper.class).detailUser(c);
+				int birthyear = Integer.parseInt(mbd.getUser_age())/10000;	
+				
+				mbd.setUser_age(Integer.toString(nowyear - birthyear + 1));
+				
+				c.setMm(mbd);
 			}
 			
 			req.setAttribute("c", resultList);
@@ -623,7 +645,51 @@ public class CareDAO {
 	public void ctReject(HttpServletRequest req, CareTakerDTO cDTO) {
 		if(ss.getMapper(CareMapper.class).ctReject(cDTO)==1) {
 			System.out.println("넌 못지나간다");
-		}		
+		}
+	}			
+	public List<DolbomDTO> getUserDolbomDataCare(HttpServletRequest req, DolbomDTO dDTO) {
+		// 현재 날짜 구하기 (시스템 시계, 시스템 타임존)
+				LocalDate now = LocalDate.now();
+
+				// 연도, 월(문자열, 숫자), 일, 일(year 기준), 요일(문자열, 숫자)
+				int nowyear = now.getYear();
+				int nowmonthValue = now.getMonthValue();
+				System.out.println("지금 여기까지 오긴 ㅎㅏ는거임?	");
+				MemberDTO memberDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+				
+				List<DolbomDTO> dDTOs = ss.getMapper(CareMapper.class).getUserDolbomDataCare(memberDTO);
+				for (DolbomDTO d : dDTOs) {
+					int year = nowyear - d.getD_year();
+					int month = nowmonthValue - d.getD_month();
+					if ((year * 12) + month >= 36) {
+						d.setAge(year + 1);
+						d.setAgetype("살");
+					} else {
+						d.setAge((year * 12) + month + 1);
+						d.setAgetype("개월");
+					}
+					
+				}
+				
+				return dDTOs;
+	}
+
+	public void updateMomContract(HttpServletRequest req, DolbomDTO dDTO) {
+		CareDTO careDTO = new CareDTO();
+		careDTO.setCs_id(req.getParameter("cs_id"));
+		careDTO.setCs_pay(Integer.parseInt(req.getParameter("d_no")));
+		
+		if(ss.getMapper(CareMapper.class).updateCareContract(careDTO) == 1) {
+			System.out.println("contract 성공!");
+		}
+		
+	}
+
+	public void updateCaretakerContract(HttpServletRequest req, DolbomDTO dDTO) {
+		MemberDTO memberDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
+		dDTO.setLocation3(memberDTO.getUser_id());
+		ss.getMapper(CareMapper.class).updateCaretakerContract(dDTO);
+		
 	}
 	
 }
