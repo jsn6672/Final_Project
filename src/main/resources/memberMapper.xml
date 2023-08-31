@@ -9,8 +9,8 @@
 
 	<insert id="regAccount">
 		insert into jsn_user_tbl values (#{user_id}, #{user_pw}, #{user_name},
-		#{user_gender}, #{user_age}, #{user_phone}, #{user_email_authkey}, 1, #{user_email},
-		#{user_location}, #{user_pic}, 0, 0, 0, 0, 0, 0)
+		#{user_gender}, #{user_phone}, #{user_email_authkey}, 1, #{user_email},
+		#{user_location}, #{user_pic}, 0, 0, 0, 0, 0, 0, #{user_age}, 0)
 	</insert>
 	
 	<select id="checkEmail" resultType="int">
@@ -28,6 +28,10 @@
 	
 	<select id="checkid" resultType="int">
 		select count(*) from jsn_user_tbl where user_id = #{user_id}
+	</select>
+	
+	<select id="checkuserEMail" resultType="int">
+		select count(*) from jsn_user_tbl where user_email = #{user_email}
 	</select>
 	
 	
@@ -116,6 +120,18 @@
 	<insert id="regDefaultcount">
 		insert into count_tbl values (1, #{count_sitter}, #{count_dolbom}, 1557, #{count_cont})
 	</insert>
+	
+	<update id="msUpdate">
+		update jsn_user_tbl set user_ms_status = 3 where user_id = #{ms_id}
+	</update>
+	
+	<update id="csUpdate">
+		update jsn_user_tbl set user_cs_status = 3 where user_id = #{cs_id}
+	</update>
+	
+	<update id="psUpdate">
+		update jsn_user_tbl set user_ps_status = 3 where user_id = #{ps_id}
+	</update>
 	
 	
 </mapper>

@@ -588,7 +588,9 @@ public class CareDAO {
 
 	public void csAccept(HttpServletRequest req, CareDTO cDTO) {
 		if(ss.getMapper(CareMapper.class).csAccept(cDTO)==1) {
-			System.out.println("당신을 맘시터로 인정합니다");
+			if(ss.getMapper(MemberMapper.class).csUpdate(cDTO) == 1) {
+				System.out.println("당신을 케어맘시터로 인정합니다");				
+			}
 		}		
 	}
 

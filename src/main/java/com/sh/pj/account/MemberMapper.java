@@ -3,9 +3,12 @@ package com.sh.pj.account;
 import java.util.List;
 
 import com.sh.pj.ReviewDTO;
+import com.sh.pj.care.CareDTO;
 import com.sh.pj.care.CareTakerDTO;
+import com.sh.pj.mom.MomDTO;
 import com.sh.pj.mom.MomTakerDTO;
 import com.sh.pj.mypage.ContractDTO;
+import com.sh.pj.pet.PetDTO;
 import com.sh.pj.pet.PetTakerDTO;
 
 public interface MemberMapper {
@@ -62,6 +65,10 @@ public interface MemberMapper {
 
 	int updateOnDolbomInfo(DolbomDTO dd);
 	int updateOffDolbomInfo(DolbomDTO dd);
+
+	int msUpdate(MomDTO momDTO);
+	int csUpdate(CareDTO cDTO);
+	int psUpdate(PetDTO pDTO);
 
 
 

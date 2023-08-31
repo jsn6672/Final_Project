@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
 import com.sh.pj.care.CareDTO;
+import com.sh.pj.care.CareTakerDTO;
 import com.sh.pj.mom.MomDTO;
+import com.sh.pj.mom.MomTakerDTO;
 import com.sh.pj.pet.PetDTO;
+import com.sh.pj.pet.PetTakerDTO;
 
 public interface MypageMapper {
 
@@ -119,6 +122,17 @@ public interface MypageMapper {
 
 	public int givecoupon(CouponDTO cp);
 
+	public List<MomTakerDTO> getmtconfirm();
+
+	public List<PetTakerDTO> getptconfirm();
+
+	public List<CareTakerDTO> getctconfirm();
+
+	public MemberDTO getMTuserinfo(MomTakerDTO mmm);
+
+	public MemberDTO getPTuserinfo(PetTakerDTO mmm);
+
+	public MemberDTO getCTuserinfo(CareTakerDTO mmm);
 	public int userstatus(MoneyDTO mm);
 
 	public List<MomDTO> getpointsMS();

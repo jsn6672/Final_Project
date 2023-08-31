@@ -2,13 +2,25 @@ package com.sh.pj.care;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sh.pj.account.MemberDTO;
+
 public class CareTakerDTO {
 	private String ct_id;
 	private String ct_file;
 	private MultipartFile ct_Rfile;
-	
+
+	private MemberDTO mm;
+
 	public CareTakerDTO() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public MemberDTO getMm() {
+		return mm;
+	}
+
+	public void setMm(MemberDTO mm) {
+		this.mm = mm;
 	}
 
 	public String getCt_id() {
@@ -37,7 +49,7 @@ public class CareTakerDTO {
 
 	@Override
 	public String toString() {
-		return "CareTakerDTO [ct_id=" + ct_id + ", ct_file=" + ct_file + ", ct_Rfile=" + ct_Rfile + "]";
+		return "CareTakerDTO [ct_id=" + ct_id + ", ct_file=" + ct_file + ", ct_Rfile=" + ct_Rfile + ", mm=" + mm + "]";
 	}
 
 	public CareTakerDTO(String ct_id, String ct_file, MultipartFile ct_Rfile) {
@@ -46,6 +58,5 @@ public class CareTakerDTO {
 		this.ct_file = ct_file;
 		this.ct_Rfile = ct_Rfile;
 	}
-	
-	
+
 }

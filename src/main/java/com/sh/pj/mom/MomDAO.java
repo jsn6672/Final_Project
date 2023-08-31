@@ -587,7 +587,9 @@ public class MomDAO {
 
 	public void msAccept(HttpServletRequest req, MomDTO momDTO) {
 		if(ss.getMapper(MomMapper.class).msAccept(momDTO)==1) {
-			System.out.println("당신을 맘시터로 인정합니다");
+			if(ss.getMapper(MemberMapper.class).msUpdate(momDTO) == 1) {
+				System.out.println("당신을 맘시터로 인정합니다");				
+			}
 		}
 		
 	}

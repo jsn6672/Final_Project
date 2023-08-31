@@ -2,11 +2,23 @@ package com.sh.pj.mom;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sh.pj.account.MemberDTO;
+
 public class MomTakerDTO {
 	private String mt_id;
 	private String mt_file;
 	private MultipartFile mt_Rfile;
-	
+
+	private MemberDTO mm;
+
+	public MemberDTO getMm() {
+		return mm;
+	}
+
+	public void setMm(MemberDTO mm) {
+		this.mm = mm;
+	}
+
 	public MomTakerDTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -44,7 +56,7 @@ public class MomTakerDTO {
 
 	@Override
 	public String toString() {
-		return "MomTakerDTO [mt_id=" + mt_id + ", mt_file=" + mt_file + ", mt_Rfile=" + mt_Rfile + "]";
+		return "MomTakerDTO [mt_id=" + mt_id + ", mt_file=" + mt_file + ", mt_Rfile=" + mt_Rfile + ", mm=" + mm + "]";
 	}
-	
+
 }

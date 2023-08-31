@@ -38,10 +38,13 @@ import com.sh.pj.account.MemberDTO;
 import com.sh.pj.account.MemberMapper;
 import com.sh.pj.care.CareDTO;
 import com.sh.pj.care.CareMapper;
+import com.sh.pj.care.CareTakerDTO;
 import com.sh.pj.mom.MomDTO;
 import com.sh.pj.mom.MomMapper;
+import com.sh.pj.mom.MomTakerDTO;
 import com.sh.pj.pet.PetDTO;
 import com.sh.pj.pet.PetMapper;
+import com.sh.pj.pet.PetTakerDTO;
 
 @Service
 public class MypageDAO {
@@ -885,18 +888,6 @@ public class MypageDAO {
 	}
 
 
-	public void getMSConfirm(HttpServletRequest req) {
-		List<MomDTO> msconfirm = ss.getMapper(MypageMapper.class).getmsconfirm();
-		
-		for (MomDTO mmm : msconfirm) {
-			mmm.setMm(ss.getMapper(MypageMapper.class).getMSuserinfo(mmm));
-		}
-		
-		req.setAttribute("msconfirm", msconfirm);
-		
-	}
-	
-	
 
 	public void giveCoupon(HttpServletRequest req, CouponDTO cp) {
 		String cp_id = req.getParameter("cp_id");
@@ -918,15 +909,26 @@ public class MypageDAO {
 		}
 	}
 	
+	public void getMSConfirm(HttpServletRequest req) {
+		List<MomDTO> msconfirm = ss.getMapper(MypageMapper.class).getmsconfirm();
+		
+		for (MomDTO mmm : msconfirm) {
+			mmm.setMm(ss.getMapper(MypageMapper.class).getMSuserinfo(mmm));
+		}
+		
+		req.setAttribute("msconfirm", msconfirm);
+		
+	}
+	
 	public void getPSConfirm(HttpServletRequest req) {
 		List<PetDTO> psconfirm = ss.getMapper(MypageMapper.class).getpsconfirm();
 		
 		for (PetDTO mmm : psconfirm) {
 			mmm.setMm(ss.getMapper(MypageMapper.class).getPSuserinfo(mmm));
+			System.out.println(mmm);
 		}
-		req.setAttribute("psconfirm", psconfirm);
-	
 		
+		req.setAttribute("psconfirm", psconfirm);
 		
 	}
 
@@ -937,7 +939,36 @@ public class MypageDAO {
 		}
 		req.setAttribute("csconfirm", csconfirm);
 
+	}
+	public void getMTConfirm(HttpServletRequest req) {
+		List<MomTakerDTO> mtconfirm = ss.getMapper(MypageMapper.class).getmtconfirm();
 		
+		for (MomTakerDTO mmm : mtconfirm) {
+			mmm.setMm(ss.getMapper(MypageMapper.class).getMTuserinfo(mmm));
+		}
+		
+		req.setAttribute("msconfirm", mtconfirm);
+		
+	}
+	
+	public void getPTConfirm(HttpServletRequest req) {
+		List<PetTakerDTO> ptconfirm = ss.getMapper(MypageMapper.class).getptconfirm();
+		
+		for (PetTakerDTO mmm : ptconfirm) {
+			mmm.setMm(ss.getMapper(MypageMapper.class).getPTuserinfo(mmm));
+			System.out.println(mmm);
+		}
+		
+		req.setAttribute("psconfirm", ptconfirm);
+		
+	}
+	
+	public void getCTConfirm(HttpServletRequest req) {
+		List<CareTakerDTO> ctconfirm = ss.getMapper(MypageMapper.class).getctconfirm();
+		for (CareTakerDTO mmm : ctconfirm) {
+			mmm.setMm(ss.getMapper(MypageMapper.class).getCTuserinfo(mmm));
+		}
+		req.setAttribute("csconfirm", ctconfirm);
 		
 	}
 

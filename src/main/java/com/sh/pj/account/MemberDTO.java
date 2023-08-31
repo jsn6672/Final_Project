@@ -33,6 +33,7 @@ public class MemberDTO {
 	private String m_addr1;
 	private String m_addr2;
 	private String m_addr3;
+	private String user_ticket_status;
 
 	@Override
 	public String toString() {
@@ -45,7 +46,15 @@ public class MemberDTO {
 				+ ", pic=" + pic + ", ms_id=" + ms_id + ", mt_id=" + mt_id + ", ps_id=" + ps_id + ", pt_id=" + pt_id
 				+ ", cs_id=" + cs_id + ", ct_id=" + ct_id + ", phone_first=" + phone_first + ", phone_second="
 				+ phone_second + ", phone_third=" + phone_third + ", m_addr1=" + m_addr1 + ", m_addr2=" + m_addr2
-				+ ", m_addr3=" + m_addr3 + "]";
+				+ ", m_addr3=" + m_addr3 + ", user_ticket_status=" + user_ticket_status + "]";
+	}
+
+	public String getUser_ticket_status() {
+		return user_ticket_status;
+	}
+
+	public void setUser_ticket_status(String user_ticket_status) {
+		this.user_ticket_status = user_ticket_status;
 	}
 
 	public String getUser_age() {
