@@ -81,8 +81,6 @@ function momsitterNoticeDOWN(ms_id){
 
 function momsitterContract(ms_id){
 	console.log("!!!!!");
-	let ms_id = ms_id;
-	console.log(ms_id);
     // AJAX 요청을 통해 사용자 데이터를 가져옴
     $.ajax({
         url: 'getUserDolbomData',

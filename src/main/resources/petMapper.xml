@@ -170,5 +170,9 @@
 		select count(*) from pettaker_tbl where pt_id = #{user_id} and pt_confirm_answer = 'reject'
 	</select>
 	
+	<update id="updatePetTaker">
+		update pettaker_tbl set pt_file = #{pt_file}, pt_confirm = 0, pt_confirm_answer = 'ndy'
+	</update>
+	
 
 </mapper>

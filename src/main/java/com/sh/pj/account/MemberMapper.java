@@ -74,6 +74,24 @@ public interface MemberMapper {
 	int ctUpdate(CareTakerDTO cDTO);
 	int ptUpdate(PetTakerDTO pDTO);
 
+	List<CareDTO> goodCs();
+
+	List<MomDTO> goodMs();
+
+	List<PetDTO> goodPs();
+
+	MemberDTO getCareUserInfo(CareDTO c);
+
+	MemberDTO getMomUserInfo(MomDTO m);
+
+	MemberDTO getPetUserInfo(PetDTO p);
+
+	ReviewDTO getCareUserReview(CareDTO c);
+
+	ReviewDTO getMomUserReview(MomDTO m);
+
+	ReviewDTO getPetUserReview(PetDTO p);
+
 
 
 

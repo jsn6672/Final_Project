@@ -335,7 +335,6 @@ public class MembertDAO {
 
 		List<DolbomDTO> dDTOs = ss.getMapper(MypageMapper.class).getDolbomList(ui);
 
-
 		for (DolbomDTO d : dDTOs) {
 			System.out.println(dDTOs);
 			if (ss.getMapper(MemberMapper.class).countMustReviewCnt(d) == 0) {
@@ -363,23 +362,69 @@ public class MembertDAO {
 
 	public void Dolbom_status_update(HttpServletRequest req, DolbomDTO dDTO) {
 		DolbomDTO dd = ss.getMapper(MemberMapper.class).getDolbomInfo(dDTO);
-		
+
 		String status = dd.getd_onoff();
 		if (status.equals("off")) {
 			ss.getMapper(MemberMapper.class).updateOnDolbomInfo(dd);
-		}else {
-			ss.getMapper(MemberMapper.class).updateOffDolbomInfo(dd);			
+		} else {
+			ss.getMapper(MemberMapper.class).updateOffDolbomInfo(dd);
 		}
-		
+
 	}
 
-
 	public void reviewall(HttpServletRequest req) {
-		
+
 		req.setAttribute("review", ss.getMapper(MypageMapper.class).review());
 	}
 
+	public void goodSitter(HttpServletRequest req) {
+		List<CareDTO> cs = ss.getMapper(MemberMapper.class).goodCs();
+		for (CareDTO c : cs) {
+			c.setMm(ss.getMapper(MemberMapper.class).getCareUserInfo(c));
+			c.setReview(ss.getMapper(MemberMapper.class).getCareUserReview(c));
+		}
 
+		List<MomDTO> ms = ss.getMapper(MemberMapper.class).goodMs();
+		for (MomDTO m : ms) {
+			m.setMm(ss.getMapper(MemberMapper.class).getMomUserInfo(m));
+			m.setReview(ss.getMapper(MemberMapper.class).getMomUserReview(m));
+		}
 
+		List<PetDTO> ps = ss.getMapper(MemberMapper.class).goodPs();
 
+		for (PetDTO p : ps) {
+			p.setMm(ss.getMapper(MemberMapper.class).getPetUserInfo(p));
+			p.setReview(ss.getMapper(MemberMapper.class).getPetUserReview(p));
+		}
+		req.setAttribute("GoodCareSitter", cs);
+		req.setAttribute("GoodMomSitter", ms);
+		req.setAttribute("GoodPetSitter", ps);
+
+	}
+
+	public void updatePetTaker(HttpServletRequest req, PetTakerDTO ptDTO) {
+		try {
+			MemberDTO mm = (MemberDTO) req.getSession().getAttribute("userInfo");
+			ptDTO.setPt_id(mm.getUser_id());
+			String imgOrgName = ptDTO.getPt_Rfile().getOriginalFilename();
+			long imgSize = ptDTO.getPt_Rfile().getSize();
+
+			String extension = imgOrgName.substring(imgOrgName.lastIndexOf("."), imgOrgName.length());
+
+			String newName = UUID.randomUUID().toString().split("-")[0];
+
+			String path = sc.getRealPath("resources/img");
+
+			File saveImg = new File(path + "//" + newName + extension);
+
+			ptDTO.getPt_Rfile().transferTo(saveImg);
+			ptDTO.setPt_file(newName + extension);
+			
+			int a = ss.getMapper(PetMapper.class).updatePetTaker(ptDTO);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
 }

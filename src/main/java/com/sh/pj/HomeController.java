@@ -75,6 +75,7 @@ public class HomeController {
 
 		}
 		mDAO.reviewall(req);
+		mDAO.goodSitter(req);
 		req.setAttribute("contentPage", "index.jsp");
 		return "home";
 	}
@@ -83,7 +84,8 @@ public class HomeController {
 	@RequestMapping(value = "go.home", method = RequestMethod.GET)
 	public String home2(HttpServletRequest req) {
 		mDAO.logincheck(req);
-
+		mDAO.reviewall(req);
+		mDAO.goodSitter(req);
 		req.setAttribute("contentPage", "index.jsp");
 		return "home";
 	}

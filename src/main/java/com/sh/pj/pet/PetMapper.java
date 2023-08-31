@@ -74,6 +74,8 @@ public interface PetMapper {
 	public int getPtConMessage(MemberDTO mDTO);
 	public int getPsConMessage(MemberDTO mDTO);
 
+	public int updatePetTaker(PetTakerDTO ptDTO);
+
 
 
 
