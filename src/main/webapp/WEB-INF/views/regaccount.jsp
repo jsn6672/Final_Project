@@ -283,7 +283,7 @@ body {
 }
 
 .join_column {
-	font-size: 25px;
+	font-size: 15px;
 	font-weight: 400;
 	text-align: left;
 }
@@ -291,11 +291,10 @@ body {
 .normal_input {
 	width: 680px;
 	height: 60px;
-	font-size: 15pt;
+	font-size: 11pt;
 	font-weight: 400;
 	background-color: #D9D9D9;
 	color: black;
-	border-radius: 5%;
 	border: none;
 }
 
@@ -485,7 +484,7 @@ body {
 					</div>
 					<br>
 					<button id="join" class="join_btn"
-						style="width: 100px; height: 50px; background-color: #E7B5AC; border: none; border-radius: 10px;">가입하기</button>
+						style="width: 120px; height: 50px; background-color: #E7B5AC; border: none; border-radius: 10px;">가입하기</button>
 				</form>
 			</div>
 		</div>

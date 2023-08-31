@@ -9,14 +9,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- 이용내역 페이지의 전체 컨테이너 -->
+<div class="mpS">
 	<div class="mpU">
-		<h1>이용내역</h1>
+		<h1>메세지함</h1>
 	</div>
+<div class="mpS-1">
+	<!-- 이용내역 페이지의 전체 컨테이너 -->
+
 	<!-- 시터 등록 및 수정 페이지의 전체 컨테이너 -->
-	<div class="mpS">
+	<div class="mpS-2" style="height: 91vh;">
 		<!-- <h1>시터 등록 및 수정</h1> -->
-		<div>시터 요청</div>
+		<div style=" margin-top: 30px;"
+   
+		>시터 요청</div>
 		<div>${SitterNotice }</div>
 		<!-- 페이지 본문 컨테이너 -->
 		<div id="Accordion_wrap">
@@ -141,6 +146,8 @@
 			</c:forEach>
 		</div>
 
+	</div>
+	</div>
 	</div>
 </body>
 </html>
