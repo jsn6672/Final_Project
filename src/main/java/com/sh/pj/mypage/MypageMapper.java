@@ -119,6 +119,14 @@ public interface MypageMapper {
 
 	public int givecoupon(CouponDTO cp);
 
+	public int userstatus(MoneyDTO mm);
+
+	public List<MomDTO> getpointsMS();
+
+	public List<PetDTO> getpointsPS();
+
+	public List<PetDTO> getpointsCS();
+
 
 
 

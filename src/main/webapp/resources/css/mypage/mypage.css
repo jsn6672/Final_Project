@@ -642,5 +642,21 @@ button {
 	background-color: #FFEBE4;
 }
 
+/* 쿠폰 등록페이지 */
+.pointLanking {
+	width: 80vw;
+	height: 1600px;
+	display: flex;
+}
 
+.ms-point {
+	border: 1px solid black;
+}
 
+.ps-point {
+	border: 1px solid black;
+}
+
+.cs-point {
+	border: 1px solid black;
+}
