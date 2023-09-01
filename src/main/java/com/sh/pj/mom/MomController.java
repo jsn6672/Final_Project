@@ -198,7 +198,7 @@ public class MomController {
 	    if (petSearch != null && !petSearch.isEmpty()) {
 	       ms.setMs_search(petSearch);
 
-	        req.getSession().setAttribute("searchSession", ms);
+	        req.getSession().setAttribute("searchSession", ms); 
 	    } else {
 	        // 검색어가 입력되지 않았다면 세션에서 검색어 정보를 제거합니다.
 	        req.getSession().removeAttribute("searchSession");

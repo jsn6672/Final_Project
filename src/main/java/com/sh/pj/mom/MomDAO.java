@@ -129,6 +129,14 @@ public class MomDAO {
 				+ dDTO.getFriday_end() + "!" + dDTO.getSaturday_start() + "!" + dDTO.getSaturday_end() + "!"
 				+ dDTO.getSunday_start() + "!" + dDTO.getSunday_end();
 		dDTO.setD_hour(d_hour);
+		
+		String personality = dDTO.getD_personality();
+		personality.replaceAll("\r\n", "<br>");
+		dDTO.setD_personality(personality);
+		
+		String need = dDTO.getD_need();
+		need.replaceAll("\r\n", "<br>");
+		dDTO.setD_need(need);
 
 		if (dDTO.getD_check() == null) {
 			dDTO.setD_check("0");
@@ -177,6 +185,14 @@ public class MomDAO {
 
 			momDTO.getMs_Rfile().transferTo(saveImg);
 			momDTO.setMs_file(newName + extension);
+			
+			String extra = momDTO.getMs_extra();
+			extra = extra.replaceAll("\r\n", "<br>");
+			momDTO.setMs_extra(extra);
+			
+			String exp = momDTO.getMs_exp();
+			exp = exp.replace("\r\n", "<br>");
+			momDTO.setMs_exp(exp);
 
 			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 
@@ -317,6 +333,14 @@ public class MomDAO {
 		momDTO.setSunday_end(Integer.parseInt(petsitter_hour[13]));
 
 		String[] petsitter_day = momDTO.getMs_day().split("!");
+		
+		String extra = momDTO.getMs_extra();
+		extra = extra.replaceAll("<br>", "\r\n");
+		momDTO.setMs_extra(extra);
+		
+		String exp = momDTO.getMs_exp();
+		exp = exp.replace("<br>", "\r\n");
+		momDTO.setMs_exp(exp);
 
 		momDTO.setMonday(petsitter_day[0]);
 		momDTO.setTuesday(petsitter_day[1]);
@@ -350,8 +374,15 @@ public class MomDAO {
 				momDTO.setMs_confirm_answer("ndy");
 			}
 
+			String extra = momDTO.getMs_extra();
+			extra = extra.replaceAll("\r\n", "<br>");
+			momDTO.setMs_extra(extra);
+			
+			String exp = momDTO.getMs_exp();
+			exp = exp.replace("\r\n", "<br>");
+			momDTO.setMs_exp(exp);
+			
 			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
-
 			momDTO.setMs_id(mDTO.getUser_id());
 
 			int j = 1;
@@ -409,6 +440,14 @@ public class MomDAO {
 				+ dDTO.getSunday_start() + "!" + dDTO.getSunday_end();
 		dDTO.setD_hour(d_hour);
 
+		String personality = dDTO.getD_personality();
+		personality.replaceAll("\r\n", "<br>");
+		dDTO.setD_personality(personality);
+		
+		String need = dDTO.getD_need();
+		need.replaceAll("\r\n", "<br>");
+		dDTO.setD_need(need);
+		
 		if (!dDTO.getD_check().equals("1")) {
 			dDTO.setD_check("0");
 		}
