@@ -16,8 +16,9 @@ body {
 /* 마이페이지 네비게이터 */
 .mpMainContainer {
 	width: 100vw;
-	height: 100%;
+	height: 1600px;
 	display: flex;
+	padding: 1%;
 }
 
 .mpContainer {
@@ -210,6 +211,7 @@ body {
 
 .mpPPWUpdate {
 	display: flex;
+	justify-content: space-around;
 }
 
 .mpPPWInput {
@@ -598,6 +600,10 @@ button {
 	background-color: #FFEBE4;
 }
 
+.ticketConfirmMention {
+	margin-left: 2%;
+}
+
 #span-moneyList {
 	font-weight: bold;
 }
@@ -611,7 +617,7 @@ button {
 }
 
 .moneyList-1 {
-	width: calc(30% - 10px);
+	width: calc(28% - 10px);
 	height: 30%;
 	margin: 2%;
 	padding: 1%;
@@ -645,7 +651,7 @@ button {
 /* 이용권 구매페이지 */
 .mpT {
 	width: 100vw;
-	height: 100%;
+	height: 73vw;
 	background-color: #FFEBE4;
 }
 
@@ -677,7 +683,7 @@ button {
 
 .mpT-mention2 {
 	margin-top: 1%;
-	margin-left: 1%;
+	margin-left: 2%;
 }
 
 .mpT-mention2-1 {
@@ -696,7 +702,7 @@ button {
 	width: 50%;
 	height: 150px;
 	margin-top: 1%;
-	margin-left: 1%;
+	margin-left: 2%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -709,7 +715,7 @@ button {
 	width: 50%;
 	height: 200px;
 	margin-top: 1%;
-	margin-left: 1%;
+	margin-left: 2%;
 	padding-right: 30px;
 	display: flex;
 	justify-content: space-between;
@@ -722,6 +728,9 @@ button {
 .soupRice {
 	width: 100px;
 }
+
+
+
 
 .month-name {
 	whi
@@ -757,3 +766,13 @@ button {
 .cs-point {
 	border: 1px solid black;
 }
+
+/* 인증 페이지 */
+
+.certifContainer {
+	width: 80vw;
+	height: 1600px;
+	background-color: #FFEBE4;
+	padding: 1%;
+}
+

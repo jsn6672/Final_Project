@@ -38,17 +38,26 @@
 			</div>
 		</form>
 
-		<form action="mypage.ticket.buy" method="post">
-			<div class="buy1month">
-				<div><img class="ticketImg" src="resources/img/3month.png"><input name="monthTicket" type="hidden" value="3개월이용권">
-				</div>
-				<div><input name="monthTicketPrice" type="hidden" value="29900">
-				</div>
-				<input name="ticketMonth" type="hidden" value="3">
+		
+			<form action="mypage.ticket.buy" method="post">
+				<div class="buy1month">
+					<div>
+						<img class="ticketImg" src="resources/img/3month.png"><input
+							name="monthTicket" type="hidden" value="3개월이용권">
+					</div>
+					<div>
+						<input name="monthTicketPrice" type="hidden" value="29900">
+					</div>
+					<input name="ticketMonth" type="hidden" value="3">
 
-				<button class="buyTicket-btn">구매하기</button>
-			</div>
-		</form>
+					<button class="buyTicket-btn">구매하기</button>
+				</div>
+			</form>
+
+	
+
+			
+		
 		<form action="mypage.ticket.buy" method="post">
 			<div class="buy1month">
 				<div><img class="ticketImg" src="resources/img/6month.png"><input name="monthTicket" type="hidden" value="6개월이용권">
