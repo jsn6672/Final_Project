@@ -81,7 +81,7 @@
 								return false;
 							}
 							var userAge = parseInt($('#user_age').val(), 10); // 문자열을 정수로 변환
-
+							console.log(userAge);
 							if (isNaN(userAge) || userAge < 10000000) {
 							    alert("생년월일 8자리(예시)20020717)를 입력해주세요.");
 							    return false;
@@ -423,7 +423,7 @@ body {
 						<div>
 							<div class="join_column">나이</div>
 							<div>
-								<input placeholder="생년월일 8자리를 입력해주세요 (YYYYMMDD)" name="user_age" id=""
+								<input placeholder="생년월일 8자리를 입력해주세요 (YYYYMMDD)" name="user_age" id="user_age"
 									class="normal_input">
 							</div>
 						</div>

@@ -59,6 +59,14 @@ public class PetDAO {
 				+ dDTO.getFriday_end() + "!" + dDTO.getSaturday_start() + "!" + dDTO.getSaturday_end() + "!"
 				+ dDTO.getSunday_start() + "!" + dDTO.getSunday_end();
 		dDTO.setD_hour(d_hour);
+		
+		String personality = dDTO.getD_personality();
+		personality.replaceAll("\r\n", "<br>");
+		dDTO.setD_personality(personality);
+		
+		String need = dDTO.getD_need();
+		need.replaceAll("\r\n", "<br>");
+		dDTO.setD_need(need);
 
 		if (dDTO.getD_check() == null) {
 			dDTO.setD_check("0");
@@ -247,6 +255,14 @@ public class PetDAO {
 				+ dDTO.getFriday_end() + "!" + dDTO.getSaturday_start() + "!" + dDTO.getSaturday_end() + "!"
 				+ dDTO.getSunday_start() + "!" + dDTO.getSunday_end();
 		dDTO.setD_hour(d_hour);
+		
+		String personality = dDTO.getD_personality();
+		personality.replaceAll("\r\n", "<br>");
+		dDTO.setD_personality(personality);
+		
+		String need = dDTO.getD_need();
+		need.replaceAll("\r\n", "<br>");
+		dDTO.setD_need(need);
 
 		if (!dDTO.getD_check().equals("1")) {
 			dDTO.setD_check("0");
@@ -299,6 +315,14 @@ public class PetDAO {
 		pDTO.setSunday_end(Integer.parseInt(petsitter_hour[13]));
 
 		String[] petsitter_day = pDTO.getPs_day().split("!");
+		
+		String extra = pDTO.getPs_extra();
+		extra = extra.replaceAll("<br>", "\r\n");
+		pDTO.setPs_extra(extra);
+		
+		String exp = pDTO.getPs_exp();
+		exp = exp.replace("<br>", "\r\n");
+		pDTO.setPs_exp(exp);
 
 		pDTO.setMonday(petsitter_day[0]);
 		pDTO.setTuesday(petsitter_day[1]);
@@ -332,11 +356,11 @@ public class PetDAO {
 			}
 			
 			String extra = pDTO.getPs_extra();
-			extra.replaceAll("<br>", "\r\n");
+			extra.replaceAll("\r\n", "<br>");
 			pDTO.setPs_extra(extra);
 			
 			String exp = pDTO.getPs_exp();
-			exp.replace("<br>", "\r\n");
+			exp.replace("\r\n", "<br>");
 			pDTO.setPs_exp(exp);
 
 			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");

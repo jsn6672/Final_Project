@@ -97,12 +97,30 @@
 <title>Confirm Money Page</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<style>
+@font-face {
+	font-family: 'CustomFont';
+	src: url('<%= request.getContextPath() %>/resources/css/sur.ttf')
+		format('truetype');
+	/* 다른 폰트 포맷에 대한 지원을 추가할 수 있습니다. */
+}
+
+body {
+	font-family: 'CustomFont', sans-serif;
+	font-size: 16px;
+
+}
+</style>
 <body>
 
 <div class="ticketCheckContainer" style="height: 50vw">
-    <div>이용권확인</div>
-    <div class="ticketCheckList">신청대기 총 <span id="span-moneyList">${moneyList.size() }</span>건</div>
-    <div class="List-wrap">
+		<div><br></div>
+		<div class="ticketConfirmMention">
+			<div>이용권확인</div>
+			<div class="ticketCheckList">
+				신청대기 총 <span id="span-moneyList">${moneyList.size() }</span>건</div>
+		</div>
+		<div class="List-wrap">
     <c:forEach var="ml" items="${moneyList}">
         <div class="moneyList-1">
             <div>주문번호&#9;:&#9;${ml.mm_no }</div>

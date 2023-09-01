@@ -234,14 +234,12 @@
 	    // 폼 제출 전 유효성을 검사하는 함수
 	    function validateForm() {
 	    	console.log("일단 여기 오는지 확인");
-	        const careTypeCheckboxes = document.querySelectorAll('input[name="cs_type"]');
 	        const careActivityCheckboxes = document.querySelectorAll('input[name="caresitter_act"]');
 	        
-	        const isCareTypeChecked = isAtLeastOneCheckboxChecked(careTypeCheckboxes);
 	        const isCareActivityChecked = isAtLeastOneCheckboxChecked(careActivityCheckboxes);
 
-	        if (!isCareTypeChecked || !isCareActivityChecked) {
-	            alert("폼을 제출하기 전에 최소한 하나의 반려동물 종류와 활동을 선택해주세요.");
+	        if (!isCareActivityChecked) {
+	            alert("활동을 하나 이상 선택해주세요.");
 	            return false; // 폼 제출 방지
 	        }
 
@@ -424,7 +422,7 @@ body {
 						name="cs_extra" style="width: 620px; border: none; border-radius: 10px;">${csInfo.cs_extra }</textarea>
 				</div>
 
-				<div style="width: 75%;">
+				<div style="width: 75%; margin-bottom: 30px;">
 					<div class="body-title-detail">활동 필요 시간</div>
 					<div class="body-time">
 						<div class="body-time-title">
@@ -586,7 +584,7 @@ body {
 						</div>
 					</div>
 				</div>
-				<button>수정 완료</button>
+				<button style="width: 110px;">수정 완료</button>
 			</div>
 
 

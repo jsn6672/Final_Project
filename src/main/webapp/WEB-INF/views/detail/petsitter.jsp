@@ -31,7 +31,7 @@
         console.log('-----------')
         const end = new Date(new Date().getTime() + TIME_ZONE); // 현재 날짜
 
-        const diff = (end - start) / 1000; // 경과 시간
+        const diff = (end - start) / 1000; // 경과시간
         console.log(start);
         console.log(end);
         console.log(diff);
@@ -97,7 +97,16 @@
 							</c:choose>
 							<div style="display: flex;">
 								<div>희망 시급: ${petsitter.ps_pay }</div>
-								<div style="margin-left: 10px;">(${petsitter.ps_term })</div>
+								<div style="margin-left: 10px;">
+									<c:choose>
+										<c:when test="${petsitter.ps_term  == 1}">
+											<div style="margin-left: 10px;">(정기)</div>
+										</c:when>
+										<c:otherwise>
+											<div style="margin-left: 10px;">(단기)</div>
+										</c:otherwise>
+									</c:choose>
+								</div>
 							</div>							
 							<div style="display: flex;">
 								<div>활동 가능 지역:</div>
@@ -401,9 +410,9 @@
 									</c:when>
 								</c:choose>
 							</c:when>
-							<c:otherwise>
+							<c:when test="${sessionScope.userInfo.user_id ne null }">
 								<button class="open-btn" onclick="petsitterContract('${petsitter.ps_id}')">신청하기</button>
-							</c:otherwise>
+							</c:when>
 						</c:choose>
 					</div>
 			</div>

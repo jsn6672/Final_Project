@@ -138,7 +138,7 @@
 	        const isCareActivityChecked = isAtLeastOneCheckboxChecked(careActivityCheckboxes);
 
 	        if (!isCareActivityChecked) {
-	            alert("폼을 제출하기 전에 최소한 하나의 반려동물 종류와 활동을 선택해주세요.");
+	            alert("하나 이상의 활동을 클릭해주세요");
 	            return false; // 폼 제출 방지
 	        }
 
@@ -315,7 +315,7 @@ body {
 						name="cs_extra" style="width: 620px; border: none; border-radius: 10px;"></textarea>
 				</div>
 
-				<div style="width: 75%;">
+				<div style="width: 75%; margin-bottom: 30px;">
 					<div class="body-title-detail">활동 필요 시간</div>
 					<div class="body-time">
 						<div class="body-time-title">
