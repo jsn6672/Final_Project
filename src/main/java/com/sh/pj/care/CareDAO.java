@@ -121,6 +121,14 @@ public class CareDAO {
 				+ dDTO.getFriday_end() + "!" + dDTO.getSaturday_start() + "!" + dDTO.getSaturday_end() + "!"
 				+ dDTO.getSunday_start() + "!" + dDTO.getSunday_end();
 		dDTO.setD_hour(d_hour);
+		
+		String personality = dDTO.getD_personality();
+		personality.replaceAll("\r\n", "<br>");
+		dDTO.setD_personality(personality);
+		
+		String need = dDTO.getD_need();
+		need.replaceAll("\r\n", "<br>");
+		dDTO.setD_need(need);
 
 		if (dDTO.getD_check() == null) {
 			dDTO.setD_check("0");
@@ -169,6 +177,14 @@ public class CareDAO {
 
 			cDTO.getCs_Rfile().transferTo(saveImg);
 			cDTO.setCs_file(newName + extension);
+			
+			String extra = cDTO.getCs_extra();
+			extra = extra.replaceAll("\r\n", "<br>");
+			cDTO.setCs_extra(extra);
+			
+			String exp = cDTO.getCs_exp();
+			exp = exp.replace("\r\n", "<br>");
+			cDTO.setCs_exp(exp);
 
 			MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 			cDTO.setCs_id(mDTO.getUser_id());
@@ -251,6 +267,14 @@ public class CareDAO {
 		cDTO.setFriday(petsitter_day[4]);
 		cDTO.setSaturday(petsitter_day[5]);
 		cDTO.setSunday(petsitter_day[6]);
+		
+		String extra = cDTO.getCs_extra();
+		extra = extra.replaceAll("<br>", "\r\n");
+		cDTO.setCs_extra(extra);
+		
+		String exp = cDTO.getCs_exp();
+		exp = exp.replace("<br>", "\r\n");
+		cDTO.setCs_exp(exp);
 
 		req.setAttribute("csInfo", cDTO);
 
@@ -297,6 +321,14 @@ public class CareDAO {
 					+ cDTO.getFriday_end() + "!" + cDTO.getSaturday_start() + "!" + cDTO.getSaturday_end() + "!"
 					+ cDTO.getSunday_start() + "!" + cDTO.getSunday_end();
 			cDTO.setCs_hour(d_hour);
+			
+			String extra = cDTO.getCs_extra();
+			extra = extra.replaceAll("\r\n", "<br>");
+			cDTO.setCs_extra(extra);
+			
+			String exp = cDTO.getCs_exp();
+			exp = exp.replace("\r\n", "<br>");
+			cDTO.setCs_exp(exp);
 
 			/*
 			 * int j1 = 1; for (int i1 = 0; i1 < cDTO.getCs_type().length; i1++) { j1 *=
@@ -390,6 +422,14 @@ public class CareDAO {
 				+ dDTO.getFriday_end() + "!" + dDTO.getSaturday_start() + "!" + dDTO.getSaturday_end() + "!"
 				+ dDTO.getSunday_start() + "!" + dDTO.getSunday_end();
 		dDTO.setD_hour(d_hour);
+		
+		String personality = dDTO.getD_personality();
+		personality.replaceAll("\r\n", "<br>");
+		dDTO.setD_personality(personality);
+		
+		String need = dDTO.getD_need();
+		need.replaceAll("\r\n", "<br>");
+		dDTO.setD_need(need); 
 
 		if (dDTO.getD_check() == null) {
 			dDTO.setD_check("0");
@@ -427,6 +467,14 @@ public class CareDAO {
 				+ "!" + dDTO.getFriday() + "!" + dDTO.getSaturday() + "!" + dDTO.getSunday();
 
 		dDTO.setD_day(d_day);
+		
+		String personality = dDTO.getD_personality();
+		personality.replaceAll("\r\n", "<br>");
+		dDTO.setD_personality(personality);
+		
+		String need = dDTO.getD_need();
+		need.replaceAll("\r\n", "<br>");
+		dDTO.setD_need(need); 
 
 		String d_hour = dDTO.getMonday_start() + "!" + dDTO.getMonday_end() + "!" + dDTO.getTuesday_start() + "!"
 				+ dDTO.getTuesday_end() + "!" + dDTO.getWednesday_start() + "!" + dDTO.getWednesday_end() + "!"

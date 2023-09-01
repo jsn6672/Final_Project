@@ -80,7 +80,7 @@
 		SELECT * fROM (SELECT ROWNUM AS rn, it.* FROM caresitter_tbl it WHERE
 		(it.cs_location1 LIKE '%' || #{cs_search} || '%' OR it.cs_location2
 		LIKE '%' || #{cs_search} || '%' OR it.cs_location3 LIKE '%' ||
-		#{cs_search} || '%')
+		#{cs_search} || '%')and cs_id in (select user_id from jsn_user_tbl where user_cs_status = 4)
 		<!-- AND it.inquiry_category = #{category} -->
 		ORDER BY it.cs_write_date DESC)
 		WHERE rn &gt;= #{cs_start} and rn &lt;=

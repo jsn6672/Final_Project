@@ -138,7 +138,7 @@
 	        const isCareActivityChecked = isAtLeastOneCheckboxChecked(careActivityCheckboxes);
 
 	        if (!isCareActivityChecked) {
-	            alert("폼을 제출하기 전에 최소한 하나의 반려동물 종류와 활동을 선택해주세요.");
+	            alert("하나 이상의 활동을 클릭해주세요");
 	            return false; // 폼 제출 방지
 	        }
 
