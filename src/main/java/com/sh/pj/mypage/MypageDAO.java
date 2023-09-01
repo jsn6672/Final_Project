@@ -378,15 +378,15 @@ public class MypageDAO {
 
 		for (DolbomDTO dolbomDTO : dDTOs) {
 			cntDTO.setCnt_dolbom_no(Integer.toString(dolbomDTO.getD_no()));
-
+			System.out.println(ss.getMapper(MypageMapper.class).countDolbomCont(cntDTO));
 			if (ss.getMapper(MypageMapper.class).countDolbomCont(cntDTO) == 0) {
 				dolbomDTO.setCntDTOMessage("아직 돌보미에게 도움을 줄 시터가 신청을 안했습니다");
 			} else {
-
+				
 				List<ContractDTO> cntDTOs = ss.getMapper(MypageMapper.class).getAllDolbomCont(cntDTO);
-
+				
 				for (ContractDTO cntDTO2 : cntDTOs) {
-
+					System.out.println(cntDTO2);
 					MemberDTO sitterDTO = ss.getMapper(MypageMapper.class).getUserID(cntDTO2);
 
 					cntDTO2.setCnt_memberDTO(sitterDTO);
@@ -394,11 +394,10 @@ public class MypageDAO {
 					int age = nowyear - (Integer.parseInt(sitterDTO.getUser_age()) / 10000) + 1;
 					cntDTO2.setAge(age);
 
-					cntDTO2.setCnt_petdto(ss.getMapper(MypageMapper.class).getPetSitter(sitterDTO));
-
-					int can_do = Integer.parseInt(cntDTO2.getCnt_petdto().getPs_can_do());
 					cntDTO2.setCnt_can_do("");
 					if (cntDTO2.getCnt_type() == 3) {
+						cntDTO2.setCnt_petdto(ss.getMapper(MypageMapper.class).getPetSitter(sitterDTO));
+						int can_do = Integer.parseInt(cntDTO2.getCnt_petdto().getPs_can_do());
 
 						if (can_do % 2 == 0) {
 							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 산책");
@@ -425,6 +424,8 @@ public class MypageDAO {
 							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 기타활동");
 						}
 					} else if (cntDTO2.getCnt_type() == 2) {
+						cntDTO2.setCnt_momdto(ss.getMapper(MypageMapper.class).getMomSitter(sitterDTO));
+						int can_do = Integer.parseInt(cntDTO2.getCnt_momdto().getMs_can_do());
 						if (can_do % 2 == 0) {
 							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 실내놀이");
 						}
@@ -450,6 +451,8 @@ public class MypageDAO {
 							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 기타활동");
 						}
 					} else {
+						cntDTO2.setCnt_caredto(ss.getMapper(MypageMapper.class).getCareSitter(sitterDTO));
+						int can_do = Integer.parseInt(cntDTO2.getCnt_caredto().getCs_can_do());
 						if (can_do % 2 == 0) {
 							cntDTO2.setCnt_can_do(cntDTO2.getCnt_can_do() + " , 가사활동");
 						}

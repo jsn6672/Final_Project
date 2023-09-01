@@ -345,7 +345,7 @@ body {
 				</div>
 				<div>
 					<input type="radio" name="cs_cctv" value="1" id="cs_cctv_on">
-					cctv촬영도 괜찮아요 <input type="radio" name="ps_cctv" value="2" id="cs_cctv_off">
+					cctv촬영도 괜찮아요 <input type="radio" name="cs_cctv" value="2" id="cs_cctv_off">
 					cctv촬영 없는 곳을 원해요
 				</div>
 				<div>

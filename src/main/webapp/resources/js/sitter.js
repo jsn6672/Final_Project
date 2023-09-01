@@ -262,7 +262,7 @@ function petsitterContract2(d_no, ps_id) {
   }
 }
 
-function drawStar(target) {
+function drawTakeStar(target) {
   const starSpan = document.querySelector(".review_star span");
   if (starSpan) {
     const width = target.value * 10 + "%";

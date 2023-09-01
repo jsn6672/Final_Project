@@ -280,6 +280,7 @@ display: flex;
         background-color: white;
     border: 5px solid #eeeeee;
     border-radius: 3%;
+    padding-bottom: 20px;
 }
 
 .mpS-sub {

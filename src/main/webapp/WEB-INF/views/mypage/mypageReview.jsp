@@ -34,7 +34,6 @@
 	overflow: hidden;
 	pointer-events: none;
 }
-
 </style>
 </head>
 <body>
@@ -47,7 +46,7 @@
 			<div>내가 받은 리뷰</div>
 			<br>
 			<c:forEach items="${review }" var="rw">
-				<div>${rw.r_dolbomDTO.d_name }님께서남기신 리뷰입니다</div>
+				<div>${rw.r_dolbomDTO.d_name }님께서남기신리뷰입니다</div>
 				<div>평점 : ${rw.review_point }</div>
 				<div>내용 : ${rw.review_txt }</div>
 				<div style="margin-left: 30px;">
@@ -119,7 +118,6 @@
 	</div>
 
 </body>
-<script src="resources/js/sitter.js"></script>
 
 
 </html>

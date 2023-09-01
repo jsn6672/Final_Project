@@ -17,7 +17,7 @@
 			<!-- 이용내역 페이지의 전체 컨테이너 -->
 
 			<!-- 시터 등록 및 수정 페이지의 전체 컨테이너 -->
-			<div class="mpS-2" style="height: 91vh;">
+			<div class="mpS-2" style="height: 91vh; overflow: auto;">
 				<!-- <h1>시터 등록 및 수정</h1> -->
 				<div style="margin-top: 30px;">시터 요청</div>
 				<div>${SitterNotice }</div>
@@ -155,28 +155,56 @@
 
 					</c:forEach>
 				</div>
-				<div>
-					<c:if test="${CertiFale > 1}">
-						<div>인증 확인</div>
-						<c:if test="${CertiFale % 2 eq 0 }">
-							<div> <span onclick="location.href='mypage.sitterRegCare.go'"> 케어시터 등록시 잘못된 서류를 업로드하셨습니다 수정해주세요</span></div>
-						</c:if>
-						<c:if test="${CertiFale % 3 eq 0 }">
-							<div> <span onclick="location.href='mypage.takerRegCare.go'">케어테이커 등록시 잘못된 서류를 업로드하셨습니다 수정해주세요</span></div>
-						</c:if>
-						<c:if test="${CertiFale % 5 eq 0 }">
-							<div> <span onclick="location.href='mypage.sitterRegMom.go'">맘시터 등록시 잘못된 서류를 업로드하셨습니다 수정해주세요</span></div>
-						</c:if>
-						<c:if test="${CertiFale % 7 eq 0 }">
-							<div> <span onclick="location.href='mypage.takerRegMom.go'">맘테이머 등록시 잘못된 서류를 업로드하셨습니다 수정해주세요</span></div>
-						</c:if>
-						<c:if test="${CertiFale % 11 eq 0 }">
-							<div> <span onclick="location.href='mypage.sitterRegPet.go'">펫시터 등록시 잘못된 서류를 업로드하셨습니다 수정해주세요</span></div>
-						</c:if>
-						<c:if test="${CertiFale % 13 eq 0 }">
-							<div> <span onclick="location.href='mypage.takerRegPet.go'">펫테이커 등록시 잘못된 서류를 업로드하셨습니다 수정해주세요</span></div>
-						</c:if>
-					</c:if>
+				<hr>
+				<div id="Accordion_wrap">
+					<div>인증 확인</div>
+					<c:choose>
+						<c:when test="${CertiFale > 1}">
+							<div class="message">인증에 실패하셨습니다 확인해주세요</div>
+							<div class="messageans">
+								<c:if test="${CertiFale % 2 eq 0 }">
+
+									<div>
+										<span onclick="location.href='mypage.sitterRegCare.go'">
+											케어시터 등록시 잘못된 서류를 업로드하셨습니다 수정해주세요</span>
+									</div>
+								</c:if>
+								<c:if test="${CertiFale % 3 eq 0 }">
+									<div>
+										<span onclick="location.href='mypage.takerRegCare.go'">케어테이커
+											등록시 잘못된 서류를 업로드하셨습니다 수정해주세요</span>
+									</div>
+								</c:if>
+								<c:if test="${CertiFale % 5 eq 0 }">
+									<div>
+										<span onclick="location.href='mypage.sitterRegMom.go'">맘시터
+											등록시 잘못된 서류를 업로드하셨습니다 수정해주세요</span>
+									</div>
+								</c:if>
+								<c:if test="${CertiFale % 7 eq 0 }">
+									<div>
+										<span onclick="location.href='mypage.takerRegMom.go'">맘테이머
+											등록시 잘못된 서류를 업로드하셨습니다 수정해주세요</span>
+									</div>
+								</c:if>
+								<c:if test="${CertiFale % 11 eq 0 }">
+									<div>
+										<span onclick="location.href='mypage.sitterRegPet.go'">펫시터
+											등록시 잘못된 서류를 업로드하셨습니다 수정해주세요</span>
+									</div>
+								</c:if>
+								<c:if test="${CertiFale % 13 eq 0 }">
+									<div>
+										<span onclick="location.href='mypage.takerRegPet.go'">펫테이커
+											등록시 잘못된 서류를 업로드하셨습니다 수정해주세요</span>
+									</div>
+								</c:if>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div>잘못된 서류를 등록하신적이 없습니다 <br> 감사합니다</div>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</div>

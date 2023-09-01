@@ -33,8 +33,18 @@
 		</div>
 	</div>
 	<div class="mpS-pet-3">
-		<div class="mpS-pet-4">
-			수정하기버튼을 클릭해보세요. <br> 추가와 수정이 가능합니다.
+		<div>
+			<form action="pettaker.update" method="post"
+				enctype="multipart/form-data" onsubmit="return validateForm()">
+				<div class="mpS-pet-4" style="height: 200px;">
+					등록된 서류를 수정하고 싶으시면 파일을 입력 후 수정해주세요 <input type="file"
+						name="ct_Rfile" id="pt_Rfile">
+					<button>수정</button>
+				</div>
+			</form>
+			<div class="mpS-pet-4">
+				수정하기버튼을 클릭해보세요. <br> 추가와 수정이 가능합니다.
+			</div>
 		</div>
 	</div>
 </body>

@@ -93,9 +93,11 @@
 					var buttonText = button.innerHTML; // 현재 버튼의 내용
 
 					if (statusInput.value === "on") {
+						alert("공고가 내려갑니다");
 						statusInput.value = "off";
 						button.innerHTML = "on"; // 버튼 텍스트 변경
 					} else if (statusInput.value === "off") {
+						alert("공고가 올라갑니다");
 						statusInput.value = "on";
 						button.innerHTML = "off"; // 버튼 텍스트 변경
 					}
@@ -194,7 +196,7 @@
 									</c:if>
 									<c:if test="${userInfo.user_ms_status eq 1 }">
 										<div class="mpPSitter-part-state"
-											style="background-color: #EEEEEE">
+											style="background-color: #E4E4E4">
 											<span onclick="location.href='mypage.ticket.do'">이용권구매필요</span>
 										</div>
 									</c:if>
@@ -206,12 +208,13 @@
 									</c:if>
 									<c:if test="${userInfo.user_ms_status eq 3 }">
 										<div class="mpPSitter-part-state"
-											style="background-color: #D9D9D9">
+											style="background-color: #DDC3BF">
 											<span onclick="location.href='ms.start.work'">인증완료(공고x)</span>
 										</div>
 									</c:if>
 									<c:if test="${userInfo.user_ms_status eq 4 }">
-										<div class="mpPSitter-part-state">
+										<div class="mpPSitter-part-state"
+											style="background-color: #E3BDB7">
 											<span onclick="location.href='ms.end.work'">공고중</span>
 										</div>
 									</c:if>
@@ -231,7 +234,7 @@
 									</c:if>
 									<c:if test="${userInfo.user_cs_status eq 1 }">
 										<div class="mpPSitter-part-state"
-											style="background-color: #EEEEEE">
+											style="background-color: #E4E4E4">
 											<span onclick="location.href='mypage.ticket.do'">이용권구매필요</span>
 										</div>
 									</c:if>
@@ -243,12 +246,13 @@
 									</c:if>
 									<c:if test="${userInfo.user_cs_status eq 3 }">
 										<div class="mpPSitter-part-state"
-											style="background-color: #D9D9D9">
+											style="background-color: #DDC3BF">
 											<span onclick="location.href='cs.start.work'">인증완료(공고x)</span>
 										</div>
 									</c:if>
 									<c:if test="${userInfo.user_cs_status eq 4 }">
-										<div class="mpPSitter-part-state">
+										<div class="mpPSitter-part-state"
+										style="background-color: #E3BDB7">
 											<span onclick="location.href='cs.end.work'">공고중</span>
 										</div>
 									</c:if>
@@ -268,7 +272,7 @@
 									</c:if>
 									<c:if test="${userInfo.user_ps_status eq 1 }">
 										<div class="mpPSitter-part-state"
-											style="background-color: #EEEEEE">
+											style="background-color: #E4E4E4">
 											<span onclick="location.href='mypage.ticket.do'">이용권구매필요</span>
 										</div>
 									</c:if>
@@ -280,12 +284,13 @@
 									</c:if>
 									<c:if test="${userInfo.user_ps_status eq 3 }">
 										<div class="mpPSitter-part-state"
-											style="background-color: #D9D9D9">
+											style="background-color: #DDC3BF">
 											<span onclick="location.href='ps.start.work'">인증완료(공고x)</span>
 										</div>
 									</c:if>
 									<c:if test="${userInfo.user_ps_status eq 4 }">
-										<div class="mpPSitter-part-state">
+										<div class="mpPSitter-part-state"
+										style="background-color: #E3BDB7">
 											<span onclick="location.href='ps.end.work'">공고중</span>
 										</div>
 									</c:if>
@@ -370,7 +375,7 @@
 					<div class="mpPAddr-detail">주소</div>
 					<div class="mpPAddr-detail-answer">
 						우편번호 : ${memberProfile.m_addr3} / 주소 : ${memberProfile.m_addr1 }
-						${memberProfile.m_addr2 } 
+						${memberProfile.m_addr2 }
 						<!--  <a href="count.tbl">testetst</a>-->
 					</div>
 				</div>
@@ -388,11 +393,14 @@
 		style="display: none; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); position: absolute; top: 0; left: 0">
 		<div id="dolbomPetModalContents">
 			<div>
-				공고를 하시려면 on버튼을 눌러주세요 <br> 공고를 내리시려면 off버튼을 눌러주세요 <br> 내가
-				불쌍해보인다면 돈을 주세요
+				현재 공고 상태
+				<br>
+				상태를 바꾸시려면 버튼을 눌러주세요
 			</div>
 			<c:forEach items="${petDTO }" var="p">
-				<div class="pet-info" style="display: flex;">
+				<br>
+				<div class="pet-info"
+					style="display: flex; justify-content: space-evenly">
 					<div>${p.d_name }</div>
 					<div>
 						<form action="notice.update">
@@ -410,8 +418,9 @@
 		style="display: none; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); position: absolute; top: 0; left: 0">
 		<div id="dolbomCareModalContents">
 			<div>
-				공고를 하시려면 on버튼을 눌러주세요 <br> 공고를 내리시려면 off버튼을 눌러주세요 <br> 내가
-				불쌍해보인다면 돈을 주세요
+				현재 공고 상태
+				<br>
+				상태를 바꾸시려면 버튼을 눌러주세요
 			</div>
 			<c:forEach items="${careDTO }" var="p">
 				<div class="care-info" style="display: flex;">
@@ -433,8 +442,9 @@
 		style="display: none; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); position: absolute; top: 0; left: 0">
 		<div id="dolbomMomModalContents">
 			<div>
-				공고를 하시려면 on버튼을 눌러주세요 <br> 공고를 내리시려면 off버튼을 눌러주세요 <br> 내가
-				불쌍해보인다면 돈을 주세요
+				현재 공고 상태
+				<br>
+				상태를 바꾸시려면 버튼을 눌러주세요
 			</div>
 			<c:forEach items="${momDTO }" var="p">
 				<div class="mom-info" style="display: flex;">
