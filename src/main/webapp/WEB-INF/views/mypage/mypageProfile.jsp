@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8" />
+
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.7.0.js"
 	integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
@@ -142,6 +143,7 @@
 	<div id="myModal" class="modal">
 		<div class="modal-content">
 			<span class="close">&times;</span>
+			<div class="pwCSS">
 			<form action="mypage.pw.do">
 				<div class="mpPPWUpdate">
 					<div class="mpPPWFail">${wrongMessage }</div>
@@ -152,13 +154,14 @@
 							placeholder="변경하실 비밀번호를 입력해 주세요" />
 					</div>
 					<div id="mpPPWSpace"></div>
-					<div class="mpPPW" style="width: 35%">
+					<div class="mpPPW">
 						비밀번호 확인 <br /> <input name="mpPPWInputCheck"
 							class="mpPPWInputCheck" placeholder="다시 한 번 입력해 주세요." />
 					</div>
 				</div>
 				<button id="mpP-btn" style="width: 120px;">수정하기</button>
 			</form>
+			</div>
 		</div>
 	</div>
 </body>
