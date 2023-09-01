@@ -89,7 +89,7 @@
 		SELECT * fROM (SELECT ROWNUM AS rn, it.* FROM momsitter_tbl it WHERE
 		(it.ms_location1 LIKE '%' || #{ms_search} || '%' OR it.ms_location2
 		LIKE '%' || #{ms_search} || '%' OR it.ms_location3 LIKE '%' ||
-		#{ms_search} || '%')
+		#{ms_search} || '%')and ms_id in (select user_id from jsn_user_tbl where user_ms_status = 4)
 		<!-- AND it.inquiry_category = #{category} -->
 		ORDER BY it.ms_write_date DESC)
 		WHERE rn &gt;= #{ms_start} and rn &lt;=

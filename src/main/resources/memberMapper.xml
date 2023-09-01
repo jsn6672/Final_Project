@@ -9,8 +9,8 @@
 
 	<insert id="regAccount">
 		insert into jsn_user_tbl values (#{user_id}, #{user_pw}, #{user_name},
-		#{user_gender}, #{user_phone}, #{user_email_authkey}, 1, #{user_email},
-		#{user_location}, #{user_pic}, 0, 0, 0, 0, 0, 0, #{user_age}, 0)
+		#{user_gender}, #{user_age}, #{user_phone}, #{user_email_authkey}, 1, #{user_email},
+		#{user_location}, #{user_pic}, 0, 0, 0, 0, 0, 0, 0)
 	</insert>
 	
 	<select id="checkEmail" resultType="int">

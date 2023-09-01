@@ -36,18 +36,12 @@
 				<div class="QnA-header">고객 게시판</div>
 				<div class="QnA-left-lists">
 					<div class="QnA-left-list highlightable" id="notice1"
-						onmouseover="changeColorOnMouseOver('notice1')"
-						onmouseout="changeColorOnMouseOut('notice1')"
 						onclick="location.href='mainask.go?category=1'">공지사항</div>
 
 					<div class="QnA-left-list highlightable" id="notice3"
-						onmouseover="changeColorOnMouseOver('notice3')"
-						onmouseout="changeColorOnMouseOut('notice3')"
 						onclick="location.href='qanda.go?category=3'">문의하기</div>
 
 					<div class="QnA-left-list highlightable" id="notice2"
-						onmouseover="changeColorOnMouseOver('notice2')"
-						onmouseout="changeColorOnMouseOut('notice2')"
 						onclick="location.href='manyask.go?category=2'">자주묻는질문</div>
 
 				</div>

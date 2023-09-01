@@ -12,7 +12,8 @@
 .QnA-content{
     display: flex;
     justify-content: center;
-    height: 50vw;
+    height: 46vw;
+    padding-top: 40px;
 }
 
 .QnA-header{
