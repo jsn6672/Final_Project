@@ -102,7 +102,14 @@
 							</c:choose>
 							<div style="display: flex;">
 								<div>희망 시급: ${caresitter.cs_pay }</div>
-								<div style="margin-left: 10px;">(${caresitter.cs_term })</div>
+								<c:choose>
+									<c:when test="${caresitter.cs_term  == 1}">
+										<div style="margin-left: 10px;">(정기)</div>
+									</c:when>
+									<c:otherwise>
+										<div style="margin-left: 10px;">(단기)</div>
+									</c:otherwise>
+								</c:choose>
 							</div>							
 							<div style="display: flex;">
 								<div>활동 가능 지역:</div>

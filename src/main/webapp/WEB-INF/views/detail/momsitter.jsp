@@ -100,7 +100,16 @@
 							</c:choose>
 							<div style="display: flex;">
 								<div>희망 시급: ${momsitter.ms_pay }</div>
-								<div style="margin-left: 10px;">(${momsitter.ms_term })</div>
+								<div style="margin-left: 10px;">
+									<c:choose>
+										<c:when test="${momsitter.ms_term  == 1}">
+											<div style="margin-left: 10px;">(정기)</div>
+										</c:when>
+										<c:otherwise>
+											<div style="margin-left: 10px;">(단기)</div>
+										</c:otherwise>
+									</c:choose>
+								</div>
 							</div>
 							<div style="display: flex;">
 								<div>활동 가능 지역:</div>
