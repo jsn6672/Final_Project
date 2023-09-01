@@ -366,24 +366,29 @@
 						</div>
 					</div>
 				</div>
-					<div class="detail-btn">
+					<div class="detail-btn" style="padding-top: 20px;">
 						<c:choose>
 							<c:when test="${caresitter.cs_id eq sessionScope.userInfo.user_id }">
 								<c:choose>
 									<c:when test="${sessionScope.userInfo.user_cs_status == 3 }">
-										<button onclick="location.href='mypage.sitterRegCare.go?user_id=${sessionScope.userInfo.user_id}''">수정</button>
-										<button onclick="caresitterNoticeUP('${caresitter.cs_id}')" style="margin-left: 10px;">공고 올리기</button>
-										<button onclick="caresitterDelete('${caresitter.cs_id}')" style="margin-left: 10px;">삭제</button>
+										<button onclick="location.href='mypage.sitterRegCare.go?user_id=${sessionScope.userInfo.user_id}''" style="width: 100px; height: 50px;">수정</button>
+										<button onclick="caresitterNoticeUP('${caresitter.cs_id}')" style="margin-left: 10px;width: 100px; height: 50px;">공고 올리기</button>
+										<button onclick="caresitterDelete('${caresitter.cs_id}')" style="margin-left: 10px;width: 100px; height: 50px;">삭제</button>
 									</c:when>
 									<c:when test="${sessionScope.userInfo.user_cs_status == 4 }">
-										<button onclick="location.href='mypage.sitterRegCare.go?user_id=${sessionScope.userInfo.user_id}'">수정</button>
-										<button onclick="caresitterNoticeDOWN('${caresitter.cs_id}')" style="margin-left: 10px;">공고 내리기</button>
-										<button onclick="caresitterDelete('${caresitter.cs_id}')" style="margin-left: 10px;">삭제</button>
+										<button onclick="location.href='mypage.sitterRegCare.go?user_id=${sessionScope.userInfo.user_id}'"style="width: 100px; height: 50px;">수정</button>
+										<button onclick="caresitterNoticeDOWN('${caresitter.cs_id}')" style="margin-left: 10px;width: 100px; height: 50px;">공고 내리기</button>
+										<button onclick="caresitterDelete('${caresitter.cs_id}')" style="margin-left: 10px;width: 100px; height: 50px;">삭제</button>
 									</c:when>
 								</c:choose>
 							</c:when>
+
+							<c:otherwise>
+							<button class="open-btn" onclick="caresitterContract('${caresitter.cs_id}')" style="width: 120px;">신청하기</button>
+
 							<c:when test="${sessionScope.userInfo.user_id ne null }">
 							<button class="open-btn" onclick="caresitterContract('${caresitter.cs_id}')">신청하기</button>
+
 							<!-- <button class="open-btn">모달 테스트</button> -->
 							</c:when>
 					</c:choose>

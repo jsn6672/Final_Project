@@ -268,19 +268,13 @@
 					</div>
 				</div>
 				<div>
-					<div class="body-title-detail">원하는 시터 나이</div>
-					<div class="body-content-detail-cover">
-						<div class="body-content-detail">${dolbom.d_need }</div>
-					</div>
-				</div>
-				<div>
 					<div class="body-title-detail">그 외 요청사항</div>
 					<div class="body-content-detail-cover">
 						<div class="body-content-detail">${dolbom.d_need }</div>
 					</div>
 				</div>
-					<div class="detail-btn">
-						<button onclick="caretakerContract('${dolbom.d_no}', '${sessionScope.userInfo.user_id }', '${userInfo.user_cs_status }')">신청하기</button>
+					<div class="detail-btn" style="padding-top: 20px;">
+						<button onclick="caretakerContract('${dolbom.d_no}', '${sessionScope.userInfo.user_id }', '${userInfo.user_cs_status }')" style="width: 110px; ">신청하기</button>
 					</div>
 			</div>
 		</div>

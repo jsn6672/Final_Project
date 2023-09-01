@@ -95,7 +95,7 @@ https://templatemo.com/tm-580-woox-travel
 
 <body>
 	<main id="main">
-		<section style="background-color: #dcffdc">
+		<section style="background-color: #EBF5FF;  height: 46vw;">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-9" data-aos="fade-up">
