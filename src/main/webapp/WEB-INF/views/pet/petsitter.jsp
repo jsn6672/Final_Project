@@ -150,7 +150,16 @@ https://templatemo.com/tm-580-woox-travel
 												</div>
 												<div style="display: flex;">
 													<div>시급: ${p.ps_pay }</div>
-													<div style="margin-left: 10px;">(${p.ps_term })</div>
+													<div style="margin-left: 10px;">
+														<c:choose>
+															<c:when test="${p.ps_term  == 1}">
+																<div style="margin-left: 10px;">(정기)</div>
+															</c:when>
+															<c:otherwise>
+																<div style="margin-left: 10px;">(단기)</div>
+															</c:otherwise>
+														</c:choose>
+													</div>
 												</div>
 												<div class="mom-select-locations">
 													<div>

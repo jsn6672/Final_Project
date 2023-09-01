@@ -103,7 +103,7 @@
 		SELECT * fROM (SELECT ROWNUM AS rn, it.* FROM petsitter_tbl it WHERE
 		(it.ps_location1 LIKE '%' || #{ps_search} || '%' OR it.ps_location2
 		LIKE '%' || #{ps_search} || '%' OR it.ps_location3 LIKE '%' ||
-		#{ps_search} || '%')  <!-- and user_ps_status = 4 -->
+		#{ps_search} || '%') and ps_id in (select user_id from jsn_user_tbl where user_ps_status = 4)
 		<!-- AND it.inquiry_category = #{category} -->
 		ORDER BY it.ps_write_date DESC)
 		WHERE rn &gt;= #{ps_start} and rn &lt;=
