@@ -109,8 +109,8 @@
 	<select id="countDolbomCont" resultType="int">
 		select count(*) from
 		contract_tbl where cnt_dolbom_no = #{cnt_dolbom_no}
-		and cnt_dolbom_ok >= 1 and cnt_sitter_ok >=1 and cnt_dolbom_ok &lt;= 2
-		and cnt_sitter_ok &lt;=2
+		and cnt_dolbom_ok &gt;= 1 and cnt_sitter_ok &gt;=1 and cnt_dolbom_ok &lt;= 2
+		and cnt_sitter_ok &lt;= 2
 	</select>
 
 	<select id="getDolbomList"
@@ -233,6 +233,14 @@
 	<select id="getPetSitter" resultType="com.sh.pj.pet.PetDTO">
 		select * from petsitter_tbl
 		where ps_id = #{user_id}
+	</select>
+	<select id="getCareSitter" resultType="com.sh.pj.care.CareDTO">
+		select * from caresitter_tbl
+		where cs_id = #{user_id}
+	</select>
+	<select id="getMomSitter" resultType="com.sh.pj.mom.MomDTO">
+		select * from momsitter_tbl
+		where ms_id = #{user_id}
 	</select>
 
 	<select id="getDolbomInfo"

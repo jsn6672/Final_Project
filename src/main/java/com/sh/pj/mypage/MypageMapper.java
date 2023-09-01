@@ -73,6 +73,8 @@ public interface MypageMapper {
 	
 
 	public PetDTO getPetSitter(MemberDTO sitterDTO);
+	public CareDTO getCareSitter(MemberDTO sitterDTO);
+	public MomDTO getMomSitter(MemberDTO sitterDTO);
 
 	public DolbomDTO getDolbomInfo(DolbomDTO dDTO);
 

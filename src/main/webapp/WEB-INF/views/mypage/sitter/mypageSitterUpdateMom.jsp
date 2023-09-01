@@ -362,12 +362,12 @@ body {
 				</div>
 				<div>
 					<input type="radio" name="ms_cctv" value="1" id="ms_cctv_on">
-					cctv촬영도 괜찮아요 <input type="radio" name="ps_cctv" value="2" id="ms_cctv_off">
+					cctv촬영도 괜찮아요 <input type="radio" name="ms_cctv" value="2" id="ms_cctv_off">
 					cctv촬영 없는 곳을 원해요
 				</div>
 				<div>
 					<input type="radio" name="ms_term" value="1" id="ms_term_long" >
-					정기적 계약을 원해요 <input type="radio" name="ps_term" value="2" id="ms_term_short">
+					정기적 계약을 원해요 <input type="radio" name="ms_term" value="2" id="ms_term_short">
 					단발성 계약을 원해요
 				</div>
 				<div>원하시는 시급을 입력해주세요</div>

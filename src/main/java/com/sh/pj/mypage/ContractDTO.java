@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.sh.pj.account.DolbomDTO;
 import com.sh.pj.account.MemberDTO;
+import com.sh.pj.care.CareDTO;
+import com.sh.pj.mom.MomDTO;
 import com.sh.pj.pet.PetDTO;
 
 public class ContractDTO {
@@ -16,6 +18,8 @@ public class ContractDTO {
 	private String cnt_dolbom_ok;
 
 	private PetDTO cnt_petdto;
+	private CareDTO cnt_caredto;
+	private MomDTO cnt_momdto;
 	private DolbomDTO cnt_dolbomdto;
 
 	private List<DolbomDTO> cnt_list_dolbomdto;
@@ -30,9 +34,26 @@ public class ContractDTO {
 	public String toString() {
 		return "ContractDTO [cnt_no=" + cnt_no + ", cnt_type=" + cnt_type + ", cnt_sitter_id=" + cnt_sitter_id
 				+ ", cnt_dolbom_no=" + cnt_dolbom_no + ", cnt_sitter_ok=" + cnt_sitter_ok + ", cnt_dolbom_ok="
-				+ cnt_dolbom_ok + ", cnt_petdto=" + cnt_petdto + ", cnt_dolbomdto=" + cnt_dolbomdto
-				+ ", cnt_list_dolbomdto=" + cnt_list_dolbomdto + ", cnt_memberDTO=" + cnt_memberDTO + ", age=" + age
-				+ ", agetype=" + agetype + ", cnt_can_do=" + cnt_can_do + "]";
+				+ cnt_dolbom_ok + ", cnt_petdto=" + cnt_petdto + ", cnt_caredto=" + cnt_caredto + ", cnt_momdto="
+				+ cnt_momdto + ", cnt_dolbomdto=" + cnt_dolbomdto + ", cnt_list_dolbomdto=" + cnt_list_dolbomdto
+				+ ", cnt_memberDTO=" + cnt_memberDTO + ", age=" + age + ", agetype=" + agetype + ", cnt_can_do="
+				+ cnt_can_do + "]";
+	}
+
+	public CareDTO getCnt_caredto() {
+		return cnt_caredto;
+	}
+
+	public void setCnt_caredto(CareDTO cnt_caredto) {
+		this.cnt_caredto = cnt_caredto;
+	}
+
+	public MomDTO getCnt_momdto() {
+		return cnt_momdto;
+	}
+
+	public void setCnt_momdto(MomDTO cnt_momdto) {
+		this.cnt_momdto = cnt_momdto;
 	}
 
 	public List<DolbomDTO> getCnt_list_dolbomdto() {
