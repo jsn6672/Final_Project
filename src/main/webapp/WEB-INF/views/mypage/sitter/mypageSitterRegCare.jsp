@@ -315,7 +315,7 @@ body {
 						name="cs_extra" style="width: 620px; border: none; border-radius: 10px;"></textarea>
 				</div>
 
-				<div style="width: 75%;">
+				<div style="width: 75%; margin-bottom: 30px;">
 					<div class="body-title-detail">활동 필요 시간</div>
 					<div class="body-time">
 						<div class="body-time-title">
