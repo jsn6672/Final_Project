@@ -439,11 +439,10 @@
 										style="margin-left: 10px;">삭제</button>
 								</c:when>
 							</c:choose>
-						</c:when>      
-						<c:otherwise>
+						</c:when>
+						<c:when test="${sessionScope.userInfo.user_id ne null }">
 							<button class="open-btn" onclick="momsitterContract('${momsitter.ms_id}')">신청하기</button>
-							<!-- <button class="open-btn">모달 테스트</button> -->
-						</c:otherwise>
+						</c:when>      
 					</c:choose>
 				</div>
 			</div>

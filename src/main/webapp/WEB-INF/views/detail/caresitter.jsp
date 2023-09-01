@@ -375,10 +375,10 @@
 									</c:when>
 								</c:choose>
 							</c:when>
-							<c:otherwise>
+							<c:when test="${sessionScope.userInfo.user_id ne null }">
 							<button class="open-btn" onclick="caresitterContract('${caresitter.cs_id}')">신청하기</button>
 							<!-- <button class="open-btn">모달 테스트</button> -->
-						</c:otherwise>
+							</c:when>
 					</c:choose>
 				</div>
 			</div>

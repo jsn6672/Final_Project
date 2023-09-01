@@ -31,7 +31,7 @@
         console.log('-----------')
         const end = new Date(new Date().getTime() + TIME_ZONE); // 현재 날짜
 
-        const diff = (end - start) / 1000; // 경과 시간
+        const diff = (end - start) / 1000; // 경과시간
         console.log(start);
         console.log(end);
         console.log(diff);
@@ -401,9 +401,9 @@
 									</c:when>
 								</c:choose>
 							</c:when>
-							<c:otherwise>
+							<c:when test="${sessionScope.userInfo.user_id ne null }">
 								<button class="open-btn" onclick="petsitterContract('${petsitter.ps_id}')">신청하기</button>
-							</c:otherwise>
+							</c:when>
 						</c:choose>
 					</div>
 			</div>
