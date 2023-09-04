@@ -7,6 +7,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+@charset "UTF-8";
+@font-face {
+    font-family: 'CustomFont';
+    src: url('resources/css/sur.ttf') format('truetype');
+}
+
+body {
+    font-family: 'CustomFont', sans-serif;
+    height: 1600px;
+}
+
+.mpT-mention3-1{
+	font-size: 10pt;
+	font: white;
+	
+}
+</style>
 </head>
 <body>
 
@@ -25,7 +43,9 @@
 		
 		<div class="mpT-mention3">
 				<img class="soupRice" alt="" src="resources/img/rice.png">
+			<div class="mpT-mention3-1">
 				국밥 한 그릇으로 손쉬운 시터 구직부터 구인까지! 모두의 시터에서 한 번에 해결하세요!</div>
+			</div>
 		<form action="mypage.ticket.buy" method="post">
 			<div class="buy1month">
 				<img class="ticketImg" src="resources/img/1.png">
