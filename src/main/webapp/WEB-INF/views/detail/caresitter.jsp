@@ -390,19 +390,19 @@
 							</c:when>
 					</c:choose>
 				</div>
-			</div>
+			</div> 
 		</div>
 		<div class="container-side"></div>
 	</div>
 	<dialog class="mymodal w-25 h-25 bg-white border-0">
 		<!-- 모달 전체 div -->
-		<div class="container-fluid d-flex justify-content-center align-items-center w-100 h-100 bg-transparent ">
+		<div class="container-fluid d-flex justify-content-center align-items-center w-100 h-100 ">
 		
 		<!-- 유저 정보 및 돌보미 담는 곳 -->
 		<div class="d-flex flex-column bg-white w-100 h-100">
 			
 			<!-- 안내멘트 담는 div -->
-			<div class="d-flex justify-content-center align-items-center w-100 h-25 bg-blue">
+			<div class="d-flex justify-content-center align-items-center w-100 h-25" style="background-color: #ccccd7;">
 				<span>돌보미를 선택해주세요</span>
 				<form method="dialog">
 					<button>close</button>
@@ -442,6 +442,5 @@ open_btn.addEventListener('click', function(){
 	console.log(111);
 	
 });
-
 </script>
 </html>

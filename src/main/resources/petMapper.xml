@@ -10,7 +10,7 @@
 
 	<select id="getAllTaker"
 		resultType="com.sh.pj.account.DolbomDTO">
-		select*from dolbom_tbl where d_category=3
+		select*from dolbom_tbl where d_category=3 and d_onoff = 'on'
 	</select>
 
 
@@ -120,14 +120,14 @@
 	<select id="getMsg2" resultType="com.sh.pj.account.DolbomDTO">
 		SELECT * FROM (
 		SELECT ROWNUM AS rn, it.* FROM dolbom_tbl it
-		WHERE (it.d_location LIKE '%' || #{ps_search} || '%') and d_category = 3
+		WHERE (it.d_location LIKE '%' || #{ps_search} || '%') and d_category = 3 and d_onoff = 'on'
 		)
 		WHERE rn &gt;= #{ps_start} and rn &lt;= #{ps_end}
 	</select>
 
 	<select id="getMsgCount2" resultType="int"
 		parameterType="com.sh.pj.account.DolbomDTO">
-		SELECT count(*) FROM dolbom_tbl WHERE d_location LIKE '%'||#{ps_search}||'%' and d_category = 3
+		SELECT count(*) FROM dolbom_tbl WHERE d_location LIKE '%'||#{ps_search}||'%' and d_category = 3 and d_onoff = 'on'
 	</select>
 	
 	<update id="noticeUP">

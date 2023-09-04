@@ -206,7 +206,7 @@ public class MomController {
 	    }
 //	    req.getSession().setAttribute("asksearch", askSearch);
 
-	    momDAO.getMsg(p, req);
+	    momDAO.getMsg(1, req);
 	    mDAO.logincheck(req);
 	    
 	    req.setAttribute("contentPage", "mom/momsitter.jsp");	
