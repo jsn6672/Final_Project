@@ -60,7 +60,7 @@
 			</c:forEach>
 		</div>
 
-		<div class="body-content-another3">
+		<div class="body-content-another3" style="overflow: auto;">
 			<div style="text-align: center;">
 
 				<div>내가 써야 할 리뷰</div>
