@@ -143,6 +143,10 @@ public interface MypageMapper {
 
 	public List<PetDTO> getpointsCS();
 
+	public int updateMsWriteDate(MemberDTO mDTO);
+	public int updateCsWriteDate(MemberDTO mDTO);
+	public int updatePsWriteDate(MemberDTO mDTO);
+
 
 
 

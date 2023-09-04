@@ -851,6 +851,7 @@ public class MypageDAO {
 		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 		if (ss.getMapper(MypageMapper.class).updateMsStatusUp(mDTO) == 1) {
 			mDTO.setUser_ms_status(4);
+			ss.getMapper(MypageMapper.class).updateMsWriteDate(mDTO);
 			req.getSession().setAttribute("userInfo", mDTO);
 		}
 	}
@@ -865,6 +866,7 @@ public class MypageDAO {
 		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 		if (ss.getMapper(MypageMapper.class).updateCsStatusUp(mDTO) == 1) {
 			mDTO.setUser_cs_status(4);
+			ss.getMapper(MypageMapper.class).updateCsWriteDate(mDTO);
 			req.getSession().setAttribute("userInfo", mDTO);
 		}
 	}
@@ -879,6 +881,7 @@ public class MypageDAO {
 		MemberDTO mDTO = (MemberDTO) req.getSession().getAttribute("userInfo");
 		if (ss.getMapper(MypageMapper.class).updatePsStatusUp(mDTO) == 1) {
 			mDTO.setUser_ps_status(4);
+			ss.getMapper(MypageMapper.class).updatePsWriteDate(mDTO);
 			req.getSession().setAttribute("userInfo", mDTO);
 		}
 	}

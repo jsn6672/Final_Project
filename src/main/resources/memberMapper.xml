@@ -93,7 +93,7 @@
 	</select>
 	
 	<update id="updateOnDolbomInfo">
-		update dolbom_tbl set d_onoff = 'on' where d_no = #{d_no}
+		update dolbom_tbl set d_onoff = 'on', d_writedate = sysdate where d_no = #{d_no}
 	</update>
 	<update id="updateOffDolbomInfo">
 		update dolbom_tbl set d_onoff = 'off' where d_no = #{d_no}

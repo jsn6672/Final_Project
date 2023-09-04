@@ -371,12 +371,12 @@
 							<c:when test="${caresitter.cs_id eq sessionScope.userInfo.user_id }">
 								<c:choose>
 									<c:when test="${sessionScope.userInfo.user_cs_status == 3 }">
-										<button onclick="location.href='mypage.sitterRegCare.go?user_id=${sessionScope.userInfo.user_id}''" style="margin-left: 10px;height: 65px;width: 140px;margin-top: 20px">수정</button>
+										<button onclick="location.href='mypage.sitterRegCare.go?user_id=${sessionScope.userInfo.user_id}'" style="margin-left: 10px;height: 65px;width: 140px;margin-top: 20px">수정</button>
 										<button onclick="caresitterNoticeUP('${caresitter.cs_id}')" style="margin-left: 10px;height: 65px;width: 140px;margin-top: 20px">공고 올리기</button>
 										<button onclick="caresitterDelete('${caresitter.cs_id}')" style="margin-left: 10px;height: 65px;width: 140px;margin-top: 20px">삭제</button>
 									</c:when>
 									<c:when test="${sessionScope.userInfo.user_cs_status == 4 }">
-										<button onclick="location.href='mypage.sitterRegCare.go?user_id=${sessionScope.userInfo.user_id}'style="margin-left: 10px;height: 65px;width: 140px;margin-top: 20px">수정</button>
+										<button onclick="location.href='mypage.sitterRegCare.go?user_id=${sessionScope.userInfo.user_id}'" style="margin-left: 10px;height: 65px;width: 140px;margin-top: 20px">수정</button>
 										<button onclick="caresitterNoticeDOWN('${caresitter.cs_id}')" style="margin-left: 10px;height: 65px;width: 140px;margin-top: 20px">공고 내리기</button>
 										<button onclick="caresitterDelete('${caresitter.cs_id}')" style="margin-left: 10px;height: 65px;width: 140px;margin-top: 20px">삭제</button>
 									</c:when>

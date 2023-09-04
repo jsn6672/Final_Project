@@ -453,5 +453,15 @@
 		select * from caresitter_tbl where cs_point >= 100 
 	</select>
 	
+	<update id="updateMsWriteDate">
+		update momsitter_tbl set ms_write_date = sysdate where ms_id = #{user_id}
+	</update>
+	<update id="updateCsWriteDate">
+		update caresitter_tbl set cs_write_date = sysdate where cs_id = #{user_id}
+	</update>
+	<update id="updatePsWriteDate">
+		update petsitter_tbl set ps_write_date = sysdate where ps_id = #{user_id}
+	</update>
+	
 	
 </mapper>
