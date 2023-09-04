@@ -71,7 +71,7 @@ public class HomeController {
 			cDAO.calcAllMsgCountCareSitter();
 			momDAO.calcAllMsgCountMomSitter();
 			momDAO.calcAllMsgCountMomDolbom();
-
+			firstReq2 = false;
 
 		}
 		mDAO.reviewall(req);

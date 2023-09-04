@@ -44,13 +44,12 @@
 						<div class="mpPPicture">
 							<img id="mpPPicture" alt=""
 								src="resources/img/${sessionScope.userInfo.user_pic  } " />
-								<div class="myprofile-btns">
-								</div>
-								 <input type="file" id="input-file" name="pic" style="display:none;"/> <input hidden="hidden" name="org_pic"
+							<div class="myprofile-btns"></div>
+							<input type="file" id="input-file" name="pic"
+								style="display: none;" /> <input hidden="hidden" name="org_pic"
 								value="${memberProfile.user_pic }" />
 						</div>
-						<br>
-						<br>
+						<br> <br>
 						<div class="mpPService">
 							<span>현재 모두의 시터를 이렇게 이용하고 계세요!</span> <br />
 							<div class="mpPService-state">
@@ -68,7 +67,7 @@
 										<div class="mpPSitter-part-name">펫시터</div>
 										<div class="mpPSitter-part-state">이용상황</div>
 									</div>
-								
+
 								</div>
 								<div class="mpPSitter">
 									<!-- 시터사용자 <br> -->
@@ -102,71 +101,69 @@
 						</div>
 					</div> -->
 						<div class="myprofile-btns">
-						<label class="input-file-button" for="input-file">
-								 업로드
-									</label>
-						<button id="openModalBtn" type="button">암호변경</button>
-						<input name="user_id" type="hidden"
-							value="${sessionScope.userInfo.user_id}" />
+							<label class="input-file-button" for="input-file"> 업로드 </label>
+							<button id="openModalBtn" type="button">암호변경</button>
+							<input name="user_id" type="hidden"
+								value="${sessionScope.userInfo.user_id}" />
 						</div>
 						<!-- 	<div id="mpPPicInput">
 							<input name="user_pic" type="file">
 						</div> -->
-							</div>
-						<div class="mpPAddr">
-							주소 <br /> <input id="jm_addr3Input" readonly="readonly"
-								name="m_addr3" class="normal_input" maxlength="5"
-								autocomplete="off" style="width: 620px" placeholder="우편번호"
-								value="${memberProfile.m_addr3 }" /> <span id="addrSearchBtn">[검색]</span><br />
-							<br /> <input id="jm_addr1Input" readonly="readonly"
-								name="m_addr1" maxlength="30" autocomplete="off"
-								placeholder="주소" value="${memberProfile.m_addr1 }"
-								class="normal_input" /><br /> <br /> <input name="m_addr2"
-								maxlength="30" autocomplete="off" class="normal_input"
-								placeholder="상세주소" id="jm_addr2Input"
-								value="${memberProfile.m_addr2 }" />
-						</div>
-						<div class="mpPAddr">
-							<div>
-								연락처 <br />
-							</div>
-							<input name="phone_first" class="user_phone"
-								placeholder="전화번호를 입력해주세요" value="${memberProfile.phone_first}" />
-							- <input name="phone_second" class="user_phone"
-								placeholder="전화번호를 입력해주세요" value="${memberProfile.phone_second}" />
-							- <input name="phone_third" class="user_phone"
-								placeholder="전화번호를 입력해주세요" value="${memberProfile.phone_third}" />
-						</div>
-						<br />
+					</div>
+					<div class="mpPAddr">
+						주소 <br /> <input id="jm_addr3Input" readonly="readonly"
+							name="m_addr3" class="normal_input" maxlength="5"
+							autocomplete="off" style="width: 620px" placeholder="우편번호"
+							value="${memberProfile.m_addr3 }" /> <span id="addrSearchBtn">[검색]</span><br />
+						<br /> <input id="jm_addr1Input" readonly="readonly"
+							name="m_addr1" maxlength="30" autocomplete="off" placeholder="주소"
+							value="${memberProfile.m_addr1 }" class="normal_input" /><br />
+						<br /> <input name="m_addr2" maxlength="30" autocomplete="off"
+							class="normal_input" placeholder="상세주소" id="jm_addr2Input"
+							value="${memberProfile.m_addr2 }" />
+					</div>
+					<div class="mpPAddr">
 						<div>
-							<button id="mpP-btn" style="width: 110px;">수정하기</button>
+							연락처 <br />
 						</div>
-						<!-- 프로필 부분 컨테이너 끝 -->
-					
+						<input name="phone_first" class="user_phone"
+							placeholder="전화번호를 입력해주세요" value="${memberProfile.phone_first}" />
+						- <input name="phone_second" class="user_phone"
+							placeholder="전화번호를 입력해주세요" value="${memberProfile.phone_second}" />
+						- <input name="phone_third" class="user_phone"
+							placeholder="전화번호를 입력해주세요" value="${memberProfile.phone_third}" />
+					</div>
+					<br />
+					<div>
+						<button id="mpP-btn" style="width: 110px;">수정하기</button>
+					</div>
+					<!-- 프로필 부분 컨테이너 끝 -->
+
 				</div>
 				<!-- 프로필 수정의 전체 컨테이너 끝 -->
 			</div>
 		</form>
 	</div>
+	<div class="modal" id="myModal">
 		<div class="modal-content">
 			<span class="close">&times;</span>
 			<div class="pwCSS">
-			<form action="mypage.pw.do">
-				<div class="mpPPWUpdate">
-					<div class="mpPPWFail">${wrongMessage }</div>
-					<input name="uessionScope.userInfo.user_id}" />
-					<div class="mpPPW">
-						비밀번호 <br /> <input name="user_pw" class="mpPPWInput"
-							placeholder="변경하실 비밀번호를 입력해 주세요" />
+				<form action="mypage.pw.do">
+					<div class="mpPPWUpdate">
+						<div class="mpPPWFail">${wrongMessage }</div>
+						<input name="user_id" value="${sessionScope.userInfo.user_id}" type="hidden" />
+						<div class="mpPPW">
+							비밀번호 <br /> <input name="user_pw" class="mpPPWInput"
+								placeholder="변경하실 비밀번호를 입력해 주세요" />
+						</div>
+						<div id="mpPPWSpace"></div>
+						<div class="mpPPW">
+							비밀번호 확인 <br /> <input name="mpPPWInputCheck"
+								class="mpPPWInputCheck" placeholder="다시 한 번 입력해 주세요." />
+						</div>
 					</div>
-					<div id="mpPPWSpace"></div>
-					<div class="mpPPW" >
-						비밀번호 확인 <br /> <input name="mpPPWInputCheck"
-							class="mpPPWInputCheck" placeholder="다시 한 번 입력해 주세요." />
-					</div>
-				</div>
-				<button id="mpP-btn" style="width: 120px;">수정하기</button>
-			</form>
+					<button id="mpP-btn" style="width: 120px;">수정하기</button>
+				</form>
 			</div>
 		</div>
 	</div>

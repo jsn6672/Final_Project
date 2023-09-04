@@ -26,15 +26,15 @@
 					<c:forEach items="${contractSitterInfo }" var="s">
 						<div class="message">
 							<c:if test="${s.cnt_type eq 3 }">
-								<span>${s.cnt_memberDTO.user_name }님에게 펫시터가 되어달라는 신청이
+								<span>${s.cnt_memberDTO.user_name }님에게 펫시터가 되어 달라는 신청이
 									들어왔습니다.</span>
 							</c:if>
 							<c:if test="${s.cnt_type eq 2 }">
-								<span>${s.cnt_memberDTO.user_name }님에게 맘시터가 되어달라는 신청이
+								<span>${s.cnt_memberDTO.user_name }님에게 맘시터가 되어 달라는 신청이
 									들어왔습니다.</span>
 							</c:if>
 							<c:if test="${s.cnt_type eq 1 }">
-								<span>${s.cnt_memberDTO.user_name }님에게 요양시터가 되어달라는 신청이
+								<span>${s.cnt_memberDTO.user_name }님에게 요양시터가 되어 달라는 신청이
 									들어왔습니다.</span>
 							</c:if>
 						</div>
@@ -98,8 +98,7 @@
 								<c:when test="${s.cntDTOMessage eq '1' }">
 									<c:forEach items="${s.cntDTOs }" var="ss">
 
-										<div class="message">${ss.cnt_memberDTO.user_name }께서시터가
-											되고 싶다는 요청을 하셨습니다</div>
+										<div class="message">${ss.cnt_memberDTO.user_name }께서 시터가 되고 싶다는 요청을 하셨습니다</div>
 										<div class="messageans">
 											<div>
 												사진 : <img alt=""

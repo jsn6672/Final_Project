@@ -106,10 +106,7 @@ public class MypageController {
 		 * req.setAttribute("contentPage", "mypage/mypage.jsp"); mDAO.logincheck(req);
 		 */
 		mpDAO.updateProfile(m, req);
-		mDAO.logincheck(req);
-		req.setAttribute("contentPage", "mypage/mypage.jsp");
-		req.setAttribute("mypageContentPage", "mypageHome.jsp");
-		return "home";
+		return "redirect:/mypage.go";
 	}
 
 	// 등록페이지
