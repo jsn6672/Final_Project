@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var closeModal = document.querySelector(".close");
 
     openModalBtn.addEventListener("click", function() {
+		console.log("열려라 참깨");
         modal.style.display = "block";
     });
 
