@@ -276,7 +276,7 @@
 					</div>
 				</div>
 				<div class="detail-btn" style="padding-top: 20px;">
-					<button onclick="momtakerContract('${dolbom.d_no}', '${sessionScope.userInfo.user_id }', '${userInfo.user_ms_status }')" style="width: 110px;">신청하기</button>
+					<button onclick="momtakerContract('${dolbom.d_no}', '${sessionScope.userInfo.user_id }', '${userInfo.user_ms_status }')" style="margin-left: 10px;height: 65px;width: 140px;margin-top: 20px">신청하기</button>
 				</div>
 			</div>
 		</div>

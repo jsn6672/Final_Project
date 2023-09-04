@@ -399,19 +399,19 @@
 							<c:when test="${petsitter.ps_id eq sessionScope.userInfo.user_id }">
 								<c:choose>
 									<c:when test="${sessionScope.userInfo.user_ps_status == 3 }">
-										<button onclick="location.href='mypage.sitterRegPet.go?user_id=${sessionScope.userInfo.user_id}'">수정</button>
-										<button onclick="petsitterNoticeUP('${petsitter.ps_id}')" style="margin-left: 10px;">공고 올리기</button>
-										<button onclick="petsitterDelete('${petsitter.ps_id}')" style="margin-left: 10px;">삭제</button>
+										<button onclick="location.href='mypage.sitterRegPet.go?user_id=${sessionScope.userInfo.user_id}'"style="margin-left: 10px;height: 65px;width: 140px;margin-top: 20px;">수정</button>
+										<button onclick="petsitterNoticeUP('${petsitter.ps_id}')" style="margin-left: 10px;height: 65px;width: 140px;margin-top: 20px;">공고 올리기</button>
+										<button onclick="petsitterDelete('${petsitter.ps_id}')" style="margin-left: 10px;height: 65px;width: 140px;margin-top: 20px;">삭제</button>
 									</c:when>
 									<c:when test="${sessionScope.userInfo.user_ps_status == 4 }">
-										<button onclick="location.href='mypage.sitterRegPet.go?user_id=${sessionScope.userInfo.user_id}'">수정</button>
-										<button onclick="petsitterNoticeDOWN('${petsitter.ps_id}')" style="margin-left: 10px;">공고 내리기</button>
-										<button onclick="petsitterDelete('${petsitter.ps_id}')" style="margin-left: 10px;">삭제</button>
+										<button onclick="location.href='mypage.sitterRegPet.go?user_id=${sessionScope.userInfo.user_id}'" style="margin-left: 10px;height: 65px;width: 140px;margin-top: 20px;">수정</button>
+										<button onclick="petsitterNoticeDOWN('${petsitter.ps_id}')" style="margin-left: 10px;height: 65px;width: 140px;margin-top: 20px;">공고 내리기</button>
+										<button onclick="petsitterDelete('${petsitter.ps_id}')" style="margin-left: 10px;height: 65px;width: 140px;margin-top: 20px;;">삭제</button>
 									</c:when>
 								</c:choose>
 							</c:when>
 							<c:when test="${sessionScope.userInfo.user_id ne null }">
-								<button class="open-btn" onclick="petsitterContract('${petsitter.ps_id}')">신청하기</button>
+								<button class="open-btn" onclick="petsitterContract('${petsitter.ps_id}')" style="margin-left: 10px;height: 65px;width: 140px;margin-top: 20px;">신청하기</button>
 							</c:when>
 						</c:choose>
 					</div>
