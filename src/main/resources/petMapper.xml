@@ -114,7 +114,7 @@
 		parameterType="com.sh.pj.pet.PetSelector">
 		select count(*) from petsitter_tbl where ps_location1
 		like '%'||#{ps_search}||'%' or ps_location2 like
-		'%'||#{ps_search}||'%' or ps_location3 like '%'||#{ps_search}||'%'
+		'%'||#{ps_search}||'%' or ps_location3 like '%'||#{ps_search}||'%' and ps_id in (select user_id from jsn_user_tbl where user_ps_status = 4)
 	</select>
 
 	<select id="getMsg2" resultType="com.sh.pj.account.DolbomDTO">
