@@ -104,16 +104,17 @@ function caresitterContract(cs_id) {
 
           let agetype = datas[i].agetype;
 
-          dom += `<div class="d-flex justify-contents-center align-items-center w-100 h-50 bg-red">
-                	        <div class="flex-column justify-contents-center alignt-items-center w-50 h-100">
-                    	        <span>${d_name}</span>
-                        	    <span style="margin-left: 10px;">${age}</span>
-								<span>${agetype}</span>
-                        	</div>
-                        	<div class="d-flex justify-contents-center alignt-items-center w-50 h-100 bg-green">
-								<button onclick="caresitterContract3(${d_no},'${cs_id}')">신청</button>
-                        	</div>
-              		    </div>`;
+			dom += `<div class="d-flex justify-content-between align-items-center w-100 h-50">
+    <div class="d-flex flex-column justify-content-center align-items-center w-75 h-100">
+        <span>${d_name}&nbsp;&nbsp;${age}${agetype}</span>
+    </div>
+    <div class="d-flex justify-content-center align-items-center w-25 h-100">
+        <button onclick="caresitterContract3(${d_no},'${cs_id}')">신청</button>
+    </div>
+</div>
+
+`;
+			
         }
         console.log(dom);
         $(".dolbom-box").html(dom);

@@ -42,7 +42,7 @@
 
 	<select id="getAllTaker"
 		resultType="com.sh.pj.account.DolbomDTO">
-		select*from dolbom_tbl where d_category=1
+		select*from dolbom_tbl where d_category=1 and d_onoff = 'on'
 	</select>
 
 	<select id="detailtaker"
