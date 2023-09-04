@@ -106,7 +106,7 @@ body {
 /* 마이페이지 프로필 수정 */
 .mpP {
 	width: 83vw;
-	height: 46vw%;
+	height: 46vw;
 	background-color: #FFEBE4;
 }
 
@@ -134,7 +134,7 @@ body {
 
 .mpPPicture {
 	width: 220px;
-	height: 280px;
+	height: 245px;
 	/* margin-top: 3%;
  margin-left: 3%; */
 	background-color: white;
@@ -144,7 +144,7 @@ body {
 
 #mpPPicture {
 	width: 180px;
-	height: 240px;
+	height: 210px;
 }
 
 .mpPInputPic {
@@ -153,11 +153,35 @@ body {
 
 .mpPService {
 	width: 50%;
-	margin: auto;
 	margin-left: 30px;
 	justify-content: center;
 }
-
+.input-file-button{
+  padding: 0px 20px;
+  text-align : center;
+  line-height : 50px;
+	font-size: 16px;
+	font-weight: bold;
+	background-color: #71ff71;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 6vw;
+	margin-right: 10px;
+}
+#openModalBtn {
+	padding: 10px 20px;
+	font-size: 16px;
+	font-weight: bold;
+	background-color: #87CEFA;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 6vw;
+	margin-right: 10px;
+}
 .mpPService-state {
 	width: 100%;
 	display: flex;
@@ -190,7 +214,8 @@ body {
 	margin-right: 0 auto;
 	background-color: #E7B5AC;
 	border: none;
-	border-radius: 10%
+	border-radius: 10%;
+	padding: 5px;
 }
 
 .mpP-info {
@@ -546,6 +571,15 @@ display: flex;
 	color: #f15d30;
 	margin: 0 5px;
 }
+.myprofile-btns{
+	display:flex;
+}
+.myprofile-btns button{
+	width: 100px;
+	height: 50px;
+}
+
+
 
 button {
 	padding: 10px 20px;
@@ -712,7 +746,13 @@ button {
 	align-items: center;
 	background-color: gray;
 	border-radius: 1%;
-	font: 30pt;
+	font: white;
+	font-size: 30pt; 
+}
+
+.mpT-mention3-1{
+	font-size: 10pt;
+	font: white;
 }
 
 .buy1month {
@@ -779,4 +819,3 @@ button {
 	background-color: #FFEBE4;
 	padding: 1%;
 }
-

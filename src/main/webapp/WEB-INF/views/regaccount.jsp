@@ -264,7 +264,7 @@ body {
 }
 
 .brand-logo-img {
-	width: 330px;
+	width: 180px;
 	margin-top: 5%;
 }
 
@@ -285,6 +285,7 @@ body {
 .join_column {
 	font-size: 15px;
 	font-weight: 400;
+	margin-left: 2%;
 	text-align: left;
 }
 
@@ -328,7 +329,7 @@ body {
 }
 
 .phone_input {
-	width: 220px;
+	width: 215px;
 	height: 60px;
 	font-size: 15pt;
 	font-weight: 400;
@@ -345,7 +346,7 @@ body {
 	font-weight: 400;
 	background-color: #D9D9D9;
 	color: black;
-	border-radius: 5%;
+	border-radius: 2%;
 	border: none;
 }
 
@@ -365,7 +366,7 @@ body {
 			<div class="join_wrap">
 				<form id="join_frm" method="post" enctype="multipart/form-data"
 					action="regAccount.do" name="join_member">
-					<div class="join_title" style="font-size: 35pt; font-weight: 400">회원가입</div>
+					<div class="join_title" style="font-size: 28pt; font-weight: 400">회원가입</div>
 					<br>
 					<div class="join_box">
 						<div>
