@@ -382,6 +382,7 @@
 									</c:when>
 								</c:choose>
 							</c:when>
+
 							<c:when test="${sessionScope.userInfo.user_id ne null }">
 							<button class="open-btn" onclick="caresitterContract('${caresitter.cs_id}')" style="margin-left: 10px;height: 65px;width: 140px;margin-top: 20px;">신청하기</button>
 

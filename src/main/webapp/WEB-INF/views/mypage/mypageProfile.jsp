@@ -43,10 +43,14 @@
 					<div class="mpPPicAndServ">
 						<div class="mpPPicture">
 							<img id="mpPPicture" alt=""
-								src="resources/img/${sessionScope.userInfo.user_pic  } " /> <input
-								type="file" name="pic" /> <input hidden="hidden" name="org_pic"
+								src="resources/img/${sessionScope.userInfo.user_pic  } " />
+								<div class="myprofile-btns">
+								</div>
+								 <input type="file" id="input-file" name="pic" style="display:none;"/> <input hidden="hidden" name="org_pic"
 								value="${memberProfile.user_pic }" />
 						</div>
+						<br>
+						<br>
 						<div class="mpPService">
 							<span>현재 모두의 시터를 이렇게 이용하고 계세요!</span> <br />
 							<div class="mpPService-state">
@@ -64,6 +68,7 @@
 										<div class="mpPSitter-part-name">펫시터</div>
 										<div class="mpPSitter-part-state">이용상황</div>
 									</div>
+								
 								</div>
 								<div class="mpPSitter">
 									<!-- 시터사용자 <br> -->
@@ -96,15 +101,18 @@
 								placeholder="다시 한 번 입력해 주세요.">
 						</div>
 					</div> -->
-
-						<button id="openModalBtn" type="button" style="width: 150px;">비밀번호
-							수정</button>
-
+						<div class="myprofile-btns">
+						<label class="input-file-button" for="input-file">
+								 업로드
+									</label>
+						<button id="openModalBtn" type="button">암호변경</button>
 						<input name="user_id" type="hidden"
 							value="${sessionScope.userInfo.user_id}" />
+						</div>
 						<!-- 	<div id="mpPPicInput">
 							<input name="user_pic" type="file">
 						</div> -->
+							</div>
 						<div class="mpPAddr">
 							주소 <br /> <input id="jm_addr3Input" readonly="readonly"
 								name="m_addr3" class="normal_input" maxlength="5"
@@ -134,27 +142,25 @@
 							<button id="mpP-btn" style="width: 110px;">수정하기</button>
 						</div>
 						<!-- 프로필 부분 컨테이너 끝 -->
-					</div>
+					
 				</div>
 				<!-- 프로필 수정의 전체 컨테이너 끝 -->
 			</div>
 		</form>
 	</div>
-	<div id="myModal" class="modal">
 		<div class="modal-content">
 			<span class="close">&times;</span>
 			<div class="pwCSS">
 			<form action="mypage.pw.do">
 				<div class="mpPPWUpdate">
 					<div class="mpPPWFail">${wrongMessage }</div>
-					<input name="user_id" type="hidden"
-						value="${sessionScope.userInfo.user_id}" />
+					<input name="uessionScope.userInfo.user_id}" />
 					<div class="mpPPW">
 						비밀번호 <br /> <input name="user_pw" class="mpPPWInput"
 							placeholder="변경하실 비밀번호를 입력해 주세요" />
 					</div>
 					<div id="mpPPWSpace"></div>
-					<div class="mpPPW">
+					<div class="mpPPW" >
 						비밀번호 확인 <br /> <input name="mpPPWInputCheck"
 							class="mpPPWInputCheck" placeholder="다시 한 번 입력해 주세요." />
 					</div>
