@@ -101,6 +101,7 @@
 		select count(*) from momsitter_tbl where ms_location1
 		like '%'||#{ms_search}||'%' or ms_location2 like
 		'%'||#{ms_search}||'%' or ms_location3 like '%'||#{ms_search}||'%'
+		and ms_id in(select user_id from jsn_user_tbl where user_ms_status = 4)
 	</select>
 
 	<select id="getMsg2" resultType="com.sh.pj.account.DolbomDTO">
