@@ -275,7 +275,7 @@
 					</div>
 				</div>
 				<div class="detail-btn" style="padding-top: 20px">
-					<button onclick="pettakerContract('${dolbom.d_no}', '${sessionScope.userInfo.user_id }', '${userInfo.user_ps_status }')" style="width: 110px;">신청하기</button>
+					<button onclick="pettakerContract('${dolbom.d_no}', '${sessionScope.userInfo.user_id }', '${userInfo.user_ps_status }')" style="margin-left: 10px;height: 65px;width: 140px;margin-top: 20px">신청하기</button>
 				</div>
 			</div>
 		</div>

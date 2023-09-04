@@ -239,7 +239,7 @@
 /*** Products ***/
 .product {
 	background: linear-gradient(rgba(136, 180, 78, .1),
-		rgba(136, 180, 78, .1)), url(../img/product-bg.png) left bottom
+		rgba(136, 180, 78, .1)) left bottom
 		no-repeat;
 	background-size: auto;
 }
@@ -419,10 +419,8 @@ opacity
 
 /*** Testimonial ***/
 .testimonial {
-	background: linear-gradient(rgb(212 255 201 / 85%),
-  rgb(142 201 65 / 85%)), url(../img/.jpg) center center
-  no-repeat;
-	background-size: cover;
+    background: linear-gradient(rgba(136, 180, 78, .1), rgba(136, 180, 78, .1)) left bottom no-repeat;
+    background-size: cover;
 }
 
 .testimonial-item {
@@ -431,6 +429,7 @@ opacity
 	text-align: center;
 	background: #FFFFFF;
 	border: 30px solid var(- -primary);
+	border-radius:30px;
 }
 
 .testimonial-item img {

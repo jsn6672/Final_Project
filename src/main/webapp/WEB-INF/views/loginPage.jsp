@@ -12,7 +12,7 @@ body{
 }
 
 .login-body {
-	height: 800px;
+	height: 100vh;
 	text-align: center;
 }
 
@@ -21,12 +21,12 @@ body{
 }
 
 .brand-logo-img {
-	width: 330px;
-	margin-top: 246px;
+	width: 220px;
+	margin-top: 200px;
 }
 
 a {
-	font-size: 15pt;
+	font-size: 13pt;
 	font-weight: 400;
 }
 
@@ -37,12 +37,17 @@ input {
 	font-weight: 400;
 	background-color: #D9D9D9;
 	color: black;
-	border-radius: 5%;
+	border-radius: 3%;
 	border: none;	
 }
 
 .blank-area{
 	width: 0.5%;
+}
+
+.login-mention {
+	font-size: 14pt;
+	margin-top: 0.5%;
 }
 </style>
 </head>
@@ -66,8 +71,10 @@ input {
 				</div>
 			</div>
 		</form>
+		<div class="login-mention">
 		<a href="lost.id.pw.go">로그인 정보를 잊으셨나요?</a> <br> <a
 			href="regAccount.go">회원가입</a>
+		</div>
 	</div>
 </body>
 </html>
