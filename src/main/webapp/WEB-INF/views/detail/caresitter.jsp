@@ -382,10 +382,6 @@
 									</c:when>
 								</c:choose>
 							</c:when>
-
-							<c:otherwise>
-							<button class="open-btn" onclick="caresitterContract('${caresitter.cs_id}')" style="width: 120px;">신청하기</button>
-
 							<c:when test="${sessionScope.userInfo.user_id ne null }">
 							<button class="open-btn" onclick="caresitterContract('${caresitter.cs_id}')">신청하기</button>
 

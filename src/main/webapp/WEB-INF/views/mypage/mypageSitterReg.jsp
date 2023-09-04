@@ -17,8 +17,8 @@
 			<div class="mpS-sub">
 				<div class="mpS-part-need">
 					<div class="mpS-part-pic"><img class="mpS-part-picture1" alt="" src="resources/img/mypage/mpHeart12.png"></div>
-					<div class="mpS-part-inform">"시터가 필요해요!"</div>
-					<div class="mpS-part-inform2">필요한 시터를 선택해 주세요!</div>
+					<div class="mpS-part-inform">"시터가 되고 싶어요!"</div>
+					<div class="mpS-part-inform2">되고 싶은 시터를 선택해 주세요!</div>
 					<div class="mpS-icon">
 						<div class="mpS-icon-name">
 							<div class="mpS-icon-mom">
@@ -40,8 +40,8 @@
 				</div>
 				<div class="mpS-part-gonnabe">
 					<div class="mpS-part-pic"><img class="mpS-part-picture2" alt="" src="resources/img/mypage/mpHeart2.png"></div>
-					<div class="mpS-part-inform">"테이커 되고싶어요!"</div>
-					<div class="mpS-part-inform2">되고싶은 테이커를 선택해 주세요!</div>
+					<div class="mpS-part-inform">"테이커가 되고싶어요!"</div>
+					<div class="mpS-part-inform2">되고 싶은 테이커를 선택해 주세요!</div>
 					<div class="mpS-icon">
 						<div class="mpS-icon-name">
 							<div class="mpS-icon-mom">

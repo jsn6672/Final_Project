@@ -95,7 +95,8 @@ public class MypageController {
 		mpDAO.pwupdate(m, req);
 		/* mDAO.pwchangedo(req, m); */
 		mDAO.logincheck(req);
-		req.setAttribute("contentPage", "mypageProfile.jsp");
+		req.setAttribute("contentPage", "mypage/mypage.jsp");
+		req.setAttribute("mypageContentPage", "mypageProfile.jsp");
 		return "home";
 	}
 
