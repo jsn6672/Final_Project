@@ -152,7 +152,7 @@
 	<div class="container-fluid product py-5 my-5">
 		<div class="container py-5">
 			<div class="section-title text-center mx-auto wow fadeInUp"
-				data-wow-delay="0.1s" style="max-width: 500px;">
+				data-wow-delay="0.1s" style="max-width: 400px;">
 				<p class="fs-5 fw-medium fst-italic text-primary">봄날의 햇살(우수회원)</p>
 				<h1 class="display-6">
 					이렇게 따듯한 분들 <br> 저희와 함께합니다.
@@ -162,7 +162,7 @@
 				data-wow-delay="0.5s">
 				<c:forEach items="${GoodCareSitter }" var="c">
 				<a href="" class="d-block product-item rounded"> <img
-					src="resources/img/mainPage/caresitter.png" alt="" style="width: 420px; height: 260px;">
+					src="resources/img/mainPage/caresitter.png" alt="" style="width: 300px; height: 260px; margin: auto;">
 					<div
 						class="bg-white shadow-sm text-center p-4 position-relative mt-n5 mx-4">
 						<h4 class="text-primary">${c.mm.user_name }</h4>
@@ -172,7 +172,7 @@
 				</c:forEach>
 				<c:forEach items="${GoodMomSitter }" var="m">
 				<a href="" class="d-block product-item rounded"> <img
-					src="resources/img/mainPage/momsitter.png" alt="" style="width: 420px; height: 260px;">
+					src="resources/img/mainPage/momsitter.png" alt="" style="width: 300px; height: 260px; margin: auto;">
 					<div
 						class="bg-white shadow-sm text-center p-4 position-relative mt-n5 mx-4">
 						<h4 class="text-primary">${m.mm.user_name }</h4>
@@ -182,7 +182,7 @@
 				</c:forEach>
 				<c:forEach items="${GoodPetSitter }" var="p">
 				<a href="" class="d-block product-item rounded"> <img
-					src="resources/img/mainPage/petsitter.png" alt="" style="width: 420px; height: 260px;">
+					src="resources/img/mainPage/petsitter.png" alt="" style="width: 300px; height: 260px; margin: auto;">
 					<div
 						class="bg-white shadow-sm text-center p-4 position-relative mt-n5 mx-4">
 						<h4 class="text-primary">${p.mm.user_name }</h4>

@@ -42,7 +42,7 @@
 
 	<select id="getAllTaker"
 		resultType="com.sh.pj.account.DolbomDTO">
-		select*from dolbom_tbl where d_category=1
+		select*from dolbom_tbl where d_category=1 and d_onoff = 'on'
 	</select>
 
 	<select id="detailtaker"
@@ -99,7 +99,7 @@
 		SELECT ROWNUM AS
 		rn, it.* FROM dolbom_tbl it
 		WHERE (it.d_location LIKE '%' ||
-		#{cs_search} || '%') and d_category = 1
+		#{cs_search} || '%') and d_category = 1 and d_onoff = 'on'
 		)
 		WHERE rn &gt;= #{cs_start} and
 		rn &lt;= #{cs_end}
@@ -108,7 +108,7 @@
 	<select id="getMsgCount2" resultType="int"
 		parameterType="com.sh.pj.account.DolbomDTO">
 		SELECT count(*) FROM dolbom_tbl WHERE d_location LIKE
-		'%'||#{cs_search}||'%' and d_category = 1
+		'%'||#{cs_search}||'%' and d_category = 1 and d_onoff = 'on'
 	</select>
 
 	<select id="getCareSitterPoint"
